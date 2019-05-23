@@ -1,0 +1,25 @@
+var classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet =
+[
+    [ "__init__", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#aa98160eae16885823e81e82837c3ac98", null ],
+    [ "__eq__", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#affe08a0e25071e429dec78ffad42c441", null ],
+    [ "__hash__", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a9e739fd9d74f6571c56fea8df3f70e76", null ],
+    [ "__str__", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#ac3b15546f9588a44f28827c3ba379cd4", null ],
+    [ "add_member", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#adb547a3a56f6a5f235ba8e4b13bdee15", null ],
+    [ "add_members", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a2c5481f94c22abc0ecf7325482c0ade4", null ],
+    [ "generate_content", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#ad3f805acf277de000306b6afc12bcd41", null ],
+    [ "set_comment", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#aeb577649b003f3729fa026a8df22a603", null ],
+    [ "set_parents", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#ad949c7ae1a270820b7dd41c3f7adf6a2", null ],
+    [ "comment", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a241397635a86cabf53dd04457d509f8e", null ],
+    [ "data", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#af9afb7304ee33a77ffe534b482e981e1", null ],
+    [ "data_ready", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#ab2831b0ab43fe926b3a299487e2c5239", null ],
+    [ "file_name", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#abc634b372af6244692d5e4962fe61887", null ],
+    [ "inheritance", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a8b1c287279aabfc29f2c3c960bd46190", null ],
+    [ "member_list", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#aa2d9774314837fb3461772a303c4545d", null ],
+    [ "members", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a98ec9ed7e8eb75988d8d9c63f011f710", null ],
+    [ "reprtxt", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a6845c131a059347bc613c0f88fef0957", null ],
+    [ "section", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a1fcf2725a60f4886183b678bbea8bbc7", null ],
+    [ "struct_base", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a96783bd3f52954c983ebded42fa3fdd6", null ],
+    [ "struct_name", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a26a2c5499d2db360a221e613dea6f826", null ],
+    [ "typedefs", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#aa4b5c0fc7c7650302ff9e3e5377bcb7d", null ],
+    [ "typerefs", "classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#a5ea48b309ab2e8ca2b5fe3252d76a107", null ]
+];

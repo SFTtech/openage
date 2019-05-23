@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml" title=" " alt="" coords="5,46,192,73"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path.xhtml" title="Provides an additional method for adding a file at this path." alt="" coords="240,5,445,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1union_1_1_union_path.xhtml" title="Provides an additional method for mounting an other path at this path." alt="" coords="260,71,425,112"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="openage.util.fslike.path.Path" name="openage.util.fslike.path.Path">
+<area shape="rect" id="node1" title=" " alt="" coords="119,5,305,288"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path.xhtml" title="Provides an additional method for adding a file at this path." alt="" coords="5,336,211,443"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1union_1_1_union_path.xhtml" title="Provides an additional method for mounting an other path at this path." alt="" coords="235,336,400,443"/>
+</map>

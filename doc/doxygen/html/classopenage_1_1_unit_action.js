@@ -1,0 +1,27 @@
+var classopenage_1_1_unit_action =
+[
+    [ "UnitAction", "classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a", null ],
+    [ "~UnitAction", "classopenage_1_1_unit_action.xhtml#a6e4ff108bc1f10e40777ae36710e7a65", null ],
+    [ "adjacent_range", "classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3", null ],
+    [ "allow_control", "classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c", null ],
+    [ "allow_interupt", "classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf", null ],
+    [ "completed", "classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255", null ],
+    [ "current_frame", "classopenage_1_1_unit_action.xhtml#abfdd7e2764fd795c02ce0a5471563508", null ],
+    [ "current_graphics", "classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b", null ],
+    [ "damage_unit", "classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7", null ],
+    [ "draw_debug", "classopenage_1_1_unit_action.xhtml#aef5ad04daa194a06790b4f36ed8a3e83", null ],
+    [ "face_towards", "classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d", null ],
+    [ "get_attack_range", "classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17", null ],
+    [ "get_heal_range", "classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef", null ],
+    [ "move_to", "classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad", null ],
+    [ "name", "classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70", null ],
+    [ "on_completion", "classopenage_1_1_unit_action.xhtml#ac84d3cbfa3c489b3975952af157929cb", null ],
+    [ "type", "classopenage_1_1_unit_action.xhtml#acbadd90ff8cee12d01aa9fd490501c1a", null ],
+    [ "update", "classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62", null ],
+    [ "debug_draw_action", "classopenage_1_1_unit_action.xhtml#a0bbcb9637ce725b95cbe818204921e4f", null ],
+    [ "entity", "classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c", null ],
+    [ "frame", "classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6", null ],
+    [ "frame_rate", "classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8", null ],
+    [ "graphic", "classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed", null ],
+    [ "show_debug", "classopenage_1_1_unit_action.xhtml#a0a84fac6b39ee42340f67905dd631956", null ]
+];

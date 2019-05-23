@@ -1,0 +1,6 @@
+<map id="openage::InputHandler" name="openage::InputHandler">
+<area shape="rect" id="node1" title=" " alt="" coords="234,5,385,97"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml" title=" " alt="" coords="5,153,184,509"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_g_u_i.xhtml" title=" " alt="" coords="208,160,411,501"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="435,145,629,516"/>
+</map>

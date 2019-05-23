@@ -1,0 +1,3 @@
+<map id="openage::renderer::SDL" name="openage::renderer::SDL">
+<area shape="rect" id="node1" title="A static SDL singleton manager. Used to lazily initialize SDL." alt="" coords="5,5,164,97"/>
+</map>

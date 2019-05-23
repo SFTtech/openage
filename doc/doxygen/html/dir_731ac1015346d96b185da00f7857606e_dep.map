@@ -1,0 +1,24 @@
+<map id="libopenage/audio" name="libopenage/audio">
+<area shape="rect" id="node1" href="dir_731ac1015346d96b185da00f7857606e.xhtml" title="audio" alt="" coords="147,52,219,100"/>
+<area shape="rect" id="node2" href="dir_d4038e006ae681f38d9f19ed63c3b2e6.xhtml" title="log" alt="" coords="147,244,219,292"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000001_000030.xhtml" title="6" alt="" coords="188,218,196,233"/>
+<area shape="rect" id="node3" href="dir_7ea809f223a8f5a589c716fad2b2f668.xhtml" title="datastructure" alt="" coords="25,244,123,292"/>
+<area shape="rect" id="edge5-headlabel" href="dir_000001_000006.xhtml" title="1" alt="" coords="100,225,108,240"/>
+<area shape="rect" id="node4" href="dir_3c7a1d16eeb7847b36e40c66a45c0cab.xhtml" title="error" alt="" coords="125,436,197,484"/>
+<area shape="rect" id="edge6-headlabel" href="dir_000001_000002.xhtml" title="5" alt="" coords="111,411,119,426"/>
+<area shape="rect" id="node5" href="dir_a25237b91464ed624c167f154229e196.xhtml" title="util" alt="" coords="162,340,234,388"/>
+<area shape="rect" id="edge7-headlabel" href="dir_000001_000018.xhtml" title="10" alt="" coords="221,320,235,334"/>
+<area shape="rect" id="node6" href="dir_26d84fcac5b38ff9c2db6912af76a48c.xhtml" title="job" alt="" coords="294,148,366,196"/>
+<area shape="rect" id="edge8-headlabel" href="dir_000001_000004.xhtml" title="3" alt="" coords="279,124,287,138"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000030_000018.xhtml" title="9" alt="" coords="187,313,195,328"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000006_000002.xhtml" title="2" alt="" coords="146,408,154,423"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000006_000018.xhtml" title="1" alt="" coords="154,315,162,330"/>
+<area shape="rect" id="edge9-headlabel" href="dir_000002_000030.xhtml" title="3" alt="" coords="149,298,157,312"/>
+<area shape="rect" id="edge10-headlabel" href="dir_000002_000018.xhtml" title="8" alt="" coords="179,396,187,410"/>
+<area shape="rect" id="edge11-headlabel" href="dir_000018_000030.xhtml" title="9" alt="" coords="186,305,194,319"/>
+<area shape="rect" id="edge12-headlabel" href="dir_000018_000002.xhtml" title="14" alt="" coords="168,414,183,429"/>
+<area shape="rect" id="edge13-headlabel" href="dir_000004_000030.xhtml" title="2" alt="" coords="235,234,243,248"/>
+<area shape="rect" id="edge14-headlabel" href="dir_000004_000002.xhtml" title="2" alt="" coords="208,424,216,439"/>
+<area shape="rect" id="edge15-headlabel" href="dir_000004_000018.xhtml" title="2" alt="" coords="243,327,251,342"/>
+<area shape="rect" id="clust1" href="dir_7a1433c2fe60c22d0d75c56b51397e23.xhtml" title="libopenage" alt="" coords="137,16,230,111"/>
+</map>

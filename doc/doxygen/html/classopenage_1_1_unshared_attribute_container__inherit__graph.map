@@ -1,0 +1,11 @@
+<map id="openage::UnsharedAttributeContainer" name="openage::UnsharedAttributeContainer">
+<area shape="rect" id="node1" title=" " alt="" coords="521,189,722,296"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attribute_3_01attr__type_1_1building_01_4.xhtml" title=" " alt="" coords="5,344,155,509"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" title=" " alt="" coords="179,373,338,480"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4.xhtml" title=" " alt="" coords="363,373,517,480"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" title=" " alt="" coords="542,359,701,495"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" title=" " alt="" coords="725,373,875,480"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attribute_3_01attr__type_1_1projectile_01_4.xhtml" title=" " alt="" coords="900,359,1057,495"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" title=" " alt="" coords="1081,344,1236,509"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attribute_container.xhtml" title=" " alt="" coords="530,5,713,141"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="openage::renderer::opengl::GlSimpleObject" name="openage::renderer::opengl::GlSimpleObject">
+<area shape="rect" id="node1" title=" " alt="" coords="504,5,663,200"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" title=" " alt="" coords="5,365,140,516"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer.xhtml" title=" " alt="" coords="165,380,314,501"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml" title="A single OpenGL shader stage." alt="" coords="339,387,473,494"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml" title="A handle to an OpenGL shader program." alt="" coords="498,248,669,633"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml" title="A handle to an OpenGL texture." alt="" coords="693,373,831,509"/>
+<area shape="rect" id="node7" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml" title="An OpenGL array of 2D textures." alt="" coords="856,380,1025,501"/>
+<area shape="rect" id="node8" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" title=" " alt="" coords="1049,395,1200,487"/>
+</map>

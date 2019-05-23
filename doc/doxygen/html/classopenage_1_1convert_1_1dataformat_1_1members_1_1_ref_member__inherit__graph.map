@@ -1,0 +1,8 @@
+<map id="openage.convert.dataformat.members.RefMember" name="openage.convert.dataformat.members.RefMember">
+<area shape="rect" id="node1" title="a struct member that can be referenced/references another struct." alt="" coords="139,336,381,472"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml" title="this struct member/data column is a enum." alt="" coords="5,564,248,788"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml" title=" " alt="" coords="272,520,515,832"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="139,5,381,288"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member.xhtml" title="enum definition, does lookup of raw datfile data =&gt; enum value" alt="" coords="5,924,248,1045"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml" title=" " alt="" coords="272,880,515,1089"/>
+</map>

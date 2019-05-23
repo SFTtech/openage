@@ -1,0 +1,15 @@
+<map id="openage::gui::OutputModeLink" name="openage::gui::OutputModeLink">
+<area shape="rect" id="node1" title=" " alt="" coords="274,789,473,999"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_q_object.xhtml" title=" " alt="" coords="130,655,281,733"/>
+<area shape="rect" id="node3" title=" " alt="" coords="6,13,77,90"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_game_logic_caller.xhtml" title=" " alt="" coords="46,198,234,290"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="83,411,267,591"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="259,147,472,341"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="292,463,418,540"/>
+<area shape="rect" id="node8" title=" " alt="" coords="308,655,440,733"/>
+<area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_interface.xhtml" title=" " alt="" coords="494,648,646,740"/>
+<area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="499,455,640,547"/>
+<area shape="rect" id="node11" href="$classqtsdl_1_1_persistent_core_holder.xhtml" title=" " alt="" coords="496,176,686,312"/>
+<area shape="rect" id="node12" href="$classqtsdl_1_1_persistent_core_holder_base.xhtml" title=" " alt="" coords="486,5,696,97"/>
+<area shape="rect" id="node13" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="664,404,843,599"/>
+</map>

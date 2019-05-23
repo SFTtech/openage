@@ -1,0 +1,10 @@
+<map id="openage::gui::ActionsListModel" name="openage::gui::ActionsListModel">
+<area shape="rect" id="node1" title=" " alt="" coords="37,907,228,1277"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,686,143,763"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml" title=" " alt="" coords="167,605,365,844"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="175,449,357,556"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="43,249,230,400"/>
+<area shape="rect" id="node6" title=" " alt="" coords="78,64,195,141"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="254,249,449,400"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="262,5,441,200"/>
+</map>

@@ -1,0 +1,45 @@
+<map id="libopenage/coord/chunk.cpp" name="libopenage/coord/chunk.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="916,5,1100,32"/>
+<area shape="rect" id="node2" href="$chunk_8h.xhtml" title=" " alt="" coords="974,80,1042,107"/>
+<area shape="rect" id="node3" href="$declarations_8h.xhtml" title=" " alt="" coords="818,155,920,181"/>
+<area shape="rect" id="node42" title=" " alt="" coords="945,155,1070,181"/>
+<area shape="rect" id="node43" title=" " alt="" coords="1094,155,1233,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1456,528,1517,555"/>
+<area shape="rect" id="node5" href="$fixed__point_8h.xhtml" title=" " alt="" coords="197,229,325,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="149,379,224,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="44,304,104,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="66,379,125,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="310,677,377,704"/>
+<area shape="rect" id="node10" title=" " alt="" coords="316,304,369,331"/>
+<area shape="rect" id="node11" title=" " alt="" coords="393,304,462,331"/>
+<area shape="rect" id="node12" title=" " alt="" coords="549,603,632,629"/>
+<area shape="rect" id="node13" href="$misc_8h.xhtml" title=" " alt="" coords="230,304,292,331"/>
+<area shape="rect" id="node14" title=" " alt="" coords="637,379,701,405"/>
+<area shape="rect" id="node15" title=" " alt="" coords="725,379,786,405"/>
+<area shape="rect" id="node16" title=" " alt="" coords="499,827,554,853"/>
+<area shape="rect" id="node17" title=" " alt="" coords="452,677,508,704"/>
+<area shape="rect" id="node18" title=" " alt="" coords="532,677,601,704"/>
+<area shape="rect" id="node19" href="$error_2error_8h.xhtml" title=" " alt="" coords="512,379,613,405"/>
+<area shape="rect" id="node22" href="$compiler_8h.xhtml" title=" " alt="" coords="1270,752,1385,779"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1084,752,1156,779"/>
+<area shape="rect" id="node21" title=" " alt="" coords="600,453,679,480"/>
+<area shape="rect" id="node25" href="$message_8h.xhtml" title=" " alt="" coords="1000,453,1119,480"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1249,827,1316,853"/>
+<area shape="rect" id="node24" href="$signal_8h.xhtml" title=" " alt="" coords="1340,827,1406,853"/>
+<area shape="rect" id="node26" title=" " alt="" coords="953,528,1020,555"/>
+<area shape="rect" id="node27" href="$constexpr_8h.xhtml" title=" " alt="" coords="1044,528,1166,555"/>
+<area shape="rect" id="node29" href="$stringformatter_8h.xhtml" title=" " alt="" coords="729,528,878,555"/>
+<area shape="rect" id="node36" href="$logsink_8h.xhtml" title=" " alt="" coords="1190,528,1265,555"/>
+<area shape="rect" id="node39" href="$level_8h.xhtml" title=" " alt="" coords="1272,603,1330,629"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1040,603,1100,629"/>
+<area shape="rect" id="node30" title=" " alt="" coords="853,603,914,629"/>
+<area shape="rect" id="node31" href="$externalsstream_8h.xhtml" title=" " alt="" coords="962,677,1088,704"/>
+<area shape="rect" id="node32" href="$strings_8h.xhtml" title=" " alt="" coords="706,603,778,629"/>
+<area shape="rect" id="node33" title=" " alt="" coords="676,677,742,704"/>
+<area shape="rect" id="node34" title=" " alt="" coords="766,677,844,704"/>
+<area shape="rect" id="node35" title=" " alt="" coords="868,677,937,704"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1208,603,1247,629"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1125,603,1184,629"/>
+<area shape="rect" id="node40" href="$enum_8h.xhtml" title=" " alt="" coords="1164,677,1262,704"/>
+<area shape="rect" id="node41" title=" " alt="" coords="1180,752,1246,779"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="openage.util.fslike.filecollection.FileCollection" name="openage.util.fslike.filecollection.FileCollection">
+<area shape="rect" id="node1" title="FSLikeObject that holds several individual files." alt="" coords="117,417,323,656"/>
+<area shape="rect" id="node4" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml" title="The actual file system&#45;like CAB object." alt="" coords="5,704,219,855"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s.xhtml" title="represents a file archive in DRS format." alt="" coords="243,719,413,840"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml" title=" " alt="" coords="129,131,311,369"/>
+<area shape="rect" id="node3" title=" " alt="" coords="195,5,245,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="openage.cabextract.cab.CFHeaderFlags" name="openage.cabextract.cab.CFHeaderFlags">
+<area shape="rect" id="node1" title="Cabinet file option indicators." alt="" coords="17,425,239,561"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml" title="Designed to be inherited from, similar to Enum." alt="" coords="45,256,211,377"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,131,88,208"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1struct_1_1_flags_meta.xhtml" title="Metaclass for Flags." alt="" coords="112,131,307,208"/>
+<area shape="rect" id="node5" title=" " alt="" coords="186,5,233,83"/>
+</map>

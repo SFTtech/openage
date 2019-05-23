@@ -1,0 +1,3 @@
+<map id="openage::renderer::vulkan::VlkGraphicsDevice" name="openage::renderer::vulkan::VlkGraphicsDevice">
+<area shape="rect" id="node1" title="Owns a device capable of graphics operations and surface presentation using WSI." alt="" coords="5,5,180,215"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="openage.convert.pefile.PEDOSHeader" name="openage.convert.pefile.PEDOSHeader">
+<area shape="rect" id="node1" title="The (legacy) DOS&#45;compatible PE header." alt="" coords="5,601,247,825"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml" title="Designed to be inherited from, similar to Enum." alt="" coords="39,285,213,553"/>
+<area shape="rect" id="node3" title=" " alt="" coords="9,145,91,223"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1struct_1_1_named_struct_meta.xhtml" title="Metaclass for NamedStruct." alt="" coords="116,131,291,237"/>
+<area shape="rect" id="node5" title=" " alt="" coords="180,5,227,83"/>
+</map>

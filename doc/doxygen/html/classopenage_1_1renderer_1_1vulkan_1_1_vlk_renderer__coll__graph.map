@@ -1,0 +1,3 @@
+<map id="openage::renderer::vulkan::VlkRenderer" name="openage::renderer::vulkan::VlkRenderer">
+<area shape="rect" id="node1" title="A renderer using the Vulkan API." alt="" coords="5,5,143,127"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="openage.convert.gamedata.unit.ResourceCost" name="openage.convert.gamedata.unit.ResourceCost">
+<area shape="rect" id="node1" title=" " alt="" coords="27,292,233,428"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml" title="superclass for all exportable data members" alt="" coords="5,5,255,244"/>
+</map>

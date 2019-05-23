@@ -1,0 +1,10 @@
+<map id="libopenage/error" name="libopenage/error">
+<area shape="rect" id="node1" href="dir_3c7a1d16eeb7847b36e40c66a45c0cab.xhtml" title="error" alt="" coords="41,52,113,100"/>
+<area shape="rect" id="node2" href="dir_d4038e006ae681f38d9f19ed63c3b2e6.xhtml" title="log" alt="" coords="5,148,77,196"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000002_000030.xhtml" title="3" alt="" coords="61,127,69,141"/>
+<area shape="rect" id="node3" href="dir_a25237b91464ed624c167f154229e196.xhtml" title="util" alt="" coords="5,244,77,292"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000002_000018.xhtml" title="8" alt="" coords="76,227,84,242"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000030_000018.xhtml" title="9" alt="" coords="37,218,45,233"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000018_000030.xhtml" title="9" alt="" coords="38,208,46,222"/>
+<area shape="rect" id="clust1" href="dir_7a1433c2fe60c22d0d75c56b51397e23.xhtml" title="libopenage" alt="" coords="31,16,124,111"/>
+</map>

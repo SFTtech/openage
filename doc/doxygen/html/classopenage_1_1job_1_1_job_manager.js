@@ -1,0 +1,28 @@
+var classopenage_1_1job_1_1_job_manager =
+[
+    [ "JobManager", "classopenage_1_1job_1_1_job_manager.xhtml#a523d19942779f3f34be97a8d56325196", null ],
+    [ "~JobManager", "classopenage_1_1job_1_1_job_manager.xhtml#a4478894f90499d1f560284a194e83a4f", null ],
+    [ "JobManager", "classopenage_1_1job_1_1_job_manager.xhtml#a9ff7199a24223a2035252f1e40551d7b", null ],
+    [ "JobManager", "classopenage_1_1job_1_1_job_manager.xhtml#a15828c010f14d1431aca51e57a264e55", null ],
+    [ "create_job_group", "classopenage_1_1job_1_1_job_manager.xhtml#a26dd9d9c12b38ca0d7bf4c7e3c17ee36", null ],
+    [ "enqueue", "classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2", null ],
+    [ "enqueue", "classopenage_1_1job_1_1_job_manager.xhtml#a1dff8502e9fd71030a50832953bbdb83", null ],
+    [ "enqueue_state", "classopenage_1_1job_1_1_job_manager.xhtml#a0f13eaafaebb859ca13dad1884c18031", null ],
+    [ "execute_callbacks", "classopenage_1_1job_1_1_job_manager.xhtml#ae81b425a182f26b155c9f31de6b74d63", null ],
+    [ "fetch_job", "classopenage_1_1job_1_1_job_manager.xhtml#adefba3f5fb9db0931cca54c27ab31041", null ],
+    [ "finish_job", "classopenage_1_1job_1_1_job_manager.xhtml#a9e5e1a95045cef58acd980ebdabc6285", null ],
+    [ "has_job", "classopenage_1_1job_1_1_job_manager.xhtml#afc81fa6e3be5780014ced15942a48fa2", null ],
+    [ "operator=", "classopenage_1_1job_1_1_job_manager.xhtml#a2de8ff68186848c7635b2a4708d78d0c", null ],
+    [ "operator=", "classopenage_1_1job_1_1_job_manager.xhtml#ac043c6d8be13ad950dd598832a103f96", null ],
+    [ "start", "classopenage_1_1job_1_1_job_manager.xhtml#ab2bf41f6b397b1acf10665ad93425b5e", null ],
+    [ "stop", "classopenage_1_1job_1_1_job_manager.xhtml#ac2cd8aa519595a5b0f50e796d5d00208", null ],
+    [ "Worker", "classopenage_1_1job_1_1_job_manager.xhtml#a9de4a9533dff2ecc0919852d4c05a67b", null ],
+    [ "finished_jobs", "classopenage_1_1job_1_1_job_manager.xhtml#ab4f9aa57c80b620acd97107ad7a7308e", null ],
+    [ "finished_jobs_mutex", "classopenage_1_1job_1_1_job_manager.xhtml#a8c5ab0694cd354dc3f02ee94ab0fbbc1", null ],
+    [ "group_index", "classopenage_1_1job_1_1_job_manager.xhtml#a572906422c0f2a770a1ba36f76e2a8cc", null ],
+    [ "is_running", "classopenage_1_1job_1_1_job_manager.xhtml#a49ed9cbf861e5492e4295399827ab22d", null ],
+    [ "number_of_workers", "classopenage_1_1job_1_1_job_manager.xhtml#aabb63639d8326d816988f150aab64732", null ],
+    [ "pending_jobs", "classopenage_1_1job_1_1_job_manager.xhtml#ac53233115d6b82623630131775aca1e8", null ],
+    [ "pending_jobs_mutex", "classopenage_1_1job_1_1_job_manager.xhtml#a69c457e906f144c30338f2bd2e2ca2ec", null ],
+    [ "workers", "classopenage_1_1job_1_1_job_manager.xhtml#a0854e76d52b714a2d7af57f333ea4e0e", null ]
+];

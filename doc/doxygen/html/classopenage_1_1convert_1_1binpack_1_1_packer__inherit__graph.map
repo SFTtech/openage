@@ -1,0 +1,6 @@
+<map id="openage.convert.binpack.Packer" name="openage.convert.binpack.Packer">
+<area shape="rect" id="node1" title="Packs blocks." alt="" coords="199,5,368,171"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer.xhtml" title="Binary tree bin packing strategy." alt="" coords="5,219,175,472"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1binpack_1_1_column_packer.xhtml" title="Packs blocks into columns, greedily trying to minimize the maximum height." alt="" coords="199,299,368,391"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1binpack_1_1_row_packer.xhtml" title="Packs blocks into rows, greedily trying to minimize the maximum width." alt="" coords="392,299,561,391"/>
+</map>

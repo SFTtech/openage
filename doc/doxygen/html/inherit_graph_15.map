@@ -1,0 +1,17 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="5,235,248,276"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml" title="a member that can have a dynamic length." alt="" coords="296,104,539,145"/>
+<area shape="rect" id="node8" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml" title=" " alt="" coords="296,267,539,308"/>
+<area shape="rect" id="node10" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml" title="this struct member/data column contains simple numbers" alt="" coords="296,332,539,373"/>
+<area shape="rect" id="node13" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member.xhtml" title="a struct member that can be referenced/references another struct." alt="" coords="296,201,539,243"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_array_member.xhtml" title="subdata member for C&#45;type arrays like float[8]." alt="" coords="587,71,829,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml" title="struct member/column type that allows to store equal&#45;length char[n]." alt="" coords="587,5,829,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml" title=" " alt="" coords="587,136,829,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_string_member.xhtml" title="member with unspecified string length, aka std::string" alt="" coords="877,5,1120,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml" title=" " alt="" coords="877,136,1120,177"/>
+<area shape="rect" id="node9" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members.xhtml" title=" " alt="" coords="587,267,829,308"/>
+<area shape="rect" id="node11" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member.xhtml" title=" " alt="" coords="587,397,829,439"/>
+<area shape="rect" id="node12" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member.xhtml" title=" " alt="" coords="587,332,829,373"/>
+<area shape="rect" id="node14" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml" title="this struct member/data column is a enum." alt="" coords="587,201,829,243"/>
+<area shape="rect" id="node15" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member.xhtml" title="enum definition, does lookup of raw datfile data =&gt; enum value" alt="" coords="877,201,1120,243"/>
+</map>

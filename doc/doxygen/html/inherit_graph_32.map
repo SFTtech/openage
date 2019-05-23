@@ -1,0 +1,27 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="156,329,239,355"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml" title="Designed to be inherited from, similar to Enum." alt="" coords="347,98,513,125"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml" title="Designed to be inherited from, similar to Enum." alt="" coords="343,500,517,541"/>
+<area shape="rect" id="node3" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes.xhtml" title="File flags; found in the CFFile struct." alt="" coords="588,5,791,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags.xhtml" title="Cabinet file option indicators." alt="" coords="578,71,801,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_data.xhtml" title=" " alt="" coords="585,137,794,163"/>
+<area shape="rect" id="node7" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_file.xhtml" title="Header for a single file." alt="" coords="588,187,791,214"/>
+<area shape="rect" id="node8" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_folder.xhtml" title=" " alt="" coords="580,238,799,265"/>
+<area shape="rect" id="node9" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_header.xhtml" title="Global CAB file header; found at the very beginning of the file." alt="" coords="578,289,801,315"/>
+<area shape="rect" id="node10" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_header_reserved_fields.xhtml" title=" " alt="" coords="578,340,801,381"/>
+<area shape="rect" id="node11" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info.xhtml" title="DRS file header." alt="" coords="584,406,795,433"/>
+<area shape="rect" id="node12" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s_header.xhtml" title="DRS file header; see doc/media/drs&#45;files." alt="" coords="584,457,795,483"/>
+<area shape="rect" id="node13" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s_table_info.xhtml" title="DRS table header." alt="" coords="579,507,799,534"/>
+<area shape="rect" id="node14" href="$classopenage_1_1convert_1_1pefile_1_1_p_e_c_o_f_f_header.xhtml" title="The new (win32) PE and object file header." alt="" coords="565,558,813,585"/>
+<area shape="rect" id="node15" href="$classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory.xhtml" title=" " alt="" coords="590,609,789,651"/>
+<area shape="rect" id="node16" href="$classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header.xhtml" title="The (legacy) DOS&#45;compatible PE header." alt="" coords="569,675,810,702"/>
+<area shape="rect" id="node17" href="$classopenage_1_1convert_1_1pefile_1_1_p_e_optional_header.xhtml" title="This &quot;optional&quot; header is required for linked files (but not object files)." alt="" coords="579,727,799,768"/>
+<area shape="rect" id="node18" href="$classopenage_1_1convert_1_1pefile_1_1_p_e_section.xhtml" title="Describes a section in a PE file (like an ELF section)." alt="" coords="581,793,797,819"/>
+<area shape="rect" id="node19" href="$classopenage_1_1convert_1_1peresource_1_1_resource_directory.xhtml" title="Resource directory header." alt="" coords="595,844,783,885"/>
+<area shape="rect" id="node20" href="$classopenage_1_1convert_1_1peresource_1_1_resource_directory_entry.xhtml" title="these follow immediately after the directory." alt="" coords="595,909,783,951"/>
+<area shape="rect" id="node21" href="$classopenage_1_1convert_1_1peresource_1_1_resource_leaf.xhtml" title="header for a leaf node in the resource tree." alt="" coords="595,975,783,1016"/>
+<area shape="rect" id="node22" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml" title="A simple length&#45;prefixed little&#45;endian utf&#45;16 string." alt="" coords="595,1040,783,1081"/>
+<area shape="rect" id="node23" title=" " alt="" coords="5,293,52,319"/>
+<area shape="rect" id="node24" href="$classopenage_1_1util_1_1struct_1_1_flags_meta.xhtml" title="Metaclass for Flags." alt="" coords="100,118,295,145"/>
+<area shape="rect" id="node25" href="$classopenage_1_1util_1_1struct_1_1_named_struct_meta.xhtml" title="Metaclass for NamedStruct." alt="" coords="110,460,285,501"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="libopenage/audio/error.h" name="libopenage/audio/error.h">
+<area shape="rect" id="node1" title=" " alt="" coords="656,5,816,32"/>
+<area shape="rect" id="node2" href="$audio__manager_8cpp.xhtml" title=" " alt="" coords="5,80,160,121"/>
+<area shape="rect" id="node3" href="$dynamic__loader_8cpp.xhtml" title=" " alt="" coords="185,80,357,121"/>
+<area shape="rect" id="node4" href="$audio_2error_8cpp.xhtml" title=" " alt="" coords="381,87,555,114"/>
+<area shape="rect" id="node5" href="$in__memory__loader_8cpp.xhtml" title=" " alt="" coords="579,80,722,121"/>
+<area shape="rect" id="node6" href="$opus__dynamic__loader_8cpp.xhtml" title=" " alt="" coords="746,80,897,121"/>
+<area shape="rect" id="node7" href="$opus__in__memory__loader_8cpp.xhtml" title=" " alt="" coords="921,80,1081,121"/>
+<area shape="rect" id="node8" href="$opus__loading_8cpp.xhtml" title=" " alt="" coords="1106,80,1257,121"/>
+<area shape="rect" id="node9" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="1281,80,1431,121"/>
+</map>

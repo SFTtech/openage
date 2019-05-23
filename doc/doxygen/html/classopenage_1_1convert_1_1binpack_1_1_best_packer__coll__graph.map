@@ -1,0 +1,3 @@
+<map id="openage.convert.binpack.BestPacker" name="openage.convert.binpack.BestPacker">
+<area shape="rect" id="node1" title="Chooses the best result from all the given packers." alt="" coords="5,5,175,185"/>
+</map>

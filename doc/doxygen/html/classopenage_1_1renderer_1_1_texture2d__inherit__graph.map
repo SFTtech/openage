@@ -1,0 +1,4 @@
+<map id="openage::renderer::Texture2d" name="openage::renderer::Texture2d">
+<area shape="rect" id="node1" title=" " alt="" coords="7,5,142,156"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml" title="A handle to an OpenGL texture." alt="" coords="5,204,144,340"/>
+</map>

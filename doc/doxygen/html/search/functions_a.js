@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['job',['Job',['../classopenage_1_1job_1_1_job.xhtml#af7910b0b4f4390767944a3f30ba6cc0c',1,'openage::job::Job::Job()=default'],['../classopenage_1_1job_1_1_job.xhtml#a625402a18d1d29e348ff2c9a1fc757fb',1,'openage::job::Job::Job(std::shared_ptr&lt; TypedJobStateBase&lt; T &gt;&gt; state)']]],
+  ['jobgroup',['JobGroup',['../classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf',1,'openage::job::JobGroup::JobGroup()'],['../classopenage_1_1job_1_1_job_group.xhtml#a2c8b676ea02ea4cbe16121a393c1903a',1,'openage::job::JobGroup::JobGroup(Worker *parent_worker)']]],
+  ['jobmanager',['JobManager',['../classopenage_1_1job_1_1_job_manager.xhtml#a523d19942779f3f34be97a8d56325196',1,'openage::job::JobManager::JobManager(int number_of_workers)'],['../classopenage_1_1job_1_1_job_manager.xhtml#a9ff7199a24223a2035252f1e40551d7b',1,'openage::job::JobManager::JobManager(const JobManager &amp;)=delete'],['../classopenage_1_1job_1_1_job_manager.xhtml#a15828c010f14d1431aca51e57a264e55',1,'openage::job::JobManager::JobManager(JobManager &amp;&amp;)=delete']]],
+  ['jobstate',['JobState',['../classopenage_1_1job_1_1_job_state.xhtml#aa032860e51ed96e652628509eddcd8f4',1,'openage::job::JobState']]],
+  ['join',['join',['../classopenage_1_1job_1_1_worker.xhtml#afc0a09d080ea20c9e5b9466f04acb9f5',1,'openage::job::Worker']]],
+  ['joinpath',['joinpath',['../classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258',1,'openage::util::Path::joinpath(const parts_t &amp;subpaths) const'],['../classopenage_1_1util_1_1_path.xhtml#af2aa900d03797c9f65b6ba484892139d',1,'openage::util::Path::joinpath(const part_t &amp;subpath) const'],['../classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a74ff93acd2b9f012f04c79b64438a632',1,'openage::util::fslike.path.Path.joinpath()']]]
+];

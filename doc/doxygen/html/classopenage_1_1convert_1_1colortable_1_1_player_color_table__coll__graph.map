@@ -1,0 +1,5 @@
+<map id="openage.convert.colortable.PlayerColorTable" name="openage.convert.colortable.PlayerColorTable">
+<area shape="rect" id="node1" title="this class represents stock player color values." alt="" coords="40,667,220,803"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml" title=" " alt="" coords="40,292,220,619"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml" title="superclass for all exportable data members" alt="" coords="5,5,255,244"/>
+</map>

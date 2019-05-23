@@ -1,0 +1,16 @@
+<map id="openage.util.fslike.abstract.FSLikeObject" name="openage.util.fslike.abstract.FSLikeObject">
+<area shape="rect" id="node1" title=" " alt="" coords="548,131,729,369"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml" title=" " alt="" coords="548,447,729,641"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml" title="Provides an actual file system directory&#39;s contents as&#45;they&#45;are." alt="" coords="105,425,289,663"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml" title="FSLikeObject that holds several individual files." alt="" coords="319,425,524,663"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1fslike_1_1union_1_1_union.xhtml" title="FSLikeObject that provides a structure for mounting several path objects." alt="" coords="753,417,919,671"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml" title="Wraps a Path, implementing all methods as pass&#45;through." alt="" coords="943,417,1121,671"/>
+<area shape="rect" id="node2" title=" " alt="" coords="614,5,663,83"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker.xhtml" title="Wraps a FSLikeObject, transparently passing through all read&#45;only calls." alt="" coords="645,763,824,855"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory.xhtml" title=" " alt="" coords="5,726,189,891"/>
+<area shape="rect" id="node8" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml" title="The actual file system&#45;like CAB object." alt="" coords="213,733,427,884"/>
+<area shape="rect" id="node9" href="$classopenage_1_1convert_1_1drs_1_1_d_r_s.xhtml" title="represents a file archive in DRS format." alt="" coords="451,748,621,869"/>
+<area shape="rect" id="node12" href="$classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper.xhtml" title="Only allows pure&#45;read and pure&#45;write operations;." alt="" coords="1253,719,1435,899"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator.xhtml" title=" " alt="" coords="848,755,1027,862"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer.xhtml" title="Wraps a FSLikeObject, securing all wrapped calls with a mutex." alt="" coords="1051,755,1229,862"/>
+</map>

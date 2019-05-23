@@ -1,0 +1,11 @@
+<map id="libopenage/gamestate/generator.h" name="libopenage/gamestate/generator.h">
+<area shape="rect" id="node1" title=" " alt="" coords="466,5,615,47"/>
+<area shape="rect" id="node2" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,102,156,129"/>
+<area shape="rect" id="node3" href="$game__main_8cpp.xhtml" title=" " alt="" coords="181,95,330,136"/>
+<area shape="rect" id="node4" href="$generator_8cpp.xhtml" title=" " alt="" coords="354,95,503,136"/>
+<area shape="rect" id="node5" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="413,184,554,225"/>
+<area shape="rect" id="node6" href="$generator__link_8h.xhtml" title=" " alt="" coords="578,95,741,136"/>
+<area shape="rect" id="node7" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="765,184,906,225"/>
+<area shape="rect" id="node9" href="$main_8cpp.xhtml" title=" " alt="" coords="815,102,957,129"/>
+<area shape="rect" id="node8" href="$generator__link_8cpp.xhtml" title=" " alt="" coords="578,184,741,225"/>
+</map>

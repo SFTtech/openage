@@ -40,7 +40,6 @@ __pycache__
 /DartConfiguration.tcl
 /codegen_depend_cache
 /codegen_target_cache
-/Doxyfile
 /Testing
 /py/setup.py
 CTestTestfile.cmake

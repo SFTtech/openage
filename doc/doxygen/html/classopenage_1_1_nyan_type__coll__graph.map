@@ -1,0 +1,16 @@
+<map id="openage::NyanType" name="openage::NyanType">
+<area shape="rect" id="node1" title=" " alt="" coords="246,1691,383,1856"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_type.xhtml" title=" " alt="" coords="249,1315,380,1641"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile__delta.xhtml" title=" " alt="" coords="8,1021,144,1113"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,587,147,694"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml" title=" " alt="" coords="169,977,303,1157"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_resource_cost.xhtml" title=" " alt="" coords="327,991,489,1142"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="230,492,405,789"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_player.xhtml" title=" " alt="" coords="543,881,708,1252"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_player_score.xhtml" title=" " alt="" coords="625,1432,775,1524"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="906,5,1075,273"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="843,323,989,415"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_team.xhtml" title=" " alt="" coords="819,521,989,760"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_population_tracker.xhtml" title=" " alt="" coords="429,477,611,804"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_civilisation.xhtml" title=" " alt="" coords="635,521,794,760"/>
+</map>

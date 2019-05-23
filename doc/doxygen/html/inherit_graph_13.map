@@ -1,0 +1,57 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml" title="superclass for all exportable data members" alt="" coords="5,1384,255,1425"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1blendomatic_1_1_blendomatic.xhtml" title=" " alt="" coords="335,5,529,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml" title=" " alt="" coords="342,71,522,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file.xhtml" title=" " alt="" coords="303,136,561,177"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1gamedata_1_1civ_1_1_civ.xhtml" title=" " alt="" coords="323,202,541,229"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat.xhtml" title="class for fighting and beating the compressed empires2*.dat" alt="" coords="307,253,557,295"/>
+<area shape="rect" id="node8" href="$classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_wrapper.xhtml" title=" " alt="" coords="307,319,557,360"/>
+<area shape="rect" id="node9" href="$classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic.xhtml" title=" " alt="" coords="319,384,545,425"/>
+<area shape="rect" id="node10" href="$classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_attack_sound.xhtml" title=" " alt="" coords="319,449,545,491"/>
+<area shape="rect" id="node11" href="$classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_delta.xhtml" title=" " alt="" coords="319,515,545,556"/>
+<area shape="rect" id="node12" href="$classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_sound_prop.xhtml" title=" " alt="" coords="319,580,545,621"/>
+<area shape="rect" id="node13" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map.xhtml" title=" " alt="" coords="311,646,553,673"/>
+<area shape="rect" id="node14" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_elevation.xhtml" title=" " alt="" coords="323,697,541,739"/>
+<area shape="rect" id="node15" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_info.xhtml" title=" " alt="" coords="323,763,541,804"/>
+<area shape="rect" id="node16" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_land.xhtml" title=" " alt="" coords="323,828,541,869"/>
+<area shape="rect" id="node17" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_terrain.xhtml" title=" " alt="" coords="323,893,541,935"/>
+<area shape="rect" id="node18" href="$classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit.xhtml" title=" " alt="" coords="323,959,541,1000"/>
+<area shape="rect" id="node19" href="$classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color.xhtml" title=" " alt="" coords="308,1024,556,1065"/>
+<area shape="rect" id="node20" href="$classopenage_1_1convert_1_1gamedata_1_1research_1_1_research.xhtml" title=" " alt="" coords="315,1089,549,1131"/>
+<area shape="rect" id="node21" href="$classopenage_1_1convert_1_1gamedata_1_1research_1_1_research_resource_cost.xhtml" title=" " alt="" coords="315,1155,549,1196"/>
+<area shape="rect" id="node22" href="$classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound.xhtml" title=" " alt="" coords="322,1220,542,1261"/>
+<area shape="rect" id="node23" href="$classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound_item.xhtml" title=" " alt="" coords="322,1285,542,1327"/>
+<area shape="rect" id="node24" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_age_tech_tree.xhtml" title=" " alt="" coords="327,1351,537,1392"/>
+<area shape="rect" id="node25" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection.xhtml" title=" " alt="" coords="327,1416,537,1457"/>
+<area shape="rect" id="node26" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_effect.xhtml" title=" " alt="" coords="327,1481,537,1523"/>
+<area shape="rect" id="node27" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_mode.xhtml" title=" " alt="" coords="311,1547,553,1574"/>
+<area shape="rect" id="node28" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_research_connection.xhtml" title=" " alt="" coords="327,1599,537,1640"/>
+<area shape="rect" id="node29" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_tech.xhtml" title=" " alt="" coords="313,1665,551,1691"/>
+<area shape="rect" id="node30" href="$classopenage_1_1convert_1_1gamedata_1_1tech_1_1_unit_connection.xhtml" title=" " alt="" coords="327,1716,537,1757"/>
+<area shape="rect" id="node31" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_frame_data.xhtml" title=" " alt="" coords="321,1781,543,1823"/>
+<area shape="rect" id="node32" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain.xhtml" title=" " alt="" coords="321,1847,543,1888"/>
+<area shape="rect" id="node33" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_animation.xhtml" title=" " alt="" coords="321,1912,543,1953"/>
+<area shape="rect" id="node34" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_border.xhtml" title=" " alt="" coords="321,1977,543,2019"/>
+<area shape="rect" id="node35" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic.xhtml" title=" " alt="" coords="321,2043,543,2084"/>
+<area shape="rect" id="node36" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_restriction.xhtml" title="access policies for units on specific terrain." alt="" coords="321,2108,543,2149"/>
+<area shape="rect" id="node37" href="$classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size.xhtml" title=" " alt="" coords="321,2173,543,2215"/>
+<area shape="rect" id="node38" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_annex.xhtml" title=" " alt="" coords="329,2239,535,2280"/>
+<area shape="rect" id="node39" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic.xhtml" title=" " alt="" coords="329,2304,535,2345"/>
+<area shape="rect" id="node40" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_hit_type.xhtml" title=" " alt="" coords="329,2369,535,2411"/>
+<area shape="rect" id="node41" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost.xhtml" title=" " alt="" coords="329,2435,535,2476"/>
+<area shape="rect" id="node42" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_storage.xhtml" title=" " alt="" coords="329,2500,535,2541"/>
+<area shape="rect" id="node43" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_command.xhtml" title=" " alt="" coords="329,2565,535,2607"/>
+<area shape="rect" id="node44" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_header.xhtml" title=" " alt="" coords="329,2631,535,2672"/>
+<area shape="rect" id="node45" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_line.xhtml" title=" " alt="" coords="329,2696,535,2737"/>
+<area shape="rect" id="node46" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object.xhtml" title="base properties for every unit entry." alt="" coords="329,2761,535,2803"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1colortable_1_1_player_color_table.xhtml" title="this class represents stock player color values." alt="" coords="623,71,803,112"/>
+<area shape="rect" id="node47" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit.xhtml" title=" " alt="" coords="609,2728,816,2769"/>
+<area shape="rect" id="node55" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_tree_unit.xhtml" title="type_id == 90" alt="" coords="609,2793,816,2835"/>
+<area shape="rect" id="node48" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit.xhtml" title="type_id &gt;= 25" alt="" coords="864,2728,1071,2769"/>
+<area shape="rect" id="node49" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit.xhtml" title=" " alt="" coords="1119,2728,1325,2769"/>
+<area shape="rect" id="node50" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit.xhtml" title=" " alt="" coords="1373,2728,1580,2769"/>
+<area shape="rect" id="node51" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit.xhtml" title=" " alt="" coords="1628,2728,1835,2769"/>
+<area shape="rect" id="node52" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit.xhtml" title="type_id &gt;= 70" alt="" coords="1883,2695,2089,2736"/>
+<area shape="rect" id="node54" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_missile_unit.xhtml" title=" " alt="" coords="1883,2760,2089,2801"/>
+<area shape="rect" id="node53" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit.xhtml" title="type_id &gt;= 80" alt="" coords="2137,2695,2344,2736"/>
+</map>

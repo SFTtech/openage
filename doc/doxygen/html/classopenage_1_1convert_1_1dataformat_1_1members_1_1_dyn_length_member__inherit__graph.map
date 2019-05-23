@@ -1,0 +1,9 @@
+<map id="openage.convert.dataformat.members.DynLengthMember" name="openage.convert.dataformat.members.DynLengthMember">
+<area shape="rect" id="node1" title="a member that can have a dynamic length." alt="" coords="272,336,515,487"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_array_member.xhtml" title="subdata member for C&#45;type arrays like float[8]." alt="" coords="5,637,248,744"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml" title="struct member/column type that allows to store equal&#45;length char[n]." alt="" coords="272,608,515,773"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml" title=" " alt="" coords="539,535,781,847"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="272,5,515,288"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_string_member.xhtml" title="member with unspecified string length, aka std::string" alt="" coords="272,953,515,1045"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml" title=" " alt="" coords="539,895,781,1104"/>
+</map>

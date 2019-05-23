@@ -1,0 +1,6 @@
+<map id="openage::gui::GUI" name="openage::gui::GUI">
+<area shape="rect" id="node1" title=" " alt="" coords="161,145,363,487"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="5,5,156,97"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_resize_handler.xhtml" title=" " alt="" coords="181,5,343,97"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="367,5,514,97"/>
+</map>

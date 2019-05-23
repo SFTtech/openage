@@ -1,0 +1,26 @@
+var namespaceopenage_1_1coord =
+[
+    [ "camgame", "structopenage_1_1coord_1_1camgame.xhtml", "structopenage_1_1coord_1_1camgame" ],
+    [ "camgame_delta", "structopenage_1_1coord_1_1camgame__delta.xhtml", "structopenage_1_1coord_1_1camgame__delta" ],
+    [ "camhud", "structopenage_1_1coord_1_1camhud.xhtml", "structopenage_1_1coord_1_1camhud" ],
+    [ "camhud_delta", "structopenage_1_1coord_1_1camhud__delta.xhtml", "structopenage_1_1coord_1_1camhud__delta" ],
+    [ "chunk", "structopenage_1_1coord_1_1chunk.xhtml", null ],
+    [ "chunk3", "structopenage_1_1coord_1_1chunk3.xhtml", null ],
+    [ "chunk3_delta", "structopenage_1_1coord_1_1chunk3__delta.xhtml", null ],
+    [ "chunk_delta", "structopenage_1_1coord_1_1chunk__delta.xhtml", null ],
+    [ "CoordManager", "classopenage_1_1coord_1_1_coord_manager.xhtml", "classopenage_1_1coord_1_1_coord_manager" ],
+    [ "input", "structopenage_1_1coord_1_1input.xhtml", "structopenage_1_1coord_1_1input" ],
+    [ "input_delta", "structopenage_1_1coord_1_1input__delta.xhtml", "structopenage_1_1coord_1_1input__delta" ],
+    [ "phys2", "structopenage_1_1coord_1_1phys2.xhtml", "structopenage_1_1coord_1_1phys2" ],
+    [ "phys2_delta", "structopenage_1_1coord_1_1phys2__delta.xhtml", "structopenage_1_1coord_1_1phys2__delta" ],
+    [ "phys3", "structopenage_1_1coord_1_1phys3.xhtml", "structopenage_1_1coord_1_1phys3" ],
+    [ "phys3_delta", "structopenage_1_1coord_1_1phys3__delta.xhtml", "structopenage_1_1coord_1_1phys3__delta" ],
+    [ "term", "structopenage_1_1coord_1_1term.xhtml", null ],
+    [ "term_delta", "structopenage_1_1coord_1_1term__delta.xhtml", null ],
+    [ "tile", "structopenage_1_1coord_1_1tile.xhtml", "structopenage_1_1coord_1_1tile" ],
+    [ "tile3", "structopenage_1_1coord_1_1tile3.xhtml", "structopenage_1_1coord_1_1tile3" ],
+    [ "tile3_delta", "structopenage_1_1coord_1_1tile3__delta.xhtml", "structopenage_1_1coord_1_1tile3__delta" ],
+    [ "tile_delta", "structopenage_1_1coord_1_1tile__delta.xhtml", null ],
+    [ "viewport", "structopenage_1_1coord_1_1viewport.xhtml", "structopenage_1_1coord_1_1viewport" ],
+    [ "viewport_delta", "structopenage_1_1coord_1_1viewport__delta.xhtml", "structopenage_1_1coord_1_1viewport__delta" ]
+];

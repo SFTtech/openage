@@ -1,0 +1,6 @@
+<map id="openage.cabextract.lzxdstream.LZXDStream" name="openage.cabextract.lzxdstream.LZXDStream">
+<area shape="rect" id="node1" title="Read&#45;only stream object that wraps LZXDecompressor." alt="" coords="5,645,213,928"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object.xhtml" title=" " alt="" coords="15,461,204,597"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml" title="Abstract base class for file&#45;like objects." alt="" coords="16,131,203,413"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,5,134,83"/>
+</map>

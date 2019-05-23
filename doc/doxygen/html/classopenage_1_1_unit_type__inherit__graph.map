@@ -1,0 +1,9 @@
+<map id="openage::UnitType" name="openage::UnitType">
+<area shape="rect" id="node1" title=" " alt="" coords="299,5,433,391"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_building_producer.xhtml" title=" " alt="" coords="5,439,185,751"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_nyan_type.xhtml" title=" " alt="" coords="209,512,347,677"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_object_producer.xhtml" title=" " alt="" coords="371,461,540,729"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_projectile_producer.xhtml" title=" " alt="" coords="564,483,749,707"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_movable_producer.xhtml" title=" " alt="" coords="366,799,545,993"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_living_producer.xhtml" title=" " alt="" coords="374,1041,537,1163"/>
+</map>

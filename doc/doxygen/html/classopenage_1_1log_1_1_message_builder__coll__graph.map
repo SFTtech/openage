@@ -1,0 +1,14 @@
+<map id="openage::log::MessageBuilder" name="openage::log::MessageBuilder">
+<area shape="rect" id="node1" title=" " alt="" coords="144,1249,341,1371"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_string_formatter.xhtml" title=" " alt="" coords="17,933,212,1187"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" title=" " alt="" coords="5,749,224,871"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_external_o_string_stream.xhtml" title=" " alt="" coords="17,499,213,606"/>
+<area shape="rect" id="node5" title=" " alt="" coords="34,271,129,349"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_external_string_buf.xhtml" title=" " alt="" coords="153,264,359,356"/>
+<area shape="rect" id="node7" title=" " alt="" coords="203,71,309,149"/>
+<area shape="rect" id="node8" href="$structopenage_1_1log_1_1message.xhtml" title=" " alt="" coords="237,977,422,1143"/>
+<area shape="rect" id="node9" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="265,771,394,849"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="427,419,573,687"/>
+<area shape="rect" id="node11" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="385,264,514,356"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="364,5,535,215"/>
+</map>

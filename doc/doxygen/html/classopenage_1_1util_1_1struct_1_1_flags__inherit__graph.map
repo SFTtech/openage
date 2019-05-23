@@ -1,0 +1,8 @@
+<map id="openage.util.struct.Flags" name="openage.util.struct.Flags">
+<area shape="rect" id="node1" title="Designed to be inherited from, similar to Enum." alt="" coords="143,256,308,377"/>
+<area shape="rect" id="node5" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes.xhtml" title="File flags; found in the CFFile struct." alt="" coords="5,425,208,605"/>
+<area shape="rect" id="node6" href="$classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags.xhtml" title="Cabinet file option indicators." alt="" coords="233,447,455,583"/>
+<area shape="rect" id="node2" title=" " alt="" coords="103,131,185,208"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1struct_1_1_flags_meta.xhtml" title="Metaclass for Flags." alt="" coords="209,131,404,208"/>
+<area shape="rect" id="node4" title=" " alt="" coords="283,5,330,83"/>
+</map>

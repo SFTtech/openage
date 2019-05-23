@@ -1,0 +1,12 @@
+<map id="openage::input::InputContext" name="openage::input::InputContext">
+<area shape="rect" id="node1" title=" " alt="" coords="510,147,698,400"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="335,463,529,775"/>
+<area shape="rect" id="node8" href="$classopenage_1_1input_1_1_action_manager.xhtml" title=" " alt="" coords="199,837,401,1003"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="163,227,314,319"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="339,220,485,327"/>
+<area shape="rect" id="node5" title=" " alt="" coords="331,5,493,97"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="723,213,869,334"/>
+<area shape="rect" id="node7" title=" " alt="" coords="718,5,874,97"/>
+<area shape="rect" id="node9" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title=" " alt="" coords="5,543,195,694"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="8,147,139,400"/>
+</map>

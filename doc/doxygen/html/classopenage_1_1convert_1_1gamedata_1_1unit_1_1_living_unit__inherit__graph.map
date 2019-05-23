@@ -1,0 +1,11 @@
+<map id="openage.convert.gamedata.unit.LivingUnit" name="openage.convert.gamedata.unit.LivingUnit">
+<area shape="rect" id="node1" title="type_id &gt;= 70" alt="" coords="27,1396,233,1532"/>
+<area shape="rect" id="node9" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit.xhtml" title="type_id &gt;= 80" alt="" coords="27,1580,233,1716"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit.xhtml" title=" " alt="" coords="27,1212,233,1348"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit.xhtml" title=" " alt="" coords="27,1028,233,1164"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit.xhtml" title=" " alt="" coords="27,844,233,980"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit.xhtml" title="type_id &gt;= 25" alt="" coords="27,660,233,796"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit.xhtml" title=" " alt="" coords="27,476,233,612"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object.xhtml" title="base properties for every unit entry." alt="" coords="27,292,233,428"/>
+<area shape="rect" id="node8" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml" title="superclass for all exportable data members" alt="" coords="5,5,255,244"/>
+</map>

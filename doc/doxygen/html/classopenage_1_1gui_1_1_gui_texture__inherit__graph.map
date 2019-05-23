@@ -1,0 +1,4 @@
+<map id="openage::gui::GuiTexture" name="openage::gui::GuiTexture">
+<area shape="rect" id="node1" title=" " alt="" coords="5,131,200,355"/>
+<area shape="rect" id="node2" title=" " alt="" coords="55,5,150,83"/>
+</map>

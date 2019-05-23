@@ -1,0 +1,10 @@
+<map id="openage::PlayerScore" name="openage::PlayerScore">
+<area shape="rect" id="node1" title=" " alt="" coords="269,453,420,545"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml" title=" " alt="" coords="411,740,576,1111"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="225,5,394,273"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="100,453,245,545"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_team.xhtml" title=" " alt="" coords="19,20,190,259"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="444,351,618,648"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_population_tracker.xhtml" title=" " alt="" coords="642,336,825,663"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_civilisation.xhtml" title=" " alt="" coords="849,380,1008,619"/>
+</map>

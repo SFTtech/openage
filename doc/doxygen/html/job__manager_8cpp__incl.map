@@ -1,0 +1,50 @@
+<map id="libopenage/job/job_manager.cpp" name="libopenage/job/job_manager.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="1782,5,1909,47"/>
+<area shape="rect" id="node2" href="$job__manager_8h.xhtml" title=" " alt="" coords="1075,95,1181,121"/>
+<area shape="rect" id="node16" href="$thread__id_8h.xhtml" title=" " alt="" coords="1131,393,1250,420"/>
+<area shape="rect" id="node47" href="$worker_8h.xhtml" title=" " alt="" coords="1306,244,1377,271"/>
+<area shape="rect" id="node48" href="$log_8h.xhtml" title=" " alt="" coords="1835,393,1917,420"/>
+<area shape="rect" id="node3" title=" " alt="" coords="1720,617,1781,644"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1585,319,1709,345"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1033,692,1103,719"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1952,617,2011,644"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1113,319,1170,345"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1195,319,1253,345"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1119,169,1230,196"/>
+<area shape="rect" id="node10" href="$abortable__job__state_8h.xhtml" title=" " alt="" coords="93,244,240,271"/>
+<area shape="rect" id="node42" href="$job__state__base_8h.xhtml" title=" " alt="" coords="483,393,605,420"/>
+<area shape="rect" id="node43" href="$job_2types_8h.xhtml" title=" " alt="" coords="175,468,241,495"/>
+<area shape="rect" id="node44" href="$job_8h.xhtml" title=" " alt="" coords="993,244,1044,271"/>
+<area shape="rect" id="node45" href="$job__group_8h.xhtml" title=" " alt="" coords="846,169,935,196"/>
+<area shape="rect" id="node46" href="$job__state_8h.xhtml" title=" " alt="" coords="717,244,803,271"/>
+<area shape="rect" id="node11" title=" " alt="" coords="527,692,604,719"/>
+<area shape="rect" id="node12" href="$job__aborted__exception_8h.xhtml" title=" " alt="" coords="245,393,408,420"/>
+<area shape="rect" id="node14" href="$typed__job__state__base_8h.xhtml" title=" " alt="" coords="563,319,723,345"/>
+<area shape="rect" id="node13" title=" " alt="" coords="526,468,605,495"/>
+<area shape="rect" id="node15" title=" " alt="" coords="907,393,986,420"/>
+<area shape="rect" id="node18" href="$error_2error_8h.xhtml" title=" " alt="" coords="731,393,832,420"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1157,468,1225,495"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1231,767,1303,793"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1166,841,1221,868"/>
+<area shape="rect" id="node21" href="$compiler_8h.xhtml" title=" " alt="" coords="1521,767,1636,793"/>
+<area shape="rect" id="node24" href="$message_8h.xhtml" title=" " alt="" coords="1395,468,1514,495"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1500,841,1567,868"/>
+<area shape="rect" id="node23" href="$signal_8h.xhtml" title=" " alt="" coords="1591,841,1657,868"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1424,543,1485,569"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1333,543,1400,569"/>
+<area shape="rect" id="node27" href="$constexpr_8h.xhtml" title=" " alt="" coords="1187,543,1309,569"/>
+<area shape="rect" id="node29" href="$stringformatter_8h.xhtml" title=" " alt="" coords="1509,543,1659,569"/>
+<area shape="rect" id="node37" href="$logsink_8h.xhtml" title=" " alt="" coords="1885,543,1960,569"/>
+<area shape="rect" id="node39" href="$level_8h.xhtml" title=" " alt="" coords="1805,617,1864,644"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1203,617,1263,644"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1389,617,1472,644"/>
+<area shape="rect" id="node31" href="$externalsstream_8h.xhtml" title=" " alt="" coords="1178,692,1305,719"/>
+<area shape="rect" id="node32" href="$strings_8h.xhtml" title=" " alt="" coords="1496,617,1568,644"/>
+<area shape="rect" id="node33" title=" " alt="" coords="1381,692,1446,719"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1471,692,1537,719"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1561,692,1631,719"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1655,692,1711,719"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1889,617,1927,644"/>
+<area shape="rect" id="node40" href="$enum_8h.xhtml" title=" " alt="" coords="1785,692,1884,719"/>
+<area shape="rect" id="node41" title=" " alt="" coords="1801,767,1868,793"/>
+</map>

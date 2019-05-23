@@ -1,0 +1,25 @@
+<map id="libopenage/renderer/opengl/simple_object.h" name="libopenage/renderer/opengl/simple_object.h">
+<area shape="rect" id="node1" title=" " alt="" coords="551,5,709,47"/>
+<area shape="rect" id="node2" href="$buffer_8h.xhtml" title=" " alt="" coords="132,95,267,136"/>
+<area shape="rect" id="node6" href="$opengl_2shader__program_8h.xhtml" title=" " alt="" coords="249,363,421,404"/>
+<area shape="rect" id="node11" href="$vertex__array_8h.xhtml" title=" " alt="" coords="215,184,365,225"/>
+<area shape="rect" id="node13" href="$renderer_2opengl_2texture_8h.xhtml" title=" " alt="" coords="497,95,632,136"/>
+<area shape="rect" id="node14" href="$framebuffer_8h.xhtml" title=" " alt="" coords="649,184,792,225"/>
+<area shape="rect" id="node20" href="$renderer_2opengl_2shader_8h.xhtml" title=" " alt="" coords="749,95,884,136"/>
+<area shape="rect" id="node22" href="$simple__object_8cpp.xhtml" title=" " alt="" coords="909,95,1082,136"/>
+<area shape="rect" id="node23" href="$opengl_2texture__array_8h.xhtml" title=" " alt="" coords="1053,184,1207,225"/>
+<area shape="rect" id="node3" href="$buffer_8cpp.xhtml" title=" " alt="" coords="5,184,140,225"/>
+<area shape="rect" id="node4" href="$opengl_2geometry_8h.xhtml" title=" " alt="" coords="49,273,184,315"/>
+<area shape="rect" id="node5" href="$opengl_2geometry_8cpp.xhtml" title=" " alt="" coords="27,363,174,404"/>
+<area shape="rect" id="node8" href="$opengl_2renderer_8cpp.xhtml" title=" " alt="" coords="281,541,421,583"/>
+<area shape="rect" id="node10" href="$shader__program_8cpp.xhtml" title=" " alt="" coords="286,452,473,493"/>
+<area shape="rect" id="node7" href="$opengl_2renderer_8h.xhtml" title=" " alt="" coords="548,452,683,493"/>
+<area shape="rect" id="node9" href="$opengl_2window_8cpp.xhtml" title=" " alt="" coords="548,541,683,583"/>
+<area shape="rect" id="node12" href="$vertex__array_8cpp.xhtml" title=" " alt="" coords="209,273,371,315"/>
+<area shape="rect" id="node16" href="$opengl_2render__target_8h.xhtml" title=" " alt="" coords="758,273,913,315"/>
+<area shape="rect" id="node18" href="$renderer_2opengl_2texture_8cpp.xhtml" title=" " alt="" coords="548,363,683,404"/>
+<area shape="rect" id="node15" href="$framebuffer_8cpp.xhtml" title=" " alt="" coords="937,273,1093,315"/>
+<area shape="rect" id="node17" href="$render__target_8cpp.xhtml" title=" " alt="" coords="759,363,928,404"/>
+<area shape="rect" id="node19" href="$opengl_2texture__array_8cpp.xhtml" title=" " alt="" coords="1025,363,1195,404"/>
+<area shape="rect" id="node21" href="$renderer_2opengl_2shader_8cpp.xhtml" title=" " alt="" coords="868,184,1003,225"/>
+</map>

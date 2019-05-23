@@ -1,0 +1,7 @@
+<map id="openage::console::Console" name="openage::console::Console">
+<area shape="rect" id="node1" title=" " alt="" coords="250,145,429,501"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="5,5,156,97"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_tick_handler.xhtml" title=" " alt="" coords="181,5,327,97"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="351,5,498,97"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_resize_handler.xhtml" title=" " alt="" coords="522,5,685,97"/>
+</map>

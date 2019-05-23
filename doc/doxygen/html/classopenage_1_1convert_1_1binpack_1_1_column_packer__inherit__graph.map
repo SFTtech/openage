@@ -1,0 +1,4 @@
+<map id="openage.convert.binpack.ColumnPacker" name="openage.convert.binpack.ColumnPacker">
+<area shape="rect" id="node1" title="Packs blocks into columns, greedily trying to minimize the maximum height." alt="" coords="5,219,175,311"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml" title="Packs blocks." alt="" coords="5,5,175,171"/>
+</map>

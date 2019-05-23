@@ -1,0 +1,39 @@
+<map id="libopenage/gamestate/score.h" name="libopenage/gamestate/score.h">
+<area shape="rect" id="node1" title=" " alt="" coords="1033,5,1182,47"/>
+<area shape="rect" id="node2" href="$player_8h.xhtml" title=" " alt="" coords="1517,95,1666,136"/>
+<area shape="rect" id="node32" href="$score_8cpp.xhtml" title=" " alt="" coords="803,184,953,225"/>
+<area shape="rect" id="node33" href="$team_8cpp.xhtml" title=" " alt="" coords="977,184,1126,225"/>
+<area shape="rect" id="node37" href="$team_8h.xhtml" title=" " alt="" coords="1089,95,1238,136"/>
+<area shape="rect" id="node3" href="$game__main_8h.xhtml" title=" " alt="" coords="1150,184,1299,225"/>
+<area shape="rect" id="node22" href="$producer_8h.xhtml" title=" " alt="" coords="1868,191,2043,218"/>
+<area shape="rect" id="node29" href="$cost_8cpp.xhtml" title=" " alt="" coords="2067,184,2217,225"/>
+<area shape="rect" id="node30" href="$market_8cpp.xhtml" title=" " alt="" coords="2241,184,2390,225"/>
+<area shape="rect" id="node31" href="$player_8cpp.xhtml" title=" " alt="" coords="1323,184,1473,225"/>
+<area shape="rect" id="node34" href="$ability_8cpp.xhtml" title=" " alt="" coords="2415,191,2587,218"/>
+<area shape="rect" id="node35" href="$research_8cpp.xhtml" title=" " alt="" coords="1497,191,1685,218"/>
+<area shape="rect" id="node36" href="$unit__type_8cpp.xhtml" title=" " alt="" coords="1709,184,1844,225"/>
+<area shape="rect" id="node4" href="$engine_8cpp.xhtml" title=" " alt="" coords="1288,281,1439,307"/>
+<area shape="rect" id="node5" href="$game__control_8h.xhtml" title=" " alt="" coords="243,281,420,307"/>
+<area shape="rect" id="node14" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="1637,281,1836,307"/>
+<area shape="rect" id="node15" href="$game__main_8cpp.xhtml" title=" " alt="" coords="941,273,1090,315"/>
+<area shape="rect" id="node16" href="$game__save_8cpp.xhtml" title=" " alt="" coords="1463,273,1613,315"/>
+<area shape="rect" id="node17" href="$generator_8cpp.xhtml" title=" " alt="" coords="1114,273,1263,315"/>
+<area shape="rect" id="node18" href="$game__main__link_8h.xhtml" title=" " alt="" coords="725,273,866,315"/>
+<area shape="rect" id="node19" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="617,363,758,404"/>
+<area shape="rect" id="node21" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="998,363,1139,404"/>
+<area shape="rect" id="node6" href="$game__control_8cpp.xhtml" title=" " alt="" coords="236,370,427,397"/>
+<area shape="rect" id="node7" href="$game__control__link_8h.xhtml" title=" " alt="" coords="451,363,593,404"/>
+<area shape="rect" id="node12" href="$resources__list__model_8cpp.xhtml" title=" " alt="" coords="5,452,172,493"/>
+<area shape="rect" id="node13" href="$main_8cpp.xhtml" title=" " alt="" coords="70,370,211,397"/>
+<area shape="rect" id="node8" href="$actions__list__model_8h.xhtml" title=" " alt="" coords="447,452,597,493"/>
+<area shape="rect" id="node9" href="$actions__list__model_8cpp.xhtml" title=" " alt="" coords="503,541,653,583"/>
+<area shape="rect" id="node10" href="$category__contents__list__model_8cpp.xhtml" title=" " alt="" coords="251,452,422,493"/>
+<area shape="rect" id="node11" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="698,452,839,493"/>
+<area shape="rect" id="node20" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="833,363,974,404"/>
+<area shape="rect" id="node23" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="2417,273,2566,315"/>
+<area shape="rect" id="node24" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="2590,281,2763,307"/>
+<area shape="rect" id="node25" href="$producer_8cpp.xhtml" title=" " alt="" coords="2788,281,2976,307"/>
+<area shape="rect" id="node26" href="$selection_8cpp.xhtml" title=" " alt="" coords="1860,281,2051,307"/>
+<area shape="rect" id="node27" href="$unit_8cpp.xhtml" title=" " alt="" coords="2075,281,2233,307"/>
+<area shape="rect" id="node28" href="$unit__container_8cpp.xhtml" title=" " alt="" coords="2257,273,2392,315"/>
+</map>

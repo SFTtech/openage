@@ -1,0 +1,14 @@
+<map id="libopenage/renderer/resources/shader_source.h" name="libopenage/renderer/resources/shader_source.h">
+<area shape="rect" id="node1" title=" " alt="" coords="560,5,743,47"/>
+<area shape="rect" id="node2" href="$opengl_2shader__program_8h.xhtml" title=" " alt="" coords="99,95,271,136"/>
+<area shape="rect" id="node7" href="$renderer_2opengl_2shader_8h.xhtml" title=" " alt="" coords="299,95,433,136"/>
+<area shape="rect" id="node9" href="$shader__source_8cpp.xhtml" title=" " alt="" coords="458,95,655,136"/>
+<area shape="rect" id="node10" href="$renderer_2tests_8cpp.xhtml" title=" " alt="" coords="680,95,815,136"/>
+<area shape="rect" id="node11" href="$vulkan_2renderer_8cpp.xhtml" title=" " alt="" coords="845,184,983,225"/>
+<area shape="rect" id="node12" href="$vulkan_2shader__program_8h.xhtml" title=" " alt="" coords="890,95,1061,136"/>
+<area shape="rect" id="node3" href="$opengl_2renderer_8h.xhtml" title=" " alt="" coords="113,184,248,225"/>
+<area shape="rect" id="node4" href="$opengl_2renderer_8cpp.xhtml" title=" " alt="" coords="5,273,145,315"/>
+<area shape="rect" id="node6" href="$shader__program_8cpp.xhtml" title=" " alt="" coords="273,184,459,225"/>
+<area shape="rect" id="node5" href="$opengl_2window_8cpp.xhtml" title=" " alt="" coords="169,273,304,315"/>
+<area shape="rect" id="node8" href="$renderer_2opengl_2shader_8cpp.xhtml" title=" " alt="" coords="484,184,619,225"/>
+</map>

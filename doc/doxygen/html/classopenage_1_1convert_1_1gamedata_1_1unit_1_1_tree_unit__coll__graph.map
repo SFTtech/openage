@@ -1,0 +1,5 @@
+<map id="openage.convert.gamedata.unit.TreeUnit" name="openage.convert.gamedata.unit.TreeUnit">
+<area shape="rect" id="node1" title="type_id == 90" alt="" coords="27,476,233,612"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object.xhtml" title="base properties for every unit entry." alt="" coords="27,292,233,428"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml" title="superclass for all exportable data members" alt="" coords="5,5,255,244"/>
+</map>

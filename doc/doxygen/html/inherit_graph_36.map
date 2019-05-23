@@ -1,0 +1,24 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classopenage_1_1_attribute_container.xhtml" title=" " alt="" coords="5,675,188,702"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_shared_attribute_container.xhtml" title=" " alt="" coords="243,397,412,439"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_unshared_attribute_container.xhtml" title=" " alt="" coords="236,969,419,1011"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4.xhtml" title=" " alt="" coords="479,5,618,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4.xhtml" title=" " alt="" coords="478,71,619,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4.xhtml" title=" " alt="" coords="473,136,624,177"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4.xhtml" title=" " alt="" coords="484,201,613,243"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4.xhtml" title=" " alt="" coords="471,267,626,308"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4.xhtml" title=" " alt="" coords="469,332,628,373"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_attribute_3_01attr__type_1_1owner_01_4.xhtml" title=" " alt="" coords="479,397,618,439"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_attribute_3_01attr__type_1_1population_01_4.xhtml" title=" " alt="" coords="467,463,631,504"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4.xhtml" title=" " alt="" coords="477,529,620,585"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4.xhtml" title=" " alt="" coords="479,609,619,651"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4.xhtml" title=" " alt="" coords="475,675,623,716"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4.xhtml" title=" " alt="" coords="477,740,620,781"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_attribute_3_01attr__type_1_1building_01_4.xhtml" title=" " alt="" coords="474,805,623,847"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4.xhtml" title=" " alt="" coords="469,871,628,912"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4.xhtml" title=" " alt="" coords="471,936,626,977"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4.xhtml" title=" " alt="" coords="469,1001,628,1043"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4.xhtml" title=" " alt="" coords="473,1067,624,1108"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_attribute_3_01attr__type_1_1projectile_01_4.xhtml" title=" " alt="" coords="470,1132,627,1173"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4.xhtml" title=" " alt="" coords="471,1197,626,1239"/>
+</map>

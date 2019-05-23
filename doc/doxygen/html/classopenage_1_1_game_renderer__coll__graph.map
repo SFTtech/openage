@@ -1,0 +1,42 @@
+<map id="openage::GameRenderer" name="openage::GameRenderer">
+<area shape="rect" id="node1" title=" " alt="" coords="285,2484,452,2620"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_draw_handler.xhtml" title=" " alt="" coords="237,2007,389,2099"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_texture.xhtml" title=" " alt="" coords="5,496,140,837"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_path.xhtml" title=" " alt="" coords="1345,5,1475,259"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_engine.xhtml" title=" " alt="" coords="1472,1816,1607,2289"/>
+<area shape="rect" id="node14" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml" title=" " alt="" coords="2126,321,2315,472"/>
+<area shape="rect" id="node30" href="$classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" title=" " alt="" coords="2481,2513,2673,2591"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_profiler.xhtml" title=" " alt="" coords="1432,2352,1647,2752"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_resize_handler.xhtml" title=" " alt="" coords="1887,1493,2050,1585"/>
+<area shape="rect" id="node7" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="535,1375,733,1702"/>
+<area shape="rect" id="node40" href="$classopenage_1_1_render_options.xhtml" title=" " alt="" coords="413,2014,578,2091"/>
+<area shape="rect" id="node8" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="135,1493,285,1585"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="135,1001,285,1122"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="119,343,301,450"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_engine_signals.xhtml" title=" " alt="" coords="2125,1500,2287,1577"/>
+<area shape="rect" id="node13" title=" " alt="" coords="2171,1023,2241,1100"/>
+<area shape="rect" id="node29" href="$classopenage_1_1input_1_1_action_manager.xhtml" title=" " alt="" coords="2266,979,2469,1144"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_screenshot_manager.xhtml" title=" " alt="" coords="1173,1463,1367,1614"/>
+<area shape="rect" id="node16" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="763,861,937,1261"/>
+<area shape="rect" id="node39" href="$classopenage_1_1audio_1_1_audio_manager.xhtml" title=" " alt="" coords="309,1339,511,1739"/>
+<area shape="rect" id="node17" href="$structopenage_1_1coord_1_1viewport__delta.xhtml" title=" " alt="" coords="1202,1001,1367,1122"/>
+<area shape="rect" id="node32" href="$classopenage_1_1coord_1_1_coord_manager.xhtml" title=" " alt="" coords="1661,1500,1863,1577"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1207,343,1363,450"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_frame_counter.xhtml" title=" " alt="" coords="1442,1456,1637,1621"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1_timer.xhtml" title=" " alt="" coords="1391,957,1527,1166"/>
+<area shape="rect" id="node21" href="$classopenage_1_1util_1_1_external_profiler.xhtml" title=" " alt="" coords="957,1456,1149,1621"/>
+<area shape="rect" id="node22" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="2495,1383,2688,1695"/>
+<area shape="rect" id="node26" href="$classopenage_1_1input_1_1_input_context.xhtml" title=" " alt="" coords="2409,1926,2597,2179"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="2493,1015,2644,1107"/>
+<area shape="rect" id="node24" href="$structopenage_1_1coord_1_1input.xhtml" title=" " alt="" coords="2669,1008,2815,1115"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2645,351,2807,443"/>
+<area shape="rect" id="node27" href="$structopenage_1_1coord_1_1input__delta.xhtml" title=" " alt="" coords="2839,1001,2986,1122"/>
+<area shape="rect" id="node28" title=" " alt="" coords="2832,351,2988,443"/>
+<area shape="rect" id="node31" href="$classqtsdl_1_1_gui_singleton_items_info.xhtml" title=" " alt="" coords="2622,2014,2806,2091"/>
+<area shape="rect" id="node33" href="$structopenage_1_1coord_1_1viewport.xhtml" title=" " alt="" coords="1930,1001,2095,1122"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1939,343,2102,450"/>
+<area shape="rect" id="node35" href="$structopenage_1_1coord_1_1phys3.xhtml" title=" " alt="" coords="1551,986,1706,1137"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1521,343,1680,450"/>
+<area shape="rect" id="node37" href="$structopenage_1_1coord_1_1camgame__delta.xhtml" title=" " alt="" coords="1730,1008,1906,1115"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1705,351,1915,443"/>
+</map>

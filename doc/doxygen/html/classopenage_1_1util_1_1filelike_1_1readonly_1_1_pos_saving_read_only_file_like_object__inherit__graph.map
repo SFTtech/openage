@@ -1,0 +1,9 @@
+<map id="openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject" name="openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject">
+<area shape="rect" id="node1" title="Stores the current seek position in self.pos." alt="" coords="236,645,459,781"/>
+<area shape="rect" id="node5" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml" title=" " alt="" coords="5,829,233,1083"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment.xhtml" title=" " alt="" coords="257,866,437,1046"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer.xhtml" title=" " alt="" coords="461,851,641,1061"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object.xhtml" title=" " alt="" coords="253,461,442,597"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml" title="Abstract base class for file&#45;like objects." alt="" coords="254,131,441,413"/>
+<area shape="rect" id="node4" title=" " alt="" coords="323,5,372,83"/>
+</map>

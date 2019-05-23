@@ -1,0 +1,9 @@
+<map id="openage.util.fslike.wrapper.Wrapper" name="openage.util.fslike.wrapper.Wrapper">
+<area shape="rect" id="node1" title="Wraps a Path, implementing all methods as pass&#45;through." alt="" coords="312,417,491,671"/>
+<area shape="rect" id="node4" href="$classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper.xhtml" title="Only allows pure&#45;read and pure&#45;write operations;." alt="" coords="5,719,187,899"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator.xhtml" title=" " alt="" coords="211,755,389,862"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer.xhtml" title="Wraps a FSLikeObject, securing all wrapped calls with a mutex." alt="" coords="413,755,592,862"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker.xhtml" title="Wraps a FSLikeObject, transparently passing through all read&#45;only calls." alt="" coords="616,763,795,855"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml" title=" " alt="" coords="311,131,492,369"/>
+<area shape="rect" id="node3" title=" " alt="" coords="377,5,426,83"/>
+</map>

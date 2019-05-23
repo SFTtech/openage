@@ -1,0 +1,8 @@
+<map id="openage::renderer::TextRenderer" name="openage::renderer::TextRenderer">
+<area shape="rect" id="node1" title=" " alt="" coords="201,623,336,861"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_font.xhtml" title=" " alt="" coords="5,307,177,545"/>
+<area shape="rect" id="node3" href="$structopenage_1_1renderer_1_1font__description.xhtml" title=" " alt="" coords="24,5,159,229"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1_color.xhtml" title=" " alt="" coords="201,336,336,516"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml" title=" " alt="" coords="361,292,502,560"/>
+<area shape="rect" id="node6" href="$structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect.xhtml" title=" " alt="" coords="357,49,505,185"/>
+</map>

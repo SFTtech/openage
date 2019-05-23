@@ -1,0 +1,48 @@
+<map id="libopenage/event/eventclass.cpp" name="libopenage/event/eventclass.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="582,5,790,32"/>
+<area shape="rect" id="node2" href="$eventclass_8h.xhtml" title=" " alt="" coords="177,155,272,181"/>
+<area shape="rect" id="node44" href="$event_2event_8h.xhtml" title=" " alt="" coords="315,80,377,107"/>
+<area shape="rect" id="node45" href="$eventtarget_8h.xhtml" title=" " alt="" coords="1065,155,1161,181"/>
+<area shape="rect" id="node46" href="$log_8h.xhtml" title=" " alt="" coords="1030,453,1113,480"/>
+<area shape="rect" id="node3" href="$curve_8h.xhtml" title=" " alt="" coords="347,229,457,256"/>
+<area shape="rect" id="node16" title=" " alt="" coords="612,901,667,928"/>
+<area shape="rect" id="node18" title=" " alt="" coords="427,752,497,779"/>
+<area shape="rect" id="node42" title=" " alt="" coords="43,229,86,256"/>
+<area shape="rect" id="node43" title=" " alt="" coords="111,229,221,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1089,603,1150,629"/>
+<area shape="rect" id="node5" href="$fixed__point_8h.xhtml" title=" " alt="" coords="790,304,918,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="849,453,923,480"/>
+<area shape="rect" id="node7" title=" " alt="" coords="572,379,632,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="947,453,1006,480"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1611,752,1678,779"/>
+<area shape="rect" id="node10" title=" " alt="" coords="742,379,795,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="819,379,889,405"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1659,677,1742,704"/>
+<area shape="rect" id="node13" href="$misc_8h.xhtml" title=" " alt="" coords="657,379,718,405"/>
+<area shape="rect" id="node14" title=" " alt="" coords="499,453,563,480"/>
+<area shape="rect" id="node15" title=" " alt="" coords="587,453,649,480"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1246,752,1302,779"/>
+<area shape="rect" id="node19" href="$error_2error_8h.xhtml" title=" " alt="" coords="723,453,825,480"/>
+<area shape="rect" id="node22" href="$compiler_8h.xhtml" title=" " alt="" coords="1354,827,1469,853"/>
+<area shape="rect" id="node20" title=" " alt="" coords="803,827,875,853"/>
+<area shape="rect" id="node21" title=" " alt="" coords="601,528,680,555"/>
+<area shape="rect" id="node25" href="$message_8h.xhtml" title=" " alt="" coords="853,528,972,555"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1333,901,1399,928"/>
+<area shape="rect" id="node24" href="$signal_8h.xhtml" title=" " alt="" coords="1423,901,1490,928"/>
+<area shape="rect" id="node26" title=" " alt="" coords="998,603,1065,629"/>
+<area shape="rect" id="node27" href="$constexpr_8h.xhtml" title=" " alt="" coords="851,603,974,629"/>
+<area shape="rect" id="node29" href="$stringformatter_8h.xhtml" title=" " alt="" coords="1427,603,1577,629"/>
+<area shape="rect" id="node36" href="$logsink_8h.xhtml" title=" " alt="" coords="753,603,827,629"/>
+<area shape="rect" id="node39" href="$level_8h.xhtml" title=" " alt="" coords="822,677,881,704"/>
+<area shape="rect" id="node28" title=" " alt="" coords="905,677,965,704"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1523,677,1585,704"/>
+<area shape="rect" id="node31" href="$externalsstream_8h.xhtml" title=" " alt="" coords="677,752,804,779"/>
+<area shape="rect" id="node32" href="$strings_8h.xhtml" title=" " alt="" coords="1427,677,1499,704"/>
+<area shape="rect" id="node33" title=" " alt="" coords="1428,752,1493,779"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1702,752,1779,779"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1518,752,1587,779"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1021,677,1060,704"/>
+<area shape="rect" id="node38" title=" " alt="" coords="739,677,798,704"/>
+<area shape="rect" id="node40" href="$enum_8h.xhtml" title=" " alt="" coords="882,752,981,779"/>
+<area shape="rect" id="node41" title=" " alt="" coords="899,827,966,853"/>
+</map>

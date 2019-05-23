@@ -1,0 +1,13 @@
+<map id="openage.util.filelike.abstract.FileLikeObject" name="openage.util.filelike.abstract.FileLikeObject">
+<area shape="rect" id="node1" title="Abstract base class for file&#45;like objects." alt="" coords="221,131,408,413"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o.xhtml" title="File&#45;like wrapper around ByteQueue." alt="" coords="6,461,191,773"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object.xhtml" title=" " alt="" coords="220,549,409,685"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file.xhtml" title=" " alt="" coords="433,483,612,751"/>
+<area shape="rect" id="node2" title=" " alt="" coords="290,5,339,83"/>
+<area shape="rect" id="node4" href="$classopenage_1_1codegen_1_1codegen_1_1_write_catcher.xhtml" title=" " alt="" coords="5,909,187,1016"/>
+<area shape="rect" id="node6" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml" title="Read&#45;only stream object that wraps LZXDecompressor." alt="" coords="211,821,419,1104"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object.xhtml" title="Stores the current seek position in self.pos." alt="" coords="443,895,666,1031"/>
+<area shape="rect" id="node8" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml" title=" " alt="" coords="213,1152,441,1405"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment.xhtml" title=" " alt="" coords="465,1189,645,1369"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer.xhtml" title=" " alt="" coords="669,1174,849,1383"/>
+</map>

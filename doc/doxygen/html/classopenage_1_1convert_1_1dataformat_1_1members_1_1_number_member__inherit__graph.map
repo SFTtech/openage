@@ -1,0 +1,6 @@
+<map id="openage.convert.dataformat.members.NumberMember" name="openage.convert.dataformat.members.NumberMember">
+<area shape="rect" id="node1" title="this struct member/data column contains simple numbers" alt="" coords="139,336,381,531"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member.xhtml" title=" " alt="" coords="5,579,248,700"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member.xhtml" title=" " alt="" coords="272,586,515,693"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="139,5,381,288"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="openage::GameMain" name="openage::GameMain">
+<area shape="rect" id="node1" title=" " alt="" coords="290,755,433,1008"/>
+<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,365,203,692"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_market.xhtml" title=" " alt="" coords="296,446,427,611"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="274,5,449,303"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_container.xhtml" title=" " alt="" coords="451,387,608,670"/>
+</map>

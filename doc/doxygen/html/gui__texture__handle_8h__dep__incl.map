@@ -1,0 +1,21 @@
+<map id="libopenage/gui/integration/private/gui_texture_handle.h" name="libopenage/gui/integration/private/gui_texture_handle.h">
+<area shape="rect" id="node1" title=" " alt="" coords="776,5,963,47"/>
+<area shape="rect" id="node2" href="$gui__filled__texture__handles_8cpp.xhtml" title=" " alt="" coords="357,95,526,151"/>
+<area shape="rect" id="node3" href="$gui__game__spec__image__provider__impl_8h.xhtml" title=" " alt="" coords="551,95,751,151"/>
+<area shape="rect" id="node16" href="$gui__texture__factory_8h.xhtml" title=" " alt="" coords="775,102,963,143"/>
+<area shape="rect" id="node17" href="$gui__texture_8h.xhtml" title=" " alt="" coords="987,102,1157,143"/>
+<area shape="rect" id="node19" href="$gui__texture__handle_8cpp.xhtml" title=" " alt="" coords="1181,102,1382,143"/>
+<area shape="rect" id="node4" href="$gui__game__spec__image__provider__by__filename__impl_8h.xhtml" title=" " alt="" coords="223,303,423,359"/>
+<area shape="rect" id="node6" href="$gui__image__provider__link_8cpp.xhtml" title=" " alt="" coords="235,407,413,463"/>
+<area shape="rect" id="node8" href="$gui__game__spec__image__provider__by__id__impl_8h.xhtml" title=" " alt="" coords="424,199,624,255"/>
+<area shape="rect" id="node14" href="$gui__game__spec__image__provider__impl_8cpp.xhtml" title=" " alt="" coords="648,199,848,255"/>
+<area shape="rect" id="node15" href="$gui__texture__factory_8cpp.xhtml" title=" " alt="" coords="872,206,1075,247"/>
+<area shape="rect" id="node5" href="$gui__game__spec__image__provider__by__filename__impl_8cpp.xhtml" title=" " alt="" coords="5,407,211,463"/>
+<area shape="rect" id="node7" href="$gui__game__spec__image__provider_8cpp.xhtml" title=" " alt="" coords="672,407,869,463"/>
+<area shape="rect" id="node9" href="$gui__game__spec__image__provider__by__graphic__id__impl_8h.xhtml" title=" " alt="" coords="671,303,873,359"/>
+<area shape="rect" id="node11" href="$gui__game__spec__image__provider__by__id__impl_8cpp.xhtml" title=" " alt="" coords="955,303,1155,359"/>
+<area shape="rect" id="node12" href="$gui__game__spec__image__provider__by__terrain__id__impl_8h.xhtml" title=" " alt="" coords="447,303,647,359"/>
+<area shape="rect" id="node10" href="$gui__game__spec__image__provider__by__graphic__id__impl_8cpp.xhtml" title=" " alt="" coords="893,407,1109,463"/>
+<area shape="rect" id="node13" href="$gui__game__spec__image__provider__by__terrain__id__impl_8cpp.xhtml" title=" " alt="" coords="437,407,648,463"/>
+<area shape="rect" id="node18" href="$gui__texture_8cpp.xhtml" title=" " alt="" coords="1150,206,1319,247"/>
+</map>

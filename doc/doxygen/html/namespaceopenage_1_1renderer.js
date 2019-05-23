@@ -1,0 +1,27 @@
+var namespaceopenage_1_1renderer =
+[
+    [ "opengl", "namespaceopenage_1_1renderer_1_1opengl.xhtml", "namespaceopenage_1_1renderer_1_1opengl" ],
+    [ "resources", "namespaceopenage_1_1renderer_1_1resources.xhtml", "namespaceopenage_1_1renderer_1_1resources" ],
+    [ "vulkan", "namespaceopenage_1_1renderer_1_1vulkan.xhtml", "namespaceopenage_1_1renderer_1_1vulkan" ],
+    [ "Color", "classopenage_1_1renderer_1_1_color.xhtml", "classopenage_1_1renderer_1_1_color" ],
+    [ "Font", "classopenage_1_1renderer_1_1_font.xhtml", "classopenage_1_1renderer_1_1_font" ],
+    [ "font_description", "structopenage_1_1renderer_1_1font__description.xhtml", "structopenage_1_1renderer_1_1font__description" ],
+    [ "FontManager", "classopenage_1_1renderer_1_1_font_manager.xhtml", "classopenage_1_1renderer_1_1_font_manager" ],
+    [ "FreeTypeLibrary", "classopenage_1_1renderer_1_1_free_type_library.xhtml", "classopenage_1_1renderer_1_1_free_type_library" ],
+    [ "Geometry", "classopenage_1_1renderer_1_1_geometry.xhtml", "classopenage_1_1renderer_1_1_geometry" ],
+    [ "Glyph", "classopenage_1_1renderer_1_1_glyph.xhtml", "classopenage_1_1renderer_1_1_glyph" ],
+    [ "GlyphAtlas", "classopenage_1_1renderer_1_1_glyph_atlas.xhtml", "classopenage_1_1renderer_1_1_glyph_atlas" ],
+    [ "Renderable", "structopenage_1_1renderer_1_1_renderable.xhtml", "structopenage_1_1renderer_1_1_renderable" ],
+    [ "Renderer", "classopenage_1_1renderer_1_1_renderer.xhtml", "classopenage_1_1renderer_1_1_renderer" ],
+    [ "RenderPass", "structopenage_1_1renderer_1_1_render_pass.xhtml", "structopenage_1_1renderer_1_1_render_pass" ],
+    [ "RenderTarget", "classopenage_1_1renderer_1_1_render_target.xhtml", "classopenage_1_1renderer_1_1_render_target" ],
+    [ "SDL", "classopenage_1_1renderer_1_1_s_d_l.xhtml", "classopenage_1_1renderer_1_1_s_d_l" ],
+    [ "ShaderProgram", "classopenage_1_1renderer_1_1_shader_program.xhtml", "classopenage_1_1renderer_1_1_shader_program" ],
+    [ "text_render_task", "structopenage_1_1renderer_1_1text__render__task.xhtml", "structopenage_1_1renderer_1_1text__render__task" ],
+    [ "text_render_vertex", "structopenage_1_1renderer_1_1text__render__vertex.xhtml", "structopenage_1_1renderer_1_1text__render__vertex" ],
+    [ "TextRenderer", "classopenage_1_1renderer_1_1_text_renderer.xhtml", "classopenage_1_1renderer_1_1_text_renderer" ],
+    [ "Texture2d", "classopenage_1_1renderer_1_1_texture2d.xhtml", "classopenage_1_1renderer_1_1_texture2d" ],
+    [ "Texture2dArray", "classopenage_1_1renderer_1_1_texture2d_array.xhtml", "classopenage_1_1renderer_1_1_texture2d_array" ],
+    [ "UniformInput", "classopenage_1_1renderer_1_1_uniform_input.xhtml", "classopenage_1_1renderer_1_1_uniform_input" ],
+    [ "Window", "classopenage_1_1renderer_1_1_window.xhtml", "classopenage_1_1renderer_1_1_window" ]
+];

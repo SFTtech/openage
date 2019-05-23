@@ -1,0 +1,50 @@
+<map id="libopenage/input/input_context.h" name="libopenage/input/input_context.h">
+<area shape="rect" id="node1" title=" " alt="" coords="590,5,738,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,767,83,793"/>
+<area shape="rect" id="node3" title=" " alt="" coords="487,95,542,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="626,244,737,271"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1352,767,1408,793"/>
+<area shape="rect" id="node6" href="$input_2action_8h.xhtml" title=" " alt="" coords="715,95,783,121"/>
+<area shape="rect" id="node46" href="$input_2event_8h.xhtml" title=" " alt="" coords="1247,169,1310,196"/>
+<area shape="rect" id="node7" href="$pixel_8h.xhtml" title=" " alt="" coords="762,169,870,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="761,244,871,271"/>
+<area shape="rect" id="node9" href="$declarations_8h.xhtml" title=" " alt="" coords="895,244,998,271"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1079,617,1140,644"/>
+<area shape="rect" id="node11" href="$fixed__point_8h.xhtml" title=" " alt="" coords="437,319,565,345"/>
+<area shape="rect" id="node12" title=" " alt="" coords="239,468,313,495"/>
+<area shape="rect" id="node13" title=" " alt="" coords="557,393,617,420"/>
+<area shape="rect" id="node14" title=" " alt="" coords="337,468,396,495"/>
+<area shape="rect" id="node15" title=" " alt="" coords="309,767,376,793"/>
+<area shape="rect" id="node16" title=" " alt="" coords="641,393,695,420"/>
+<area shape="rect" id="node17" title=" " alt="" coords="107,393,176,420"/>
+<area shape="rect" id="node18" title=" " alt="" coords="956,692,1039,719"/>
+<area shape="rect" id="node19" href="$misc_8h.xhtml" title=" " alt="" coords="471,393,532,420"/>
+<area shape="rect" id="node20" title=" " alt="" coords="940,468,1004,495"/>
+<area shape="rect" id="node21" title=" " alt="" coords="471,468,532,495"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1099,916,1154,943"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1016,767,1085,793"/>
+<area shape="rect" id="node24" href="$error_2error_8h.xhtml" title=" " alt="" coords="556,468,657,495"/>
+<area shape="rect" id="node27" href="$compiler_8h.xhtml" title=" " alt="" coords="215,841,329,868"/>
+<area shape="rect" id="node25" title=" " alt="" coords="503,841,575,868"/>
+<area shape="rect" id="node26" title=" " alt="" coords="259,543,338,569"/>
+<area shape="rect" id="node30" href="$message_8h.xhtml" title=" " alt="" coords="553,543,671,569"/>
+<area shape="rect" id="node28" title=" " alt="" coords="296,916,363,943"/>
+<area shape="rect" id="node29" href="$signal_8h.xhtml" title=" " alt="" coords="181,916,248,943"/>
+<area shape="rect" id="node31" title=" " alt="" coords="367,617,433,644"/>
+<area shape="rect" id="node32" href="$constexpr_8h.xhtml" title=" " alt="" coords="556,617,679,644"/>
+<area shape="rect" id="node34" href="$stringformatter_8h.xhtml" title=" " alt="" coords="708,617,857,644"/>
+<area shape="rect" id="node40" href="$logsink_8h.xhtml" title=" " alt="" coords="457,617,532,644"/>
+<area shape="rect" id="node43" href="$level_8h.xhtml" title=" " alt="" coords="309,692,368,719"/>
+<area shape="rect" id="node33" title=" " alt="" coords="538,692,598,719"/>
+<area shape="rect" id="node35" title=" " alt="" coords="820,692,881,719"/>
+<area shape="rect" id="node36" href="$externalsstream_8h.xhtml" title=" " alt="" coords="861,767,987,793"/>
+<area shape="rect" id="node37" href="$strings_8h.xhtml" title=" " alt="" coords="673,692,745,719"/>
+<area shape="rect" id="node38" title=" " alt="" coords="677,767,742,793"/>
+<area shape="rect" id="node39" title=" " alt="" coords="767,767,836,793"/>
+<area shape="rect" id="node41" title=" " alt="" coords="475,692,514,719"/>
+<area shape="rect" id="node42" title=" " alt="" coords="392,692,451,719"/>
+<area shape="rect" id="node44" href="$enum_8h.xhtml" title=" " alt="" coords="400,767,499,793"/>
+<area shape="rect" id="node45" title=" " alt="" coords="412,841,479,868"/>
+<area shape="rect" id="node47" title=" " alt="" coords="1468,244,1572,271"/>
+<area shape="rect" id="node48" title=" " alt="" coords="1298,244,1393,271"/>
+</map>

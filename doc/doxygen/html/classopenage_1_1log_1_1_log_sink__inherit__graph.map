@@ -1,0 +1,6 @@
+<map id="openage::log::LogSink" name="openage::log::LogSink">
+<area shape="rect" id="node1" title=" " alt="" coords="195,5,353,127"/>
+<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_file_sink.xhtml" title=" " alt="" coords="5,182,164,274"/>
+<area shape="rect" id="node3" href="$classopenage_1_1log_1_1_std_out_sink.xhtml" title=" " alt="" coords="189,182,359,274"/>
+<area shape="rect" id="node4" href="$classopenage_1_1log_1_1tests_1_1_test_log_sink.xhtml" title=" " alt="" coords="384,175,543,281"/>
+</map>

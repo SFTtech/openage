@@ -1,0 +1,23 @@
+<map id="openage::GatherAction" name="openage::GatherAction">
+<area shape="rect" id="node1" title=" " alt="" coords="317,3020,499,3215"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_target_action.xhtml" title=" " alt="" coords="240,2717,392,2971"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_action.xhtml" title=" " alt="" coords="224,2211,368,2596"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml" title=" " alt="" coords="216,1704,376,2104"/>
+<area shape="rect" id="node5" href="$classopenage_1_1log_1_1_log_source.xhtml" title=" " alt="" coords="23,1410,190,1546"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_type.xhtml" title=" " alt="" coords="360,1315,491,1641"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1tile__delta.xhtml" title=" " alt="" coords="331,1021,467,1113"/>
+<area shape="rect" id="node8" title=" " alt="" coords="325,587,467,694"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_attributes.xhtml" title=" " alt="" coords="171,977,306,1157"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_resource_cost.xhtml" title=" " alt="" coords="491,991,653,1142"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_resource_bundle.xhtml" title=" " alt="" coords="491,492,666,789"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_player.xhtml" title=" " alt="" coords="703,881,868,1252"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_player_score.xhtml" title=" " alt="" coords="678,1432,829,1524"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_score.xhtml" title=" " alt="" coords="1167,5,1337,273"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_team_score.xhtml" title=" " alt="" coords="1105,323,1250,415"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_team.xhtml" title=" " alt="" coords="1080,521,1251,760"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_population_tracker.xhtml" title=" " alt="" coords="690,477,873,804"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_civilisation.xhtml" title=" " alt="" coords="897,521,1055,760"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_unit_container.xhtml" title=" " alt="" coords="853,1337,1011,1619"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1_fixed_point.xhtml" title=" " alt="" coords="5,2167,200,2640"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_unit_reference.xhtml" title=" " alt="" coords="392,2343,552,2464"/>
+</map>

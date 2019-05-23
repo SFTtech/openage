@@ -1,0 +1,4 @@
+<map id="openage::renderer::Geometry" name="openage::renderer::Geometry">
+<area shape="rect" id="node1" title="A class representing geometry to be passed to a draw call." alt="" coords="5,5,159,156"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml" title="The OpenGL class representing geometry to be passed to a draw call." alt="" coords="5,204,159,340"/>
+</map>

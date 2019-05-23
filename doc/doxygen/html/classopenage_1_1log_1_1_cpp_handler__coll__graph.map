@@ -1,0 +1,4 @@
+<map id="openage.log.CppHandler" name="openage.log.CppHandler">
+<area shape="rect" id="node1" title="CppHandler calls into the CPP logging system if the library has been loaded." alt="" coords="5,131,168,237"/>
+<area shape="rect" id="node2" title=" " alt="" coords="53,5,120,83"/>
+</map>

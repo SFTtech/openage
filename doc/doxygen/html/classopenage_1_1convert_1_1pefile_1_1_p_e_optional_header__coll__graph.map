@@ -1,0 +1,7 @@
+<map id="openage.convert.pefile.PEOptionalHeader" name="openage.convert.pefile.PEOptionalHeader">
+<area shape="rect" id="node1" title="This &quot;optional&quot; header is required for linked files (but not object files)." alt="" coords="13,601,233,840"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml" title="Designed to be inherited from, similar to Enum." alt="" coords="35,285,210,553"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,145,88,223"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1struct_1_1_named_struct_meta.xhtml" title="Metaclass for NamedStruct." alt="" coords="113,131,287,237"/>
+<area shape="rect" id="node5" title=" " alt="" coords="177,5,223,83"/>
+</map>

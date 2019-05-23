@@ -1,0 +1,6 @@
+<map id="openage::MovableProducer" name="openage::MovableProducer">
+<area shape="rect" id="node1" title=" " alt="" coords="5,755,184,949"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_living_producer.xhtml" title=" " alt="" coords="13,997,176,1119"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_object_producer.xhtml" title=" " alt="" coords="10,439,179,707"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_type.xhtml" title=" " alt="" coords="28,5,161,391"/>
+</map>

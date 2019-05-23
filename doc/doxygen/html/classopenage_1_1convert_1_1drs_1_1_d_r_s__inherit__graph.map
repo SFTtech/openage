@@ -1,0 +1,6 @@
+<map id="openage.convert.drs.DRS" name="openage.convert.drs.DRS">
+<area shape="rect" id="node1" title="represents a file archive in DRS format." alt="" coords="23,704,193,825"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml" title="FSLikeObject that holds several individual files." alt="" coords="5,417,211,656"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml" title=" " alt="" coords="17,131,199,369"/>
+<area shape="rect" id="node4" title=" " alt="" coords="83,5,133,83"/>
+</map>

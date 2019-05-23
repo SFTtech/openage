@@ -1,0 +1,9 @@
+<map id="openage::gui::GuiGameSpecImageProviderImpl" name="openage::gui::GuiGameSpecImageProviderImpl">
+<area shape="rect" id="node1" title=" " alt="" coords="105,329,345,656"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml" title=" " alt="" coords="5,704,213,884"/>
+<area shape="rect" id="node5" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml" title=" " alt="" coords="237,711,445,877"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="134,131,317,281"/>
+<area shape="rect" id="node3" title=" " alt="" coords="152,5,299,83"/>
+<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl.xhtml" title=" " alt="" coords="121,932,329,1112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl.xhtml" title=" " alt="" coords="353,932,561,1112"/>
+</map>

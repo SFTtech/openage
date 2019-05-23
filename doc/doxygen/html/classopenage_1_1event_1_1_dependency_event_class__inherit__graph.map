@@ -1,0 +1,6 @@
+<map id="openage::event::DependencyEventClass" name="openage::event::DependencyEventClass">
+<area shape="rect" id="node1" title=" " alt="" coords="78,219,267,311"/>
+<area shape="rect" id="node3" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_panel.xhtml" title=" " alt="" coords="5,359,161,495"/>
+<area shape="rect" id="node4" href="$classopenage_1_1event_1_1demo_1_1_ball_reflect_wall.xhtml" title=" " alt="" coords="185,359,341,495"/>
+<area shape="rect" id="node2" href="$classopenage_1_1event_1_1_event_class.xhtml" title=" " alt="" coords="81,5,264,171"/>
+</map>

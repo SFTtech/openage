@@ -1,0 +1,10 @@
+<map id="openage::path::Node" name="openage::path::Node">
+<area shape="rect" id="node1" title=" " alt="" coords="253,389,409,672"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,198,141,290"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1phys3.xhtml" title=" " alt="" coords="165,169,320,319"/>
+<area shape="rect" id="node4" title=" " alt="" coords="163,5,322,112"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1tile.xhtml" title=" " alt="" coords="345,161,495,327"/>
+<area shape="rect" id="node6" title=" " alt="" coords="347,5,493,112"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1phys3__delta.xhtml" title=" " alt="" coords="520,176,675,312"/>
+<area shape="rect" id="node8" title=" " alt="" coords="518,5,677,112"/>
+</map>

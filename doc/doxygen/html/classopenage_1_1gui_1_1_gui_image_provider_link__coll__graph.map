@@ -1,0 +1,8 @@
+<map id="openage::gui::GuiImageProviderLink" name="openage::gui::GuiImageProviderLink">
+<area shape="rect" id="node1" title=" " alt="" coords="5,720,235,929"/>
+<area shape="rect" id="node2" title=" " alt="" coords="70,5,141,83"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_callback.xhtml" title=" " alt="" coords="108,154,236,261"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml" title=" " alt="" coords="108,345,348,657"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml" title=" " alt="" coords="261,132,443,283"/>
+<area shape="rect" id="node5" title=" " alt="" coords="279,5,425,83"/>
+</map>

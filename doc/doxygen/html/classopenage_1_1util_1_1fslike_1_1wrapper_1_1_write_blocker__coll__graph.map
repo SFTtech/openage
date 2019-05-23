@@ -1,0 +1,7 @@
+<map id="openage.util.fslike.wrapper.WriteBlocker" name="openage.util.fslike.wrapper.WriteBlocker">
+<area shape="rect" id="node1" title="Wraps a FSLikeObject, transparently passing through all read&#45;only calls." alt="" coords="108,719,287,811"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml" title=" " alt="" coords="5,447,187,641"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml" title=" " alt="" coords="107,131,288,369"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml" title="Wraps a Path, implementing all methods as pass&#45;through." alt="" coords="211,417,389,671"/>
+<area shape="rect" id="node4" title=" " alt="" coords="173,5,222,83"/>
+</map>

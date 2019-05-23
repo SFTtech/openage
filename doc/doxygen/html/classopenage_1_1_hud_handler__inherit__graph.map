@@ -1,0 +1,7 @@
+<map id="openage::HudHandler" name="openage::HudHandler">
+<area shape="rect" id="node1" title=" " alt="" coords="367,5,513,97"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml" title=" " alt="" coords="5,145,184,501"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_control.xhtml" title=" " alt="" coords="208,167,435,479"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_g_u_i.xhtml" title=" " alt="" coords="459,153,661,494"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_selection.xhtml" title=" " alt="" coords="686,153,861,494"/>
+</map>

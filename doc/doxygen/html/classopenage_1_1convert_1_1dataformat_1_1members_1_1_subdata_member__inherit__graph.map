@@ -1,0 +1,7 @@
+<map id="openage.convert.dataformat.members.SubdataMember" name="openage.convert.dataformat.members.SubdataMember">
+<area shape="rect" id="node1" title=" " alt="" coords="139,895,381,1104"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml" title=" " alt="" coords="139,535,381,847"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member.xhtml" title="a struct member that can be referenced/references another struct." alt="" coords="5,343,248,479"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="139,5,381,288"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml" title="a member that can have a dynamic length." alt="" coords="272,336,515,487"/>
+</map>

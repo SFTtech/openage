@@ -1,0 +1,6 @@
+<map id="openage.convert.dataformat.members.StringMember" name="openage.convert.dataformat.members.StringMember">
+<area shape="rect" id="node1" title="member with unspecified string length, aka std::string" alt="" coords="5,748,248,840"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml" title="struct member/column type that allows to store equal&#45;length char[n]." alt="" coords="5,535,248,700"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml" title="a member that can have a dynamic length." alt="" coords="5,336,248,487"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml" title="member variable of data files and generated structs." alt="" coords="5,5,248,288"/>
+</map>
