@@ -44,11 +44,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-html_theme_path = ["../doc/_themes/sphinx_rtd_theme"]
+html_theme_path = [ '_themes', ]
 html_logo = '../assets/logo/banner.svg'
 
 html_theme_options = {
-
     'logo_only': False,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
