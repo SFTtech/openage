@@ -6,4 +6,5 @@ Modding API (nyan)
    :caption: Contents:
    :glob:
 
+   ../markdown/wiki/quickstart-guide.md
    ../markdown/nyan/*
