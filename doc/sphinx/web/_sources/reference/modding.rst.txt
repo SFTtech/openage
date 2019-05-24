@@ -2,7 +2,7 @@ Modding API (nyan)
 ===================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
    :glob:
 
