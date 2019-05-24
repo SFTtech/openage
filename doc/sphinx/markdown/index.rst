@@ -7,4 +7,3 @@ Developing openage
    :glob:
 
    ./*
-

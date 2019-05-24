@@ -29,8 +29,8 @@ release = 'v0.3.1'
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-# The filename format for language-specific figures. 
-# The default value is {root}.{language}{ext}.  
+# The filename format for language-specific figures.
+# The default value is {root}.{language}{ext}.
 figure_language_filename = '{path}{language}/{basename}{ext}'
 
 github_doc_root = 'https://github.com/SFTtech/openage/tree/master/doc'
@@ -40,10 +40,10 @@ github_doc_root = 'https://github.com/SFTtech/openage/tree/master/doc'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [ 
-    'breathe', 
+extensions = [
+    'breathe',
     'sphinx.ext.autodoc',
-    'recommonmark',  
+    'recommonmark',
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
@@ -67,7 +67,7 @@ from recommonmark.transform import AutoStructify
 #    '.md': CommonMarkParser
 #}
 
-# The file extensions of source files. Sphinx considers the files with this suffix as sources. 
+# The file extensions of source files. Sphinx considers the files with this suffix as sources.
 # The value can be a dictionary mapping file extensions to file types. For example:
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -130,3 +130,4 @@ def setup(app):
         'enable_auto_doc_ref': True,
     }, True)
     app.add_transform(AutoStructify)
+    

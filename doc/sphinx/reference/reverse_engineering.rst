@@ -10,4 +10,3 @@ Reverse-engineered AoE II
    ../markdown/reverse_engineering/unit_stats/unit_stats
    ../markdown/reverse_engineering/networking/*
    ../markdown/reverse_engineering/game_mechanics/*
-
