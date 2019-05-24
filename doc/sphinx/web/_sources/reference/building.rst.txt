@@ -7,4 +7,3 @@ Building openage
    :glob:
 
    ../markdown/build_instructions/*
-

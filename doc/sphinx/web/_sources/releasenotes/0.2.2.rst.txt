@@ -1,0 +1,19 @@
+0.2.2
+=====
+
+Date
+----
+
+Nov 8, 2014
+
+
+Description
+-----------
+import all raw orignal gamedata
+
+the members to be available in C++ are defined in convert/gamedata
+
+the code generation automatically creates all needed files
+
+these reside in src/gamedata/ and are a huge tree structure
+which equals the content of the empires2x1p1.dat file.

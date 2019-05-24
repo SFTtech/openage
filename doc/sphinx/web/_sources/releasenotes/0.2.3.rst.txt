@@ -1,0 +1,26 @@
+0.2.3
+=====
+
+Date
+----
+
+Nov 18, 2014
+
+
+Description
+-----------
+New shiny stuff:
+* Walking units
+* Pathfinding
+* Profiling
+* Inotify asset refreshing
+* First drafts for nyan
+* Terrain debug grid (F4)
+* Unit creation and death sounds
+* Mac OSX support
+* AOE:HD support
+
+Improvements:
+* Buildsystem heavily boosted
+* Gamespec loading job in background
+* Random things all over the code

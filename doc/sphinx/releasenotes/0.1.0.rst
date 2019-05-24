@@ -1,0 +1,17 @@
+0.1.0
+=====
+
+Date
+----
+
+Nov 8, 2014
+
+
+Description
+-----------
+Milestone 1
+^^^^^^^^^^^
+SDL window is working, with a gaben displayed: how awesome is that?!!
+
+mouse clicks also trigger the drawing of a castle and village center,
+these images were extracted from the age2 wiki.

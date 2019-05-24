@@ -1,0 +1,30 @@
+0.2.3
+=====
+
+Date
+----
+
+Jul 28, 2015
+
+
+Description
+-----------
+Major refactoring that adds tons of internal features and a few new visible features.
+
+ * New language versions: Python 3.4, C++14, Cython 0.22
+ * Python code is now compliance-checked via pylint
+ * Integrated various code sanitizers and the clang static analyzer
+ * C++ <-> Python function calling interface, based on Cython
+ * Proper and integrated C++ and Python logging subsystem
+ * Dumped GLEW for libepoxy
+ * Keybindings manager
+ * New C++ and Python testing system
+
+Visible features:
+
+ * Unified program entry point
+ * Asset conversion automatically runs when launching the game
+ * Units can perform various commands
+ * Units actively search for new commands
+ * Units can fight
+ * Mode indicator

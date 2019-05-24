@@ -1,0 +1,12 @@
+0.0.0
+=====
+
+Date
+----
+
+Nov 8, 2014
+
+
+Description
+-----------
+Game environment specification completed

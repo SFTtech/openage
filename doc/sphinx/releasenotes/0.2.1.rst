@@ -1,0 +1,19 @@
+0.2.1
+=====
+
+Date
+----
+
+Nov 8, 2014
+
+
+Description
+-----------
+infinite terrain and sound
+
+this was mainly background work, especially the original data
+conversion was improved
+
+basic sound support was implemented
+
+some bugs in the terrain rendering algorithm were fixed

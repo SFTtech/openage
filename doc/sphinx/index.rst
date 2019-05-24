@@ -16,6 +16,7 @@ Table of Contents
 
   markdown/index.rst
   reference/index.rst
+  releasenotes/index.rst
 
 Indices and tables
 ==================

@@ -1,0 +1,17 @@
+0.2.0
+=====
+
+Date
+----
+
+Nov 8, 2014
+
+
+Description
+-----------
+Milestone 2
+^^^^^^^^^^^
+rendering a single building (university) from the stock age2 media files
+
+coloring works, it's done by a fragment shader that replaces
+alpha-marked base colors (of the blue player)
