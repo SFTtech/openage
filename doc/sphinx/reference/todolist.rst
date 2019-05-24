@@ -1,4 +1,4 @@
-todolist from sources
+Todo-list from sources
 ===================================
 
 .. todolist::

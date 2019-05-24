@@ -1,0 +1,278 @@
+# AI actions
+
+## Primary action (AI player)
+
+Used by the AI to interact with objects in the game world.
+
+### Definition
+
+```ruby
+def PrimaryActionAI
+    int8 :action_identifier
+    byte24 :zero
+    int32 :target_id
+    int8 :selection_count
+    byte24 :zero2
+    float :x_coord
+    float :y_coord
+    array :selected_ids,
+      type => :int32,
+      length => :selection_count,
+      onlyif => :selection_count < 0xFF
+end
+```
+
+### Description
+
+*:action_identifier*<br/>
+Always has the value `0x02`.
+
+*:zero*<br/>
+The 3 bytes following *:action_identifier* are unused.
+
+*:target_id*<br/>
+The ID of the targeted object.
+
+*:selection_count*<br/>
+The number of selected units. Always `0x01`.
+
+*:zero2*<br/>
+The three bytes following *:selection_count* are unused.
+
+*:x_coord*<br/>
+The x-coordinate of the targeted position.
+
+*:y_coord*<br/>
+The y-coordinate of the targeted position.
+
+*:selected_ids*<br/>
+The IDs of the selected units.
+
+### Examples
+
+`02 00 00 00 21 1f 00 00 01 00 00 00 00 80 36 43 00 80 0f 43 72 1e 00 00`
+
+>`02` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
+>`21 1f 00 00` &mdash; target_id<br/>
+>`01` &mdash; selection_count<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 80 36 43` &mdash; x_coord<br/>
+>`00 80 0f 43` &mdash; y_coord<br/>
+>`72 1e 00 00` &mdash; selected_id
+
+## Move (AI player)
+
+Used for moving and attacking. If that is the only purpose is unknown.
+
+### Definition
+
+```ruby
+def PrimaryActionAI
+    int8 :action_identifier
+    int8 :selection_count
+    int8 :player_number
+    int8 :player_id
+    int32 :unknown_id
+    int32 :unknown_bytes
+    int32 :target_id
+    int8 :unknown_count
+    byte24 :zero
+    float :unknown_x_coord
+    float :unknown_y_coord
+    float :unknown_float
+    float :unknown_float2
+    int32 :unknown_bytes2
+    array :selected_ids,
+      type => :int32,
+      length => :selection_count,
+      onlyif => :selection_count > 0x01
+end
+```
+
+### Description
+
+*:action_identifier*<br/>
+Always has the value `0x0a`.
+
+*:selection_count*<br/>
+The number of selected units.
+
+*:player_number*<br/>
+The player's number which can be changed in the lobby. Is only different from *:player_id* if playing in coop mode.
+
+*:player_id*<br/>
+The ID of the player.
+
+*:unknown_id*<br/>
+The ID of a unit that is able to move.
+
+*:unknown_bytes*<br/>
+Purpose unknown.
+
+*:target_id*<br/>
+The ID of a target. Is `0xFFFFFFFF` if no target is selected.
+
+*:unknown_count*<br/>
+Could be the number of targets, but is never greater than `0x01`. Is `0xFF` if no target is selected.
+
+*:zero*<br/>
+The 3 bytes after *:unknown_count* are always zero.
+
+*:unknown_x_coord*<br/>
+Presumably an x-coordinate, that could describe the position of a target.
+
+*:unknown_y_coord*<br/>
+Presumably an y-coordinate, that could describe the position of a target.
+
+*:unknown_float*<br/>
+A float value that can be `1.0f` or `-1.0f`.
+
+*:unknown_float2*<br/>
+A float value that can be `1.0f` or `-1.0f`.
+
+*:unknown_bytes2*<br/>
+Purpose unknown.
+
+*:selected_ids*<br/>
+The IDs of the selected units. Only present if *:selection_count* is greater than `0x01`. Always contains *:unknown_id*.
+
+### Examples
+
+`0a 01 03 03 1b 17 00 00 c1 02 01 00 ff ff ff ff ff 00 00 00 00 00 09 43 00 00 4a 43 00 00 80 bf 00 00 80 3f 01 00 00 00`
+
+>`0a` &mdash; action_identifier<br/>
+>`01` &mdash; selection_count<br/>
+>`03` &mdash; player_number<br/>
+>`03` &mdash; player_id<br/>
+>`1b 17 00 00` &mdash; unknown_id<br/>
+>`c1 02 01 00` &mdash; unknown_bytes<br/>
+>`ff ff ff ff` &mdash; target_id<br/>
+>`ff` &mdash; unknown_count<br/>
+>`00 00 00` &mdash; zero<br/>
+>`00 00 09 43` &mdash; unknown_x_coord<br/>
+>`00 00 4a 43` &mdash; unknown_y_coord<br/>
+>`00 00 80 bf` &mdash; unknown_float<br/>
+>`00 00 80 3f` &mdash; unknown_float2<br/>
+>`01 00 00 00` &mdash; unknown_bytes2
+
+## Waypoints (AI player)
+
+Used for setting multiple waypoints for AI units.
+
+### Definition
+
+```ruby
+def WaypointsAI
+  int8 :action_identifier
+  int8 :selection_count
+  int8 :waypoint_count
+  array :selected_ids,
+        type => :int32,
+        initial_length => :selection_count
+  array :x_coords,
+        type => :int8,
+        initial_length => :waypoint_count
+  array :y_coords,
+        type => :int8,
+        initial_length => :waypoint_count
+end
+```
+
+### Description
+
+*:action_identifier*<br/>
+Always has the value `0x1f`.
+
+*:selection_count*<br/>
+The number of units selected by the AI.
+
+*:waypoint_count*<br/>
+The number of waypoints.
+
+*:selected_ids*<br/>
+The IDs of the selected units.
+
+*:x_coords*<br/>
+The x-coordinates on the AoC grid.
+
+*:y_coords*<br/>
+The y-coordinates on the AoC grid.
+
+### Examples
+
+`1f 04 09 84 21 00 00 bd 20 00 00 a4 21 00 00 bb 21 00 00 6e 6a 68 67 67 64 64 64 5f 99 a0 a4 a7 a8 b0 b4 b8 be`
+
+>`1f` &mdash; action_identifier<br/>
+>`04` &mdash; selection_count<br/>
+>`09` &mdash; waypoint_count<br/>
+>`84 21 00 00` &mdash; selected_id<br/>
+>`bd 20 00 00` &mdash; selected_id<br/>
+>`a4 21 00 00` &mdash; selected_id<br/>
+>`bb 21 00 00` &mdash; selected_id<br/>
+>`6e` &mdash; x_coord1<br/>
+>`6a` &mdash; x_coord2<br/>
+>`68` &mdash; x_coord3<br/>
+>`67` &mdash; x_coord4<br/>
+>`67` &mdash; x_coord5<br/>
+>`64` &mdash; x_coord6<br/>
+>`64` &mdash; x_coord7<br/>
+>`64` &mdash; x_coord8<br/>
+>`5f` &mdash; x_coord9<br/>
+>`99` &mdash; y_coord1<br/>
+>`a0` &mdash; y_coord2<br/>
+>`a4` &mdash; y_coord3<br/>
+>`a7` &mdash; y_coord4<br/>
+>`a8` &mdash; y_coord5<br/>
+>`b0` &mdash; y_coord6<br/>
+>`b4` &mdash; y_coord7<br/>
+>`b8` &mdash; y_coord8<br/>
+>`be` &mdash; y_coord9
+
+## Training unit (AI player)
+
+Used for training unit with AI player.
+
+### Definition
+
+```ruby
+def TrainAI
+  int8 :action_identifier
+  byte24 :zero
+  int32 :building_id
+  int16 :player_id
+  int16 :unit_id
+  int32 :const
+end
+```
+
+### Description
+
+*:action_identifier*<br/>
+Always has the value `0x64`.
+
+*:zero*<br/>
+The 3 bytes after *:action_identifier* are always zero.
+
+*:building_id*<br/>
+The ID of the building where the units are trained.
+
+*:player_number*<br/>
+The number of the AI player who trains the unit (`0x01` - `0x08`).
+
+*:unit_id*<br/>
+The `UnitID` (`LineID` for villagers) of the unit which is trained.
+
+*:const*<br/>
+The value is always `0xFFFFFFFF`.
+
+### Examples
+
+`64 00 00 00 ae 1a 00 00 03 00 27 00 ff ff ff ff`
+
+>`64` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
+>`ae 1a 00 00` &mdash; building_id<br/>
+>`03 00` &mdash; player_id<br/>
+>`27 00` &mdash; unit_id<br/>
+>`ff ff ff ff` &mdash; const
