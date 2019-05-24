@@ -5,5 +5,6 @@ Modding API (nyan)
    :maxdepth: 2
    :glob:
 
-   ../markdown/wiki/quickstart-guide.md
+   ../markdown/wiki/Getting-started.md
+   ../markdown/wiki/Quickstart-guide.md
    ../markdown/nyan/*

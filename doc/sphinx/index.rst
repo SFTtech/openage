@@ -16,7 +16,6 @@ Table of Contents
    :name: mastertoc
    :titlesonly:
 
-  reference/getting-started.rst
   reference/building.rst
   markdown/index.rst
   reference/index.rst
