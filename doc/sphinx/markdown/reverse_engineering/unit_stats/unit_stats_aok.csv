@@ -1,0 +1,143 @@
+Icon,Name,Age,HP,Att.,Att. Type,Reload Time,M. Arm.,P. Arm.,LOS,R,Acc.,Sp.,Tr. Time,Cost,Attack Bonuses
+,Militia,I,40,4,M,2.0,0,0,4,0,-,0.9,21,60F 20G,-
+,Man-at-Arms,II,45,6,M,2.0,0,0,4,0,-,0.9,21,60F 20G,Bldg
+,Long Swordsman,III,55,9,M,2.0,0,0,4,0,-,0.9,21,60F 20G,Bldg
+,Two-Handed Swordsman,IV,60,11,M,2.0,0,0,5,0,-,0.9,21,60F 20G,Bldg
+,Champion,IV,70,13,M,2.0,1,0,5,0,-,0.9,21,60F 20G,Bldg
+,Spearman,II,45,3,M,3.0,0,0,4,0,-,1.0,22,35F 25W,"Cav, Eleph, Bldg"
+,Pikeman,III,55,4,M,3.0,0,0,4,0,-,1.0,22,35F 25W,"Eleph, Cav, Bldg"
+,Woad Raider,III,65,8,M,2.0,0,0,3,0,-,1.03,10,65F 25G,Bldg
+,Elite Woad Raider,IV,80,13,M,2.0,0,0,5,0,-,1.03,10,65F 25G,Bldg
+,Throwing Axeman,III,50,7,M,2.0,0,0,5,3,100,0.9,17,55F 25G,Bldg
+,Elite Throwing Axeman,IV,60,8,M,2.0,1,0,6,4,100,0.9,17,55F 25G,Bldg
+,Huskarl,III,60,10,M,2.0,0,4,3,0,-,0.9,16,80F 40G,"Arch, Bldg"
+,Elite Huskarl,IV,70,12,M,2.0,0,6,5,0,-,0.9,16,80F 40G,"Arch, Bldg"
+,Samurai,III,60,8,M,1.9,1,0,4,0,-,0.9,16,60F 30G,"Unique, Bldg"
+,Elite Samurai,IV,80,12,M,1.9,1,0,5,0,-,0.9,16,60F 30G,"Unique, Bldg"
+,Teutonic Knight,III,70,12,M,2.0,5,2,3,0,-,0.65,19,85F 40G,Bldg
+,Elite Teutonic Knight,IV,100,17,M,2.0,10,2,5,0,-,0.65,19,85F 40G,Bldg
+,Berserk,III,48,9,M,2.0,0,0,3,0,-,0.9,16,65F 25G,Bldg
+,Elite Berserk,IV,60,14,M,2.0,2,0,5,0,-,0.9,16,65F 25G,Bldg
+,Archer,II,30,4,P,2.0,0,0,6,4,80,0.96,35,25W 45G,-
+,Crossbowman,III,35,5,P,2.0,0,0,7,5,85,0.96,27,25W 45G,-
+,Arbalest,IV,40,6,P,2.0,0,0,7,5,90,0.96,27,25W 45G,-
+,Skirmisher,II,30,2,P,3.0,0,3,6,4,90,0.96,22,25F 35W,Arch
+,Elite Skirmisher,III,35,3,P,3.0,0,4,7,5,90,0.96,22,25F 35W,Arch
+,Cavalry Archer,III,50,6,P,2.0,0,0,5,3,50,1.4,34,40W 70G,-
+,Heavy Cavalry Archer,IV,60,7,P,2.0,1,0,6,4,50,1.4,27,40W 70G,-
+,Hand Cannoneer,IV,35,17,P,3.45,1,0,9,7,65,0.96,34,45F 50G,"Infantry, Ram"
+,Longbowman,III,35,6,P,2.0,0,0,7,5,70,0.96,19,35W 40G,-
+,Elite Longbowman,IV,40,7,P,2.0,0,1,8,6,80,0.96,19,35W 40G,-
+,Chu Ko Nu,III,45,8,P,3.0,0,0,6,4,85,0.96,19,40W 35G,-
+,Elite Chu Ko Nu,IV,50,8,P,3.0,0,0,6,4,85,0.96,13,40W 35G,-
+,Mangudai,III,60,6,P,2.1,0,0,6,4,95,1.45,26,55W 65G,Siege
+,Elite Mangudai,IV,60,8,P,2.1,1,0,6,4,95,1.45,26,55W 65G,Siege
+,Janissary,III,35,15,P,3.45,1,0,10,8,50,0.96,21,60F 55G,"Inf, Ram"
+,Elite Janissary,IV,40,18,P,3.45,2,0,10,8,50,0.96,21,60F 55G,"Inf, Ram"
+,Scout Cavalry,II,45,3,M,2.0,0,2,4,0,-,1.2,30,80F,-
+,Light Cavalry,III,60,7,M,2.0,0,2,4,0,-,1.5,30,80F,-
+,Knight,III,100,10,M,1.8,2,2,4,0,-,1.35,30,60F 75G,-
+,Cavalier,IV,120,12,M,1.8,2,2,4,0,-,1.35,30,60F 75G,-
+,Paladin,IV,160,14,M,1.9,2,3,5,0,-,1.35,30,60F 75G,-
+,Camel,III,100,5,M,2.0,0,0,4,0,-,1.45,29,55F 60G,Cav
+,Heavy Camel,IV,120,7,M,2.0,0,0,5,0,-,1.45,29,55F 60G,Cav
+,Cataphract,III,110,9,M,1.8,2,1,4,0,-,1.35,20,70F 75G,Inf
+,Elite Cataphract,IV,150,12,M,1.7,2,1,5,0,-,1.35,20,70F 75G,Inf
+,War Elephant,III,450,15,M,2.0,1,2,4,0,-,0.6,31,200F 75G,Bldg
+,Elite War Elephant,IV,600,20,M,2.0,1,3,5,0,-,0.6,31,200F 75G,Bldg
+,Mameluke,III,65,7,M,2.0,0,0,5,3,100,1.4,23,55F 85G,Cav
+,Elite Mameluke,IV,80,10,M,2.0,1,0,5,3,100,1.4,23,55F 85G,Cav
+,Battering Ram,III,175,2,M,5.0,-3,180,3,0,-,0.5,36,160W 75G,"Bldg, Siege"
+,Capped Ram,IV,200,3,M,5.0,-3,190,3,0,-,0.5,36,160W 75G,"Bldg, Siege"
+,Siege Ram,IV,270,4,M,5.0,-3,195,3,0,-,0.6,36,160W 75G,"Bldg, Siege"
+,Mangonel,III,50,40,M,6.0,0,6,9,7,100,0.6,46,160W 135G,Bldg
+,Onager,IV,60,50,M,6.0,0,7,10,8,100,0.6,46,160W 135G,Bldg
+,Siege Onager,IV,70,75,M,6.0,0,8,10,8,100,0.6,46,160W 135G,Bldg
+,Scorpion,III,40,12,P,3.6,0,6,9,5,100,0.65,30,75W 75G,"Eleph, Bldg, Ram"
+,Heavy Scorpion,IV,50,16,P,3.6,0,6,9,5,100,0.65,30,75W 75G,"Eleph, Bldg, Ram"
+,Bombard Cannon,IV,50,40,M,6.5,2,5,14,12,92,0.7,56,225W 225G,"Bldg, Ship"
+,Trebuchet (Packed),IV,150,-,-,-,2,8,18,-,-,0.8,50,200W 200G,-
+,Trebuchet,IV,150,200,P,10.0,1,150,18,16,15,-,50,200W 200G,Bldg
+,Fishing Ship,I,60,-,-,-,0,4,5,-,-,1.26,40,75W,-
+,Transport Ship,II,100,-,-,-,4,8,5,-,-,1.45,46,125W,-
+,Trade Cog,II,80,-,-,-,0,6,6,-,-,1.32,36,100W 50G,-
+,Galley,II,120,6,P,3.0,0,6,7,5,100,1.43,36,90W 30G,"Ship, Bldg, Ram"
+,War Galley,III,135,7,P,3.0,0,6,8,6,100,1.43,36,90W 30G,"Ship, Bldg, Ram"
+,Galleon,IV,165,8,P,3.0,0,8,9,7,100,1.43,36,90W 30G,"Ship, Bldg, Ram"
+,Fire Ship,III,100,2,P,0.25,0,6,5,2.5,0,1.35,36,75W 45G,"Ship, Bldg"
+,Fast Fire Ship,IV,120,3,P,0.25,0,8,6,2.5,0,1.43,36,75W 45G,"Ship, Bldg"
+,Demolition Ship,III,50,110,M,-,0,3,6,0,-,1.6,31,70W 50G,Bldg
+,Heavy Demolition Ship,IV,60,140,M,-,0,5,6,0,-,1.6,31,70W 50G,Bldg
+,Cannon Galleon,IV,120,35,M,10.0,0,6,15,13,50,1.1,46,200W 150G,Bldg
+,Elite Cannon Galleon,IV,150,45,M,10.0,0,6,17,15,50,1.1,46,200W 150G,Bldg
+,Longboat,III,130,7,P,3.0,0,6,8,6,100,1.54,41,100W 50G,
+,Elite Longboat,IV,160,8,P,3.0,0,8,9,7,100,1.54,41,100W 50G,"Ship, Bldg, Ram"
+,Villager,I,25,3,M,2.0,0,0,4,0,-,0.8,25,50F,Bldg
+,Trade Cart,II,70,-,-,-,0,0,7,-,-,1.0,51,100W 50G,-
+,Monk,III,30,-,C,1.0,0,0,11,9,25,0.7,51,100G,-
+,King,I,75,-,-,-,0,0,6,-,-,1.32,-,-,-
+,Aethelfirth,-,140,8,M,2.0,0,0,3,0,-,1.03,-,-,Bldg
+,Charlemagne,-,200,7,M,2.0,0,0,5,3,100,0.9,-,-,Bldg
+,Charles Martel,-,180,13,M,1.0,1,0,8,6,100,0.9,-,-,Bldg
+,El Cid,-,330,13,M,2.0,2,1,5,0,-,0.9,-,-,Bldg
+,Erik the Red,-,440,9,M,2.0,0,1,3,0,-,0.9,-,-,Bldg
+,Harald Hardraade,-,150,13,M,1.0,3,3,7,5,30,1.32,-,-,-
+,Hrolf the Ganger,-,140,20,M,1.0,4,4,6,0,-,0.7,-,-,Bldg
+,Joan the Maid,-,100,4,M,2.0,1,1,6,0,-,0.9,-,-,-
+,King Arthur,-,270,13,M,2.0,2,2,5,0,-,0.9,-,-,Bldg
+,Kitabatake,-,350,8,M,2.0,1,0,4,0,-,0.9,-,-,"Unique, Bldg"
+,La Hire,-,200,18,M,2.0,2,1,4,0,-,0.9,-,-,Bldg
+,Minamoto,-,200,8,M,2.0,2,1,4,0,-,0.9,-,-,"Unique, Bldg"
+,Scythian Wild Woman,-,100,4,M,2.0,1,1,6,0,-,0.9,-,-,-
+,Sheriff of Nottingham,-,90,9,M,2.0,0,0,4,0,-,0.9,-,-,Bldg
+,Siegfried,-,240,13,M,2.0,1,0,5,0,-,0.9,-,-,Bldg
+,Theodoric the Goth,-,450,10,M,2.0,2,4,3,0,-,0.9,-,-,"Arch, Bldg"
+,William Wallace,-,400,20,M,2.0,5,5,6,0,-,1.0,-,-,-
+,Archers of the Eyes,-,55,7,P,2.0,0,0,6,5,100,1.0,-,-,Ram
+,Lord de Graville,-,60,6,P,3.0,0,0,6,5,60,1.00,-,-,Ram
+,Robin Hood,-,110,1,P,2.0,0,1,7,5,70,0.96,-,-,-
+,Genghis Khan,-,300,25,P,2.0,2,2,4,5,100,1.45,-,-,Siege
+,Subotai,-,250,12,P,2.0,2,2,6,5,50,1.65,-,-,"Bldg, Ram"
+,Tamerlane,-,350,6,P,2.0,2,2,6,4,100,1.41,-,-,Siege
+,Alexander Nevski,-,230,12,M,2.0,8,6,4,0,-,1.3,-,-,-
+,Attila the Hun,-,350,13,M,2.0,2,2,5,0,-,1.2,-,-,"Boars, Bldg"
+,Belisarius,-,210,9,M,2.0,2,1,4,0,-,1.35,-,-,Inf
+,Bleda the Hun,-,210,13,M,2.0,2,2,5,0,-,1.2,-,-,Bldg
+,Constable Richemont,-,250,15,M,2.0,2,2,4,0,-,1.45,-,-,-
+,Duke d'Alencon,-,150,16,M,2.0,2,3,5,0,-,1.45,-,-,-
+,El Cid Campeador,-,430,15,M,2.0,2,3,6,0,-,1.32,-,-,-
+,Frankish Paladin,-,175,15,M,2.0,2,3,6,0,-,1.32,-,-,-
+,Gawain,-,180,12,M,2.0,2,2,4,0,-,1.3,-,-,-
+,Guy Josselyne,-,190,14,M,2.0,2,3,4,0,-,1.45,-,-,-
+,Henry V,-,240,16,M,2.0,5,4,5,0,-,1.3,-,-,-
+,Joan of Arc,-,200,17,M,2.0,2,2,6,0,-,1.45,-,-,-
+,Kushluk,-,275,17,M,2.0,4,2,4,0,-,1.45,-,-,-
+,Lancelot,-,240,14,M,2.0,2,3,5,0,-,1.3,-,-,-
+,Master of the Templar,-,250,15,M,2.0,2,3,6,0,-,1.32,-,-,-
+,Reynald de Chatillon,-,250,16,M,2.0,2,3,6,0,-,1.32,-,-,-
+,Richard the Lionhearted,-,220,14,M,2.0,2,3,5,0,-,1.3,-,-,-
+,Roland,-,150,10,M,2.0,2,2,4,0,-,1.3,-,-,-
+,Scythian Scout,-,90,10,M,2.0,2,8,4,0,-,1.5,-,-,-
+,Sieur Bertrand,-,120,12,M,2.0,2,2,4,0,-,1.45,-,-,-
+,Sieur de Metz,-,120,15,M,2.0,2,2,4,0,-,1.45,-,-,-
+,Sir John Fastolf,-,200,17,M,2.0,2,2,4,0,-,1.45,-,-,-
+,The Black Prince,-,370,12,M,2.0,2,2,4,0,-,1.3,-,-,-
+,William the Conqueror,-,250,15,M,2.0,4,4,6,0,-,1.32,-,-,-
+,Hunting Wolf,-,100,8,M,2.0,2,2,3,0,-,1.0,-,-,-
+,Ornlu the Wolf,-,400,20,M,2.0,0,2,3,0,-,0.75,-,-,-
+,Bad Neighbor,-,300,200,P,10.0,2,8,21,20,92,-,-,-,Bldg
+,Bad Neighbor (Packed),-,300,-,-,-,2,8,18,-,-,0.8,-,-,-
+,God's Own Sling,-,300,200,P,10.0,2,8,21,20,92,-,-,-,Bldg
+,God's Own Sling (Packed),-,300,-,-,-,2,8,18,-,-,0.8,-,-,-
+,Jean Bureau,-,60,40,M,6.0,0,2,12,11,100,0.75,-,-,"Bldg, Ship, Cam"
+,Jean de Lorrain,-,75,100,M,6.0,5,10,12,14,100,0.75,-,-,"Bldg, Ship, Cam"
+,Saboteur,-,45,100,M,-,1,3,6,0,-,1.35,-,-,Bldg
+,Admiral Yi Sun-shin,-,600,75,M,3.0,6,6,12,10,100,0.9,-,-,-
+,Archbishop,-,70,-,C,1.0,0,2,11,9,25,0.7,-,-,-
+,Friar Tuck,-,60,-,C,1.0,2,4,11,9,25,0.7,-,-,-
+,Imam,-,45,-,C,1.0,4,4,11,9,25,0.7,-,-,-
+,Pope Leo I,-,60,-,C,1.0,2,4,11,9,25,0.7,-,-,-
+,Emperor in a Barrel,-,100,-,-,-,0,0,7,-,-,1.0,-,-,-
+,King Alfonso,-,75,-,-,-,0,0,6,0,-,1.32,-,-,-
+,King Sancho,-,75,-,-,-,0,0,6,0,-,1.32,-,-,-
+,Shah,-,75,-,-,-,0,0,6,0,-,1.32,-,-,-

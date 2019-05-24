@@ -30,6 +30,7 @@ var searchData=
   ['tellw',['tellw',['../classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o.xhtml#ace650d43f4634611321d48b48876c577',1,'openage::util::filelike::fifo::FIFO']]],
   ['template',['template',['../classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template.xhtml#ae083ba52bb61d25153443a06a18fd3d2',1,'openage::convert::dataformat::entry_parser::ParserTemplate']]],
   ['templates',['templates',['../classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_member_function.xhtml#aab5b5dd38e6e59adcbad6caa219e8f27',1,'openage::convert::dataformat::entry_parser::ParserMemberFunction']]],
+  ['templates_5fpath',['templates_path',['../namespaceopenage_1_1conf.xhtml#abd5ebe20c058a001947d348519f6c97a',1,'openage::conf']]],
   ['temporarydisableguirenderersync',['TemporaryDisableGuiRendererSync',['../classqtsdl_1_1_temporary_disable_gui_renderer_sync.xhtml',1,'qtsdl::TemporaryDisableGuiRendererSync'],['../classqtsdl_1_1_temporary_disable_gui_renderer_sync.xhtml#a1c09bf6d7d98cdd77fe4b555f4936cd4',1,'qtsdl::TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync(GuiRendererImpl &amp;renderer)'],['../classqtsdl_1_1_temporary_disable_gui_renderer_sync.xhtml#ac8e3b091581f62c5e12a269d333f0dc9',1,'qtsdl::TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync(const TemporaryDisableGuiRendererSync &amp;)=delete']]],
   ['term',['term',['../structopenage_1_1coord_1_1term.xhtml',1,'openage::coord']]],
   ['term_2ecpp',['term.cpp',['../term_8cpp.xhtml',1,'']]],

@@ -31,6 +31,11 @@ var searchData=
   ['htaligned',['htaligned',['../classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a8671f082432c89e05797093348f16af0',1,'openage::util::compress::LZXDStream']]],
   ['htlength',['htlength',['../classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#acd1ef6d1ea48f324c3a7fc293c4dcb68',1,'openage::util::compress::LZXDStream']]],
   ['htmain',['htmain',['../classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a65b33752965b0f4b2ed1898603417ef1',1,'openage::util::compress::LZXDStream']]],
+  ['html_5flogo',['html_logo',['../namespaceopenage_1_1conf.xhtml#a798ee057a4cab05399ca46dca88c7545',1,'openage::conf']]],
+  ['html_5fstatic_5fpath',['html_static_path',['../namespaceopenage_1_1conf.xhtml#aaae87316985eb9d892ee8b7fc57f21c6',1,'openage::conf']]],
+  ['html_5ftheme',['html_theme',['../namespaceopenage_1_1conf.xhtml#abb3f08e8ff56a1addfef8fff61631648',1,'openage::conf']]],
+  ['html_5ftheme_5foptions',['html_theme_options',['../namespaceopenage_1_1conf.xhtml#ac2120c13dd6f6701e50d435ce578b083',1,'openage::conf']]],
+  ['html_5ftheme_5fpath',['html_theme_path',['../namespaceopenage_1_1conf.xhtml#a7725abc8faecb77fa5531785e884b35f',1,'openage::conf']]],
   ['htpre',['htpre',['../classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a1c0734cf2170ca3e28f39602dc7f8219',1,'openage::util::compress::LZXDStream']]],
   ['huff_5fmaxbits',['HUFF_MAXBITS',['../classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#abdc66dd010cb036245a0992a599ddff5',1,'openage::util::compress::HuffmanTable']]]
 ];

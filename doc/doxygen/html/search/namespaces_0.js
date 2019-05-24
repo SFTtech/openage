@@ -16,6 +16,7 @@ var searchData=
   ['codegen',['codegen',['../namespaceopenage_1_1codegen.xhtml',1,'openage.codegen'],['../namespaceopenage_1_1codegen_1_1codegen.xhtml',1,'openage.codegen.codegen']]],
   ['colortable',['colortable',['../namespaceopenage_1_1convert_1_1colortable.xhtml',1,'openage::convert']]],
   ['compress',['compress',['../namespaceopenage_1_1util_1_1compress.xhtml',1,'openage::util']]],
+  ['conf',['conf',['../namespaceopenage_1_1conf.xhtml',1,'openage']]],
   ['config_5ffile',['config_file',['../namespaceopenage_1_1cvar_1_1config__file.xhtml',1,'openage::cvar']]],
   ['console',['console',['../namespaceopenage_1_1console.xhtml',1,'openage']]],
   ['constexpr_5f',['constexpr_',['../namespaceopenage_1_1util_1_1constexpr__.xhtml',1,'openage::util']]],
