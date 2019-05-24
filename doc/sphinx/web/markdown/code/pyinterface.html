@@ -1,0 +1,1507 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>openage C++ &lt;-&gt; Python interface &mdash; openage v0.3.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> openage
+          
+
+          
+            
+            <img src="../../_static/banner.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Developing openage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../README.html">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#static-docs">Static Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#dynamic-docs">Dynamic Docs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../README.html#doc-generation">Doc Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture.html">openage architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../architecture.html#components">Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../architecture.html#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture.html#information-flow">Information flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../architecture.html#current-architecture">Current architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../architecture.html#goal-architecture">Goal architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../assets.html">openage assets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../assets.html#asset-directories">Asset directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../assets.html#metadata-assets">Metadata assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../assets.html#data-assets">Data assets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../building.html">Building the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../building.html#buildsystem-design">Buildsystem Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../building.html#dependencies">Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#dependency-installation">Dependency installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#nyan-installation">nyan installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building.html#build-procedure">Build procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#development">Development</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#release">Release</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#for-packagers">For packagers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../building.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../building.html#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../buildsystem.html">Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../buildsystem.html#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../buildsystem.html#procedure">Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../buildsystem.html#phases">Phases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#cmake-time-configure">CMake-time: <code class="docutils literal notranslate"><span class="pre">./configure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#build-time-make">Build time: <code class="docutils literal notranslate"><span class="pre">make</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#install-time-make-install">Install time <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../buildsystem.html#core-buildsystem-modules">Core buildsystem modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#cpp">cpp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#python">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#codegen">codegen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../buildsystem.html#other-modules">other modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html">Contributing to openage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#what-can-i-do">What can I do?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#what-s-the-concept">What’s the concept?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#tl-dr">tl;dr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#workflow">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#what-makes-a-good-pull-request-good">What makes a good Pull Request good?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#rebasing">Rebasing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing.html#rebase-in-practice"><code class="docutils literal notranslate"><span class="pre">rebase</span></code> in practice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing.html#changing-commits-with-amend-and-fixup">Changing commits with <code class="docutils literal notranslate"><span class="pre">amend</span></code> and <code class="docutils literal notranslate"><span class="pre">fixup</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing.html#pushing-changes">Pushing changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../debug.html">How to debug openage?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../debug.html#qt-creator-ide">Qt Creator IDE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../debug.html#gdb">GDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../debug.html#note">Note:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../debug.html#gdbgui">GDBGUI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html">About development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#dev-team">Dev team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#development-workflow">Development workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#contributing">Contributing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development.html#code-philosophy">Code philosophy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ide.html">Developing openage in Integrated Development Environments (IDEs)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ide.html#qt-creator-ide">Qt Creator IDE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ide.html#opening-and-configuring-the-project">Opening and configuring the project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ide.html#enabling-parallel-build">Enabling parallel build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ide.html#run-debug">Run &amp; Debug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../media_convert.html">How to use the original game assets?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media_convert.html#conversion">Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../milestones.html">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_structure.html">Project Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../project_structure.html#architecture">Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../project_structure.html#languages">Languages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../project_structure.html#folders">Folders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../project_structure.html#doc">doc/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../project_structure.html#openage">openage/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../project_structure.html#assets">assets/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../project_structure.html#buildsystem">buildsystem/</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../project_structure.html#libopenage">libopenage/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">openage status</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../status.html#the-list-must-grow">The list must grow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../status.html#working-features">Working features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../status.html#missing-functionality">Missing functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../status.html#under-the-hood">Under the hood</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../status.html#python-interface">Python interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../status.html#inotify-file-reloading">Inotify file reloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../status.html#terminal-emulator">Terminal emulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../status.html#buildsystem">Buildsystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../status.html#job-management">Job management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting.html#asset-conversion">Asset Conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting.html#conversion-fails-when-converting-from-aoe-ii-hd-edition">Conversion fails when converting from <em>AoE II: HD Edition</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting.html#conversion-fails-for-the-conquerors-1-0c">Conversion fails for <em>The Conquerors</em> 1.0c</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting.html#ingame">Ingame</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting.html#ui-elements-are-visible-but-the-background-stays-black">UI elements are visible but the background stays black</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/building.html">Building openage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/arch_linux.html">Prerequisite steps for Arch Linux users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/debian.html">Prerequisite steps for Debian Sid users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/fedora.html">Prerequisite steps for Fedora users (Fedora &gt;= 27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/freebsd.html">Prerequisite steps for FreeBSD users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/gentoo.html">Installation for Gentoo users</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/gentoo.html#overlay">Overlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/gentoo.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/gentoo.html#git-version">git version</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/index.html">Building openage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/arch_linux.html">Prerequisite steps for Arch Linux users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/debian.html">Prerequisite steps for Debian Sid users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/fedora.html">Prerequisite steps for Fedora users (Fedora &gt;= 27)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/freebsd.html">Prerequisite steps for FreeBSD users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/gentoo.html">Installation for Gentoo users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/gentoo.html#overlay">Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/gentoo.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/opensuse_13.2.html">Prerequisite steps for openSUSE users (openSUSE 13.2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/opensuse_tumbleweed.html">Prerequisite steps for openSUSE users (openSUSE Tumbleweed)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/os_x_10.10_yosemite.html">Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/ubuntu.html">Prerequisite steps for Ubuntu users (Ubuntu 18.04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/windows_msvc.html">Procedure for Microsoft Windows users (Windows 10)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#setting-up-the-build-environment">Setting up the build environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#building-openage">Building openage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#running-openage-in-devmode">Running openage (in devmode)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#packaging">Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/opensuse_13.2.html">Prerequisite steps for openSUSE users (openSUSE 13.2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/opensuse_tumbleweed.html">Prerequisite steps for openSUSE users (openSUSE Tumbleweed)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/os_x_10.10_yosemite.html">Prerequisite steps for Mac OS X users (OS X 10.10 Yosemite)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/ubuntu.html">Prerequisite steps for Ubuntu users (Ubuntu 18.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_instructions/windows_msvc.html">Procedure for Microsoft Windows users (Windows 10)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/windows_msvc.html#setting-up-the-build-environment">Setting up the build environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#python-modules">Python Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../build_instructions/windows_msvc.html#vcpkg-packages">vcpkg packages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/windows_msvc.html#building-openage">Building openage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/windows_msvc.html#running-openage-in-devmode">Running openage (in devmode)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build_instructions/windows_msvc.html#packaging">Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/modding.html">Modding API (nyan)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nyan/conversion.html">nyan data conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/conversion.html#gamedata-conversion">Gamedata conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nyan/examples.html">openage nyan examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nyan/nyan.html">nyan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/nyan.html#idea">Idea</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/nyan.html#technical-specification">Technical specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/nyan.html#openage-specifics">openage specifics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nyan/openage-lib.html">openage nyan library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/openage-lib.html#design-principles">Design principles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nyan/openage-lib.html#api-objects">API objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nyan/openage-lib.html#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nyan/openage-lib.html#gameentity">GameEntity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nyan/openage-lib.html#ability">Ability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nyan/openage-lib.html#modifier">Modifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nyan/openage-lib.html#effect">Effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/reverse_engineering.html">Reverse-engineered AoE II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/civilizations.html">Civilization attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/civilizations.html#age-of-empires-i">Age of Empires I</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/civilizations.html#civilization-specials">Civilization specials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/civilizations.html#unit-building-creation-table">Unit/Building creation table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/index.html">Reverse-engineering of AoE II</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/civilizations.html">Civilization attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/civilizations.html#age-of-empires-i">Age of Empires I</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/scoring.html">Score system</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#age-of-empires-i">Age of Empires I</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html">Unit statistics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#age-of-kings">Age of Kings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#age-of-conquerors">Age of Conquerors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#forgotten-empires">Forgotten Empires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#african-kingsdoms">African Kingsdoms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html">General Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#test-setup">Test Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#transport-protocols">Transport Protocols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#packet-types">Packet types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#values-and-data-types">Values and data types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#id-system">ID system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#coordinate-system">Coordinate system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/02-header.html">Protocol Header</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html">Sync</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#periodic">Periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#non-periodic">Non-Periodic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/04-lobby.html">Lobby</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/04-lobby.html#values-and-length">Values and Length</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html">Chat messages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#definition">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#misaligned-memory-of-the-above-message">Misaligned memory of the above message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html">Spoofing and forging AoC chat messages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#forging-the-packet">Forging the packet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html">Unit interaction - Primary action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html">Unit interaction - Movement actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#stop-action">Stop action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#move-action">Move action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#setting-waypoints">Setting Waypoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#delete-action">Delete action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#attack-ground">Attack ground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#ungarrison-action">Ungarrison action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#garrison-action">Garrison action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#drop-relic">Drop relic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html">Unit interaction - Formation actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#stance-action">Stance action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#guard-action">Guard action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#follow-action">Follow action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#patrol-action">Patrol action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#formation-action">Formation action</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html">Unit creation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#training-unit-human-player">Training unit (human player)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#rally-point-action">Rally Point action</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html">Buildings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#research">Research</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#build-action">Build action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#build-wall-action">Build wall action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#repair">Repair</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#toggle-gate">Toggle gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#townbell">Townbell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#back-to-work">Back to work</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/12-market.html">Market actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#sell">Sell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#buy">Buy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html">Others</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#resign-disconnect">Resign/Disconnect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#save-game">Save game</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#diplomacy-cheats-and-gamespeed">Diplomacy, Cheats and Gamespeed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#tribute">Tribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#flare">Flare</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html">AI actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#primary-action-ai-player">Primary action (AI player)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#move-ai-player">Move (AI player)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#waypoints-ai-player">Waypoints (AI player)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#training-unit-ai-player">Training unit (AI player)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html">C Structs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#sync">Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#actions">Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/technology_ids.html">Technology IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html">Accuracy and Projectiles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#distance">Distance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#mechanics-before-and-after-ballistics">Mechanics before and after “Ballistics”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#stray-arrows-and-scorpions">Stray Arrows and Scorpions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#target-size">Target Size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#friendly-fire">Friendly Fire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html">Attacking Alarms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#the-two-different-alarms-alerts">The two different alarms/alerts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#battles">Battles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#cooldown">Cooldown</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html">Build speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html#math">Math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html#relation-to-the-building-s-hp">Relation to the building’s HP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/building_placement.html">Building placement constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/building_placement.html#range-to-keep-building">Range to keep building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html">Damage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#measurement">Measurement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#attack-damage-formula">Attack damage formula</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#damage-by-projectiles">Damage by Projectiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html">Formations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#principles-of-formations-in-aoe2">Principles of Formations in AoE2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#structure">Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#subformations">Subformations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#formation-types">Formation Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#limits-in-aoe2">Limits in AoE2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#algorithmic-solutions">Algorithmic solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html">Garrison</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html#number-of-projectiles">Number of projectiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html">Market</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#trade-cart-gold-calculation">Trade Cart gold calculation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#age-of-kings">Age of Kings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#the-conquerors">The Conquerors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#tribute">Tribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#prices">Prices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#destroying-a-market">Destroying a market</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html">Monk Conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#unit-conversion">Unit Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#building-conversion">Building Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html">Pathfinding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html#algorithms">Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html">Ram Speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html#garrison-capacity">Garrison Capacity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html#speed">Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html">Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html#animals">Animals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html#relics">Relics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html">Repair</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#speed">Speed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#cost">Cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#math">Math</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html">Selecting and Deselecting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#single-units">Single units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#multiple-units">Multiple units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#selection-queue-actions">Selection queue actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html">Switching tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#losing-carried-resources">Losing carried resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#automatic-task-switching-for-builders">Automatic task-switching for builders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html">Town Bell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#range">Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#garrison-limit">Garrison limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#where-will-villagers-garrison">Where will villagers garrison?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#possible-implementation">Possible implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html">Waypoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#mechanics">Mechanics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#limitation">Limitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html">Wolves</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html#line-of-sight">Line of Sight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html#balancing">Balancing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/scoring.html">Score system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/scoring.html#age-of-empires-i">Age of Empires I</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#military">Military</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#economy">Economy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#religion">Religion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#technology">Technology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/scoring.html#survival-wonders">Survival/Wonders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html">Unit statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#age-of-kings">Age of Kings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#age-of-conquerors">Age of Conquerors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#forgotten-empires">Forgotten Empires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/unit_stats/unit_stats.html#african-kingsdoms">African Kingsdoms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/01-general.html">General Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#test-setup">Test Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#transport-protocols">Transport Protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#packet-types">Packet types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#values-and-data-types">Values and data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#id-system">ID system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#coordinate-system">Coordinate system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/01-general.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/02-header.html">Protocol Header</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#definition">Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/02-header.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html">Sync</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#periodic">Periodic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc41">16BC41</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc31">16BC31</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc32">16BC32</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc35">24BC35</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc53">26BC53</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc44">32BC44</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc4d">56BC4D</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#non-periodic">Non-Periodic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc51">24BC51</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/03-sync.html#bc52">24BC52</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/04-lobby.html">Lobby</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/04-lobby.html#values-and-length">Values and Length</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html">Chat messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#definition">Definition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#description">Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/05-chat_protocol.html#misaligned-memory-of-the-above-message">Misaligned memory of the above message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html">Spoofing and forging AoC chat messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#forging-the-packet">Forging the packet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#execution">Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/06-chat_message_spoofing.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html">Unit interaction - Primary action</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#definition">Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/07-primary_action.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html">Unit interaction - Movement actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#stop-action">Stop action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#move-action">Move action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id3">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#setting-waypoints">Setting Waypoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id5">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id6">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#delete-action">Delete action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id7">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id8">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id9">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#attack-ground">Attack ground</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id10">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id11">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id12">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#ungarrison-action">Ungarrison action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id13">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id14">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id15">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#garrison-action">Garrison action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id16">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id17">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id18">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#drop-relic">Drop relic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id19">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id20">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/08-movement.html#id21">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html">Unit interaction - Formation actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#stance-action">Stance action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#guard-action">Guard action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id3">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#follow-action">Follow action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id5">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id6">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#patrol-action">Patrol action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id7">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id8">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id9">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#formation-action">Formation action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id10">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id11">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/09-formation.html#id12">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html">Unit creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#training-unit-human-player">Training unit (human player)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#rally-point-action">Rally Point action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/10-unit_creation.html#id3">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html">Buildings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#research">Research</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#build-action">Build action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id3">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#build-wall-action">Build wall action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id5">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id6">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#repair">Repair</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id7">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id8">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id9">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#toggle-gate">Toggle gate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id10">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id11">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id12">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#townbell">Townbell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id13">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id14">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id15">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#back-to-work">Back to work</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id16">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id17">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/11-buildings.html#id18">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/12-market.html">Market actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#sell">Sell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#buy">Buy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/12-market.html#id3">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/13-other.html">Others</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#resign-disconnect">Resign/Disconnect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#save-game">Save game</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id3">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#diplomacy-cheats-and-gamespeed">Diplomacy, Cheats and Gamespeed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id5">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id6">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#tribute">Tribute</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id7">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id8">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id9">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#flare">Flare</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id10">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id11">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/13-other.html#id12">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html">AI actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#primary-action-ai-player">Primary action (AI player)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#definition">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#move-ai-player">Move (AI player)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id1">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id2">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id3">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#waypoints-ai-player">Waypoints (AI player)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id4">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id5">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id6">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#training-unit-ai-player">Training unit (AI player)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id7">Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id8">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/14-ai.html#id9">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html">C Structs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#sync">Sync</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc41">16BC41</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc31">16BC31</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc32">16BC32</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc35">24BC35</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc53">26BC53</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc44">32BC44</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc4d">56BC4D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc51">24BC51</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#bc52">24BC52</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#actions">Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#primary-action">00 - Primary Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#stop">01 - Stop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#ai-primary-action">02 - AI Primary Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#move">03 - Move</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#a-ai-move">0a - AI Move</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#b-resign">0b - Resign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#waypoint">10 - Waypoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#stance">12 - Stance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#guard">13 - Guard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#follow">14 - Follow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#patrol">15 - Patrol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#formation">17 - Formation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#b-save">1b - Save</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#f-ai-waypoints">1f - AI Waypoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#ai-training">64 - AI Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#research">65 - Research</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#build">66 - Build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#multipurpose">67 - Multipurpose</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#build-wall">69 - Build Wall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#a-delete">6a - Delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#b-attack-ground">6b - Attack ground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#c-attack-ground">6c - Attack ground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#e-repair">6e - Repair</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#f-ungarrison">6f - Ungarrison</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#toggle-gate">72 - Toggle Gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#flare">73 - Flare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#garrison">75 - Garrison</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#training">77 - Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#rally-point">78 - Rally Point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#a-sell">7a - Sell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#b-buy">7b - Buy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#e-drop-relic">7e - Drop Relic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#f-townbell">7f - Townbell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/networking/15-c-structs.html#back-to-work">80 - Back to work</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/networking/technology_ids.html">Technology IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html">Accuracy and Projectiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#distance">Distance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#inaccuracy">Inaccuracy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#mechanics-before-and-after-ballistics">Mechanics before and after “Ballistics”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#stray-arrows-and-scorpions">Stray Arrows and Scorpions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#target-size">Target Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#friendly-fire">Friendly Fire</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/accuracy.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html">Attacking Alarms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#the-two-different-alarms-alerts">The two different alarms/alerts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#battles">Battles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/attacking_alarm.html#cooldown">Cooldown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html">Build speed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html#math">Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/build_speed.html#relation-to-the-building-s-hp">Relation to the building’s HP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/building_placement.html">Building placement constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/building_placement.html#range-to-keep-building">Range to keep building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html">Damage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#measurement">Measurement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#attack-damage-formula">Attack damage formula</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#armor">Armor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/damage.html#damage-by-projectiles">Damage by Projectiles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html">Formations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#principles-of-formations-in-aoe2">Principles of Formations in AoE2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#structure">Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#ship-formations">Ship Formations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#subformations">Subformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#individual-subformation">Individual Subformation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#influence-of-other-subformations">Influence of other Subformations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#formation-types">Formation Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#line-formation">Line Formation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#staggered-formation">Staggered Formation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#boxed-formation">Boxed Formation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#flanked-formation">Flanked Formation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#marching-formation">Marching formation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#limits-in-aoe2">Limits in AoE2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#algorithmic-solutions">Algorithmic solutions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#sort-units-into-subformations-pseudocode">Sort units into subformations (Pseudocode)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#add-units-into-a-subformation-pseudocode">Add units into a subformation (Pseudocode)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/formations.html#order-units-inside-subformation-pseudocode">Order units inside subformation (Pseudocode)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html">Garrison</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html#number-of-projectiles">Number of projectiles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/garrison.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html">Market</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#trade-cart-gold-calculation">Trade Cart gold calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#math">Math</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#age-of-kings">Age of Kings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#the-conquerors">The Conquerors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#tribute">Tribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#prices">Prices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#destroying-a-market">Destroying a market</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#the-trading-partners-market-is-destroyed">The trading partners’ market is destroyed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#your-market-is-destroyed">Your market is destroyed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/market.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html">Monk Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#unit-conversion">Unit Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#building-conversion">Building Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/monk_conversion.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html">Pathfinding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html#algorithms">Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/pathfinding.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html">Ram Speed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html#garrison-capacity">Garrison Capacity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html#speed">Speed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/ram_speed.html#math">Math</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html">Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html#animals">Animals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/rates.html#relics">Relics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html">Repair</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#speed">Speed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#cost">Cost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#exceptions">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/repair.html#math">Math</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html">Selecting and Deselecting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#single-units">Single units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#multiple-units">Multiple units</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#selection-box">Selection Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#double-clicking">Double-clicking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#grouping-units">Grouping units</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#selection-queue-actions">Selection queue actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/selection.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html">Switching tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#losing-carried-resources">Losing carried resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#automatic-task-switching-for-builders">Automatic task-switching for builders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#automatic-drop-off-after-building-a-gathering-site">Automatic Drop-off after building a gathering site</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/switching_villager_tasks.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html">Town Bell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#range">Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#garrison-limit">Garrison limit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#where-will-villagers-garrison">Where will villagers garrison?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/town_bell.html#possible-implementation">Possible implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html">Waypoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#mechanics">Mechanics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#limitation">Limitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/waypoints.html#weird-aoe2-quirks">Weird AoE2 Quirks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html">Wolves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html#line-of-sight">Line of Sight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reverse_engineering/game_mechanics/wolves.html#balancing">Balancing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/doxygen.html">openage c++/python index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/todolist.html">Todo-list from sources</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">openage</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>openage C++ &lt;-&gt; Python interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/markdown/code/pyinterface.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openage-c-python-interface">
+<h1>openage C++ &lt;-&gt; Python interface<a class="headerlink" href="#openage-c-python-interface" title="Permalink to this headline">¶</a></h1>
+<p>openage consists of python modules, which contain the program entry point,
+and the library <code class="docutils literal notranslate"><span class="pre">libopenage.so</span></code>, which contains all C++ code.</p>
+<p>Cython is used for glue code.</p>
+<div class="section" id="cython-crash-course">
+<h2>Cython crash course<a class="headerlink" href="#cython-crash-course" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-with-types">
+<h3>Python with types<a class="headerlink" href="#python-with-types" title="Permalink to this headline">¶</a></h3>
+<p>Cython modules are written in <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> files, and roughly equivalent to .py files.
+In addition to regular Python syntax, <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> files allow you to define typed
+functions and objects:</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">cdef</span> <span class="kt">int</span> <span class="nf">square</span><span class="p">(</span><span class="nb">int</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">cdef</span> <span class="kt">cppclass</span> <span class="nf">Rectangle</span><span class="p">:</span>
+    <span class="nb">int</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span>
+
+    <span class="nb">int</span> <span class="n">size</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">h</span> <span class="o">*</span> <span class="n">this</span><span class="o">.</span><span class="n">w</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">cdef</span> <span class="kt">Rectangle</span> <span class="nf">r</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mf">5</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">6</span>
+    <span class="k">return</span> <span class="n">square</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>More language information <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/language_basics.html">is in the official documentation</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.pyx</span></code> files are translated to <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> by Cython (“cythonized”) as part of the
+openage build process; syntax errors are shown in this step.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file is then compiled to a Python extension module, which may be
+used from everywhere.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code> functions and <code class="docutils literal notranslate"><span class="pre">cdef</span> <span class="pre">class</span></code> classes can be used from Python</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cdef</span></code> functions can’t be used directly</p>
+<ul>
+<li><p>suitable for storage in a <code class="docutils literal notranslate"><span class="pre">C</span></code> function pointer</p></li>
+<li><p>callable from <code class="docutils literal notranslate"><span class="pre">def</span></code> functions in the <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> file</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cython --cplus -3 test.pyx
+$ g++ -shared -fPIC $(python3-config --includes) test.cpp -o test.so
+$ python3
+&gt;&gt;&gt; import test
+&gt;&gt;&gt; test.foo()
+900
+</pre></div>
+</div>
+</div>
+<div class="section" id="interface-definitions">
+<h3>Interface definitions<a class="headerlink" href="#interface-definitions" title="Permalink to this headline">¶</a></h3>
+<p>Cython can use any regular C++ function or type; for that purpose, they
+need to be declared in <code class="docutils literal notranslate"><span class="pre">.pxd</span></code> files (which are analogous to C++ <code class="docutils literal notranslate"><span class="pre">.h</span></code> files):</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">cdef</span> <span class="kr">extern</span> <span class="k">from</span> <span class="s">&quot;&lt;stdlib.h&gt;&quot;</span><span class="p">:</span>
+    <span class="nb">int</span> <span class="n">atoi</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To use this function declared in <code class="docutils literal notranslate"><span class="pre">foo.pxd</span></code>,</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">foo</span> <span class="k">cimport</span> <span class="n">atoi</span> <span class="k">as</span> <span class="n">c_atoi</span>
+
+<span class="k">def</span> <span class="nf">atoi</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="c"># invokes the c implementation according to the</span>
+    <span class="c"># interface defined in a .pxd file</span>
+    <span class="k">return</span> <span class="n">c_atoi</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pxd-generation">
+<h3>pxd generation<a class="headerlink" href="#pxd-generation" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">openage</span></code> has a helper, <code class="docutils literal notranslate"><span class="pre">pxdgen</span></code>, which auto-generates <code class="docutils literal notranslate"><span class="pre">.pxd</span></code> files for <code class="docutils literal notranslate"><span class="pre">.h</span></code>
+files in the <code class="docutils literal notranslate"><span class="pre">libopenage/</span></code> subdirectory, from <code class="docutils literal notranslate"><span class="pre">pxd:</span></code> annotations in these files, as part
+of the build system.</p>
+<p>The pxd annotations are really simple; just have a look at some of the headers.
+You’ll find the generated <code class="docutils literal notranslate"><span class="pre">.pxd</span></code> files next to the C++ header files.</p>
+<p>To <code class="docutils literal notranslate"><span class="pre">cimport</span></code> a class Foo that was pxd-annotated in <code class="docutils literal notranslate"><span class="pre">util/foo.h</span></code>, type</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">libopenage.util.foo</span> <span class="k">cimport</span> <span class="n">Foo</span>
+</pre></div>
+</div>
+<p>Cython <a class="reference external" href="https://github.com/cython/cython/tree/master/Cython/Includes">ships lots of <code class="docutils literal notranslate"><span class="pre">.pxd</span></code> files</a> for most C, C++ and CPython functions:</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">libc.math</span> <span class="k">cimport</span> <span class="n">sin</span>
+<span class="k">from</span> <span class="nn">libcpp.vector</span> <span class="k">cimport</span> <span class="n">vector</span>
+
+<span class="k">cdef</span> <span class="kt">vector</span>[<span class="kt">float</span>] <span class="nf">vector_sin</span><span class="p">(</span><span class="n">vector</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">vector_sin</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mf">10</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>From time to time, it may be useful to have a look at the generated <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file,
+especially if you require more exotic functionality or something doesn’t work
+out as you expected. For that purpose, <code class="docutils literal notranslate"><span class="pre">.html</span></code> files are generated next to the <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files.</p>
+</div>
+</div>
+<div class="section" id="calling-c-functions-from-python">
+<h2>Calling C++ functions from Python<a class="headerlink" href="#calling-c-functions-from-python" title="Permalink to this headline">¶</a></h2>
+<p>To make a C++ function available for calling from Cython code, annotate the header
+file with <code class="docutils literal notranslate"><span class="pre">pxd</span></code> comments:</p>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/example.cpp</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">openage</span> <span class="p">{</span>
+
+<span class="kt">int</span> <span class="n">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">arg1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/example.h</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// pxd: from libcpp.string cimport string</span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;util/compiler.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">openage</span> <span class="p">{</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The famous foo function. Warning: might bar occasionally.</span>
+<span class="cm"> *</span>
+<span class="cm"> * pxd:</span>
+<span class="cm"> *</span>
+<span class="cm"> * int foo(int arg0, string arg1) except +</span>
+<span class="cm"> */</span>
+<span class="n">OAAPI</span> <span class="kt">int</span> <span class="n">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">arg1</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Always</em> pxd-declare your functions as <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">+</span></code> (“may potentially rise a C++ exception”), unless the C++ function is marked <code class="docutils literal notranslate"><span class="pre">noexcept</span></code> itself.
+If a function that is not declared <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">+</span></code> throws anyways, the entire CPython interpreter is likely to be shredded.
+(Sidenote: the <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">+</span></code> annotation enables openage-specific exception translation. To see how this is used, look in the <code class="docutils literal notranslate"><span class="pre">exctranslate_tests.pyx/cpp</span></code>)</p>
+<p>To enable <code class="docutils literal notranslate"><span class="pre">pxdgen</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake</span></code> must be informed about the <code class="docutils literal notranslate"><span class="pre">pxd</span></code>-annotated header file:</p>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/CMakeLists.txt</span></code></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pxdgen</span><span class="p">(</span><span class="s">example.h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function is now available from Cython. To make it available for pure-python modules, write a wrapper:</p>
+<p><code class="docutils literal notranslate"><span class="pre">openage/foo.pyx</span></code></p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">libopenage.foo</span> <span class="k">cimport</span> <span class="n">foo</span> <span class="k">as</span> <span class="n">c_foo</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="nb">int</span> <span class="n">arg0</span><span class="p">,</span> <span class="nb">str</span> <span class="n">arg1</span><span class="p">):</span>
+    <span class="k">with</span> <span class="k">nogil</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">c_foo</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">openage/bar.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openage.foo</span> <span class="kn">import</span> <span class="n">foo</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-python-functions-from-c">
+<h2>Calling Python functions from C++<a class="headerlink" href="#calling-python-functions-from-c" title="Permalink to this headline">¶</a></h2>
+<p>The interface works one-way: Cython can access <code class="docutils literal notranslate"><span class="pre">libopenage</span></code>, but not the other way round.
+Thus, <code class="docutils literal notranslate"><span class="pre">libopenage</span></code> must find its way back to Python:</p>
+<ul class="simple">
+<li><p>By <code class="docutils literal notranslate"><span class="pre">pyinterface::PyIfFunc</span></code> function pointers that are filled by Cython during initialization.</p></li>
+<li><p>By <code class="docutils literal notranslate"><span class="pre">py::PyObj</span></code> objects that hold a Python object. It may be callable.</p></li>
+</ul>
+<div class="section" id="calling-directly-to-c">
+<h3>Calling directly to C++<a class="headerlink" href="#calling-directly-to-c" title="Permalink to this headline">¶</a></h3>
+<p>Any Python object can be stored in a <code class="docutils literal notranslate"><span class="pre">PyObj</span></code> (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">libopenage.pyinterface.pyobject</span></code>),
+which C++ can use to do calls to Python callables.</p>
+<p>This works in the way that you create C++ objects in Cython and then
+<a class="reference external" href="#calling-c-functions-from-python">call a C++ function</a> where you pass it.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// pxd: from libcpp.string cimport string</span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="c1">// pxd: from libopenage.pyinterface.pyobject cimport PyObj</span>
+<span class="cp">#include</span> <span class="cpf">&quot;libopenage/pyinterface/pyobject.h&quot;</span><span class="cp"></span>
+
+
+<span class="cm">/**</span>
+<span class="cm"> * pxd:</span>
+<span class="cm"> *</span>
+<span class="cm"> * cppclass demo_struct:</span>
+<span class="cm"> *     PyObj obj</span>
+<span class="cm"> *     string text</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">OAAPI</span> <span class="n">demo_struct</span> <span class="p">{</span>
+    <span class="n">py</span><span class="o">::</span><span class="n">PyObj</span> <span class="n">obj</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * pxd: int cpp_function(lol_struct arg, int another_arg) except +</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">cpp_function</span><span class="p">(</span><span class="n">lol_struct</span> <span class="o">&amp;</span><span class="n">arg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">another_arg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// native data can directly be used</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;native_arg: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">arg</span><span class="p">.</span><span class="n">text</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">// call the python</span>
+    <span class="c1">// with automatic argument conversion!</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;python call: &quot;</span>
+        <span class="o">&lt;&lt;</span> <span class="n">arg</span><span class="p">.</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">getattr</span><span class="p">(</span><span class="s">&quot;py_func&quot;</span><span class="p">).</span><span class="n">call</span><span class="p">(</span><span class="s">&quot;some binary&quot;</span><span class="p">,</span> <span class="n">another_arg</span><span class="p">).</span><span class="n">str</span><span class="p">()</span>
+        <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">libopenage.pyinterface.pyobject</span> <span class="k">cimport</span> <span class="n">PyObj</span>
+<span class="k">from</span> <span class="nn">libopenage.main</span> <span class="k">cimport</span> <span class="n">demo_struct</span><span class="p">,</span> <span class="n">cpp_function</span>
+
+<span class="k">class</span> <span class="nc">TestClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">some_member</span> <span class="o">=</span> <span class="s">&quot;rofl&quot;</span>
+
+    <span class="k">def</span> <span class="nf">py_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">arg1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;test: 0={} 1={} 2={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">some_member</span><span class="p">,</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">entry</span><span class="p">():</span>
+    <span class="c"># create the object and deliver it to c++</span>
+    <span class="n">test_obj</span> <span class="o">=</span> <span class="n">TestClass</span><span class="p">()</span>
+
+    <span class="c"># python object wrapping for c++</span>
+    <span class="k">cdef</span> <span class="kt">PyObj</span> <span class="nf">pyobj_wrapped</span> <span class="o">=</span> <span class="n">PyObj</span><span class="p">(</span><span class="o">&lt;</span><span class="n">PyObject</span><span class="o">*&gt;</span> <span class="n">some_object</span><span class="p">)</span>
+
+    <span class="c"># create a c++ object</span>
+    <span class="k">cdef</span> <span class="kt">demo_struct</span> <span class="nf">cppobj</span>
+    <span class="n">cppobj</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">pyobj_wrapped</span>
+    <span class="n">cppobj</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;behold the automatic type conversion!&quot;</span>
+
+    <span class="c"># call to c++</span>
+    <span class="n">cpp_function</span><span class="p">(</span><span class="n">cpp_obj</span><span class="p">,</span> <span class="mf">1337</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This means that Python calls to C++ with <code class="docutils literal notranslate"><span class="pre">cpp_function</span></code>,
+then C++ calls back to Python to the <code class="docutils literal notranslate"><span class="pre">py_function</span></code>.</p>
+<p>C++ can access a <code class="docutils literal notranslate"><span class="pre">PyObj</span></code> in many more ways, perform casts, etc.</p>
+</div>
+<div class="section" id="registering-python-functions-in-c">
+<h3>Registering Python functions in C++<a class="headerlink" href="#registering-python-functions-in-c" title="Permalink to this headline">¶</a></h3>
+<p>To access call Python functions some time later, they can be remembered in C++:</p>
+<p>Any <code class="docutils literal notranslate"><span class="pre">cdef</span></code> functions can be stored in C++ function pointers.
+The <code class="docutils literal notranslate"><span class="pre">openage::pyinterface::PyIfFunc</span></code> type has been created for this purpose;
+it allows <em>binding arguments</em> and makes sure that the pointer is properly initialized.</p>
+<p>We will call this pure-Python function from C++:</p>
+<p><code class="docutils literal notranslate"><span class="pre">openage/bar.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span> <span class="n">arg1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function involves rainbows and unicorns.</span>
+<span class="sd">    arg0 shall be an integer, and arg1 a string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">6.283185307179586</span>
+</pre></div>
+</div>
+<p>Declare, define and pxd-export the function pointer:</p>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/foo.cpp</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;foo.h&quot;</span><span class="cp"></span>
+
+<span class="n">PyIfFunc</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">bar</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/foo.h</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// pxd: from libcpp.string cimport string</span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;pyinterface/functional.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// pxd: PyIfFunc2[float, int, string] bar</span>
+<span class="k">extern</span> <span class="n">OAAPI</span> <span class="n">PyIfFunc</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">bar</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Wrap the python function in a <code class="docutils literal notranslate"><span class="pre">cdef</span></code> function, and define a method <code class="docutils literal notranslate"><span class="pre">setup()</span></code>,
+which binds the <code class="docutils literal notranslate"><span class="pre">cdef</span></code> function to the PyIfFunc object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">openage/foo.pyx</span></code></p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">from</span> <span class="nn">libopenage.foo</span> <span class="k">cimport</span> <span class="n">bar</span> <span class="k">as</span> <span class="n">c_bar</span>
+
+<span class="k">from</span> <span class="nn">.bar</span> <span class="k">import</span> <span class="n">bar</span> <span class="k">as</span> <span class="n">py_bar</span>
+
+<span class="k">cdef</span> <span class="kt">float</span> <span class="nf">bar</span><span class="p">(</span><span class="nb">int</span> <span class="n">arg0</span><span class="p">,</span> <span class="n">string</span> <span class="n">arg1</span><span class="p">)</span> <span class="k">except</span> <span class="o">*</span> <span class="k">with</span> <span class="k">gil</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">py_bar</span><span class="p">(</span><span class="n">arg0</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">str</span><span class="p">&gt;</span> <span class="n">arg1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="n">c_bar</span><span class="o">.</span><span class="n">bind0</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">PyIfFunc2</span></code> means that the function takes 2 arguments, and <code class="docutils literal notranslate"><span class="pre">bind0</span></code> means that 0
+arguments are bound (this is needed because Cython currently doesn’t support variadic template arguments).</p>
+<p>Add a call to <code class="docutils literal notranslate"><span class="pre">openage.foo.setup()</span></code> to <code class="docutils literal notranslate"><span class="pre">openage.cppinterface.setup.setup</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">openage/pyinterface/setup.pyx</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="c1"># (...)</span>
+
+    <span class="kn">from</span> <span class="nn">openage.foo</span> <span class="kn">import</span> <span class="n">setup</span>
+    <span class="n">setup</span><span class="p">()</span>
+
+    <span class="c1"># (...)</span>
+</pre></div>
+</div>
+<p>If you forget to do that, <code class="docutils literal notranslate"><span class="pre">openage.pyinterface.setup.setup</span></code> will raise a fatal exception.</p>
+<p><code class="docutils literal notranslate"><span class="pre">libopenage/bar.cpp</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;foo.h&quot;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">openage</span><span class="o">::</span><span class="n">bar</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;test&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <strong>only</strong> way of accessing Python code from C++ should be via the <code class="docutils literal notranslate"><span class="pre">Func</span></code> or <code class="docutils literal notranslate"><span class="pre">PyIfFunc</span></code> function wrappers, as those
+guarantee that exceptions are properly translated, among other things.</p>
+</div>
+</div>
+<div class="section" id="real-life-examples">
+<h2>Real-life examples<a class="headerlink" href="#real-life-examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>For code that wraps a C++ class for Python, see:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">openage/cabextract/lzxd.pyx</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libopenage/util/lzxd.h</span></code></p></li>
+</ul>
+</li>
+<li><p>For code that wraps a Python class for C++, see:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">libopenage/util/fslike/path.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">openage/util/fslike/cpp.pyx</span></code></p></li>
+</ul>
+</li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> files in the repo</p></li>
+</ul>
+</div>
+<div class="section" id="notes-on-the-gil">
+<h2>Notes on the GIL<a class="headerlink" href="#notes-on-the-gil" title="Permalink to this headline">¶</a></h2>
+<p>The GIL must be acquired for any Python functionality (even as simple as <code class="docutils literal notranslate"><span class="pre">PyErr_Occurred</span></code>).</p>
+<p>However, GIL-safety is guaranteed by the combination of Cython, the pyinterface code,
+and the fact that <code class="docutils literal notranslate"><span class="pre">libopenage</span></code> doesn’t link against Python itself / include any Python headers.</p>
+<p>Any code in <code class="docutils literal notranslate"><span class="pre">libopenage</span></code> can safely be run without the GIL.</p>
+<p>Only functions that are marked <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">gil</span></code> can be bound to <code class="docutils literal notranslate"><span class="pre">PyIfFunc</span></code> or <code class="docutils literal notranslate"><span class="pre">Func</span></code> objects;
+this ensures that the GIL is always re-acquired when jumping into Cython code.</p>
+<p><strong>Never</strong> use raw function pointers in the interface;
+always use the <code class="docutils literal notranslate"><span class="pre">PyIfFunc</span></code> or <code class="docutils literal notranslate"><span class="pre">Func</span></code> objects; otherwise, you’ll lose all safety guarantees.</p>
+</div>
+<div class="section" id="the-oaapi-macro">
+<h2>The <code class="docutils literal notranslate"><span class="pre">OAAPI</span></code> macro<a class="headerlink" href="#the-oaapi-macro" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">OAAPI</span></code> marks the DLL entry-points which is necessary for the Windows build.
+All pxd interface functions, classes, and <code class="docutils literal notranslate"><span class="pre">extern</span></code> objects must be declared with <code class="docutils literal notranslate"><span class="pre">OAAPI</span></code> in the header file.
+See the samples above to understand the exact position of insertion for each of those.
+This can be ignored for functions defined inline in the header.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
