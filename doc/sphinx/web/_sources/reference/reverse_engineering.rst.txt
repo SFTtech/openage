@@ -3,7 +3,6 @@ Reverse-engineered AoE II
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
    :glob:
 
    ../markdown/reverse_engineering/*
