@@ -8,6 +8,8 @@ Welcome to openage's documentation!
 
 Free (as in freedom) open source remake of the Age of Empires II engine
 
+Table of Contents
+==================
 .. toctree::
    :caption: Table of Contents
    :titlesonly:
