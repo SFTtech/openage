@@ -3,7 +3,7 @@ Reverse-engineered AoE II
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
+   :glob:
 
    ./*
    unit_stats/unit_stats
