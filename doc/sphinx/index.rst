@@ -11,7 +11,6 @@ Free (as in freedom) open source remake of the Age of Empires II engine
 Table of Contents
 ==================
 .. toctree::
-   :maxdepth: 2
    :caption: Table of Contents
    :name: mastertoc
    :titlesonly:

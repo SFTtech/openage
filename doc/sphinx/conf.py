@@ -13,7 +13,8 @@
 import sys
 import os
 import shlex
-# sys.path.insert(0, os.path.abspath('.'))
+# Add openage dir
+sys.path.insert(0, os.path.abspath('../../openage/'))
 
 
 # -- Project information -----------------------------------------------------
