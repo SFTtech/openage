@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,11 +6,14 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <typeindex>
 
 #include "../coord/phys.h"
 #include "../coord/tile.h"
 #include "../datastructure/pairing_heap.h"
 #include "../util/misc.h"
+#include "../util/hash.h"
+
 
 
 namespace openage {
@@ -205,9 +208,10 @@ template<>
 struct hash<openage::path::Node &> {
 	size_t operator ()(const openage::path::Node &x) const {
 		openage::coord::phys3 node_pos = x.position;
-		size_t nehash = std::hash<openage::coord::phys_t>{}(node_pos.ne);
-		size_t sehash = std::hash<openage::coord::phys_t>{}(node_pos.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::path::Node)));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.ne));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.se));
+		return hash;
 	}
 };
 

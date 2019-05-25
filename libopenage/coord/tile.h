@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,6 +6,8 @@
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
 #include "../util/misc.h"
+#include "../util/hash.h"
+#include <typeindex>
 
 namespace openage {
 
@@ -73,9 +75,10 @@ namespace std {
 template<>
 struct hash<openage::coord::tile> {
 	size_t operator ()(const openage::coord::tile &pos) const {
-		size_t nehash = hash<openage::coord::tile_t>{}(pos.ne);
-		size_t sehash = hash<openage::coord::tile_t>{}(pos.se);
-		return openage::util::rol<size_t, 1>(nehash) ^ sehash;
+		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::coord::tile)));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::tile_t>{}(pos.ne));
+		hash = openage::util::hash_combine(hash, std::hash<openage::coord::tile_t>{}(pos.se));
+		return hash;
 	}
 };
 
