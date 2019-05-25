@@ -17,7 +17,9 @@ Table of Contents
 
   reference/building.rst
   markdown/index.rst
-  reference/index.rst
+  reference/modding.rst
+  markdown/reverse_engineering/index.rst
+  reference/doxygen.rst
   releasenotes/index.rst
 
 Indices and tables
