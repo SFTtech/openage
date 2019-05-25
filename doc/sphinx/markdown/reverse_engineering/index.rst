@@ -1,4 +1,4 @@
-Reverse-engineering of AoE II
+Reverse-engineered AoE II
 ===================================
 
 .. toctree::
