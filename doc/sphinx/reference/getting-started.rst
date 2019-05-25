@@ -4,5 +4,5 @@ Getting started
    :maxdepth: 2
    :glob:
 
-  ../markdown/wiki/Getting-Started.md
+  ../markdown/wiki/Getting-started.md
  
