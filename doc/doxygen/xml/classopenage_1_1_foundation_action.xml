@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="329" column="1" bodyfile="libopenage/unit/action.h" bodystart="329" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="329" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="329" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_foundation_action_1a5415b3f1ad67e64d171c5762cec97479" compoundref="unit_2action_8cpp" startline="428" endline="445">on_completion</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_foundation_action_1a7d94cd0fbc846bf1665ddf2cf3ae07be" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -29,7 +30,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="329" column="1" bodyfile="libopenage/unit/action.h" bodystart="329" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="329" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="329" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" compoundref="unit_2action_8cpp" startline="447" endline="451">completed</referencedby>
+        <referencedby refid="classopenage_1_1_foundation_action_1a5415b3f1ad67e64d171c5762cec97479" compoundref="unit_2action_8cpp" startline="428" endline="445">on_completion</referencedby>
+        <referencedby refid="classopenage_1_1_foundation_action_1a64d49836c0b234cd233f631248c895b6" compoundref="unit_2action_8cpp" startline="422" endline="426">update</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,7 +57,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="318" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="415" bodyend="420"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="318" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="415" bodyend="420"/>
+        <references refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3bae62068a633874d298459a25f8868d306">openage::construct</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1a332e6073a7d1fb2e45cc905993af8f18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -66,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="319" column="1" bodyfile="libopenage/unit/action.h" bodystart="319" bodyend="319"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="319" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="319" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1a64d49836c0b234cd233f631248c895b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -85,7 +90,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="321" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="422" bodyend="426"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="321" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="422" bodyend="426"/>
+        <references refid="classopenage_1_1_foundation_action_1a7d94cd0fbc846bf1665ddf2cf3ae07be" compoundref="unit_2action_8h" startline="329">cancel</references>
+        <references refid="classopenage_1_1_unit_action_1a5d47af0412db504ab95c58b12418d55c" compoundref="unit_2action_8h" startline="197">openage::UnitAction::entity</references>
+        <references refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" compoundref="unit_8h" startline="68">openage::Unit::location</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1a5415b3f1ad67e64d171c5762cec97479" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -100,7 +108,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="322" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="428" bodyend="445"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="322" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="428" bodyend="445"/>
+        <references refid="classopenage_1_1_foundation_action_1ab7626198d87de5875e82f1e8c25b83e3" compoundref="unit_2action_8h" startline="329">add_destruct_effect</references>
+        <references refid="classopenage_1_1_foundation_action_1a7d94cd0fbc846bf1665ddf2cf3ae07be" compoundref="unit_2action_8h" startline="329">cancel</references>
+        <references refid="classopenage_1_1_unit_action_1a5d47af0412db504ab95c58b12418d55c" compoundref="unit_2action_8h" startline="197">openage::UnitAction::entity</references>
+        <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
+        <references refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">openage::Unit::has_attribute</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</references>
+        <references refid="classopenage_1_1_unit_1aecd686fafc67487f4df4d3637f2621f4" compoundref="unit_8cpp" startline="235" endline="240">openage::Unit::push_action</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1acb94c9f36774fdf9f94c7a6fc2ce9df9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -117,7 +132,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="323" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="447" bodyend="451"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="323" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="447" bodyend="451"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::building</references>
+        <references refid="classopenage_1_1_foundation_action_1a7d94cd0fbc846bf1665ddf2cf3ae07be" compoundref="unit_2action_8h" startline="329">cancel</references>
+        <references refid="classopenage_1_1_unit_action_1a5d47af0412db504ab95c58b12418d55c" compoundref="unit_2action_8h" startline="197">openage::UnitAction::entity</references>
+        <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
+        <references refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">openage::Unit::has_attribute</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1ae8d046b655d7c48a0a4ea7349d0c723d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -132,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="324" column="1" bodyfile="libopenage/unit/action.h" bodystart="324" bodyend="324"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="324" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="324" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1a49375144e2d782a175fb75142a944229" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -148,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="325" column="1" bodyfile="libopenage/unit/action.h" bodystart="325" bodyend="325"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="325" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="325" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_foundation_action_1a46520a617fab6d4d7aa3dd8baeaf409e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -163,7 +183,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="326" column="1" bodyfile="libopenage/unit/action.h" bodystart="326" bodyend="326"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="326" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="326" bodyend="326"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -172,153 +195,153 @@
 <para>places an idle action on the stack once building is complete </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1520">
+      <node id="2323">
         <label>openage::UnitAction</label>
         <link refid="classopenage_1_1_unit_action"/>
       </node>
-      <node id="1519">
+      <node id="2322">
         <label>openage::FoundationAction</label>
         <link refid="classopenage_1_1_foundation_action"/>
-        <childnode refid="1520" relation="public-inheritance">
+        <childnode refid="2323" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1535">
+      <node id="2338">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="1533" relation="public-inheritance">
+        <childnode refid="2336" relation="public-inheritance">
         </childnode>
-        <childnode refid="1534" relation="usage">
+        <childnode refid="2337" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="1522">
+      <node id="2325">
         <label>openage::UnitAction</label>
         <link refid="classopenage_1_1_unit_action"/>
-        <childnode refid="1523" relation="usage">
+        <childnode refid="2326" relation="usage">
           <edgelabel>#entity</edgelabel>
         </childnode>
       </node>
-      <node id="1532">
+      <node id="2335">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="1533" relation="public-inheritance">
+        <childnode refid="2336" relation="public-inheritance">
         </childnode>
-        <childnode refid="1531" relation="usage">
+        <childnode refid="2334" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="1533">
+      <node id="2336">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="1525">
+      <node id="2328">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
-        <childnode refid="1526" relation="usage">
+        <childnode refid="2329" relation="usage">
           <edgelabel>+foundation_size</edgelabel>
         </childnode>
-        <childnode refid="1528" relation="usage">
+        <childnode refid="2331" relation="usage">
           <edgelabel>+default_attributes</edgelabel>
         </childnode>
-        <childnode refid="1529" relation="usage">
+        <childnode refid="2332" relation="usage">
           <edgelabel>+cost</edgelabel>
         </childnode>
-        <childnode refid="1531" relation="usage">
+        <childnode refid="2334" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="1534">
+      <node id="2337">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="1535" relation="usage">
+        <childnode refid="2338" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="1523">
+      <node id="2326">
         <label>openage::Unit</label>
         <link refid="classopenage_1_1_unit"/>
-        <childnode refid="1524" relation="public-inheritance">
+        <childnode refid="2327" relation="public-inheritance">
         </childnode>
-        <childnode refid="1525" relation="usage">
+        <childnode refid="2328" relation="usage">
           <edgelabel>+unit_type</edgelabel>
         </childnode>
-        <childnode refid="1538" relation="usage">
+        <childnode refid="2341" relation="usage">
           <edgelabel>-container</edgelabel>
         </childnode>
-        <childnode refid="1528" relation="usage">
+        <childnode refid="2331" relation="usage">
           <edgelabel>+attributes</edgelabel>
         </childnode>
       </node>
-      <node id="1537">
+      <node id="2340">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="1528">
+      <node id="2331">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
-      <node id="1531">
+      <node id="2334">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="1532" relation="usage">
+        <childnode refid="2335" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="1534" relation="usage">
+        <childnode refid="2337" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="1530" relation="usage">
+        <childnode refid="2333" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="1536" relation="usage">
+        <childnode refid="2339" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="1537" relation="usage">
+        <childnode refid="2340" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="1524">
+      <node id="2327">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
-      <node id="1526">
+      <node id="2329">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="1527" relation="public-inheritance">
+        <childnode refid="2330" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1530">
+      <node id="2333">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="1536">
+      <node id="2339">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="1529">
+      <node id="2332">
         <label>openage::ResourceCost</label>
         <link refid="classopenage_1_1_resource_cost"/>
-        <childnode refid="1530" relation="usage">
+        <childnode refid="2333" relation="usage">
           <edgelabel>-resources</edgelabel>
         </childnode>
       </node>
-      <node id="1521">
+      <node id="2324">
         <label>openage::FoundationAction</label>
         <link refid="classopenage_1_1_foundation_action"/>
-        <childnode refid="1522" relation="public-inheritance">
+        <childnode refid="2325" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1538">
+      <node id="2341">
         <label>openage::UnitContainer</label>
         <link refid="classopenage_1_1_unit_container"/>
       </node>
-      <node id="1527">
+      <node id="2330">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/action.h" line="316" column="1" bodyfile="libopenage/unit/action.h" bodystart="316" bodyend="331"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="316" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="316" bodyend="331"/>
     <listofallmembers>
       <member refid="classopenage_1_1_foundation_action_1ab7626198d87de5875e82f1e8c25b83e3" prot="private" virt="non-virtual"><scope>openage::FoundationAction</scope><name>add_destruct_effect</name></member>
       <member refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" prot="public" virt="non-virtual"><scope>openage::FoundationAction</scope><name>adjacent_range</name></member>

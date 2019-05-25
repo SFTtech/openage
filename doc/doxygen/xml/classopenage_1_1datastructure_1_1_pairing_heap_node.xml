@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="44" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="46" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" prot="public" static="no" mutable="no">
         <type>T</type>
@@ -53,7 +53,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="48" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a4f1e12c9a1871b3ba19edb4a73935ae4" compoundref="pairing__heap_8h" startline="65" endline="67">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1af1b32b518657c3a03efa60240c5634d5" compoundref="pairing__heap_8h" startline="52" endline="54">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::PairingHeapNode</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1aa48e37e1eb9ea1cd87cf17b2f511b479" prot="public" static="no" mutable="no">
         <type>compare</type>
@@ -66,7 +81,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="49" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a9de129f708553f7a91cdfbacc9b48ea6" compoundref="pairing__heap_8h" startline="99" endline="127">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_with</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -81,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="182" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="182" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="182" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3f6b72619532af9b5a828dd541a225b1" compoundref="pairing__heap_8h" startline="79" endline="92">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::add_child</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a01fb1e27e0012a6f31147c7d11a4fc08" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
@@ -94,7 +111,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="183" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="183" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="183" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="183" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" compoundref="pairing__heap_8h" startline="134" endline="150">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_backwards</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" compoundref="pairing__heap_8h" startline="157" endline="179">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::loosen</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a5275316630476a1db17714404feb3d34" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
@@ -107,7 +126,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="184" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="184" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="184" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="184" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" compoundref="pairing__heap_8h" startline="134" endline="150">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_backwards</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" compoundref="pairing__heap_8h" startline="157" endline="179">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::loosen</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1ae8766c62075853897ab56f7066315813" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
@@ -120,7 +141,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="185" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="185" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="185" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="185" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" compoundref="pairing__heap_8h" startline="157" endline="179">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::loosen</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a52a13083c58dc34e41f3fff8984b8d9b" compoundref="path_8py" startline="322" endline="324">openage.util.fslike.path.Path.with_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3ab02f8ab30da2c239dc08a5bb463b58" compoundref="path_8py" startline="326" endline="331">openage.util.fslike.path.Path.with_suffix</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -139,7 +163,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="52" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="52" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="52" bodyend="54"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a17ab80e5ef35e2d22599ebcfabbdf639" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -156,7 +181,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="56" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="56" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="56" bodyend="58"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad2d2dd30261c2108d7ff21a4df43098c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -169,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="60" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="60" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a4f1e12c9a1871b3ba19edb4a73935ae4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const T &amp;</type>
@@ -183,7 +210,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="65" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="65" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="65" bodyend="67"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a0b2c1f83d627f4f401d53787e9fa076f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -201,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="72" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3f6b72619532af9b5a828dd541a225b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -219,7 +247,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="79" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="79" bodyend="92"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="79" bodyend="92"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a913846c9030bbcb2502d4cc96cd56afa" compoundref="pairing__heap_8h" startline="182">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::first_child</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a9de129f708553f7a91cdfbacc9b48ea6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
@@ -237,7 +266,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="99" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="99" bodyend="127"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="99" bodyend="127"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1aa48e37e1eb9ea1cd87cf17b2f511b479" compoundref="pairing__heap_8h" startline="49">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::cmp</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" compoundref="pairing__heap_8h" startline="134" endline="150">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_backwards</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
@@ -251,7 +282,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="134" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="134" bodyend="150"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="134" bodyend="150"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a9de129f708553f7a91cdfbacc9b48ea6" compoundref="pairing__heap_8h" startline="99" endline="127">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_with</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a5275316630476a1db17714404feb3d34" compoundref="pairing__heap_8h" startline="184">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::next_sibling</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a01fb1e27e0012a6f31147c7d11a4fc08" compoundref="pairing__heap_8h" startline="183">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::prev_sibling</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -265,7 +299,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="157" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="157" bodyend="179"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="157" bodyend="179"/>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a5275316630476a1db17714404feb3d34" compoundref="pairing__heap_8h" startline="184">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::next_sibling</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ae8766c62075853897ab56f7066315813" compoundref="pairing__heap_8h" startline="185">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::parent</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a01fb1e27e0012a6f31147c7d11a4fc08" compoundref="pairing__heap_8h" startline="183">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::prev_sibling</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -273,28 +310,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3582">
+      <node id="1937">
         <label>std::enable_shared_from_this&lt; PairingHeapNode&lt; T, compare &gt; &gt;</label>
       </node>
-      <node id="3581">
+      <node id="1936">
         <label>openage::datastructure::PairingHeapNode&lt; T, compare &gt;</label>
         <link refid="classopenage_1_1datastructure_1_1_pairing_heap_node"/>
-        <childnode refid="3582" relation="public-inheritance">
+        <childnode refid="1937" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3584">
+      <node id="1939">
         <label>std::enable_shared_from_this&lt; PairingHeapNode&lt; T, compare &gt; &gt;</label>
       </node>
-      <node id="3583">
+      <node id="1938">
         <label>openage::datastructure::PairingHeapNode&lt; T, compare &gt;</label>
         <link refid="classopenage_1_1datastructure_1_1_pairing_heap_node"/>
-        <childnode refid="3584" relation="public-inheritance">
+        <childnode refid="1939" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/datastructure/pairing_heap.h" line="42" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="42" bodyend="186"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="42" bodyend="186"/>
     <listofallmembers>
       <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3f6b72619532af9b5a828dd541a225b1" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>add_child</name></member>
       <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a0b2c1f83d627f4f401d53787e9fa076f" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>become_child_of</name></member>

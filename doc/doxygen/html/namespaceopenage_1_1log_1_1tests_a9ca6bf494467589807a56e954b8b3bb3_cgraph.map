@@ -1,0 +1,24 @@
+<map id="openage.log.tests.demo" name="openage.log.tests.demo">
+<area shape="rect" id="node1" title="Demonstrates the Python logging facility." alt="" coords="5,259,167,285"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#ae8a0cc74a7c0fa3c022264b99797dfbf" title="critical error message" alt="" coords="463,5,578,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="462,56,579,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log_1_1tests.xhtml#a10013d742153bb6a37a94e50e5249f7c" title=" " alt="" coords="229,142,363,183"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="465,208,576,235"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="463,259,579,285"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36" title="warning message" alt="" coords="459,309,582,336"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1log.xhtml#a78bab1bc2016bebde4ef3cde06936702" title="sets the log level" alt="" coords="215,360,377,387"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1log.xhtml#a173fdf777356d529586708570ee36be4" title="spam message" alt="" coords="232,411,360,437"/>
+<area shape="rect" id="node17" href="$namespaceopenage_1_1log.xhtml#a10c8ba63b955b0c97dc3b3323f73a4b2" title="Translates an integer verbosity to a log level." alt="" coords="223,462,369,503"/>
+<area shape="rect" id="node5" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="425,157,616,184"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="447,107,594,133"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="693,179,832,221"/>
+<area shape="rect" id="node7" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="677,245,849,286"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="664,128,861,155"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="687,77,839,104"/>
+<area shape="rect" id="node15" href="$namespaceopenage_1_1log.xhtml#a2b8905069877587c7f8624a11d524bbc" title="gets the log level" alt="" coords="439,360,602,387"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a" title="clamps val to be at least minval, and at most maxval." alt="" coords="439,469,603,496"/>
+<area shape="rect" id="node19" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="728,444,797,471"/>
+<area shape="rect" id="node22" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="665,495,860,521"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="909,403,1076,445"/>
+<area shape="rect" id="node21" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="909,469,1076,510"/>
+</map>

@@ -4,7 +4,7 @@
     <compoundname>main_args_link.h</compoundname>
     <includes local="no">QObject</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="main__args__link_8cpp" local="yes">libopenage/gui/main_args_link.cpp</includedby>
+    <includedby refid="main__args__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp</includedby>
     <incdepgraph>
       <node id="14899">
         <label>list</label>
@@ -120,7 +120,7 @@
         </childnode>
       </node>
       <node id="14866">
-        <label>libopenage/gui/main_args_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h</label>
         <link refid="main__args__link_8h"/>
         <childnode refid="14867" relation="include">
         </childnode>
@@ -292,13 +292,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14907">
-        <label>libopenage/gui/main_args_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h</label>
         <link refid="main__args__link_8h"/>
         <childnode refid="14908" relation="include">
         </childnode>
       </node>
       <node id="14908">
-        <label>libopenage/gui/main_args_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp</label>
         <link refid="main__args__link_8cpp"/>
       </node>
     </invincdepgraph>
@@ -341,6 +341,6 @@
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/main_args_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h"/>
   </compounddef>
 </doxygen>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::util::utf8_decoder Class Reference</title>
+<title>openage: openage::util::utf8_decoder Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1utf8__decoder.
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unicode_8h_source.xhtml">unicode.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::util::utf8_decoder:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder__coll__graph.svg" width="136" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::utf8_decoder:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder__coll__graph.svg" width="136" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -140,6 +142,17 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unicode_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="unicode_8cpp_source.xhtml">unicode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                           {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#acca7311eed2d83530c6ae78e73132d31">reset</a>();</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1utf8__decoder_xhtml_acca7311eed2d83530c6ae78e73132d31"><div class="ttname"><a href="classopenage_1_1util_1_1utf8__decoder.xhtml#acca7311eed2d83530c6ae78e73132d31">openage::util::utf8_decoder::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8cpp_source.xhtml#l00014">unicode.cpp:14</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unicode_8cpp_source.xhtml#l00014">reset()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder_ae33f30385d0dd3708f7465705c9a73de_cgraph.svg" width="342" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -164,6 +177,29 @@ Public Attributes</h2></td></tr>
 <p>thus, after each call to <a class="el" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ad74a496758770d9f1be27e9b3fec4dd0">feed()</a>, you'll first want to evaluate the return value and print an error message or add the U+FFFD replacement character. then, you'll want to check for remaining == 0 out &gt;= 0 </p>
 
 <p class="definition">Definition at line <a class="el" href="unicode_8cpp_source.xhtml#l00019">19</a> of file <a class="el" href="unicode_8cpp_source.xhtml">unicode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                              {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> ((c &amp; (1 &lt;&lt; 7)) == 0) {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">// single-byte character</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a>) {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// successful re-synchronization</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="comment">// (current multi-byte character discarded)</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 0;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = c;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &amp; (1 &lt;&lt; 6)) {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a>) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// successful re-synchronization</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="comment">// (current multi-byte character discarded)</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// beginning of a multi-byte character</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> ((c &amp; (1 &lt;&lt; 5)) == 0) {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// 2-byte character</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 1;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = c &amp; ((1 &lt;&lt; 5) - 1);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((c &amp; (1 &lt;&lt; 4)) == 0) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">// 3-byte character</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 2;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = c &amp; ((1 &lt;&lt; 4) - 1);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((c &amp; (1 &lt;&lt; 3)) == 0) {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="comment">// 4-byte character</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 3;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = c &amp; ((1 &lt;&lt; 3) - 1);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// no 5- or 6-byte characters exist in utf8</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 0;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = -1;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// inside a multi-byte character</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a>) {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">// we expected the start of a new character</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> -= 1;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = (<a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> &lt;&lt; 6) | (c &amp; ((1 &lt;&lt; 6) - 1));</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1utf8__decoder_xhtml_ac5e38c7efcc1e8d4b7f7668da156ba4b"><div class="ttname"><a href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">openage::util::utf8_decoder::out</a></div><div class="ttdeci">codepoint_t out</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8h_source.xhtml#l00028">unicode.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1utf8__decoder_xhtml_a55d64109af786e729e84a4da7d275c19"><div class="ttname"><a href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">openage::util::utf8_decoder::remaining</a></div><div class="ttdeci">unsigned remaining</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8h_source.xhtml#l00033">unicode.h:33</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unicode_8h_source.xhtml#l00028">out</a>, <a class="el" href="unicode_8h_source.xhtml#l00033">remaining</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00381">openage::console::Buf::write()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder_ad74a496758770d9f1be27e9b3fec4dd0_cgraph.svg" width="552" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder_ad74a496758770d9f1be27e9b3fec4dd0_icgraph.svg" width="335" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -184,6 +220,20 @@ Public Attributes</h2></td></tr>
 <p>resets the decoder to its initial state </p>
 
 <p class="definition">Definition at line <a class="el" href="unicode_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="unicode_8cpp_source.xhtml">unicode.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                         {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">out</a> = -1;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">remaining</a> = 0;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1utf8__decoder_xhtml_ac5e38c7efcc1e8d4b7f7668da156ba4b"><div class="ttname"><a href="classopenage_1_1util_1_1utf8__decoder.xhtml#ac5e38c7efcc1e8d4b7f7668da156ba4b">openage::util::utf8_decoder::out</a></div><div class="ttdeci">codepoint_t out</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8h_source.xhtml#l00028">unicode.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1utf8__decoder_xhtml_a55d64109af786e729e84a4da7d275c19"><div class="ttname"><a href="classopenage_1_1util_1_1utf8__decoder.xhtml#a55d64109af786e729e84a4da7d275c19">openage::util::utf8_decoder::remaining</a></div><div class="ttdeci">unsigned remaining</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8h_source.xhtml#l00033">unicode.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unicode_8h_source.xhtml#l00028">out</a>, and <a class="el" href="unicode_8h_source.xhtml#l00033">remaining</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unicode_8cpp_source.xhtml#l00010">utf8_decoder()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1utf8__decoder_acca7311eed2d83530c6ae78e73132d31_icgraph.svg" width="342" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -204,6 +254,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unicode_8h_source.xhtml#l00028">28</a> of file <a class="el" href="unicode_8h_source.xhtml">unicode.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unicode_8cpp_source.xhtml#l00019">feed()</a>, <a class="el" href="unicode_8cpp_source.xhtml#l00014">reset()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00381">openage::console::Buf::write()</a>.</p>
+
 </div>
 </div>
 <a id="a55d64109af786e729e84a4da7d275c19"></a>
@@ -221,11 +273,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unicode_8h_source.xhtml#l00033">33</a> of file <a class="el" href="unicode_8h_source.xhtml">unicode.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unicode_8cpp_source.xhtml#l00019">feed()</a>, <a class="el" href="unicode_8cpp_source.xhtml#l00014">reset()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00381">openage::console::Buf::write()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/util/<a class="el" href="unicode_8h_source.xhtml">unicode.h</a></li>
-<li>libopenage/util/<a class="el" href="unicode_8cpp_source.xhtml">unicode.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="unicode_8h_source.xhtml">unicode.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="unicode_8cpp_source.xhtml">unicode.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

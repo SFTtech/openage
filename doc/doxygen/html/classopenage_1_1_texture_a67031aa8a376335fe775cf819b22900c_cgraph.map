@@ -1,0 +1,8 @@
+<map id="openage::Texture::draw" name="openage::Texture::draw">
+<area shape="rect" id="node1" title=" " alt="" coords="5,47,163,74"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title=" " alt="" coords="211,17,368,43"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1phys3.xhtml#afb7742fe4e2f67064992aed454d75ef2" title=" " alt="" coords="212,71,367,112"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="421,5,587,47"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e" title=" " alt="" coords="427,71,581,112"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title=" " alt="" coords="416,136,592,177"/>
+</map>

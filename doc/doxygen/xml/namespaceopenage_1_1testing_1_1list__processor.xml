@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1testing_1_1list__processor" kind="namespace" language="Python">
+    <compoundname>openage::testing::list_processor</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1list__processor_1a96f8756c2413d5f3fe509b1532a91967" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.list_processor.list_targets</definition>
+        <argsstring>(test_lister, demo_lister, benchmark_lister)</argsstring>
+        <name>list_targets</name>
+        <param>
+          <type>test_lister</type>
+          <defname>test_lister</defname>
+        </param>
+        <param>
+          <type>demo_lister</type>
+          <defname>demo_lister</defname>
+        </param>
+        <param>
+          <type>benchmark_lister</type>
+          <defname>benchmark_lister</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" bodystart="20" bodyend="55"/>
+        <referencedby refid="namespaceopenage_1_1testing_1_1list__processor_1a598be9bf16c59330d7350e0024b2f363" compoundref="list__processor_8py" startline="64" endline="69">openage.testing.list_processor.list_targets_cpp</referencedby>
+        <referencedby refid="namespaceopenage_1_1testing_1_1list__processor_1aa7fa94692d5000c384c9820a0a4edddc" compoundref="list__processor_8py" startline="57" endline="62">openage.testing.list_processor.list_targets_py</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1list__processor_1aa7fa94692d5000c384c9820a0a4edddc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.list_processor.list_targets_py</definition>
+        <argsstring>()</argsstring>
+        <name>list_targets_py</name>
+        <briefdescription>
+<para>Invokes <ref refid="namespaceopenage_1_1testing_1_1list__processor_1a96f8756c2413d5f3fe509b1532a91967" kindref="member">list_targets()</ref> with the py-specific listers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" bodystart="57" bodyend="62"/>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1a96f8756c2413d5f3fe509b1532a91967" compoundref="list__processor_8py" startline="20" endline="55">openage.testing.list_processor.list_targets</references>
+        <referencedby refid="namespaceopenage_1_1testing_1_1list__processor_1a9702d9a71efd1d06569d1488b7c05666" compoundref="list__processor_8py" startline="83" endline="128">openage.testing.list_processor.get_all_targets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1list__processor_1a598be9bf16c59330d7350e0024b2f363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.list_processor.list_targets_cpp</definition>
+        <argsstring>()</argsstring>
+        <name>list_targets_cpp</name>
+        <briefdescription>
+<para>Invokes <ref refid="namespaceopenage_1_1testing_1_1list__processor_1a96f8756c2413d5f3fe509b1532a91967" kindref="member">list_targets()</ref> with the C++-specific listers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" bodystart="64" bodyend="69"/>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1a96f8756c2413d5f3fe509b1532a91967" compoundref="list__processor_8py" startline="20" endline="55">openage.testing.list_processor.list_targets</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" compoundref="cpp__testlist_8py" startline="70" endline="94">openage.codegen.cpp_testlist.generate_testlist</referencedby>
+        <referencedby refid="namespaceopenage_1_1testing_1_1list__processor_1a9702d9a71efd1d06569d1488b7c05666" compoundref="list__processor_8py" startline="83" endline="128">openage.testing.list_processor.get_all_targets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1list__processor_1a9702d9a71efd1d06569d1488b7c05666" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.list_processor.get_all_targets</definition>
+        <argsstring>()</argsstring>
+        <name>get_all_targets</name>
+        <briefdescription>
+<para>Reads the Python and C++ testspec. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>returns an OrderedDict of {(testname, type): conditionfun, lang, description, testfun}.</para>
+<para>type is in {&apos;demo&apos;, &apos;test&apos;}, lang is in {&apos;cpp&apos;, &apos;py&apos;}, conditionfun is a callable which determines if the test is to be run in the given environment description is a str, and testfun is callable and takes 0 args for tests / list(str) for demos. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" bodystart="83" bodyend="128"/>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1a598be9bf16c59330d7350e0024b2f363" compoundref="list__processor_8py" startline="64" endline="69">openage.testing.list_processor.list_targets_cpp</references>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1aa7fa94692d5000c384c9820a0a4edddc" compoundref="list__processor_8py" startline="57" endline="62">openage.testing.list_processor.list_targets_py</references>
+        <references refid="namespaceopenage_1_1util_1_1strings_1a7ae648d1a835e5ee33b60c06d1f3f612" compoundref="strings_8py" startline="85" endline="92">openage.util.strings.lstrip_once</references>
+        <referencedby refid="namespaceopenage_1_1testing_1_1main_1a346b6762051aaadb5cc302e1adbf5f1e" compoundref="testing_2main_8py" startline="55" endline="112">openage.testing.main.process_args</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/list_processor.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

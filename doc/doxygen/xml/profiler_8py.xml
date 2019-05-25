@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="profiler_8py" kind="file" language="Python">
+    <compoundname>profiler.py</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1profiler_1_1_profiler" prot="public">openage::util::profiler::Profiler</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1profiler">openage::util::profiler</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1util_1_1profiler" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Profiling<sp/>utilities</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>cProfile</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>pstats</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>io</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler" kindref="compound">Profiler</ref>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>A<sp/>class<sp/>for<sp/>quick<sp/>and<sp/>easy<sp/>profiling.</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Usage:</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>Profiler()</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>p:</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>call<sp/>methods<sp/>that<sp/>need<sp/>to<sp/>be<sp/>profiled<sp/>here</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(p.report())</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>The<sp/>&apos;with&apos;<sp/>statement<sp/>can<sp/>be<sp/>replaced<sp/>with<sp/>calls<sp/>to</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>p.enable()<sp/>and<sp/>p.disable().</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1util_1_1profiler_1_1_profiler" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/>profile<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>profile_stats<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>profile_stream<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" kindref="member">__init__</ref>(self,<sp/>oStream=None):</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>oStream<sp/>can<sp/>be<sp/>a<sp/>file<sp/>if<sp/>the<sp/>profile<sp/>results<sp/>want<sp/>to<sp/>be<sp/>saved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" kindref="member">profile</ref><sp/>=<sp/>cProfile.Profile()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" kindref="member">profile_stream</ref><sp/>=<sp/>oStream</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a7eeca5c6b15dc84f570c2fa2282e13c3" kindref="member">__enter__</ref>(self):</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Activate<sp/>data<sp/>collection.</highlight></codeline>
+<codeline lineno="37"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" kindref="member">enable</ref>()</highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a7eeca5c6b15dc84f570c2fa2282e13c3" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ac5656144b9dbd4708f61b37ea28abb32" kindref="member">__exit__</ref>(self,<sp/>exc_type,<sp/>exc_value,<sp/>traceback):</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="42"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>profiling.</highlight></codeline>
+<codeline lineno="43"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" kindref="member">disable</ref>()</highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ac5656144b9dbd4708f61b37ea28abb32" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" kindref="member">write_report</ref>(self,<sp/>sortby=&apos;calls&apos;):</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Write<sp/>the<sp/>profile<sp/>stats<sp/>to<sp/>profile_stream&apos;s<sp/>file.</highlight></codeline>
+<codeline lineno="49"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref><sp/>=<sp/>pstats.Stats(self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" kindref="member">profile</ref>,<sp/>stream=self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" kindref="member">profile_stream</ref>)</highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref>.sort_stats(sortby)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref>.print_stats()</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" kindref="member">report</ref>(self,<sp/>sortby=&apos;calls&apos;):</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="56"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Return<sp/>the<sp/>profile_stats<sp/>to<sp/>the<sp/>console.</highlight></codeline>
+<codeline lineno="57"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref><sp/>=<sp/>pstats.Stats(self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" kindref="member">profile</ref>,<sp/>stream=io.StringIO())</highlight></codeline>
+<codeline lineno="59" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref>.sort_stats(sortby)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref>.print_stats()</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" kindref="member">profile_stats</ref>.stream.getvalue()</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" kindref="member">enable</ref>(self):</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="65"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Begins<sp/>profiling<sp/>calls.</highlight></codeline>
+<codeline lineno="66"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" kindref="member">profile</ref>.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" kindref="member">enable</ref>()</highlight></codeline>
+<codeline lineno="68" refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" kindref="member">disable</ref>(self):</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>profiling<sp/>calls.</highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" kindref="member">profile</ref>.<ref refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" kindref="member">disable</ref>()</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py"/>
+  </compounddef>
+</doxygen>

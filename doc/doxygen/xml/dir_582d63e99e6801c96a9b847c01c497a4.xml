@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_582d63e99e6801c96a9b847c01c497a4" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/game</compoundname>
+    <innerfile refid="game_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="game_2main_8py">main.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/game/"/>
+  </compounddef>
+</doxygen>

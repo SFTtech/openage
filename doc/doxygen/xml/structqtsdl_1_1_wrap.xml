@@ -14,12 +14,12 @@
 <para>If the core &apos;MyClass&apos; has a shell &apos;MyClassLink&apos; then &apos;Wrap&lt;MyClass&gt;&apos; must have a &apos;using Type = MyClassLink&apos; </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4973">
+      <node id="6601">
         <label>qtsdl::Wrap&lt; U &gt;</label>
         <link refid="structqtsdl_1_1_wrap"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item_link.h" line="26" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="26" bodyend="27"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="26" bodyend="27"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

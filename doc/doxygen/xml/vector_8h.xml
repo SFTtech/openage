@@ -9,12 +9,12 @@
     <includes local="no">type_traits</includes>
     <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
     <includes refid="log_8h" local="yes">../log/log.h</includes>
-    <includedby refid="gamestate_8h" local="yes">libopenage/event/demo/gamestate.h</includedby>
-    <includedby refid="matrix_8h" local="yes">libopenage/util/matrix.h</includedby>
-    <includedby refid="matrix__test_8cpp" local="yes">libopenage/util/matrix_test.cpp</includedby>
-    <includedby refid="quaternion_8h" local="yes">libopenage/util/quaternion.h</includedby>
-    <includedby refid="vector_8cpp" local="yes">libopenage/util/vector.cpp</includedby>
-    <includedby refid="vector__test_8cpp" local="yes">libopenage/util/vector_test.cpp</includedby>
+    <includedby refid="gamestate_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</includedby>
+    <includedby refid="matrix_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h</includedby>
+    <includedby refid="matrix__test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp</includedby>
+    <includedby refid="quaternion_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</includedby>
+    <includedby refid="vector_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.cpp</includedby>
+    <includedby refid="vector__test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp</includedby>
     <incdepgraph>
       <node id="33210">
         <label>list</label>
@@ -96,7 +96,7 @@
         </childnode>
       </node>
       <node id="33182">
-        <label>libopenage/util/vector.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h</label>
         <link refid="vector_8h"/>
         <childnode refid="33183" relation="include">
         </childnode>
@@ -232,11 +232,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="33221">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="33224">
-        <label>libopenage/util/matrix.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h</label>
         <link refid="matrix_8h"/>
         <childnode refid="33225" relation="include">
         </childnode>
@@ -246,19 +246,19 @@
         </childnode>
       </node>
       <node id="33230">
-        <label>libopenage/util/vector.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.cpp</label>
         <link refid="vector_8cpp"/>
       </node>
       <node id="33223">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="33219">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="33227">
-        <label>libopenage/util/quaternion.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="33228" relation="include">
         </childnode>
@@ -266,11 +266,11 @@
         </childnode>
       </node>
       <node id="33229">
-        <label>libopenage/util/quaternion_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp</label>
         <link refid="quaternion__test_8cpp"/>
       </node>
       <node id="33216">
-        <label>libopenage/util/vector.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h</label>
         <link refid="vector_8h"/>
         <childnode refid="33217" relation="include">
         </childnode>
@@ -286,7 +286,7 @@
         </childnode>
       </node>
       <node id="33222">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="33220" relation="include">
         </childnode>
@@ -294,23 +294,23 @@
         </childnode>
       </node>
       <node id="33231">
-        <label>libopenage/util/vector_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp</label>
         <link refid="vector__test_8cpp"/>
       </node>
       <node id="33220">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="33228">
-        <label>libopenage/util/quaternion.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</label>
         <link refid="quaternion_8cpp"/>
       </node>
       <node id="33225">
-        <label>libopenage/util/matrix.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.cpp</label>
         <link refid="matrix_8cpp"/>
       </node>
       <node id="33218">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="33219" relation="include">
         </childnode>
@@ -318,11 +318,11 @@
         </childnode>
       </node>
       <node id="33226">
-        <label>libopenage/util/matrix_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp</label>
         <link refid="matrix__test_8cpp"/>
       </node>
       <node id="33217">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="33218" relation="include">
         </childnode>
@@ -512,6 +512,6 @@
 <codeline lineno="228"><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/vector.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h"/>
   </compounddef>
 </doxygen>

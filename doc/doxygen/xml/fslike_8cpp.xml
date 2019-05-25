@@ -176,7 +176,7 @@
         <label>utility</label>
       </node>
       <node id="30443">
-        <label>libopenage/util/fslike/fslike.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp</label>
         <link refid="fslike_8cpp"/>
         <childnode refid="30444" relation="include">
         </childnode>
@@ -360,6 +360,6 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fslike/fslike.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp"/>
   </compounddef>
 </doxygen>

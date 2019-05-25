@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="65" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a40532b403c401c2626362e147095cfe5" compoundref="opengl_2renderer_8cpp" startline="75" endline="101">openage::renderer::opengl::GlRenderer::render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> const  *</type>
@@ -30,7 +31,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="67" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="67" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a40532b403c401c2626362e147095cfe5" compoundref="opengl_2renderer_8cpp" startline="75" endline="101">openage::renderer::opengl::GlRenderer::render</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -39,19 +41,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3910">
+      <node id="4751">
         <label>openage::renderer::RenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1_render_target"/>
       </node>
-      <node id="3909">
+      <node id="4750">
         <label>openage::renderer::RenderPass</label>
         <link refid="structopenage_1_1renderer_1_1_render_pass"/>
-        <childnode refid="3910" relation="usage">
+        <childnode refid="4751" relation="usage">
           <edgelabel>+target</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/renderer.h" line="63" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="63" bodyend="68"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="63" bodyend="68"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1_render_pass_1ae6f66a81cdf870cf3d1724f4c9ecda3e" prot="public" virt="non-virtual"><scope>openage::renderer::RenderPass</scope><name>renderables</name></member>
       <member refid="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" prot="public" virt="non-virtual"><scope>openage::renderer::RenderPass</scope><name>target</name></member>

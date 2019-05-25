@@ -6,13 +6,13 @@
     <includes local="no">tuple</includes>
     <includes local="no">QAbstractListModel</includes>
     <includes refid="gamestate_2resource_8h" local="yes">../gamestate/resource.h</includes>
-    <includedby refid="resources__list__model_8cpp" local="yes">libopenage/gui/resources_list_model.cpp</includedby>
+    <includedby refid="resources__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</includedby>
     <incdepgraph>
       <node id="15132">
         <label>functional</label>
       </node>
       <node id="15127">
-        <label>libopenage/gui/resources_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h</label>
         <link refid="resources__list__model_8h"/>
         <childnode refid="15128" relation="include">
         </childnode>
@@ -46,13 +46,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="15134">
-        <label>libopenage/gui/resources_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h</label>
         <link refid="resources__list__model_8h"/>
         <childnode refid="15135" relation="include">
         </childnode>
       </node>
       <node id="15135">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
     </invincdepgraph>
@@ -83,7 +83,7 @@
 <codeline lineno="20" refid="classopenage_1_1gui_1_1_resources_list_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_resources_list_model" kindref="compound">ResourcesListModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractListModel<sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">openage::gui::ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" kindref="member">actionMode</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" kindref="member">get_action_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" kindref="member">set_action_mode</ref>)</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">openage::gui::ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" kindref="member">actionMode</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" kindref="member">get_action_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" kindref="member">set_action_mode</ref>)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a7e4ee813a5fcd9e7dfe74f629c80d4c4" kindref="member">ResourcesListModel</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -106,6 +106,6 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/resources_list_model.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h"/>
   </compounddef>
 </doxygen>

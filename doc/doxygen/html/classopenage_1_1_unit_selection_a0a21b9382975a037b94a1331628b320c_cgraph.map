@@ -1,0 +1,21 @@
+<map id="openage::UnitSelection::on_drawhud" name="openage::UnitSelection::on_drawhud">
+<area shape="rect" id="node1" title=" " alt="" coords="5,221,161,263"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="445,5,573,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="444,71,575,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#ac96d0e9e50c7efe2810017f60aa7a6ce" title=" " alt="" coords="209,221,365,263"/>
+<area shape="rect" id="node17" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title=" " alt="" coords="421,457,597,499"/>
+<area shape="rect" id="node18" href="$structopenage_1_1coord_1_1phys3.xhtml#afb7742fe4e2f67064992aed454d75ef2" title=" " alt="" coords="210,457,365,499"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="655,13,816,39"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="653,78,817,105"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a86a49987e082055274e98a142baffad8" title=" " alt="" coords="445,137,573,163"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70" title=" " alt="" coords="440,239,579,280"/>
+<area shape="rect" id="node10" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="460,305,559,331"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit_type.xhtml#ad295b572c0aa0399a04133dc61fb8a4b" title=" " alt="" coords="435,355,583,382"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_engine.xhtml#aa1639975d663d41b17b3fabf59d8e237" title=" " alt="" coords="413,187,605,214"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_unit_type.xhtml#afadac353590f8c7d7a590f41420fa32c" title=" " alt="" coords="424,406,595,433"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="680,137,791,163"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c" title=" " alt="" coords="668,239,803,280"/>
+<area shape="rect" id="node15" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="659,187,811,214"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a4d5611a559a9c63bcb0865c8a0829d4a" title=" " alt="" coords="865,231,1003,287"/>
+<area shape="rect" id="node19" href="$structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e" title=" " alt="" coords="432,523,587,564"/>
+</map>

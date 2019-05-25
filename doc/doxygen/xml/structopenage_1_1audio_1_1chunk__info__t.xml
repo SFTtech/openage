@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="28" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="28" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" bodystart="28" bodyend="37"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -53,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="40" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" compoundref="dynamic__resource_8cpp" startline="14" endline="19">chunk_info_t</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -67,7 +68,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="43" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" prot="public" static="no" mutable="no">
         <type>std::unique_ptr&lt; int16_t[]&gt;</type>
@@ -81,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="46" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -104,7 +110,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="48" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="14" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp" bodystart="14" bodyend="19"/>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" compoundref="dynamic__resource_8h" startline="40">state</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1audio_1_1chunk__info__t_1a2f0650c5224912a8e46d0067c6749b0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -117,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/dynamic_resource.h" line="49" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="49" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -126,12 +133,12 @@
 <para>information storage about a piece of raw audio data. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="762">
+      <node id="466">
         <label>openage::audio::chunk_info_t</label>
         <link refid="structopenage_1_1audio_1_1chunk__info__t"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/audio/dynamic_resource.h" line="27" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="27" bodyend="50"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h" bodystart="27" bodyend="50"/>
     <listofallmembers>
       <member refid="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>buffer</name></member>
       <member refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>chunk_info_t</name></member>

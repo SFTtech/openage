@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::ProjectileAction Class Reference</title>
+<title>openage: openage::ProjectileAction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1_projectile_action.xht
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::ProjectileAction:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::ProjectileAction:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::ProjectileAction:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::ProjectileAction:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -211,6 +214,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01303">1303</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;    :</div><div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;    <a class="code" href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">UnitAction</a>{e, <a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">graphic_type::standing</a>},</div><div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;    <a class="code" href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">has_hit</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;</div><div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;    <span class="comment">// find speed to move</span></div><div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;    <span class="keyword">auto</span> &amp;sp_attr = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">attr_type::speed</a>&gt;();</div><div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;    <span class="keywordtype">double</span> projectile_speed = sp_attr.unit_speed.to_double();</div><div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;</div><div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;    <span class="comment">// arc of projectile</span></div><div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;    <span class="keyword">auto</span> &amp;pr_attr = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2">attr_type::projectile</a>&gt;();</div><div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;    <span class="keywordtype">float</span> projectile_arc = pr_attr.projectile_arc;</div><div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;</div><div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;    <span class="comment">// distance and time to target</span></div><div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;    coord::phys3_delta d = target - this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw;</div><div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;    <span class="keywordtype">double</span> distance_to_target = d.length();</div><div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;    <span class="keywordtype">double</span> flight_time = distance_to_target / projectile_speed;</div><div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;</div><div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;</div><div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    <span class="keywordflow">if</span> (projectile_arc &lt; 0) {</div><div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;        <span class="comment">// TODO negative values probably indicate something</span></div><div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;        projectile_arc += 0.2;</div><div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;    }</div><div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;</div><div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;    <span class="comment">// now figure gravity from arc parameter</span></div><div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;    <span class="comment">// TODO projectile arc is the ratio between horizontal and</span></div><div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;    <span class="comment">// vertical components of the initial direction</span></div><div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_projectile_action.xhtml#ab5952a52fdb1e1a13a098f301e0d2552">grav</a> = 0.01f * (exp(pow(projectile_arc, 0.5f)) - 1) * projectile_speed;</div><div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;</div><div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;    <span class="comment">// inital launch direction</span></div><div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;    <span class="keyword">auto</span> &amp;d_attr = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">attr_type::direction</a>&gt;();</div><div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;    d_attr.unit_dir = d * (projectile_speed / distance_to_target);</div><div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;</div><div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;    <span class="comment">// account for initial height</span></div><div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a> initial_height = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw.up;</div><div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;    d_attr.unit_dir.up = <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a>((<a class="code" href="classopenage_1_1_projectile_action.xhtml#ab5952a52fdb1e1a13a098f301e0d2552">grav</a> * flight_time) / 2) - (initial_height * (1 / flight_time));</div><div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;}</div><div class="ttc" id="classopenage_1_1_projectile_action_xhtml_a6343bf60c356f44ff0a403a715f44d96"><div class="ttname"><a href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">openage::ProjectileAction::has_hit</a></div><div class="ttdeci">bool has_hit</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00645">action.h:645</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::attr_type::speed</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::graphic_type::standing</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_projectile_action_xhtml_ab5952a52fdb1e1a13a098f301e0d2552"><div class="ttname"><a href="classopenage_1_1_projectile_action.xhtml#ab5952a52fdb1e1a13a098f301e0d2552">openage::ProjectileAction::grav</a></div><div class="ttdeci">double grav</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00644">action.h:644</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_a257112db0574d981f4bd017656c687fe"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">openage::coord::phys_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt; phys_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00022">declarations.h:22</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::attr_type::direction</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2">openage::attr_type::projectile</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::standing</a>.</p>
 
 </div>
 </div>
@@ -238,7 +254,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01341">1341</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -270,7 +286,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00640">640</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad24686b91c460987d438c67089d0c272"></a>
@@ -300,7 +316,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00639">639</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a588ecb867716c22ac7a571274733ad7a"></a>
@@ -330,6 +346,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01378">1378</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;                                       {</div><div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">has_hit</a> || this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw.up &lt;= 0);</div><div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;}</div><div class="ttc" id="classopenage_1_1_projectile_action_xhtml_a6343bf60c356f44ff0a403a715f44d96"><div class="ttname"><a href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">openage::ProjectileAction::has_hit</a></div><div class="ttdeci">bool has_hit</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00645">action.h:645</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00645">has_hit</a>, and <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>.</p>
 
 </div>
 </div>
@@ -360,6 +381,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00641">641</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;projectile&quot;</span>; }</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00291">openage.util.fslike.path.Path::stem()</a>, <a class="el" href="path_8py_source.xhtml#l00274">openage.util.fslike.path.Path::suffix()</a>, and <a class="el" href="path_8py_source.xhtml#l00283">openage.util.fslike.path.Path::suffixes()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action_a672c847571f694e108b2245c544e3952_icgraph.svg" width="595" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -390,7 +421,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#ac84d3cbfa3c489b3975952af157929cb">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01376">1376</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a5be4d6d237bbb52a036d368af97956b6"></a>
@@ -421,6 +452,25 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l01343">1343</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;                                               {</div><div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;    <span class="keyword">auto</span> &amp;d_attr = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">attr_type::direction</a>&gt;();</div><div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;</div><div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;    <span class="comment">// apply gravity</span></div><div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;    d_attr.unit_dir.up -= this-&gt;<a class="code" href="classopenage_1_1_projectile_action.xhtml#ab5952a52fdb1e1a13a098f301e0d2552">grav</a> * time;</div><div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;</div><div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;    coord::phys3 new_position = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw + d_attr.unit_dir * time;</div><div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;move(new_position)) {</div><div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;</div><div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;        <span class="comment">// TODO implement friendly_fire (now friendly_fire is always on), attack_attribute.friendly_fire</span></div><div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;</div><div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;        <span class="comment">// find object which was hit</span></div><div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;        <span class="keyword">auto</span> terrain = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;get_terrain();</div><div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;        TileContent *tc = terrain-&gt;get_data(new_position.to_tile3().to_tile());</div><div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;        <span class="keywordflow">if</span> (tc &amp;&amp; !tc-&gt;obj.empty()) {</div><div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> obj_location : tc-&gt;obj) {</div><div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;                <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>.get() != obj_location &amp;&amp;</div><div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;                    obj_location-&gt;check_collisions()) {</div><div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;                    this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">damage_unit</a>(obj_location-&gt;unit);</div><div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;                    <span class="keywordflow">break</span>;</div><div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;                }</div><div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;            }</div><div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;        }</div><div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;</div><div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;        <span class="comment">// TODO implement area of effect, attack_attribute.area_of_effect</span></div><div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;</div><div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;        <a class="code" href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">has_hit</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;    }</div><div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;</div><div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;    <span class="comment">// inc frame</span></div><div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a> += time * this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">frame_rate</a>;</div><div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;}</div><div class="ttc" id="classopenage_1_1_projectile_action_xhtml_a6343bf60c356f44ff0a403a715f44d96"><div class="ttname"><a href="classopenage_1_1_projectile_action.xhtml#a6343bf60c356f44ff0a403a715f44d96">openage::ProjectileAction::has_hit</a></div><div class="ttdeci">bool has_hit</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00645">action.h:645</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a8f995b745da73c4e95ec83d8b14c38c6"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">openage::UnitAction::frame</a></div><div class="ttdeci">float frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00203">action.h:203</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_projectile_action_xhtml_ab5952a52fdb1e1a13a098f301e0d2552"><div class="ttname"><a href="classopenage_1_1_projectile_action.xhtml#ab5952a52fdb1e1a13a098f301e0d2552">openage::ProjectileAction::grav</a></div><div class="ttdeci">double grav</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00644">action.h:644</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a7beffb7ad454cf467d7a6b843df939c7"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7">openage::UnitAction::damage_unit</a></div><div class="ttdeci">bool damage_unit(Unit &amp;target)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00147">action.cpp:147</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::attr_type::direction</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d0154b413ca914966b9796bc37193b8"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">openage::UnitAction::frame_rate</a></div><div class="ttdeci">float frame_rate</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00204">action.h:204</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8cpp_source.xhtml#l00147">openage::UnitAction::damage_unit()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::direction</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00203">openage::UnitAction::frame</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00204">openage::UnitAction::frame_rate</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00644">grav</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00645">has_hit</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, <a class="el" href="terrain_8h_source.xhtml#l00059">openage::TileContent::obj</a>, <a class="el" href="tile_8h_source.xhtml#l00059">openage::coord::tile3::to_tile()</a>, and <a class="el" href="phys_8cpp_source.xhtml#l00016">openage::coord::phys3::to_tile3()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_projectile_action_a5be4d6d237bbb52a036d368af97956b6_cgraph.svg" width="100%" height="481"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -447,6 +497,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00644">644</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l01343">update()</a>.</p>
+
 </div>
 </div>
 <a id="a6343bf60c356f44ff0a403a715f44d96"></a>
@@ -471,11 +523,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00645">645</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l01378">completed()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l01343">update()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

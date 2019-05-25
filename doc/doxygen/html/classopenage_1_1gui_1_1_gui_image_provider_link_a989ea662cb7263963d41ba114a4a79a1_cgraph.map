@@ -1,0 +1,7 @@
+<map id="openage::gui::GuiImageProviderLink::provider_by_filename" name="openage::gui::GuiImageProviderLink::provider_by_filename">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,211,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml#a1d48a1b142023a067b5d20a23d4e9e16" title=" " alt="" coords="259,5,473,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_image_provider_link.xhtml#ae433067db623c8643f5ed0103c4d6863" title=" " alt="" coords="263,71,469,112"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_image_provider_impl.xhtml#a3611fcc07dd0e4199aa4465f20cfef5e" title=" " alt="" coords="531,37,714,79"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml#a02494fab112e3dda7c9fdd12c66541b9" title=" " alt="" coords="521,103,724,144"/>
+</map>

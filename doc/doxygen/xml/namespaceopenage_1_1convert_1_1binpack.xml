@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1binpack" kind="namespace" language="Python">
+    <compoundname>openage::convert::binpack</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_best_packer" prot="public">openage::convert::binpack::BestPacker</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer" prot="public">openage::convert::binpack::BinaryTreePacker</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_column_packer" prot="public">openage::convert::binpack::ColumnPacker</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_packer" prot="public">openage::convert::binpack::Packer</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_packer_node" prot="public">openage::convert::binpack::PackerNode</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1binpack_1_1_row_packer" prot="public">openage::convert::binpack::RowPacker</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1binpack_1a74908a15b1ee442e6e51755393774a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.factor</definition>
+        <argsstring>(n)</argsstring>
+        <name>factor</name>
+        <param>
+          <type>n</type>
+          <defname>n</defname>
+        </param>
+        <briefdescription>
+<para>Return two (preferable close) factors of n. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="14" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1binpack_1ac86edd0acbc07bb4b440e2f911ca50f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.maxside_heuristic</definition>
+        <argsstring>(block)</argsstring>
+        <name>maxside_heuristic</name>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+        </param>
+        <briefdescription>
+<para>Heuristic Order blocks by maximum side. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="144" bodyend="150"/>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -98,7 +98,7 @@
         <label>cstdint</label>
       </node>
       <node id="8170">
-        <label>libopenage/event/loop.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp</label>
         <link refid="loop_8cpp"/>
         <childnode refid="8171" relation="include">
         </childnode>
@@ -436,7 +436,7 @@
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref><sp/>&amp;params)<sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classopenage_1_1event_1_1_loop_1ac56f6ba1b5422a37dd76082d1f12d588" kindref="member">classstore</ref>.find(name);</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/><ref refid="classopenage_1_1event_1_1_loop_1ac56f6ba1b5422a37dd76082d1f12d588" kindref="member">classstore</ref>.end())<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>subscribe<sp/>to<sp/>eventclass<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>subscribe<sp/>to<sp/>eventclass<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>which<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal">};</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
@@ -627,6 +627,6 @@
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/loop.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp"/>
   </compounddef>
 </doxygen>

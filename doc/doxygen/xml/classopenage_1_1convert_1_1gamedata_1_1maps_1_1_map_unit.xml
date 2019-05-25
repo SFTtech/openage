@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::maps::MapUnit</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a688e42b71a3b5400de32b5e251dcde6b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.maps.MapUnit::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;randommap&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a11152ef78bad493b4c3b51679445cc1c" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.maps.MapUnit::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;map_unit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a79d78c27ab30e97f1c7ad3f80c7cc38b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.maps.MapUnit::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;random <ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref> unit information data&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a5101b5562e866920f9e3b7641cb6af0f" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.maps.MapUnit::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ, &quot;unit&quot;, &quot;int32_t&quot;),
+        (READ, &quot;host_terrain&quot;, &quot;int32_t&quot;),
+        (READ, &quot;group_placing&quot;, &quot;int8_t&quot;),
+        (READ, &quot;scale_flag&quot;, &quot;int8_t&quot;),
+        (READ, &quot;padding1&quot;, &quot;int16_t&quot;),
+        (READ, &quot;objects_per_group&quot;, &quot;int32_t&quot;),
+        (READ, &quot;fluctuation&quot;, &quot;int32_t&quot;),
+        (READ, &quot;groups_per_player&quot;, &quot;int32_t&quot;),
+        (READ, &quot;group_radius&quot;, &quot;int32_t&quot;),
+        (READ, &quot;own_at_start&quot;, &quot;int32_t&quot;),
+        (READ, &quot;set_place_for_all_players&quot;, &quot;int32_t&quot;),
+        (READ, &quot;min_distance_to_players&quot;, &quot;int32_t&quot;),
+        (READ, &quot;max_distance_to_players&quot;, &quot;int32_t&quot;),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1252">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1251">
+        <label>openage.convert.gamedata.maps.MapUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit"/>
+        <childnode refid="1252" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1254">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1253">
+        <label>openage.convert.gamedata.maps.MapUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit"/>
+        <childnode refid="1254" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" bodystart="78" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a5101b5562e866920f9e3b7641cb6af0f" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a11152ef78bad493b4c3b51679445cc1c" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a688e42b71a3b5400de32b5e251dcde6b" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit_1a79d78c27ab30e97f1c7ad3f80c7cc38b" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::maps::MapUnit</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

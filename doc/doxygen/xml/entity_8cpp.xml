@@ -6,7 +6,7 @@
     <includes local="no">nyan/nyan.h</includes>
     <incdepgraph>
       <node id="24153">
-        <label>libopenage/simulation/entity.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp</label>
         <link refid="entity_8cpp"/>
         <childnode refid="24154" relation="include">
         </childnode>
@@ -44,6 +44,6 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::simulation</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/simulation/entity.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp"/>
   </compounddef>
 </doxygen>

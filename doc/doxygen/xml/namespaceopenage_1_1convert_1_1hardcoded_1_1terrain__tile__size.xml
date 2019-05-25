@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1hardcoded_1_1terrain__tile__size" kind="namespace" language="Python">
+    <compoundname>openage::convert::hardcoded::terrain_tile_size</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1terrain__tile__size_1ac0661992834d6d816483f3734497a838" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::hardcoded::terrain_tile_size.TILE_HALFSIZE</definition>
+        <argsstring></argsstring>
+        <name>TILE_HALFSIZE</name>
+        <initializer>=  {
+    &quot;x&quot;: 48,
+    &quot;y&quot;: 24,
+}</initializer>
+        <briefdescription>
+<para>Tile size for terrain pieces. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/terrain_tile_size.py" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/terrain_tile_size.py" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/terrain_tile_size.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

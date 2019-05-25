@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__versions_8py" kind="file" language="Python">
+    <compoundname>game_versions.py</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1game__versions_1_1_support" prot="public">openage::convert::game_versions::Support</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1game__versions_1_1_game_version" prot="public">openage::convert::game_versions::GameVersion</innerclass>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1game__versions">openage::convert::game_versions</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1game__versions" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;Detect<sp/>the<sp/>version<sp/>of<sp/>the<sp/>original<sp/>game&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>enum</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">@enum.unique</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1game__versions_1_1_support" kindref="compound">Support</ref>(enum.Enum):</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Support<sp/>state<sp/>of<sp/>a<sp/>game<sp/>version</highlight></codeline>
+<codeline lineno="12"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>nope<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;not<sp/>supported&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1convert_1_1game__versions_1_1_support" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/>yes<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;supported&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1convert_1_1game__versions_1_1_support_1aea9115d56b1f686d4604bbe698c91776" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>breaks<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;presence<sp/>breaks<sp/>conversion&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1convert_1_1game__versions_1_1_support_1a2025df348b113be178b64725dcc74299" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1convert_1_1game__versions_1_1_support_1aee117e8853794311a9ba99abb9f3fc14" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">@enum.unique</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version" kindref="compound">GameVersion</ref>(enum.Enum):</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>An<sp/>installed<sp/>version<sp/>of<sp/>the<sp/>original<sp/>game.<sp/>Multiple<sp/>may<sp/>coexist<sp/>(e.g.<sp/>AoK</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>and<sp/>TC).<sp/>We<sp/>should<sp/>usually<sp/>distinguish<sp/>versions<sp/>only<sp/>as<sp/>far<sp/>as<sp/>we&apos;re</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>concerned<sp/>(i.e.<sp/>assets<sp/>changed).</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>age_1<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>7.2,</highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af76207084c5bb197ea1c053c13d2b5b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>1&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.nope,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;empires.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data/empires.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>age_ror<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>7.24,</highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ae079f1815b2c339a678a7a222dfb1826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>1:<sp/>The<sp/>Rise<sp/>of<sp/>Rome&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.nope,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;empiresx.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data2/empires2.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_aok<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>11.5,</highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af2c66f95e78ca6f81930368393ebca33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>The<sp/>Age<sp/>of<sp/>Kings&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.nope,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;empires2.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data/empires2.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_tc<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>11.76,</highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a1442989afc9fb24d7f4c41acde2f0c34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>The<sp/>Conquerors&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;age2_x1/age2_x1.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data/empires2_x1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_tc_10c<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac7f5b64ce9e8e074c2ebcb7cca89ebc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>The<sp/>Conquerors,<sp/>Patch<sp/>1.0c&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;age2_x1/age2_x1.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data/empires2_x1_p1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>swgb_10<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.1,</highlight></codeline>
+<codeline lineno="57" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a9a97301f65dd9b7e807a1f1d9e0a7a3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Star<sp/>Wars:<sp/>Galactic<sp/>Battlegrounds&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.nope,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;Game/Battlegrounds.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;Game/Data/GENIE.DAT&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>swgb_cc<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.2,</highlight></codeline>
+<codeline lineno="63" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ab52f56978e2a0a24037d8c4eaf91c958" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Star<sp/>Wars:<sp/>Galactic<sp/>Battlegrounds:<sp/>Clone<sp/>Campaigns&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.nope,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;Game/battlegrounds_x1.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;Game/Data/genie_x1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_tc_fe<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a81f57ace79275a3f0ae6b7174bd4de92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>Forgotten<sp/>Empires&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;age2_x1/age2_x2.exe&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;games/forgotten<sp/>empires/data/empires2_x1_p1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_hd_3x<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a82fe43e6803ccbe9bc9ca70c1e3d1d6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>HD<sp/>Edition<sp/>(Version<sp/>3.0+)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;AoK<sp/>HD.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;data/empires2_x1_p1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>HD<sp/>edition<sp/>version<sp/>4.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_hd_fe<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="83" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ad99a02e1ed086a68a5fbbb7b643046f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>HD<sp/>+<sp/>Forgotten<sp/>Empires<sp/>(Version<sp/>4.0+)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;AoK<sp/>HD.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;resources/_common/dat/empires2_x1_p1.dat&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>HD<sp/>Edition<sp/>v4.7+<sp/>with<sp/>African<sp/>Kingdoms.<sp/>Maybe<sp/>4.6<sp/>as<sp/>well.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_hd_ak<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="90" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1adfcd4f1bd95ad8825f67c1b119526379" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>HD<sp/>+<sp/>African<sp/>Kingdoms<sp/>(Version<sp/>4.7+)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.yes,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;AoK<sp/>HD.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;resources/_common/dat/empires2_x2_p1.dat&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;resources/_packages/african-kingdoms/config.json&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>HD<sp/>Edition<sp/>v5.1+<sp/>with<sp/>Rise<sp/>of<sp/>the<sp/>Rajas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>age2_hd_rajas<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12.0,</highlight></codeline>
+<codeline lineno="98" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aee654afc5f8f9301baeddfdeae62c4ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Age<sp/>of<sp/>Empires<sp/>2:<sp/>HD<sp/>+<sp/>Rise<sp/>of<sp/>the<sp/>Rajas<sp/>(Version<sp/>5.x)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Support.breaks,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&apos;AoK<sp/>HD.exe&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;resources/_common/dat/empires2_x2_p1.dat&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;resources/_packages/rise-of-the-rajas/config.json&apos;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1afba0fc6205a68cefe5dd061dd700aa40" kindref="member">__init__</ref>(self,<sp/>engine_version,<sp/>description,<sp/>support,<sp/>required_files=None):</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac74c8ad1b0669a87abbd984337754e69" kindref="member">engine_version</ref><sp/>=<sp/>engine_version</highlight></codeline>
+<codeline lineno="106" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1afba0fc6205a68cefe5dd061dd700aa40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" kindref="member">description</ref><sp/>=<sp/>description</highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac74c8ad1b0669a87abbd984337754e69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a5be793ab73b03a819ec2d013ffe3111b" kindref="member">support</ref><sp/>=<sp/>support</highlight></codeline>
+<codeline lineno="108" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a3103aa8c82a2dbbcf767086b15c05662" kindref="member">required_files</ref><sp/>=<sp/>required_files<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/>frozenset()</highlight></codeline>
+<codeline lineno="109" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a5be793ab73b03a819ec2d013ffe3111b" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a3103aa8c82a2dbbcf767086b15c05662" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aed58c5ffa90ac28007062b087c2bf472" kindref="member">__str__</ref>(self):</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self.<ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" kindref="member">description</ref></highlight></codeline>
+<codeline lineno="112" refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aed58c5ffa90ac28007062b087c2bf472" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1game__versions_1ada336dd772d11efcb72fc7ce67aba0c2" kindref="member">get_game_versions</ref>(srcdir):</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="116"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Determine<sp/>what<sp/>versions<sp/>of<sp/>the<sp/>game<sp/>are<sp/>installed<sp/>in<sp/>srcdir.<sp/>Yield</highlight></codeline>
+<codeline lineno="117"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>GameVersion<sp/>values.</highlight></codeline>
+<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>version<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>GameVersion:</highlight></codeline>
+<codeline lineno="120" refid="namespaceopenage_1_1convert_1_1game__versions_1ada336dd772d11efcb72fc7ce67aba0c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>all(srcdir.joinpath(path).is_file()</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>path<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>version.required_files):</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/>version</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1game__versions_1a34537bbd9836f1e83d73d08545ff07c6" kindref="member">has_x1_p1</ref>(versions):</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="127"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Determine<sp/>whether<sp/>any<sp/>of<sp/>the<sp/>versions<sp/>has<sp/>patch<sp/>1,<sp/>i.e.<sp/>the<sp/>*_x1_p1.*<sp/>files</highlight></codeline>
+<codeline lineno="128"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>ver<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>versions:</highlight></codeline>
+<codeline lineno="130" refid="namespaceopenage_1_1convert_1_1game__versions_1a34537bbd9836f1e83d73d08545ff07c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>ver_file<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>ver.required_files:</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;x1_p1&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>ver_file:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1pefile_1_1_p_e_file" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::pefile::PEFile</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1ae037be3836a1f3951820eee9cb28f256" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.pefile.PEFile::fileobj</definition>
+        <argsstring></argsstring>
+        <name>fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="198" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="198" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf_1aab2f9c67bf2e32d12e6199053c0bf429" compoundref="peresource_8py" startline="115" endline="119">openage.convert.peresource.ResourceLeaf.open</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" compoundref="pefile_8py" startline="212" endline="222">openage.convert.pefile.PEFile.open_section</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a825d6d7c6a97dd4e8178bfa2e40ec56b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.pefile.PEFile::doshdr</definition>
+        <argsstring></argsstring>
+        <name>doshdr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a427814db50bd73ba116cf8db256f878c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.pefile.PEFile::coffhdr</definition>
+        <argsstring></argsstring>
+        <name>coffhdr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="201" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a1b4bc09936e1d838803b5410a5655c99" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.pefile.PEFile::opthdr</definition>
+        <argsstring></argsstring>
+        <name>opthdr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="202" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a93b0d4697c3c5c7fa41af57106e6b0ed" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.pefile.PEFile::sections</definition>
+        <argsstring></argsstring>
+        <name>sections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="204" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="204" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" compoundref="pefile_8py" startline="212" endline="222">openage.convert.pefile.PEFile.open_section</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a60449ccfe2e14452ec0fcdde0b4bcfbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.pefile.PEFile.__init__</definition>
+        <argsstring>(self, fileobj)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1ae037be3836a1f3951820eee9cb28f256" kindref="member">fileobj</ref></type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="158" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="158" bodyend="205"/>
+        <references refid="namespaceopenage_1_1util_1abeb6a94572d93a14498661545b8332ec" compoundref="strings_8cpp" startline="72" endline="89">openage::util::rstrip</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.pefile.PEFile.open_section</definition>
+        <argsstring>(self, section_name)</argsstring>
+        <name>open_section</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>section_name</type>
+          <defname>section_name</defname>
+        </param>
+        <briefdescription>
+<para>Returns a tuple of data, va for the given section. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   data is a file-like object (StreamFragment),
+   and va is the RVA of the section start.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="212" bodyend="222"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">openage::util::filelike::Python::fileobj</references>
+        <references refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1abf97b39fe0ee9af8ae34e8c43d6d4660" compoundref="drs_8py" startline="79">openage.convert.drs.DRS.fileobj</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1ae037be3836a1f3951820eee9cb28f256" compoundref="pefile_8py" startline="198">openage.convert.pefile.PEFile.fileobj</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" compoundref="cab_8py" startline="435">openage.cabextract.cab.CABFolderStream.fileobj</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a93b0d4697c3c5c7fa41af57106e6b0ed" compoundref="pefile_8py" startline="204">openage.convert.pefile.PEFile.sections</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a60b529bb41cb0dec859e7443c430196f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.pefile.PEFile.resources</definition>
+        <argsstring>(self)</argsstring>
+        <name>resources</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns a PEResources object for self. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="226" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="226" bodyend="229"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Reads Microsoft PE files. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The constructor takes a file-like object. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1541">
+        <label>openage.convert.pefile.PEFile</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="156" bodyend="229"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a60449ccfe2e14452ec0fcdde0b4bcfbc" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a427814db50bd73ba116cf8db256f878c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>coffhdr</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a825d6d7c6a97dd4e8178bfa2e40ec56b" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>doshdr</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1ae037be3836a1f3951820eee9cb28f256" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>fileobj</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>open_section</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a1b4bc09936e1d838803b5410a5655c99" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>opthdr</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a60b529bb41cb0dec859e7443c430196f" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>resources</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a93b0d4697c3c5c7fa41af57106e6b0ed" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEFile</scope><name>sections</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

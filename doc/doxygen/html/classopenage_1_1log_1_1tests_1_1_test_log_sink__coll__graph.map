@@ -1,8 +1,12 @@
 <map id="openage::log::tests::TestLogSink" name="openage::log::tests::TestLogSink">
-<area shape="rect" id="node1" title=" " alt="" coords="45,1047,203,1153"/>
-<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_log_sink.xhtml" title=" " alt="" coords="45,876,203,997"/>
-<area shape="rect" id="node3" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="59,736,189,813"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="184,419,331,687"/>
-<area shape="rect" id="node5" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="26,264,155,356"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="5,5,176,215"/>
+<area shape="rect" id="node1" title=" " alt="" coords="81,1619,239,1725"/>
+<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_log_sink.xhtml" title=" " alt="" coords="81,1448,239,1569"/>
+<area shape="rect" id="node3" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="95,1308,225,1385"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="220,991,367,1259"/>
+<area shape="rect" id="node5" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="41,755,170,847"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="20,403,191,612"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="5,145,205,340"/>
+<area shape="rect" id="node8" title=" " alt="" coords="56,5,155,83"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="194,675,406,928"/>
+<area shape="rect" id="node10" title=" " alt="" coords="254,469,346,546"/>
 </map>

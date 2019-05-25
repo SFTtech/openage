@@ -14,13 +14,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/simulation/entity.cpp" line="11" column="1" bodyfile="libopenage/simulation/entity.cpp" bodystart="11" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp" bodystart="11" bodyend="13"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/simulation/entity.cpp" line="9" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp" line="9" column="1"/>
   </compounddef>
 </doxygen>

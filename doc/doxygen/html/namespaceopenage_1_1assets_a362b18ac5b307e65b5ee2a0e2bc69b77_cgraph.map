@@ -1,0 +1,7 @@
+<map id="openage.assets.test" name="openage.assets.test">
+<area shape="rect" id="node1" title="Tests whether a specific asset exists." alt="" coords="5,46,145,73"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072" title=" " alt="" coords="193,5,391,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1assets.xhtml#a3e1a981f1a6162a6e8205a0dcfc4e3b9" title="Returns a Path object for the game assets." alt="" coords="224,71,360,112"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="439,13,565,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="613,13,807,39"/>
+</map>

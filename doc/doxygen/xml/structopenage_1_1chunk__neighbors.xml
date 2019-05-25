@@ -15,7 +15,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_chunk.h" line="37" column="1" bodyfile="libopenage/terrain/terrain_chunk.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1af40a0b5e61397331f4efc9543f7fdd44" compoundref="terrain_8cpp" startline="82" endline="107">openage::Terrain::attach_chunk</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a9ce94c372f7e86310506844b352fb20c" compoundref="terrain_8cpp" startline="212" endline="224">openage::Terrain::get_chunk_neighbors</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1aa27071b50ca9d928ef1a9ce1af5b8328" compoundref="terrain__chunk_8cpp" startline="58" endline="82">openage::TerrainChunk::get_data_neigh</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,43 +28,43 @@
 <para>neighbor ids: 0 7 1 6 @ 2 5 3 4 </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="765">
+      <node id="769">
         <label>openage::TerrainChunk</label>
         <link refid="classopenage_1_1_terrain_chunk"/>
-        <childnode refid="766" relation="usage">
+        <childnode refid="770" relation="usage">
           <edgelabel>+data</edgelabel>
         </childnode>
-        <childnode refid="767" relation="usage">
+        <childnode refid="771" relation="usage">
           <edgelabel>+terrain</edgelabel>
         </childnode>
-        <childnode refid="764" relation="usage">
+        <childnode refid="768" relation="usage">
           <edgelabel>+neighbors</edgelabel>
         </childnode>
       </node>
-      <node id="768">
+      <node id="772">
         <label>openage::terrain_meta</label>
         <link refid="structopenage_1_1terrain__meta"/>
       </node>
-      <node id="764">
+      <node id="768">
         <label>openage::chunk_neighbors</label>
         <link refid="structopenage_1_1chunk__neighbors"/>
-        <childnode refid="765" relation="usage">
+        <childnode refid="769" relation="usage">
           <edgelabel>+neighbor</edgelabel>
         </childnode>
       </node>
-      <node id="767">
+      <node id="771">
         <label>openage::Terrain</label>
         <link refid="classopenage_1_1_terrain"/>
-        <childnode refid="768" relation="usage">
+        <childnode refid="772" relation="usage">
           <edgelabel>-meta</edgelabel>
         </childnode>
       </node>
-      <node id="766">
+      <node id="770">
         <label>openage::TileContent</label>
         <link refid="classopenage_1_1_tile_content"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain_chunk.h" line="36" column="1" bodyfile="libopenage/terrain/terrain_chunk.h" bodystart="36" bodyend="38"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" bodystart="36" bodyend="38"/>
     <listofallmembers>
       <member refid="structopenage_1_1chunk__neighbors_1aa77bd299cd7666a9072e5eb7575eb578" prot="public" virt="non-virtual"><scope>openage::chunk_neighbors</scope><name>neighbor</name></member>
     </listofallmembers>

@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::blendomatic::Blendomatic</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a83eecfa18e9ff264f5e5da9cae3af3e2" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.blendomatic.Blendomatic::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;blending_mode&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="204" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="204" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ac09e6c33a6e513d8e880fec2422c4c7a" compoundref="data__definition_8py" startline="136" endline="138">openage.convert.dataformat.data_definition.DataDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a09caba3631e9613aa48899149d860e18" compoundref="struct__definition_8py" startline="235" endline="237">openage.convert.dataformat.struct_definition.StructDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" compoundref="exportable_8py" startline="483" endline="485">openage.convert.dataformat.exportable.Exportable.get_effective_type</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1ad5ed31b1a5c68ac839489b9ca643dbf1" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.blendomatic.Blendomatic::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;blending_mode&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="205" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="205" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a498035a9000fbe2e5934603c8034b08d" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.blendomatic.Blendomatic::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  (&quot;describes one blending mode, &quot;
+                          &quot;a blending transition shape &quot;
+                          &quot;between two different terrain types.&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="206" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="206" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a69f5b5dbbe7f5db9349df504ae4c503a" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.blendomatic.Blendomatic::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  (
+        (True, &quot;blend_mode&quot;, &quot;int32_t&quot;),
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="209" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="209" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1ad8e99520bea4219c0fc3670812d46b12" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.Blendomatic::blendomatic_header</definition>
+        <argsstring></argsstring>
+        <name>blendomatic_header</name>
+        <initializer>=  Struct(&quot;&lt; I I&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="217" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a4ea5eab1a5da38d599d8b984ec24242d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.Blendomatic::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="223" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a495f2c62536ea3fb19f20c50b7670e53" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.Blendomatic::blending_modes</definition>
+        <argsstring></argsstring>
+        <name>blending_modes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="232" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="232" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a31d656f8b2b72517f347404d7eba9e04" compoundref="blendomatic_8py" startline="278" endline="280">openage.convert.blendomatic.Blendomatic.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a259476ed46a4076dcd1aa3d82914d2f1" compoundref="blendomatic_8py" startline="255" endline="261">openage.convert.blendomatic.Blendomatic.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a289ac918b5495e290fd58e9096504238" compoundref="blendomatic_8py" startline="250" endline="254">openage.convert.blendomatic.Blendomatic.get_textures</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a521870c86f9bc2a0dbfbdebefc04479b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.__init__</definition>
+        <argsstring>(self, fileobj)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="219" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="219" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a289ac918b5495e290fd58e9096504238" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.get_textures</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_textures</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>generate a list of textures. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   one atlas per blending mode is generated,
+   each atlas contains all blending masks merged on one texture
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="250" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="250" bodyend="254"/>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a495f2c62536ea3fb19f20c50b7670e53" compoundref="blendomatic_8py" startline="232">openage.convert.blendomatic.Blendomatic.blending_modes</references>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a3bd1c711bafb552611f48267652e0d17" compoundref="blendomatic_8py" startline="269" endline="277">openage.convert.blendomatic.Blendomatic.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a259476ed46a4076dcd1aa3d82914d2f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.dump</definition>
+        <argsstring>(self, filename)</argsstring>
+        <name>dump</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3">dump</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+<para>main data dumping function, the magic happens in here. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   recursively dumps all object members as DataDefinitions.
+
+   returns [DataDefinition, ..]
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="255" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="255" bodyend="261"/>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a495f2c62536ea3fb19f20c50b7670e53" compoundref="blendomatic_8py" startline="232">openage.convert.blendomatic.Blendomatic.blending_modes</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a6753e8c61d0a3df53ff6a5868d9501c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.structs</definition>
+        <argsstring>(cls)</argsstring>
+        <name>structs</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6">structs</reimplements>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>create struct definitions for this class and its subdata references. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="263" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="263" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a3bd1c711bafb552611f48267652e0d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.save</definition>
+        <argsstring>(self, fslikeobj, path, save_format)</argsstring>
+        <name>save</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>fslikeobj</type>
+          <defname>fslikeobj</defname>
+        </param>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <param>
+          <type>save_format</type>
+          <defname>save_format</defname>
+        </param>
+        <briefdescription>
+<para>Save the blending mask textures to disk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="269" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="269" bodyend="277"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a289ac918b5495e290fd58e9096504238" compoundref="blendomatic_8py" startline="250" endline="254">openage.convert.blendomatic.Blendomatic.get_textures</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a31d656f8b2b72517f347404d7eba9e04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.Blendomatic.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="278" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="278" bodyend="280"/>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a495f2c62536ea3fb19f20c50b7670e53" compoundref="blendomatic_8py" startline="232">openage.convert.blendomatic.Blendomatic.blending_modes</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="924">
+        <label>openage.convert.blendomatic.Blendomatic</label>
+        <link refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic"/>
+        <childnode refid="925" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="925">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="926">
+        <label>openage.convert.blendomatic.Blendomatic</label>
+        <link refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic"/>
+        <childnode refid="927" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="927">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="202" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="202" bodyend="280"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a521870c86f9bc2a0dbfbdebefc04479b" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::exportable::Exportable."><scope>openage::convert::blendomatic::Blendomatic</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a31d656f8b2b72517f347404d7eba9e04" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a495f2c62536ea3fb19f20c50b7670e53" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>blending_modes</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1ad8e99520bea4219c0fc3670812d46b12" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>blendomatic_header</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a69f5b5dbbe7f5db9349df504ae4c503a" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a259476ed46a4076dcd1aa3d82914d2f1" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a289ac918b5495e290fd58e9096504238" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>get_textures</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a4ea5eab1a5da38d599d8b984ec24242d" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>header</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a83eecfa18e9ff264f5e5da9cae3af3e2" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1ad5ed31b1a5c68ac839489b9ca643dbf1" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a3bd1c711bafb552611f48267652e0d17" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>save</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a498035a9000fbe2e5934603c8034b08d" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a6753e8c61d0a3df53ff6a5868d9501c5" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::Blendomatic</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

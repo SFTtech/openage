@@ -214,7 +214,7 @@
         <label>config.h</label>
       </node>
       <node id="6306">
-        <label>libopenage/error/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</label>
         <link refid="error_2handlers_8cpp"/>
         <childnode refid="6307" relation="include">
         </childnode>
@@ -409,6 +409,6 @@
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/error/handlers.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp"/>
   </compounddef>
 </doxygen>

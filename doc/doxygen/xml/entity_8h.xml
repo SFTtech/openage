@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="entity_8h" kind="file" language="C++">
     <compoundname>entity.h</compoundname>
-    <includedby refid="entity_8cpp" local="yes">libopenage/simulation/entity.cpp</includedby>
+    <includedby refid="entity_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp</includedby>
     <invincdepgraph>
       <node id="24159">
-        <label>libopenage/simulation/entity.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.cpp</label>
         <link refid="entity_8cpp"/>
       </node>
       <node id="24158">
-        <label>libopenage/simulation/entity.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.h</label>
         <link refid="entity_8h"/>
         <childnode refid="24159" relation="include">
         </childnode>
@@ -32,6 +32,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::simulation</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/simulation/entity.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/entity.h"/>
   </compounddef>
 </doxygen>

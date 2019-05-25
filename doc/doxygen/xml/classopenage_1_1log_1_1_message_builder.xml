@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="146" column="1" bodyfile="libopenage/log/message.h" bodystart="146" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="146" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1_message_builder_1adf059a277faadaa1bc391ca60edc0d91" compoundref="message_8cpp" startline="35" endline="48">MessageBuilder</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -31,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="149" column="1" bodyfile="libopenage/log/message.h" bodystart="149" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -91,7 +92,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="128" column="1" bodyfile="libopenage/log/message.cpp" bodystart="35" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp" bodystart="35" bodyend="48"/>
+        <references refid="classopenage_1_1log_1_1_message_builder_1aa6216bbeb4c6ed53a01fbb386273c3eb" compoundref="message_8h" startline="146">msg</references>
+        <references refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" compoundref="message_8h" startline="58">openage::log::message::text</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1aea1080aca07eb94d1485f355643ed5c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -104,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="132" column="1" bodyfile="libopenage/log/message.h" bodystart="132" bodyend="134"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1a75c42547786e0c297af961c981051125" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -117,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="136" column="1" bodyfile="libopenage/log/message.h" bodystart="136" bodyend="138"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="136" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1a79661ed4ee53415c549c95a765c7b4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -132,7 +135,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="140" column="1" bodyfile="libopenage/log/message.h" bodystart="140" bodyend="143"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="140" bodyend="143"/>
+        <references refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" compoundref="logsink_8cpp" startline="36" endline="39">openage::log::LogSinkList::instance</references>
+        <references refid="classopenage_1_1log_1_1_log_sink_list_1a8255667455a46558739de3cd0a514286" compoundref="logsink_8cpp" startline="81" endline="84">openage::log::LogSinkList::supports_loglevel</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -142,97 +147,140 @@
 <para>Auto-converts to message; via the MSG macro, this is the preferred way of creating log and exc messages. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3198">
+      <node id="4048">
         <label>openage::log::MessageBuilder</label>
         <link refid="classopenage_1_1log_1_1_message_builder"/>
-        <childnode refid="3199" relation="public-inheritance">
+        <childnode refid="4049" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3199">
+      <node id="4049">
         <label>openage::util::StringFormatter&lt; MessageBuilder &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="4050" relation="template-instance">
+          <edgelabel>&lt; MessageBuilder &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="4050">
+        <label>openage::util::StringFormatter&lt; ChildType &gt;</label>
         <link refid="classopenage_1_1util_1_1_string_formatter"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3200">
+      <node id="4051">
         <label>openage::log::MessageBuilder</label>
         <link refid="classopenage_1_1log_1_1_message_builder"/>
-        <childnode refid="3201" relation="public-inheritance">
+        <childnode refid="4052" relation="public-inheritance">
         </childnode>
-        <childnode refid="3207" relation="usage">
+        <childnode refid="4059" relation="usage">
           <edgelabel>-msg</edgelabel>
         </childnode>
       </node>
-      <node id="3202">
+      <node id="4053">
         <label>openage::util::CachableOSStream</label>
         <link refid="classopenage_1_1util_1_1_cachable_o_s_stream"/>
-        <childnode refid="3203" relation="usage">
+        <childnode refid="4054" relation="usage">
           <edgelabel>+stream</edgelabel>
         </childnode>
       </node>
-      <node id="3207">
+      <node id="4059">
         <label>openage::log::message</label>
         <link refid="structopenage_1_1log_1_1message"/>
-        <childnode refid="3208" relation="usage">
+        <childnode refid="4060" relation="usage">
           <edgelabel>+lvl</edgelabel>
         </childnode>
       </node>
-      <node id="3203">
+      <node id="4064">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4065" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="4065">
+        <label>NumericType</label>
+      </node>
+      <node id="4054">
         <label>openage::util::ExternalOStringStream</label>
         <link refid="classopenage_1_1util_1_1_external_o_string_stream"/>
-        <childnode refid="3204" relation="public-inheritance">
+        <childnode refid="4055" relation="public-inheritance">
         </childnode>
-        <childnode refid="3205" relation="usage">
+        <childnode refid="4056" relation="usage">
           <edgelabel>-buf</edgelabel>
         </childnode>
       </node>
-      <node id="3211">
+      <node id="4063">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4064" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3206">
+      <node id="4057">
         <label>std::streambuf</label>
       </node>
-      <node id="3209">
+      <node id="4061">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="3210" relation="usage">
+        <childnode refid="4062" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="4066" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3204">
+      <node id="4055">
         <label>std::ostream</label>
       </node>
-      <node id="3201">
+      <node id="4052">
         <label>openage::util::StringFormatter&lt; MessageBuilder &gt;</label>
         <link refid="classopenage_1_1util_1_1_string_formatter"/>
-        <childnode refid="3202" relation="usage">
+        <childnode refid="4053" relation="usage">
           <edgelabel>-stream_ptr</edgelabel>
         </childnode>
+        <childnode refid="4058" relation="template-instance">
+          <edgelabel>&lt; MessageBuilder &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3208">
+      <node id="4060">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="3209" relation="public-inheritance">
+        <childnode refid="4061" relation="public-inheritance">
         </childnode>
-        <childnode refid="3210" relation="usage">
+        <childnode refid="4062" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="3205">
-        <label>openage::util::ExternalStringBuf</label>
-        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
-        <childnode refid="3206" relation="public-inheritance">
+      <node id="4066">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4067" relation="usage">
+          <edgelabel>#value</edgelabel>
         </childnode>
       </node>
-      <node id="3210">
+      <node id="4067">
+        <label>DerivedType</label>
+      </node>
+      <node id="4056">
+        <label>openage::util::ExternalStringBuf</label>
+        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
+        <childnode refid="4057" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4062">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="3211" relation="public-inheritance">
+        <childnode refid="4063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4058">
+        <label>openage::util::StringFormatter&lt; ChildType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="4053" relation="usage">
+          <edgelabel>-stream_ptr</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/message.h" line="118" column="1" bodyfile="libopenage/log/message.h" bodystart="118" bodyend="150"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="118" bodyend="150"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_string_formatter_1adee46a55b6f42172045bc199ef0469f0" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>child_type_ref</name></member>
       <member refid="classopenage_1_1util_1_1_string_formatter_1a6d06a46c42c75fe91a1736559b914ab3" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>fmt</name></member>

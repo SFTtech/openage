@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1assets" kind="namespace" language="Python">
+    <compoundname>openage::assets</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.assets.get_asset_path</definition>
+        <argsstring>(custom_asset_dir=None)</argsstring>
+        <name>get_asset_path</name>
+        <param>
+          <type>custom_asset_dir</type>
+          <defname>custom_asset_dir</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>Returns a Path object for the game assets. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>custom_asset_dir</computeroutput> can a custom asset directory, which is mounted at the top of the union filesystem (i.e. has highest priority).</para>
+<para>This function is used by the both the conversion process and the game startup. The conversion uses it for its output, the game as its data source(s). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py" bodystart="30" bodyend="62"/>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" compoundref="convert_2main_8py" startline="624" endline="653">openage.convert.main.main</referencedby>
+        <referencedby refid="namespaceopenage_1_1assets_1a362b18ac5b307e65b5ee2a0e2bc69b77" compoundref="assets_8py" startline="66" endline="75">openage.assets.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1assets_1a362b18ac5b307e65b5ee2a0e2bc69b77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.assets.test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <briefdescription>
+<para>Tests whether a specific asset exists. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py" bodystart="66" bodyend="75"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" compoundref="assets_8py" startline="30" endline="62">openage.assets.get_asset_path</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

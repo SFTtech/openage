@@ -112,7 +112,7 @@
         </childnode>
       </node>
       <node id="31315">
-        <label>libopenage/util/os.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</label>
         <link refid="os_8cpp"/>
         <childnode refid="31316" relation="include">
         </childnode>
@@ -255,7 +255,7 @@
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ssize_t<sp/>len<sp/>=<sp/>readlink(path,<sp/>buf.get(),<sp/>bufsize);</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>read<sp/>link<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>path);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>read<sp/>link<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>path);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
@@ -331,7 +331,7 @@
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(runner.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>locate<sp/>file-opener&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>locate<sp/>file-opener&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
@@ -342,6 +342,6 @@
 <codeline lineno="126"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>os</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/os.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp"/>
   </compounddef>
 </doxygen>

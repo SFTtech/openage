@@ -5,15 +5,15 @@
     <includes local="no">functional</includes>
     <includes local="no">utility</includes>
     <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
-    <includedby refid="datastructure_2tests_8cpp" local="yes">libopenage/datastructure/tests.cpp</includedby>
-    <includedby refid="texture__info_8h" local="yes">libopenage/renderer/resources/texture_info.h</includedby>
-    <includedby refid="opengl_2geometry_8cpp" local="yes">libopenage/renderer/opengl/geometry.cpp</includedby>
-    <includedby refid="renderer_2opengl_2shader_8cpp" local="yes">libopenage/renderer/opengl/shader.cpp</includedby>
-    <includedby refid="shader__program_8cpp" local="yes">libopenage/renderer/opengl/shader_program.cpp</includedby>
-    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">libopenage/renderer/opengl/texture.cpp</includedby>
-    <includedby refid="opengl_2texture__array_8cpp" local="yes">libopenage/renderer/opengl/texture_array.cpp</includedby>
-    <includedby refid="vertex__array_8cpp" local="yes">libopenage/renderer/opengl/vertex_array.cpp</includedby>
-    <includedby refid="mesh__data_8cpp" local="yes">libopenage/renderer/resources/mesh_data.cpp</includedby>
+    <includedby refid="datastructure_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</includedby>
+    <includedby refid="texture__info_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h</includedby>
+    <includedby refid="opengl_2geometry_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</includedby>
+    <includedby refid="renderer_2opengl_2shader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp</includedby>
+    <includedby refid="shader__program_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</includedby>
+    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</includedby>
+    <includedby refid="opengl_2texture__array_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</includedby>
+    <includedby refid="vertex__array_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</includedby>
+    <includedby refid="mesh__data_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp</includedby>
     <incdepgraph>
       <node id="5750">
         <label>list</label>
@@ -124,7 +124,7 @@
         </childnode>
       </node>
       <node id="5724">
-        <label>libopenage/datastructure/constexpr_map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h</label>
         <link refid="constexpr__map_8h"/>
         <childnode refid="5725" relation="include">
         </childnode>
@@ -209,7 +209,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5777">
-        <label>libopenage/renderer/opengl/lookup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/lookup.h</label>
         <link refid="lookup_8h"/>
         <childnode refid="5778" relation="include">
         </childnode>
@@ -223,7 +223,7 @@
         </childnode>
       </node>
       <node id="5762">
-        <label>libopenage/renderer/opengl/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</label>
         <link refid="opengl_2render__target_8h"/>
         <childnode refid="5763" relation="include">
         </childnode>
@@ -235,11 +235,11 @@
         </childnode>
       </node>
       <node id="5771">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="5758">
-        <label>libopenage/renderer/resources/texture_data.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h</label>
         <link refid="texture__data_8h"/>
         <childnode refid="5759" relation="include">
         </childnode>
@@ -259,37 +259,37 @@
         </childnode>
       </node>
       <node id="5765">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="5766">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="5774">
-        <label>libopenage/renderer/opengl/texture_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.h</label>
         <link refid="opengl_2texture__array_8h"/>
         <childnode refid="5768" relation="include">
         </childnode>
       </node>
       <node id="5781">
-        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp</label>
         <link refid="renderer_2opengl_2shader_8cpp"/>
       </node>
       <node id="5761">
-        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp</label>
         <link refid="framebuffer_8cpp"/>
       </node>
       <node id="5772">
-        <label>libopenage/renderer/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture.cpp</label>
         <link refid="renderer_2texture_8cpp"/>
       </node>
       <node id="5763">
-        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp</label>
         <link refid="render__target_8cpp"/>
       </node>
       <node id="5770">
-        <label>libopenage/renderer/texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture.h</label>
         <link refid="renderer_2texture_8h"/>
         <childnode refid="5759" relation="include">
         </childnode>
@@ -299,11 +299,11 @@
         </childnode>
       </node>
       <node id="5782">
-        <label>libopenage/renderer/resources/mesh_data.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp</label>
         <link refid="mesh__data_8cpp"/>
       </node>
       <node id="5773">
-        <label>libopenage/renderer/texture_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h</label>
         <link refid="texture__array_8h"/>
         <childnode refid="5774" relation="include">
         </childnode>
@@ -311,7 +311,7 @@
         </childnode>
       </node>
       <node id="5760">
-        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h</label>
         <link refid="framebuffer_8h"/>
         <childnode refid="5761" relation="include">
         </childnode>
@@ -319,7 +319,7 @@
         </childnode>
       </node>
       <node id="5759">
-        <label>libopenage/renderer/opengl/texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.h</label>
         <link refid="renderer_2opengl_2texture_8h"/>
         <childnode refid="5760" relation="include">
         </childnode>
@@ -333,11 +333,11 @@
         </childnode>
       </node>
       <node id="5780">
-        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp</label>
         <link refid="texture__info_8cpp"/>
       </node>
       <node id="5755">
-        <label>libopenage/datastructure/constexpr_map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h</label>
         <link refid="constexpr__map_8h"/>
         <childnode refid="5756" relation="include">
         </childnode>
@@ -359,31 +359,31 @@
         </childnode>
       </node>
       <node id="5779">
-        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</label>
         <link refid="vertex__array_8cpp"/>
       </node>
       <node id="5769">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="5778">
-        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</label>
         <link refid="opengl_2geometry_8cpp"/>
       </node>
       <node id="5756">
-        <label>libopenage/datastructure/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</label>
         <link refid="datastructure_2tests_8cpp"/>
       </node>
       <node id="5776">
-        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp</label>
         <link refid="texture__data_8cpp"/>
       </node>
       <node id="5775">
-        <label>libopenage/renderer/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.cpp</label>
         <link refid="texture__array_8cpp"/>
       </node>
       <node id="5757">
-        <label>libopenage/renderer/resources/texture_info.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h</label>
         <link refid="texture__info_8h"/>
         <childnode refid="5758" relation="include">
         </childnode>
@@ -393,11 +393,11 @@
         </childnode>
       </node>
       <node id="5768">
-        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</label>
         <link refid="opengl_2texture__array_8cpp"/>
       </node>
       <node id="5764">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="5765" relation="include">
         </childnode>
@@ -405,7 +405,7 @@
         </childnode>
       </node>
       <node id="5767">
-        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</label>
         <link refid="renderer_2opengl_2texture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -498,7 +498,7 @@
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" kindref="member">all_are_unique</ref>()<sp/>?</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>a<sp/>duplicate<sp/>key<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>a<sp/>duplicate<sp/>key<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="133" refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" kindref="member">fetch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -544,7 +544,7 @@
 <codeline lineno="202"><highlight class="normal"></highlight></codeline>
 <codeline lineno="207" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" kindref="member">fetch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>reach<sp/>here<sp/>recursively,<sp/>the<sp/>key<sp/>was<sp/>not<sp/>found<sp/>along<sp/>the<sp/>way<sp/>and<sp/>so<sp/>isn&apos;t<sp/>present</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>key<sp/>is<sp/>not<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>key<sp/>is<sp/>not<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
 <codeline lineno="215" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a2b57cb2015c9462110d7e102ae880e2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/>1&gt;;</highlight></codeline>
@@ -558,6 +558,6 @@
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
 <codeline lineno="230"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::datastructure</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/datastructure/constexpr_map.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h"/>
   </compounddef>
 </doxygen>

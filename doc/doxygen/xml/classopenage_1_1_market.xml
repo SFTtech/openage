@@ -17,7 +17,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="67" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="67" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" compoundref="market_8cpp" startline="35" endline="50">buy</referencedby>
+        <referencedby refid="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" compoundref="market_8cpp" startline="60" endline="67">get_prices</referencedby>
+        <referencedby refid="classopenage_1_1_market_1ad74c045fe0b5c766a07f861e224222b1" compoundref="market_8cpp" startline="8" endline="13">Market</referencedby>
+        <referencedby refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" compoundref="market_8cpp" startline="17" endline="33">sell</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +36,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="23" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="8" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="8" bodyend="13"/>
+        <references refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" compoundref="market_8h" startline="67">base_prices</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da62506be34d574da4a0d158a67253ea99">openage::food</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0a840ef45467fb3932dbf2c2896c5cbf">openage::stone</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da22811dd94d65037ef86535740b98dec8">openage::wood</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -54,7 +62,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="29" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="17" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="17" bodyend="33"/>
+        <references refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" compoundref="market_8h" startline="67">base_prices</references>
+        <references refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" compoundref="player_8cpp" startline="80" endline="86">openage::Player::deduct</references>
+        <references refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" compoundref="gamestate_2resource_8h" startline="159" endline="159">openage::ResourceBundle::get</references>
+        <references refid="classopenage_1_1_market_1a5c916fe21925f6276f58bc9f6dd95765" compoundref="market_8cpp" startline="56" endline="58">get_sell_prices</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328dae07e81c20cf5935f5225765f0af81755">openage::gold</references>
+        <references refid="namespaceopenage_1af11d6daf50156125c5094a3b3a9d30d5" compoundref="market_8h" startline="11">openage::MARKET_PRICE_D</references>
+        <references refid="namespaceopenage_1a1b0364e945696f529260c90a44552f34" compoundref="market_8h" startline="12">openage::MARKET_PRICE_MIN</references>
+        <references refid="namespaceopenage_1ae3c2dc1df011c09431f9eeb09d8d4bf7" compoundref="market_8h" startline="14">openage::MARKET_TRANSACTION_AMOUNT</references>
+        <references refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" compoundref="player_8cpp" startline="62" endline="65">openage::Player::receive</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -76,7 +93,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="35" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="35" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="35" bodyend="50"/>
+        <references refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" compoundref="market_8h" startline="67">base_prices</references>
+        <references refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" compoundref="player_8cpp" startline="80" endline="86">openage::Player::deduct</references>
+        <references refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" compoundref="gamestate_2resource_8h" startline="159" endline="159">openage::ResourceBundle::get</references>
+        <references refid="classopenage_1_1_market_1aef15aab0297f52df8675a3b71dc93a88" compoundref="market_8cpp" startline="52" endline="54">get_buy_prices</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328dae07e81c20cf5935f5225765f0af81755">openage::gold</references>
+        <references refid="namespaceopenage_1af11d6daf50156125c5094a3b3a9d30d5" compoundref="market_8h" startline="11">openage::MARKET_PRICE_D</references>
+        <references refid="namespaceopenage_1aefb228067111c56f781e3989fbc2d138" compoundref="market_8h" startline="13">openage::MARKET_PRICE_MAX</references>
+        <references refid="namespaceopenage_1ae3c2dc1df011c09431f9eeb09d8d4bf7" compoundref="market_8h" startline="14">openage::MARKET_TRANSACTION_AMOUNT</references>
+        <references refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" compoundref="player_8cpp" startline="62" endline="65">openage::Player::receive</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_market_1aef15aab0297f52df8675a3b71dc93a88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
@@ -94,7 +120,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="40" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="52" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="52" bodyend="54"/>
+        <references refid="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" compoundref="market_8cpp" startline="60" endline="67">get_prices</references>
+        <referencedby refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" compoundref="market_8cpp" startline="35" endline="50">buy</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_market_1a5c916fe21925f6276f58bc9f6dd95765" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
@@ -112,7 +140,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="45" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="56" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="56" bodyend="58"/>
+        <references refid="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" compoundref="market_8cpp" startline="60" endline="67">get_prices</references>
+        <referencedby refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" compoundref="market_8cpp" startline="17" endline="33">sell</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -136,7 +166,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="52" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="60" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="60" bodyend="67"/>
+        <references refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" compoundref="market_8h" startline="67">base_prices</references>
+        <references refid="classopenage_1_1_market_1adb430db2e1ce5828a1bc6b273994b9dc" compoundref="market_8cpp" startline="69" endline="82">get_multiplier</references>
+        <referencedby refid="classopenage_1_1_market_1aef15aab0297f52df8675a3b71dc93a88" compoundref="market_8cpp" startline="52" endline="54">get_buy_prices</referencedby>
+        <referencedby refid="classopenage_1_1_market_1a5c916fe21925f6276f58bc9f6dd95765" compoundref="market_8cpp" startline="56" endline="58">get_sell_prices</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_market_1adb430db2e1ce5828a1bc6b273994b9dc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -158,7 +192,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="57" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="69" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp" bodystart="69" bodyend="82"/>
+        <referencedby refid="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" compoundref="market_8cpp" startline="60" endline="67">get_prices</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,19 +203,19 @@
 <para>Price calculation is documented at doc/reverse_engineering/market.md#prices </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3184">
+      <node id="4104">
         <label>openage::Market</label>
         <link refid="classopenage_1_1_market"/>
-        <childnode refid="3185" relation="usage">
+        <childnode refid="4105" relation="usage">
           <edgelabel>-base_prices</edgelabel>
         </childnode>
       </node>
-      <node id="3185">
+      <node id="4105">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/market.h" line="21" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="21" bodyend="69"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="21" bodyend="69"/>
     <listofallmembers>
       <member refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" prot="private" virt="non-virtual"><scope>openage::Market</scope><name>base_prices</name></member>
       <member refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>buy</name></member>

@@ -21,7 +21,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="201" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="201" bodyend="206"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="201" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="201" bodyend="206"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">openage::renderer::font_description::font_file</references>
+        <references refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">openage::util::hash</references>
+        <references refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" compoundref="hash_8cpp" startline="12" endline="15">openage::util::hash_combine</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,12 +33,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2833">
+      <node id="6639">
         <label>std::hash&lt; openage::renderer::font_description &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/font.h" line="200" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="200" bodyend="207"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="200" bodyend="207"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::renderer::font_description &gt;</scope><name>operator()</name></member>
     </listofallmembers>

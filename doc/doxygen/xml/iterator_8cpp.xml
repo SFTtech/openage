@@ -37,7 +37,7 @@
         <label>iomanip</label>
       </node>
       <node id="4764">
-        <label>libopenage/curve/iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.cpp</label>
         <link refid="iterator_8cpp"/>
         <childnode refid="4765" relation="include">
         </childnode>
@@ -283,6 +283,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/iterator.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.cpp"/>
   </compounddef>
 </doxygen>

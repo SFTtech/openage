@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1peresource_1_1_resource_directory" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::peresource::ResourceDirectory</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1abce519dd986a400c71eca1d23bbab58b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a5e27078813b6f7ae14e29f01a11d7335" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::characteristics</definition>
+        <argsstring></argsstring>
+        <name>characteristics</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a87aec03d99ddbbb3ce2683776e43a3a5" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1ae88464f50bf93a98f9593426f57e8980" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::version_major</definition>
+        <argsstring></argsstring>
+        <name>version_major</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a3b9edc5240f5db63c139c05e10fb4577" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::version_minor</definition>
+        <argsstring></argsstring>
+        <name>version_minor</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1acc99dd43b7cac7cff2ec5ef46c1b37b3" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::named_entry_count</definition>
+        <argsstring></argsstring>
+        <name>named_entry_count</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a0b5ffa9eed3c850eef28e3fde0026277" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.ResourceDirectory::id_entry_count</definition>
+        <argsstring></argsstring>
+        <name>id_entry_count</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1af4ca08b4f346cf32793a32442c5ae789" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.peresource.ResourceDirectory::subdirs</definition>
+        <argsstring></argsstring>
+        <name>subdirs</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1ae088983cf410779d88ae1e01e6c772a1" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.peresource.ResourceDirectory::leaves</definition>
+        <argsstring></argsstring>
+        <name>leaves</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> directory header. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1564">
+        <label>openage.convert.peresource.ResourceDirectory</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory"/>
+        <childnode refid="1565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1568">
+        <label>type</label>
+      </node>
+      <node id="1567">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1568" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1565">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1566" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1567" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1566">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1569">
+        <label>openage.convert.peresource.ResourceDirectory</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory"/>
+        <childnode refid="1570" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1573">
+        <label>type</label>
+      </node>
+      <node id="1572">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1573" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1570">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1571" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1572" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1571">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="52" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a5e27078813b6f7ae14e29f01a11d7335" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>characteristics</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1abce519dd986a400c71eca1d23bbab58b" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a0b5ffa9eed3c850eef28e3fde0026277" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>id_entry_count</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1ae088983cf410779d88ae1e01e6c772a1" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>leaves</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1acc99dd43b7cac7cff2ec5ef46c1b37b3" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>named_entry_count</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>size</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1af4ca08b4f346cf32793a32442c5ae789" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>subdirs</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a87aec03d99ddbbb3ce2683776e43a3a5" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>timestamp</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>unpack</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1ae88464f50bf93a98f9593426f57e8980" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>version_major</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_1a3b9edc5240f5db63c139c05e10fb4577" prot="public" virt="non-virtual"><scope>openage::convert::peresource::ResourceDirectory</scope><name>version_minor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -73,7 +73,7 @@
         </childnode>
       </node>
       <node id="28155">
-        <label>libopenage/util/csv.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.cpp</label>
         <link refid="csv_8cpp"/>
         <childnode refid="28156" relation="include">
         </childnode>
@@ -413,6 +413,6 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/csv.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.cpp"/>
   </compounddef>
 </doxygen>

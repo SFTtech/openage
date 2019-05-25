@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cvar_1_1config__file" kind="namespace" language="Python">
+    <compoundname>openage::cvar::config_file</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1cvar_1_1config__file_1aee5a9b4650b459614a87fe8adadb8ad7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cvar.config_file.load_config_file</definition>
+        <argsstring>(path, set_cvar_func, loaded_files=None)</argsstring>
+        <name>load_config_file</name>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <param>
+          <type>set_cvar_func</type>
+          <defname>set_cvar_func</defname>
+        </param>
+        <param>
+          <type>loaded_files</type>
+          <defname>loaded_files</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>Load a config file, with possible subfile, into the cvar system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>set_cvar is a function that accepts (key, value) to actually add the data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/config_file.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/config_file.py" bodystart="18" bodyend="54"/>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <references refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" compoundref="log_2____init_____8py" startline="104" endline="107">openage::log.spam</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/config_file.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

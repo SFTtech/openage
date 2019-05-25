@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1terrain" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::terrain</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_frame_data" prot="public">openage::convert::gamedata::terrain::FrameData</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain" prot="public">openage::convert::gamedata::terrain::Terrain</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_animation" prot="public">openage::convert::gamedata::terrain::TerrainAnimation</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_border" prot="public">openage::convert::gamedata::terrain::TerrainBorder</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic" prot="public">openage::convert::gamedata::terrain::TerrainPassGraphic</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_restriction" prot="public">openage::convert::gamedata::terrain::TerrainRestriction</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size" prot="public">openage::convert::gamedata::terrain::TileSize</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="21" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="21" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="21" bodyend="26"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="29" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="29" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="29" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_list_model_1a2d423aeb58ef3a7faf28b153fe35cacc" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -55,7 +55,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="35" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="35" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="35" bodyend="43"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a2bb2830338cd9848f3ba28659a68e2d1" compoundref="gui__item__list__model_8h" startline="29" endline="33">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_list_model_1a0e965b2d5161f95e8118b197ac2f0f42" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -68,7 +69,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="45" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="45" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="45" bodyend="50"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a2bb2830338cd9848f3ba28659a68e2d1" compoundref="gui__item__list__model_8h" startline="29" endline="33">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_list_model_1abe1b332e693caa36185c1cd7835c40de" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -81,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="52" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="52" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="52" bodyend="66"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a2bb2830338cd9848f3ba28659a68e2d1" compoundref="gui__item__list__model_8h" startline="29" endline="33">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -91,79 +94,101 @@
 <para>Core can use a key-value interface while in QML it looks like a ListModel. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2682">
+      <node id="6332">
         <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
-      <node id="2681">
+      <node id="6331">
         <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="2682" relation="public-inheritance">
+        <childnode refid="6332" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2680">
+      <node id="6330">
         <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_origin"/>
       </node>
-      <node id="2679">
+      <node id="6329">
         <label>qtsdl::GuiItem&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item"/>
-        <childnode refid="2680" relation="public-inheritance">
+        <childnode refid="6330" relation="public-inheritance">
         </childnode>
-        <childnode refid="2681" relation="public-inheritance">
+        <childnode refid="6331" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2678">
+      <node id="6333">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="6328" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6328">
         <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_list_model"/>
-        <childnode refid="2679" relation="public-inheritance">
+        <childnode refid="6329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6334">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="6333" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2686">
+      <node id="6338">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="2687" relation="public-inheritance">
+        <childnode refid="6339" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6340" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2687">
+      <node id="6339">
         <label>qtsdl::PersistentCoreHolderBase</label>
         <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
       </node>
-      <node id="2689">
+      <node id="6342">
         <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
-      <node id="2688">
+      <node id="6341">
         <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="2689" relation="public-inheritance">
+        <childnode refid="6342" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2685">
+      <node id="6337">
         <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_origin"/>
-        <childnode refid="2686" relation="usage">
+        <childnode refid="6338" relation="usage">
           <edgelabel>-holder</edgelabel>
         </childnode>
       </node>
-      <node id="2684">
+      <node id="6336">
         <label>qtsdl::GuiItem&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item"/>
-        <childnode refid="2685" relation="public-inheritance">
+        <childnode refid="6337" relation="public-inheritance">
         </childnode>
-        <childnode refid="2688" relation="public-inheritance">
+        <childnode refid="6341" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2683">
+      <node id="6340">
+        <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="6339" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6335">
         <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_list_model"/>
-        <childnode refid="2684" relation="public-inheritance">
+        <childnode refid="6336" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item_list_model.h" line="19" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="19" bodyend="67"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h" bodystart="19" bodyend="67"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_item_list_model_1abe1b332e693caa36185c1cd7835c40de" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemListModel</scope><name>do_initial_to_gui_propagation</name></member>
       <member refid="classqtsdl_1_1_gui_item_list_model_1a2d423aeb58ef3a7faf28b153fe35cacc" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemListModel</scope><name>establish_from_gui_propagation</name></member>

@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="20" column="1" bodyfile="libopenage/options.h" bodystart="20" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="20" bodyend="26"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="33" column="1" bodyfile="libopenage/options.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" prot="public" static="no">
         <type>std::function&lt; <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref>()&gt;</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="133" column="1" bodyfile="libopenage/options.h" bodystart="133" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -105,13 +105,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.cpp" line="200" column="1" bodyfile="libopenage/options.cpp" bodystart="200" bodyend="215"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" bodystart="200" bodyend="215"/>
+        <references refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863">bool_type</references>
+        <references refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc">double_type</references>
+        <references refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd">int_type</references>
+        <references refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a">list_type</references>
+        <references refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48">string_type</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/options.cpp" line="6" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" line="6" column="1"/>
   </compounddef>
 </doxygen>

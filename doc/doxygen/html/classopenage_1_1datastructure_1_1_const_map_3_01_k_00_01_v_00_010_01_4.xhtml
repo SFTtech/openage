@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::datastructure::ConstMap&lt; K, V, 0 &gt; Class Template Reference</title>
+<title>openage: openage::datastructure::ConstMap&lt; K, V, 0 &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1datastructure_1_1_cons
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::datastructure::ConstMap&lt; K, V, 0 &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4__coll__graph.svg" width="166" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::datastructure::ConstMap&lt; K, V, 0 &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4__coll__graph.svg" width="166" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -163,7 +165,7 @@ template&lt;typename K , typename V &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00171">171</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -194,7 +196,7 @@ template&lt;typename K , typename V &gt; </div>
 <p>Reaching the last entry of the uniqueness check means we had no duplicates. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00192">192</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                                 {</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="abffc9a3cce9c15bbd5bc4b95bf38b0ad"></a>
@@ -225,7 +227,7 @@ template&lt;typename K , typename V &gt; </div>
 <p>The end element can't contain the key. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00183">183</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                                    {</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4b11884cafe37ad0456c2557eaa22169"></a>
@@ -256,6 +258,18 @@ template&lt;typename K , typename V &gt; </div>
 <p>The end element doesn't have an entry, so nothing can be fetched, </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00207">207</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                     {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="comment">// if we reach here recursively, the key was not found along the way and so isn&#39;t present</span></div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;The key is not in the map.&quot;</span>);</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_a4b11884cafe37ad0456c2557eaa22169_cgraph.svg" width="324" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -287,7 +301,7 @@ template&lt;typename K , typename V &gt; </div>
 <p>The end element doesn't have an entry. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00199">199</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                                     {</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a13807dfdf4291a14b9fd792a72024f56"></a>
@@ -317,7 +331,7 @@ template&lt;typename K , typename V &gt; </div>
 <p>The size of the end element. </p>
 
 <p class="definition">Definition at line <a class="el" href="constexpr__map_8h_source.xhtml#l00176">176</a> of file <a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                      {</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -349,7 +363,7 @@ template&lt;typename K , typename V &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/datastructure/<a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/<a class="el" href="constexpr__map_8h_source.xhtml">constexpr_map.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

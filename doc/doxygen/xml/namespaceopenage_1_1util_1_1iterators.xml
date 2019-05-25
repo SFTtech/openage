@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1iterators" kind="namespace" language="Python">
+    <compoundname>openage::util::iterators</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1iterators_1a843780725ecd55c667e672085026f3be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.iterators.denote_last</definition>
+        <argsstring>(iterable)</argsstring>
+        <name>denote_last</name>
+        <param>
+          <type>iterable</type>
+          <defname>iterable</defname>
+        </param>
+        <briefdescription>
+<para>Provides all sorts of iterator-related stuff. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/iterators.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/iterators.py" bodystart="14" bodyend="24"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" compoundref="fsprinting_8py" startline="78" endline="111">openage.util.fsprinting.print_tree</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/iterators.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

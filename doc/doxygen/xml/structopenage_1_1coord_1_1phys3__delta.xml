@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="49" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="81" bodyend="83"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="81" bodyend="83"/>
+        <references refid="namespaceopenage_1_1math_1a29c55215e73408c49f2654261fd73d8e" compoundref="math_8h" startline="17" endline="19">openage::math::hypot3</references>
+        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1a42b05574ff3cf1e1f25ddc4586060a0f" compoundref="phys_8cpp" startline="86" endline="88">normalize</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys3__delta_1a42b05574ff3cf1e1f25ddc4586060a0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref></type>
@@ -34,7 +36,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="50" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="86" bodyend="88"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="86" bodyend="88"/>
+        <references refid="structopenage_1_1coord_1_1phys3__delta_1af63b7f5b841ffab9004b2ffd3550ab9e" compoundref="phys_8cpp" startline="81" endline="83">length</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys3__delta_1ace92b215378b122ce3fb17101986011f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">camgame_delta</ref></type>
@@ -51,7 +54,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="52" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="60" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="60" bodyend="73"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" compoundref="coordmanager_8h" startline="51">openage::coord::CoordManager::tile_size</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys3__delta_1a533ad585342b96d2ee06877f8fd5b5ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys2__delta" kindref="compound">phys2_delta</ref></type>
@@ -64,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="53" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -72,28 +76,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3662">
+      <node id="1752">
         <label>openage::coord::phys3_delta</label>
         <link refid="structopenage_1_1coord_1_1phys3__delta"/>
-        <childnode refid="3663" relation="public-inheritance">
+        <childnode refid="1753" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3663">
+      <node id="1753">
         <label>CoordNeSeUpRelative&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3664">
+      <node id="1754">
         <label>openage::coord::phys3_delta</label>
         <link refid="structopenage_1_1coord_1_1phys3__delta"/>
-        <childnode refid="3665" relation="public-inheritance">
+        <childnode refid="1755" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3665">
+      <node id="1755">
         <label>CoordNeSeUpRelative&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/phys.h" line="41" column="1" bodyfile="libopenage/coord/phys.h" bodystart="41" bodyend="54"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" bodystart="41" bodyend="54"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1phys3__delta_1af63b7f5b841ffab9004b2ffd3550ab9e" prot="public" virt="non-virtual"><scope>openage::coord::phys3_delta</scope><name>length</name></member>
       <member refid="structopenage_1_1coord_1_1phys3__delta_1a42b05574ff3cf1e1f25ddc4586060a0f" prot="public" virt="non-virtual"><scope>openage::coord::phys3_delta</scope><name>normalize</name></member>

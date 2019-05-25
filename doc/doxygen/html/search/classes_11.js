@@ -24,7 +24,7 @@ var searchData=
   ['researchtype',['ResearchType',['../classopenage_1_1_research_type.xhtml',1,'openage']]],
   ['resetgame',['ResetGame',['../classopenage_1_1event_1_1demo_1_1_reset_game.xhtml',1,'openage::event::demo']]],
   ['resizehandler',['ResizeHandler',['../classopenage_1_1_resize_handler.xhtml',1,'openage']]],
-  ['resource',['Resource',['../classopenage_1_1_resource.xhtml',1,'openage::Resource'],['../classopenage_1_1audio_1_1_resource.xhtml',1,'openage::audio::Resource']]],
+  ['resource',['Resource',['../classopenage_1_1audio_1_1_resource.xhtml',1,'openage::audio::Resource'],['../classopenage_1_1_resource.xhtml',1,'openage::Resource']]],
   ['resource_5fdef',['resource_def',['../structopenage_1_1audio_1_1resource__def.xhtml',1,'openage::audio']]],
   ['resourcebundle',['ResourceBundle',['../classopenage_1_1_resource_bundle.xhtml',1,'openage']]],
   ['resourcecost',['ResourceCost',['../classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost.xhtml',1,'openage.convert.gamedata.unit.ResourceCost'],['../classopenage_1_1_resource_cost.xhtml',1,'openage::ResourceCost']]],

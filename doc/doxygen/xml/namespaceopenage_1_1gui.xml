@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/registrations.cpp" line="10" column="1" bodyfile="libopenage/gui/registrations.cpp" bodystart="10" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.cpp" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.cpp" bodystart="10" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -77,7 +77,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_log.cpp" line="12" column="1" bodyfile="libopenage/gui/integration/private/gui_log.cpp" bodystart="12" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_log.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_log.cpp" bodystart="12" bodyend="49"/>
+        <references refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" compoundref="log_2____init_____8py" startline="129" endline="132">openage::log.crit</references>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gui_1ad386ee98cd26c09c0e03fdc7f50ad6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; QSGTexture &gt;</type>
@@ -98,7 +104,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" line="9" column="1" bodyfile="libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" bodystart="9" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" bodystart="9" bodyend="11"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1acabd4037e0b47cda554ae353c2c3be3e" compoundref="gui__texture_8cpp" startline="69" endline="101">openage::gui::GuiTexture::removedFromAtlas</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -115,7 +122,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="24" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="24" bodyend="26"/>
+        <references refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" compoundref="texture_8cpp" startline="431" endline="433">openage::Texture::get_subtexture_count</references>
+        <references refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" compoundref="gui__texture__handle_8h" startline="16">openage::gui::TextureHandle::subid</references>
+        <references refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" compoundref="gui__texture__handle_8h" startline="15">openage::gui::TextureHandle::texture</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1aa857182d062f11dc1d300e5965596511" compoundref="gui__texture_8cpp" startline="38" endline="40">openage::gui::GuiTexture::isAtlasTexture</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" compoundref="gui__texture__handle_8cpp" startline="32" endline="41">native_size</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QSize</type>
@@ -132,7 +144,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="28" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="28" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="28" bodyend="30"/>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" compoundref="gui__filled__texture__handles_8cpp" startline="28" endline="34">openage::gui::GuiFilledTextureHandles::fill_all_handles_with_texture</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a2af0c7e7d25985cd93743b6d08468d9d" compoundref="gui__texture__factory_8cpp" startline="32" endline="34">openage::gui::GuiTextureFactory::textureSize</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1a1cf359edf8b8ca23bd7c445d44ecc5f2" compoundref="gui__texture_8cpp" startline="117" endline="119">openage::gui::GuiTexture::textureSize</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QSize</type>
@@ -149,7 +165,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="32" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="32" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="32" bodyend="41"/>
+        <references refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">openage::Texture::get_subtexture</references>
+        <references refid="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" compoundref="gui__texture__handle_8cpp" startline="24" endline="26">isAtlasTexture</references>
+        <references refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" compoundref="gui__texture__handle_8h" startline="16">openage::gui::TextureHandle::subid</references>
+        <references refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" compoundref="gui__texture__handle_8h" startline="15">openage::gui::TextureHandle::texture</references>
+        <referencedby refid="namespaceopenage_1_1gui_1a1ed7c99cf0d2a47548927d8d688b0c42" compoundref="gui__texture__handle_8cpp" startline="43" endline="54">aspect_fit_size</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1gui_1a1ed7c99cf0d2a47548927d8d688b0c42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QSize</type>
@@ -183,13 +204,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="43" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="43" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="43" bodyend="54"/>
+        <references refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" compoundref="gui__texture__handle_8cpp" startline="32" endline="41">native_size</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac4c74475a47396d2e1824d2625e9d666" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="67" endline="70">openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/engine.h" line="38" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="38" column="1"/>
   </compounddef>
 </doxygen>

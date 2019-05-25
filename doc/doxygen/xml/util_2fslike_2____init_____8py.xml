@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="util_2fslike_2____init_____8py" kind="file" language="Python">
+    <compoundname>__init__.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Filesystem-like<sp/>object<sp/>utility<sp/>package.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">Types<sp/>that<sp/>implement<sp/>FSLikeObject<sp/>provide<sp/>pathlib.Path-analogous<sp/>VirtualPath</highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral">objects,<sp/>which<sp/>in<sp/>turn<sp/>provide<sp/>file-like<sp/>objects.</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral">In<sp/>addition,<sp/>a<sp/>C++<sp/>interface<sp/>for<sp/>VirtualPath<sp/>objects<sp/>is<sp/>provided.</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/__init__.py"/>
+  </compounddef>
+</doxygen>

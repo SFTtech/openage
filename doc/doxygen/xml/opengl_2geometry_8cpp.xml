@@ -353,7 +353,7 @@
         </childnode>
       </node>
       <node id="20713">
-        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</label>
         <link refid="opengl_2geometry_8cpp"/>
         <childnode refid="20714" relation="include">
         </childnode>
@@ -496,11 +496,11 @@
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1ab1574744e9d7afafa476f648c2abcf21" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1ab1574744e9d7afafa476f648c2abcf21" kindref="member">GlGeometry::update_verts_offset</ref>(std::vector&lt;uint8_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;verts,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset)<sp/>{</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_geometry_1af798beba5997d99d6cd882ac4451cc25" kindref="member">get_type</ref>()<sp/>!=<sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20" kindref="member">geometry_t::mesh</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>update<sp/>vertex<sp/>data<sp/>for<sp/>non-mesh<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>update<sp/>vertex<sp/>data<sp/>for<sp/>non-mesh<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(verts.size()<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a8f732da4945e275d07451952179353de" kindref="member">mesh</ref>-&gt;vertices.get_size())<sp/>{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Size<sp/>mismatch<sp/>between<sp/>old<sp/>and<sp/>new<sp/>vertex<sp/>data<sp/>for<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Size<sp/>mismatch<sp/>between<sp/>old<sp/>and<sp/>new<sp/>vertex<sp/>data<sp/>for<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>support<sp/>offset<sp/>updating</highlight><highlight class="normal"></highlight></codeline>
@@ -528,12 +528,12 @@
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>geometry<sp/>type<sp/>in<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>geometry<sp/>type<sp/>in<sp/>GlGeometry.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/geometry.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp"/>
   </compounddef>
 </doxygen>

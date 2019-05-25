@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/keyframe_container.h" line="51" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" compoundref="keyframe__container_8h" startline="41" endline="42">openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::Keyframe</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" prot="public" static="no" mutable="no">
         <type>T</type>
@@ -30,7 +31,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/keyframe_container.h" line="52" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/keyframe_container.h" line="36" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="36" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -64,7 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/keyframe_container.h" line="41" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="41" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="41" bodyend="42"/>
+        <references refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" compoundref="keyframe__container_8h" startline="51">openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::time</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a74c0349627125515d82d91a082e4aa1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -86,7 +89,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/keyframe_container.h" line="47" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="47" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="47" bodyend="49"/>
+        <references refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" compoundref="keyframe__container_8h" startline="51">openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::time</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -95,25 +99,38 @@
 <para>A element of the curvecontainer. This is especially used to keep track of the value-timing. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3045">
+      <node id="1875">
         <label>T</label>
       </node>
-      <node id="3043">
+      <node id="1874">
+        <label>int_type</label>
+      </node>
+      <node id="1871">
         <label>openage::curve::KeyframeContainer&lt; T &gt;::Keyframe</label>
         <link refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe"/>
-        <childnode refid="3044" relation="usage">
+        <childnode refid="1872" relation="usage">
           <edgelabel>+time</edgelabel>
         </childnode>
-        <childnode refid="3045" relation="usage">
+        <childnode refid="1875" relation="usage">
           <edgelabel>+value</edgelabel>
         </childnode>
       </node>
-      <node id="3044">
+      <node id="1873">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1874" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1872">
         <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1873" relation="template-instance">
+          <edgelabel>&lt; int64_t, 16 &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/keyframe_container.h" line="31" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="31" bodyend="53"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h" bodystart="31" bodyend="53"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a6ce5238d9611a9cc62550fc3370b94aa" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>Keyframe</name></member>
       <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>Keyframe</name></member>

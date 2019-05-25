@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.texture.Texture Class Reference</title>
+<title>openage: openage.convert.texture.Texture Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1texture_1_1
 <div class="title">openage.convert.texture.Texture Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for openage.convert.texture.Texture:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture__inherit__graph.svg" width="175" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.texture.Texture:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture__inherit__graph.svg" width="175" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.texture.Texture:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture__coll__graph.svg" width="175" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.texture.Texture:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture__coll__graph.svg" width="175" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -184,6 +187,17 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00106">106</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">from</span> .slp <span class="keyword">import</span> SLP</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> isinstance(input_data, SLP):</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> palette <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;palette needed for SLP -&gt; texture generation&quot;</span>)</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            frames = []</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">for</span> frame <span class="keywordflow">in</span> input_data.frames:</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">for</span> subtex <span class="keywordflow">in</span> self._slp_to_subtextures(frame,</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                       palette,</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                                       custom_cutter):</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    frames.append(subtex)</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">elif</span> isinstance(input_data, BlendingMode):</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            frames = [</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="comment"># the hotspot is in the west corner of a tile.</span></div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                TextureImage(</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    tile.get_picture_data(),</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    hotspot=(0, TILE_HALFSIZE[<span class="stringliteral">&quot;y&quot;</span>])</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                )</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">for</span> tile <span class="keywordflow">in</span> input_data.alphamasks</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            ]</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;cannot create Texture &quot;</span></div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                            <span class="stringliteral">&quot;from unknown source type: %s&quot;</span> % (type(input_data)))</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        self.image_data, (self.width, self.height), self.image_metadata\</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            = <a class="code" href="namespaceopenage_1_1convert_1_1texture.xhtml#af986c2ec331f19840f4dc1eee51a5961">merge_frames</a>(frames)</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">def </span>_slp_to_subtextures(self, frame, palette=None, custom_cutter=None):</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="stringliteral">        convert slp to subtexture or subtextures, use a palette.</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1convert_1_1texture_xhtml_af986c2ec331f19840f4dc1eee51a5961"><div class="ttname"><a href="namespaceopenage_1_1convert_1_1texture.xhtml#af986c2ec331f19840f4dc1eee51a5961">openage.convert.texture.merge_frames</a></div><div class="ttdeci">def merge_frames(frames)</div><div class="ttdoc">merge all given frames of this slp to a single image file.</div><div class="ttdef"><b>Definition:</b> <a href="texture_8py_source.xhtml#l00210">texture.py:210</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="texture_8py_source.xhtml#l00145">openage.convert.texture.Texture._slp_to_subtextures()</a>, <a class="el" href="blendomatic_8py_source.xhtml#l00032">openage.convert.blendomatic.BlendingTile.height</a>, <a class="el" href="font_8h_source.xhtml#l00032">openage::renderer::Glyph.height</a>, <a class="el" href="binpack_8py_source.xhtml#l00043">openage.convert.binpack.Packer.height()</a>, <a class="el" href="texture_8py_source.xhtml#l00064">openage.convert.texture.TextureImage.height</a>, <a class="el" href="glyph__atlas_8h_source.xhtml#l00096">openage::renderer::GlyphAtlas::Shelf.height</a>, <a class="el" href="glyph__atlas_8h_source.xhtml#l00111">openage::renderer::GlyphAtlas.height</a>, <a class="el" href="binpack_8py_source.xhtml#l00125">openage.convert.binpack.BestPacker.height()</a>, <a class="el" href="binpack_8py_source.xhtml#l00136">openage.convert.binpack.PackerNode.height</a>, <a class="el" href="texture_8py_source.xhtml#l00210">openage.convert.texture.merge_frames()</a>, <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00104">openage::log.spam()</a>, <a class="el" href="font_8h_source.xhtml#l00031">openage::renderer::Glyph.width</a>, <a class="el" href="blendomatic_8py_source.xhtml#l00031">openage.convert.blendomatic.BlendingTile.width</a>, <a class="el" href="binpack_8py_source.xhtml#l00039">openage.convert.binpack.Packer.width()</a>, <a class="el" href="texture_8py_source.xhtml#l00063">openage.convert.texture.TextureImage.width</a>, <a class="el" href="glyph__atlas_8h_source.xhtml#l00095">openage::renderer::GlyphAtlas::Shelf.width</a>, <a class="el" href="glyph__atlas_8h_source.xhtml#l00108">openage::renderer::GlyphAtlas.width</a>, <a class="el" href="binpack_8py_source.xhtml#l00122">openage.convert.binpack.BestPacker.width()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00135">openage.convert.binpack.PackerNode.width</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture_ad67d62c0af627d1b83389ed9dc09b213_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -237,6 +251,19 @@ Private Member Functions</h2></td></tr>
 <p>convert slp to subtexture or subtextures, use a palette. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00145">145</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        subtex = TextureImage(</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            frame.get_picture_data(palette, self.player_id),</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            hotspot=frame.get_hotspot()</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        )</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> custom_cutter:</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="comment"># this may cut the texture into some parts</span></div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> custom_cutter.cut(subtex)</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">return</span> [subtex]</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8">save</a>(self, targetdir, filename, meta_formats=None):</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">        Store the image data into the target directory path,</span></div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="stringliteral">        with given filename=&quot;dir/out.png&quot;</span></div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="stringliteral">        If metaformats are requested, export e.g. as &quot;dir/out.docx&quot;.</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1gameio_xhtml_a2c4db428aa6da2185b33a86508fb49a8"><div class="ttname"><a href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8">openage::gameio::save</a></div><div class="ttdeci">void save(openage::GameMain *game, std::string fname)</div><div class="ttdef"><b>Definition:</b> <a href="game__save_8cpp_source.xhtml#l00070">game_save.cpp:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="texture_8py_source.xhtml#l00104">openage.convert.texture.Texture.player_id</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00106">openage.convert.texture.Texture.__init__()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture_af19cc8a0f6ae7ae951086a2125419e5d_icgraph.svg" width="410" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -267,6 +294,16 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00193">193</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    @classmethod</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">def </span>structs(cls):</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">return</span> [struct_definition.StructDefinition(cls)]</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00166">openage.convert.texture.Texture.save()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture_aca0b77a05226fce8d2728f29c827754b_icgraph.svg" width="387" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -309,6 +346,18 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00166">166</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        basename, ext = os.path.splitext(filename)</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="comment"># only allow png, although PIL could of course</span></div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment"># do other formats.</span></div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">if</span> ext != <span class="stringliteral">&quot;.png&quot;</span>:</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;Filename invalid, a texture must be saved&quot;</span></div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                             <span class="stringliteral">&quot;as &#39;filename.png&#39;, not &#39;%s&#39;&quot;</span> % (filename))</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment"># without the dot</span></div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        ext = ext[1:]</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment"># generate PNG file</span></div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">with</span> targetdir[filename].open(<span class="stringliteral">&quot;wb&quot;</span>) <span class="keyword">as</span> imagefile:</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            self.image_data.get_pil_image().<a class="code" href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8">save</a>(imagefile, ext)</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span> meta_formats:</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="comment"># generate formatted texture metadata</span></div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            formatter = data_formatter.DataFormatter()</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            formatter.add_data(self.dump(basename))</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            formatter.export(targetdir, meta_formats)</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1curve_1_1tests.xhtml#adaea2f0357531c64ef6af72d720e37f2">dump</a>(self, filename):</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> [data_definition.DataDefinition(self,</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                               self.image_metadata,</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                               filename)]</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div><div class="ttc" id="namespaceopenage_1_1curve_1_1tests_xhtml_adaea2f0357531c64ef6af72d720e37f2"><div class="ttname"><a href="namespaceopenage_1_1curve_1_1tests.xhtml#adaea2f0357531c64ef6af72d720e37f2">openage::curve::tests::dump</a></div><div class="ttdeci">void dump(const std::unordered_map&lt; key_t, val_t &gt; &amp;map)</div><div class="ttdef"><b>Definition:</b> <a href="container_8cpp_source.xhtml#l00034">container.cpp:34</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1gameio_xhtml_a2c4db428aa6da2185b33a86508fb49a8"><div class="ttname"><a href="namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8">openage::gameio::save</a></div><div class="ttdeci">void save(openage::GameMain *game, std::string fname)</div><div class="ttdef"><b>Definition:</b> <a href="game__save_8cpp_source.xhtml#l00070">game_save.cpp:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="stringresource_8py_source.xhtml#l00035">openage.convert.stringresource.StringResource.dump()</a>, <a class="el" href="exportable_8py_source.xhtml#l00057">openage.convert.dataformat.exportable.Exportable.dump()</a>, <a class="el" href="queue_8h_source.xhtml#l00061">openage::curve::Queue&lt; T &gt;.dump()</a>, <a class="el" href="map_8h_source.xhtml#l00078">openage::curve::UnorderedMap&lt; key_t, val_t &gt;.dump()</a>, <a class="el" href="colortable_8py_source.xhtml#l00149">openage.convert.colortable.ColorTable.dump()</a>, <a class="el" href="keyframe__container_8h_source.xhtml#l00156">openage::curve::KeyframeContainer&lt; T &gt;.dump()</a>, <a class="el" href="texture_8py_source.xhtml#l00193">openage.convert.texture.Texture.dump()</a>, and <a class="el" href="blendomatic_8py_source.xhtml#l00255">openage.convert.blendomatic.Blendomatic.dump()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1texture_1_1_texture_a5ab6d4ff626d130203d59cdafc830f0d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -329,7 +378,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00199">199</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="stringliteral">    merge all given frames of this slp to a single image file.</span></div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="stringliteral">    frames = [TextureImage, ...]</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -451,6 +500,8 @@ Private Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture_8py_source.xhtml#l00104">104</a> of file <a class="el" href="texture_8py_source.xhtml">texture.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00145">openage.convert.texture.Texture._slp_to_subtextures()</a>.</p>
+
 </div>
 </div>
 <a id="adf99e0c65d8a38600e7b399b56bf80f7"></a>
@@ -478,7 +529,7 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="texture_8py_source.xhtml">texture.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="texture_8py_source.xhtml">texture.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

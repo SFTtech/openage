@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::gui::GuiGameSpecImageProviderImpl Class Reference</title>
+<title>openage: openage::gui::GuiGameSpecImageProviderImpl Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -100,17 +101,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_gui_game_spec_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::gui::GuiGameSpecImageProviderImpl:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::GuiGameSpecImageProviderImpl:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::gui::GuiGameSpecImageProviderImpl:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::GuiGameSpecImageProviderImpl:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -209,7 +212,16 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    :</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_image_provider_impl.xhtml#a914b88104905d80cf71119697d980946">GuiImageProviderImpl</a>{},</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">invalidated</a>{},</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">filled_handles</a>{std::make_shared&lt;GuiFilledTextureHandles&gt;()},</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">ended</a>{} {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    QThread *render_thread = <a class="code" href="classqtsdl_1_1_gui_event_queue_impl.xhtml#aa210a90acba7405dbf013ca75b60778e">qtsdl::GuiEventQueueImpl::impl</a>(render_updater)-&gt;<a class="code" href="classqtsdl_1_1_gui_event_queue_impl.xhtml#ad445b8604c39eddf25837572c4dda508">get_thread</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">render_thread_callback</a>.moveToThread(render_thread);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    QObject::connect(&amp;this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">render_thread_callback</a>, &amp;<a class="code" href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking</a>, &amp;this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">render_thread_callback</a>, &amp;<a class="code" href="classqtsdl_1_1_gui_callback.xhtml#ab84c2a4152e0ab297025079a4d15746c">qtsdl::GuiCallback::process</a>, render_thread != QThread::currentThread() ? Qt::BlockingQueuedConnection : Qt::DirectConnection);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_event_queue_impl_xhtml_ad445b8604c39eddf25837572c4dda508"><div class="ttname"><a href="classqtsdl_1_1_gui_event_queue_impl.xhtml#ad445b8604c39eddf25837572c4dda508">qtsdl::GuiEventQueueImpl::get_thread</a></div><div class="ttdeci">QThread * get_thread()</div><div class="ttdef"><b>Definition:</b> <a href="gui__event__queue__impl_8cpp_source.xhtml#l00037">gui_event_queue_impl.cpp:37</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_callback_xhtml_a3cfbf34933c59c043267e2ba916dc15f"><div class="ttname"><a href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking</a></div><div class="ttdeci">void process_blocking(const std::function&lt; void()&gt; &amp;f)</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ab94d9dbb8b7cba7e2376325a70e50160"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">openage::gui::GuiGameSpecImageProviderImpl::filled_handles</a></div><div class="ttdeci">std::shared_ptr&lt; GuiFilledTextureHandles &gt; filled_handles</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">gui_game_spec_image_provider_impl.h:94</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_callback_xhtml_ab84c2a4152e0ab297025079a4d15746c"><div class="ttname"><a href="classqtsdl_1_1_gui_callback.xhtml#ab84c2a4152e0ab297025079a4d15746c">qtsdl::GuiCallback::process</a></div><div class="ttdeci">void process(const std::function&lt; void()&gt; &amp;f)</div><div class="ttdef"><b>Definition:</b> <a href="gui__callback_8cpp_source.xhtml#l00022">gui_callback.cpp:22</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_event_queue_impl_xhtml_aa210a90acba7405dbf013ca75b60778e"><div class="ttname"><a href="classqtsdl_1_1_gui_event_queue_impl.xhtml#aa210a90acba7405dbf013ca75b60778e">qtsdl::GuiEventQueueImpl::impl</a></div><div class="ttdeci">static GuiEventQueueImpl * impl(GuiEventQueue *event_queue)</div><div class="ttdef"><b>Definition:</b> <a href="gui__event__queue__impl_8cpp_source.xhtml#l00024">gui_event_queue_impl.cpp:24</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ac0b9fa728c384bbe334fbc074298aad1"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">openage::gui::GuiGameSpecImageProviderImpl::ended</a></div><div class="ttdeci">bool ended</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">gui_game_spec_image_provider_impl.h:98</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_image_provider_impl_xhtml_a914b88104905d80cf71119697d980946"><div class="ttname"><a href="classqtsdl_1_1_gui_image_provider_impl.xhtml#a914b88104905d80cf71119697d980946">qtsdl::GuiImageProviderImpl::GuiImageProviderImpl</a></div><div class="ttdeci">GuiImageProviderImpl()</div><div class="ttdef"><b>Definition:</b> <a href="gui__image__provider__impl_8cpp_source.xhtml#l00011">gui_image_provider_impl.cpp:11</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ae39715c0800f5ade30bdc6af6ad696b3"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">openage::gui::GuiGameSpecImageProviderImpl::invalidated</a></div><div class="ttdeci">bool invalidated</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">gui_game_spec_image_provider_impl.h:74</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a1c0744b49e86627437c99dc93922607c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">openage::gui::GuiGameSpecImageProviderImpl::render_thread_callback</a></div><div class="ttdeci">qtsdl::GuiCallback render_thread_callback</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">gui_game_spec_image_provider_impl.h:100</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a10f2ca12803f2786d41353f6b5da338b"></a>
@@ -236,7 +248,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00032">32</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                            {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -276,6 +288,28 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>pointer to all memorized handles, so the client can unsubscribe. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00086">86</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                                                                                                                              {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666">overwrite_texture_handle</a>(<span class="keywordtype">id</span>, requested_size, filled_handle);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> GuiFilledTextureHandleUser(this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">filled_handles</a>, <span class="keywordtype">id</span>, requested_size, filled_handle);</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ab94d9dbb8b7cba7e2376325a70e50160"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">openage::gui::GuiGameSpecImageProviderImpl::filled_handles</a></div><div class="ttdeci">std::shared_ptr&lt; GuiFilledTextureHandles &gt; filled_handles</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">gui_game_spec_image_provider_impl.h:94</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ac4c74475a47396d2e1824d2625e9d666"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666">openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle</a></div><div class="ttdeci">void overwrite_texture_handle(const QString &amp;id, const QSize &amp;requested_size, SizedTextureHandle *filled_handle)</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">gui_game_spec_image_provider_impl.cpp:67</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">filled_handles</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">overwrite_texture_handle()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__texture__factory_8cpp_source.xhtml#l00013">openage::gui::GuiTextureFactory::GuiTextureFactory()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a183dbf9c55bb6ce603654585a92db3b1_cgraph.svg" width="100%" height="422"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a183dbf9c55bb6ce603654585a92db3b1_icgraph.svg" width="430" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -303,6 +337,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00091">91</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                                {</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> TextureHandle{this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>-&gt;get_texture(<span class="stringliteral">&quot;missing.png&quot;</span>, <span class="keyword">false</span>), -1};</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a86e3131857e6876e76560d18e9b3057c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; loaded_game_spec</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">gui_game_spec_image_provider_impl.h:69</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">loaded_game_spec</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__by__id__impl_8cpp_source.xhtml#l00021">openage::gui::GuiGameSpecImageProviderByIdImpl::get_texture_handle()</a>, <a class="el" href="gui__game__spec__image__provider__by__filename__impl_8cpp_source.xhtml#l00028">openage::gui::GuiGameSpecImageProviderByFilenameImpl::get_texture_handle()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a99c5f3aa01010aafd71bec94f1fd017d_icgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -332,6 +379,16 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl.xhtml#ad8530c9e494933db31e465f6947574d5">openage::gui::GuiGameSpecImageProviderByFilenameImpl</a>, and <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl.xhtml#a42715118777dc5a4228e3bed2bb9d5cd">openage::gui::GuiGameSpecImageProviderByIdImpl</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">overwrite_texture_handle()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a28738ee06bd6ef675a723b0db02433c2_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a72bac11f807d36b625ea4b345221256e"></a>
@@ -360,6 +417,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classqtsdl_1_1_gui_image_provider_impl.xhtml#ac13c4caf2c86355f2ae34c8c5c436f99">qtsdl::GuiImageProviderImpl</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00110">110</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                           {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::unique_lock&lt;std::mutex&gt; lck{this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">loaded_game_spec_mutex</a>};</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">ended</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">loaded_game_spec_cond</a>.notify_one();</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ac0b9fa728c384bbe334fbc074298aad1"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">openage::gui::GuiGameSpecImageProviderImpl::ended</a></div><div class="ttdeci">bool ended</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">gui_game_spec_image_provider_impl.h:98</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_aa503f841ff5df35013cc125d3c62484b"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_cond</a></div><div class="ttdeci">std::condition_variable loaded_game_spec_cond</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">gui_game_spec_image_provider_impl.h:97</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ad5faedf27a1afe1b7191eaef0455125d"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_mutex</a></div><div class="ttdeci">std::mutex loaded_game_spec_mutex</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">gui_game_spec_image_provider_impl.h:96</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">ended</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">loaded_game_spec_cond</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">loaded_game_spec_mutex</a>.</p>
 
 </div>
 </div>
@@ -389,6 +451,33 @@ Additional Inherited Members</h2></td></tr>
 <p>Change the already produced texture handles to use new source. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                                                                                           {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>, <span class="stringliteral">&quot;spec hasn&#39;t been checked or was invalidated&quot;</span>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>) {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">auto</span> keep_old_game_spec = this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// Need to set up this because the load functions use this-&gt;loaded_game_spec internally.</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a> = <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">render_thread_callback</a>.<a class="code" href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">process_blocking</a>([<span class="keyword">this</span>] {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">using namespace </span>std::placeholders;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">filled_handles</a>-&gt;refresh_all_handles_with_texture(<a class="code" href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">std::bind</a>(&amp;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666">GuiGameSpecImageProviderImpl::overwrite_texture_handle</a>, <span class="keyword">this</span>, _1, _2, _3));</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        });</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a> = <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_callback_xhtml_a3cfbf34933c59c043267e2ba916dc15f"><div class="ttname"><a href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking</a></div><div class="ttdeci">void process_blocking(const std::function&lt; void()&gt; &amp;f)</div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_xhtml_a00b1f2873c9bbd71a19b3a26bd11d03e"><div class="ttname"><a href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">openage::renderer::bind</a></div><div class="ttdeci">void bind() const</div><div class="ttdoc">Make this vertex array object the current one.</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ab94d9dbb8b7cba7e2376325a70e50160"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">openage::gui::GuiGameSpecImageProviderImpl::filled_handles</a></div><div class="ttdeci">std::shared_ptr&lt; GuiFilledTextureHandles &gt; filled_handles</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">gui_game_spec_image_provider_impl.h:94</a></div></div>
+<div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ac4c74475a47396d2e1824d2625e9d666"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666">openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle</a></div><div class="ttdeci">void overwrite_texture_handle(const QString &amp;id, const QSize &amp;requested_size, SizedTextureHandle *filled_handle)</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">gui_game_spec_image_provider_impl.cpp:67</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a1c0744b49e86627437c99dc93922607c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">openage::gui::GuiGameSpecImageProviderImpl::render_thread_callback</a></div><div class="ttdeci">qtsdl::GuiCallback render_thread_callback</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">gui_game_spec_image_provider_impl.h:100</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a86e3131857e6876e76560d18e9b3057c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; loaded_game_spec</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">gui_game_spec_image_provider_impl.h:69</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">openage::renderer::bind()</a>, <a class="el" href="error_2error_8h_source.xhtml#l00155">ENSURE</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">filled_handles</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">loaded_game_spec</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">overwrite_texture_handle()</a>, <a class="el" href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">render_thread_callback</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">on_game_spec_loaded()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_ab296b31a83e17fbd14f7106ce4c2a54a_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_ab296b31a83e17fbd14f7106ce4c2a54a_icgraph.svg" width="100%" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -410,6 +499,33 @@ Additional Inherited Members</h2></td></tr>
 <p>Needed as a visible reaction to setting the property to null. We can't unload the textures without recreating the engine, so we keep the old source. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">72</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                            {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::unique_lock&lt;std::mutex&gt; lck{this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">loaded_game_spec_mutex</a>};</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>) {</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">const</span> TextureHandle missing_texture = <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a99c5f3aa01010aafd71bec94f1fd017d">get_missing_texture</a>();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">render_thread_callback</a>.<a class="code" href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">process_blocking</a>([<span class="keyword">this</span>, &amp;missing_texture] {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">filled_handles</a>-&gt;fill_all_handles_with_texture(missing_texture);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        });</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">invalidated</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a99c5f3aa01010aafd71bec94f1fd017d"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a99c5f3aa01010aafd71bec94f1fd017d">openage::gui::GuiGameSpecImageProviderImpl::get_missing_texture</a></div><div class="ttdeci">TextureHandle get_missing_texture()</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00091">gui_game_spec_image_provider_impl.cpp:91</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_callback_xhtml_a3cfbf34933c59c043267e2ba916dc15f"><div class="ttname"><a href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking</a></div><div class="ttdeci">void process_blocking(const std::function&lt; void()&gt; &amp;f)</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ab94d9dbb8b7cba7e2376325a70e50160"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab94d9dbb8b7cba7e2376325a70e50160">openage::gui::GuiGameSpecImageProviderImpl::filled_handles</a></div><div class="ttdeci">std::shared_ptr&lt; GuiFilledTextureHandles &gt; filled_handles</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">gui_game_spec_image_provider_impl.h:94</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ae39715c0800f5ade30bdc6af6ad696b3"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">openage::gui::GuiGameSpecImageProviderImpl::invalidated</a></div><div class="ttdeci">bool invalidated</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">gui_game_spec_image_provider_impl.h:74</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a1c0744b49e86627437c99dc93922607c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a1c0744b49e86627437c99dc93922607c">openage::gui::GuiGameSpecImageProviderImpl::render_thread_callback</a></div><div class="ttdeci">qtsdl::GuiCallback render_thread_callback</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">gui_game_spec_image_provider_impl.h:100</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a86e3131857e6876e76560d18e9b3057c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; loaded_game_spec</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">gui_game_spec_image_provider_impl.h:69</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ad5faedf27a1afe1b7191eaef0455125d"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_mutex</a></div><div class="ttdeci">std::mutex loaded_game_spec_mutex</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">gui_game_spec_image_provider_impl.h:96</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">filled_handles</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00091">get_missing_texture()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">invalidated</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">loaded_game_spec</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">loaded_game_spec_mutex</a>, <a class="el" href="classqtsdl_1_1_gui_callback.xhtml#a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">render_thread_callback</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__image__provider__link_8cpp_source.xhtml#l00047">openage::gui::GuiImageProviderLink::set_game_spec()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a42ec51b02960edb6ef405251a640bd5f_cgraph.svg" width="438" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a42ec51b02960edb6ef405251a640bd5f_icgraph.svg" width="454" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -438,6 +554,32 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">35</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                                                                      {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>, <span class="stringliteral">&quot;spec hasn&#39;t been checked or was invalidated&quot;</span>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::unique_lock&lt;std::mutex&gt; lck{this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">loaded_game_spec_mutex</a>};</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">invalidated</a> || <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a> != this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>) {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a">migrate_to_new_game_spec</a>(<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">invalidated</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        lck.unlock();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">loaded_game_spec_cond</a>.notify_one();</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ae39715c0800f5ade30bdc6af6ad696b3"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ae39715c0800f5ade30bdc6af6ad696b3">openage::gui::GuiGameSpecImageProviderImpl::invalidated</a></div><div class="ttdeci">bool invalidated</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">gui_game_spec_image_provider_impl.h:74</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a86e3131857e6876e76560d18e9b3057c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; loaded_game_spec</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">gui_game_spec_image_provider_impl.h:69</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_aa503f841ff5df35013cc125d3c62484b"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_cond</a></div><div class="ttdeci">std::condition_variable loaded_game_spec_cond</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">gui_game_spec_image_provider_impl.h:97</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ab296b31a83e17fbd14f7106ce4c2a54a"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ab296b31a83e17fbd14f7106ce4c2a54a">openage::gui::GuiGameSpecImageProviderImpl::migrate_to_new_game_spec</a></div><div class="ttdeci">void migrate_to_new_game_spec(const std::shared_ptr&lt; GameSpec &gt; &amp;loaded_game_spec)</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">gui_game_spec_image_provider_impl.cpp:49</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ad5faedf27a1afe1b7191eaef0455125d"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_mutex</a></div><div class="ttdeci">std::mutex loaded_game_spec_mutex</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">gui_game_spec_image_provider_impl.h:96</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="error_2error_8h_source.xhtml#l00155">ENSURE</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">invalidated</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">loaded_game_spec</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">loaded_game_spec_cond</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">loaded_game_spec_mutex</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">migrate_to_new_game_spec()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__image__provider__link_8cpp_source.xhtml#l00092">openage::gui::GuiImageProviderLink::on_game_spec_loaded()</a>, and <a class="el" href="gui__image__provider__link_8cpp_source.xhtml#l00047">openage::gui::GuiImageProviderLink::set_game_spec()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a96f49e5b70c5848778479d8ae36431b9_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a96f49e5b70c5848778479d8ae36431b9_icgraph.svg" width="100%" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -482,6 +624,28 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00067">67</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                                                                                             {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> TextureHandle texture_handle = this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2">get_texture_handle</a>(<span class="keywordtype">id</span>);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    *filled_handle = {texture_handle, <a class="code" href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42">aspect_fit_size</a>(texture_handle, requested_size)};</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a28738ee06bd6ef675a723b0db02433c2"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2">openage::gui::GuiGameSpecImageProviderImpl::get_texture_handle</a></div><div class="ttdeci">virtual TextureHandle get_texture_handle(const QString &amp;id)=0</div></div>
+<div class="ttc" id="namespaceopenage_1_1gui_xhtml_a1ed7c99cf0d2a47548927d8d688b0c42"><div class="ttname"><a href="namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42">openage::gui::aspect_fit_size</a></div><div class="ttdeci">QSize aspect_fit_size(const TextureHandle &amp;texture_handle, const QSize &amp;requested_size)</div><div class="ttdef"><b>Definition:</b> <a href="gui__texture__handle_8cpp_source.xhtml#l00043">gui_texture_handle.cpp:43</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__texture__handle_8cpp_source.xhtml#l00043">openage::gui::aspect_fit_size()</a>, and <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2">get_texture_handle()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00086">fill_texture_handle()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">migrate_to_new_game_spec()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_ac4c74475a47396d2e1824d2625e9d666_cgraph.svg" width="100%" height="422"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_ac4c74475a47396d2e1824d2625e9d666_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -526,6 +690,20 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00095">95</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                                                                                             {</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::unique_lock&lt;std::mutex&gt; lck{this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">loaded_game_spec_mutex</a>};</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">loaded_game_spec_cond</a>.wait(lck, [<span class="keyword">this</span>] {<span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">ended</a> || this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">loaded_game_spec</a>;});</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">ended</a>) {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        qWarning(<span class="stringliteral">&quot;ImageProvider was stopped during the load, so it&#39;ll appear like the requestTexture() isn&#39;t implemented.&quot;</span>);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> this-&gt;GuiImageProviderImpl::requestTexture(<span class="keywordtype">id</span>, size, requestedSize);</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">auto</span> tex_factory = <span class="keyword">new</span> GuiTextureFactory{<span class="keyword">this</span>, id, requestedSize};</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        *size = tex_factory-&gt;textureSize();</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">return</span> tex_factory;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ac0b9fa728c384bbe334fbc074298aad1"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac0b9fa728c384bbe334fbc074298aad1">openage::gui::GuiGameSpecImageProviderImpl::ended</a></div><div class="ttdeci">bool ended</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">gui_game_spec_image_provider_impl.h:98</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_a86e3131857e6876e76560d18e9b3057c"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a86e3131857e6876e76560d18e9b3057c">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; loaded_game_spec</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">gui_game_spec_image_provider_impl.h:69</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_aa503f841ff5df35013cc125d3c62484b"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#aa503f841ff5df35013cc125d3c62484b">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_cond</a></div><div class="ttdeci">std::condition_variable loaded_game_spec_cond</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">gui_game_spec_image_provider_impl.h:97</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_xhtml_ad5faedf27a1afe1b7191eaef0455125d"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ad5faedf27a1afe1b7191eaef0455125d">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_mutex</a></div><div class="ttdeci">std::mutex loaded_game_spec_mutex</div><div class="ttdef"><b>Definition:</b> <a href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">gui_game_spec_image_provider_impl.h:96</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">ended</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">loaded_game_spec</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">loaded_game_spec_cond</a>, <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">loaded_game_spec_mutex</a>, and <a class="el" href="gui__texture__factory_8cpp_source.xhtml#l00032">openage::gui::GuiTextureFactory::textureSize()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_a8a2c7319a6690e41380689f6f3283eea_cgraph.svg" width="666" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -551,6 +729,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00098">98</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00110">give_up()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00095">requestTexture()</a>.</p>
 
 </div>
 </div>
@@ -578,6 +758,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00094">94</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00086">fill_texture_handle()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">migrate_to_new_game_spec()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>.</p>
+
 </div>
 </div>
 <a id="ae39715c0800f5ade30bdc6af6ad696b3"></a>
@@ -603,6 +785,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00074">74</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">on_game_spec_loaded()</a>.</p>
+
 </div>
 </div>
 <a id="a86e3131857e6876e76560d18e9b3057c"></a>
@@ -626,6 +810,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00069">69</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00091">get_missing_texture()</a>, <a class="el" href="gui__game__spec__image__provider__by__graphic__id__impl_8cpp_source.xhtml#l00028">openage::gui::GuiGameSpecImageProviderByGraphicIdImpl::get_texture()</a>, <a class="el" href="gui__game__spec__image__provider__by__terrain__id__impl_8cpp_source.xhtml#l00028">openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::get_texture()</a>, <a class="el" href="gui__game__spec__image__provider__by__id__impl_8cpp_source.xhtml#l00021">openage::gui::GuiGameSpecImageProviderByIdImpl::get_texture_handle()</a>, <a class="el" href="gui__game__spec__image__provider__by__filename__impl_8cpp_source.xhtml#l00028">openage::gui::GuiGameSpecImageProviderByFilenameImpl::get_texture_handle()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">migrate_to_new_game_spec()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">on_game_spec_loaded()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00095">requestTexture()</a>.</p>
 
 </div>
 </div>
@@ -651,6 +837,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00097">97</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00110">give_up()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">on_game_spec_loaded()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00095">requestTexture()</a>.</p>
+
 </div>
 </div>
 <a id="ad5faedf27a1afe1b7191eaef0455125d"></a>
@@ -674,6 +862,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00096">96</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00110">give_up()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>, <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00035">on_game_spec_loaded()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00095">requestTexture()</a>.</p>
 
 </div>
 </div>
@@ -699,11 +889,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml#l00100">100</a> of file <a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00049">migrate_to_new_game_spec()</a>, and <a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml#l00072">on_game_spec_invalidated()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/integration/private/<a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a></li>
-<li>libopenage/gui/integration/private/<a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/<a class="el" href="gui__game__spec__image__provider__impl_8h_source.xhtml">gui_game_spec_image_provider_impl.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/<a class="el" href="gui__game__spec__image__provider__impl_8cpp_source.xhtml">gui_game_spec_image_provider_impl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

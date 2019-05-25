@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::TerrainSearch Class Reference</title>
+<title>openage: openage::TerrainSearch Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_terrain_search.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::TerrainSearch:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_terrain_search__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::TerrainSearch:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_terrain_search__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -167,7 +169,8 @@ Private Attributes</h2></td></tr>
 <p>next_tile will cover all tiles on the map </p>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8cpp_source.xhtml#l00056">56</a> of file <a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    :</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classopenage_1_1_terrain_search.xhtml#aa53b5b7989dd55bd6e62f8177dfa0272">TerrainSearch</a>(t, s, .0f) {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1_terrain_search_xhtml_aa53b5b7989dd55bd6e62f8177dfa0272"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#aa53b5b7989dd55bd6e62f8177dfa0272">openage::TerrainSearch::TerrainSearch</a></div><div class="ttdeci">TerrainSearch(std::shared_ptr&lt; Terrain &gt; t, coord::tile s)</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8cpp_source.xhtml#l00056">terrain_search.cpp:56</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8a3bb1291b9100fcf5e83c6b8b341bae"></a>
@@ -204,7 +207,11 @@ Private Attributes</h2></td></tr>
 <p>next_tile will iterate over a range of tiles within a radius </p>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    :</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classopenage_1_1_terrain_search.xhtml#aabc2d7105bbc2e1ba01b95977fa0de58">terrain</a>{t},</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>(s),</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classopenage_1_1_terrain_search.xhtml#a01d013ba8b4a285b3041dd25ac589e47">previous_radius</a>{.0f},</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classopenage_1_1_terrain_search.xhtml#a6863c70e3157a232ae161a729070c1de">max_radius</a>{radius} {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="ttc" id="classopenage_1_1_terrain_search_xhtml_ab1b7ffb236e9c4273d294e97a4b0eb5d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">openage::TerrainSearch::start</a></div><div class="ttdeci">const coord::tile start</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00067">terrain_search.h:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_aabc2d7105bbc2e1ba01b95977fa0de58"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#aabc2d7105bbc2e1ba01b95977fa0de58">openage::TerrainSearch::terrain</a></div><div class="ttdeci">const std::shared_ptr&lt; Terrain &gt; terrain</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00066">terrain_search.h:66</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a01d013ba8b4a285b3041dd25ac589e47"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a01d013ba8b4a285b3041dd25ac589e47">openage::TerrainSearch::previous_radius</a></div><div class="ttdeci">float previous_radius</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00070">terrain_search.h:70</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a6863c70e3157a232ae161a729070c1de"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a6863c70e3157a232ae161a729070c1de">openage::TerrainSearch::max_radius</a></div><div class="ttdeci">float max_radius</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00070">terrain_search.h:70</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abd84942183d81ff42c88742f59c3f163"></a>
@@ -250,6 +257,36 @@ Private Attributes</h2></td></tr>
 <p>returns all objects on the next tile </p>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">81</a> of file <a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                   {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// conditions for returning to the initial tile</span></div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>.empty() ||</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        (this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a6863c70e3157a232ae161a729070c1de">max_radius</a> &amp;&amp; this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a01d013ba8b4a285b3041dd25ac589e47">previous_radius</a> &gt; this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a6863c70e3157a232ae161a729070c1de">max_radius</a>)) {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8">reset</a>();</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    coord::tile <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>.front();</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>.pop();</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 4; ++i) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">auto</span> to_add = <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> + <a class="code" href="namespaceopenage.xhtml#ac27a19b7546e41750ef227ae0af62f9c">neigh_tile</a>[i];</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">// check not visited and tile is within map</span></div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">visited</a>.count(to_add) == 0 &amp;&amp; <a class="code" href="classopenage_1_1_terrain_search.xhtml#aabc2d7105bbc2e1ba01b95977fa0de58">terrain</a>-&gt;get_data(to_add)) {</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">visited</a>.insert(to_add);</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>.push(to_add);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a01d013ba8b4a285b3041dd25ac589e47">previous_radius</a> = <a class="code" href="namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903">std::hypot</a>(result.ne - <a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>.ne, <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.se - <a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>.se);</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div><div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a2c95477aea517bbf5d2b3175bc81d59b"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">openage::TerrainSearch::tiles</a></div><div class="ttdeci">std::queue&lt; coord::tile &gt; tiles</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00068">terrain_search.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_ab1b7ffb236e9c4273d294e97a4b0eb5d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">openage::TerrainSearch::start</a></div><div class="ttdeci">const coord::tile start</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00067">terrain_search.h:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a0db543b44fe51d0f1403bedba1f575a8"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8">openage::TerrainSearch::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8cpp_source.xhtml#l00073">terrain_search.cpp:73</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_aabc2d7105bbc2e1ba01b95977fa0de58"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#aabc2d7105bbc2e1ba01b95977fa0de58">openage::TerrainSearch::terrain</a></div><div class="ttdeci">const std::shared_ptr&lt; Terrain &gt; terrain</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00066">terrain_search.h:66</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a01d013ba8b4a285b3041dd25ac589e47"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a01d013ba8b4a285b3041dd25ac589e47">openage::TerrainSearch::previous_radius</a></div><div class="ttdeci">float previous_radius</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00070">terrain_search.h:70</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a3f3f713314cc35ac39ceebd269d4c04d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">openage::TerrainSearch::visited</a></div><div class="ttdeci">std::unordered_set&lt; coord::tile &gt; visited</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00069">terrain_search.h:69</a></div></div>
+<div class="ttc" id="namespacestd_xhtml_a8058d6b15a78f7a977945ee4d62de903"><div class="ttname"><a href="namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903">std::hypot</a></div><div class="ttdeci">constexpr double hypot(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00498">fixed_point.h:498</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_ac27a19b7546e41750ef227ae0af62f9c"><div class="ttname"><a href="namespaceopenage.xhtml#ac27a19b7546e41750ef227ae0af62f9c">openage::neigh_tile</a></div><div class="ttdeci">constexpr coord::tile_delta const neigh_tile[]</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00025">terrain_search.h:25</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a6863c70e3157a232ae161a729070c1de"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a6863c70e3157a232ae161a729070c1de">openage::TerrainSearch::max_radius</a></div><div class="ttdeci">float max_radius</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00070">terrain_search.h:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fixed__point_8h_source.xhtml#l00498">std::hypot()</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00070">max_radius</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00025">openage::neigh_tile</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00070">previous_radius</a>, <a class="el" href="terrain__search_8cpp_source.xhtml#l00073">reset()</a>, <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00067">start</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00066">terrain</a>, <a class="el" href="terrain__search_8h_source.xhtml#l00068">tiles</a>, and <a class="el" href="terrain__search_8h_source.xhtml#l00069">visited</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00033">openage::find_in_radius()</a>, and <a class="el" href="terrain__search_8cpp_source.xhtml#l00011">openage::find_near()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_terrain_search_a9865063a926eb992bdc7c94eab5eb85e_cgraph.svg" width="626" height="163"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_terrain_search_a9865063a926eb992bdc7c94eab5eb85e_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -270,6 +307,21 @@ Private Attributes</h2></td></tr>
 <p>restarts the search from the start tile </p>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8cpp_source.xhtml#l00073">73</a> of file <a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                          {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::queue&lt;coord::tile&gt; empty;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::swap(this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>, empty);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">visited</a>.clear();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">tiles</a>.push(this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>);</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">visited</a>.insert(this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a2c95477aea517bbf5d2b3175bc81d59b"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a2c95477aea517bbf5d2b3175bc81d59b">openage::TerrainSearch::tiles</a></div><div class="ttdeci">std::queue&lt; coord::tile &gt; tiles</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00068">terrain_search.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_ab1b7ffb236e9c4273d294e97a4b0eb5d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">openage::TerrainSearch::start</a></div><div class="ttdeci">const coord::tile start</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00067">terrain_search.h:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_terrain_search_xhtml_a3f3f713314cc35ac39ceebd269d4c04d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#a3f3f713314cc35ac39ceebd269d4c04d">openage::TerrainSearch::visited</a></div><div class="ttdeci">std::unordered_set&lt; coord::tile &gt; visited</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00069">terrain_search.h:69</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="terrain__search_8h_source.xhtml#l00068">tiles</a>, and <a class="el" href="terrain__search_8h_source.xhtml#l00069">visited</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_terrain_search_a0db543b44fe51d0f1403bedba1f575a8_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -290,6 +342,9 @@ Private Attributes</h2></td></tr>
 <p>the tile the search began on </p>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8cpp_source.xhtml#l00069">69</a> of file <a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                          {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">start</a>;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div><div class="ttc" id="classopenage_1_1_terrain_search_xhtml_ab1b7ffb236e9c4273d294e97a4b0eb5d"><div class="ttname"><a href="classopenage_1_1_terrain_search.xhtml#ab1b7ffb236e9c4273d294e97a4b0eb5d">openage::TerrainSearch::start</a></div><div class="ttdeci">const coord::tile start</div><div class="ttdef"><b>Definition:</b> <a href="terrain__search_8h_source.xhtml#l00067">terrain_search.h:67</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="terrain__search_8h_source.xhtml#l00067">start</a>.</p>
 
 </div>
 </div>
@@ -316,6 +371,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00070">70</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>.</p>
+
 </div>
 </div>
 <a id="a01d013ba8b4a285b3041dd25ac589e47"></a>
@@ -339,6 +396,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00070">70</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>.</p>
 
 </div>
 </div>
@@ -364,6 +423,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00067">67</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>, <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment::read()</a>, and <a class="el" href="terrain__search_8cpp_source.xhtml#l00069">start_tile()</a>.</p>
+
 </div>
 </div>
 <a id="aabc2d7105bbc2e1ba01b95977fa0de58"></a>
@@ -387,6 +448,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00066">66</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>.</p>
 
 </div>
 </div>
@@ -412,6 +475,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00068">68</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>, and <a class="el" href="terrain__search_8cpp_source.xhtml#l00073">reset()</a>.</p>
+
 </div>
 </div>
 <a id="a3f3f713314cc35ac39ceebd269d4c04d"></a>
@@ -436,11 +501,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="terrain__search_8h_source.xhtml#l00069">69</a> of file <a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="terrain__search_8cpp_source.xhtml#l00081">next_tile()</a>, and <a class="el" href="terrain__search_8cpp_source.xhtml#l00073">reset()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/terrain/<a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a></li>
-<li>libopenage/terrain/<a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/<a class="el" href="terrain__search_8h_source.xhtml">terrain_search.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/<a class="el" href="terrain__search_8cpp_source.xhtml">terrain_search.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -18,7 +18,7 @@ var searchData=
   ['siphash',['Siphash',['../classopenage_1_1util_1_1_siphash.xhtml',1,'openage::util']]],
   ['sizedtexturehandle',['SizedTextureHandle',['../classopenage_1_1gui_1_1_sized_texture_handle.xhtml',1,'openage::gui']]],
   ['slpconverterpool',['SLPConverterPool',['../classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool.xhtml',1,'openage::convert::slp_converter_pool']]],
-  ['sound',['Sound',['../classopenage_1_1_sound.xhtml',1,'openage::Sound'],['../classopenage_1_1audio_1_1_sound.xhtml',1,'openage::audio::Sound'],['../classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound.xhtml',1,'openage.convert.gamedata.sound.Sound']]],
+  ['sound',['Sound',['../classopenage_1_1audio_1_1_sound.xhtml',1,'openage::audio::Sound'],['../classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound.xhtml',1,'openage.convert.gamedata.sound.Sound'],['../classopenage_1_1_sound.xhtml',1,'openage::Sound']]],
   ['soundimpl',['SoundImpl',['../classopenage_1_1audio_1_1_sound_impl.xhtml',1,'openage::audio']]],
   ['sounditem',['SoundItem',['../classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound_item.xhtml',1,'openage::convert::gamedata::sound']]],
   ['soundprop',['SoundProp',['../classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_sound_prop.xhtml',1,'openage::convert::gamedata::graphic']]],

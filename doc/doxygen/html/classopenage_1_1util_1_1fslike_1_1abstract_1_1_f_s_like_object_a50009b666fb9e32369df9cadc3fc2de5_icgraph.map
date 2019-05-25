@@ -1,0 +1,4 @@
+<map id="openage.util.fslike.abstract.FSLikeObject.unlink" name="openage.util.fslike.abstract.FSLikeObject.unlink">
+<area shape="rect" id="node1" title="Shall remove a single file." alt="" coords="212,5,393,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a54ddfaca7c17c046c0a7472bb6af3d76" title="Recursively deletes this file or directory." alt="" coords="5,5,164,47"/>
+</map>

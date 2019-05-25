@@ -1,8 +1,8 @@
-<map id="libopenage/util/math.h" name="libopenage/util/math.h">
-<area shape="rect" id="node1" title=" " alt="" coords="399,5,549,32"/>
-<area shape="rect" id="node2" href="$phys_8cpp.xhtml" title=" " alt="" coords="5,87,183,114"/>
-<area shape="rect" id="node3" href="$screenshot_8cpp.xhtml" title=" " alt="" coords="207,87,384,114"/>
-<area shape="rect" id="node4" href="$terrain__outline_8cpp.xhtml" title=" " alt="" coords="408,80,540,121"/>
-<area shape="rect" id="node5" href="$unit__texture_8cpp.xhtml" title=" " alt="" coords="564,80,699,121"/>
-<area shape="rect" id="node6" href="$fps_8cpp.xhtml" title=" " alt="" coords="723,87,873,114"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/math.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/math.h">
+<area shape="rect" id="node1" title=" " alt="" coords="472,5,681,61"/>
+<area shape="rect" id="node2" href="$phys_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$screenshot_8cpp.xhtml" title=" " alt="" coords="239,109,448,165"/>
+<area shape="rect" id="node4" href="$terrain__outline_8cpp.xhtml" title=" " alt="" coords="472,109,681,165"/>
+<area shape="rect" id="node5" href="$unit__texture_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
+<area shape="rect" id="node6" href="$fps_8cpp.xhtml" title=" " alt="" coords="939,109,1148,165"/>
 </map>

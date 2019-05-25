@@ -5,8 +5,8 @@
     <includes local="no">atomic</includes>
     <includes local="no">QObject</includes>
     <includes local="no">SDL2/SDL_events.h</includes>
-    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
-    <includedby refid="gui__input_8cpp" local="yes">libopenage/gui/guisys/public/gui_input.cpp</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__input_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp</includedby>
     <incdepgraph>
       <node id="13154">
         <label>atomic</label>
@@ -18,7 +18,7 @@
         <label>SDL2/SDL_events.h</label>
       </node>
       <node id="13153">
-        <label>libopenage/gui/guisys/private/gui_input_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h</label>
         <link refid="gui__input__impl_8h"/>
         <childnode refid="13154" relation="include">
         </childnode>
@@ -30,15 +30,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13158">
-        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</label>
         <link refid="gui__input__impl_8cpp"/>
       </node>
       <node id="13159">
-        <label>libopenage/gui/guisys/public/gui_input.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp</label>
         <link refid="gui__input_8cpp"/>
       </node>
       <node id="13157">
-        <label>libopenage/gui/guisys/private/gui_input_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h</label>
         <link refid="gui__input__impl_8h"/>
         <childnode refid="13158" relation="include">
         </childnode>
@@ -90,6 +90,6 @@
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_input_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.h"/>
   </compounddef>
 </doxygen>

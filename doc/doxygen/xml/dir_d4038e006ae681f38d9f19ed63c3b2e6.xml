@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_d4038e006ae681f38d9f19ed63c3b2e6" kind="dir">
-    <compoundname>libopenage/log</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log</compoundname>
     <innerfile refid="file__logsink_8cpp">file_logsink.cpp</innerfile>
     <innerfile refid="file__logsink_8h">file_logsink.h</innerfile>
     <innerfile refid="level_8cpp">level.cpp</innerfile>
@@ -23,6 +23,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/log/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/"/>
   </compounddef>
 </doxygen>

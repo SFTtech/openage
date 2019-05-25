@@ -1,0 +1,7 @@
+<map id="openage.convert.driver.get_palette" name="openage.convert.driver.get_palette">
+<area shape="rect" id="node1" title="Read and create the color palette." alt="" coords="507,39,679,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="256,5,451,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="248,71,459,112"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,13,200,39"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="13,78,193,105"/>
+</map>

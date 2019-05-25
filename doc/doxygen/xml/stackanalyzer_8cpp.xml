@@ -161,7 +161,7 @@
         </childnode>
       </node>
       <node id="6500">
-        <label>libopenage/error/stackanalyzer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</label>
         <link refid="stackanalyzer_8cpp"/>
         <childnode refid="6501" relation="include">
         </childnode>
@@ -321,7 +321,7 @@
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>called<sp/>by<sp/>backtrace_pcinfo<sp/>in<sp/>StackAnalyzer::get_symbols</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtrace_pcinfo_callback(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>uintptr_t<sp/>pc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lineno,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">function</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>backtrace_symbol<sp/>result;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>backtrace_symbol<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>symbol_vector<sp/>=<sp/>&amp;(reinterpret_cast&lt;info_cb_data_t<sp/>*&gt;(data)-&gt;symbols);</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
@@ -540,6 +540,6 @@
 <codeline lineno="319"><highlight class="normal"></highlight></codeline>
 <codeline lineno="320"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/error/stackanalyzer.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp"/>
   </compounddef>
 </doxygen>

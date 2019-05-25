@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::IntervalTimer Class Reference</title>
+<title>openage: openage::IntervalTimer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_interval_timer.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::IntervalTimer:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer__coll__graph.svg" width="162" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::IntervalTimer:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer__coll__graph.svg" width="162" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -163,6 +165,10 @@ Private Attributes</h2></td></tr>
 <p>Constructs a timer with a given interval </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00019">19</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    :</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classopenage_1_1_interval_timer.xhtml#a7dca00ce42fb959b4301bf181e52cce1">IntervalTimer</a>{<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>, -1} {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_a7dca00ce42fb959b4301bf181e52cce1"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#a7dca00ce42fb959b4301bf181e52cce1">openage::IntervalTimer::IntervalTimer</a></div><div class="ttdeci">IntervalTimer(unsigned int interval)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00019">action.cpp:19</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>.</p>
 
 </div>
 </div>
@@ -194,6 +200,12 @@ Private Attributes</h2></td></tr>
 <p>Constructs a timer with a given interval which will stop after a given number of triggers. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00024">24</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    :</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>{<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>},</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">max_triggers</a>{<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">max_triggers</a>},</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a>{<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>},</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a>{0} {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ab19d3fc4826dd8d13862832056c97df8"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">openage::IntervalTimer::time_left</a></div><div class="ttdeci">unsigned int time_left</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00075">action.h:75</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ad1685289e75cbd0bcc9669981b6de95f"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">openage::IntervalTimer::triggers</a></div><div class="ttdeci">int triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00077">action.h:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa6bc2e84f7dd42a603beac62f2bcb26d"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">openage::IntervalTimer::max_triggers</a></div><div class="ttdeci">int max_triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00073">action.h:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>.</p>
 
 </div>
 </div>
@@ -215,6 +227,20 @@ Private Attributes</h2></td></tr>
 <p>Returns true if the interval passed have reached the max. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                   {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a> == this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">max_triggers</a>;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ad1685289e75cbd0bcc9669981b6de95f"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">openage::IntervalTimer::triggers</a></div><div class="ttdeci">int triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00077">action.h:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa6bc2e84f7dd42a603beac62f2bcb26d"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">openage::IntervalTimer::max_triggers</a></div><div class="ttdeci">int max_triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00073">action.h:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00073">max_triggers</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00077">triggers</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00808">openage::TrainAction::update()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer_a8604ecb1237e6f9be407fe6f9e63c6d6_icgraph.svg" width="354" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -242,6 +268,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00065">65</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{ <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>; }</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l01201">openage::AttackAction::update_in_range()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l01261">openage::HealAction::update_in_range()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer_a3b8556bdc5e8f4c6e00a1d614f6b949b_icgraph.svg" width="364" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -261,6 +300,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                        {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> 1.0f - (this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a> * 1.0f / this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ab19d3fc4826dd8d13862832056c97df8"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">openage::IntervalTimer::time_left</a></div><div class="ttdeci">unsigned int time_left</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00075">action.h:75</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00075">time_left</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8h_source.xhtml#l00457">openage::TrainAction::get_progress()</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00482">openage::ResearchAction::get_progress()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer_adf00dc6610faafd2bd5ce329fcb71868_icgraph.svg" width="380" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -281,6 +334,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the time until the next trigger </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                                {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a>;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ab19d3fc4826dd8d13862832056c97df8"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">openage::IntervalTimer::time_left</a></div><div class="ttdeci">unsigned int time_left</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00075">action.h:75</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00075">time_left</a>.</p>
 
 </div>
 </div>
@@ -309,6 +365,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the number of intervals passed. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00063">63</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{ <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a>; }</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ad1685289e75cbd0bcc9669981b6de95f"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">openage::IntervalTimer::triggers</a></div><div class="ttdeci">int triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00077">action.h:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00077">triggers</a>.</p>
 
 </div>
 </div>
@@ -329,6 +388,9 @@ Private Attributes</h2></td></tr>
 <p>Returns true if at least one interval has passed. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                       {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a> &gt; 0;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ad1685289e75cbd0bcc9669981b6de95f"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">openage::IntervalTimer::triggers</a></div><div class="ttdeci">int triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00077">action.h:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00077">triggers</a>.</p>
 
 </div>
 </div>
@@ -357,6 +419,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00067">67</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{ this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a> = <a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a>; }</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>.</p>
 
 </div>
 </div>
@@ -376,6 +441,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00032">32</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                    {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a> = 0;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ab19d3fc4826dd8d13862832056c97df8"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">openage::IntervalTimer::time_left</a></div><div class="ttdeci">unsigned int time_left</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00075">action.h:75</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00075">time_left</a>.</p>
 
 </div>
 </div>
@@ -396,6 +464,22 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                            {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a> == this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">max_triggers</a>) {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a> &gt; time) {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a> -= time;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">time_left</a> += this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">interval</a> - time;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">triggers</a> += 1;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa2ad12ec2a0c44e57254eba6f8ddd7e6"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa2ad12ec2a0c44e57254eba6f8ddd7e6">openage::IntervalTimer::interval</a></div><div class="ttdeci">unsigned int interval</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00071">action.h:71</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ab19d3fc4826dd8d13862832056c97df8"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ab19d3fc4826dd8d13862832056c97df8">openage::IntervalTimer::time_left</a></div><div class="ttdeci">unsigned int time_left</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00075">action.h:75</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_ad1685289e75cbd0bcc9669981b6de95f"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#ad1685289e75cbd0bcc9669981b6de95f">openage::IntervalTimer::triggers</a></div><div class="ttdeci">int triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00077">action.h:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_interval_timer_xhtml_aa6bc2e84f7dd42a603beac62f2bcb26d"><div class="ttname"><a href="classopenage_1_1_interval_timer.xhtml#aa6bc2e84f7dd42a603beac62f2bcb26d">openage::IntervalTimer::max_triggers</a></div><div class="ttdeci">int max_triggers</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00073">action.h:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00071">interval</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00073">max_triggers</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00075">time_left</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00077">triggers</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00808">openage::TrainAction::update()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00865">openage::ResearchAction::update()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00991">openage::RepairAction::update_in_range()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l01201">openage::AttackAction::update_in_range()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l01261">openage::HealAction::update_in_range()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_interval_timer_acb51f379d7d73ad7fff1197f9fa2335b_icgraph.svg" width="380" height="314"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -422,6 +506,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00071">71</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8h_source.xhtml#l00065">get_interval()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00053">get_progress()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00019">IntervalTimer()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00067">set_interval()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">update()</a>.</p>
+
 </div>
 </div>
 <a id="aa6bc2e84f7dd42a603beac62f2bcb26d"></a>
@@ -445,6 +531,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00073">73</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00061">finished()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">update()</a>.</p>
 
 </div>
 </div>
@@ -470,6 +558,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00075">75</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00053">get_progress()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00049">get_time_left()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00032">skip_to_trigger()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">update()</a>.</p>
+
 </div>
 </div>
 <a id="ad1685289e75cbd0bcc9669981b6de95f"></a>
@@ -494,11 +584,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00077">77</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00061">finished()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00063">get_triggers()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00057">has_triggers()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00036">update()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

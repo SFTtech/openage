@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gamespec__structs_8py" kind="file" language="Python">
+    <compoundname>gamespec_structs.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1gamespec__structs">openage::codegen::gamespec_structs</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1codegen_1_1gamespec__structs" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">gamespec<sp/>struct<sp/>code<sp/>generation<sp/>listing.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.dataformat.data_formatter<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>DataFormatter</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.dataformat.multisubtype_base<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>MultisubtypeBaseFile</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.gamedata.empiresdat<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>EmpiresDat</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.blendomatic<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Blendomatic</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.colortable<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ColorTable</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.texture<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Texture</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.stringresource<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>StringResource</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1codegen_1_1gamespec__structs_1a2faab3571b3ad054145c22c81765f653" kindref="member">generate_gamespec_structs</ref>(projectdir):</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Header<sp/>and<sp/>C++<sp/>files<sp/>for<sp/>the<sp/>gamespec<sp/>structs<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>generator<sp/>=<sp/><ref refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter" kindref="compound">DataFormatter</ref>()</highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1codegen_1_1gamespec__structs_1a2faab3571b3ad054145c22c81765f653" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(MultisubtypeBaseFile.structs())</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(EmpiresDat.structs())</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(Blendomatic.structs())</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(ColorTable.structs())</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(Texture.structs())</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.add_data(StringResource.structs())</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>cpppath<sp/>=<sp/>projectdir.joinpath(</highlight><highlight class="stringliteral">&apos;libopenage/gamedata&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>generator.export(cpppath,<sp/>(</highlight><highlight class="stringliteral">&quot;struct&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;structimpl&quot;</highlight><highlight class="normal">))</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/gamespec_structs.py"/>
+  </compounddef>
+</doxygen>

@@ -8,7 +8,7 @@
         <label>functional</label>
       </node>
       <node id="13293">
-        <label>libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp</label>
         <link refid="deferred__initial__constant__property__values_8cpp"/>
         <childnode refid="13294" relation="include">
         </childnode>
@@ -63,6 +63,6 @@
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp"/>
   </compounddef>
 </doxygen>

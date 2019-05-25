@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="36" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="36" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="39" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="39" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -41,30 +41,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3911">
+      <node id="4752">
         <label>openage::renderer::RenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1_render_target"/>
       </node>
-      <node id="3913">
+      <node id="4754">
         <label>openage::renderer::vulkan::VlkFramebuffer</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer"/>
-        <childnode refid="3911" relation="public-inheritance">
+        <childnode refid="4752" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3912">
+      <node id="4753">
         <label>openage::renderer::opengl::GlRenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
-        <childnode refid="3911" relation="public-inheritance">
+        <childnode refid="4752" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3914">
+      <node id="4755">
         <label>openage::renderer::RenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1_render_target"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/renderer.h" line="34" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="34" bodyend="40"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="34" bodyend="40"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_render_target_1a82f0a811d5ef9ed22a3b946eaf523968" prot="protected" virt="non-virtual"><scope>openage::renderer::RenderTarget</scope><name>RenderTarget</name></member>
       <member refid="classopenage_1_1renderer_1_1_render_target_1a0c525e5ad964ff0e763c2a45299ecebd" prot="public" virt="virtual"><scope>openage::renderer::RenderTarget</scope><name>~RenderTarget</name></member>

@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="42" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_resource_producer_1a5e33b687de15c8d5b64edceba8c79d4a" compoundref="gamestate_2resource_8h" startline="36" endline="36">id</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_resource_producer_1aa374e0f351c299cabbf640c937ac2ec9" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -29,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="43" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_resource_producer_1a6d8c9b7625fba6de6f95a2d582843c8b" compoundref="gamestate_2resource_8h" startline="38" endline="38">name</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="31" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="31" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resource_producer_1a5e33b687de15c8d5b64edceba8c79d4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>int</type>
@@ -66,7 +68,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="36" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="36" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="36" bodyend="36"/>
+        <references refid="classopenage_1_1_resource_producer_1a6a516e06e4691a9ebdc729153a3dd8c3" compoundref="gamestate_2resource_8h" startline="42">_id</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resource_producer_1a6d8c9b7625fba6de6f95a2d582843c8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -80,7 +83,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="38" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="38" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="38" bodyend="38"/>
+        <references refid="classopenage_1_1_resource_producer_1aa374e0f351c299cabbf640c937ac2ec9" compoundref="gamestate_2resource_8h" startline="43">_name</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -88,30 +95,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4108">
+      <node id="5024">
         <label>openage::Resource</label>
         <link refid="classopenage_1_1_resource"/>
       </node>
-      <node id="4107">
+      <node id="5023">
         <label>openage::ResourceProducer</label>
         <link refid="classopenage_1_1_resource_producer"/>
-        <childnode refid="4108" relation="public-inheritance">
+        <childnode refid="5024" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4110">
+      <node id="5026">
         <label>openage::Resource</label>
         <link refid="classopenage_1_1_resource"/>
       </node>
-      <node id="4109">
+      <node id="5025">
         <label>openage::ResourceProducer</label>
         <link refid="classopenage_1_1_resource_producer"/>
-        <childnode refid="4110" relation="public-inheritance">
+        <childnode refid="5026" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/resource.h" line="28" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="28" bodyend="44"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="28" bodyend="44"/>
     <listofallmembers>
       <member refid="classopenage_1_1_resource_producer_1a6a516e06e4691a9ebdc729153a3dd8c3" prot="private" virt="non-virtual"><scope>openage::ResourceProducer</scope><name>_id</name></member>
       <member refid="classopenage_1_1_resource_producer_1aa374e0f351c299cabbf640c937ac2ec9" prot="private" virt="non-virtual"><scope>openage::ResourceProducer</scope><name>_name</name></member>

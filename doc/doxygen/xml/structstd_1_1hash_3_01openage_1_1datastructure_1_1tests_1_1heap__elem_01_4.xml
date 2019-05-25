@@ -21,7 +21,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/tests.h" line="38" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="38" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.h" bodystart="38" bodyend="40"/>
+        <references refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" compoundref="datastructure_2tests_8h" startline="16">openage::datastructure::tests::heap_elem::data</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -30,12 +31,12 @@
 <para>hash function for the simple heap_elem </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2825">
+      <node id="6631">
         <label>std::hash&lt; openage::datastructure::tests::heap_elem &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/datastructure/tests.h" line="37" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="37" bodyend="41"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.h" bodystart="37" bodyend="41"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4_1a6166232a00a466d29e290c1806c61ab4" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::datastructure::tests::heap_elem &gt;</scope><name>operator()</name></member>
     </listofallmembers>

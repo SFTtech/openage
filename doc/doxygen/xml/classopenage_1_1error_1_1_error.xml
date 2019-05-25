@@ -20,7 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="91" column="1" bodyfile="libopenage/error/error.h" bodystart="91" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" compoundref="error_2error_8cpp" startline="72" endline="74">what</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> &gt;</type>
@@ -34,7 +36,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="97" column="1" bodyfile="libopenage/error/error.h" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" compoundref="demo_8cpp" startline="45" endline="58">openage::error::demo</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" compoundref="pyexception_8cpp" startline="30" endline="32">openage::pyinterface::PyException::init_backtrace</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" compoundref="error_2error_8cpp" startline="60" endline="64">trim_backtrace</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -50,7 +56,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="141" column="1" bodyfile="libopenage/error/error.h" bodystart="141" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="141" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" bodystart="141" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" compoundref="error_2error_8cpp" startline="82" endline="86">rethrow_cause</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_error_1a27cbe56bc7dbab4d399072ef87fe2014" compoundref="error_2error_8cpp" startline="41" endline="57">store_cause</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -105,7 +113,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="66" column="1" bodyfile="libopenage/error/error.cpp" bodystart="20" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="20" bodyend="38"/>
+        <references refid="namespaceopenage_1_1error_1a1f2a2504ac8f64e3666ce4322b32f0e6" compoundref="error_2error_8cpp" startline="13">openage::error::runtime_error_message</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a27cbe56bc7dbab4d399072ef87fe2014" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -119,7 +128,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="72" column="1" bodyfile="libopenage/error/error.cpp" bodystart="41" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="41" bodyend="57"/>
+        <references refid="classopenage_1_1error_1_1_error_1aad1888d960bfad6b919cea7f8d9baff6" compoundref="error_2error_8h" startline="141">cause</references>
+        <references refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" compoundref="compiler_8h" startline="52">likely</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" compoundref="exctranslate_8cpp" startline="110" endline="134">openage::pyinterface::translate_exc_py_to_cpp</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -135,7 +147,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="85" column="1" bodyfile="libopenage/error/error.cpp" bodystart="60" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="60" bodyend="64"/>
+        <references refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" compoundref="error_2error_8h" startline="97">backtrace</references>
+        <referencedby refid="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" compoundref="demo_8cpp" startline="45" endline="58">openage::error::demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -150,7 +164,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="106" column="1" bodyfile="libopenage/error/error.cpp" bodystart="82" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="82" bodyend="86"/>
+        <references refid="classopenage_1_1error_1_1_error_1aad1888d960bfad6b919cea7f8d9baff6" compoundref="error_2error_8h" startline="141">cause</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" compoundref="exctranslate__tests_8cpp" startline="42" endline="105">openage::pyinterface::tests::err_py_to_cpp</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -165,7 +182,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="114" column="1" bodyfile="libopenage/error/error.cpp" bodystart="77" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="77" bodyend="79"/>
+        <references refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">openage::util::demangle</references>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const char *</type>
@@ -179,7 +198,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="120" column="1" bodyfile="libopenage/error/error.cpp" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="72" bodyend="74"/>
+        <references refid="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" compoundref="error_2error_8h" startline="91">msg</references>
+        <references refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" compoundref="message_8h" startline="58">openage::log::message::text</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" compoundref="exctranslate__tests_8cpp" startline="42" endline="105">openage::pyinterface::tests::err_py_to_cpp</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -199,7 +221,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="125" column="1" bodyfile="libopenage/error/error.cpp" bodystart="16" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="125" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="16" bodyend="18"/>
+        <references refid="namespaceopenage_1_1error_1a69283bf7d976b89c848b6b413190e15a" compoundref="error_2error_8cpp" startline="15">openage::error::enable_break_on_create</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -215,7 +238,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="135" column="1" bodyfile="libopenage/error/error.cpp" bodystart="67" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="67" bodyend="69"/>
+        <references refid="namespaceopenage_1_1error_1a1f2a2504ac8f64e3666ce4322b32f0e6" compoundref="error_2error_8cpp" startline="13">openage::error::runtime_error_message</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -228,82 +252,108 @@
 <para><ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> *backtrace </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1397">
+      <node id="2152">
         <label>openage::testing::TestError</label>
         <link refid="classopenage_1_1testing_1_1_test_error"/>
-        <childnode refid="1393" relation="public-inheritance">
+        <childnode refid="2148" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1394">
+      <node id="2149">
         <label>runtime_error</label>
       </node>
-      <node id="1396">
+      <node id="2151">
         <label>openage::pyinterface::PyException</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
-        <childnode refid="1393" relation="public-inheritance">
+        <childnode refid="2148" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1395">
+      <node id="2150">
         <label>openage::audio::Error</label>
         <link refid="classopenage_1_1audio_1_1_error"/>
-        <childnode refid="1393" relation="public-inheritance">
+        <childnode refid="2148" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1393">
+      <node id="2148">
         <label>openage::error::Error</label>
         <link refid="classopenage_1_1error_1_1_error"/>
-        <childnode refid="1394" relation="public-inheritance">
+        <childnode refid="2149" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1399">
+      <node id="2154">
         <label>runtime_error</label>
       </node>
-      <node id="1400">
+      <node id="2155">
         <label>openage::log::message</label>
         <link refid="structopenage_1_1log_1_1message"/>
-        <childnode refid="1401" relation="usage">
+        <childnode refid="2156" relation="usage">
           <edgelabel>+lvl</edgelabel>
         </childnode>
       </node>
-      <node id="1404">
+      <node id="2160">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="2161" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="2161">
+        <label>NumericType</label>
+      </node>
+      <node id="2159">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="2160" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="1402">
+      <node id="2157">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="1403" relation="usage">
+        <childnode refid="2158" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="2162" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="1401">
+      <node id="2156">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="1402" relation="public-inheritance">
+        <childnode refid="2157" relation="public-inheritance">
         </childnode>
-        <childnode refid="1403" relation="usage">
+        <childnode refid="2158" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="1398">
+      <node id="2162">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="2163" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2163">
+        <label>DerivedType</label>
+      </node>
+      <node id="2153">
         <label>openage::error::Error</label>
         <link refid="classopenage_1_1error_1_1_error"/>
-        <childnode refid="1399" relation="public-inheritance">
+        <childnode refid="2154" relation="public-inheritance">
         </childnode>
-        <childnode refid="1400" relation="usage">
+        <childnode refid="2155" relation="usage">
           <edgelabel>+msg</edgelabel>
         </childnode>
       </node>
-      <node id="1403">
+      <node id="2158">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="1404" relation="public-inheritance">
+        <childnode refid="2159" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/error/error.h" line="51" column="1" bodyfile="libopenage/error/error.h" bodystart="51" bodyend="142"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" bodystart="51" bodyend="142"/>
     <listofallmembers>
       <member refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>backtrace</name></member>
       <member refid="classopenage_1_1error_1_1_error_1aad1888d960bfad6b919cea7f8d9baff6" prot="private" virt="non-virtual"><scope>openage::error::Error</scope><name>cause</name></member>

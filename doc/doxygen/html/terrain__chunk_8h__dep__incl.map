@@ -1,9 +1,9 @@
-<map id="libopenage/terrain/terrain_chunk.h" name="libopenage/terrain/terrain_chunk.h">
-<area shape="rect" id="node1" title=" " alt="" coords="487,5,611,47"/>
-<area shape="rect" id="node2" href="$game__control_8cpp.xhtml" title=" " alt="" coords="5,102,196,129"/>
-<area shape="rect" id="node3" href="$game__save_8cpp.xhtml" title=" " alt="" coords="221,95,370,136"/>
-<area shape="rect" id="node4" href="$generator_8cpp.xhtml" title=" " alt="" coords="394,95,543,136"/>
-<area shape="rect" id="node5" href="$terrain_8cpp.xhtml" title=" " alt="" coords="568,95,692,136"/>
-<area shape="rect" id="node6" href="$terrain__chunk_8cpp.xhtml" title=" " alt="" coords="716,95,845,136"/>
-<area shape="rect" id="node7" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="869,95,999,136"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/terrain/terrain_chunk.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/terrain/terrain_chunk.h">
+<area shape="rect" id="node1" title=" " alt="" coords="588,5,797,61"/>
+<area shape="rect" id="node2" href="$game__control_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$game__save_8cpp.xhtml" title=" " alt="" coords="239,109,448,165"/>
+<area shape="rect" id="node4" href="$generator_8cpp.xhtml" title=" " alt="" coords="472,109,681,165"/>
+<area shape="rect" id="node5" href="$terrain_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
+<area shape="rect" id="node6" href="$terrain__chunk_8cpp.xhtml" title=" " alt="" coords="939,109,1148,165"/>
+<area shape="rect" id="node7" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="1172,109,1381,165"/>
 </map>

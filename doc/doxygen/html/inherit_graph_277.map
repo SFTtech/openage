@@ -1,7 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="5,35,187,61"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="235,5,417,32"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="251,57,401,98"/>
-<area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="465,5,645,32"/>
-<area shape="rect" id="node5" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="481,57,630,98"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,44,39"/>
+<area shape="rect" id="node2" href="$structqtsdl_1_1can__call.xhtml" title=" " alt="" coords="92,5,223,47"/>
 </map>

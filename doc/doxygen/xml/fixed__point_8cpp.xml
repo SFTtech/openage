@@ -224,7 +224,7 @@
         <label>type_traits</label>
       </node>
       <node id="30008">
-        <label>libopenage/util/fixed_point.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.cpp</label>
         <link refid="fixed__point_8cpp"/>
         <childnode refid="30009" relation="include">
         </childnode>
@@ -270,6 +270,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fixed_point.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.cpp"/>
   </compounddef>
 </doxygen>

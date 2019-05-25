@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="18" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="18" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resource_1a1993c4e839fd6ed11d8bd6307f329716" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="20" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="20" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resource_1a5867567cf6c177472acd0d9f73cc9a89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -44,7 +44,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="22" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="22" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -53,24 +56,24 @@
 <para>A resource </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4090">
+      <node id="5015">
         <label>openage::Resource</label>
         <link refid="classopenage_1_1_resource"/>
       </node>
-      <node id="4091">
+      <node id="5016">
         <label>openage::ResourceProducer</label>
         <link refid="classopenage_1_1_resource_producer"/>
-        <childnode refid="4090" relation="public-inheritance">
+        <childnode refid="5015" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4092">
+      <node id="5017">
         <label>openage::Resource</label>
         <link refid="classopenage_1_1_resource"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/resource.h" line="15" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="15" bodyend="26"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="15" bodyend="26"/>
     <listofallmembers>
       <member refid="classopenage_1_1_resource_1a1993c4e839fd6ed11d8bd6307f329716" prot="public" virt="pure-virtual"><scope>openage::Resource</scope><name>id</name></member>
       <member refid="classopenage_1_1_resource_1a5867567cf6c177472acd0d9f73cc9a89" prot="public" virt="pure-virtual"><scope>openage::Resource</scope><name>name</name></member>

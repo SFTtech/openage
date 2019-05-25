@@ -1,0 +1,48 @@
+<map id="openage::py::list" name="openage::py::list">
+<area shape="rect" id="node1" title=" " alt="" coords="1351,935,1469,961"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a6dce2cf04f6cf53afeba4c3dc859a3f0" title=" " alt="" coords="1069,31,1287,57"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" title=" " alt="" coords="1102,82,1254,123"/>
+<area shape="rect" id="node11" href="$classopenage_1_1convert_1_1stringresource_1_1_string_resource.xhtml#a4534f9e425147656e2c2669608b29127" title=" " alt="" coords="1075,147,1281,189"/>
+<area shape="rect" id="node13" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#abd30175646af16d47c9024685a16e3e3" title="main data dumping function, the magic happens in here." alt="" coords="1053,213,1303,254"/>
+<area shape="rect" id="node14" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#ae898e30caff083194c651a9ad9938db3" title="main data dumping function, the magic happens in here." alt="" coords="1088,278,1268,319"/>
+<area shape="rect" id="node15" href="$classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter.xhtml#a5dd2ca6f27cffabc611a817c7ad69232" title="Generates files in the requested formats to projectdir." alt="" coords="1073,343,1283,385"/>
+<area shape="rect" id="node16" href="$classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file.xhtml#ad1e3e3ba7c5728c42f2c8d9619a93e7a" title="actually generate the content for this file." alt="" coords="1057,409,1299,450"/>
+<area shape="rect" id="node17" href="$classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition.xhtml#ad3c5a706c7a408b922b60a0a170c1ea6" title="create a text snippet to represent the csv data" alt="" coords="1056,474,1300,515"/>
+<area shape="rect" id="node18" href="$classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition.xhtml#a25563a8e16af5b93eac7fc52e4f8e733" title=" " alt="" coords="1065,540,1291,596"/>
+<area shape="rect" id="node19" href="$namespaceopenage_1_1codegen_1_1cpp__testlist.xhtml#af4860c4340a60e6e18ff81453fe1b416" title="Generates the test/demo method symbol lookup file from tests_cpp." alt="" coords="1094,621,1262,662"/>
+<area shape="rect" id="node23" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#a2b0c3e9b8181b04312a30d3471796acc" title="when this data field is not filled, use the returned value instead." alt="" coords="1056,686,1300,727"/>
+<area shape="rect" id="node24" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a815464eef9720becdee8f954d2134989" title=" " alt="" coords="1057,751,1299,793"/>
+<area shape="rect" id="node25" href="$classopenage_1_1convert_1_1blendomatic_1_1_blending_tile.xhtml#a15c617e71bf0ced91bf11ef18c134c6c" title="Return a numpy array of image data for a blending tile." alt="" coords="1081,817,1275,858"/>
+<area shape="rect" id="node26" href="$classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a10e0cd36005a0c8dd477ad85dd52fd34" title=" " alt="" coords="1064,883,1292,939"/>
+<area shape="rect" id="node27" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a274e331b508216591106df9b98644854" title="generate enum snippets from given data" alt="" coords="1057,963,1299,1005"/>
+<area shape="rect" id="node28" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#a81e16d3f5273041083c8497f102803ae" title="return struct definitions for this type" alt="" coords="1057,1029,1299,1070"/>
+<area shape="rect" id="node29" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#aa1b9333b1bb2ac9110c8adaf1dd13113" title="return struct definitions for this type" alt="" coords="1057,1094,1299,1135"/>
+<area shape="rect" id="node30" href="$classopenage_1_1convert_1_1blendomatic_1_1_blending_mode.xhtml#a1301aa1adfc9ad82d074d3af9ea85bd1" title="get the data pixels, interprete them in isometric tile format" alt="" coords="1071,1159,1285,1201"/>
+<area shape="rect" id="node31" href="$classopenage_1_1_game_spec.xhtml#acbe30bd72e3a9ef46c461e497d726711" title=" " alt="" coords="1102,1225,1254,1266"/>
+<area shape="rect" id="node34" href="$classopenage_1_1_game_spec.xhtml#a51a1664688173a588e6ead16703f8e82" title=" " alt="" coords="1102,1290,1254,1331"/>
+<area shape="rect" id="node35" href="$classopenage_1_1_game_spec.xhtml#a67579e89ee667f00dc301433a23458af" title=" " alt="" coords="1102,1355,1254,1397"/>
+<area shape="rect" id="node36" href="$classopenage_1_1_game_spec.xhtml#af210d4508dea9f8f87aa98c3fc0e3359" title=" " alt="" coords="1102,1421,1254,1462"/>
+<area shape="rect" id="node37" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#aadb76e27d69a7a94abc320498c316efe" title="recursively read defined binary data from raw at given offset." alt="" coords="1053,1510,1303,1551"/>
+<area shape="rect" id="node39" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#a189674ed7c17e3398bf7e39919e3b641" title=" " alt="" coords="772,1569,1003,1610"/>
+<area shape="rect" id="node42" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#abb235653b7107dc8194c16bd114210e6" title="create struct definitions for this class and its subdata references." alt="" coords="1053,1627,1303,1669"/>
+<area shape="rect" id="node43" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#a37033bf8c1b43c7401ec96dadd3584c7" title="The actual test function; registered in openage.testing.testlist." alt="" coords="1084,1693,1272,1720"/>
+<area shape="rect" id="node44" href="$namespaceopenage_1_1util_1_1threading.xhtml#aaf02a648f9349f36e6ee76f092059ef0" title="Tests concurrent_chain." alt="" coords="1091,1745,1265,1786"/>
+<area shape="rect" id="node45" href="$namespaceopenage_1_1util_1_1fslike_1_1test.xhtml#acb02a5c9b3b2064338f1e207ea4491cb" title="Union functionality testing." alt="" coords="1089,1810,1267,1851"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a7d1272350acf362f78ea6e0373880c59" title=" " alt="" coords="778,5,997,32"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac829030d79b4d14be0f6cf8c1eb035a8" title="Convert a wav audio file to an opus file." alt="" coords="776,56,999,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a43cdddabcdd60c8443967f3b81047bd4" title=" " alt="" coords="509,47,703,89"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ad7f7fa271abe4e1c3bc43160e84bc58f" title="Converts the media part." alt="" coords="248,305,443,346"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,699,200,725"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title=" " alt="" coords="811,110,963,151"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="530,113,682,154"/>
+<area shape="rect" id="node12" href="$classopenage_1_1convert_1_1texture_1_1_texture.xhtml#a5ab6d4ff626d130203d59cdafc830f0d" title=" " alt="" coords="805,213,969,254"/>
+<area shape="rect" id="node20" href="$namespaceopenage_1_1codegen_1_1listing.xhtml#a8178b40ca254e32043552b4b3f13aeeb" title="Contains the listing of all code generator invocations." alt="" coords="769,628,1005,655"/>
+<area shape="rect" id="node21" href="$namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02" title=" " alt="" coords="491,628,721,655"/>
+<area shape="rect" id="node22" href="$namespaceopenage_1_1codegen_1_1main.xhtml#a02b4f54f6bbc4cef5a3872eb60d639a6" title="Codegen CLI entry point." alt="" coords="251,628,439,655"/>
+<area shape="rect" id="node32" href="$classopenage_1_1_game_spec.xhtml#ab009229f56624608b53820adf2895cbc" title=" " alt="" coords="811,1322,963,1363"/>
+<area shape="rect" id="node33" href="$classopenage_1_1_civilisation.xhtml#abdf1eb9f96df9f35741f8f6bb763c403" title=" " alt="" coords="534,1322,678,1363"/>
+<area shape="rect" id="node38" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="793,1503,981,1545"/>
+<area shape="rect" id="node40" href="$namespaceopenage_1_1convert_1_1driver.xhtml#adbdd640ef25ad8535078cc706f314686" title="reads the (language) string resources" alt="" coords="520,1478,692,1519"/>
+<area shape="rect" id="node41" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="248,1078,443,1119"/>
+<area shape="rect" id="node46" href="$namespaceopenage_1_1util_1_1fslike_1_1test.xhtml#ab7e67abca763ba5d40533133b92cfde4" title="Perform functionality tests for the filesystem abstraction interface." alt="" coords="798,1817,977,1844"/>
+</map>

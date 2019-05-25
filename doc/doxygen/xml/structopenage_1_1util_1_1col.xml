@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" compoundref="util_2color_8cpp" startline="10" endline="15">col</referencedby>
+        <referencedby refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" compoundref="util_2color_8cpp" startline="17" endline="20">use</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -28,7 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" compoundref="util_2color_8cpp" startline="10" endline="15">col</referencedby>
+        <referencedby refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" compoundref="util_2color_8cpp" startline="17" endline="20">use</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -41,7 +45,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" compoundref="util_2color_8cpp" startline="10" endline="15">col</referencedby>
+        <referencedby refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" compoundref="util_2color_8cpp" startline="17" endline="20">use</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -54,7 +60,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" compoundref="util_2color_8cpp" startline="10" endline="15">col</referencedby>
+        <referencedby refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" compoundref="util_2color_8cpp" startline="17" endline="20">use</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -85,7 +93,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="11" column="1" bodyfile="libopenage/util/color.h" bodystart="11" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="11" bodyend="11"/>
+        <references refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" compoundref="util_2color_8h" startline="14">r</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -102,7 +111,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="12" column="1" bodyfile="libopenage/util/color.cpp" bodystart="10" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.cpp" bodystart="10" bodyend="15"/>
+        <references refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" compoundref="util_2color_8h" startline="14">a</references>
+        <references refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" compoundref="util_2color_8h" startline="14">b</references>
+        <references refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" compoundref="util_2color_8h" startline="14">g</references>
+        <references refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" compoundref="util_2color_8h" startline="14">r</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -115,7 +128,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="16" column="1" bodyfile="libopenage/util/color.cpp" bodystart="17" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.cpp" bodystart="17" bodyend="20"/>
+        <references refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" compoundref="util_2color_8h" startline="14">a</references>
+        <references refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" compoundref="util_2color_8h" startline="14">b</references>
+        <references refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" compoundref="util_2color_8h" startline="14">g</references>
+        <references refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" compoundref="util_2color_8h" startline="14">r</references>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">openage::Engine::draw_debug_overlay</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1util_1_1col_1abba60fa4a399e16091f092991402561f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -132,7 +150,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/color.h" line="17" column="1" bodyfile="libopenage/util/color.cpp" bodystart="22" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.cpp" bodystart="22" bodyend="24"/>
+        <references refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" compoundref="util_2color_8h" startline="14">b</references>
+        <references refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" compoundref="util_2color_8h" startline="14">g</references>
+        <references refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" compoundref="util_2color_8h" startline="14">r</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,12 +161,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="782">
+      <node id="5640">
         <label>openage::util::col</label>
         <link refid="structopenage_1_1util_1_1col"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/color.h" line="10" column="1" bodyfile="libopenage/util/color.h" bodystart="10" bodyend="18"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/color.h" bodystart="10" bodyend="18"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>a</name></member>
       <member refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>b</name></member>

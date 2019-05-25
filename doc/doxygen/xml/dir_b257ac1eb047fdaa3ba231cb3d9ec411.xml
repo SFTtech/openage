@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_b257ac1eb047fdaa3ba231cb3d9ec411" kind="dir">
-    <compoundname>libopenage/input</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input</compoundname>
     <innerfile refid="input_2action_8cpp">action.cpp</innerfile>
     <innerfile refid="input_2action_8h">action.h</innerfile>
     <innerfile refid="input_2event_8cpp">event.cpp</innerfile>
@@ -16,6 +16,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/input/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/"/>
   </compounddef>
 </doxygen>

@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="647" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="647" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="647" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="647" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="636" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="636" bodyend="638"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="636" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="636" bodyend="638"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a2dc979d8571788e647e49a10223acae8">openage::garrison</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4_1ad76c456f5d5cb131a697a00e075271f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -49,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="640" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="640" bodyend="642"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="640" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="640" bodyend="642"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,42 +59,42 @@
 <para>Units put inside a building. TODO add capacity per type of unit </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="434">
+      <node id="345">
         <label>openage::Attribute&lt; attr_type::garrison &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4"/>
-        <childnode refid="435" relation="public-inheritance">
+        <childnode refid="346" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="435">
+      <node id="346">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="436" relation="public-inheritance">
+        <childnode refid="347" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="436">
+      <node id="347">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="437">
+      <node id="348">
         <label>openage::Attribute&lt; attr_type::garrison &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4"/>
-        <childnode refid="438" relation="public-inheritance">
+        <childnode refid="349" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="438">
+      <node id="349">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="439" relation="public-inheritance">
+        <childnode refid="350" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="439">
+      <node id="350">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="634" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="634" bodyend="648"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="634" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="634" bodyend="648"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4_1ae780892b726eb780a17befed04d8c605" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::garrison &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::garrison &gt;</scope><name>AttributeContainer</name></member>

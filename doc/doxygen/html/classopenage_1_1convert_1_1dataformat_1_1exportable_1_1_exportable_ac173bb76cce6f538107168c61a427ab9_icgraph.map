@@ -1,0 +1,8 @@
+<map id="openage.convert.dataformat.exportable.Exportable.get_data_format" name="openage.convert.dataformat.exportable.Exportable.get_data_format">
+<area shape="rect" id="node1" title="return all members of this exportable (a struct.)" alt="" coords="600,71,849,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#abd30175646af16d47c9024685a16e3e3" title="main data dumping function, the magic happens in here." alt="" coords="303,5,552,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#a552736ad870b3bc198363f257765da34" title="provides a deterministic hash of all exported structure members" alt="" coords="303,71,552,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#abb235653b7107dc8194c16bd114210e6" title="create struct definitions for this class and its subdata references." alt="" coords="303,136,552,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1texture_1_1_texture.xhtml#a5ab6d4ff626d130203d59cdafc830f0d" title=" " alt="" coords="48,5,212,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat.xhtml#ac03cb1fa789e78ec10c7c2404d149f5a" title="return the unique hash for the data format tree" alt="" coords="5,71,255,112"/>
+</map>

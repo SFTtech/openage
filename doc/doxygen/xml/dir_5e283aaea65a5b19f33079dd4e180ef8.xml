@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_5e283aaea65a5b19f33079dd4e180ef8" kind="dir">
-    <compoundname>libopenage/renderer/vulkan</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan</compoundname>
     <innerfile refid="graphics__device_8cpp">graphics_device.cpp</innerfile>
     <innerfile refid="graphics__device_8h">graphics_device.h</innerfile>
     <innerfile refid="loader_8cpp">loader.cpp</innerfile>
@@ -17,6 +17,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/vulkan/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/"/>
   </compounddef>
 </doxygen>

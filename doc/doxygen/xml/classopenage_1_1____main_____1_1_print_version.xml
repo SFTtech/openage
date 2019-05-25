@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1____main_____1_1_print_version" kind="class" language="Python" prot="public">
+    <compoundname>openage::__main__::PrintVersion</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Action</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1____main_____1_1_print_version_1aadec8b6b976eded00e51df343cd78324" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.__main__.PrintVersion.__call__</definition>
+        <argsstring>(self, parser, namespace, values, option_string=None)</argsstring>
+        <name>__call__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parser</type>
+          <defname>parser</defname>
+        </param>
+        <param>
+          <type>namespace</type>
+          <defname>namespace</defname>
+        </param>
+        <param>
+          <type>values</type>
+          <defname>values</defname>
+        </param>
+        <param>
+          <type>option_string</type>
+          <defname>option_string</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/__main__.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/__main__.py" bodystart="27" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="0">
+        <label>openage.__main__.PrintVersion</label>
+        <link refid="classopenage_1_1____main_____1_1_print_version"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>argparse::Action</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>openage.__main__.PrintVersion</label>
+        <link refid="classopenage_1_1____main_____1_1_print_version"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>argparse::Action</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/__main__.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/__main__.py" bodystart="25" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1____main_____1_1_print_version_1aadec8b6b976eded00e51df343cd78324" prot="public" virt="non-virtual"><scope>openage::__main__::PrintVersion</scope><name>__call__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_application.h" line="23" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" compoundref="gui__application_8cpp" startline="14" endline="17">GuiApplication</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" compoundref="gui__application_8cpp" startline="22" endline="24">processEvents</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +33,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_application.h" line="16" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp" bodystart="9" bodyend="12"/>
+        <references refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" compoundref="gui__application__impl_8cpp" startline="15" endline="21">qtsdl::GuiApplicationImpl::get</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -48,7 +51,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_application.h" line="17" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="14" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp" bodystart="14" bodyend="17"/>
+        <references refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" compoundref="gui__application_8h" startline="23">application</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_application.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="19" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp" bodystart="19" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -74,7 +78,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_application.h" line="20" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="22" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp" bodystart="22" bodyend="24"/>
+        <references refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" compoundref="gui__application_8h" startline="23">application</references>
+        <referencedby refid="classopenage_1_1gui_1_1_g_u_i_1afa4d056d76395d3d4041a4ec0e1b3cb8" compoundref="gui_2gui_8cpp" startline="110" endline="113">openage::gui::GUI::process_events</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -83,24 +89,24 @@
 <para>Houses gui logic event queue. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2486">
+      <node id="6176">
         <label>qtsdl::GuiApplication</label>
         <link refid="classqtsdl_1_1_gui_application"/>
       </node>
-      <node id="2487">
+      <node id="6177">
         <label>openage::gui::GuiApplicationWithLogger</label>
         <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
-        <childnode refid="2486" relation="public-inheritance">
+        <childnode refid="6176" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2488">
+      <node id="6178">
         <label>qtsdl::GuiApplication</label>
         <link refid="classqtsdl_1_1_gui_application"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_application.h" line="14" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.h" bodystart="14" bodyend="24"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.h" bodystart="14" bodyend="24"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" prot="private" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>application</name></member>
       <member refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" prot="public" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>GuiApplication</name></member>

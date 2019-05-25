@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_7f20b896dd0f3b9f204c3a9a88379a15" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata</compoundname>
+    <innerfile refid="convert_2gamedata_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="civ_8py">civ.py</innerfile>
+    <innerfile refid="empiresdat_8py">empiresdat.py</innerfile>
+    <innerfile refid="graphic_8py">graphic.py</innerfile>
+    <innerfile refid="maps_8py">maps.py</innerfile>
+    <innerfile refid="playercolor_8py">playercolor.py</innerfile>
+    <innerfile refid="research_8py">research.py</innerfile>
+    <innerfile refid="sound_8py">sound.py</innerfile>
+    <innerfile refid="tech_8py">tech.py</innerfile>
+    <innerfile refid="terrain_8py">terrain.py</innerfile>
+    <innerfile refid="unit_8py">unit.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/"/>
+  </compounddef>
+</doxygen>

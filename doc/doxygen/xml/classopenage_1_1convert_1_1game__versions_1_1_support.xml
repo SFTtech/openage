@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1game__versions_1_1_support" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::game_versions::Support</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_support_1aea9115d56b1f686d4604bbe698c91776" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.game_versions.Support::nope</definition>
+        <argsstring></argsstring>
+        <name>nope</name>
+        <initializer>=  &quot;not supported&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_support_1a2025df348b113be178b64725dcc74299" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.game_versions.Support::yes</definition>
+        <argsstring></argsstring>
+        <name>yes</name>
+        <initializer>=  &quot;supported&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_support_1aee117e8853794311a9ba99abb9f3fc14" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.game_versions.Support::breaks</definition>
+        <argsstring></argsstring>
+        <name>breaks</name>
+        <initializer>=  &quot;presence breaks conversion&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classopenage_1_1convert_1_1game__versions_1_1_support" kindref="compound">Support</ref> state of a game version. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1199">
+        <label>openage.convert.game_versions.Support</label>
+        <link refid="classopenage_1_1convert_1_1game__versions_1_1_support"/>
+        <childnode refid="1200" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1200">
+        <label>enum::Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1201">
+        <label>openage.convert.game_versions.Support</label>
+        <link refid="classopenage_1_1convert_1_1game__versions_1_1_support"/>
+        <childnode refid="1202" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1202">
+        <label>enum::Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="14" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_support_1aee117e8853794311a9ba99abb9f3fc14" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::Support</scope><name>breaks</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_support_1aea9115d56b1f686d4604bbe698c91776" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::Support</scope><name>nope</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_support_1a2025df348b113be178b64725dcc74299" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::Support</scope><name>yes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

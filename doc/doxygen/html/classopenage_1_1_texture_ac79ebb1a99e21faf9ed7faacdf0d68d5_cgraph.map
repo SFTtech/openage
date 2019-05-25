@@ -1,0 +1,12 @@
+<map id="openage::Texture::draw" name="openage::Texture::draw">
+<area shape="rect" id="node1" title=" " alt="" coords="5,47,163,74"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_texture.xhtml#a0bb8ecfa34c39de191c45b95139da3ed" title=" " alt="" coords="211,17,368,43"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1tile.xhtml#a3f2be2b38a339e563ea0fa96733250ec" title=" " alt="" coords="221,71,357,112"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camhud.xhtml#abbbebb0d15c032c20f0db6dd6f9c4911" title=" " alt="" coords="421,5,587,47"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc" title=" " alt="" coords="436,71,572,112"/>
+<area shape="rect" id="node10" href="$structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44" title=" " alt="" coords="416,136,592,177"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1tile.xhtml#ac306cc74c14e094567447277327b389a" title=" " alt="" coords="649,39,785,80"/>
+<area shape="rect" id="node9" href="$structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e" title=" " alt="" coords="640,104,795,145"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b" title=" " alt="" coords="846,5,982,47"/>
+<area shape="rect" id="node8" href="$structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65" title=" " alt="" coords="843,71,985,112"/>
+</map>

@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="94" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="94" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,94 +28,94 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3375">
+      <node id="4249">
         <label>openage::ResearchType</label>
         <link refid="classopenage_1_1_research_type"/>
       </node>
-      <node id="3374">
+      <node id="4248">
         <label>openage::NyanResearchType</label>
         <link refid="classopenage_1_1_nyan_research_type"/>
-        <childnode refid="3375" relation="public-inheritance">
+        <childnode refid="4249" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3382">
+      <node id="4256">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="3380" relation="public-inheritance">
+        <childnode refid="4254" relation="public-inheritance">
         </childnode>
-        <childnode refid="3381" relation="usage">
+        <childnode refid="4255" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="3379">
+      <node id="4253">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="3380" relation="public-inheritance">
+        <childnode refid="4254" relation="public-inheritance">
         </childnode>
-        <childnode refid="3378" relation="usage">
+        <childnode refid="4252" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="3380">
+      <node id="4254">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="3381">
+      <node id="4255">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="3382" relation="usage">
+        <childnode refid="4256" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="3385">
+      <node id="4259">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="3378">
+      <node id="4252">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="3379" relation="usage">
+        <childnode refid="4253" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="3381" relation="usage">
+        <childnode refid="4255" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="3383" relation="usage">
+        <childnode refid="4257" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="3384" relation="usage">
+        <childnode refid="4258" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="3385" relation="usage">
+        <childnode refid="4259" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="3383">
+      <node id="4257">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="3384">
+      <node id="4258">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="3377">
+      <node id="4251">
         <label>openage::ResearchType</label>
         <link refid="classopenage_1_1_research_type"/>
-        <childnode refid="3378" relation="usage">
+        <childnode refid="4252" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="3376">
+      <node id="4250">
         <label>openage::NyanResearchType</label>
         <link refid="classopenage_1_1_nyan_research_type"/>
-        <childnode refid="3377" relation="public-inheritance">
+        <childnode refid="4251" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/research.h" line="91" column="1" bodyfile="libopenage/unit/research.h" bodystart="91" bodyend="96"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" bodystart="91" bodyend="96"/>
     <listofallmembers>
       <member refid="classopenage_1_1_research_type_1af58948dd42b8d8a97233d2fdd9885e83" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>apply</name></member>
       <member refid="classopenage_1_1_research_type_1a76a5bd220674135f0bf93eed3f1bce92" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>category</name></member>

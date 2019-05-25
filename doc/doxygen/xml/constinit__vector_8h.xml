@@ -5,13 +5,13 @@
     <includes local="no">algorithm</includes>
     <includes local="no">memory</includes>
     <includes refid="compiler_8h" local="yes">compiler.h</includes>
-    <includedby refid="constinit__vector_8cpp" local="yes">libopenage/util/constinit_vector.cpp</includedby>
+    <includedby refid="constinit__vector_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp</includedby>
     <incdepgraph>
       <node id="28151">
         <label>string</label>
       </node>
       <node id="28146">
-        <label>libopenage/util/constinit_vector.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h</label>
         <link refid="constinit__vector_8h"/>
         <childnode refid="28147" relation="include">
         </childnode>
@@ -48,11 +48,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="28154">
-        <label>libopenage/util/constinit_vector.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp</label>
         <link refid="constinit__vector_8cpp"/>
       </node>
       <node id="28153">
-        <label>libopenage/util/constinit_vector.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h</label>
         <link refid="constinit__vector_8h"/>
         <childnode refid="28154" relation="include">
         </childnode>
@@ -148,6 +148,6 @@
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/constinit_vector.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h"/>
   </compounddef>
 </doxygen>

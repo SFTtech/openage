@@ -1,0 +1,11 @@
+<map id="openage::error::demo" name="openage::error::demo">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,151,83"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="211,5,327,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="209,56,330,83"/>
+<area shape="rect" id="node9" href="$classopenage_1_1error_1_1_error.xhtml#a1a6de651093edf2d3673cd0d146992e4" title=" " alt="" coords="199,107,340,149"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="410,19,557,61"/>
+<area shape="rect" id="node5" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="388,85,579,112"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="656,13,795,54"/>
+<area shape="rect" id="node7" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="639,78,811,119"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="627,144,824,171"/>
+</map>

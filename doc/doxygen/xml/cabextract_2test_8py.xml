@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="cabextract_2test_8py" kind="file" language="Python">
+    <compoundname>test.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1cabextract_1_1test">openage::cabextract::test</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1cabextract_1_1test" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="3"><highlight class="stringliteral">Downloads<sp/>the<sp/>SFT<sp/>test<sp/>cab<sp/>archive<sp/>and<sp/>uses<sp/>it<sp/>to<sp/>test<sp/>the<sp/>cabextract<sp/>code.</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>tempfile<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>gettempdir</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>hashlib<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>md5</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>urllib.request<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>urlopen</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.cab<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CABFile</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">#<sp/>the<sp/>test<sp/>archive<sp/>file<sp/>has<sp/>been<sp/>generated<sp/>using<sp/>./gen_test_arc.sh</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">#<sp/>filesize<sp/>of<sp/>the<sp/>test<sp/>archive<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">TEST_ARCHIVE_SIZE<sp/>=<sp/>1057766</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="namespaceopenage_1_1cabextract_1_1test_1a127bc2c654342908285a1e56a8b6937f" refkind="member"><highlight class="normal"></highlight><highlight class="comment">#<sp/>URL<sp/>of<sp/>the<sp/>test<sp/>archive<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">TEST_ARCHIVE_URL<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;http://pub.sft.mx/openage/openage_testarc.cab&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="namespaceopenage_1_1cabextract_1_1test_1aa07ad152d5e016a6f9d2b5c67b1cb055" refkind="member"><highlight class="normal"></highlight><highlight class="comment">#<sp/>list<sp/>of<sp/>all<sp/>files<sp/>in<sp/>the<sp/>test<sp/>archive,<sp/>with<sp/>(md5sum,<sp/>size).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">TEST_FILES<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;testfilea&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;68fe7d874c7887bdd3f6aaca46abd306&quot;</highlight><highlight class="normal">,<sp/>524288),</highlight></codeline>
+<codeline lineno="24" refid="namespaceopenage_1_1cabextract_1_1test_1a06fe92cb64bbd455b08c332475162505" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;testfileb&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;7f614da9329cd3aebf59b91aadc30bf0&quot;</highlight><highlight class="normal">,<sp/>67108864),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;testfilec&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;d41d8cd98f00b204e9800998ecf8427e&quot;</highlight><highlight class="normal">,<sp/>0),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;testdir/testfiled&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;6f75302850b485421030f034fe67380b&quot;</highlight><highlight class="normal">,<sp/>10),</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;testdir/testfilee&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;65116b303f205837d280d3c08b1e0419&quot;</highlight><highlight class="normal">,<sp/>1033720)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">#<sp/>local<sp/>cache<sp/>filename</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">TEST_ARCHIVE_FILENAME<sp/>=<sp/>os.path.join(gettempdir(),<sp/></highlight><highlight class="stringliteral">&quot;openage_testarc.cab&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="namespaceopenage_1_1cabextract_1_1test_1abdf05d879cdeaaab678ae79a0c76c465" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" kindref="member">open_cached_test_archive</ref>():</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Opens<sp/>the<sp/>cached<sp/>test<sp/>archive<sp/>file.</highlight></codeline>
+<codeline lineno="37"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>os.path.getsize(TEST_ARCHIVE_FILENAME)<sp/>!=<sp/>TEST_ARCHIVE_SIZE:</highlight></codeline>
+<codeline lineno="39" refid="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>OSError(</highlight><highlight class="stringliteral">&quot;test<sp/>archive<sp/>has<sp/>wrong<sp/>size&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>open(TEST_ARCHIVE_FILENAME,<sp/></highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" kindref="member">open_test_archive</ref>():</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="46"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Opens<sp/>the<sp/>cached<sp/>test<sp/>archive<sp/>file,<sp/>or<sp/>downloads<sp/>it<sp/>if<sp/>necessary.</highlight></codeline>
+<codeline lineno="47"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49" refid="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" kindref="member">open_cached_test_archive</ref>()</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>OSError:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>open(TEST_ARCHIVE_FILENAME,<sp/></highlight><highlight class="stringliteral">&apos;wb&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>test_arc:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test_arc.write(urlopen(TEST_ARCHIVE_URL).read())</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" kindref="member">open_cached_test_archive</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" kindref="member">test</ref>():</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="61"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>The<sp/>actual<sp/>test<sp/>function;<sp/>registered<sp/>in<sp/>openage.testing.testlist.</highlight></codeline>
+<codeline lineno="62"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..testing.testing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>assert_value,<sp/>assert_raises,<sp/>result</highlight></codeline>
+<codeline lineno="64" refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>acquire<sp/>the<sp/>actual<sp/>test<sp/>archive<sp/>file<sp/>and<sp/>create<sp/>the<sp/>CABFile<sp/>Path<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>cab<sp/>=<sp/><ref refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file" kindref="compound">CABFile</ref>(<ref refid="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" kindref="member">open_test_archive</ref>()).root</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>testdir<sp/>=<sp/>cab[</highlight><highlight class="stringliteral">&quot;..////./../testdir&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>nonexistingdir<sp/>=<sp/>cab[</highlight><highlight class="stringliteral">&quot;nonexistingdir&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>nonexistingfile<sp/>=<sp/>cab[</highlight><highlight class="stringliteral">&quot;nonexistingfile&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>testfilea<sp/>=<sp/>cab[</highlight><highlight class="stringliteral">&quot;testfilea&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>list<sp/>dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(cab.list()),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[b</highlight><highlight class="stringliteral">&quot;testdir&quot;</highlight><highlight class="normal">,<sp/>b</highlight><highlight class="stringliteral">&quot;testfilea&quot;</highlight><highlight class="normal">,<sp/>b</highlight><highlight class="stringliteral">&quot;testfileb&quot;</highlight><highlight class="normal">,<sp/>b</highlight><highlight class="stringliteral">&quot;testfilec&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>list<sp/>subdir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(testdir.list()),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[b</highlight><highlight class="stringliteral">&quot;testfiled&quot;</highlight><highlight class="normal">,<sp/>b</highlight><highlight class="stringliteral">&quot;testfilee&quot;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>list<sp/>nonexisting<sp/>dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(FileNotFoundError):</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(tuple(nonexistingdir.iterdir()))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>filesize<sp/>for<sp/>nonexisting<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(FileNotFoundError):</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(nonexistingfile.filesize)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>filesize<sp/>for<sp/>dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(IsADirectoryError):</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(testdir.filesize)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>mtime<sp/>for<sp/>a<sp/>non-existing<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(FileNotFoundError):</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(nonexistingfile.mtime)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>attempt<sp/>getting<sp/>mtime<sp/>for<sp/>a<sp/>directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(IsADirectoryError):</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(testdir.mtime)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>attempt<sp/>getting<sp/>mtime<sp/>for<sp/>a<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfilea.mtime,<sp/>1430844692)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>open<sp/>nonexisting<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(FileNotFoundError):</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(nonexistingfile.open(</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>open<sp/>existing<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>testfiled<sp/>=<sp/>cab.joinpath(</highlight><highlight class="stringliteral">&apos;///testdir//.//testfiled&apos;</highlight><highlight class="normal">).open(</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfiled,<sp/>validator=bool)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>seek<sp/>around<sp/>and<sp/>read<sp/>a<sp/>bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>testfiled.seek(3)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfiled.read(4),<sp/>b</highlight><highlight class="stringliteral">&quot;tfil&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>testfiled.seek(-1,<sp/>os.SEEK_CUR)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfiled.tell(),<sp/>6)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(ValueError):</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(testfiled.seek(-8,<sp/>os.SEEK_CUR))</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>testfiled.seek(-4,<sp/>os.SEEK_END)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfiled.tell(),<sp/>6)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(testfiled.read(5),<sp/>b</highlight><highlight class="stringliteral">&quot;led\n&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>test<sp/>filesize<sp/>and<sp/>md5sum<sp/>for<sp/>all<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>filename,<sp/>(md5sum,<sp/>size)<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>TEST_FILES.items():</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>=<sp/>cab[filename]</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(md5(path.open(</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">).read()).hexdigest(),<sp/>md5sum)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(path.filesize,<sp/>size)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py"/>
+  </compounddef>
+</doxygen>

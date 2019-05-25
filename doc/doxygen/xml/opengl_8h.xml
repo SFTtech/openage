@@ -2,11 +2,11 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="opengl_8h" kind="file" language="C++">
     <compoundname>opengl.h</compoundname>
-    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
-    <includedby refid="opengl_8cpp" local="yes">libopenage/util/opengl.cpp</includedby>
+    <includedby refid="engine_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</includedby>
+    <includedby refid="opengl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.cpp</includedby>
     <invincdepgraph>
       <node id="31312">
-        <label>libopenage/util/opengl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.h</label>
         <link refid="opengl_8h"/>
         <childnode refid="31313" relation="include">
         </childnode>
@@ -14,11 +14,11 @@
         </childnode>
       </node>
       <node id="31313">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="31314">
-        <label>libopenage/util/opengl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.cpp</label>
         <link refid="opengl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -41,6 +41,6 @@
 <codeline lineno="15"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/opengl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.h"/>
   </compounddef>
 </doxygen>

@@ -28,7 +28,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="38" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" compoundref="constexpr__map_8h" startline="20" endline="23">openage::datastructure::ConstMapEntry&lt; K, V &gt;::ConstMapEntry</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" prot="public" static="no" mutable="no">
         <type>const V</type>
@@ -42,7 +43,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="43" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +67,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="20" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="20" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="20" bodyend="23"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" compoundref="constexpr__map_8h" startline="38">openage::datastructure::ConstMapEntry&lt; K, V &gt;::key</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -82,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="25" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="25" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_entry_1a6161ce62836b2cde51618070c6eca08c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -99,7 +102,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="30" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="30" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="30" bodyend="33"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -108,12 +112,12 @@
 <para>One entry in the lookup map. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="877">
+      <node id="1931">
         <label>openage::datastructure::ConstMapEntry&lt; K, V &gt;</label>
         <link refid="classopenage_1_1datastructure_1_1_const_map_entry"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/datastructure/constexpr_map.h" line="18" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="18" bodyend="44"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="18" bodyend="44"/>
     <listofallmembers>
       <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>ConstMapEntry</name></member>
       <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>ConstMapEntry</name></member>

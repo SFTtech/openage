@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="411" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="411" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="411" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="411" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="401" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="401" bodyend="404"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="401" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="401" bodyend="404"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4_1aefa8e74f274bb7076cd16508f444c627" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -52,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="406" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="406" bodyend="408"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="406" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="406" bodyend="408"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,49 +61,62 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="500">
+      <node id="413">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="501" relation="public-inheritance">
+        <childnode refid="414" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="499">
+      <node id="412">
         <label>openage::Attribute&lt; attr_type::speed &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4"/>
-        <childnode refid="500" relation="public-inheritance">
+        <childnode refid="413" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="501">
+      <node id="414">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="503">
+      <node id="416">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="504" relation="public-inheritance">
+        <childnode refid="417" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="502">
+      <node id="415">
         <label>openage::Attribute&lt; attr_type::speed &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4"/>
-        <childnode refid="503" relation="public-inheritance">
+        <childnode refid="416" relation="public-inheritance">
         </childnode>
-        <childnode refid="505" relation="usage">
+        <childnode refid="418" relation="usage">
           <edgelabel>+unit_speed</edgelabel>
         </childnode>
       </node>
-      <node id="504">
+      <node id="420">
+        <label>int_type</label>
+      </node>
+      <node id="419">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="420" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="417">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="505">
+      <node id="418">
         <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="419" relation="template-instance">
+          <edgelabel>&lt; int64_t, phys_t_radix_pos &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="399" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="399" bodyend="412"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="399" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="399" bodyend="412"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4_1a5151d7f920d14295ca4295670540a419" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::speed &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::speed &gt;</scope><name>AttributeContainer</name></member>

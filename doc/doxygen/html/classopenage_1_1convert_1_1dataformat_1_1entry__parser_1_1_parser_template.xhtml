@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.dataformat.entry_parser.ParserTemplate Class Reference</title>
+<title>openage: openage.convert.dataformat.entry_parser.ParserTemplate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1dataformat_
 
 <p>Tempalte for a data parser function, its content is generated.  
  <a href="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template.xhtml#details">More...</a></p>
-<div class="dynheader">
-Collaboration diagram for openage.convert.dataformat.entry_parser.ParserTemplate:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template__coll__graph.svg" width="226" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.dataformat.entry_parser.ParserTemplate:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template__coll__graph.svg" width="226" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -176,7 +178,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="entry__parser_8py_source.xhtml#l00042">42</a> of file <a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        self.signature = signature</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment"># template text where insertions will be made</span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        self.template = template</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment"># headers for the c file</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        self.impl_headers = impl_headers</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment"># headers for the header file</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        self.headers = headers</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">def </span>get_signature(self, class_name):</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -209,6 +211,18 @@ Public Attributes</h2></td></tr>
 <p>Return the function signature of this parser. </p>
 
 <p class="definition">Definition at line <a class="el" href="entry__parser_8py_source.xhtml#l00058">58</a> of file <a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">def </span>get_text(self, class_name, data):</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="entry__parser_8py_source.xhtml#l00044">openage.convert.dataformat.entry_parser.ParserTemplate.signature</a>, and <a class="el" href="cab_8py_source.xhtml#l00057">openage.cabextract.cab.CFHeader.signature</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="entry__parser_8py_source.xhtml#l00067">openage.convert.dataformat.entry_parser.ParserTemplate.get_text()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template_ad12901daa5d9f3b804a5f4ab0aa89e57_icgraph.svg" width="488" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -245,6 +259,16 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="entry__parser_8py_source.xhtml#l00067">67</a> of file <a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> Template(self.template).substitute(data)</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">class </span>ParserMemberFunction:</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">    Define a parsing member function for generated code files.</span></div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">    The parser member function consists of one or multiple ParserTemplates.</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">    The templates may vary depending on the member count,</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    so that for 0 members the signature can be different to omit arguments.</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="entry__parser_8py_source.xhtml#l00058">openage.convert.dataformat.entry_parser.ParserTemplate.get_signature()</a>, and <a class="el" href="entry__parser_8py_source.xhtml#l00047">openage.convert.dataformat.entry_parser.ParserTemplate.template</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template_a2b70018d1b33a419b6db366ecf81e9f6_cgraph.svg" width="488" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -295,6 +319,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="entry__parser_8py_source.xhtml#l00044">44</a> of file <a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="entry__parser_8py_source.xhtml#l00058">openage.convert.dataformat.entry_parser.ParserTemplate.get_signature()</a>.</p>
+
 </div>
 </div>
 <a id="ae083ba52bb61d25153443a06a18fd3d2"></a>
@@ -311,10 +337,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="entry__parser_8py_source.xhtml#l00047">47</a> of file <a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="entry__parser_8py_source.xhtml#l00067">openage.convert.dataformat.entry_parser.ParserTemplate.get_text()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/dataformat/<a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/<a class="el" href="entry__parser_8py_source.xhtml">entry_parser.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

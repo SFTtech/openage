@@ -1,3 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass.xhtml" title=" " alt="" coords="5,5,177,61"/>
+<area shape="rect" id="node1" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml" title=" " alt="" coords="5,201,164,243"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml" title=" " alt="" coords="230,71,365,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer.xhtml" title=" " alt="" coords="223,136,372,177"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml" title="A single OpenGL shader stage." alt="" coords="230,201,365,243"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml" title="A handle to an OpenGL shader program." alt="" coords="212,267,383,308"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml" title="A handle to an OpenGL texture." alt="" coords="228,332,367,373"/>
+<area shape="rect" id="node7" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array.xhtml" title="An OpenGL array of 2D textures." alt="" coords="213,397,382,439"/>
+<area shape="rect" id="node8" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array.xhtml" title=" " alt="" coords="222,5,373,47"/>
+<area shape="rect" id="node9" href="$classopenage_1_1renderer_1_1_shader_program.xhtml" title=" " alt="" coords="17,267,152,308"/>
+<area shape="rect" id="node10" href="$classopenage_1_1renderer_1_1_texture2d.xhtml" title=" " alt="" coords="17,332,152,373"/>
+<area shape="rect" id="node11" href="$classopenage_1_1renderer_1_1_texture2d_array.xhtml" title=" " alt="" coords="17,397,152,439"/>
 </map>

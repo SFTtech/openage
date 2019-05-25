@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="setup_8py" kind="file" language="Python">
+    <compoundname>setup.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1cppinterface_1_1setup">openage::cppinterface::setup</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1cppinterface_1_1setup" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Contains<sp/>the<sp/>function<sp/>that<sp/>initializes<sp/>the<sp/>C++<sp/>interface.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.decorators<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>run_once</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..log<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>dbg</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..log.log_cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>enable_log_translation</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">@run_once</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" kindref="member">setup</ref>(args):</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>After<sp/>a<sp/>call<sp/>to<sp/>setup(),<sp/>the<sp/>C++<sp/>interface<sp/>is<sp/>in<sp/>a<sp/>usable<sp/>state.</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>setup()<sp/>automatically<sp/>checks<sp/>whether<sp/>there<sp/>are<sp/>any<sp/>remaining<sp/>un-initialized</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>PyFunc<sp/>objects,<sp/>and<sp/>raises<sp/>an<sp/>Exception<sp/>if<sp/>so.</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Must<sp/>be<sp/>invoked<sp/>before<sp/>any<sp/>functions<sp/>from<sp/>libopenage<sp/>are<sp/>invoked.</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Runs<sp/>only<sp/>once;<sp/>any<sp/>subsequent<sp/>invocations<sp/>are<sp/>a<sp/>no-op,<sp/>so<sp/>don&apos;t<sp/>hesitate</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>to<sp/>call<sp/>this<sp/>method<sp/>whenever<sp/>likely.</highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Do<sp/>_not_<sp/>invoke<sp/>from<sp/>a<sp/>.pyx<sp/>extension<sp/>module<sp/>that<sp/>itself<sp/>provides</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>a<sp/>setup<sp/>method<sp/>(circular<sp/>imports)!</highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>(</highlight><highlight class="stringliteral">&quot;initializing<sp/>libopenage...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="30" refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>this<sp/>is<sp/>where<sp/>calls<sp/>to<sp/>the<sp/>setup<sp/>methods<sp/>of<sp/>all<sp/>other<sp/>modules<sp/>belong.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.exctranslate<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>exctranslate_setup</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>exctranslate_setup(args)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.exctranslate_tests<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>exctranslate_tests_setup</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>exctranslate_tests_setup()</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.pyobject<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>pyobject_setup</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>pyobject_setup()</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.filelike.cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>filelike_setup</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>filelike_setup()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>fslike_setup</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>fslike_setup()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..cvar.cvar<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>cvar_setup</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>cvar_setup()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>verify<sp/>that<sp/>everything<sp/>has<sp/>been<sp/>properly<sp/>initialized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.setup_checker<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>check</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" kindref="member">check</ref>()</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>enable_log_translation()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>(</highlight><highlight class="stringliteral">&quot;C++<sp/>&lt;-&gt;<sp/>Python<sp/>interface<sp/>has<sp/>been<sp/>initialized&quot;</highlight><highlight class="normal">)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cppinterface/setup.py"/>
+  </compounddef>
+</doxygen>

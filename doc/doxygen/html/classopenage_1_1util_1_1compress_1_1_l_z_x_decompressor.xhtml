@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::util::compress::LZXDecompressor Class Reference</title>
+<title>openage: openage::util::compress::LZXDecompressor Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,9 +99,11 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1compress_1_1_l
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::util::compress::LZXDecompressor:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::compress::LZXDecompressor:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -171,7 +174,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8cpp_source.xhtml#l00916">916</a> of file <a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;    :</div><div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;    <a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">stream</a>{<span class="keyword">new</span> LZXDStream{read_callback, window_bits, reset_interval}} {}</div><div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_xhtml_a476d05993567d0c02d6ced2e6216795e"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">openage::util::compress::LZXDecompressor::stream</a></div><div class="ttdeci">class LZXDStream * stream</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8h_source.xhtml#l00080">lzxd.h:80</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6e8124b4f83027be7526c7fc25fd801d"></a>
@@ -191,6 +195,9 @@ Private Attributes</h2></td></tr>
 <p>Frees the internally-allocated <a class="el" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml">LZXDStream</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8cpp_source.xhtml#l00923">923</a> of file <a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;                                  {</div><div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">stream</a>;</div><div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_xhtml_a476d05993567d0c02d6ced2e6216795e"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">openage::util::compress::LZXDecompressor::stream</a></div><div class="ttdeci">class LZXDStream * stream</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8h_source.xhtml#l00080">lzxd.h:80</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="lzxd_8h_source.xhtml#l00080">stream</a>.</p>
 
 </div>
 </div>
@@ -267,6 +274,18 @@ Private Attributes</h2></td></tr>
 <p>On error, an exception is thrown. After that, the object shall be destroyed; every other operation on it may invoke undefined behavior. </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8cpp_source.xhtml#l00928">928</a> of file <a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;                                                                         {</div><div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">stream</a>-&gt;<a class="code" href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724">decompress_next_frame</a>(output_buf);</div><div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_xhtml_a476d05993567d0c02d6ced2e6216795e"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor.xhtml#a476d05993567d0c02d6ced2e6216795e">openage::util::compress::LZXDecompressor::stream</a></div><div class="ttdeci">class LZXDStream * stream</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8h_source.xhtml#l00080">lzxd.h:80</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_xhtml_a12047565515e79d8fa7ae56c1459a724"><div class="ttname"><a href="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724">openage::util::compress::LZXDStream::decompress_next_frame</a></div><div class="ttdeci">unsigned decompress_next_frame(unsigned char *output_buf)</div><div class="ttdef"><b>Definition:</b> <a href="lzxd_8cpp_source.xhtml#l00740">lzxd.cpp:740</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="lzxd_8cpp_source.xhtml#l00740">openage::util::compress::LZXDStream::decompress_next_frame()</a>, and <a class="el" href="lzxd_8h_source.xhtml#l00080">stream</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_ad03ce7fd20c3abe824f61dd382bab43c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -345,11 +364,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="lzxd_8h_source.xhtml#l00080">80</a> of file <a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="lzxd_8cpp_source.xhtml#l00928">decompress_next_frame()</a>, <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment::read()</a>, and <a class="el" href="lzxd_8cpp_source.xhtml#l00923">~LZXDecompressor()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/util/compress/<a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a></li>
-<li>libopenage/util/compress/<a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/<a class="el" href="lzxd_8h_source.xhtml">lzxd.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/<a class="el" href="lzxd_8cpp_source.xhtml">lzxd.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

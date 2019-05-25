@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game_2main_8py" kind="file" language="Python">
+    <compoundname>main.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1game_1_1main">openage::game::main</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1game_1_1main" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Holds<sp/>the<sp/>game<sp/>entry<sp/>point<sp/>for<sp/>openage.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..log<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>err,<sp/>info</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1game_1_1main_1ae93e9146615208dbf7044af95e2398d0" kindref="member">init_subparser</ref>(cli):</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Initializes<sp/>the<sp/>parser<sp/>for<sp/>game-specific<sp/>args.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.set_defaults(entrypoint=main)</highlight></codeline>
+<codeline lineno="13" refid="namespaceopenage_1_1game_1_1main_1ae93e9146615208dbf7044af95e2398d0" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;--fps&quot;</highlight><highlight class="normal">,<sp/>type=int,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=</highlight><highlight class="stringliteral">&quot;upper<sp/>limit<sp/>for<sp/>fps.<sp/>this<sp/>limit<sp/>is<sp/>imposed<sp/>on<sp/>top<sp/>of<sp/>vsync&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;--gl-debug&quot;</highlight><highlight class="normal">,<sp/>action=</highlight><highlight class="stringliteral">&apos;store_true&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=</highlight><highlight class="stringliteral">&quot;throw<sp/>exceptions<sp/>directly<sp/>from<sp/>the<sp/>OpenGL<sp/>calls&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" kindref="member">main</ref>(args,<sp/>error):</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Makes<sp/>sure<sp/>that<sp/>the<sp/>assets<sp/>have<sp/>been<sp/>converted,</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>and<sp/>jumps<sp/>into<sp/>the<sp/>C++<sp/>main<sp/>method.</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>del<sp/>error<sp/><sp/></highlight><highlight class="comment">#<sp/>unused</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>we<sp/>have<sp/>to<sp/>import<sp/>stuff<sp/>inside<sp/>the<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>as<sp/>it<sp/>depends<sp/>on<sp/>generated/compiled<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.main_cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>run_game</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>config</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..assets<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>get_asset_path</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..convert.main<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>conversion_required,<sp/>convert_assets</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..cppinterface.setup<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>setup<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>cpp_interface_setup</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..cvar.location<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>get_config_path</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.union<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Union</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>initialize<sp/>libopenage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>cpp_interface_setup(args)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;launching<sp/>openage<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>config.VERSION)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;compiled<sp/>by<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>config.COMPILER)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>config.DEVMODE:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;running<sp/>in<sp/>DEVMODE&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>create<sp/>virtual<sp/>file<sp/>system<sp/>for<sp/>data<sp/>paths</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>root<sp/>=<sp/>Union().root</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>mount<sp/>the<sp/>assets<sp/>folder<sp/>union<sp/>at<sp/>&quot;assets/&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;assets&quot;</highlight><highlight class="normal">].mount(<ref refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" kindref="member">get_asset_path</ref>(args.asset_dir))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>mount<sp/>the<sp/>config<sp/>folder<sp/>at<sp/>&quot;cfg/&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;cfg&quot;</highlight><highlight class="normal">].mount(<ref refid="namespaceopenage_1_1cvar_1_1location_1a55d460c893fbe41db12a729492a8eea2" kindref="member">get_config_path</ref>(args.cfg_dir))</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>ensure<sp/>that<sp/>the<sp/>assets<sp/>have<sp/>been<sp/>converted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" kindref="member">conversion_required</ref>(root[</highlight><highlight class="stringliteral">&quot;assets&quot;</highlight><highlight class="normal">],<sp/>args):</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>try<sp/>to<sp/>get<sp/>previously<sp/>used<sp/>source<sp/>dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>asset_location_path<sp/>=<sp/>root[</highlight><highlight class="stringliteral">&quot;cfg&quot;</highlight><highlight class="normal">]<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;asset_location&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>asset_location_path.open(</highlight><highlight class="stringliteral">&quot;rb&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>file_obj:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prev_source_dir_path<sp/>=<sp/>file_obj.read().strip()</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>FileNotFoundError:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prev_source_dir_path<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>used_asset_path<sp/>=<sp/><ref refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" kindref="member">convert_assets</ref>(root[</highlight><highlight class="stringliteral">&quot;assets&quot;</highlight><highlight class="normal">],<sp/>args,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prev_source_dir_path=prev_source_dir_path)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>used_asset_path:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Remember<sp/>the<sp/>asset<sp/>location</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>asset_location_path.open(</highlight><highlight class="stringliteral">&quot;wb&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>file_obj:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file_obj.write(used_asset_path)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>(</highlight><highlight class="stringliteral">&quot;game<sp/>asset<sp/>conversion<sp/>failed&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>start<sp/>the<sp/>game,<sp/>continue<sp/>in<sp/>main_cpp.pyx!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" kindref="member">run_game</ref>(args,<sp/>root)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py"/>
+  </compounddef>
+</doxygen>

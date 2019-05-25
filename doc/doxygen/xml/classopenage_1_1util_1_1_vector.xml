@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="28" column="1" bodyfile="libopenage/util/vector.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="33" column="1" bodyfile="libopenage/util/vector.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="38" column="1" bodyfile="libopenage/util/vector.h" bodystart="38" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="38" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a70020e31b16b6c886cd7d5956c961141" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="44" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="44" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1aea1fe198f712888e82582be0bb73e450" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="50" column="1" bodyfile="libopenage/util/vector.h" bodystart="50" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="50" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -122,7 +122,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="60" column="1" bodyfile="libopenage/util/vector.h" bodystart="60" bodyend="68"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="60" bodyend="68"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" compoundref="vector__test_8cpp" startline="11" endline="59">openage::util::tests::vector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1afbfaf8fb98199182caa50e1a45bab12c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
@@ -140,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="73" column="1" bodyfile="libopenage/util/vector.h" bodystart="73" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="73" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a3f1ab0e66323a2d08bd8c320425af1a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
@@ -158,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="83" column="1" bodyfile="libopenage/util/vector.h" bodystart="83" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="83" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af9fdfbcf69edc87d219f35b239d4e77c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
@@ -176,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="92" column="1" bodyfile="libopenage/util/vector.h" bodystart="92" bodyend="97"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="92" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a0d7a217ad63a77da59f2ddcc7f7b87e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
@@ -194,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="102" column="1" bodyfile="libopenage/util/vector.h" bodystart="102" bodyend="106"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="102" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a0b9910495f73ffb032e4b12be3b72d34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
@@ -212,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="111" column="1" bodyfile="libopenage/util/vector.h" bodystart="111" bodyend="116"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af730cbb108d9e8966f4524efab3f0fe3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
@@ -230,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="121" column="1" bodyfile="libopenage/util/vector.h" bodystart="121" bodyend="125"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="121" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="121" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a2d28e8ece216fef011431a1ababa4bfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
@@ -248,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="130" column="1" bodyfile="libopenage/util/vector.h" bodystart="130" bodyend="135"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="130" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af3c9dfb3fd444c92cd4af8384809241d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
@@ -266,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="140" column="1" bodyfile="libopenage/util/vector.h" bodystart="140" bodyend="144"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="140" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -284,7 +287,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="149" column="1" bodyfile="libopenage/util/vector.h" bodystart="149" bodyend="155"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="149" bodyend="155"/>
+        <referencedby refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" compoundref="vector_8h" startline="160" endline="162">openage::util::Vector&lt; N, T &gt;::norm</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" compoundref="vector__test_8cpp" startline="11" endline="59">openage::util::tests::vector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -298,7 +303,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="160" column="1" bodyfile="libopenage/util/vector.h" bodystart="160" bodyend="162"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="160" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="160" bodyend="162"/>
+        <references refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" compoundref="vector_8h" startline="149" endline="155">openage::util::Vector&lt; N, T &gt;::dot</references>
+        <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
+        <referencedby refid="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" compoundref="vector_8h" startline="167" endline="170">openage::util::Vector&lt; N, T &gt;::normalize</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
@@ -312,7 +320,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="167" column="1" bodyfile="libopenage/util/vector.h" bodystart="167" bodyend="170"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="167" bodyend="170"/>
+        <references refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" compoundref="vector_8h" startline="160" endline="162">openage::util::Vector&lt; N, T &gt;::norm</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -336,7 +345,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="177" column="1" bodyfile="libopenage/util/vector.h" bodystart="177" bodyend="183"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="177" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="177" bodyend="183"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" compoundref="quaternion_8h" startline="311" endline="321">openage::util::Quaternion&lt; T &gt;::operator *</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" compoundref="vector__test_8cpp" startline="11" endline="59">openage::util::tests::vector</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -360,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="188" column="1" bodyfile="libopenage/util/vector.h" bodystart="188" bodyend="190"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="188" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="188" bodyend="190"/>
       </memberdef>
       <memberdef kind="friend" id="classopenage_1_1util_1_1_vector_1a04d7eeccc9f90a986e8297807959e864" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -382,7 +393,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="195" column="1" bodyfile="libopenage/util/vector.h" bodystart="195" bodyend="202"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="195" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="195" bodyend="202"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -392,28 +403,28 @@
 <para>N = dimensions T = underlying single value type (double, float, ...) </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4929">
+      <node id="6137">
         <label>openage::util::Vector&lt; N, T &gt;</label>
         <link refid="classopenage_1_1util_1_1_vector"/>
-        <childnode refid="4930" relation="public-inheritance">
+        <childnode refid="6138" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4930">
+      <node id="6138">
         <label>std::array&lt; T, N &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4931">
+      <node id="6139">
         <label>openage::util::Vector&lt; N, T &gt;</label>
         <link refid="classopenage_1_1util_1_1_vector"/>
-        <childnode refid="4932" relation="public-inheritance">
+        <childnode refid="6140" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4932">
+      <node id="6140">
         <label>std::array&lt; T, N &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/vector.h" line="24" column="1" bodyfile="libopenage/util/vector.h" bodystart="24" bodyend="203"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="24" bodyend="203"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>cross_product</name></member>
       <member refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>default_eps</name></member>

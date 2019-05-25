@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/generator_link.h" line="24" column="1" bodyfile="libopenage/gui/generator_link.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,12 +25,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4899">
+      <node id="6597">
         <label>qtsdl::Unwrap&lt; openage::gui::GeneratorLink &gt;</label>
         <link refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_generator_link_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/generator_link.h" line="23" column="1" bodyfile="libopenage/gui/generator_link.h" bodystart="23" bodyend="25"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" bodystart="23" bodyend="25"/>
     <listofallmembers>
       <member refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_generator_link_01_4_1addfccf6d6cf19e0050e9b10af416b9f7" prot="public" virt="non-virtual"><scope>qtsdl::Unwrap&lt; openage::gui::GeneratorLink &gt;</scope><name>Type</name></member>
     </listofallmembers>

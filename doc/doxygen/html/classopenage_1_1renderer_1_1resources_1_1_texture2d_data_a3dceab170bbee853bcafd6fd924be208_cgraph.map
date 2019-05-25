@@ -1,0 +1,15 @@
+<map id="openage::renderer::resources::Texture2dData::store" name="openage::renderer::resources::Texture2dData::store">
+<area shape="rect" id="node1" title="Stores this texture data in the given file in the PNG format." alt="" coords="5,176,176,232"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="251,5,361,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c" title=" " alt="" coords="224,56,388,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title=" " alt="" coords="224,136,388,192"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="224,216,388,272"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="245,296,367,323"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_path.xhtml#a1175be01a6df63d066ca6f2d3e2c4d3c" title=" " alt="" coords="227,347,385,389"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2" title="Returns the size in bytes of a single pixel of the specified format." alt="" coords="459,143,604,185"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="458,259,605,301"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="436,325,627,352"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="704,253,843,294"/>
+<area shape="rect" id="node11" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="687,318,859,359"/>
+<area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="675,384,872,411"/>
+</map>

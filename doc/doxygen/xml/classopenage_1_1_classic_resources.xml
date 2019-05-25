@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="90" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="86" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +31,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="76" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="76" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="76" bodyend="82"/>
+        <references refid="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" compoundref="gamestate_2resource_8h" startline="67">openage::Resources::food</references>
+        <references refid="classopenage_1_1_resources_1a945eff3d7ffb4da7c2edba3c92bcd86a" compoundref="gamestate_2resource_8h" startline="68">openage::Resources::gold</references>
+        <references refid="classopenage_1_1_resources_1a5dd4addc058637a117d8a5a23ef64d29" compoundref="gamestate_2resource_8h" startline="69">openage::Resources::stone</references>
+        <references refid="classopenage_1_1_resources_1a27ddc9d16912c2781fa62b4038f4c3c3" compoundref="gamestate_2resource_8h" startline="66">openage::Resources::wood</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_classic_resources_1ad327fe1078eddae4ff9d2a798f0770e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>unsigned int</type>
@@ -45,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="84" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="84" bodyend="84"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_classic_resources_1a5ffbbbb523556aa031a996a45e7c4e85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
@@ -63,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="86" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="86" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -107,7 +111,7 @@
         <link refid="classopenage_1_1_resources"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/resource.h" line="73" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="73" bodyend="91"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="73" bodyend="91"/>
     <listofallmembers>
       <member refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>ClassicResources</name></member>
       <member refid="classopenage_1_1_resources_1aef4b5371e4af7c303ca4d87d5970280c" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>create_bundle</name></member>

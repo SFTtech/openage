@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_25bcf6154347058b4315398e0f7663fe" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/log</compoundname>
+    <innerfile refid="log_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="tests_8py">tests.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/"/>
+  </compounddef>
+</doxygen>

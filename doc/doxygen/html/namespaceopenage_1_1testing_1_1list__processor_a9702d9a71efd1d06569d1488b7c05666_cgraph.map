@@ -1,0 +1,9 @@
+<map id="openage.testing.list_processor.get_all_targets" name="openage.testing.list_processor.get_all_targets">
+<area shape="rect" id="node1" title="Reads the Python and C++ testspec." alt="" coords="5,71,180,112"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a598be9bf16c59330d7350e0024b2f363" title="Invokes list_targets() with the C++&#45;specific listers." alt="" coords="238,5,421,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#aa7fa94692d5000c384c9820a0a4edddc" title="Invokes list_targets() with the py&#45;specific listers." alt="" coords="242,71,417,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1strings.xhtml#a7ae648d1a835e5ee33b60c06d1f3f612" title="Removes substr at the start of string, and raises ValueError on failure." alt="" coords="228,137,431,163"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a96f8756c2413d5f3fe509b1532a91967" title=" " alt="" coords="479,39,633,80"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="493,137,619,163"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="681,137,875,163"/>
+</map>

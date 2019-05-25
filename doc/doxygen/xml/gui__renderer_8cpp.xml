@@ -66,7 +66,7 @@
         </childnode>
       </node>
       <node id="13581">
-        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</label>
         <link refid="gui__renderer_8cpp"/>
         <childnode refid="13582" relation="include">
         </childnode>
@@ -124,6 +124,6 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_renderer.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp"/>
   </compounddef>
 </doxygen>

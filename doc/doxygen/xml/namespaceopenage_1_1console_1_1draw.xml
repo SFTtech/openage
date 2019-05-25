@@ -23,7 +23,31 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/draw.cpp" line="22" column="1" bodyfile="libopenage/console/draw.cpp" bodystart="22" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp" bodystart="22" bodyend="89"/>
+        <references refid="structopenage_1_1console_1_1buf__char_1ad268cc5e0d42a2c6c533805f2749c3ac" compoundref="buf_8h" startline="75">openage::console::buf_char::bgcol</references>
+        <references refid="classopenage_1_1console_1_1_console_1a005c1608c8128b7312134b47be2ca2ca" compoundref="console_8h" startline="63">openage::console::Console::bottomleft</references>
+        <references refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" compoundref="console_8h" startline="71">openage::console::Console::buf</references>
+        <references refid="classopenage_1_1console_1_1_console_1affa7cf7767200b98fd7e3b9e2ed7fea7" compoundref="console_8h" startline="65">openage::console::Console::charsize</references>
+        <references refid="namespaceopenage_1_1console_1af47bf3d97cd359c6c10f897202d86f6e" compoundref="buf_8h" startline="33">openage::console::CHR_BLINKING</references>
+        <references refid="namespaceopenage_1_1console_1a4c87ac281f12c1a70ce7a42e994b1f4e" compoundref="buf_8h" startline="34">openage::console::CHR_BLINKINGFAST</references>
+        <references refid="namespaceopenage_1_1console_1afb42dd8609458df8845f0fcfe1369a02" compoundref="buf_8h" startline="39">openage::console::CHR_INVISIBLE</references>
+        <references refid="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" compoundref="buf_8h" startline="38">openage::console::CHR_NEGATIVE</references>
+        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" compoundref="buf_8h" startline="67">openage::console::buf_char::cp</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" compoundref="buf_8h" startline="443">openage::console::Buf::cursor_visible</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" compoundref="buf_8h" startline="433">openage::console::Buf::cursorpos</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" compoundref="buf_8h" startline="420">openage::console::Buf::dims</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a205c87e5042f1bdeb3bb60580196620d" compoundref="buf_8h" startline="71">openage::console::buf_char::fgcol</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a4488bd83177a49837fcc93128d18c5cb" compoundref="buf_8h" startline="79">openage::console::buf_char::flags</references>
+        <references refid="classopenage_1_1console_1_1_console_1ab1d376fb1fd8b179e8c464671e16ba3a" compoundref="console_8h" startline="72">openage::console::Console::font</references>
+        <references refid="classopenage_1_1renderer_1_1_font_1a20d9c92be7d85c08a3877b476f479440" compoundref="font_8cpp" startline="136" endline="139">openage::renderer::Font::get_ascender</references>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="classopenage_1_1_engine_1a5684ab06d65ff2afe5e3b8551809d668" compoundref="engine_8cpp" startline="525" endline="527">openage::Engine::get_text_renderer</references>
+        <references refid="classopenage_1_1console_1_1_buf_1aed68e2efd6dfa0dc6e4d2c6985965458" compoundref="buf_8h" startline="518">openage::console::Buf::scrollback_pos</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" compoundref="text_8cpp" startline="69" endline="76">openage::renderer::TextRenderer::set_font</references>
+        <references refid="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" compoundref="console_8h" startline="67">openage::console::Console::termcolors</references>
+        <references refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" compoundref="unicode_8cpp" startline="120" endline="152">openage::util::utf8_encode</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" compoundref="console_8cpp" startline="164" endline="172">openage::console::Console::on_drawhud</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -50,13 +74,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/draw.cpp" line="91" column="1" bodyfile="libopenage/console/draw.cpp" bodystart="91" bodyend="169"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp" bodystart="91" bodyend="169"/>
+        <references refid="structopenage_1_1console_1_1buf__char_1ad268cc5e0d42a2c6c533805f2749c3ac" compoundref="buf_8h" startline="75">openage::console::buf_char::bgcol</references>
+        <references refid="namespaceopenage_1_1console_1af47bf3d97cd359c6c10f897202d86f6e" compoundref="buf_8h" startline="33">openage::console::CHR_BLINKING</references>
+        <references refid="namespaceopenage_1_1console_1a9745bb286bb9090f6a1108ab396a7b8a" compoundref="buf_8h" startline="30">openage::console::CHR_BOLD</references>
+        <references refid="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" compoundref="buf_8h" startline="38">openage::console::CHR_NEGATIVE</references>
+        <references refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" compoundref="buf_8h" startline="67">openage::console::buf_char::cp</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" compoundref="buf_8h" startline="443">openage::console::Buf::cursor_visible</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" compoundref="buf_8h" startline="433">openage::console::Buf::cursorpos</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" compoundref="buf_8h" startline="420">openage::console::Buf::dims</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a205c87e5042f1bdeb3bb60580196620d" compoundref="buf_8h" startline="71">openage::console::buf_char::fgcol</references>
+        <references refid="structopenage_1_1console_1_1buf__char_1a4488bd83177a49837fcc93128d18c5cb" compoundref="buf_8h" startline="79">openage::console::buf_char::flags</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" compoundref="fds_8cpp" startline="75" endline="110">openage::util::FD::printf</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" compoundref="fds_8cpp" startline="61" endline="63">openage::util::FD::putbyte</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" compoundref="fds_8cpp" startline="65" endline="73">openage::util::FD::putcp</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">openage::util::FD::puts</references>
+        <references refid="classopenage_1_1console_1_1_buf_1aed68e2efd6dfa0dc6e4d2c6985965458" compoundref="buf_8h" startline="518">openage::console::Buf::scrollback_pos</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a324edefddfbe59f14ecd7841d2598c29" compoundref="buf_8h" startline="501">openage::console::Buf::scrollback_possible</references>
+        <references refid="classopenage_1_1console_1_1_buf_1a51310590a608b1d2b601d3303893500d" compoundref="buf_8h" startline="473">openage::console::Buf::title</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" compoundref="console_2tests_8cpp" startline="55" endline="181">openage::console::tests::interactive</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1tests_1a15c3b269411a779e1ae9af60a3b6fedf" compoundref="console_2tests_8cpp" startline="39" endline="52">openage::console::tests::render</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/console/draw.cpp" line="20" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp" line="20" column="1"/>
   </compounddef>
 </doxygen>

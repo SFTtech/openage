@@ -16,12 +16,12 @@
 <para>this type gets specialized for each attribute </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="360">
+      <node id="269">
         <label>openage::Attribute&lt; T &gt;</label>
         <link refid="classopenage_1_1_attribute"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="107" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="107" bodyend="-1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="107" bodyend="-1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

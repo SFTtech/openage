@@ -17,7 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="37" column="1" bodyfile="libopenage/renderer/opengl/buffer.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" compoundref="buffer_8cpp" startline="34" endline="36">get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" compoundref="buffer_8cpp" startline="38" endline="45">upload_data</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="18" column="1" bodyfile="libopenage/renderer/opengl/buffer.cpp" bodystart="12" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp" bodystart="12" bodyend="21"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" compoundref="simple__object_8h" startline="41">openage::renderer::opengl::GlSimpleObject::handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a904c48814ba7acaf8f93ce4963d11cdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -69,7 +77,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="22" column="1" bodyfile="libopenage/renderer/opengl/buffer.cpp" bodystart="23" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp" bodystart="23" bodyend="32"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" compoundref="simple__object_8h" startline="41">openage::renderer::opengl::GlSimpleObject::handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -83,7 +92,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="25" column="1" bodyfile="libopenage/renderer/opengl/buffer.cpp" bodystart="34" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp" bodystart="34" bodyend="36"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">size</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -109,7 +120,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/buffer.cpp" bodystart="38" bodyend="45"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp" bodystart="38" bodyend="45"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" compoundref="buffer_8cpp" startline="47" endline="53">bind</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">size</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +143,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/buffer.h" line="33" column="1" bodyfile="libopenage/renderer/opengl/buffer.cpp" bodystart="47" bodyend="53"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp" bodystart="47" bodyend="53"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" compoundref="simple__object_8h" startline="41">openage::renderer::opengl::GlSimpleObject::handle</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" compoundref="buffer_8cpp" startline="38" endline="45">upload_data</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -136,30 +157,30 @@
 <para>Represents an OpenGL buffer of memory allocated on the GPU. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2377">
+      <node id="4655">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2376">
+      <node id="4654">
         <label>openage::renderer::opengl::GlBuffer</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer"/>
-        <childnode refid="2377" relation="public-inheritance">
+        <childnode refid="4655" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2379">
+      <node id="4657">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2378">
+      <node id="4656">
         <label>openage::renderer::opengl::GlBuffer</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer"/>
-        <childnode refid="2379" relation="public-inheritance">
+        <childnode refid="4657" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/buffer.h" line="14" column="1" bodyfile="libopenage/renderer/opengl/buffer.h" bodystart="14" bodyend="38"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h" bodystart="14" bodyend="38"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlBuffer</scope><name>bind</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlBuffer</scope><name>delete_fun</name></member>

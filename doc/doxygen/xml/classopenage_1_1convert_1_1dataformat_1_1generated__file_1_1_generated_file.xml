@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::generated_file::GeneratedFile</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1adade02a07e45d832cd7f02ab0bbba325" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.dataformat.generated_file.GeneratedFile::namespaces</definition>
+        <argsstring></argsstring>
+        <name>namespaces</name>
+        <initializer>=  (&quot;openage&quot;, &quot;gamedata&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aca0798e335bb1af131dc172dfa3957a6" compoundref="generated__file_8py" startline="23" endline="25">openage.convert.dataformat.generated_file.GeneratedFile.namespacify</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a3ffd3d8a611c4f3c35fe6a9aa5a70443" prot="public" static="yes" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage.convert.dataformat.generated_file.GeneratedFile::default_preferences</definition>
+        <argsstring></argsstring>
+        <name>default_preferences</name>
+        <initializer>=  {
+        &quot;folder&quot;:         &quot;&quot;,
+        &quot;file_suffix&quot;:    &quot;&quot;,
+        &quot;process&quot;:        True,
+        &quot;content_prefix&quot;: Template(&quot;&quot;),
+        &quot;content_suffix&quot;: Template(&quot;&quot;),
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a22fe1959583948bbcb76cd7c55341154" prot="public" static="yes" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage.convert.dataformat.generated_file.GeneratedFile::output_preferences</definition>
+        <argsstring></argsstring>
+        <name>output_preferences</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" compoundref="generated__file_8py" startline="109" endline="119">openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a47be248058b8a58d86be245676073e19" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::snippets</definition>
+        <argsstring></argsstring>
+        <name>snippets</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a97457c65f7f41e262176d22b099c6126" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::typedefs</definition>
+        <argsstring></argsstring>
+        <name>typedefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="78" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" compoundref="generated__file_8py" startline="109" endline="119">openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a9a160d2930b05acfa392333022dd8310" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::typerefs</definition>
+        <argsstring></argsstring>
+        <name>typerefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::file_name</definition>
+        <argsstring></argsstring>
+        <name>file_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="80" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a2ee4f758fdcdce9c8e9d22406d1865d9" compoundref="generated__file_8py" startline="242" endline="244">openage.convert.dataformat.generated_file.GeneratedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" compoundref="generated__file_8py" startline="109" endline="119">openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" compoundref="members_8py" startline="446" endline="472">openage.convert.dataformat.members.EnumMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::format_</definition>
+        <argsstring></argsstring>
+        <name>format_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="81" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a2ee4f758fdcdce9c8e9d22406d1865d9" compoundref="generated__file_8py" startline="242" endline="244">openage.convert.dataformat.generated_file.GeneratedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" compoundref="generated__file_8py" startline="109" endline="119">openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a57b986d9e3dc7dd47c2d0bce2f4c9ba9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.generated_file.GeneratedFile::included_typedefs</definition>
+        <argsstring></argsstring>
+        <name>included_typedefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="82" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aca0798e335bb1af131dc172dfa3957a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.namespacify</definition>
+        <argsstring>(cls, var_type)</argsstring>
+        <name>namespacify</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>var_type</type>
+          <defname>var_type</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="23" bodyend="25"/>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" compoundref="cpp__testlist_8py" startline="20">openage.codegen.cpp_testlist.Namespace.namespaces</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1adade02a07e45d832cd7f02ab0bbba325" compoundref="generated__file_8py" startline="20">openage.convert.dataformat.generated_file.GeneratedFile.namespaces</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ab6e3f9f22dad619d3b2202e060539904" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.__init__</definition>
+        <argsstring>(self, file_name, format_)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" kindref="member">format_</ref></type>
+          <defname>format_</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="76" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</definition>
+        <argsstring>(self, snippet, inherit_typedefs=True)</argsstring>
+        <name>add_snippet</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>snippet</type>
+          <defname>snippet</defname>
+        </param>
+        <param>
+          <type>inherit_typedefs</type>
+          <defname>inherit_typedefs</defname>
+          <defval>True</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="84" bodyend="105"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a57b986d9e3dc7dd47c2d0bce2f4c9ba9" compoundref="generated__file_8py" startline="82">openage.convert.dataformat.generated_file.GeneratedFile.included_typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a47be248058b8a58d86be245676073e19" compoundref="generated__file_8py" startline="77">openage.convert.dataformat.generated_file.GeneratedFile.snippets</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a97457c65f7f41e262176d22b099c6126" compoundref="generated__file_8py" startline="78">openage.convert.dataformat.generated_file.GeneratedFile.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" compoundref="data__formatter_8py" startline="120">openage.convert.dataformat.data_formatter.DataFormatter.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a17ae96a6c5788c63c74d646c51ea5f78" compoundref="entry__parser_8py" startline="27">openage.convert.dataformat.entry_parser.EntryParser.typerefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a1ccf4c662c36928f161e01542110768f" compoundref="content__snippet_8py" startline="31">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a9a160d2930b05acfa392333022dd8310" compoundref="generated__file_8py" startline="79">openage.convert.dataformat.generated_file.GeneratedFile.typerefs</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</definition>
+        <argsstring>(self, file_name=True)</argsstring>
+        <name>get_include_snippet</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+          <defval>True</defval>
+        </param>
+        <briefdescription>
+<para>return a snippet with a header entry for this file to be able to include it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="109" bodyend="119"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" compoundref="generated__file_8py" startline="81">openage.convert.dataformat.generated_file.GeneratedFile.format_</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a22fe1959583948bbcb76cd7c55341154" compoundref="generated__file_8py" startline="37">openage.convert.dataformat.generated_file.GeneratedFile.output_preferences</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a97457c65f7f41e262176d22b099c6126" compoundref="generated__file_8py" startline="78">openage.convert.dataformat.generated_file.GeneratedFile.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" compoundref="data__formatter_8py" startline="120">openage.convert.dataformat.data_formatter.DataFormatter.typedefs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</definition>
+        <argsstring>(self, file_pool)</argsstring>
+        <name>create_xref_headers</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>file_pool</type>
+          <defname>file_pool</defname>
+        </param>
+        <briefdescription>
+<para>discover and add needed header snippets for type references accross files. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="123" bodyend="139"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a57b986d9e3dc7dd47c2d0bce2f4c9ba9" compoundref="generated__file_8py" startline="82">openage.convert.dataformat.generated_file.GeneratedFile.included_typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a97457c65f7f41e262176d22b099c6126" compoundref="generated__file_8py" startline="78">openage.convert.dataformat.generated_file.GeneratedFile.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" compoundref="data__formatter_8py" startline="120">openage.convert.dataformat.data_formatter.DataFormatter.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a17ae96a6c5788c63c74d646c51ea5f78" compoundref="entry__parser_8py" startline="27">openage.convert.dataformat.entry_parser.EntryParser.typerefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a1ccf4c662c36928f161e01542110768f" compoundref="content__snippet_8py" startline="31">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a9a160d2930b05acfa392333022dd8310" compoundref="generated__file_8py" startline="79">openage.convert.dataformat.generated_file.GeneratedFile.typerefs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aa99235f1e4f21d5c57e7e95da321b33e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.create_forward_declarations</definition>
+        <argsstring>(self, file_pool)</argsstring>
+        <name>create_forward_declarations</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>file_pool</type>
+          <defname>file_pool</defname>
+        </param>
+        <briefdescription>
+<para>create forward declarations for this generated file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   a forward declatation is needed when a referenced type is defined
+   in an included header, that includes a header that includes the first one.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="146" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.generate</definition>
+        <argsstring>(self)</argsstring>
+        <name>generate</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>actually generate the content for this file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="151" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="151" bodyend="241"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a3ffd3d8a611c4f3c35fe6a9aa5a70443" compoundref="generated__file_8py" startline="27">openage.convert.dataformat.generated_file.GeneratedFile.default_preferences</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" compoundref="generated__file_8py" startline="81">openage.convert.dataformat.generated_file.GeneratedFile.format_</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" compoundref="cpp__testlist_8py" startline="20">openage.codegen.cpp_testlist.Namespace.namespaces</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1adade02a07e45d832cd7f02ab0bbba325" compoundref="generated__file_8py" startline="20">openage.convert.dataformat.generated_file.GeneratedFile.namespaces</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a22fe1959583948bbcb76cd7c55341154" compoundref="generated__file_8py" startline="37">openage.convert.dataformat.generated_file.GeneratedFile.output_preferences</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a47be248058b8a58d86be245676073e19" compoundref="generated__file_8py" startline="77">openage.convert.dataformat.generated_file.GeneratedFile.snippets</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a2ee4f758fdcdce9c8e9d22406d1865d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.generated_file.GeneratedFile.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="242" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="242" bodyend="244"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" compoundref="generated__file_8py" startline="81">openage.convert.dataformat.generated_file.GeneratedFile.format_</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>represents a writable file that was generated automatically. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>it&apos;s filled by many ContentSnippets before its contents are generated. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1016">
+        <label>openage.convert.dataformat.generated_file.GeneratedFile</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/generated_file.py" bodystart="18" bodyend="244"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ab6e3f9f22dad619d3b2202e060539904" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a2ee4f758fdcdce9c8e9d22406d1865d9" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>add_snippet</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aa99235f1e4f21d5c57e7e95da321b33e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>create_forward_declarations</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>create_xref_headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a3ffd3d8a611c4f3c35fe6a9aa5a70443" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>default_preferences</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a5d0c53827f43a1378de3cc4d31b8ed22" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>format_</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>generate</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>get_include_snippet</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a57b986d9e3dc7dd47c2d0bce2f4c9ba9" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>included_typedefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1adade02a07e45d832cd7f02ab0bbba325" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>namespaces</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aca0798e335bb1af131dc172dfa3957a6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>namespacify</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a22fe1959583948bbcb76cd7c55341154" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>output_preferences</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a47be248058b8a58d86be245676073e19" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a97457c65f7f41e262176d22b099c6126" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>typedefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a9a160d2930b05acfa392333022dd8310" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::generated_file::GeneratedFile</scope><name>typerefs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

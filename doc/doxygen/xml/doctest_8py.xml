@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="doctest_8py" kind="file" language="Python">
+    <compoundname>doctest.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1doctest">openage::testing::doctest</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1testing_1_1doctest" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Performs<sp/>doctest<sp/>on<sp/>all<sp/>modules<sp/>listed<sp/>in<sp/>list_doctest_modules().</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>importlib</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>doctest<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>testmod</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.testing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>TestError</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.testlist<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>doctest_modules</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1testing_1_1doctest_1a87b8d1a38cc5279012bdaff5b2783fec" kindref="member">test</ref>():</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Runs<sp/>doctest<sp/>on<sp/>the<sp/>modules<sp/>listed<sp/>in<sp/>testlist.DOCTEST_MODULES.</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>modname<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testlist_1affbf4b84b1472a1c7d54133a9470ce78" kindref="member">doctest_modules</ref>():</highlight></codeline>
+<codeline lineno="19" refid="namespaceopenage_1_1testing_1_1doctest_1a87b8d1a38cc5279012bdaff5b2783fec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mod<sp/>=<sp/>importlib.import_module(modname)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>testmod(mod,<sp/>report=</highlight><highlight class="keyword">False</highlight><highlight class="normal">).failed:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1testing_1_1testing_1_1_test_error" kindref="compound">TestError</ref>(</highlight><highlight class="stringliteral">&quot;Errors<sp/>have<sp/>been<sp/>detected<sp/>during<sp/>doctest&quot;</highlight><highlight class="normal">)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/doctest.py"/>
+  </compounddef>
+</doxygen>

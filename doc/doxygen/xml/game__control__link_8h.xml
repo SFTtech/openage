@@ -5,11 +5,11 @@
     <includes local="no">QQmlParserStatus</includes>
     <includes refid="game__control_8h" local="yes">../game_control.h</includes>
     <includes refid="gui__item_8h" local="yes">guisys/link/gui_item.h</includes>
-    <includedby refid="actions__list__model_8h" local="yes">libopenage/gui/actions_list_model.h</includedby>
-    <includedby refid="actions__list__model_8cpp" local="yes">libopenage/gui/actions_list_model.cpp</includedby>
-    <includedby refid="category__contents__list__model_8cpp" local="yes">libopenage/gui/category_contents_list_model.cpp</includedby>
-    <includedby refid="game__control__link_8cpp" local="yes">libopenage/gui/game_control_link.cpp</includedby>
-    <includedby refid="resources__list__model_8cpp" local="yes">libopenage/gui/resources_list_model.cpp</includedby>
+    <includedby refid="actions__list__model_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</includedby>
+    <includedby refid="actions__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</includedby>
+    <includedby refid="category__contents__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</includedby>
+    <includedby refid="game__control__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</includedby>
+    <includedby refid="resources__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</includedby>
     <incdepgraph>
       <node id="11712">
         <label>list</label>
@@ -125,7 +125,7 @@
         <label>cstdint</label>
       </node>
       <node id="11671">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="11672" relation="include">
         </childnode>
@@ -1070,7 +1070,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="11797">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="11798" relation="include">
         </childnode>
@@ -1084,25 +1084,25 @@
         </childnode>
       </node>
       <node id="11798">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="11799" relation="include">
         </childnode>
       </node>
       <node id="11800">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="11799">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
       <node id="11801">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="11802">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
     </invincdepgraph>
@@ -1167,8 +1167,8 @@
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_INTERFACES(QQmlParserStatus)</highlight></codeline>
-<codeline lineno="39" refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" kindref="member">name</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1aecded0b2079f6c8be83828c5503e671c" kindref="member">get_name</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ac37b44ad6855f1c437673a8a3d8018d8" kindref="member">name_changed</ref>)</highlight></codeline>
-<codeline lineno="40" refid="classopenage_1_1gui_1_1_output_mode_link_1ad05459b8503071f3fa5b82ee43d246ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QStringList<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ad05459b8503071f3fa5b82ee43d246ef" kindref="member">binds</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ae35bca1153b4024167c26ad3f8aa3329" kindref="member">get_binds</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1aff59d017f7454c1acf08d47c2452bdad" kindref="member">binds_changed</ref>)</highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" kindref="member">name</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1aecded0b2079f6c8be83828c5503e671c" kindref="member">get_name</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ac37b44ad6855f1c437673a8a3d8018d8" kindref="member">name_changed</ref>)</highlight></codeline>
+<codeline lineno="40" refid="classopenage_1_1gui_1_1_output_mode_link_1ad05459b8503071f3fa5b82ee43d246ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QStringList<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ad05459b8503071f3fa5b82ee43d246ef" kindref="member">binds</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1ae35bca1153b4024167c26ad3f8aa3329" kindref="member">get_binds</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1aff59d017f7454c1acf08d47c2452bdad" kindref="member">binds_changed</ref>)</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link" kindref="compound">OutputModeLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -1246,9 +1246,9 @@
 <codeline lineno="115" refid="classopenage_1_1gui_1_1_action_mode_link" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_inherits" kindref="compound">qtsdl::Inherits</ref>&lt;OutputModeLink,<sp/>ActionModeLink&gt;<sp/>{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118" refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>ability<sp/>READ<sp/>get_ability<sp/>NOTIFY<sp/>ability_changed)</highlight></codeline>
-<codeline lineno="119" refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>population<sp/>READ<sp/>get_population<sp/>NOTIFY<sp/>population_changed)</highlight></codeline>
-<codeline lineno="120" refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>population_warn<sp/>READ<sp/>get_population_warn<sp/>NOTIFY<sp/>population_changed)</highlight></codeline>
+<codeline lineno="118" refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>ability<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_ability<sp/>NOTIFY<sp/>ability_changed)</highlight></codeline>
+<codeline lineno="119" refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>population<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_population<sp/>NOTIFY<sp/>population_changed)</highlight></codeline>
+<codeline lineno="120" refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>population_warn<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_population_warn<sp/>NOTIFY<sp/>population_changed)</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -1269,7 +1269,7 @@
 <codeline lineno="138"><highlight class="normal">private<sp/>slots:</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_ability_changed(const<sp/><ref refid="namespacestd" kindref="compound">std</ref>::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>&amp;ability);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_buttons_type_changed(const<sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/>buttons_type);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_population_changed(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>warn);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_population_changed(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>);</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal">private:</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_output_mode_link_1a075e25acd5ad18242e42fb428c3c8b09" kindref="member">on_core_adopted</ref>()<sp/>override;</highlight></codeline>
@@ -1302,10 +1302,10 @@
 <codeline lineno="171" refid="classopenage_1_1gui_1_1_editor_mode_link" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_inherits" kindref="compound">qtsdl::Inherits</ref>&lt;OutputModeLink,<sp/>EditorModeLink&gt;<sp/>{</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174" refid="classopenage_1_1gui_1_1_editor_mode_link_1a4ba4797d30f1792a281f28fc7238e23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentTypeId<sp/>READ<sp/>get_current_type_id<sp/>WRITE<sp/>set_current_type_id)</highlight></codeline>
-<codeline lineno="175" refid="classopenage_1_1gui_1_1_editor_mode_link_1adb9705ce062394f03c1ee80a7d6ca14f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentTerrainId<sp/>READ<sp/>get_current_terrain_id<sp/>WRITE<sp/>set_current_terrain_id)</highlight></codeline>
-<codeline lineno="176" refid="classopenage_1_1gui_1_1_editor_mode_link_1a29080e013edd758b42361a57b0897869" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>paintTerrain<sp/>READ<sp/>get_paint_terrain<sp/>WRITE<sp/>set_paint_terrain)</highlight></codeline>
-<codeline lineno="177" refid="classopenage_1_1gui_1_1_editor_mode_link_1ae061bf1000c4d7793e8c872c9066d279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QStringList<sp/>categories<sp/>READ<sp/>get_categories<sp/>NOTIFY<sp/>categories_changed)</highlight></codeline>
+<codeline lineno="174" refid="classopenage_1_1gui_1_1_editor_mode_link_1a4ba4797d30f1792a281f28fc7238e23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentTypeId<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_current_type_id<sp/>WRITE<sp/>set_current_type_id)</highlight></codeline>
+<codeline lineno="175" refid="classopenage_1_1gui_1_1_editor_mode_link_1adb9705ce062394f03c1ee80a7d6ca14f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentTerrainId<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_current_terrain_id<sp/>WRITE<sp/>set_current_terrain_id)</highlight></codeline>
+<codeline lineno="176" refid="classopenage_1_1gui_1_1_editor_mode_link_1a29080e013edd758b42361a57b0897869" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>paintTerrain<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_paint_terrain<sp/>WRITE<sp/>set_paint_terrain)</highlight></codeline>
+<codeline lineno="177" refid="classopenage_1_1gui_1_1_editor_mode_link_1ae061bf1000c4d7793e8c872c9066d279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QStringList<sp/>categories<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_categories<sp/>NOTIFY<sp/>categories_changed)</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -1368,14 +1368,14 @@
 <codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"></highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_INTERFACES(QQmlParserStatus)</highlight></codeline>
-<codeline lineno="240" refid="classopenage_1_1gui_1_1_game_control_link_1a04388cbbc34a309a81d068d923da3fff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_output_mode_link" kindref="compound">OutputModeLink</ref>*<sp/>mode<sp/>READ<sp/>get_mode<sp/>NOTIFY<sp/>mode_changed)</highlight></codeline>
-<codeline lineno="241" refid="classopenage_1_1gui_1_1_game_control_link_1a3a71dd65ffea4718b19e2eda035f5142" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>effectiveModeIndex<sp/>READ<sp/>get_effective_mode_index<sp/>NOTIFY<sp/>mode_changed)</highlight></codeline>
-<codeline lineno="242" refid="classopenage_1_1gui_1_1_game_control_link_1a315396bdcfeb122f53a119de4efbbcd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>modeIndex<sp/>READ<sp/>get_mode_index<sp/>WRITE<sp/>set_mode_index)</highlight></codeline>
-<codeline lineno="243" refid="classopenage_1_1gui_1_1_game_control_link_1a86393d64c36b4540e22512cc347f3236" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QVariantList<sp/>modes<sp/>READ<sp/>get_modes<sp/>WRITE<sp/>set_modes<sp/>NOTIFY<sp/>modes_changed)</highlight></codeline>
-<codeline lineno="244" refid="classopenage_1_1gui_1_1_game_control_link_1a5b7fa78ab5d69b8edb8fe7c74012b491" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>*<sp/>engine<sp/>READ<sp/>get_engine<sp/>WRITE<sp/>set_engine)</highlight></codeline>
-<codeline lineno="245" refid="classopenage_1_1gui_1_1_game_control_link_1a33ea79efffcb4d7a831c4e0ae84525a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_game_main_link" kindref="compound">GameMainLink</ref>*<sp/>game<sp/>READ<sp/>get_game<sp/>WRITE<sp/>set_game)</highlight></codeline>
-<codeline lineno="246" refid="classopenage_1_1gui_1_1_game_control_link_1a4b1cf9d8418af69706bc35aa2a01f016" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>currentPlayerName<sp/>READ<sp/>get_current_player_name<sp/>NOTIFY<sp/>current_player_name_changed)</highlight></codeline>
-<codeline lineno="247" refid="classopenage_1_1gui_1_1_game_control_link_1a1ec3cfeee84c9751218699e88cfb17be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentCivIndex<sp/>READ<sp/>get_current_civ_index<sp/>NOTIFY<sp/>current_civ_index_changed)</highlight></codeline>
+<codeline lineno="240" refid="classopenage_1_1gui_1_1_game_control_link_1a04388cbbc34a309a81d068d923da3fff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_output_mode_link" kindref="compound">OutputModeLink</ref>*<sp/>mode<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_mode<sp/>NOTIFY<sp/>mode_changed)</highlight></codeline>
+<codeline lineno="241" refid="classopenage_1_1gui_1_1_game_control_link_1a3a71dd65ffea4718b19e2eda035f5142" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>effectiveModeIndex<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_effective_mode_index<sp/>NOTIFY<sp/>mode_changed)</highlight></codeline>
+<codeline lineno="242" refid="classopenage_1_1gui_1_1_game_control_link_1a315396bdcfeb122f53a119de4efbbcd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>modeIndex<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_mode_index<sp/>WRITE<sp/>set_mode_index)</highlight></codeline>
+<codeline lineno="243" refid="classopenage_1_1gui_1_1_game_control_link_1a86393d64c36b4540e22512cc347f3236" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QVariantList<sp/>modes<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_modes<sp/>WRITE<sp/>set_modes<sp/>NOTIFY<sp/>modes_changed)</highlight></codeline>
+<codeline lineno="244" refid="classopenage_1_1gui_1_1_game_control_link_1a5b7fa78ab5d69b8edb8fe7c74012b491" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>*<sp/>engine<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_engine<sp/>WRITE<sp/>set_engine)</highlight></codeline>
+<codeline lineno="245" refid="classopenage_1_1gui_1_1_game_control_link_1a33ea79efffcb4d7a831c4e0ae84525a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_game_main_link" kindref="compound">GameMainLink</ref>*<sp/>game<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_game<sp/>WRITE<sp/>set_game)</highlight></codeline>
+<codeline lineno="246" refid="classopenage_1_1gui_1_1_game_control_link_1a4b1cf9d8418af69706bc35aa2a01f016" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/>currentPlayerName<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_current_player_name<sp/>NOTIFY<sp/>current_player_name_changed)</highlight></codeline>
+<codeline lineno="247" refid="classopenage_1_1gui_1_1_game_control_link_1a1ec3cfeee84c9751218699e88cfb17be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentCivIndex<sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/>get_current_civ_index<sp/>NOTIFY<sp/>current_civ_index_changed)</highlight></codeline>
 <codeline lineno="248"><highlight class="normal"></highlight></codeline>
 <codeline lineno="249"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/><ref refid="classopenage_1_1gui_1_1_game_control_link" kindref="compound">GameControlLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -1429,6 +1429,6 @@
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
 <codeline lineno="299"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_control_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h"/>
   </compounddef>
 </doxygen>

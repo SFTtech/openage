@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::audio::chunk_info_t Struct Reference</title>
+<title>openage: openage::audio::chunk_info_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('structopenage_1_1audio_1_1chunk__info_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::audio::chunk_info_t:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1chunk__info__t__coll__graph.svg" width="164" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::chunk_info_t:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1audio_1_1chunk__info__t__coll__graph.svg" width="164" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -163,7 +165,7 @@ Public Attributes</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00028">28</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                       {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        EMPTY,</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        LOADING,</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        READY</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -194,6 +196,11 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="dynamic__resource_8cpp_source.xhtml">dynamic_resource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    :</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>{<a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">state</a>},</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">size</a>{0},</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">buffer</a>{std::make_unique&lt;int16_t[]&gt;(buffer_size)} {}</div><div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a8c50391414193ae31ae32932523af14a"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a8c50391414193ae31ae32932523af14a">openage::audio::chunk_info_t::state</a></div><div class="ttdeci">std::atomic&lt; state_t &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00040">dynamic_resource.h:40</a></div></div>
+<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_aa6b571d065a12504c13760da870db08b"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#aa6b571d065a12504c13760da870db08b">openage::audio::chunk_info_t::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00043">dynamic_resource.h:43</a></div></div>
+<div class="ttc" id="structopenage_1_1audio_1_1chunk__info__t_xhtml_a7728761a793ca0d396acc2d39652ec73"><div class="ttname"><a href="structopenage_1_1audio_1_1chunk__info__t.xhtml#a7728761a793ca0d396acc2d39652ec73">openage::audio::chunk_info_t::buffer</a></div><div class="ttdeci">std::unique_ptr&lt; int16_t[]&gt; buffer</div><div class="ttdef"><b>Definition:</b> <a href="dynamic__resource_8h_source.xhtml#l00046">dynamic_resource.h:46</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="dynamic__resource_8h_source.xhtml#l00040">state</a>.</p>
 
 </div>
 </div>
@@ -255,6 +262,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00043">43</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="bytequeue_8py_source.xhtml#l00043">openage.util.bytequeue.ByteQueue::__len__()</a>, <a class="el" href="bytequeue_8py_source.xhtml#l00049">openage.util.bytequeue.ByteQueue::append()</a>, <a class="el" href="stream_8py_source.xhtml#l00149">openage.util.filelike.stream.StreamFragment::get_size()</a>, <a class="el" href="bytequeue_8py_source.xhtml#l00059">openage.util.bytequeue.ByteQueue::popleft()</a>, and <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment::read()</a>.</p>
+
 </div>
 </div>
 <a id="a8c50391414193ae31ae32932523af14a"></a>
@@ -272,11 +281,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__resource_8h_source.xhtml#l00040">40</a> of file <a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="dynamic__resource_8cpp_source.xhtml#l00014">chunk_info_t()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>libopenage/audio/<a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a></li>
-<li>libopenage/audio/<a class="el" href="dynamic__resource_8cpp_source.xhtml">dynamic_resource.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="dynamic__resource_8h_source.xhtml">dynamic_resource.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="dynamic__resource_8cpp_source.xhtml">dynamic_resource.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

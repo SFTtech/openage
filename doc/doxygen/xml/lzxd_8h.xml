@@ -4,7 +4,7 @@
     <compoundname>lzxd.h</compoundname>
     <includes local="no">cstdlib</includes>
     <includes refid="bitstream_8h" local="yes">bitstream.h</includes>
-    <includedby refid="lzxd_8cpp" local="yes">libopenage/util/compress/lzxd.cpp</includedby>
+    <includedby refid="lzxd_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.cpp</includedby>
     <incdepgraph>
       <node id="27740">
         <label>list</label>
@@ -175,7 +175,7 @@
         <label>iostream</label>
       </node>
       <node id="27713">
-        <label>libopenage/util/compress/lzxd.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.h</label>
         <link refid="lzxd_8h"/>
         <childnode refid="27714" relation="include">
         </childnode>
@@ -210,13 +210,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="27745">
-        <label>libopenage/util/compress/lzxd.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.h</label>
         <link refid="lzxd_8h"/>
         <childnode refid="27746" relation="include">
         </childnode>
       </node>
       <node id="27746">
-        <label>libopenage/util/compress/lzxd.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.cpp</label>
         <link refid="lzxd_8cpp"/>
       </node>
     </invincdepgraph>
@@ -289,6 +289,6 @@
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::compress</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/compress/lzxd.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.h"/>
   </compounddef>
 </doxygen>

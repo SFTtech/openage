@@ -40,7 +40,7 @@
         </childnode>
       </node>
       <node id="13198">
-        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
         <link refid="gui__rendering__setup__routines_8cpp"/>
         <childnode refid="13199" relation="include">
         </childnode>
@@ -141,6 +141,6 @@
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp"/>
   </compounddef>
 </doxygen>

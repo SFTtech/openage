@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_906fd80251564c07ab43a732fc1e9e78" kind="dir">
-    <compoundname>libopenage/event</compoundname>
-    <innerdir refid="dir_6197a954b4bd6d8383a8df145c55be91">libopenage/event/demo</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event</compoundname>
+    <innerdir refid="dir_6197a954b4bd6d8383a8df145c55be91">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo</innerdir>
     <innerfile refid="event_2event_8cpp">event.cpp</innerfile>
     <innerfile refid="event_2event_8h">event.h</innerfile>
     <innerfile refid="eventclass_8cpp">eventclass.cpp</innerfile>
@@ -24,6 +24,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/event/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/"/>
   </compounddef>
 </doxygen>

@@ -5,14 +5,14 @@
     <includes local="no">future</includes>
     <includes local="no">QObject</includes>
     <includes local="no">QStringList</includes>
-    <includedby refid="gui__engine__impl_8h" local="yes">libopenage/gui/guisys/private/gui_engine_impl.h</includedby>
-    <includedby refid="recursive__directory__watcher_8cpp" local="yes">libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</includedby>
+    <includedby refid="gui__engine__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</includedby>
+    <includedby refid="recursive__directory__watcher_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</includedby>
     <incdepgraph>
       <node id="13381">
         <label>QObject</label>
       </node>
       <node id="13379">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
         <link refid="recursive__directory__watcher_8h"/>
         <childnode refid="13380" relation="include">
         </childnode>
@@ -30,7 +30,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13383">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
         <link refid="recursive__directory__watcher_8h"/>
         <childnode refid="13384" relation="include">
         </childnode>
@@ -38,7 +38,7 @@
         </childnode>
       </node>
       <node id="13384">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</label>
         <link refid="gui__engine__impl_8h"/>
         <childnode refid="13385" relation="include">
         </childnode>
@@ -48,19 +48,19 @@
         </childnode>
       </node>
       <node id="13387">
-        <label>libopenage/gui/guisys/public/gui_engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp</label>
         <link refid="gui__engine_8cpp"/>
       </node>
       <node id="13386">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="13388">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
         <link refid="recursive__directory__watcher_8cpp"/>
       </node>
       <node id="13385">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -100,6 +100,6 @@
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h"/>
   </compounddef>
 </doxygen>

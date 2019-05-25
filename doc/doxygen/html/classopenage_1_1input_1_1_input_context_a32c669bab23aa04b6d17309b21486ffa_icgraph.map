@@ -1,0 +1,8 @@
+<map id="openage::input::InputContext::bind" name="openage::input::InputContext::bind">
+<area shape="rect" id="node1" title=" " alt="" coords="460,104,648,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="245,5,400,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="245,71,400,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title=" " alt="" coords="233,136,412,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="245,201,400,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a0a4bb8a5d7b2e5637d317fe51f02ad5f" title=" " alt="" coords="5,201,185,243"/>
+</map>

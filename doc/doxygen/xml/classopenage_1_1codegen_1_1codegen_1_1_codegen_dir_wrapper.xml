@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper" kind="class" language="Python" prot="public">
+    <compoundname>openage::codegen::codegen::CodegenDirWrapper</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper" prot="public" virt="non-virtual">openage.util.fslike.wrapper.Wrapper</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a9b2d04f31e0fb0392e7ff643d56007a8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.codegen.codegen.CodegenDirWrapper::writes</definition>
+        <argsstring></argsstring>
+        <name>writes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="70" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1ac16ab8acd4c7b30822ee0615716a9462" compoundref="codegen_8py" startline="98" endline="103">openage.codegen.codegen.CodegenDirWrapper.get_writes</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a99104ace940e9eaf171fc9d2947d778b" compoundref="codegen_8py" startline="79" endline="83">openage.codegen.codegen.CodegenDirWrapper.open_w</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a3a721471ca0beb2fd5e14407ae8a3f50" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.codegen.codegen.CodegenDirWrapper::reads</definition>
+        <argsstring></argsstring>
+        <name>reads</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1aaad0d91bef9dadc5cb0431ac3543ab24" compoundref="codegen_8py" startline="88" endline="93">openage.codegen.codegen.CodegenDirWrapper.get_reads</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a5b2a11aa8eb21b96f56bf6bdf3656bc3" compoundref="codegen_8py" startline="75" endline="78">openage.codegen.codegen.CodegenDirWrapper.open_r</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a221fe6b3e5607e4c4442927435dd3567" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.__init__</definition>
+        <argsstring>(self, obj)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" kindref="member">obj</ref></type>
+          <defname>obj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="66" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a5b2a11aa8eb21b96f56bf6bdf3656bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.open_r</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2facaf5a386ee358c3aed7fa8ed27ad3">open_r</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedReader for the given file (&quot;mode &apos;rb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="75" bodyend="78"/>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a3a721471ca0beb2fd5e14407ae8a3f50" compoundref="codegen_8py" startline="73">openage.codegen.codegen.CodegenDirWrapper.reads</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a99104ace940e9eaf171fc9d2947d778b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.open_w</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a75141da804e0ac95bb70d574979f82e5">open_w</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedWriter for the given file (&quot;mode &apos;wb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="79" bodyend="83"/>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a9b2d04f31e0fb0392e7ff643d56007a8" compoundref="codegen_8py" startline="70">openage.codegen.codegen.CodegenDirWrapper.writes</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1aaad0d91bef9dadc5cb0431ac3543ab24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.get_reads</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_reads</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="88" bodyend="93"/>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a3a721471ca0beb2fd5e14407ae8a3f50" compoundref="codegen_8py" startline="73">openage.codegen.codegen.CodegenDirWrapper.reads</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1ac16ab8acd4c7b30822ee0615716a9462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.get_writes</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_writes</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="98" bodyend="103"/>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a9b2d04f31e0fb0392e7ff643d56007a8" compoundref="codegen_8py" startline="70">openage.codegen.codegen.CodegenDirWrapper.writes</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a2ad3cdde94231847073835b9a40f7063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.CodegenDirWrapper.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a3227b756d3668ec163a3046b308de7cd">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="104" bodyend="117"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Only allows pure-read and pure-write operations;. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Intercepts all writes for later inspection, and logs all reads.</para>
+<para>The constructor takes the to-be-wrapped fslike object. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="781">
+        <label>openage.codegen.codegen.CodegenDirWrapper</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper"/>
+        <childnode refid="782" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="783">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="784" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="784">
+        <label>ABC</label>
+      </node>
+      <node id="782">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="783" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="785">
+        <label>openage.codegen.codegen.CodegenDirWrapper</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper"/>
+        <childnode refid="786" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="787">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="788" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="788">
+        <label>ABC</label>
+      </node>
+      <node id="786">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="787" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="65" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a221fe6b3e5607e4c4442927435dd3567" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a95de6bb33e05e34b9a99a4cec095ecf2" prot="public" virt="non-virtual" ambiguityscope="openage::util::fslike::wrapper::Wrapper."><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a2ad3cdde94231847073835b9a40f7063" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a33ac3283d4e712321c7064151e463dbe" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>contextguard</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a6cb541f9e3b16e1121023e1c8ba1fe70" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1aaad0d91bef9dadc5cb0431ac3543ab24" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>get_reads</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1ac16ab8acd4c7b30822ee0615716a9462" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>get_writes</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a5d5ad2caf60e7d0d1d4f004361b8b27a" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a4847df269f05999c19305c75f1b0cbbb" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a69626d7f9fdfa523e90f09ead94c6004" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1af4d52a12bfe44416e5a491f3158d6bcc" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ae1dd319535e8b540ca76b6cde0c8d494" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>obj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a5b2a11aa8eb21b96f56bf6bdf3656bc3" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a99104ace940e9eaf171fc9d2947d778b" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ad2fbaf45c3f546ae53762f47e91d7963" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a3a721471ca0beb2fd5e14407ae8a3f50" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>reads</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a7a07a464cb187d6d519b96c61ca80787" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac8d7bfaa5c37257fddef3bb6eb460934" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a895ed091db87da418bc712b490f8e0d7" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a62e9309bfb38c4db466bc5154aa73343" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a0293a14d06d046394c85f945d2f4b1f9" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac64adc508709d6b51552c65b09f6a9cb" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>writable</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a9b2d04f31e0fb0392e7ff643d56007a8" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenDirWrapper</scope><name>writes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

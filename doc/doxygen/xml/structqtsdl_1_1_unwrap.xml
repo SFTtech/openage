@@ -14,12 +14,12 @@
 <para>If the core &apos;MyClass&apos; has a shell &apos;MyClassLink&apos; then &apos;Unwrap&lt;MyClassLink&gt;&apos; must have a &apos;using Type = MyClass&apos; </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4881">
+      <node id="6579">
         <label>qtsdl::Unwrap&lt; T &gt;</label>
         <link refid="structqtsdl_1_1_unwrap"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item_link.h" line="33" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="33" bodyend="34"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="33" bodyend="34"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

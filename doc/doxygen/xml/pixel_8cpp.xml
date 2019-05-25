@@ -63,7 +63,7 @@
         <label>cstdint</label>
       </node>
       <node id="3900">
-        <label>libopenage/coord/pixel.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp</label>
         <link refid="pixel_8cpp"/>
         <childnode refid="3901" relation="include">
         </childnode>
@@ -354,12 +354,12 @@
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(ne)<sp/>=<sp/>(+0.5<sp/>+0.5<sp/>+0.5)<sp/>(<sp/>x)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(se)<sp/>=<sp/>(+0.5<sp/>-0.5<sp/>-0.5)<sp/>(<sp/>y)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(up)<sp/>=<sp/>(+0.0<sp/>+0.0<sp/>+1.0)<sp/>(up)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/>result;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>result.ne<sp/>=<sp/>(x<sp/>+<sp/>y<sp/>+<sp/>up)/2L;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>result.se<sp/>=<sp/>(x<sp/>-<sp/>y<sp/>-<sp/>up)/2L;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>result.up<sp/>=<sp/>(<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>up);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.ne<sp/>=<sp/>(x<sp/>+<sp/>y<sp/>+<sp/>up)/2L;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.se<sp/>=<sp/>(x<sp/>-<sp/>y<sp/>-<sp/>up)/2L;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.up<sp/>=<sp/>(<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>up);</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
@@ -427,12 +427,12 @@
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103" refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" kindref="member">input_delta::to_viewport</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/>result;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>result.x<sp/>=<sp/>this-&gt;x;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>result.y<sp/>=<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" kindref="member">viewport_size</ref>.y<sp/>-<sp/>this-&gt;y;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.x<sp/>=<sp/>this-&gt;x;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.y<sp/>=<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" kindref="member">viewport_size</ref>.y<sp/>-<sp/>this-&gt;y;</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
@@ -462,6 +462,6 @@
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/pixel.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp"/>
   </compounddef>
 </doxygen>

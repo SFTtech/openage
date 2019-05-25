@@ -3,8 +3,8 @@
   <compounddef id="market_8h" kind="file" language="C++">
     <compoundname>market.h</compoundname>
     <includes refid="gamestate_2resource_8h" local="yes">resource.h</includes>
-    <includedby refid="game__main_8h" local="yes">libopenage/gamestate/game_main.h</includedby>
-    <includedby refid="market_8cpp" local="yes">libopenage/gamestate/market.cpp</includedby>
+    <includedby refid="game__main_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h</includedby>
+    <includedby refid="market_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp</includedby>
     <incdepgraph>
       <node id="10075">
         <label>functional</label>
@@ -21,7 +21,7 @@
         </childnode>
       </node>
       <node id="10073">
-        <label>libopenage/gamestate/market.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h</label>
         <link refid="market_8h"/>
         <childnode refid="10074" relation="include">
         </childnode>
@@ -29,7 +29,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="10082">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="10083" relation="include">
         </childnode>
@@ -43,29 +43,29 @@
         </childnode>
       </node>
       <node id="10083">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="10084" relation="include">
         </childnode>
       </node>
       <node id="10089">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="10088">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="10085">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="10084">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
       <node id="10080">
-        <label>libopenage/game_control.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h</label>
         <link refid="game__control_8h"/>
         <childnode refid="10081" relation="include">
         </childnode>
@@ -77,11 +77,11 @@
         </childnode>
       </node>
       <node id="10094">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="10093">
-        <label>libopenage/gui/game_main_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h</label>
         <link refid="game__main__link_8h"/>
         <childnode refid="10086" relation="include">
         </childnode>
@@ -93,11 +93,11 @@
         </childnode>
       </node>
       <node id="10079">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="10078">
-        <label>libopenage/gamestate/game_main.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h</label>
         <link refid="game__main_8h"/>
         <childnode refid="10079" relation="include">
         </childnode>
@@ -119,15 +119,15 @@
         </childnode>
       </node>
       <node id="10092">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
       </node>
       <node id="10091">
-        <label>libopenage/gamestate/game_save.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp</label>
         <link refid="game__save_8cpp"/>
       </node>
       <node id="10077">
-        <label>libopenage/gamestate/market.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h</label>
         <link refid="market_8h"/>
         <childnode refid="10078" relation="include">
         </childnode>
@@ -135,31 +135,31 @@
         </childnode>
       </node>
       <node id="10097">
-        <label>libopenage/gamestate/market.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp</label>
         <link refid="market_8cpp"/>
       </node>
       <node id="10086">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="10090">
-        <label>libopenage/gamestate/game_main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp</label>
         <link refid="game__main_8cpp"/>
       </node>
       <node id="10095">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="10081">
-        <label>libopenage/game_control.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</label>
         <link refid="game__control_8cpp"/>
       </node>
       <node id="10096">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
       <node id="10087">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
     </invincdepgraph>
@@ -211,6 +211,6 @@
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/market.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h"/>
   </compounddef>
 </doxygen>

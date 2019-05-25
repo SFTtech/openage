@@ -17,7 +17,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="72" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="72" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="72" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a7b0a0d95b032af2e9bf2ede80bca03c8" compoundref="game__control_8cpp" startline="390" endline="409">openage::ActionMode::get_action</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4" compoundref="game__renderer_8cpp" startline="199" endline="213">openage::GameRenderer::on_draw</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_team" kindref="compound">Team</ref> &gt;</type>
@@ -31,7 +40,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="77" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="77" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_game_main_1a30f7ab2e54b3227bf2d12dee9462e9ca" compoundref="game__main_8cpp" startline="55" endline="57">get_team</referencedby>
+        <referencedby refid="classopenage_1_1_game_main_1a6f8adc595bd010a815f5783fd72df591" compoundref="game__main_8cpp" startline="51" endline="53">team_count</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1ac60903df53b3bbf215b1f15f919dd3c6" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_market" kindref="compound">Market</ref></type>
@@ -45,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="82" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="82" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref></type>
@@ -59,7 +70,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="87" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="87" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="87" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a3865e557756044d8183a3d24cd5b8ab4" compoundref="game__control_8cpp" startline="411" endline="443">openage::ActionMode::place_selection</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="classopenage_1_1_game_main_1a0bec5982fb6c7685722b204ce199e458" compoundref="game__main_8cpp" startline="63" endline="65">update</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -75,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="95" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1aac754495a630309c256b41aeeb6f6a2e" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref> &gt; &gt;</type>
@@ -89,7 +108,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="105" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="105" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_game_main_1a08149fd6c63e67e2d495e77fb52439a9" compoundref="game__main_8cpp" startline="67" endline="71">add_civ</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_game_main_1aec9c7942bfc1d0c83058ededba2bbfe2" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
@@ -102,7 +122,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="107" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="107" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_game_main_1a08149fd6c63e67e2d495e77fb52439a9" compoundref="game__main_8cpp" startline="67" endline="71">add_civ</referencedby>
+        <referencedby refid="classopenage_1_1_game_main_1a9c18854cb18678045a149d3dba99eba1" compoundref="game__main_8cpp" startline="59" endline="61">get_spec</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -121,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="36" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="15" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="15" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a9fd586efcead21e5e63965db6cdf1313" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -134,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="37" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="40" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="40" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a8e21198940164b2d9f628196fc0bf389" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -148,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="42" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="43" bodyend="45"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> *</type>
@@ -166,7 +188,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="47" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="47" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="47" bodyend="49"/>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a6f8adc595bd010a815f5783fd72df591" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -180,7 +204,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="52" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="51" bodyend="53"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="51" bodyend="53"/>
+        <references refid="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" compoundref="game__main_8h" startline="77">teams</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a30f7ab2e54b3227bf2d12dee9462e9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_team" kindref="compound">Team</ref> *</type>
@@ -198,7 +223,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="57" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="55" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="55" bodyend="57"/>
+        <references refid="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" compoundref="game__main_8h" startline="77">teams</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a9c18854cb18678045a149d3dba99eba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> *</type>
@@ -212,7 +238,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="62" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="59" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="59" bodyend="61"/>
+        <references refid="classopenage_1_1_game_main_1aec9c7942bfc1d0c83058ededba2bbfe2" compoundref="game__main_8h" startline="107">spec</references>
+        <referencedby refid="classopenage_1_1_game_renderer_1a5c385f1939e1c4a4ca3feb6813f68b06" compoundref="game__renderer_8cpp" startline="219" endline="221">openage::GameRenderer::game_spec</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_game_main_1a0bec5982fb6c7685722b204ce199e458" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -230,7 +258,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="67" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="63" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="63" bodyend="65"/>
+        <references refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" compoundref="game__main_8h" startline="87">placed_units</references>
+        <references refid="classopenage_1_1_unit_container_1a1db074862697abdf24998bdf978ce7d3" compoundref="unit__container_8cpp" startline="143" endline="162">openage::UnitContainer::update_all</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -250,7 +280,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="100" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="67" bodyend="71"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp" bodystart="67" bodyend="71"/>
+        <references refid="classopenage_1_1_game_main_1aac754495a630309c256b41aeeb6f6a2e" compoundref="game__main_8h" startline="105">civs</references>
+        <references refid="classopenage_1_1_game_main_1aec9c7942bfc1d0c83058ededba2bbfe2" compoundref="game__main_8h" startline="107">spec</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -260,54 +292,54 @@
 <para>TODO: include a list of actions to be saved as the game replay file </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1819">
+      <node id="2448">
         <label>openage::GameMain</label>
         <link refid="classopenage_1_1_game_main"/>
-        <childnode refid="1820" relation="public-inheritance">
+        <childnode refid="2449" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1820">
+      <node id="2449">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1821">
+      <node id="2450">
         <label>openage::GameMain</label>
         <link refid="classopenage_1_1_game_main"/>
-        <childnode refid="1822" relation="public-inheritance">
+        <childnode refid="2451" relation="public-inheritance">
         </childnode>
-        <childnode refid="1823" relation="usage">
+        <childnode refid="2452" relation="usage">
           <edgelabel>+market</edgelabel>
         </childnode>
-        <childnode refid="1825" relation="usage">
+        <childnode refid="2454" relation="usage">
           <edgelabel>+placed_units</edgelabel>
         </childnode>
       </node>
-      <node id="1822">
+      <node id="2451">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="1822" relation="usage">
+        <childnode refid="2451" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="1823">
+      <node id="2452">
         <label>openage::Market</label>
         <link refid="classopenage_1_1_market"/>
-        <childnode refid="1824" relation="usage">
+        <childnode refid="2453" relation="usage">
           <edgelabel>-base_prices</edgelabel>
         </childnode>
       </node>
-      <node id="1824">
+      <node id="2453">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="1825">
+      <node id="2454">
         <label>openage::UnitContainer</label>
         <link refid="classopenage_1_1_unit_container"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/game_main.h" line="34" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="34" bodyend="108"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="34" bodyend="108"/>
     <listofallmembers>
       <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::GameMain</scope><name>add</name></member>
       <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::GameMain</scope><name>add_action</name></member>

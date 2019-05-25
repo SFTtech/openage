@@ -208,7 +208,7 @@
         <label>algorithm</label>
       </node>
       <node id="31241">
-        <label>libopenage/util/misc_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc_test.cpp</label>
         <link refid="misc__test_8cpp"/>
         <childnode refid="31242" relation="include">
         </childnode>
@@ -321,6 +321,6 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/misc_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc_test.cpp"/>
   </compounddef>
 </doxygen>

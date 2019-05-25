@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1aa0841fd5350b6205b9681a7f737b7dff" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;util&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a62943dac37dfd864c2ffd5c2ed05dda5" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;multisubtype_ref&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ac09e6c33a6e513d8e880fec2422c4c7a" compoundref="data__definition_8py" startline="136" endline="138">openage.convert.dataformat.data_definition.DataDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a09caba3631e9613aa48899149d860e18" compoundref="struct__definition_8py" startline="235" endline="237">openage.convert.dataformat.struct_definition.StructDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a43767dfbc83d3b7dded2e08a64074dca" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;format for multi-subtype references&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a9f8ef8a5e1fdcecf1a75b036625933be" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  (
+        (NOREAD_EXPORT, &quot;subtype&quot;, &quot;std::string&quot;),
+        (NOREAD_EXPORT, &quot;filename&quot;, &quot;std::string&quot;),
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1146">
+        <label>openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file"/>
+        <childnode refid="1147" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1147">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1148">
+        <label>openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file"/>
+        <childnode refid="1149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1149">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py" bodystart="15" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a9f8ef8a5e1fdcecf1a75b036625933be" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a62943dac37dfd864c2ffd5c2ed05dda5" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1aa0841fd5350b6205b9681a7f737b7dff" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a43767dfbc83d3b7dded2e08a64074dca" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

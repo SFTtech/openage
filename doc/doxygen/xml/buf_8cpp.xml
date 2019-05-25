@@ -157,7 +157,7 @@
         </childnode>
       </node>
       <node id="2365">
-        <label>libopenage/console/buf.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp</label>
         <link refid="buf_8cpp"/>
         <childnode refid="2366" relation="include">
         </childnode>
@@ -1459,24 +1459,24 @@
 <codeline lineno="1138"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1140" refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref><sp/>*<ref refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" kindref="member">Buf::chrdataptr</ref>(<ref refid="structopenage_1_1coord_1_1term" kindref="compound">term</ref><sp/>pos)<sp/>{</highlight></codeline>
-<codeline lineno="1141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref><sp/>*result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1aae04bf7f71d8d61153a63c8016756bd0" kindref="member">screen_chrdata</ref><sp/>+<sp/>pos.x<sp/>+<sp/>pos.y<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" kindref="member">dims</ref>.x;</highlight></codeline>
+<codeline lineno="1141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref><sp/>*<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1aae04bf7f71d8d61153a63c8016756bd0" kindref="member">screen_chrdata</ref><sp/>+<sp/>pos.x<sp/>+<sp/>pos.y<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" kindref="member">dims</ref>.x;</highlight></codeline>
 <codeline lineno="1142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1af591ad8b27d0d5528dd83f39589a377f" kindref="member">chrdata</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1ad3b09ac6afcafdabc8ac7cad2bbb1991" kindref="member">chrdata_size</ref>;</highlight></codeline>
+<codeline lineno="1143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1ad3b09ac6afcafdabc8ac7cad2bbb1991" kindref="member">chrdata_size</ref>;</highlight></codeline>
 <codeline lineno="1144"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>&gt;=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a55229c780654c2e7445cb313fde990a7" kindref="member">chrdata_end</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>-=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1ad3b09ac6afcafdabc8ac7cad2bbb1991" kindref="member">chrdata_size</ref>;</highlight></codeline>
 <codeline lineno="1146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="1147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="1148"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1149"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1150" refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref><sp/>*<ref refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" kindref="member">Buf::linedataptr</ref>(<ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">term_t</ref><sp/>lineno)<sp/>{</highlight></codeline>
-<codeline lineno="1151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref><sp/>*result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a75cdec48d09432a80bc7e32182a4775a" kindref="member">screen_linedata</ref><sp/>+<sp/>lineno;</highlight></codeline>
+<codeline lineno="1151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref><sp/>*<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a75cdec48d09432a80bc7e32182a4775a" kindref="member">screen_linedata</ref><sp/>+<sp/>lineno;</highlight></codeline>
 <codeline lineno="1152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1ad524a3276262d17b952233d58d735fb2" kindref="member">linedata</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a0980d008e8fc8a7fc02f7bc51b253dc5" kindref="member">linedata_size</ref>;</highlight></codeline>
+<codeline lineno="1153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a0980d008e8fc8a7fc02f7bc51b253dc5" kindref="member">linedata_size</ref>;</highlight></codeline>
 <codeline lineno="1154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>&gt;<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1ab0c8a14f50eaeb58afc86d20bbb01158" kindref="member">linedata_end</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>-=<sp/>this-&gt;<ref refid="classopenage_1_1console_1_1_buf_1a0980d008e8fc8a7fc02f7bc51b253dc5" kindref="member">linedata_size</ref>;</highlight></codeline>
 <codeline lineno="1157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="1158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="1158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="1159"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1161" refid="classopenage_1_1console_1_1_buf_1ae0e0cf2f6bb5e5c324ff9f4554ec2852" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref><sp/>&amp;<ref refid="classopenage_1_1console_1_1_buf_1ae0e0cf2f6bb5e5c324ff9f4554ec2852" kindref="member">Buf::get_dims</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -1486,6 +1486,6 @@
 <codeline lineno="1165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1166"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::console</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/console/buf.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp"/>
   </compounddef>
 </doxygen>

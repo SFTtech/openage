@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_712401372000c18ae60227658ea59d70" kind="dir">
-    <compoundname>libopenage/gamestate</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate</compoundname>
     <innerfile refid="civilisation_8cpp">civilisation.cpp</innerfile>
     <innerfile refid="civilisation_8h">civilisation.h</innerfile>
     <innerfile refid="cost_8cpp">cost.cpp</innerfile>
@@ -30,6 +30,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gamestate/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/"/>
   </compounddef>
 </doxygen>

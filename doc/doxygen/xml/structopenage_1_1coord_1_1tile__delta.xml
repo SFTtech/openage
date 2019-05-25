@@ -9,28 +9,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4500">
+      <node id="1776">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="4501" relation="public-inheritance">
+        <childnode refid="1777" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4501">
+      <node id="1777">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4502">
+      <node id="1778">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="4503" relation="public-inheritance">
+        <childnode refid="1779" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4503">
+      <node id="1779">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/tile.h" line="25" column="1" bodyfile="libopenage/coord/tile.h" bodystart="25" bodyend="27"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" bodystart="25" bodyend="27"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

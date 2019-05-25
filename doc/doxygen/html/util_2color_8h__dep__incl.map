@@ -1,11 +1,11 @@
-<map id="libopenage/util/color.h" name="libopenage/util/color.h">
-<area shape="rect" id="node1" title=" " alt="" coords="479,5,627,32"/>
-<area shape="rect" id="node2" href="$console_8h.xhtml" title=" " alt="" coords="320,80,453,121"/>
-<area shape="rect" id="node8" href="$engine_8cpp.xhtml" title=" " alt="" coords="478,87,629,114"/>
-<area shape="rect" id="node9" href="$util_2color_8cpp.xhtml" title=" " alt="" coords="653,87,816,114"/>
-<area shape="rect" id="node3" href="$console_8cpp.xhtml" title=" " alt="" coords="5,169,139,211"/>
-<area shape="rect" id="node4" href="$draw_8cpp.xhtml" title=" " alt="" coords="163,169,296,211"/>
-<area shape="rect" id="node5" href="$console_2tests_8cpp.xhtml" title=" " alt="" coords="320,169,453,211"/>
-<area shape="rect" id="node6" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="478,177,677,203"/>
-<area shape="rect" id="node7" href="$main_8cpp.xhtml" title=" " alt="" coords="701,177,843,203"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/color.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/color.h">
+<area shape="rect" id="node1" title=" " alt="" coords="705,5,915,61"/>
+<area shape="rect" id="node2" href="$console_8h.xhtml" title=" " alt="" coords="472,109,681,165"/>
+<area shape="rect" id="node8" href="$engine_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
+<area shape="rect" id="node9" href="$util_2color_8cpp.xhtml" title=" " alt="" coords="939,109,1148,165"/>
+<area shape="rect" id="node3" href="$console_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$draw_8cpp.xhtml" title=" " alt="" coords="239,213,448,269"/>
+<area shape="rect" id="node5" href="$console_2tests_8cpp.xhtml" title=" " alt="" coords="472,213,681,269"/>
+<area shape="rect" id="node6" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="705,213,915,269"/>
+<area shape="rect" id="node7" href="$main_8cpp.xhtml" title=" " alt="" coords="939,213,1148,269"/>
 </map>

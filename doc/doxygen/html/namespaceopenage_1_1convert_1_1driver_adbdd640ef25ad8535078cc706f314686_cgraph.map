@@ -1,0 +1,12 @@
+<map id="openage.convert.driver.get_string_resources" name="openage.convert.driver.get_string_resources">
+<area shape="rect" id="node1" title="reads the (language) string resources" alt="" coords="5,71,177,112"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1game__versions.xhtml#a34537bbd9836f1e83d73d08545ff07c6" title="Determine whether any of the versions has patch 1, i.e." alt="" coords="265,5,417,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#a189674ed7c17e3398bf7e39919e3b641" title=" " alt="" coords="225,71,456,112"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#a352b2dbd5b398f49f4f46dcca838cebd" title=" " alt="" coords="225,136,456,177"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="560,78,679,105"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#acc46a3a14127905594fced841fdfb09b" title="Takes a file object, and the file&#39;s language code." alt="" coords="504,133,735,175"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="783,78,976,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1024,78,1151,105"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="821,134,938,161"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" title=" " alt="" coords="815,185,943,211"/>
+</map>

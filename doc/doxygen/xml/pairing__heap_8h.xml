@@ -8,10 +8,10 @@
     <includes local="no">unordered_set</includes>
     <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
     <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
-    <includedby refid="eventstore_8h" local="yes">libopenage/event/eventstore.h</includedby>
-    <includedby refid="datastructure_2tests_8cpp" local="yes">libopenage/datastructure/tests.cpp</includedby>
-    <includedby refid="pathfinding_2path_8h" local="yes">libopenage/pathfinding/path.h</includedby>
-    <includedby refid="a__star_8cpp" local="yes">libopenage/pathfinding/a_star.cpp</includedby>
+    <includedby refid="eventstore_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h</includedby>
+    <includedby refid="datastructure_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</includedby>
+    <includedby refid="pathfinding_2path_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h</includedby>
+    <includedby refid="a__star_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</includedby>
     <incdepgraph>
       <node id="5809">
         <label>list</label>
@@ -173,7 +173,7 @@
         <label>iostream</label>
       </node>
       <node id="5783">
-        <label>libopenage/datastructure/pairing_heap.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h</label>
         <link refid="pairing__heap_8h"/>
         <childnode refid="5784" relation="include">
         </childnode>
@@ -213,7 +213,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5841">
-        <label>libopenage/pathfinding/path.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h</label>
         <link refid="pathfinding_2path_8h"/>
         <childnode refid="5842" relation="include">
         </childnode>
@@ -229,11 +229,11 @@
         </childnode>
       </node>
       <node id="5828">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="5816">
-        <label>libopenage/event/eventqueue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h</label>
         <link refid="eventqueue_8h"/>
         <childnode refid="5817" relation="include">
         </childnode>
@@ -243,11 +243,11 @@
         </childnode>
       </node>
       <node id="5835">
-        <label>libopenage/event/eventtarget.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp</label>
         <link refid="eventtarget_8cpp"/>
       </node>
       <node id="5817">
-        <label>libopenage/event/loop.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h</label>
         <link refid="event_2loop_8h"/>
         <childnode refid="5818" relation="include">
         </childnode>
@@ -263,47 +263,47 @@
         </childnode>
       </node>
       <node id="5823">
-        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</label>
         <link refid="curve__types_8cpp"/>
       </node>
       <node id="5853">
-        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp</label>
         <link refid="heuristics_8cpp"/>
       </node>
       <node id="5848">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="5836">
-        <label>libopenage/event/loop.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp</label>
         <link refid="loop_8cpp"/>
       </node>
       <node id="5830">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="5826">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="5832">
-        <label>libopenage/curve/discrete.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.cpp</label>
         <link refid="discrete_8cpp"/>
       </node>
       <node id="5844">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="5846">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="5843">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="5819">
-        <label>libopenage/curve/value_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h</label>
         <link refid="value__container_8h"/>
         <childnode refid="5820" relation="include">
         </childnode>
@@ -313,15 +313,15 @@
         </childnode>
       </node>
       <node id="5852">
-        <label>libopenage/pathfinding/a_star.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</label>
         <link refid="a__star_8cpp"/>
       </node>
       <node id="5855">
-        <label>libopenage/pathfinding/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp</label>
         <link refid="pathfinding_2path_8cpp"/>
       </node>
       <node id="5829">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="5827" relation="include">
         </childnode>
@@ -329,19 +329,19 @@
         </childnode>
       </node>
       <node id="5849">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="5838">
-        <label>libopenage/event/eventqueue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp</label>
         <link refid="eventqueue_8cpp"/>
       </node>
       <node id="5834">
-        <label>libopenage/curve/keyframe_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.cpp</label>
         <link refid="keyframe__container_8cpp"/>
       </node>
       <node id="5820">
-        <label>libopenage/curve/continuous.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h</label>
         <link refid="continuous_8h"/>
         <childnode refid="5821" relation="include">
         </childnode>
@@ -353,15 +353,15 @@
         </childnode>
       </node>
       <node id="5827">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="5845">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="5851">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="5852" relation="include">
         </childnode>
@@ -369,11 +369,11 @@
         </childnode>
       </node>
       <node id="5847">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="5815">
-        <label>libopenage/event/eventstore.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h</label>
         <link refid="eventstore_8h"/>
         <childnode refid="5816" relation="include">
         </childnode>
@@ -381,7 +381,7 @@
         </childnode>
       </node>
       <node id="5818">
-        <label>libopenage/curve/keyframe_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h</label>
         <link refid="keyframe__container_8h"/>
         <childnode refid="5819" relation="include">
         </childnode>
@@ -391,7 +391,7 @@
         </childnode>
       </node>
       <node id="5825">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="5826" relation="include">
         </childnode>
@@ -399,15 +399,15 @@
         </childnode>
       </node>
       <node id="5837">
-        <label>libopenage/event/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp</label>
         <link refid="event_2tests_8cpp"/>
       </node>
       <node id="5854">
-        <label>libopenage/pathfinding/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</label>
         <link refid="pathfinding_2tests_8cpp"/>
       </node>
       <node id="5831">
-        <label>libopenage/curve/discrete.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h</label>
         <link refid="discrete_8h"/>
         <childnode refid="5832" relation="include">
         </childnode>
@@ -419,7 +419,7 @@
         </childnode>
       </node>
       <node id="5814">
-        <label>libopenage/datastructure/pairing_heap.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h</label>
         <link refid="pairing__heap_8h"/>
         <childnode refid="5815" relation="include">
         </childnode>
@@ -431,15 +431,15 @@
         </childnode>
       </node>
       <node id="5833">
-        <label>libopenage/curve/value_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.cpp</label>
         <link refid="value__container_8cpp"/>
       </node>
       <node id="5840">
-        <label>libopenage/datastructure/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</label>
         <link refid="datastructure_2tests_8cpp"/>
       </node>
       <node id="5824">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="5825" relation="include">
         </childnode>
@@ -451,7 +451,7 @@
         </childnode>
       </node>
       <node id="5850">
-        <label>libopenage/pathfinding/heuristics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</label>
         <link refid="heuristics_8h"/>
         <childnode refid="5851" relation="include">
         </childnode>
@@ -465,15 +465,15 @@
         </childnode>
       </node>
       <node id="5839">
-        <label>libopenage/event/eventstore.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp</label>
         <link refid="eventstore_8cpp"/>
       </node>
       <node id="5822">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
       <node id="5842">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="5843" relation="include">
         </childnode>
@@ -491,7 +491,7 @@
         </childnode>
       </node>
       <node id="5821">
-        <label>libopenage/curve/continuous.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp</label>
         <link refid="continuous_8cpp"/>
       </node>
     </invincdepgraph>
@@ -510,7 +510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/pairing_heap.h" line="28" column="9" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" line="28" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -708,7 +708,7 @@
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
 <codeline lineno="246" refid="classopenage_1_1datastructure_1_1_pairing_heap_1a17677ec830613746e38124b2eac7d2e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1af89a07b90150d0d4606787f0ac202242" kindref="member">element_t</ref><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a17677ec830613746e38124b2eac7d2e6" kindref="member">pop_node</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a850aad20a2be9bfe164499a4462965b4" kindref="member">root_node</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>pop<sp/>an<sp/>empty<sp/>heap!&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>pop<sp/>an<sp/>empty<sp/>heap!&quot;</highlight><highlight class="normal">};</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"></highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0.<sp/>remove<sp/>tree<sp/>root,<sp/>it&apos;s<sp/>the<sp/>minimum.</highlight><highlight class="normal"></highlight></codeline>
@@ -1053,6 +1053,6 @@
 <codeline lineno="646"><highlight class="normal"></highlight></codeline>
 <codeline lineno="647"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::datastructure</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/datastructure/pairing_heap.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h"/>
   </compounddef>
 </doxygen>

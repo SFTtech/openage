@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen_1_1cpp__testlist" kind="namespace" language="Python">
+    <compoundname>openage::codegen::cpp_testlist</compoundname>
+    <innerclass refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" prot="public">openage::codegen::cpp_testlist::Namespace</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.cpp_testlist.generate_testlist</definition>
+        <argsstring>(projectdir)</argsstring>
+        <name>generate_testlist</name>
+        <param>
+          <type>projectdir</type>
+          <defname>projectdir</defname>
+        </param>
+        <briefdescription>
+<para>Generates the test/demo method symbol lookup file from tests_cpp. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>projectdir is a <ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path" kindref="compound">util.fslike.path.Path</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="70" bodyend="94"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1a598be9bf16c59330d7350e0024b2f363" compoundref="list__processor_8py" startline="64" endline="69">openage.testing.list_processor.list_targets_cpp</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1listing_1a8178b40ca254e32043552b4b3f13aeeb" compoundref="listing_8py" startline="13" endline="22">openage.codegen.listing.generate_all</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

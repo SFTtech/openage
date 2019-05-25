@@ -15,7 +15,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="58" column="1" bodyfile="libopenage/log/message.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1_message_builder_1adf059a277faadaa1bc391ca60edc0d91" compoundref="message_8cpp" startline="35" endline="48">openage::log::MessageBuilder::MessageBuilder</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" compoundref="stdout__logsink_8cpp" startline="48" endline="61">openage::log::StdOutSink::output_log_message</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" compoundref="error_2error_8cpp" startline="72" endline="74">openage::error::Error::what</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -29,7 +35,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="63" column="1" bodyfile="libopenage/log/message.h" bodystart="63" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="63" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" compoundref="message_8cpp" startline="23" endline="32">init_with_metadata_copy</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -43,7 +53,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="68" column="1" bodyfile="libopenage/log/message.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -57,7 +70,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="73" column="1" bodyfile="libopenage/log/message.h" bodystart="73" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" compoundref="message_8cpp" startline="23" endline="32">init_with_metadata_copy</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
@@ -71,7 +88,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="78" column="1" bodyfile="libopenage/log/message.h" bodystart="78" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="78" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" compoundref="logsink_8cpp" startline="42" endline="50">openage::log::LogSinkList::log</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" compoundref="stdout__logsink_8cpp" startline="48" endline="61">openage::log::StdOutSink::output_log_message</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -85,7 +106,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="83" column="1" bodyfile="libopenage/log/message.h" bodystart="83" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="83" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">init</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" compoundref="message_8cpp" startline="51" endline="59">openage::log::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" compoundref="stdout__logsink_8cpp" startline="48" endline="61">openage::log::StdOutSink::output_log_message</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ad4a1ced68cb228cfb824b5d185be726d" prot="public" static="no" mutable="no">
         <type>int64_t</type>
@@ -99,7 +124,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="88" column="1" bodyfile="libopenage/log/message.h" bodystart="88" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="88" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">init</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -115,7 +142,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="93" column="1" bodyfile="libopenage/log/message.cpp" bodystart="17" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp" bodystart="17" bodyend="20"/>
+        <references refid="namespaceopenage_1_1util_1ac99f61e1d0c06d9b83650a71cff2f02f" compoundref="thread__id_8cpp" startline="44" endline="51">openage::util::get_current_thread_id</references>
+        <references refid="namespaceopenage_1_1timing_1aea51f4c8e71a8c326e3dd9dcc05c00eb" compoundref="timing_8cpp" startline="13" endline="18">openage::timing::get_real_time</references>
+        <references refid="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" compoundref="message_8h" startline="83">thread_id</references>
+        <references refid="structopenage_1_1log_1_1message_1ad4a1ced68cb228cfb824b5d185be726d" compoundref="message_8h" startline="88">timestamp</references>
+        <referencedby refid="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" compoundref="message_8cpp" startline="23" endline="32">init_with_metadata_copy</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -139,7 +171,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.h" line="103" column="1" bodyfile="libopenage/log/message.cpp" bodystart="23" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp" bodystart="23" bodyend="32"/>
+        <references refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" compoundref="message_8h" startline="63">filename</references>
+        <references refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" compoundref="message_8h" startline="73">functionname</references>
+        <references refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">init</references>
+        <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -152,41 +188,67 @@
 <para>void <ref refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" kindref="member">init()</ref> except + void init_with_metadata_copy(string filename, string functionname) except + </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3193">
+      <node id="4039">
         <label>openage::log::message</label>
         <link refid="structopenage_1_1log_1_1message"/>
-        <childnode refid="3194" relation="usage">
+        <childnode refid="4040" relation="usage">
           <edgelabel>+lvl</edgelabel>
         </childnode>
       </node>
-      <node id="3197">
+      <node id="4044">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4045" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="4045">
+        <label>NumericType</label>
+      </node>
+      <node id="4043">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4044" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3195">
+      <node id="4041">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="3196" relation="usage">
+        <childnode refid="4042" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="4046" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3194">
+      <node id="4040">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="3195" relation="public-inheritance">
+        <childnode refid="4041" relation="public-inheritance">
         </childnode>
-        <childnode refid="3196" relation="usage">
+        <childnode refid="4042" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="3196">
+      <node id="4046">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4047" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4047">
+        <label>DerivedType</label>
+      </node>
+      <node id="4042">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="3197" relation="public-inheritance">
+        <childnode refid="4043" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/message.h" line="57" column="1" bodyfile="libopenage/log/message.h" bodystart="57" bodyend="104"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h" bodystart="57" bodyend="104"/>
     <listofallmembers>
       <member refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>filename</name></member>
       <member refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>functionname</name></member>

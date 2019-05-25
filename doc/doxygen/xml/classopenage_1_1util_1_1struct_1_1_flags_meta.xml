@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1struct_1_1_flags_meta" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::struct::FlagsMeta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">type</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1struct_1_1_flags" prot="public" virt="non-virtual">openage.util.struct.Flags</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_flags_meta_1a7f7aa6ac1d715dc74204a215f710794b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.FlagsMeta.__new__</definition>
+        <argsstring>(mcs, name, bases, classdict, **kwds)</argsstring>
+        <name>__new__</name>
+        <param>
+          <type>mcs</type>
+          <defname>mcs</defname>
+        </param>
+        <param>
+          <type>name</type>
+          <defname>name</defname>
+        </param>
+        <param>
+          <type>bases</type>
+          <defname>bases</defname>
+        </param>
+        <param>
+          <type>classdict</type>
+          <defname>classdict</defname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="222" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="222" bodyend="264"/>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Metaclass for <ref refid="classopenage_1_1util_1_1struct_1_1_flags" kindref="compound">Flags</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Compare to <ref refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta" kindref="compound">NamedStructMeta</ref>. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6042">
+        <label>openage.cabextract.cab.CFFileAttributes</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes"/>
+        <childnode refid="6041" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6043">
+        <label>openage.cabextract.cab.CFHeaderFlags</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags"/>
+        <childnode refid="6041" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6040">
+        <label>type</label>
+      </node>
+      <node id="6041">
+        <label>openage.util.struct.Flags</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags"/>
+        <childnode refid="6039" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6039">
+        <label>openage.util.struct.FlagsMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags_meta"/>
+        <childnode refid="6040" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6045">
+        <label>type</label>
+      </node>
+      <node id="6044">
+        <label>openage.util.struct.FlagsMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags_meta"/>
+        <childnode refid="6045" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="221" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="221" bodyend="265"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_meta_1a7f7aa6ac1d715dc74204a215f710794b" prot="public" virt="non-virtual"><scope>openage::util::struct::FlagsMeta</scope><name>__new__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.codegen.codegen.CodegenDirWrapper Class Reference</title>
+<title>openage: openage.codegen.codegen.CodegenDirWrapper Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1codegen_1_1codegen_1_1
 
 <p>Only allows pure-read and pure-write operations;.  
  <a href="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.codegen.codegen.CodegenDirWrapper:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.codegen.codegen.CodegenDirWrapper:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.codegen.codegen.CodegenDirWrapper:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.codegen.codegen.CodegenDirWrapper:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -235,7 +238,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00066">66</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment"># stores tuples (parts, intercept_obj), where intercept_obj is a FIFO.</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        self.writes = []</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment"># stores a list of parts.</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        self.reads = []</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">def </span>open_r(self, parts):</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        self.reads.append(parts)</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -258,6 +261,17 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a3227b756d3668ec163a3046b308de7cd">openage.util.fslike.wrapper.Wrapper</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00104">104</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">def </span><a class="code" href="namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02">codegen</a>(mode, input_dir, output_dir):</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">    Calls .listing.generate_all(), and post-processes the generated</span></div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">    data, checking them and adding a header.</span></div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral">    Reads the input templates relative to input_dir.</span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral">    Writes them to output_dir according to mode. output_dir is a path or str.</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral">    Returns ({generated}, {depends}), where</span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="stringliteral">    generated is a list of (absolute) filenames of generated files, and</span></div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral">    depends is a list of (absolute) filenames of dependency files.</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    input_dir = Directory(input_dir).root</div><div class="ttc" id="namespaceopenage_1_1codegen_1_1codegen_xhtml_ae7b44d30354970dff216b8f5d58fdd02"><div class="ttname"><a href="namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02">openage.codegen.codegen.codegen</a></div><div class="ttdeci">def codegen(mode, input_dir, output_dir)</div><div class="ttdef"><b>Definition:</b> <a href="codegen_8py_source.xhtml#l00118">codegen.py:118</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="wrapper_8py_source.xhtml#l00037">openage.util.fslike.wrapper.Wrapper.obj</a>, <a class="el" href="terrain_8h_source.xhtml#l00059">openage::TileContent.obj</a>, and <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_a2ad3cdde94231847073835b9a40f7063_cgraph.svg" width="619" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -278,6 +292,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00088">88</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">yield</span> parts</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        self.reads.clear()</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">def </span>get_writes(self):</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="codegen_8py_source.xhtml#l00073">openage.codegen.codegen.CodegenDirWrapper.reads</a>.</p>
 
 </div>
 </div>
@@ -298,6 +314,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00098">98</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">yield</span> parts, intercept_obj.read()</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        self.writes.clear()</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;CodegenDirWrapper({})&quot;</span>.format(<a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(self.obj))</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="codegen_8py_source.xhtml#l00070">openage.codegen.codegen.CodegenDirWrapper.writes</a>.</p>
 
 </div>
 </div>
@@ -332,6 +351,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a2facaf5a386ee358c3aed7fa8ed27ad3">openage.util.fslike.wrapper.Wrapper</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00075">75</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> super().open_r(parts)</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">def </span>open_w(self, parts):</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        intercept_obj = WriteCatcher()</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="codegen_8py_source.xhtml#l00073">openage.codegen.codegen.CodegenDirWrapper.reads</a>.</p>
 
 </div>
 </div>
@@ -366,6 +387,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a75141da804e0ac95bb70d574979f82e5">openage.util.fslike.wrapper.Wrapper</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00079">79</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        self.writes.append((parts, intercept_obj))</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> intercept_obj</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">def </span>get_reads(self):</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="codegen_8py_source.xhtml#l00070">openage.codegen.codegen.CodegenDirWrapper.writes</a>.</p>
 
 </div>
 </div>
@@ -384,6 +407,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00073">73</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="codegen_8py_source.xhtml#l00088">openage.codegen.codegen.CodegenDirWrapper.get_reads()</a>, and <a class="el" href="codegen_8py_source.xhtml#l00075">openage.codegen.codegen.CodegenDirWrapper.open_r()</a>.</p>
+
 </div>
 </div>
 <a id="a9b2d04f31e0fb0392e7ff643d56007a8"></a>
@@ -400,10 +425,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="codegen_8py_source.xhtml#l00070">70</a> of file <a class="el" href="codegen_8py_source.xhtml">codegen.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="codegen_8py_source.xhtml#l00098">openage.codegen.codegen.CodegenDirWrapper.get_writes()</a>, and <a class="el" href="codegen_8py_source.xhtml#l00079">openage.codegen.codegen.CodegenDirWrapper.open_w()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/codegen/<a class="el" href="codegen_8py_source.xhtml">codegen.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/<a class="el" href="codegen_8py_source.xhtml">codegen.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

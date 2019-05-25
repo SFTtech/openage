@@ -23,7 +23,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="74" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="74" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" compoundref="lzxd_8cpp" startline="740" endline="860">openage::util::compress::LZXDStream::decompress_next_frame</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" compoundref="codegen_8py" startline="51" endline="57">openage.codegen.codegen.WriteCatcher.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a77dba0458d85fcf0bec2fd7d11b3737a" compoundref="fifo_8py" startline="99" endline="108">openage.util.filelike.fifo.FIFO.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1af9bde4cd9fa0a8d6e1e3f2bc338c245a" compoundref="fifo_8py" startline="76" endline="78">openage.util.filelike.fifo.FIFO.seteof</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1accebc5f8a3967df023b5be58c787ee94" compoundref="fifo_8py" startline="82" endline="87">openage.util.filelike.fifo.FIFO.write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -39,7 +44,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="80" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="80" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="80" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" compoundref="bitstream_8h" startline="140" endline="172">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_input_bytes</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" prot="private" static="no" mutable="no">
         <type>unsigned char</type>
@@ -53,7 +59,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="86" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="86" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="86" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" compoundref="bitstream_8h" startline="140" endline="172">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_input_bytes</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" prot="private" static="no" mutable="no">
         <type>unsigned char *</type>
@@ -67,7 +74,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="91" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="91" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="91" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" compoundref="bitstream_8h" startline="127" endline="133">openage::util::compress::BitStream&lt; 4096 &gt;::input_bytes_available</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" compoundref="bitstream_8h" startline="185" endline="207">openage::util::compress::BitStream&lt; 4096 &gt;::load_next_16_bits</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" prot="private" static="no" mutable="no">
         <type>unsigned char *</type>
@@ -81,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="96" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -95,7 +104,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="104" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="104" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" compoundref="bitstream_8h" startline="185" endline="207">openage::util::compress::BitStream&lt; 4096 &gt;::load_next_16_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" compoundref="bitstream_8h" startline="229" endline="240">openage::util::compress::BitStream&lt; 4096 &gt;::peek_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" compoundref="bitstream_8h" startline="247" endline="260">openage::util::compress::BitStream&lt; 4096 &gt;::remove_bits</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -109,7 +121,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="111" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="111" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" compoundref="bitstream_8h" startline="214" endline="222">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" compoundref="bitstream_8h" startline="185" endline="207">openage::util::compress::BitStream&lt; 4096 &gt;::load_next_16_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" compoundref="bitstream_8h" startline="247" endline="260">openage::util::compress::BitStream&lt; 4096 &gt;::remove_bits</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -123,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="117" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="117" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -137,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="122" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="122" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -169,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="178" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="178" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="178" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="178" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -185,7 +200,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="127" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="127" bodyend="133"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="127" bodyend="133"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" compoundref="bitstream_8h" startline="140" endline="172">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_input_bytes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" compoundref="bitstream_8h" startline="329" endline="346">openage::util::compress::BitStream&lt; 4096 &gt;::read_bytes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -200,7 +217,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="140" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="140" bodyend="172"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="140" bodyend="172"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" compoundref="bitstream_8h" startline="185" endline="207">openage::util::compress::BitStream&lt; 4096 &gt;::load_next_16_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" compoundref="bitstream_8h" startline="329" endline="346">openage::util::compress::BitStream&lt; 4096 &gt;::read_bytes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -215,7 +234,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="185" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="185" bodyend="207"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="185" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="185" bodyend="207"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" compoundref="bitstream_8h" startline="214" endline="222">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_bits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -234,7 +254,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="214" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="214" bodyend="222"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="214" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="214" bodyend="222"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" compoundref="bitstream_8h" startline="229" endline="240">openage::util::compress::BitStream&lt; 4096 &gt;::peek_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" compoundref="bitstream_8h" startline="247" endline="260">openage::util::compress::BitStream&lt; 4096 &gt;::remove_bits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
@@ -253,7 +275,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="229" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="229" bodyend="240"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="229" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="229" bodyend="240"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" compoundref="bitstream_8h" startline="269" endline="292">openage::util::compress::BitStream&lt; 4096 &gt;::align_bitstream</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" compoundref="bitstream_8h" startline="315" endline="319">openage::util::compress::BitStream&lt; 4096 &gt;::read_bits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -272,7 +296,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="247" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="247" bodyend="260"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="247" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="247" bodyend="260"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" compoundref="bitstream_8h" startline="269" endline="292">openage::util::compress::BitStream&lt; 4096 &gt;::align_bitstream</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" compoundref="bitstream_8h" startline="315" endline="319">openage::util::compress::BitStream&lt; 4096 &gt;::read_bits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -293,7 +319,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="269" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="269" bodyend="292"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="269" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="269" bodyend="292"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" compoundref="bitstream_8h" startline="428" endline="432">openage::util::compress::BitStream&lt; 4096 &gt;::align_if_in_bitstream_mode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" compoundref="bitstream_8h" startline="406" endline="421">openage::util::compress::BitStream&lt; 4096 &gt;::switch_to_bytestream_mode</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -312,7 +340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="295" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="295" bodyend="308"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="295" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="295" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
@@ -331,7 +359,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="315" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="315" bodyend="319"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="315" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="315" bodyend="319"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0ced870a816503c5ae2c42756dc0adb2" compoundref="lzxd_8cpp" startline="617" endline="724">openage::util::compress::LZXDStream::decode_symbol_from_aligned_block</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a2830bc244fc83678fc56f6e44c057e7c" compoundref="lzxd_8cpp" startline="526" endline="614">openage::util::compress::LZXDStream::decode_symbol_from_verbatim_block</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" compoundref="lzxd_8cpp" startline="740" endline="860">openage::util::compress::LZXDStream::decompress_next_frame</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" compoundref="lzxd_8cpp" startline="477" endline="523">openage::util::compress::LZXDStream::init_next_block</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
@@ -355,7 +387,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="329" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="329" bodyend="346"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="329" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="329" bodyend="346"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" compoundref="bitstream_8h" startline="140" endline="172">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_input_bytes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af408bfffcc2e2e086066e13e1f6b96b7" compoundref="lzxd_8cpp" startline="727" endline="737">openage::util::compress::LZXDStream::read_data_from_uncompressed_block</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" compoundref="bitstream_8h" startline="353" endline="361">openage::util::compress::BitStream&lt; 4096 &gt;::read_single_byte</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned char</type>
@@ -370,7 +405,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="353" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="353" bodyend="361"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="353" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="353" bodyend="361"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" compoundref="bitstream_8h" startline="368" endline="377">openage::util::compress::BitStream&lt; 4096 &gt;::read_4bytes_le</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" compoundref="bitstream_8h" startline="384" endline="399">openage::util::compress::BitStream&lt; 4096 &gt;::switch_to_bitstream_mode</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned int</type>
@@ -385,7 +422,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="368" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="368" bodyend="377"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="368" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="368" bodyend="377"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" compoundref="lzxd_8cpp" startline="477" endline="523">openage::util::compress::LZXDStream::init_next_block</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -400,7 +438,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="384" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="384" bodyend="399"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="384" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="384" bodyend="399"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" compoundref="lzxd_8cpp" startline="477" endline="523">openage::util::compress::LZXDStream::init_next_block</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -415,7 +454,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="406" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="406" bodyend="421"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="406" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="406" bodyend="421"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" compoundref="lzxd_8cpp" startline="477" endline="523">openage::util::compress::LZXDStream::init_next_block</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -430,7 +470,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compress/bitstream.h" line="428" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="428" bodyend="432"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="428" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="428" bodyend="432"/>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" compoundref="lzxd_8cpp" startline="740" endline="860">openage::util::compress::LZXDStream::decompress_next_frame</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -458,13 +499,26 @@
 </para>
 <para>Every modeswitch aligns the stream to a 16-bit boundary by discarding the appropriate amount of nullbits/nullbytes. Calling the modeswitch methods while already in the respective mode does nothing. </para>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="5646">
+        <label>openage::util::compress::BitStream&lt; inbuf_size &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
+      </node>
+      <node id="5647">
+        <label>openage::util::compress::BitStream&lt; 4096 &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
+        <childnode refid="5646" relation="template-instance">
+          <edgelabel>&lt; 4096 &gt;</edgelabel>
+        </childnode>
+      </node>
+    </inheritancegraph>
     <collaborationgraph>
-      <node id="569">
+      <node id="5648">
         <label>openage::util::compress::BitStream&lt; inbuf_size &gt;</label>
         <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/compress/bitstream.h" line="69" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="69" bodyend="433"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h" bodystart="69" bodyend="433"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>align_bitstream</name></member>
       <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>align_if_in_bitstream_mode</name></member>

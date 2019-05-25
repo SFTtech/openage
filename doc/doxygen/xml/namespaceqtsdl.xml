@@ -95,7 +95,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.cpp" line="8" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.cpp" bodystart="8" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.cpp" line="8" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.cpp" bodystart="8" bodyend="12"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" compoundref="gui__item_8h" startline="272" endline="294">qtsdl::GuiItemCoreInstantiator&lt; GameSpecLink &gt;::do_adopt_core</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -117,7 +118,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="37" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="37" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="37" bodyend="39"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" compoundref="gui__item_8h" startline="217" endline="228">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::assign_while_catching_constant_properies_inits</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1abe1b332e693caa36185c1cd7835c40de" compoundref="gui__item__list__model_8h" startline="52" endline="66">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::do_initial_to_gui_propagation</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a2d423aeb58ef3a7faf28b153fe35cacc" compoundref="gui__item__list__model_8h" startline="35" endline="43">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_from_gui_propagation</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a0e965b2d5161f95e8118b197ac2f0f42" compoundref="gui__item__list__model_8h" startline="45" endline="50">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_to_gui_propagation</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" compoundref="gui__item_8h" startline="182" endline="189">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::i</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_output_mode_link_1a075e25acd5ad18242e42fb428c3c8b09" compoundref="game__control__link_8cpp" startline="73" endline="83">openage::gui::OutputModeLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_game_main_link_1a360f50de98c75d538bf46a03c3731874" compoundref="game__main__link_8cpp" startline="34" endline="36">openage::gui::GameMainLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_game_spec_link_1aa2749ef2e6877074640f1a74b3d59eb5" compoundref="game__spec__link_8cpp" startline="36" endline="40">openage::gui::GameSpecLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" compoundref="game__control__link_8cpp" startline="141" endline="159">openage::gui::ActionModeLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_editor_mode_link_1ac1c41942ee1dda4e2774eddebc6e1104" compoundref="game__control__link_8cpp" startline="223" endline="229">openage::gui::EditorModeLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_game_control_link_1ac65023c9d5f785efe775b1dd99111c42" compoundref="game__control__link_8cpp" startline="252" endline="257">openage::gui::GameControlLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" compoundref="resources__list__model_8cpp" startline="40" endline="52">openage::gui::ResourcesListModel::set_action_mode</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_game_control_link_1a54ebef9560dd3607b61083b0f8ecb9ba" compoundref="game__control__link_8cpp" startline="291" endline="303">openage::gui::GameControlLink::set_modes</referencedby>
+        <referencedby refid="namespaceqtsdl_1a993df7502f716e746ca8c9a2568c3292" compoundref="gui__item__link_8h" startline="82" endline="84">unwrap_if_can</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_engine_link_1a9d1db877d12c5db968eab75948ac68ca" compoundref="engine__link_8cpp" startline="46" endline="48">openage::gui::EngineLink::~EngineLink</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a82d73e11702a9770cca7fd06eb671a63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -139,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="42" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="42" bodyend="44"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="42" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -161,7 +177,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="47" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="47" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="47" bodyend="49"/>
+        <references refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" compoundref="qtsdl__checked__static__cast_8h" startline="10" endline="13">checked_static_cast</references>
+        <referencedby refid="classopenage_1_1gui_1_1_game_control_link_1a652b322aaebf092e2f0735aae8b54e1c" compoundref="game__control__link_8cpp" startline="335" endline="343">openage::gui::GameControlLink::on_mode_changed</referencedby>
+        <referencedby refid="namespaceqtsdl_1a182757d03b4347d5c8577102b0c3259f" compoundref="gui__item__link_8h" startline="72" endline="74">wrap_if_can</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a47e2bf10f69ccb92b771184271a47241" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -187,7 +206,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="57" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="57" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="57" bodyend="59"/>
+        <references refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" compoundref="qtsdl__checked__static__cast_8h" startline="10" endline="13">checked_static_cast</references>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a82f72a1001442aaeee79d5952de48b20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -213,7 +233,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="62" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="62" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="62" bodyend="64"/>
+        <references refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" compoundref="qtsdl__checked__static__cast_8h" startline="10" endline="13">checked_static_cast</references>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a37d1caf872154786b3438feecde53449" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -235,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="67" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="67" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a182757d03b4347d5c8577102b0c3259f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -257,7 +278,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="72" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="72" bodyend="74"/>
+        <references refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" compoundref="gui__item__link_8h" startline="47" endline="49">wrap</references>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -279,7 +301,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="77" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="77" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="77" bodyend="79"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" compoundref="gui__item_8h" startline="217" endline="228">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::assign_while_catching_constant_properies_inits</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" compoundref="gui__item_8h" startline="182" endline="189">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::i</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a993df7502f716e746ca8c9a2568c3292" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -305,7 +329,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="82" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="82" bodyend="84"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="82" bodyend="84"/>
+        <references refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" compoundref="gui__item__link_8h" startline="37" endline="39">unwrap</references>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a6ccef384f823460943a2aaf5b074dce5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -348,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="117" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="117" bodyend="119"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -373,7 +398,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qtsdl_checked_static_cast.h" line="10" column="1" bodyfile="libopenage/gui/guisys/link/qtsdl_checked_static_cast.h" bodystart="10" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qtsdl_checked_static_cast.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qtsdl_checked_static_cast.h" bodystart="10" bodyend="13"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" compoundref="gui__item_8h" startline="272" endline="294">qtsdl::GuiItemCoreInstantiator&lt; GameSpecLink &gt;::do_adopt_core</referencedby>
+        <referencedby refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" compoundref="gui__item__link_8h" startline="47" endline="49">wrap</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1ac53ee23059783401c6e7bcdfc1dfd314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structqtsdl_1_1gl__debug__parameters" kindref="compound">gl_debug_parameters</ref></type>
@@ -403,7 +430,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/opengl_debug_logger.cpp" line="18" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.cpp" bodystart="18" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp" bodystart="18" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1ab9d9e0ee6419f87d80c1ed0067c3c08f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -443,7 +470,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/opengl_debug_logger.cpp" line="30" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.cpp" bodystart="30" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp" bodystart="30" bodyend="46"/>
+        <references refid="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" compoundref="opengl__debug__logger_8h" startline="19">qtsdl::gl_debug_parameters::callback</references>
+        <references refid="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" compoundref="opengl__debug__logger_8h" startline="14">qtsdl::gl_debug_parameters::is_debug</references>
+        <references refid="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" compoundref="opengl__debug__logger_8h" startline="24">qtsdl::gl_debug_parameters::synchronous</references>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1afe4ced3b28358a42a4c178c3e85d64ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; QVariant, WId &gt;</type>
@@ -463,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/platforms/context_extraction.h" line="18" column="1" bodyfile="libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm" bodystart="14" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm" bodystart="14" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a4932b95840fb2a53ea19d235b68dc6c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; QVariant, std::function&lt; void()&gt; &gt;</type>
@@ -483,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/platforms/context_extraction.h" line="23" column="1" bodyfile="libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm" bodystart="35" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm" bodystart="35" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1aca5f9f84e1ed643cfcc32eda09cae365" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -502,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="100" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="100" bodyend="102"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a48d15a444bc80695bf6dc177097de411" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -525,7 +555,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="105" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="105" bodyend="107"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a52fafee7e81c09f448f3606473fd6f92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -544,7 +574,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="110" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="115" bodyend="117"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="namespaceqtsdl_1a4f0cb678fe41ddc34eb16568a756fcf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -567,13 +597,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="120" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="120" bodyend="122"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="120" bodyend="122"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/assetmanager.h" line="14" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/assetmanager.h" line="14" column="1"/>
   </compounddef>
 </doxygen>

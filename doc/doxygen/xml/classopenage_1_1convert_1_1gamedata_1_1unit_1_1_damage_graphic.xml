@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::unit::DamageGraphic</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a43f0a843587bd93ee014ab62af788313" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.DamageGraphic::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;damage_graphic&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="172" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1abfab8f18b0b4f32253f804efb64594b4" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.DamageGraphic::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;unit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="173" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a110f6e8796e159413dba767cd520f291" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.DamageGraphic::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;stores one possible unit image that is displayed at a given damage percentage.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="174" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a919a1655473cda61ba1860c9ae8709a7" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.unit.DamageGraphic::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ_EXPORT, &quot;graphic_id&quot;, &quot;int16_t&quot;),
+        (READ_EXPORT, &quot;damage_percent&quot;, &quot;int8_t&quot;),
+        (READ, &quot;old_apply_mode&quot;, &quot;int8_t&quot;),    # gets overwritten in aoe memory by the real apply_mode:
+        (READ_EXPORT, &quot;apply_mode&quot;, EnumLookupMember(
+            raw_type    = &quot;int8_t&quot;,
+            type_name   = &quot;damage_draw_type&quot;,
+            lookup_dict = {
+                0: &quot;TOP&quot;,      # adds graphics on top (e.g. flames)
+                1: &quot;RANDOM&quot;,   # adds graphics on top randomly
+                2: &quot;REPLACE&quot;,  # replace original graphics (e.g. damaged walls)
+            },
+        )),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="176" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1383">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1382">
+        <label>openage.convert.gamedata.unit.DamageGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic"/>
+        <childnode refid="1383" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1385">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1384">
+        <label>openage.convert.gamedata.unit.DamageGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic"/>
+        <childnode refid="1385" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="171" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="171" bodyend="192"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a919a1655473cda61ba1860c9ae8709a7" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a43f0a843587bd93ee014ab62af788313" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1abfab8f18b0b4f32253f804efb64594b4" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic_1a110f6e8796e159413dba767cd520f291" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::DamageGraphic</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

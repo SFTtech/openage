@@ -5,7 +5,7 @@
     <includes refid="state_8h" local="yes">state.h</includes>
     <incdepgraph>
       <node id="8297">
-        <label>libopenage/event/state.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.cpp</label>
         <link refid="state_8cpp"/>
         <childnode refid="8298" relation="include">
         </childnode>
@@ -35,6 +35,6 @@
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/state.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.cpp"/>
   </compounddef>
 </doxygen>

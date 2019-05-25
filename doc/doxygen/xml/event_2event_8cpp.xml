@@ -87,7 +87,7 @@
         </childnode>
       </node>
       <node id="7421">
-        <label>libopenage/event/event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.cpp</label>
         <link refid="event_2event_8cpp"/>
         <childnode refid="7422" relation="include">
         </childnode>
@@ -382,6 +382,6 @@
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/event.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.cpp"/>
   </compounddef>
 </doxygen>

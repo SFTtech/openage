@@ -189,7 +189,7 @@
         <label>config.h</label>
       </node>
       <node id="20199">
-        <label>libopenage/pyinterface/setup.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp</label>
         <link refid="setup_8cpp"/>
         <childnode refid="20200" relation="include">
         </childnode>
@@ -232,7 +232,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/setup.cpp" line="22" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1ad4d92156846b759588637ea53a2d0dab" compoundref="logsink_8cpp" startline="53" endline="57">openage::log::LogSinkList::add</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</referencedby>
+        <referencedby refid="classopenage_1_1audio_1_1_audio_manager_1a558810ebb9233d8f80da70d48b0bf282" compoundref="audio__manager_8cpp" startline="194" endline="201">openage::audio::AudioManager::add_sound</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1a627bc25cc4e546ff34b06cfa809f8946" compoundref="unit_8cpp" startline="134" endline="141">openage::Unit::apply_all_cmds</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" compoundref="setup_8cpp" startline="73" endline="124">openage::pyinterface::check</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" compoundref="setup_8cpp" startline="63" endline="70">openage::pyinterface::destroy_py_if_component</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" compoundref="worker_8cpp" startline="33" endline="38">openage::job::Worker::enqueue</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1a0f13eaafaebb859ca13dad1884c18031" compoundref="job__manager_8cpp" startline="90" endline="96">openage::job::JobManager::enqueue_state</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1ae81b425a182f26b155c9f31de6b74d63" compoundref="job__manager_8cpp" startline="59" endline="80">openage::job::JobManager::execute_callbacks</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1adefba3f5fb9db0931cca54c27ab31041" compoundref="job__manager_8cpp" startline="99" endline="108">openage::job::JobManager::fetch_job</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1a9e5e1a95045cef58acd980ebdabc6285" compoundref="job__manager_8cpp" startline="117" endline="128">openage::job::JobManager::finish_job</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">qtsdl::GuiDedicatedThread::get</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1afc81fa6e3be5780014ced15942a48fa2" compoundref="job__manager_8cpp" startline="111" endline="114">openage::job::JobManager::has_job</referencedby>
+        <referencedby refid="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" compoundref="message_8cpp" startline="23" endline="32">openage::log::message::init_with_metadata_copy</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" compoundref="logsink_8cpp" startline="42" endline="50">openage::log::LogSinkList::log</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a92501d950b96e9c1978e9112f91773d2" compoundref="logsink_8cpp" startline="60" endline="63">openage::log::LogSinkList::loglevel_changed</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">openage::job::Worker::process</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1ac5dcdf3180dcd4bdce67b765d8ef2134" compoundref="unit_8cpp" startline="262" endline="276">openage::Unit::queue_cmd</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a1ab4e5d0b202df164509a5174809685e" compoundref="logsink_8cpp" startline="74" endline="78">openage::log::LogSinkList::remove</referencedby>
+        <referencedby refid="classopenage_1_1audio_1_1_audio_manager_1a30af6b961d77d0b564e4813560666b2c" compoundref="audio__manager_8cpp" startline="203" endline="215">openage::audio::AudioManager::remove_sound</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" compoundref="worker_8cpp" startline="25" endline="30">openage::job::Worker::stop</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a8255667455a46558739de3cd0a514286" compoundref="logsink_8cpp" startline="81" endline="84">openage::log::LogSinkList::supports_loglevel</referencedby>
       </memberdef>
       <memberdef kind="variable" id="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" prot="public" static="no" mutable="no">
         <type>std::map&lt; void *, std::function&lt; bool()&gt; &gt;</type>
@@ -245,7 +267,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/setup.cpp" line="25" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" compoundref="actions__list__model_8cpp" startline="190" endline="197">openage::gui::ActionsListModel::add_button</referencedby>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1adaea2f0357531c64ef6af72d720e37f2" compoundref="container_8cpp" startline="34" endline="38">openage::curve::tests::dump</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1_1tests_1a7279af6fded008ace86db25db0e7079d" compoundref="pathfinding_2tests_8cpp" startline="191" endline="254">openage::path::tests::node_get_neighbors_0</referencedby>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" compoundref="container_8cpp" startline="40" endline="132">openage::curve::tests::test_map</referencedby>
       </memberdef>
       <memberdef kind="variable" id="setup_8cpp_1a72d863a2c441cc15b23670e4cf9cfb02" prot="public" static="no" mutable="no">
         <type>std::set&lt; void * &gt;</type>
@@ -258,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/setup.cpp" line="28" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="setup_8cpp_1a9df65dc74cf0e679af16311b54d2219d" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -271,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/setup.cpp" line="31" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -330,7 +356,7 @@
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>enforce<sp/>that<sp/>the<sp/>object<sp/>has<sp/>an<sp/>associated<sp/>symbol<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(not<sp/><ref refid="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" kindref="member">util::is_symbol</ref>(thisptr)))<sp/>{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>instantiate<sp/>py<sp/>interface<sp/>component<sp/>as<sp/>non-global<sp/>object.<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attempted<sp/>instantiation<sp/>at<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">util::symbol_name</ref>(thisptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">,</highlight></codeline>
@@ -357,7 +383,7 @@
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{checkers.lock};</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checkers.check_performed)<sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;py<sp/>interface<sp/>initialization<sp/>check<sp/>has<sp/>already<sp/>been<sp/>performed.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fix<sp/>your<sp/>init<sp/>code.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -365,7 +391,7 @@
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.check_performed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>error_found<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Fix<sp/>your<sp/>init<sp/>code:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>checkers.destroyed_components.empty())<sp/>{</highlight></codeline>
@@ -407,6 +433,6 @@
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/setup.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp"/>
   </compounddef>
 </doxygen>

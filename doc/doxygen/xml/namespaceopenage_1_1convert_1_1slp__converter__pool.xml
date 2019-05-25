@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1slp__converter__pool" kind="namespace" language="Python">
+    <compoundname>openage::convert::slp_converter_pool</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool" prot="public">openage::convert::slp_converter_pool::SLPConverterPool</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1slp__converter__pool_1a1f2e2c95486ce8b8bc86342dd862afc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.converter_process</definition>
+        <argsstring>(inqueue, outqueue)</argsstring>
+        <name>converter_process</name>
+        <param>
+          <type>inqueue</type>
+          <defname>inqueue</defname>
+        </param>
+        <param>
+          <type>outqueue</type>
+          <defname>outqueue</defname>
+        </param>
+        <briefdescription>
+<para>This is the function that runs inside each individual process. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="135" bodyend="166"/>
+        <references refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" compoundref="log_2____init_____8py" startline="91" endline="97">openage::log.set_loglevel</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

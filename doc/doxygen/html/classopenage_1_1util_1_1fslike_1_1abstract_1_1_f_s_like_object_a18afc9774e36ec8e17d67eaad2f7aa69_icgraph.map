@@ -1,0 +1,4 @@
+<map id="openage.util.fslike.abstract.FSLikeObject.mkdirs" name="openage.util.fslike.abstract.FSLikeObject.mkdirs">
+<area shape="rect" id="node1" title="Shall ensure that the directory exists." alt="" coords="232,5,413,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator.xhtml#a28d7d207993972a0b61bf2abef7c8417" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="5,5,184,47"/>
+</map>

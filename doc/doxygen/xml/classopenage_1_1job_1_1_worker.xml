@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="25" column="1" bodyfile="libopenage/job/worker.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" compoundref="worker_8cpp" startline="51" endline="62">execute_job</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a42630ad642f1e2e86c5cebed33a8b8a1" compoundref="worker_8cpp" startline="12" endline="16">Worker</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -30,7 +33,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="28" column="1" bodyfile="libopenage/job/worker.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" compoundref="worker_8cpp" startline="51" endline="62">execute_job</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" compoundref="worker_8cpp" startline="19" endline="22">start</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" compoundref="worker_8cpp" startline="25" endline="30">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a7248896af6a7ddd2492c3027660c5877" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; std::thread &gt;</type>
@@ -44,7 +51,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="31" column="1" bodyfile="libopenage/job/worker.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1afc0a09d080ea20c9e5b9466f04acb9f5" compoundref="worker_8cpp" startline="46" endline="48">join</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" compoundref="worker_8cpp" startline="19" endline="22">start</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" prot="private" static="no" mutable="no">
         <type>std::mutex</type>
@@ -58,7 +67,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="34" column="1" bodyfile="libopenage/job/worker.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" compoundref="worker_8cpp" startline="33" endline="38">enqueue</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" compoundref="worker_8cpp" startline="25" endline="30">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a81131cf6e31018ec29632a6b41a79131" prot="private" static="no" mutable="no">
         <type>std::queue&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_job_state_base" kindref="compound">JobStateBase</ref> &gt; &gt;</type>
@@ -72,7 +84,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="37" column="1" bodyfile="libopenage/job/worker.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" compoundref="worker_8cpp" startline="33" endline="38">enqueue</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a1f7ff0ab3111361665027316908c2435" prot="private" static="no" mutable="no">
         <type>std::condition_variable</type>
@@ -86,7 +100,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="40" column="1" bodyfile="libopenage/job/worker.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" compoundref="worker_8cpp" startline="41" endline="43">notify</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -106,7 +122,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="44" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="12" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="12" bodyend="16"/>
+        <references refid="classopenage_1_1job_1_1_worker_1ac9734f149754c8bc51b19d6cc57902c0" compoundref="worker_8h" startline="25">manager</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1af3de40f8c10bf00d40fedc3b0c4092bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -120,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="47" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="47" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -134,7 +151,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="50" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="19" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="19" bodyend="22"/>
+        <references refid="classopenage_1_1job_1_1_worker_1a7248896af6a7ddd2492c3027660c5877" compoundref="worker_8h" startline="31">executor</references>
+        <references refid="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" compoundref="worker_8h" startline="28">is_running</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -148,7 +168,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="53" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="25" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="25" bodyend="30"/>
+        <references refid="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" compoundref="worker_8h" startline="28">is_running</references>
+        <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" compoundref="worker_8cpp" startline="41" endline="43">notify</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" compoundref="worker_8h" startline="34">pending_jobs_mutex</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1afc0a09d080ea20c9e5b9466f04acb9f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -162,7 +186,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="56" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="46" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="46" bodyend="48"/>
+        <references refid="classopenage_1_1job_1_1_worker_1a7248896af6a7ddd2492c3027660c5877" compoundref="worker_8h" startline="31">executor</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -180,7 +205,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="59" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="33" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="33" bodyend="38"/>
+        <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" compoundref="worker_8cpp" startline="41" endline="43">notify</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a81131cf6e31018ec29632a6b41a79131" compoundref="worker_8h" startline="37">pending_jobs</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" compoundref="worker_8h" startline="34">pending_jobs_mutex</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -194,7 +223,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="65" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="41" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="41" bodyend="43"/>
+        <references refid="classopenage_1_1job_1_1_worker_1a1f7ff0ab3111361665027316908c2435" compoundref="worker_8h" startline="40">jobs_available</references>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" compoundref="worker_8cpp" startline="33" endline="38">enqueue</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" compoundref="worker_8cpp" startline="25" endline="30">stop</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -214,7 +246,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="72" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="51" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="51" bodyend="62"/>
+        <references refid="classopenage_1_1job_1_1_job_manager_1a9e5e1a95045cef58acd980ebdabc6285" compoundref="job__manager_8cpp" startline="117" endline="128">openage::job::JobManager::finish_job</references>
+        <references refid="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" compoundref="worker_8h" startline="28">is_running</references>
+        <references refid="classopenage_1_1job_1_1_worker_1ac9734f149754c8bc51b19d6cc57902c0" compoundref="worker_8h" startline="25">manager</references>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" compoundref="worker_8cpp" startline="65" endline="115">process</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -228,7 +264,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/worker.h" line="79" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="65" bodyend="115"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp" bodystart="65" bodyend="115"/>
+        <references refid="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" compoundref="worker_8cpp" startline="51" endline="62">execute_job</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1adefba3f5fb9db0931cca54c27ab31041" compoundref="job__manager_8cpp" startline="99" endline="108">openage::job::JobManager::fetch_job</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1afc81fa6e3be5780014ced15942a48fa2" compoundref="job__manager_8cpp" startline="111" endline="114">openage::job::JobManager::has_job</references>
+        <references refid="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" compoundref="worker_8h" startline="28">is_running</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a1f7ff0ab3111361665027316908c2435" compoundref="worker_8h" startline="40">jobs_available</references>
+        <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
+        <references refid="classopenage_1_1job_1_1_worker_1ac9734f149754c8bc51b19d6cc57902c0" compoundref="worker_8h" startline="25">manager</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a81131cf6e31018ec29632a6b41a79131" compoundref="worker_8h" startline="37">pending_jobs</references>
+        <references refid="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" compoundref="worker_8h" startline="34">pending_jobs_mutex</references>
+        <referencedby refid="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" compoundref="worker_8cpp" startline="19" endline="22">start</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -237,19 +283,19 @@
 <para>A worker encapsulates the execution of multiple jobs in a single background thread. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4970">
+      <node id="3908">
         <label>openage::job::Worker</label>
         <link refid="classopenage_1_1job_1_1_worker"/>
-        <childnode refid="4971" relation="usage">
+        <childnode refid="3909" relation="usage">
           <edgelabel>-manager</edgelabel>
         </childnode>
       </node>
-      <node id="4971">
+      <node id="3909">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/job/worker.h" line="22" column="1" bodyfile="libopenage/job/worker.h" bodystart="22" bodyend="80"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.h" bodystart="22" bodyend="80"/>
     <listofallmembers>
       <member refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>enqueue</name></member>
       <member refid="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>execute_job</name></member>

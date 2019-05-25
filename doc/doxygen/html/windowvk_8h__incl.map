@@ -1,14 +1,14 @@
-<map id="libopenage/renderer/vulkan/windowvk.h" name="libopenage/renderer/vulkan/windowvk.h">
-<area shape="rect" id="node1" title=" " alt="" coords="155,5,290,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,45,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="69,95,131,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="155,95,221,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="204,169,313,196"/>
-<area shape="rect" id="node6" href="$window_8h.xhtml" title=" " alt="" coords="443,95,530,121"/>
-<area shape="rect" id="node12" href="$loader_8h.xhtml" title=" " alt="" coords="297,95,365,121"/>
-<area shape="rect" id="node7" title=" " alt="" coords="663,169,740,196"/>
-<area shape="rect" id="node8" title=" " alt="" coords="355,244,424,271"/>
-<area shape="rect" id="node9" title=" " alt="" coords="541,244,597,271"/>
-<area shape="rect" id="node10" title=" " alt="" coords="493,169,587,196"/>
-<area shape="rect" id="node11" href="$renderer_8h.xhtml" title=" " alt="" coords="388,169,468,196"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/vulkan/windowvk.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/vulkan/windowvk.h">
+<area shape="rect" id="node1" title=" " alt="" coords="118,5,327,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,45,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="69,109,131,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="155,109,221,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="204,184,313,211"/>
+<area shape="rect" id="node6" href="$window_8h.xhtml" title=" " alt="" coords="443,109,530,136"/>
+<area shape="rect" id="node12" href="$loader_8h.xhtml" title=" " alt="" coords="297,109,365,136"/>
+<area shape="rect" id="node7" title=" " alt="" coords="663,184,740,211"/>
+<area shape="rect" id="node8" title=" " alt="" coords="355,259,424,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="541,259,597,285"/>
+<area shape="rect" id="node10" title=" " alt="" coords="493,184,587,211"/>
+<area shape="rect" id="node11" href="$renderer_8h.xhtml" title=" " alt="" coords="388,184,468,211"/>
 </map>

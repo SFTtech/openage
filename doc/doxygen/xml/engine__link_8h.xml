@@ -5,10 +5,10 @@
     <includes local="no">QStringList</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
     <includes refid="gui__singleton__item_8h" local="yes">guisys/link/gui_singleton_item.h</includes>
-    <includedby refid="assetmanager__link_8cpp" local="yes">libopenage/gui/assetmanager_link.cpp</includedby>
-    <includedby refid="engine__link_8cpp" local="yes">libopenage/gui/engine_link.cpp</includedby>
-    <includedby refid="game__control__link_8cpp" local="yes">libopenage/gui/game_control_link.cpp</includedby>
-    <includedby refid="game__main__link_8cpp" local="yes">libopenage/gui/game_main_link.cpp</includedby>
+    <includedby refid="assetmanager__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</includedby>
+    <includedby refid="engine__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</includedby>
+    <includedby refid="game__control__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</includedby>
+    <includedby refid="game__main__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</includedby>
     <incdepgraph>
       <node id="11488">
         <label>list</label>
@@ -225,7 +225,7 @@
         <link refid="fslike_2native_8h"/>
       </node>
       <node id="11455">
-        <label>libopenage/gui/engine_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h</label>
         <link refid="engine__link_8h"/>
         <childnode refid="11456" relation="include">
         </childnode>
@@ -326,15 +326,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="11503">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="11502">
-        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</label>
         <link refid="assetmanager__link_8cpp"/>
       </node>
       <node id="11501">
-        <label>libopenage/gui/engine_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h</label>
         <link refid="engine__link_8h"/>
         <childnode refid="11502" relation="include">
         </childnode>
@@ -346,11 +346,11 @@
         </childnode>
       </node>
       <node id="11504">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="11505">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
     </invincdepgraph>
@@ -405,7 +405,7 @@
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QStringList<sp/><ref refid="classopenage_1_1gui_1_1_engine_link_1a706e01765f0f681c53a405446e2fb2fe" kindref="member">globalBinds</ref></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_engine_link_1ae1b69dc08e903d0c2084167f6b68e719" kindref="member">get_global_binds</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_engine_link_1ae1b69dc08e903d0c2084167f6b68e719" kindref="member">get_global_binds</ref></highlight></codeline>
 <codeline lineno="46" refid="classopenage_1_1gui_1_1_engine_link_1a706e01765f0f681c53a405446e2fb2fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_engine_link_1a25cd777da0e2f5abecc4bd7e811e0b76" kindref="member">global_binds_changed</ref>)</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
@@ -437,6 +437,6 @@
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/engine_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h"/>
   </compounddef>
 </doxygen>

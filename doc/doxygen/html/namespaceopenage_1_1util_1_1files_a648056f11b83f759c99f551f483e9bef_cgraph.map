@@ -1,0 +1,7 @@
+<map id="openage.util.files.read_nullterminated_string" name="openage.util.files.read_nullterminated_string">
+<area shape="rect" id="node1" title="Reads bytes until a null terminator is reached." alt="" coords="5,27,155,69"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" title=" " alt="" coords="210,5,343,32"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188" title=" " alt="" coords="203,57,351,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="399,5,592,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="640,5,767,32"/>
+</map>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="102" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="102" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a71260cd555f2733745edd4a4242f858f" prot="public" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">curve::Continuous</ref>&lt; <ref refid="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" kindref="member">util::Vector2d</ref> &gt; &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="103" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="103" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="112" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="112" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="89" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="89" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="89" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a4b64806bc9ce546cfe1573d1f3ecb551" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="105" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="105" bodyend="107"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="105" bodyend="107"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -101,7 +101,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/gamestate.h" line="109" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="109" bodyend="111"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="109" bodyend="111"/>
+        <references refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" compoundref="changelog_8py" startline="52" endline="75">openage.convert.changelog.changes</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -109,30 +110,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3687">
+      <node id="2184">
         <label>openage::event::demo::PongBall</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_pong_ball"/>
-        <childnode refid="3688" relation="public-inheritance">
+        <childnode refid="2185" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3688">
+      <node id="2185">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3689">
+      <node id="2186">
         <label>openage::event::demo::PongBall</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_pong_ball"/>
-        <childnode refid="3690" relation="public-inheritance">
+        <childnode refid="2187" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3690">
+      <node id="2187">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/demo/gamestate.h" line="87" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="87" bodyend="113"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h" bodystart="87" bodyend="113"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a79dfeb3d8e9d0cf7d2c63635b39e6e83" prot="private" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>add_dependent</name></member>

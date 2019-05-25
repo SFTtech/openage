@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::opengl::GlShader Class Reference</title>
+<title>openage: openage::renderer::opengl::GlShader Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -100,17 +101,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1opengl_1_1
  <a href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="renderer_2opengl_2shader_8h_source.xhtml">shader.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::renderer::opengl::GlShader:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_shader__inherit__graph.svg" width="170" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::renderer::opengl::GlShader:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_shader__inherit__graph.svg" width="170" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::opengl::GlShader:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_shader__coll__graph.svg" width="170" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::opengl::GlShader:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_shader__coll__graph.svg" width="170" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -187,6 +190,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Compiles the shader from the given source. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml">shader.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad01a0a9dfceabcf5ea48a6af86a805ed">GlSimpleObject</a>([] (GLuint <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>) { glDeleteShader(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>); } )</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#a6996be5a5f1b2ea8c38a19944331c273">type</a>(<a class="code" href="namespaceopenage_1_1renderer_1_1opengl.xhtml#aa5bd688a2e55a9c7ba1377e213383de8">gl_shdr_type</a>.get(<a class="code" href="gui_2gui_8cpp.xhtml#ad18da19e3399b061b9e06fa5a1a2c761">src</a>.get_stage()))</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="gui_2gui_8cpp.xhtml#ad18da19e3399b061b9e06fa5a1a2c761">src</a>.get_lang() != <a class="code" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6">resources::shader_lang_t::glsl</a>) {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Unsupported shader language passed to OpenGL renderer.&quot;</span>);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// allocate shader in opengl</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    GLuint <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a> = glCreateShader(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#a6996be5a5f1b2ea8c38a19944331c273">type</a>);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;handle = <a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// load shader source</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* data = <a class="code" href="gui_2gui_8cpp.xhtml#ad18da19e3399b061b9e06fa5a1a2c761">src</a>.get_source().c_str();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    glShaderSource(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>, 1, &amp;data, <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// compile shader source</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    glCompileShader(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// check compiliation result</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    GLint status;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    glGetShaderiv(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>, GL_COMPILE_STATUS, &amp;status);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (status != GL_TRUE) {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        GLint loglen;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        glGetShaderiv(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>, GL_INFO_LOG_LENGTH, &amp;loglen);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::vector&lt;char&gt; infolog(loglen);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        glGetShaderInfoLog(<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">handle</a>, loglen, <span class="keyword">nullptr</span>, infolog.data());</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Failed to compile shader:\n&quot;</span> &lt;&lt; infolog.data() );</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="gui_2gui_8cpp_xhtml_ad18da19e3399b061b9e06fa5a1a2c761"><div class="ttname"><a href="gui_2gui_8cpp.xhtml#ad18da19e3399b061b9e06fa5a1a2c761">src</a></div><div class="ttdeci">GLint src</div><div class="ttdef"><b>Definition:</b> <a href="gui_2gui_8cpp_source.xhtml#l00155">gui.cpp:155</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_1_1opengl_xhtml_aa5bd688a2e55a9c7ba1377e213383de8"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1opengl.xhtml#aa5bd688a2e55a9c7ba1377e213383de8">openage::renderer::opengl::gl_shdr_type</a></div><div class="ttdeci">static constexpr auto gl_shdr_type</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2opengl_2shader_8cpp_source.xhtml#l00012">shader.cpp:12</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_xhtml_a6996be5a5f1b2ea8c38a19944331c273"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#a6996be5a5f1b2ea8c38a19944331c273">openage::renderer::opengl::GlShader::type</a></div><div class="ttdeci">GLenum type</div><div class="ttdoc">Which stage of the rendering pipeline this shader defines.</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2opengl_2shader_8h_source.xhtml#l00024">shader.h:24</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_xhtml_ad01a0a9dfceabcf5ea48a6af86a805ed"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad01a0a9dfceabcf5ea48a6af86a805ed">openage::renderer::opengl::GlSimpleObject::GlSimpleObject</a></div><div class="ttdeci">GlSimpleObject(GlSimpleObject &amp;&amp;)</div><div class="ttdef"><b>Definition:</b> <a href="simple__object_8cpp_source.xhtml#l00015">simple_object.cpp:15</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_1_1resources_xhtml_a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1resources.xhtml#a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6">openage::renderer::resources::shader_lang_t::glsl</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_xhtml_ad59150afddeb64a473f500edee2f63f5"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object.xhtml#ad59150afddeb64a473f500edee2f63f5">openage::renderer::opengl::GlSimpleObject::handle</a></div><div class="ttdeci">std::optional&lt; GLuint &gt; handle</div><div class="ttdoc">The handle to the OpenGL Object that this class represents.</div><div class="ttdef"><b>Definition:</b> <a href="simple__object_8h_source.xhtml#l00041">simple_object.h:41</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="simple__object_8h_source.xhtml#l00041">openage::renderer::opengl::GlSimpleObject::handle</a>.</p>
 
 </div>
 </div>
@@ -209,6 +222,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the stage of the rendering pipeline this shader defines. </p>
 
 <p class="definition">Definition at line <a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml#l00054">54</a> of file <a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml">shader.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#a6996be5a5f1b2ea8c38a19944331c273">type</a>;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_xhtml_a6996be5a5f1b2ea8c38a19944331c273"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader.xhtml#a6996be5a5f1b2ea8c38a19944331c273">openage::renderer::opengl::GlShader::type</a></div><div class="ttdeci">GLenum type</div><div class="ttdoc">Which stage of the rendering pipeline this shader defines.</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2opengl_2shader_8h_source.xhtml#l00024">shader.h:24</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="renderer_2opengl_2shader_8h_source.xhtml#l00024">type</a>.</p>
 
 </div>
 </div>
@@ -237,11 +253,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="renderer_2opengl_2shader_8h_source.xhtml#l00024">24</a> of file <a class="el" href="renderer_2opengl_2shader_8h_source.xhtml">shader.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml#l00054">get_type()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/renderer/opengl/<a class="el" href="renderer_2opengl_2shader_8h_source.xhtml">shader.h</a></li>
-<li>libopenage/renderer/opengl/<a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml">shader.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/<a class="el" href="renderer_2opengl_2shader_8h_source.xhtml">shader.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/<a class="el" href="renderer_2opengl_2shader_8cpp_source.xhtml">shader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

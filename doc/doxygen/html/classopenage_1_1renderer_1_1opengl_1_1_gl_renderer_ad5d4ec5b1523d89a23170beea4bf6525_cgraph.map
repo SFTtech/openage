@@ -1,0 +1,7 @@
+<map id="openage::renderer::opengl::GlRenderer::display_into_data" name="openage::renderer::opengl::GlRenderer::display_into_data">
+<area shape="rect" id="node1" title="Stores the display framebuffer into a CPU&#45;accessible data object. Essentially, this takes a screensho..." alt="" coords="5,45,147,101"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" title=" " alt="" coords="195,5,359,61"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#af731ce3a5d618782d7fcd6ffffd5a659" title=" " alt="" coords="206,85,347,141"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title=" " alt="" coords="407,5,571,61"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2" title="Returns the size in bytes of a single pixel of the specified format." alt="" coords="619,13,764,54"/>
+</map>

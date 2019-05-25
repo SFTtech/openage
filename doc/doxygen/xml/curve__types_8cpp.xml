@@ -96,7 +96,7 @@
         </childnode>
       </node>
       <node id="5417">
-        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</label>
         <link refid="curve__types_8cpp"/>
         <childnode refid="5418" relation="include">
         </childnode>
@@ -620,6 +620,6 @@
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/tests/curve_types.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp"/>
   </compounddef>
 </doxygen>

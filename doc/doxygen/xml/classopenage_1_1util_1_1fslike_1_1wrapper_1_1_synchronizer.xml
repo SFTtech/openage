@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::wrapper::Synchronizer</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper" prot="public" virt="non-virtual">openage.util.fslike.wrapper.Wrapper</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1af6ee294b357b648d140a91edbcc9e600" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.wrapper.Synchronizer::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="143" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a19001e4b1481baebbabd0f3adf589e09" compoundref="wrapper_8py" startline="146" endline="155">openage.util.fslike.wrapper.Synchronizer.__repr__</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a080bd7d5869555aee632235deac952b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.Synchronizer.__init__</definition>
+        <argsstring>(self, obj)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" kindref="member">obj</ref></type>
+          <defname>obj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="142" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a19001e4b1481baebbabd0f3adf589e09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.Synchronizer.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a3227b756d3668ec163a3046b308de7cd">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="146" bodyend="155"/>
+        <references refid="structopenage_1_1pyinterface_1_1_0D352_1_1state_1a964641509d3d09df74286d23fce57065" compoundref="setup_8cpp" startline="22">openage::pyinterface::state::lock</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1af6ee294b357b648d140a91edbcc9e600" compoundref="wrapper_8py" startline="143">openage.util.fslike.wrapper.Synchronizer.lock</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Wraps a FSLikeObject, securing all wrapped calls with a mutex. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5915">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5916" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5916">
+        <label>ABC</label>
+      </node>
+      <node id="5913">
+        <label>openage.util.fslike.wrapper.Synchronizer</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer"/>
+        <childnode refid="5914" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5914">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="5915" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5919">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5920" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5920">
+        <label>ABC</label>
+      </node>
+      <node id="5917">
+        <label>openage.util.fslike.wrapper.Synchronizer</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer"/>
+        <childnode refid="5918" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5918">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="5919" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="141" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="141" bodyend="156"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a080bd7d5869555aee632235deac952b5" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a95de6bb33e05e34b9a99a4cec095ecf2" prot="public" virt="non-virtual" ambiguityscope="openage::util::fslike::wrapper::Wrapper."><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a19001e4b1481baebbabd0f3adf589e09" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a33ac3283d4e712321c7064151e463dbe" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>contextguard</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a6cb541f9e3b16e1121023e1c8ba1fe70" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a5d5ad2caf60e7d0d1d4f004361b8b27a" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a4847df269f05999c19305c75f1b0cbbb" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a69626d7f9fdfa523e90f09ead94c6004" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1af6ee294b357b648d140a91edbcc9e600" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>lock</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1af4d52a12bfe44416e5a491f3158d6bcc" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ae1dd319535e8b540ca76b6cde0c8d494" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>obj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2facaf5a386ee358c3aed7fa8ed27ad3" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a75141da804e0ac95bb70d574979f82e5" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ad2fbaf45c3f546ae53762f47e91d7963" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a7a07a464cb187d6d519b96c61ca80787" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac8d7bfaa5c37257fddef3bb6eb460934" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a895ed091db87da418bc712b490f8e0d7" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a62e9309bfb38c4db466bc5154aa73343" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a0293a14d06d046394c85f945d2f4b1f9" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac64adc508709d6b51552c65b09f6a9cb" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::Synchronizer</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

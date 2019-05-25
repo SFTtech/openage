@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1testing_1_1testing_1_1_test_error" kind="class" language="Python" prot="public">
+    <compoundname>openage::testing::testing::TestError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exception</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5247">
+        <label>openage.testing.testing.TestError</label>
+        <link refid="classopenage_1_1testing_1_1testing_1_1_test_error"/>
+        <childnode refid="5248" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5248">
+        <label>Exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5249">
+        <label>openage.testing.testing.TestError</label>
+        <link refid="classopenage_1_1testing_1_1testing_1_1_test_error"/>
+        <childnode refid="5250" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5250">
+        <label>Exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" bodystart="14" bodyend="-1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

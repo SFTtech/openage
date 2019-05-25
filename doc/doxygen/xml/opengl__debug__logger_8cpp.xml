@@ -16,7 +16,7 @@
         <label>QOpenGLFunctions_4_4_Core</label>
       </node>
       <node id="13407">
-        <label>libopenage/gui/guisys/private/opengl_debug_logger.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp</label>
         <link refid="opengl__debug__logger_8cpp"/>
         <childnode refid="13408" relation="include">
         </childnode>
@@ -87,6 +87,6 @@
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/opengl_debug_logger.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp"/>
   </compounddef>
 </doxygen>

@@ -3,15 +3,15 @@
   <compounddef id="game__save_8h" kind="file" language="C++">
     <compoundname>game_save.h</compoundname>
     <includes local="no">string</includes>
-    <includedby refid="game__save_8cpp" local="yes">libopenage/gamestate/game_save.cpp</includedby>
-    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
-    <includedby refid="game__saver_8cpp" local="yes">libopenage/gui/game_saver.cpp</includedby>
+    <includedby refid="game__save_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp</includedby>
+    <includedby refid="generator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="game__saver_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</includedby>
     <incdepgraph>
       <node id="9528">
         <label>string</label>
       </node>
       <node id="9527">
-        <label>libopenage/gamestate/game_save.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.h</label>
         <link refid="game__save_8h"/>
         <childnode refid="9528" relation="include">
         </childnode>
@@ -19,15 +19,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="9531">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
       </node>
       <node id="9530">
-        <label>libopenage/gamestate/game_save.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp</label>
         <link refid="game__save_8cpp"/>
       </node>
       <node id="9529">
-        <label>libopenage/gamestate/game_save.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.h</label>
         <link refid="game__save_8h"/>
         <childnode refid="9530" relation="include">
         </childnode>
@@ -37,7 +37,7 @@
         </childnode>
       </node>
       <node id="9532">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
     </invincdepgraph>
@@ -70,6 +70,6 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::gameio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/game_save.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.h"/>
   </compounddef>
 </doxygen>

@@ -246,7 +246,7 @@
         <label>config.h</label>
       </node>
       <node id="4091">
-        <label>libopenage/coord/term.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.cpp</label>
         <link refid="term_8cpp"/>
         <childnode refid="4092" relation="include">
         </childnode>
@@ -287,6 +287,6 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/term.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.cpp"/>
   </compounddef>
 </doxygen>

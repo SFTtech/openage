@@ -1,0 +1,12 @@
+<map id="openage::find_in_radius" name="openage::find_in_radius">
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,164,138"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="213,5,369,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain_search.xhtml#a9865063a926eb992bdc7c94eab5eb85e" title=" " alt="" coords="212,71,371,112"/>
+<area shape="rect" id="node9" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="220,136,363,177"/>
+<area shape="rect" id="node10" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="214,201,369,243"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" title=" " alt="" coords="436,12,595,53"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="419,78,612,105"/>
+<area shape="rect" id="node7" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="475,133,555,159"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="680,78,807,105"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa0eb736578910b123ea19652c670daab" title=" " alt="" coords="660,129,827,171"/>
+</map>

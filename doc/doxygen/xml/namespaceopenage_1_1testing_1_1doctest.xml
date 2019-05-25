@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1testing_1_1doctest" kind="namespace" language="Python">
+    <compoundname>openage::testing::doctest</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1doctest_1a87b8d1a38cc5279012bdaff5b2783fec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.doctest.test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <briefdescription>
+<para>Runs doctest on the modules listed in testlist.DOCTEST_MODULES. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/doctest.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/doctest.py" bodystart="19" bodyend="24"/>
+        <references refid="namespaceopenage_1_1testing_1_1testlist_1affbf4b84b1472a1c7d54133a9470ce78" compoundref="testlist_8py" startline="11" endline="23">openage.testing.testlist.doctest_modules</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/doctest.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

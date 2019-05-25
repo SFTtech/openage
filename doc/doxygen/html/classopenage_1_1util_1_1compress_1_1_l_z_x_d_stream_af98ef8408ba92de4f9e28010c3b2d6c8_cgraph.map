@@ -1,0 +1,10 @@
+<map id="openage::util::compress::LZXDStream::init_next_block" name="openage::util::compress::LZXDStream::init_next_block">
+<area shape="rect" id="node1" title=" " alt="" coords="5,187,203,229"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="311,5,422,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a1e2e81d74fd03fd894c4acf72227cc2d" title=" " alt="" coords="251,57,483,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a80c91d5b7ddc061dd9082827286f0e1e" title=" " alt="" coords="275,122,459,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" title=" " alt="" coords="286,187,447,229"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#a281ecfaf32eb7102310771c48034e107" title=" " alt="" coords="271,253,462,294"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#a0a33a092ac1b0b664ecf4ced11e1a313" title=" " alt="" coords="286,319,447,375"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af9c25fda38455fbfc348a777e109d03e" title=" " alt="" coords="286,399,447,455"/>
+</map>

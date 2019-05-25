@@ -14,7 +14,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/tests.cpp" line="15" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="15" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" bodystart="15" bodyend="46"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" compoundref="job__manager_8cpp" startline="31" endline="40">openage::job::JobManager::start</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <referencedby refid="namespaceopenage_1_1job_1_1tests_1af342bd56aa228b49c1a6867982aca505" compoundref="job_2tests_8cpp" startline="93" endline="96">test_job_manager</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1job_1_1tests_1a9e15fa28b3f67065f69fb17a569e4ecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -27,7 +31,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/tests.cpp" line="49" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="49" bodyend="90"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" bodystart="49" bodyend="90"/>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" compoundref="job__manager_8cpp" startline="31" endline="40">openage::job::JobManager::start</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <referencedby refid="namespaceopenage_1_1job_1_1tests_1af342bd56aa228b49c1a6867982aca505" compoundref="job_2tests_8cpp" startline="93" endline="96">test_job_manager</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1job_1_1tests_1af342bd56aa228b49c1a6867982aca505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -40,13 +47,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/tests.cpp" line="93" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="93" bodyend="96"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" bodystart="93" bodyend="96"/>
+        <references refid="namespaceopenage_1_1job_1_1tests_1abca5d5e032e3cdbbe7176fde710f7abd" compoundref="job_2tests_8cpp" startline="15" endline="46">test_simple_job</references>
+        <references refid="namespaceopenage_1_1job_1_1tests_1a9e15fa28b3f67065f69fb17a569e4ecc" compoundref="job_2tests_8cpp" startline="49" endline="90">test_simple_job_with_exception</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/job/tests.cpp" line="12" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp" line="12" column="1"/>
   </compounddef>
 </doxygen>

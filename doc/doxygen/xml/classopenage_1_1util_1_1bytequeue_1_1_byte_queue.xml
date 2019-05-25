@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::bytequeue::ByteQueue</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteQueue::bufs</definition>
+        <argsstring></argsstring>
+        <name>bufs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" compoundref="bytequeue_8py" startline="111" endline="117">openage.util.bytequeue.ByteBuffer.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteQueue::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1afff888f3da7310e8777c220afc076a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteQueue.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteQueue.__len__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__len__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Size of all currently-stored data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="43" bodyend="45"/>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">openage::gui::GuiStandaloneSubtexture::size</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">openage::renderer::opengl::GlBuffer::size</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" compoundref="bytequeue_8py" startline="38">openage.util.bytequeue.ByteQueue.size</references>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" compoundref="dynamic__resource_8h" startline="43">openage::audio::chunk_info_t::size</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" compoundref="terrain__chunk_8h" startline="51">openage::TerrainChunk::size</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" compoundref="opengl_2shader__program_8h" startline="71">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a2c618ac38d89bf3b912c9e4ffbf5cc7f" compoundref="gamestate_8h" startline="71">openage::event::demo::PongPlayer::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" compoundref="opengl_2shader__program_8h" startline="99">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" compoundref="pefile_8py" startline="130">openage.convert.pefile.PEDataDirectory.size</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a8a297a8b66c23a207b305333c3963246" compoundref="cab_8py" startline="151">openage.cabextract.cab.CFFile.size</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">openage::SquareObject::size</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteQueue.append</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>append</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Adds bytes to the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="49" bodyend="55"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" compoundref="bytequeue_8py" startline="35">openage.util.bytequeue.ByteQueue.bufs</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">openage::gui::GuiStandaloneSubtexture::size</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">openage::renderer::opengl::GlBuffer::size</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" compoundref="bytequeue_8py" startline="38">openage.util.bytequeue.ByteQueue.size</references>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" compoundref="dynamic__resource_8h" startline="43">openage::audio::chunk_info_t::size</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" compoundref="terrain__chunk_8h" startline="51">openage::TerrainChunk::size</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" compoundref="opengl_2shader__program_8h" startline="71">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a2c618ac38d89bf3b912c9e4ffbf5cc7f" compoundref="gamestate_8h" startline="71">openage::event::demo::PongPlayer::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" compoundref="opengl_2shader__program_8h" startline="99">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" compoundref="pefile_8py" startline="130">openage.convert.pefile.PEDataDirectory.size</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a8a297a8b66c23a207b305333c3963246" compoundref="cab_8py" startline="151">openage.cabextract.cab.CFFile.size</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">openage::SquareObject::size</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteQueue.popleft</definition>
+        <argsstring>(self, size)</argsstring>
+        <name>popleft</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" kindref="member">size</ref></type>
+          <defname>size</defname>
+        </param>
+        <briefdescription>
+<para>Returns the requested amount of bytes from the buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="59" bodyend="89"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" compoundref="bytequeue_8py" startline="35">openage.util.bytequeue.ByteQueue.bufs</references>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">openage::gui::GuiStandaloneSubtexture::size</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">openage::renderer::opengl::GlBuffer::size</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" compoundref="bytequeue_8py" startline="38">openage.util.bytequeue.ByteQueue.size</references>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" compoundref="dynamic__resource_8h" startline="43">openage::audio::chunk_info_t::size</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" compoundref="terrain__chunk_8h" startline="51">openage::TerrainChunk::size</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" compoundref="opengl_2shader__program_8h" startline="71">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a2c618ac38d89bf3b912c9e4ffbf5cc7f" compoundref="gamestate_8h" startline="71">openage::event::demo::PongPlayer::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" compoundref="opengl_2shader__program_8h" startline="99">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" compoundref="pefile_8py" startline="130">openage.convert.pefile.PEDataDirectory.size</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a8a297a8b66c23a207b305333c3963246" compoundref="cab_8py" startline="151">openage.cabextract.cab.CFFile.size</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">openage::SquareObject::size</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5632">
+        <label>openage.util.bytequeue.ByteQueue</label>
+        <link refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="32" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1afff888f3da7310e8777c220afc076a85" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>append</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>bufs</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>popleft</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteQueue</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,8 +1,8 @@
-<map id="libopenage/pathfinding/heuristics.h" name="libopenage/pathfinding/heuristics.h">
-<area shape="rect" id="node1" title=" " alt="" coords="223,5,373,47"/>
-<area shape="rect" id="node2" href="$a__star_8h.xhtml" title=" " alt="" coords="109,95,260,136"/>
-<area shape="rect" id="node3" href="$a__star_8cpp.xhtml" title=" " alt="" coords="5,184,156,225"/>
-<area shape="rect" id="node4" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="201,191,374,218"/>
-<area shape="rect" id="node5" href="$heuristics_8cpp.xhtml" title=" " alt="" coords="336,95,487,136"/>
-<area shape="rect" id="node6" href="$pathfinding_2tests_8cpp.xhtml" title=" " alt="" coords="511,95,661,136"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pathfinding/heuristics.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pathfinding/heuristics.h">
+<area shape="rect" id="node1" title=" " alt="" coords="277,5,487,61"/>
+<area shape="rect" id="node2" href="$a__star_8h.xhtml" title=" " alt="" coords="135,109,344,165"/>
+<area shape="rect" id="node3" href="$a__star_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="264,213,473,269"/>
+<area shape="rect" id="node5" href="$heuristics_8cpp.xhtml" title=" " alt="" coords="420,109,629,165"/>
+<area shape="rect" id="node6" href="$pathfinding_2tests_8cpp.xhtml" title=" " alt="" coords="653,109,863,165"/>
 </map>

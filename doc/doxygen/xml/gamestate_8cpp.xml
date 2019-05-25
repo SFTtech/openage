@@ -68,7 +68,7 @@
         </childnode>
       </node>
       <node id="6673">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
         <childnode refid="6674" relation="include">
         </childnode>
@@ -504,6 +504,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event::demo</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/gamestate.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp"/>
   </compounddef>
 </doxygen>

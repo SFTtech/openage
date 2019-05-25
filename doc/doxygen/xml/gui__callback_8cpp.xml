@@ -28,7 +28,7 @@
         </childnode>
       </node>
       <node id="12961">
-        <label>libopenage/gui/guisys/private/gui_callback.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.cpp</label>
         <link refid="gui__callback_8cpp"/>
         <childnode refid="12962" relation="include">
         </childnode>
@@ -69,6 +69,6 @@
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_callback.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.cpp"/>
   </compounddef>
 </doxygen>

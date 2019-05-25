@@ -16,7 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="10" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="10" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="10" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" compoundref="global__rng_8cpp" startline="18" endline="21">random</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" compoundref="global__rng_8cpp" startline="23" endline="26">random_range</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1aadfcdd4f8b418047382e29828d81b157" compoundref="global__rng_8cpp" startline="28" endline="31">real</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a459eb99bb9ad49587a1cbb0bb3de8750" compoundref="global__rng_8cpp" startline="33" endline="36">real_range</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734" prot="public" static="yes" mutable="no">
         <type><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref></type>
@@ -29,7 +33,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="11" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="11" column="1"/>
+        <referencedby refid="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" compoundref="global__rng_8cpp" startline="18" endline="21">random</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" compoundref="global__rng_8cpp" startline="23" endline="26">random_range</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1aadfcdd4f8b418047382e29828d81b157" compoundref="global__rng_8cpp" startline="28" endline="31">real</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a459eb99bb9ad49587a1cbb0bb3de8750" compoundref="global__rng_8cpp" startline="33" endline="36">real_range</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1rng_1ade4748f2ea78310c4c2d84f1ce7d1990" prot="public" static="yes" mutable="no">
         <type>const std::array&lt; uint8_t, 16 &gt;</type>
@@ -46,7 +54,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="27" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a196e215960939e55ac626c9c75a451e0" compoundref="rng_8cpp" startline="58" endline="75">openage::rng::RNG::seed</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -62,7 +71,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="13" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="13" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="13" bodyend="16"/>
+        <references refid="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" compoundref="rng_8cpp" startline="222" endline="224">random_seed</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -76,7 +86,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="18" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="18" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="18" bodyend="21"/>
+        <references refid="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</references>
+        <references refid="namespaceopenage_1_1rng_1a30037f3422443d178167adf0e31acc05" compoundref="global__rng_8cpp" startline="10">rand_mutex</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" compoundref="rng_8cpp" startline="89" endline="92">openage::rng::RNG::random</references>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" compoundref="physics_8cpp" startline="275" endline="352">openage::event::demo::ResetGame::invoke</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -98,7 +112,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="23" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="23" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="23" bodyend="26"/>
+        <references refid="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</references>
+        <references refid="namespaceopenage_1_1rng_1a30037f3422443d178167adf0e31acc05" compoundref="global__rng_8cpp" startline="10">rand_mutex</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1ad7b2ba8c495b7ee100b7708b633bc060" compoundref="rng_8h" startline="85" endline="87">openage::rng::RNG::random_range</references>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">openage::Sound::play</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1aadfcdd4f8b418047382e29828d81b157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -112,7 +130,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="28" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="28" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="28" bodyend="31"/>
+        <references refid="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</references>
+        <references refid="namespaceopenage_1_1rng_1a30037f3422443d178167adf0e31acc05" compoundref="global__rng_8cpp" startline="10">rand_mutex</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" compoundref="rng_8h" startline="101" endline="103">openage::rng::RNG::real</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1a459eb99bb9ad49587a1cbb0bb3de8750" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -134,7 +155,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/global_rng.cpp" line="33" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="33" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp" bodystart="33" bodyend="36"/>
+        <references refid="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</references>
+        <references refid="namespaceopenage_1_1rng_1a30037f3422443d178167adf0e31acc05" compoundref="global__rng_8cpp" startline="10">rand_mutex</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a7f8fa5c414eb4888ee638441585fdcec" compoundref="rng_8h" startline="109" endline="111">openage::rng::RNG::real_range</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1af7d90437e58aaa4fe1d816ad7b62dc07" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint64_t</type>
@@ -155,7 +179,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="82" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="82" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="82" bodyend="86"/>
+        <referencedby refid="namespaceopenage_1_1rng_1acffdd6abc0140eac8c12d879172f8566" compoundref="rng_8cpp" startline="100" endline="117">act_fill</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" compoundref="rng_8cpp" startline="89" endline="92">openage::rng::RNG::random</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1acffdd6abc0140eac8c12d879172f8566" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -192,7 +218,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="100" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="100" bodyend="117"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="100" bodyend="117"/>
+        <references refid="namespaceopenage_1_1rng_1af7d90437e58aaa4fe1d816ad7b62dc07" compoundref="rng_8cpp" startline="82" endline="86">do_rng</references>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1ab7dbd0bef0c06a30b6724f2352af833c" compoundref="rng_8cpp" startline="138" endline="145">openage::rng::RNG::fill_real</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1acb0200a44ab02cc735041096cad88fbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -223,7 +251,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="179" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="179" bodyend="182"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="179" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="179" bodyend="182"/>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a144e524ab2720b65d7369fdfaf6f3136" compoundref="rng_8cpp" startline="148" endline="154">openage::rng::RNG::to_stream</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1ace26b663b1fa6bbbaeec1f5903bbc70c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::istream &amp;</type>
@@ -254,7 +283,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="185" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="185" bodyend="188"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="185" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="185" bodyend="188"/>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1ae7d9467b4f3d76c68a9a7f85a78510cd" compoundref="rng_8cpp" startline="157" endline="163">openage::rng::RNG::from_stream</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1a924b85bc82578378e68818dab9a247b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -267,7 +297,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="191" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="191" bodyend="204"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="191" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="191" bodyend="204"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" compoundref="rng_8cpp" startline="207" endline="214">time_seed</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -284,7 +317,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="207" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="207" bodyend="214"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="207" bodyend="214"/>
+        <references refid="namespaceopenage_1_1timing_1aea51f4c8e71a8c326e3dd9dcc05c00eb" compoundref="timing_8cpp" startline="13" endline="18">openage::timing::get_real_time</references>
+        <references refid="namespaceopenage_1_1rng_1a924b85bc82578378e68818dab9a247b6" compoundref="rng_8cpp" startline="191" endline="204">try_random_device</references>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a3b24c3f995bfb45b9d833030720bd88f" compoundref="rng__tests_8cpp" startline="216" endline="230">openage::rng::tests::fill_real</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" compoundref="rng__tests_8cpp" startline="36" endline="77">openage::rng::tests::freq_dist</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" compoundref="rng_8cpp" startline="222" endline="224">random_seed</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" compoundref="rng__tests_8cpp" startline="108" endline="136">openage::rng::tests::real_dist</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" compoundref="rng__tests_8cpp" startline="143" endline="170">openage::rng::tests::reproduce</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1adde6a014119705e9ea92a28bae96f385" compoundref="rng_8cpp" startline="217" endline="219">time_seed</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1adde6a014119705e9ea92a28bae96f385" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -298,7 +339,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="217" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="217" bodyend="219"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="217" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="217" bodyend="219"/>
+        <references refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" compoundref="rng_8cpp" startline="207" endline="214">time_seed</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -312,7 +354,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/rng/rng.cpp" line="222" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="222" bodyend="224"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" line="222" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp" bodystart="222" bodyend="224"/>
+        <references refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" compoundref="rng_8cpp" startline="207" endline="214">time_seed</references>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" compoundref="rng__tests_8cpp" startline="84" endline="98">openage::rng::tests::bool_dist</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" compoundref="rng__tests_8cpp" startline="194" endline="210">openage::rng::tests::fill</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a595e7ab593687bbb092d69186c65c45a" compoundref="global__rng_8cpp" startline="13" endline="16">global_seed</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a265e3eddfd2efda00d3f1d1d9291469d" compoundref="rng__tests_8cpp" startline="175" endline="188">openage::rng::tests::serialize</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -321,6 +368,6 @@
 <para>Contains an easy to use and fast random number generator.</para>
 <para>This was never designed or intended as a cryptographic-quality, <ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref>, so don&apos;t use it as one. If you do, I&apos;ll tell my mom. </para>
     </detaileddescription>
-    <location file="libopenage/gamestate/generator.h" line="20" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="20" column="1"/>
   </compounddef>
 </doxygen>

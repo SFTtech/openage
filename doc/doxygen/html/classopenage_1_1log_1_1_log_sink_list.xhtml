@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::log::LogSinkList Class Reference</title>
+<title>openage: openage::log::LogSinkList Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,9 +100,11 @@ $(document).ready(function(){initNavTree('classopenage_1_1log_1_1_log_sink_list.
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="logsink_8h_source.xhtml">logsink.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::log::LogSinkList:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::log::LogSinkList:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -199,6 +202,17 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                         {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">set_lowest_loglevel</a>();</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a6a410aaea79c35f3e06113b1096ee248"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">openage::log::LogSinkList::set_lowest_loglevel</a></div><div class="ttdeci">void set_lowest_loglevel()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00066">logsink.cpp:66</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_ac1614b4d9555bd540f84ef2645c6c103_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -220,6 +234,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                   {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">sinks_mutex</a>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">sinks</a>.push_back(sink);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">set_lowest_loglevel</a>();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a6a410aaea79c35f3e06113b1096ee248"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">openage::log::LogSinkList::set_lowest_loglevel</a></div><div class="ttdeci">void set_lowest_loglevel()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00066">logsink.cpp:66</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_ad0cfead73eb07b95f1fd10edbeaa62ce"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">openage::log::LogSinkList::sinks</a></div><div class="ttdeci">std::list&lt; LogSink * &gt; sinks</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00072">logsink.h:72</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_af1380df6ea4faddd31d7e9c9b4dfd5a9"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">openage::log::LogSinkList::sinks_mutex</a></div><div class="ttdeci">std::mutex sinks_mutex</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00074">logsink.h:74</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>, <a class="el" href="logsink_8h_source.xhtml#l00072">sinks</a>, and <a class="el" href="logsink_8h_source.xhtml#l00074">sinks_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00013">openage::log::LogSink::LogSink()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_ad4d92156846b759588637ea53a2d0dab_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_ad4d92156846b759588637ea53a2d0dab_icgraph.svg" width="411" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -247,6 +285,18 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                   {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">static</span> <a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#ac1614b4d9555bd540f84ef2645c6c103">LogSinkList</a> <a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">instance</a>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">instance</a>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a2d47416fab12651553b4b58c86fd6f84"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84">openage::log::LogSinkList::instance</a></div><div class="ttdeci">static LogSinkList &amp; instance()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00036">logsink.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_ac1614b4d9555bd540f84ef2645c6c103"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#ac1614b4d9555bd540f84ef2645c6c103">openage::log::LogSinkList::LogSinkList</a></div><div class="ttdeci">LogSinkList()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00031">logsink.cpp:31</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="logsource_8cpp_source.xhtml#l00019">openage::log::LogSource::log()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00013">openage::log::LogSink::LogSink()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00025">openage::log::LogSink::set_loglevel()</a>, <a class="el" href="message_8h_source.xhtml#l00140">openage::log::MessageBuilder::should_format()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00020">openage::log::LogSink::~LogSink()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a2d47416fab12651553b4b58c86fd6f84_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -277,6 +327,21 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                       {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">sinks_mutex</a>);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> *sink : this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">sinks</a>) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// TODO: more sophisticated filtering (iptables-chains-like)</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (msg.lvl &gt;= sink-&gt;loglevel) {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            sink-&gt;output_log_message(msg, source);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_ad0cfead73eb07b95f1fd10edbeaa62ce"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">openage::log::LogSinkList::sinks</a></div><div class="ttdeci">std::list&lt; LogSink * &gt; sinks</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00072">logsink.h:72</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_af1380df6ea4faddd31d7e9c9b4dfd5a9"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">openage::log::LogSinkList::sinks_mutex</a></div><div class="ttdeci">std::mutex sinks_mutex</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00074">logsink.h:74</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="message_8h_source.xhtml#l00078">openage::log::message::lvl</a>, <a class="el" href="logsink_8h_source.xhtml#l00072">sinks</a>, and <a class="el" href="logsink_8h_source.xhtml#l00074">sinks_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsource_8cpp_source.xhtml#l00019">openage::log::LogSource::log()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a8456b84ab55e1fe151c51438c5bfebdd_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -296,6 +361,29 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                   {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">sinks_mutex</a>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">set_lowest_loglevel</a>();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a6a410aaea79c35f3e06113b1096ee248"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">openage::log::LogSinkList::set_lowest_loglevel</a></div><div class="ttdeci">void set_lowest_loglevel()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00066">logsink.cpp:66</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_af1380df6ea4faddd31d7e9c9b4dfd5a9"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">openage::log::LogSinkList::sinks_mutex</a></div><div class="ttdeci">std::mutex sinks_mutex</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00074">logsink.h:74</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>, and <a class="el" href="logsink_8h_source.xhtml#l00074">sinks_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00025">openage::log::LogSink::set_loglevel()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a92501d950b96e9c1978e9112f91773d2_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a92501d950b96e9c1978e9112f91773d2_icgraph.svg" width="584" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -342,6 +430,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00074">74</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                      {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">sinks_mutex</a>);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">sinks</a>.remove(sink);</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">set_lowest_loglevel</a>();</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_a6a410aaea79c35f3e06113b1096ee248"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248">openage::log::LogSinkList::set_lowest_loglevel</a></div><div class="ttdeci">void set_lowest_loglevel()</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8cpp_source.xhtml#l00066">logsink.cpp:66</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_ad0cfead73eb07b95f1fd10edbeaa62ce"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">openage::log::LogSinkList::sinks</a></div><div class="ttdeci">std::list&lt; LogSink * &gt; sinks</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00072">logsink.h:72</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_af1380df6ea4faddd31d7e9c9b4dfd5a9"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">openage::log::LogSinkList::sinks_mutex</a></div><div class="ttdeci">std::mutex sinks_mutex</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00074">logsink.h:74</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>, <a class="el" href="logsink_8h_source.xhtml#l00072">sinks</a>, and <a class="el" href="logsink_8h_source.xhtml#l00074">sinks_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00020">openage::log::LogSink::~LogSink()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a1ab4e5d0b202df164509a5174809685e_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a1ab4e5d0b202df164509a5174809685e_icgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -369,6 +481,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00066">66</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                      {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">lowest_loglevel</a> = <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5">level::MAX</a>;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> *sink : this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">sinks</a>) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">lowest_loglevel</a> = <a class="code" href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">std::min</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">lowest_loglevel</a>, sink-&gt;loglevel);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div><div class="ttc" id="namespacestd_xhtml_a34591a1d8ee5da3f16f56554590d5e16"><div class="ttname"><a href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">std::min</a></div><div class="ttdeci">constexpr openage::util::FixedPoint&lt; I, F &gt; min(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00475">fixed_point.h:475</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5">openage::ability_type::MAX</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_ad0cfead73eb07b95f1fd10edbeaa62ce"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#ad0cfead73eb07b95f1fd10edbeaa62ce">openage::log::LogSinkList::sinks</a></div><div class="ttdeci">std::list&lt; LogSink * &gt; sinks</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00072">logsink.h:72</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_aa64c292b08e2895d2d00ed08f02defa2"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">openage::log::LogSinkList::lowest_loglevel</a></div><div class="ttdeci">level lowest_loglevel</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00078">logsink.h:78</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="logsink_8h_source.xhtml#l00078">lowest_loglevel</a>, <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5">openage::MAX</a>, <a class="el" href="fixed__point_8h_source.xhtml#l00475">std::min()</a>, and <a class="el" href="logsink_8h_source.xhtml#l00072">sinks</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00053">add()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00060">loglevel_changed()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00031">LogSinkList()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00074">remove()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a6a410aaea79c35f3e06113b1096ee248_cgraph.svg" width="515" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a6a410aaea79c35f3e06113b1096ee248_icgraph.svg" width="100%" height="481"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -389,6 +525,21 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8cpp_source.xhtml#l00081">81</a> of file <a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                        {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>(this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">sinks_mutex</a>);</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> loglevel &gt;= this-&gt;<a class="code" href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">lowest_loglevel</a>;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_aa64c292b08e2895d2d00ed08f02defa2"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#aa64c292b08e2895d2d00ed08f02defa2">openage::log::LogSinkList::lowest_loglevel</a></div><div class="ttdeci">level lowest_loglevel</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00078">logsink.h:78</a></div></div>
+<div class="ttc" id="classopenage_1_1log_1_1_log_sink_list_xhtml_af1380df6ea4faddd31d7e9c9b4dfd5a9"><div class="ttname"><a href="classopenage_1_1log_1_1_log_sink_list.xhtml#af1380df6ea4faddd31d7e9c9b4dfd5a9">openage::log::LogSinkList::sinks_mutex</a></div><div class="ttdeci">std::mutex sinks_mutex</div><div class="ttdef"><b>Definition:</b> <a href="logsink_8h_source.xhtml#l00074">logsink.h:74</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="logsink_8h_source.xhtml#l00078">lowest_loglevel</a>, and <a class="el" href="logsink_8h_source.xhtml#l00074">sinks_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="message_8h_source.xhtml#l00140">openage::log::MessageBuilder::should_format()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1log_1_1_log_sink_list_a8255667455a46558739de3cd0a514286_icgraph.svg" width="428" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -415,6 +566,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="logsink_8h_source.xhtml#l00078">78</a> of file <a class="el" href="logsink_8h_source.xhtml">logsink.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00081">supports_loglevel()</a>.</p>
+
 </div>
 </div>
 <a id="ad0cfead73eb07b95f1fd10edbeaa62ce"></a>
@@ -438,6 +591,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="logsink_8h_source.xhtml#l00072">72</a> of file <a class="el" href="logsink_8h_source.xhtml">logsink.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00053">add()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00042">log()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00074">remove()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00066">set_lowest_loglevel()</a>.</p>
 
 </div>
 </div>
@@ -463,11 +618,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="logsink_8h_source.xhtml#l00074">74</a> of file <a class="el" href="logsink_8h_source.xhtml">logsink.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00053">add()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00042">log()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00060">loglevel_changed()</a>, <a class="el" href="logsink_8cpp_source.xhtml#l00074">remove()</a>, and <a class="el" href="logsink_8cpp_source.xhtml#l00081">supports_loglevel()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/log/<a class="el" href="logsink_8h_source.xhtml">logsink.h</a></li>
-<li>libopenage/log/<a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/<a class="el" href="logsink_8h_source.xhtml">logsink.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/<a class="el" href="logsink_8cpp_source.xhtml">logsink.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

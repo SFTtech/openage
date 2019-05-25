@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::MovableProducer Class Reference</title>
+<title>openage: openage::MovableProducer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1_movable_producer.xhtm
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="producer_8h_source.xhtml">producer.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::MovableProducer:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::MovableProducer:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::MovableProducer:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::MovableProducer:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -251,6 +255,29 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="producer_8cpp_source.xhtml#l00363">363</a> of file <a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    :</div><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="classopenage_1_1_object_producer.xhtml#ac48ac7bb1028265411af4f2b34f6ddf7">ObjectProducer</a>(<a class="code" href="classopenage_1_1_unit_type.xhtml#a8aefb19903db17d9f07cea64ecba76bf">owner</a>, spec, um),</div><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>(*um),</div><div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <a class="code" href="classopenage_1_1_movable_producer.xhtml#ad9617a17ae9d50175440828f98004289">on_move</a>{spec.get_sound(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.command_sound_id)},</div><div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <a class="code" href="classopenage_1_1_movable_producer.xhtml#ab0b1193ba9f64b5a55a86c4dd51336a8">on_attack</a>{spec.get_sound(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.command_sound_id)},</div><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="classopenage_1_1_movable_producer.xhtml#afcb26ef8a79336668528088fee8ec2e9">projectile</a>{this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.missile_unit_id} {</div><div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div><div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="comment">// extra graphics if available</span></div><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="comment">// villagers have invalid attack and walk graphics</span></div><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">// it seems these come from the command data instead</span></div><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keyword">auto</span> walk = spec.get_unit_texture(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.walking_graphics0);</div><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">if</span> (!walk) {</div><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="comment">// use standing instead</span></div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        walk = this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">graphics</a>[<a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">graphic_type::standing</a>];</div><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">graphics</a>[<a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3ba099410f601830a2873dd98ea0acf711d">graphic_type::walking</a>] = walk;</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="comment">// reuse as carry graphic if not already set</span></div><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">graphics</a>.count(<a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baa771e1fd1a582e9cf05f5213586f1965">graphic_type::carrying</a>) == 0) {</div><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">graphics</a>[<a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baa771e1fd1a582e9cf05f5213586f1965">graphic_type::carrying</a>] = walk;</div><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    }</div><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div><div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">attack</a> = spec.get_unit_texture(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.fight_sprite_id);</div><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">attack</a> &amp;&amp; <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">attack</a>-&gt;is_valid()) {</div><div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">graphics</a>[<a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659">graphic_type::attack</a>] = <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">attack</a>;</div><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div><div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;</div><div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="comment">// extra abilities</span></div><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#a1585d5b6235d2d90cf2de4736f1a7e54">type_abilities</a>.emplace_back(std::make_shared&lt;MoveAbility&gt;(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#ad9617a17ae9d50175440828f98004289">on_move</a>));</div><div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#a1585d5b6235d2d90cf2de4736f1a7e54">type_abilities</a>.emplace_back(std::make_shared&lt;AttackAbility&gt;(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#ab0b1193ba9f64b5a55a86c4dd51336a8">on_attack</a>));</div><div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3ba099410f601830a2873dd98ea0acf711d"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3ba099410f601830a2873dd98ea0acf711d">openage::graphic_type::walking</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_afcb26ef8a79336668528088fee8ec2e9"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#afcb26ef8a79336668528088fee8ec2e9">openage::MovableProducer::projectile</a></div><div class="ttdeci">int projectile</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00082">producer.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_ad9617a17ae9d50175440828f98004289"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#ad9617a17ae9d50175440828f98004289">openage::MovableProducer::on_move</a></div><div class="ttdeci">const Sound * on_move</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00080">producer.h:80</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e">openage::graphic_type::standing</a></div></div>
+<div class="ttc" id="classopenage_1_1_object_producer_xhtml_ac48ac7bb1028265411af4f2b34f6ddf7"><div class="ttname"><a href="classopenage_1_1_object_producer.xhtml#ac48ac7bb1028265411af4f2b34f6ddf7">openage::ObjectProducer::ObjectProducer</a></div><div class="ttdeci">ObjectProducer(const Player &amp;owner, const GameSpec &amp;spec, const gamedata::unit_object *ud)</div><div class="ttdef"><b>Definition:</b> <a href="producer_8cpp_source.xhtml#l00089">producer.cpp:89</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3baa771e1fd1a582e9cf05f5213586f1965"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3baa771e1fd1a582e9cf05f5213586f1965">openage::graphic_type::carrying</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_type_xhtml_a1585d5b6235d2d90cf2de4736f1a7e54"><div class="ttname"><a href="classopenage_1_1_unit_type.xhtml#a1585d5b6235d2d90cf2de4736f1a7e54">openage::UnitType::type_abilities</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; UnitAbility &gt; &gt; type_abilities</div><div class="ttdef"><b>Definition:</b> <a href="unit__type_8h_source.xhtml#l00154">unit_type.h:154</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659">openage::graphic_type::attack</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_aa6f827a9be53bf8945202bdec83c0e5b"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">openage::MovableProducer::unit_data</a></div><div class="ttdeci">const gamedata::projectile_unit unit_data</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00077">producer.h:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_type_xhtml_a8aefb19903db17d9f07cea64ecba76bf"><div class="ttname"><a href="classopenage_1_1_unit_type.xhtml#a8aefb19903db17d9f07cea64ecba76bf">openage::UnitType::owner</a></div><div class="ttdeci">const Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="unit__type_8h_source.xhtml#l00143">unit_type.h:143</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_ab0b1193ba9f64b5a55a86c4dd51336a8"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#ab0b1193ba9f64b5a55a86c4dd51336a8">openage::MovableProducer::on_attack</a></div><div class="ttdeci">const Sound * on_attack</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00081">producer.h:81</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">openage::ability_type::attack</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_type_xhtml_aaf36044630d13a601a4245e34419df90"><div class="ttname"><a href="classopenage_1_1_unit_type.xhtml#aaf36044630d13a601a4245e34419df90">openage::UnitType::graphics</a></div><div class="ttdeci">graphic_set graphics</div><div class="ttdef"><b>Definition:</b> <a href="unit__type_8h_source.xhtml#l00181">unit_type.h:181</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__spec_8cpp_source.xhtml#l00125">openage::GameSpec::get_sound()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</a>, and <a class="el" href="producer_8h_source.xhtml#l00077">unit_data</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer_ad4f66cd3cb729ceb9c15d7d9f8e00764_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -278,7 +305,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="producer_8cpp_source.xhtml#l00397">397</a> of file <a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -324,6 +351,34 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466">openage::LivingProducer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="producer_8cpp_source.xhtml#l00399">399</a> of file <a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                                           {</div><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment">     * call base function</span></div><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">     */</span></div><div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f">ObjectProducer::initialise</a>(unit, player);</div><div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">     * basic attributes</span></div><div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="comment">     */</span></div><div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">if</span> (!unit-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">attr_type::direction</a>)) {</div><div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        unit-&gt;add_attribute(std::make_shared&lt;Attribute&lt;attr_type::direction&gt;&gt;(coord::phys3_delta{ 1, 0, 0 }));</div><div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div><div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div><div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment">     * distance per millisecond -- consider original game speed</span></div><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="comment">     * where 1.5 in game seconds pass in 1 real second</span></div><div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment">     */</span></div><div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a> sp = this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.speed / 666;</div><div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    unit-&gt;add_attribute(std::make_shared&lt;Attribute&lt;attr_type::speed&gt;&gt;(sp));</div><div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div><div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="comment">// projectile of melee attacks</span></div><div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <a class="code" href="classopenage_1_1_unit_type.xhtml#a6ae0e2415e9082dbbfb4210343ac9f27">UnitType</a> *proj_type = this-&gt;<a class="code" href="classopenage_1_1_unit_type.xhtml#a8aefb19903db17d9f07cea64ecba76bf">owner</a>.<a class="code" href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1">get_type</a>(this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#afcb26ef8a79336668528088fee8ec2e9">projectile</a>);</div><div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.missile_unit_id &gt; 0 &amp;&amp; proj_type) {</div><div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div><div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        <span class="comment">// calculate requirements for ranged attacks</span></div><div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <a class="code" href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">coord::phys_t</a> range_phys = this-&gt;<a class="code" href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">unit_data</a>.weapon_range_max;</div><div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        unit-&gt;add_attribute(std::make_shared&lt;Attribute&lt;attr_type::attack&gt;&gt;(proj_type, range_phys, 48000, 1));</div><div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    }</div><div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        unit-&gt;add_attribute(std::make_shared&lt;Attribute&lt;attr_type::attack&gt;&gt;(<span class="keyword">nullptr</span>, 0, 0, 1));</div><div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    }</div><div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    unit-&gt;add_attribute(std::make_shared&lt;Attribute&lt;attr_type::formation&gt;&gt;());</div><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div><div class="ttc" id="classopenage_1_1_object_producer_xhtml_aee34f7883059625ffd3fb4bd5a43371f"><div class="ttname"><a href="classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f">openage::ObjectProducer::initialise</a></div><div class="ttdeci">void initialise(Unit *, Player &amp;) override</div><div class="ttdef"><b>Definition:</b> <a href="producer_8cpp_source.xhtml#l00213">producer.cpp:213</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_afcb26ef8a79336668528088fee8ec2e9"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#afcb26ef8a79336668528088fee8ec2e9">openage::MovableProducer::projectile</a></div><div class="ttdeci">int projectile</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00082">producer.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_type_xhtml_a6ae0e2415e9082dbbfb4210343ac9f27"><div class="ttname"><a href="classopenage_1_1_unit_type.xhtml#a6ae0e2415e9082dbbfb4210343ac9f27">openage::UnitType::UnitType</a></div><div class="ttdeci">UnitType()</div><div class="ttdef"><b>Definition:</b> <a href="type__pair_8cpp_source.xhtml#l00007">type_pair.cpp:7</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_a257112db0574d981f4bd017656c687fe"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a257112db0574d981f4bd017656c687fe">openage::coord::phys_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt; phys_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00022">declarations.h:22</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::attr_type::direction</a></div></div>
+<div class="ttc" id="classopenage_1_1_movable_producer_xhtml_aa6f827a9be53bf8945202bdec83c0e5b"><div class="ttname"><a href="classopenage_1_1_movable_producer.xhtml#aa6f827a9be53bf8945202bdec83c0e5b">openage::MovableProducer::unit_data</a></div><div class="ttdeci">const gamedata::projectile_unit unit_data</div><div class="ttdef"><b>Definition:</b> <a href="producer_8h_source.xhtml#l00077">producer.h:77</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_type_xhtml_a8aefb19903db17d9f07cea64ecba76bf"><div class="ttname"><a href="classopenage_1_1_unit_type.xhtml#a8aefb19903db17d9f07cea64ecba76bf">openage::UnitType::owner</a></div><div class="ttdeci">const Player &amp; owner</div><div class="ttdef"><b>Definition:</b> <a href="unit__type_8h_source.xhtml#l00143">unit_type.h:143</a></div></div>
+<div class="ttc" id="classopenage_1_1_player_xhtml_a67c7f6853d4be5c38d2456169af3d5a1"><div class="ttname"><a href="classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1">openage::Player::get_type</a></div><div class="ttdeci">UnitType * get_type(index_t type_id) const</div><div class="ttdef"><b>Definition:</b> <a href="player_8cpp_source.xhtml#l00119">player.cpp:119</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_8cpp_source.xhtml#l00246">openage::Unit::add_attribute()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::direction</a>, <a class="el" href="player_8cpp_source.xhtml#l00119">openage::Player::get_type()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="producer_8cpp_source.xhtml#l00213">openage::ObjectProducer::initialise()</a>, <a class="el" href="unit__type_8h_source.xhtml#l00143">openage::UnitType::owner</a>, <a class="el" href="producer_8h_source.xhtml#l00082">projectile</a>, and <a class="el" href="producer_8h_source.xhtml#l00077">unit_data</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00449">openage::LivingProducer::initialise()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer_a3fc2ee02406d37a4106d51fee9d3c1c0_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer_a3fc2ee02406d37a4106d51fee9d3c1c0_icgraph.svg" width="400" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -374,6 +429,27 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1_living_producer.xhtml#af454fa0fd996b30d44590a2e00a4380b">openage::LivingProducer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="producer_8cpp_source.xhtml#l00434">434</a> of file <a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                                                                                           {</div><div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e">ObjectProducer::place</a>(unit, terrain, init_pos);</div><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;}</div><div class="ttc" id="classopenage_1_1_object_producer_xhtml_a6063c50f0e551a3a5a1a4c08f555bf0e"><div class="ttname"><a href="classopenage_1_1_object_producer.xhtml#a6063c50f0e551a3a5a1a4c08f555bf0e">openage::ObjectProducer::place</a></div><div class="ttdeci">TerrainObject * place(Unit *, std::shared_ptr&lt; Terrain &gt;, coord::phys3) const override</div><div class="ttdef"><b>Definition:</b> <a href="producer_8cpp_source.xhtml#l00294">producer.cpp:294</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="producer_8cpp_source.xhtml#l00294">openage::ObjectProducer::place()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00518">openage::LivingProducer::place()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer_ace952d53d7717d9db843391f49fbf76b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_movable_producer_ace952d53d7717d9db843391f49fbf76b_icgraph.svg" width="400" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -448,6 +524,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="producer_8h_source.xhtml#l00081">81</a> of file <a class="el" href="producer_8h_source.xhtml">producer.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00449">openage::LivingProducer::initialise()</a>.</p>
+
 </div>
 </div>
 <a id="ad9617a17ae9d50175440828f98004289"></a>
@@ -471,6 +549,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="producer_8h_source.xhtml#l00080">80</a> of file <a class="el" href="producer_8h_source.xhtml">producer.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00438">openage::LivingProducer::LivingProducer()</a>.</p>
 
 </div>
 </div>
@@ -496,6 +576,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="producer_8h_source.xhtml#l00082">82</a> of file <a class="el" href="producer_8h_source.xhtml">producer.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00399">initialise()</a>.</p>
+
 </div>
 </div>
 <a id="aa6f827a9be53bf8945202bdec83c0e5b"></a>
@@ -520,11 +602,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="producer_8h_source.xhtml#l00077">77</a> of file <a class="el" href="producer_8h_source.xhtml">producer.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="producer_8cpp_source.xhtml#l00399">initialise()</a>, and <a class="el" href="producer_8cpp_source.xhtml#l00363">MovableProducer()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="producer_8h_source.xhtml">producer.h</a></li>
-<li>libopenage/unit/<a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="producer_8h_source.xhtml">producer.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="producer_8cpp_source.xhtml">producer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

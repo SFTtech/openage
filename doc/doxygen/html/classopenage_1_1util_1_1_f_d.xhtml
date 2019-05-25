@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::util::FD Class Reference</title>
+<title>openage: openage::util::FD Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_f_d.xhtml',''
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="fds_8h_source.xhtml">fds.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::util::FD:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d__coll__graph.svg" width="166" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::FD:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d__coll__graph.svg" width="166" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -163,6 +165,9 @@ Public Attributes</h2></td></tr>
 <p>wraps an existing <a class="el" href="classopenage_1_1util_1_1_f_d.xhtml">FD</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;             {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a> = <a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>.</p>
 
 </div>
 </div>
@@ -194,6 +199,10 @@ Public Attributes</h2></td></tr>
 <p>duplicates an existing <a class="el" href="classopenage_1_1util_1_1_f_d.xhtml">FD</a>, and optionally sets it to non-blocking mode </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00027">27</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                   {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a> = ::dup(<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ada7855eacf804de00a87133a77a53847">close_on_destroy</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (set_nonblocking) {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">        #ifndef _WIN32</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">int</span> flags = ::fcntl(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, F_GETFL, 0);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        ::fcntl(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, F_SETFL, flags | O_NONBLOCK);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">        #endif</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ada7855eacf804de00a87133a77a53847"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ada7855eacf804de00a87133a77a53847">openage::util::FD::close_on_destroy</a></div><div class="ttdeci">bool close_on_destroy</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00039">fds.h:39</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00039">close_on_destroy</a>, and <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>.</p>
 
 </div>
 </div>
@@ -224,6 +233,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                   :</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a832a1b981d9ae02efe69ecf59a4f76d3">FD</a>{<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>-&gt;fd, set_nonblocking} {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a832a1b981d9ae02efe69ecf59a4f76d3"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a832a1b981d9ae02efe69ecf59a4f76d3">openage::util::FD::FD</a></div><div class="ttdeci">FD(int fd)</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00023">fds.cpp:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>.</p>
 
 </div>
 </div>
@@ -243,6 +256,20 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">restore_input_mode_on_destroy</a>) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a0a5d58436cb743cc2a19b40c24d98512">restoreinputmode</a>();</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ada7855eacf804de00a87133a77a53847">close_on_destroy</a>) {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ::close(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a4aa40717929b388f0d8572765ec1132f"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">openage::util::FD::restore_input_mode_on_destroy</a></div><div class="ttdeci">bool restore_input_mode_on_destroy</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00045">fds.h:45</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a0a5d58436cb743cc2a19b40c24d98512"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a0a5d58436cb743cc2a19b40c24d98512">openage::util::FD::restoreinputmode</a></div><div class="ttdeci">void restoreinputmode()</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00130">fds.cpp:130</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ada7855eacf804de00a87133a77a53847"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ada7855eacf804de00a87133a77a53847">openage::util::FD::close_on_destroy</a></div><div class="ttdeci">bool close_on_destroy</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00039">fds.h:39</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00039">close_on_destroy</a>, <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>, <a class="el" href="fds_8h_source.xhtml#l00045">restore_input_mode_on_destroy</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00130">restoreinputmode()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_accc8dcfb03019d9d3a9c12bc435de0bb_cgraph.svg" width="343" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -275,6 +302,28 @@ Public Attributes</h2></td></tr>
 <p>guess what this does. because I won't tell you. </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00075">75</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                      {</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> buf_size = 16;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">char</span> *buf = (<span class="keywordtype">char</span>*) malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * buf_size);</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (!buf) {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    va_list vl;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">//first, try to vsnprintf to a buffer of length 16</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    va_start(vl, format);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">unsigned</span> len = vsnprintf(buf, buf_size, format, vl);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    va_end(vl);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//if that wasn&#39;t enough, allocate more memory and try again</span></div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (len &gt;= buf_size) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">char</span> *oldbuf = buf;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        buf = (<span class="keywordtype">char</span>*) realloc(oldbuf, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (len + 1));</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (!buf) {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            free(oldbuf);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        va_start(vl, format);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        vsnprintf(buf, len + 1, format, vl);</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        va_end(vl);</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">//output buf to the socket</span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a> = this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0">puts</a>(buf);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">//free the buffer</span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    free(buf);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a5c27276c6b3cf4af0e5d13979c0e81a0"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0">openage::util::FD::puts</a></div><div class="ttdeci">int puts(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00057">fds.cpp:57</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8cpp_source.xhtml#l00057">puts()</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_ac3b4a14cfa134355f0890c1d9ea608f4_cgraph.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_ac3b4a14cfa134355f0890c1d9ea608f4_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -296,6 +345,27 @@ Public Attributes</h2></td></tr>
 <p>writes the char </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                      {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15">write</a>(&amp;c, 1);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a3e0c796f513380f80b1f0c11d29bab15"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15">openage::util::FD::write</a></div><div class="ttdeci">int write(const char *buf, size_t bytes)</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00053">fds.cpp:53</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8cpp_source.xhtml#l00053">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_aa7042077eda5413ddddf0075a1a66761_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_aa7042077eda5413ddddf0075a1a66761_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -317,6 +387,28 @@ Public Attributes</h2></td></tr>
 <p>writes the unicode codepoint, as utf-8 </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00065">65</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">char</span> utf8buf[5];</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671">util::utf8_encode</a>(cp, utf8buf) == 0) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">//unrepresentable character (question mark in black rhombus)</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0">puts</a>(<span class="stringliteral">&quot;\uFFFD&quot;</span>);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0">puts</a>(utf8buf);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a5c27276c6b3cf4af0e5d13979c0e81a0"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a5c27276c6b3cf4af0e5d13979c0e81a0">openage::util::FD::puts</a></div><div class="ttdeci">int puts(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00057">fds.cpp:57</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_aed7ef0b5ccf0d22a6329396d9a59f671"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671">openage::util::utf8_encode</a></div><div class="ttdeci">size_t utf8_encode(int cp, char *outbuf)</div><div class="ttdef"><b>Definition:</b> <a href="unicode_8cpp_source.xhtml#l00120">unicode.cpp:120</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8cpp_source.xhtml#l00057">puts()</a>, and <a class="el" href="unicode_8cpp_source.xhtml#l00120">openage::util::utf8_encode()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a6826267ab945c97663c9e3506bbf2542_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a6826267ab945c97663c9e3506bbf2542_icgraph.svg" width="556" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -338,6 +430,29 @@ Public Attributes</h2></td></tr>
 <p>writes the string (excluding the null terminator) </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                            {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15">write</a>(<a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>, <a class="code" href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7">strlen</a>(<a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>));</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_1_1constexpr___xhtml_a72a87a05e383ec62bf0b60359f314df7"><div class="ttname"><a href="namespaceopenage_1_1util_1_1constexpr__.xhtml#a72a87a05e383ec62bf0b60359f314df7">openage::util::constexpr_::strlen</a></div><div class="ttdeci">constexpr size_t strlen(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="constexpr_8h_source.xhtml#l00030">constexpr.h:30</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a3e0c796f513380f80b1f0c11d29bab15"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a3e0c796f513380f80b1f0c11d29bab15">openage::util::FD::write</a></div><div class="ttdeci">int write(const char *buf, size_t bytes)</div><div class="ttdef"><b>Definition:</b> <a href="fds_8cpp_source.xhtml#l00053">fds.cpp:53</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00331">openage::py::str()</a>, <a class="el" href="constexpr_8h_source.xhtml#l00030">openage::util::constexpr_::strlen()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00053">write()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="console_2tests_8cpp_source.xhtml#l00055">openage::console::tests::interactive()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00075">printf()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00065">putcp()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a5c27276c6b3cf4af0e5d13979c0e81a0_cgraph.svg" width="100%" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a5c27276c6b3cf4af0e5d13979c0e81a0_icgraph.svg" width="100%" height="461"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -358,6 +473,21 @@ Public Attributes</h2></td></tr>
 <p>restores the input mode to the mode that was backed up during the last <a class="el" href="classopenage_1_1util_1_1_f_d.xhtml#a4455d9a6fa5ec24fef9b0c28fc4ef483">setinputmodecanon()</a> mode. </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00130">130</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                          {</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">    #ifndef _WIN32</span></div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (::isatty(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>)) {</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        ::tcsetattr(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, TCSANOW, &amp;this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a04fbb0344faa51064a9e6f1beebc29ac">old_tio</a>);</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">restore_input_mode_on_destroy</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">    #endif </span><span class="comment">/* _WIN32 */</span><span class="preprocessor"></span></div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a4aa40717929b388f0d8572765ec1132f"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">openage::util::FD::restore_input_mode_on_destroy</a></div><div class="ttdeci">bool restore_input_mode_on_destroy</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00045">fds.h:45</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a04fbb0344faa51064a9e6f1beebc29ac"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a04fbb0344faa51064a9e6f1beebc29ac">openage::util::FD::old_tio</a></div><div class="ttdeci">struct termios old_tio</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00088">fds.h:88</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>, <a class="el" href="fds_8h_source.xhtml#l00088">old_tio</a>, and <a class="el" href="fds_8h_source.xhtml#l00045">restore_input_mode_on_destroy</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00043">~FD()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a0a5d58436cb743cc2a19b40c24d98512_icgraph.svg" width="343" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -382,6 +512,11 @@ Public Attributes</h2></td></tr>
 </ul>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00112">112</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                           {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">    #ifndef _WIN32</span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (::isatty(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>)) {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">//get the terminal settings for stdin</span></div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        ::tcgetattr(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, &amp;this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a04fbb0344faa51064a9e6f1beebc29ac">old_tio</a>);</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">//backup old settings</span></div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">struct </span>termios new_tio = this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a04fbb0344faa51064a9e6f1beebc29ac">old_tio</a>;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="comment">//disable buffered i/o (canonical mode) and local echo</span></div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        new_tio.c_lflag &amp;= (~ICANON &amp; ~ECHO &amp; ~ISIG);</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">//set the settings</span></div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        ::tcsetattr(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, TCSANOW, &amp;new_tio);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">restore_input_mode_on_destroy</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">    #endif </span><span class="comment">/* _WIN32 */</span><span class="preprocessor"></span></div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div><div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a4aa40717929b388f0d8572765ec1132f"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a4aa40717929b388f0d8572765ec1132f">openage::util::FD::restore_input_mode_on_destroy</a></div><div class="ttdeci">bool restore_input_mode_on_destroy</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00045">fds.h:45</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_a04fbb0344faa51064a9e6f1beebc29ac"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#a04fbb0344faa51064a9e6f1beebc29ac">openage::util::FD::old_tio</a></div><div class="ttdeci">struct termios old_tio</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00088">fds.h:88</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>, <a class="el" href="fds_8h_source.xhtml#l00088">old_tio</a>, and <a class="el" href="fds_8h_source.xhtml#l00045">restore_input_mode_on_destroy</a>.</p>
 
 </div>
 </div>
@@ -413,6 +548,28 @@ Public Attributes</h2></td></tr>
 <p>writes 'bytes' bytes from buf </p>
 
 <p class="definition">Definition at line <a class="el" href="fds_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                           {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    return ::write(this-&gt;<a class="code" href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">fd</a>, buf, <a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">bytes</a>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_f_d_xhtml_ad74377a363842f04fa8cf7c3d110ab01"><div class="ttname"><a href="classopenage_1_1util_1_1_f_d.xhtml#ad74377a363842f04fa8cf7c3d110ab01">openage::util::FD::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="fds_8h_source.xhtml#l00033">fds.h:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00338">openage::py::bytes()</a>, and <a class="el" href="fds_8h_source.xhtml#l00033">fd</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00061">putbyte()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00057">puts()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a3e0c796f513380f80b1f0c11d29bab15_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_f_d_a3e0c796f513380f80b1f0c11d29bab15_icgraph.svg" width="100%" height="483"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -432,6 +589,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fds_8h_source.xhtml#l00039">39</a> of file <a class="el" href="fds_8h_source.xhtml">fds.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00027">FD()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00043">~FD()</a>.</p>
+
 </div>
 </div>
 <a id="ad74377a363842f04fa8cf7c3d110ab01"></a>
@@ -448,6 +607,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fds_8h_source.xhtml#l00033">33</a> of file <a class="el" href="fds_8h_source.xhtml">fds.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00023">FD()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00130">restoreinputmode()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00112">setinputmodecanon()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00053">write()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00043">~FD()</a>.</p>
+
 </div>
 </div>
 <a id="a04fbb0344faa51064a9e6f1beebc29ac"></a>
@@ -463,6 +624,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="fds_8h_source.xhtml#l00088">88</a> of file <a class="el" href="fds_8h_source.xhtml">fds.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00130">restoreinputmode()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00112">setinputmodecanon()</a>.</p>
 
 </div>
 </div>
@@ -481,11 +644,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fds_8h_source.xhtml#l00045">45</a> of file <a class="el" href="fds_8h_source.xhtml">fds.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="fds_8cpp_source.xhtml#l00130">restoreinputmode()</a>, <a class="el" href="fds_8cpp_source.xhtml#l00112">setinputmodecanon()</a>, and <a class="el" href="fds_8cpp_source.xhtml#l00043">~FD()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/util/<a class="el" href="fds_8h_source.xhtml">fds.h</a></li>
-<li>libopenage/util/<a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="fds_8h_source.xhtml">fds.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="fds_8cpp_source.xhtml">fds.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

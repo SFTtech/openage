@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a19a6835538cf7d7ccad33ad97969f2fe" compoundref="gui__dedicated__thread_8cpp" startline="46" endline="49">~GuiDedicatedThread</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -30,7 +31,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">get</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1acb18aaa9962e0f94f007e81c792d071f" prot="private" static="yes" mutable="no">
         <type>bool</type>
@@ -44,7 +46,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">get</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" compoundref="wrapper_8py" startline="68" endline="70">openage.util.fslike.wrapper.Wrapper.resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5" compoundref="fslike_2abstract_8py" startline="87" endline="89">openage.util.fslike.abstract.FSLikeObject.resolve_r</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1a23c98485b115500bc1f4cef767c15ec4" prot="private" static="yes" mutable="no">
         <type>std::mutex</type>
@@ -57,7 +62,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">get</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1a64948a610eb428e9a9ba9603a9466d15" prot="private" static="yes" mutable="no">
         <type>std::condition_variable</type>
@@ -70,7 +76,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="32" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">get</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -85,7 +92,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="51" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="51" bodyend="80"/>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1a64948a610eb428e9a9ba9603a9466d15" compoundref="gui__dedicated__thread_8h" startline="32">destroyed</references>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1a23c98485b115500bc1f4cef767c15ec4" compoundref="gui__dedicated__thread_8h" startline="31">existence_guard</references>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1acb18aaa9962e0f94f007e81c792d071f" compoundref="gui__dedicated__thread_8h" startline="30">exists</references>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1a7df4d5c05f49eac41404768088ed38ee" compoundref="gui__dedicated__thread_8cpp" startline="20" endline="44">GuiDedicatedThread</references>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1a569418caf8eb1698b0563f6382aedf5e" compoundref="gui__dedicated__thread_8h" startline="28">instance</references>
+        <references refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" compoundref="setup_8cpp" startline="22">lock</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -100,7 +113,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="21" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="46" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="46" bodyend="49"/>
+        <references refid="classqtsdl_1_1_gui_dedicated_thread_1adb99230c55459bafd54f09ee67b35b28" compoundref="gui__dedicated__thread_8h" startline="26">worker</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -115,7 +129,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="24" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="20" bodyend="44"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="20" bodyend="44"/>
+        <referencedby refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" compoundref="gui__dedicated__thread_8cpp" startline="51" endline="80">get</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -125,12 +140,12 @@
 <para>For sharing the thread with something else, use <ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">qtsdl::GuiApplicationImpl</ref> instead. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2500">
+      <node id="6186">
         <label>qtsdl::GuiDedicatedThread</label>
         <link refid="classqtsdl_1_1_gui_dedicated_thread"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="17" bodyend="33"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="17" bodyend="33"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_dedicated_thread_1a64948a610eb428e9a9ba9603a9466d15" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>destroyed</name></member>
       <member refid="classqtsdl_1_1_gui_dedicated_thread_1a23c98485b115500bc1f4cef767c15ec4" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>existence_guard</name></member>

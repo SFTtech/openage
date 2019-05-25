@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="40" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="40" bodyend="44"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="40" bodyend="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,12 +29,12 @@
 <para>this allows storage of chunk coords as keys in an unordered map. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="954">
+      <node id="1789">
         <label>openage::coord_chunk_hash</label>
         <link refid="structopenage_1_1coord__chunk__hash"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain.h" line="39" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="39" bodyend="45"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="39" bodyend="45"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord__chunk__hash_1a51c6912a92de83b5f8b924beef16cc95" prot="public" virt="non-virtual"><scope>openage::coord_chunk_hash</scope><name>operator()</name></member>
     </listofallmembers>

@@ -4,7 +4,7 @@
     <compoundname>tests.h</compoundname>
     <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="renderer_2tests_8cpp" local="yes">libopenage/renderer/tests.cpp</includedby>
+    <includedby refid="renderer_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</includedby>
     <incdepgraph>
       <node id="5893">
         <label>list</label>
@@ -269,7 +269,7 @@
         <label>memory</label>
       </node>
       <node id="5861">
-        <label>libopenage/renderer/tests.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.h</label>
         <link refid="renderer_2tests_8h"/>
         <childnode refid="5862" relation="include">
         </childnode>
@@ -289,11 +289,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5902">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="5901">
-        <label>libopenage/renderer/tests.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.h</label>
         <link refid="renderer_2tests_8h"/>
         <childnode refid="5902" relation="include">
         </childnode>
@@ -325,6 +325,6 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/tests.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.h"/>
   </compounddef>
 </doxygen>

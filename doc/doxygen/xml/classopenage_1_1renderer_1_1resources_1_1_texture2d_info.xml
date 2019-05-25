@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">get_row_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" compoundref="texture__info_8cpp" startline="28" endline="30">get_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" compoundref="texture__info_8cpp" startline="17" endline="22">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" prot="private" static="no" mutable="no">
         <type>int32_t</type>
@@ -29,7 +32,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" compoundref="texture__info_8cpp" startline="53" endline="55">get_data_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" compoundref="texture__info_8cpp" startline="28" endline="30">get_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" compoundref="texture__info_8cpp" startline="17" endline="22">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
@@ -43,7 +49,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="109" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="109" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" compoundref="texture__info_8cpp" startline="32" endline="34">get_format</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">get_row_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" compoundref="texture__info_8cpp" startline="17" endline="22">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -57,7 +66,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="114" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="114" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="114" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1af981ae334cc8a2499278fd15af4d21fc" compoundref="texture__info_8cpp" startline="36" endline="38">get_row_alignment</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">get_row_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" compoundref="texture__info_8cpp" startline="17" endline="22">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &gt;</type>
@@ -71,7 +83,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="118" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="118" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" compoundref="texture__info_8cpp" startline="61" endline="67">get_subtexture</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1abaa2fb4684682990cde06485dc8b514d" compoundref="texture__info_8cpp" startline="57" endline="59">get_subtexture_count</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -109,7 +123,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="57" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="10" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="10" bodyend="15"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a21576236d6837b2d3d19d9d3a8429c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -122,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="59" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="59" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a4b4038b52a59ab7847feb0a22497fa52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -138,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="60" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="60" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aba844ce34d032c1f8512bfa0b3029e27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -151,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="61" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="61" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -169,7 +184,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="65" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="17" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="17" bodyend="22"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" compoundref="texture__info_8h" startline="109">format</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" compoundref="texture__info_8h" startline="106">h</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" compoundref="texture__info_8h" startline="114">row_alignment</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aa5a45cabdac647582d3f5bea32dbfc39" compoundref="texture__info_8h" startline="106">w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a887af57038df9ce8406e1ba6fff27cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -187,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="68" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="24" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="24" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; int32_t, int32_t &gt;</type>
@@ -203,7 +222,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="72" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="28" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="28" bodyend="30"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" compoundref="texture__info_8h" startline="106">h</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aa5a45cabdac647582d3f5bea32dbfc39" compoundref="texture__info_8h" startline="106">w</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" compoundref="texture__data_8cpp" startline="125" endline="140">openage::renderer::resources::Texture2dData::flip_y</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a780b276d8b13fa2b8e2e1258e32e4199" compoundref="opengl_2texture__array_8cpp" startline="22" endline="43">openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" compoundref="renderer_2opengl_2texture_8cpp" startline="95" endline="110">openage::renderer::opengl::GlTexture2d::upload</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" compoundref="opengl_2texture__array_8cpp" startline="79" endline="98">openage::renderer::opengl::GlTexture2dArray::upload</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
@@ -219,7 +247,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="75" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" compoundref="texture__info_8h" startline="109">format</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a780b276d8b13fa2b8e2e1258e32e4199" compoundref="opengl_2texture__array_8cpp" startline="22" endline="43">openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b" compoundref="renderer_2opengl_2texture_8cpp" startline="83" endline="93">openage::renderer::opengl::GlTexture2d::into_data</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" compoundref="renderer_2opengl_2texture_8cpp" startline="95" endline="110">openage::renderer::opengl::GlTexture2d::upload</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" compoundref="opengl_2texture__array_8cpp" startline="79" endline="98">openage::renderer::opengl::GlTexture2dArray::upload</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1af981ae334cc8a2499278fd15af4d21fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -233,7 +268,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="78" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="36" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="36" bodyend="38"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" compoundref="texture__info_8h" startline="114">row_alignment</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b" compoundref="renderer_2opengl_2texture_8cpp" startline="83" endline="93">openage::renderer::opengl::GlTexture2d::into_data</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -247,7 +284,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="82" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="40" bodyend="51"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="40" bodyend="51"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" compoundref="texture__info_8h" startline="109">format</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" compoundref="texture__info_8h" startline="36" endline="48">openage::renderer::resources::pixel_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" compoundref="texture__info_8h" startline="114">row_alignment</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aa5a45cabdac647582d3f5bea32dbfc39" compoundref="texture__info_8h" startline="106">w</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" compoundref="texture__data_8cpp" startline="125" endline="140">openage::renderer::resources::Texture2dData::flip_y</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" compoundref="texture__info_8cpp" startline="53" endline="55">get_data_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -261,7 +306,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="86" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="53" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="53" bodyend="55"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">get_row_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" compoundref="texture__info_8h" startline="106">h</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad5d4ec5b1523d89a23170beea4bf6525" compoundref="opengl_2renderer_8cpp" startline="57" endline="73">openage::renderer::opengl::GlRenderer::display_into_data</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b" compoundref="renderer_2opengl_2texture_8cpp" startline="83" endline="93">openage::renderer::opengl::GlTexture2d::into_data</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1abaa2fb4684682990cde06485dc8b514d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -275,7 +325,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="89" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="57" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="57" bodyend="59"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" compoundref="texture__info_8h" startline="118">subtextures</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &amp;</type>
@@ -293,7 +344,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="92" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="61" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="61" bodyend="67"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" compoundref="texture__info_8h" startline="118">subtextures</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aeb376e40e3da8cadee1848fa1ea28226" compoundref="texture__info_8cpp" startline="74" endline="82">get_subtexture_coordinates</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" compoundref="texture__info_8cpp" startline="69" endline="72">get_subtexture_size</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; int32_t, int32_t &gt;</type>
@@ -311,7 +367,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="95" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="69" bodyend="72"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="69" bodyend="72"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" compoundref="texture__info_8cpp" startline="61" endline="67">get_subtexture</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aeb376e40e3da8cadee1848fa1ea28226" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::tuple&lt; float, float, float, float &gt;</type>
@@ -332,7 +389,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="102" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="74" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp" bodystart="74" bodyend="82"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" compoundref="texture__info_8cpp" startline="61" endline="67">get_subtexture</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -341,12 +399,12 @@
 <para>Contains information about a 2D texture surface, without actual texture data. The class supports subtextures, so that one big texture (&quot;texture atlas&quot;) can contain several smaller images, which can be extracted for rendering one-by-one. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4471">
+      <node id="4764">
         <label>openage::renderer::resources::Texture2dInfo</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/resources/texture_info.h" line="54" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="54" bodyend="119"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="54" bodyend="119"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>format</name></member>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_data_size</name></member>

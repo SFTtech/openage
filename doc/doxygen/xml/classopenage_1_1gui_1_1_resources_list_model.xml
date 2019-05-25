@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="21" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -33,7 +33,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="39" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="39" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1ab5a3cadc4c413fbac7ec1de1a00433a7" compoundref="resources__list__model_8cpp" startline="71" endline="85">data</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1a10d6d0fca4a81acbd8d14d9b89bbf438" compoundref="resources__list__model_8cpp" startline="54" endline="64">on_resource_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1ae95e757c9e3abcd727b89efe212b2127" compoundref="resources__list__model_8cpp" startline="66" endline="69">rowCount</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
@@ -46,7 +49,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="41" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="41" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" compoundref="resources__list__model_8cpp" startline="36" endline="38">get_action_mode</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" compoundref="resources__list__model_8cpp" startline="40" endline="52">set_action_mode</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -66,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="26" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="25" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="25" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1a22b3b963aacfc3a4d86a5195c02bfdc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -79,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="27" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="33" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="33" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
@@ -92,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="29" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="36" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="36" bodyend="38"/>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" compoundref="resources__list__model_8h" startline="41">action_mode</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -109,7 +115,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="30" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="40" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="40" bodyend="52"/>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" compoundref="resources__list__model_8h" startline="41">action_mode</references>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1a10d6d0fca4a81acbd8d14d9b89bbf438" compoundref="resources__list__model_8cpp" startline="54" endline="64">on_resource_changed</references>
+        <references refid="classopenage_1_1_action_mode_signals_1a5184e9ff66287616fc73fda928e7b762">openage::ActionModeSignals::resource_changed</references>
+        <references refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" compoundref="gui__item__link_8h" startline="37" endline="39">qtsdl::unwrap</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-slot">
@@ -132,7 +142,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="33" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="54" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="54" bodyend="64"/>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" compoundref="resources__list__model_8h" startline="39">amounts</references>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::resource</references>
+        <referencedby refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" compoundref="resources__list__model_8cpp" startline="40" endline="52">set_action_mode</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -150,7 +164,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="36" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="66" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="66" bodyend="69"/>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" compoundref="resources__list__model_8h" startline="39">amounts</references>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1ab5a3cadc4c413fbac7ec1de1a00433a7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QVariant</type>
@@ -172,7 +188,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/resources_list_model.h" line="37" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="71" bodyend="85"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp" bodystart="71" bodyend="85"/>
+        <references refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" compoundref="resources__list__model_8h" startline="39">amounts</references>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -181,64 +200,119 @@
 <para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> table for the gui. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4114">
+      <node id="3672">
         <label>openage::gui::ResourcesListModel</label>
         <link refid="classopenage_1_1gui_1_1_resources_list_model"/>
-        <childnode refid="4115" relation="public-inheritance">
+        <childnode refid="3673" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4115">
+      <node id="3673">
         <label>QAbstractListModel</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4120">
+      <node id="3681">
+        <label>T</label>
+      </node>
+      <node id="3678">
         <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="4121" relation="public-inheritance">
+        <childnode refid="3679" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3680" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4123">
+      <node id="3683">
         <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="3684" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="4116">
+      <node id="3680">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="3681" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3674">
         <label>openage::gui::ResourcesListModel</label>
         <link refid="classopenage_1_1gui_1_1_resources_list_model"/>
-        <childnode refid="4117" relation="public-inheritance">
+        <childnode refid="3675" relation="public-inheritance">
         </childnode>
-        <childnode refid="4118" relation="usage">
+        <childnode refid="3676" relation="usage">
           <edgelabel>-action_mode</edgelabel>
         </childnode>
       </node>
-      <node id="4118">
+      <node id="3686">
+        <label>qtsdl::Inherits&lt; T, P &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="3680" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3687" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3684">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="3688">
+        <label>qtsdl::GuiItemMethods&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="3684" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3685">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="3684" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3687">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="3688" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3685" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3676">
         <label>openage::gui::ActionModeLink</label>
         <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
-        <childnode refid="4119" relation="public-inheritance">
+        <childnode refid="3677" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4122">
+      <node id="3682">
         <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="4123" relation="public-inheritance">
+        <childnode refid="3683" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3685" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4117">
+      <node id="3675">
         <label>QAbstractListModel</label>
       </node>
-      <node id="4119">
+      <node id="3677">
         <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_inherits"/>
-        <childnode refid="4120" relation="public-inheritance">
+        <childnode refid="3678" relation="public-inheritance">
         </childnode>
-        <childnode refid="4122" relation="public-inheritance">
+        <childnode refid="3682" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3686" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4121">
+      <node id="3679">
         <label>OutputModeLink</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/resources_list_model.h" line="20" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="20" bodyend="42"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.h" bodystart="20" bodyend="42"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" prot="private" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>action_mode</name></member>
       <member refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" prot="public" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>actionMode</name></member>

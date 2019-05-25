@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::unit::LivingUnit</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit" prot="public" virt="non-virtual">openage.convert.gamedata.unit.ProjectileUnit</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit" prot="public" virt="non-virtual">openage.convert.gamedata.unit.BuildingUnit</derivedcompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a73164fd1a59ea06e106292952e06b2d4" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.LivingUnit::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;living_unit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a907e43b29ee671b2d08462929ed435ba" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.LivingUnit::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;unit&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a1f9fe130f834911a23d2c697a116acca" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.unit.LivingUnit::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;adds creation location and garrison unit properties.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a0bc4b74569b414f01fb07dde1a87da0b" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.unit.LivingUnit::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ_EXPORT, None, <ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members" kindref="compound">IncludeMembers</ref>(cls=<ref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit" kindref="compound">ProjectileUnit</ref>)),
+        (READ_EXPORT, &quot;resource_cost&quot;, SubdataMember(
+            ref_type=<ref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost" kindref="compound">ResourceCost</ref>,
+            length=3,
+        )),
+        (READ_EXPORT, &quot;creation_time&quot;, &quot;int16_t&quot;),         # in seconds
+        (READ_EXPORT, &quot;creation_location_id&quot;, &quot;int16_t&quot;),  # e.g. 118 = villager
+
+        # where to place the button with the given icon
+        # creation page:
+        # +------------------------+
+        # | 01 | 02 | 03 | 04 | 05 |
+        # |----|----|----|----|----|
+        # | 06 | 07 | 08 | 09 | 10 |
+        # |----|----|----|----|----|
+        # | 11 | 12 | 13 | 14 | 15 |
+        # +------------------------+
+        #
+        # additional page (dock):
+        # +------------------------+
+        # | 21 | 22 | 23 | 24 | 25 |
+        # |----|----|----|----|----|
+        # | 26 | 27 | 28 | 29 | 30 |
+        # |----|----|----|----|----|
+        # | 31 | 32 | 33 | 34 | 35 |
+        # +------------------------+
+        (READ, &quot;creation_button_id&quot;, &quot;int8_t&quot;),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>type_id &gt;= 70 </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1407">
+        <label>openage.convert.gamedata.unit.MovingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit"/>
+        <childnode refid="1408" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1404">
+        <label>openage.convert.gamedata.unit.LivingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit"/>
+        <childnode refid="1405" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1410">
+        <label>openage.convert.gamedata.unit.UnitObject</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object"/>
+        <childnode refid="1411" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1411">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1408">
+        <label>openage.convert.gamedata.unit.DoppelgangerUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit"/>
+        <childnode refid="1409" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1405">
+        <label>openage.convert.gamedata.unit.ProjectileUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit"/>
+        <childnode refid="1406" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1412">
+        <label>openage.convert.gamedata.unit.BuildingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1406">
+        <label>openage.convert.gamedata.unit.ActionUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit"/>
+        <childnode refid="1407" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1409">
+        <label>openage.convert.gamedata.unit.AnimatedUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1416">
+        <label>openage.convert.gamedata.unit.MovingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit"/>
+        <childnode refid="1417" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1413">
+        <label>openage.convert.gamedata.unit.LivingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit"/>
+        <childnode refid="1414" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1419">
+        <label>openage.convert.gamedata.unit.UnitObject</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object"/>
+        <childnode refid="1420" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1420">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1417">
+        <label>openage.convert.gamedata.unit.DoppelgangerUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit"/>
+        <childnode refid="1418" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1414">
+        <label>openage.convert.gamedata.unit.ProjectileUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit"/>
+        <childnode refid="1415" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1415">
+        <label>openage.convert.gamedata.unit.ActionUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit"/>
+        <childnode refid="1416" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1418">
+        <label>openage.convert.gamedata.unit.AnimatedUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit"/>
+        <childnode refid="1419" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1098" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1098" bodyend="1217"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a0bc4b74569b414f01fb07dde1a87da0b" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a73164fd1a59ea06e106292952e06b2d4" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a907e43b29ee671b2d08462929ed435ba" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit_1a1f9fe130f834911a23d2c697a116acca" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::unit::LivingUnit</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

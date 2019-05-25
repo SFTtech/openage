@@ -1,0 +1,35 @@
+<map id="openage.util.fslike.path.Path.stem" name="openage.util.fslike.path.Path.stem">
+<area shape="rect" id="node1" title="Name without suffix (such that stem + suffix == name)." alt="" coords="5,978,164,1019"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_resource.xhtml#a5867567cf6c177472acd0d9f73cc9a89" title=" " alt="" coords="218,5,393,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_type_meta.xhtml#a8799c223c298b6f9ae0016f9bb5913a8" title=" " alt="" coords="226,57,385,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_resource_producer.xhtml#a6d8c9b7625fba6de6f95a2d582843c8b" title=" " alt="" coords="212,122,399,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_object_producer.xhtml#a117c84d489aab55d5bf5e91915f1fe65" title=" " alt="" coords="221,187,390,229"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_research_type.xhtml#a46f438491a0104f174bdb54034f88288" title=" " alt="" coords="224,253,387,294"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_type.xhtml#afadac353590f8c7d7a590f41420fa32c" title=" " alt="" coords="220,319,391,345"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_output_mode.xhtml#a088f019691b4233408a7d230b0a5604b" title=" " alt="" coords="230,370,381,411"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_building_producer.xhtml#a34118b90f3c4558ae8e783b3d8c84e33" title=" " alt="" coords="217,435,394,477"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_create_mode.xhtml#a09b69d7ea9d5f066ae802e5bfd60a69e" title=" " alt="" coords="231,501,380,542"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70" title=" " alt="" coords="236,566,375,607"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_projectile_producer.xhtml#afd4025733132150438a1c2e116e61427" title=" " alt="" coords="213,631,398,673"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_action_mode.xhtml#adfc392ec340fa406b3bebe296f07ec21" title=" " alt="" coords="231,697,379,738"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_nyan_type.xhtml#a305c61d06b1dcca1719a1802b78a6b5a" title=" " alt="" coords="217,763,394,789"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_target_action.xhtml#ab57d1777fed0ced4ee1e6788ee5e445d" title=" " alt="" coords="229,814,381,855"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#ae3a270686d78c16980549c5ebd7e8839" title="The name of the topmost component (str)." alt="" coords="226,879,385,921"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_editor_mode.xhtml#a194b8b0abaa8a8e908fcd170f0a5d382" title=" " alt="" coords="233,945,378,986"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_decay_action.xhtml#a33f1e3bafcbb958cd5b03292ab20e845" title=" " alt="" coords="229,1010,382,1051"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_dead_action.xhtml#a435c5c1651c2fd4c0652d4195615ee81" title=" " alt="" coords="232,1075,379,1117"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_foundation_action.xhtml#a46520a617fab6d4d7aa3dd8baeaf409e" title=" " alt="" coords="215,1141,395,1182"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_idle_action.xhtml#ac692f25e1c232cb6ad9afd7dbbd1b49f" title=" " alt="" coords="237,1206,373,1247"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_move_action.xhtml#abba9ab054fbdc5183edc433567f4a775" title=" " alt="" coords="232,1271,379,1313"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_garrison_action.xhtml#a196a384261e4e6624faa2db6c970d9e4" title=" " alt="" coords="223,1337,388,1378"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_ungarrison_action.xhtml#aa4cc43e7e8708ba6c050f293960ee463" title=" " alt="" coords="216,1402,395,1443"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_train_action.xhtml#aeceb7108f21ba17446752689879c31c7" title=" " alt="" coords="233,1467,377,1509"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_research_action.xhtml#a3c40162adbb22a78f53194fe7e9983d8" title=" " alt="" coords="220,1533,391,1574"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_build_action.xhtml#a0277fa2bdd5367376df7fc4084cccd18" title=" " alt="" coords="233,1598,378,1639"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_repair_action.xhtml#a1817a51710b65024edd0d811683f1f96" title=" " alt="" coords="229,1663,382,1705"/>
+<area shape="rect" id="node29" href="$classopenage_1_1_gather_action.xhtml#ac69d3b907af6b3a737e64779f46e4bd4" title=" " alt="" coords="228,1729,383,1770"/>
+<area shape="rect" id="node30" href="$classopenage_1_1_attack_action.xhtml#af9602b031e61a4bc8b06596b494ffa3a" title=" " alt="" coords="228,1794,383,1835"/>
+<area shape="rect" id="node31" href="$classopenage_1_1_heal_action.xhtml#ad4da9c08bcfd22e4287aa508730e02e2" title=" " alt="" coords="234,1859,377,1901"/>
+<area shape="rect" id="node32" href="$classopenage_1_1_convert_action.xhtml#ace65fad3f2004e467446b03fdf1f12bb" title=" " alt="" coords="226,1925,385,1966"/>
+<area shape="rect" id="node33" href="$classopenage_1_1_projectile_action.xhtml#a672c847571f694e108b2245c544e3952" title=" " alt="" coords="220,1990,391,2031"/>
+</map>

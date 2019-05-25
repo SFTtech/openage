@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_add32c31ab2cc20d9f874152de79d6bd" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/util</compoundname>
+    <innerdir refid="dir_d3b26b37dedc4eb7b38550c2ff8665c6">C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike</innerdir>
+    <innerdir refid="dir_27df8148534951a46b0bbda2d3cc819a">C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike</innerdir>
+    <innerfile refid="util_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="bytequeue_8py">bytequeue.py</innerfile>
+    <innerfile refid="context_8py">context.py</innerfile>
+    <innerfile refid="decorators_8py">decorators.py</innerfile>
+    <innerfile refid="files_8py">files.py</innerfile>
+    <innerfile refid="fsprinting_8py">fsprinting.py</innerfile>
+    <innerfile refid="iterators_8py">iterators.py</innerfile>
+    <innerfile refid="math_8py">math.py</innerfile>
+    <innerfile refid="profiler_8py">profiler.py</innerfile>
+    <innerfile refid="strings_8py">strings.py</innerfile>
+    <innerfile refid="struct_8py">struct.py</innerfile>
+    <innerfile refid="system_8py">system.py</innerfile>
+    <innerfile refid="threading_8py">threading.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/"/>
+  </compounddef>
+</doxygen>

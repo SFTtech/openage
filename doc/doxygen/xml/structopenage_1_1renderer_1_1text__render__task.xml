@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="42" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
@@ -27,7 +27,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="43" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1adce9b78e58d984de0a9fe96955fa8c44" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -40,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="44" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1ac6e8e5b831ee591d7c003b62574efcc5" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -53,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="45" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -61,19 +62,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4446">
+      <node id="4776">
         <label>openage::renderer::Color</label>
         <link refid="classopenage_1_1renderer_1_1_color"/>
       </node>
-      <node id="4445">
+      <node id="4775">
         <label>openage::renderer::text_render_task</label>
         <link refid="structopenage_1_1renderer_1_1text__render__task"/>
-        <childnode refid="4446" relation="usage">
+        <childnode refid="4776" relation="usage">
           <edgelabel>+color</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/text.cpp" line="41" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="41" bodyend="46"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="41" bodyend="46"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>color</name></member>
       <member refid="structopenage_1_1renderer_1_1text__render__task_1a7ed5173e4105299826d0522a1525499d" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>mode</name></member>

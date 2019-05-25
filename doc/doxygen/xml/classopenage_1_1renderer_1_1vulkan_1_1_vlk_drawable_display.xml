@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="21" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a3c1ff8b52e6e79b4cf87015ac43d2b48" prot="public" static="no" mutable="no">
         <type>VkSwapchainKHR</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" prot="public" static="no" mutable="no">
         <type>VkFormat</type>
@@ -41,7 +41,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="23" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" prot="public" static="no" mutable="no">
         <type>VkExtent2D</type>
@@ -54,7 +55,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="24" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac8abd0f9fec7d297486c98a61c3fbf8a" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkImage &gt;</type>
@@ -67,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a6d3748506abbdaa6fe3a26bbae7d459e" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkImageView &gt;</type>
@@ -80,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="26" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1add9c86e8e37d8896297bcbdea71d430b" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkFramebuffer &gt;</type>
@@ -93,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="27" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -112,7 +114,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="29" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="29" bodyend="48"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>VkPresentModeKHR</type>
@@ -129,7 +132,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="50" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="50" bodyend="71"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="50" bodyend="71"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -150,7 +154,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="73" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="73" bodyend="148"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="73" bodyend="148"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" compoundref="vulkan_2render__target_8h" startline="50" endline="71">choose_best_present_mode</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" compoundref="vulkan_2render__target_8h" startline="29" endline="48">choose_best_surface_format</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" compoundref="vulkan_2render__target_8h" startline="24">extent</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" compoundref="vulkan_2render__target_8h" startline="23">format</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" compoundref="graphics__device_8h" startline="34">openage::renderer::vulkan::SurfaceSupportDetails::graphics_fam</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" compoundref="graphics__device_8h" startline="38">openage::renderer::vulkan::SurfaceSupportDetails::maybe_present_fam</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" compoundref="graphics__device_8h" startline="25">openage::renderer::vulkan::SurfaceSupportDetails::present_modes</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" compoundref="graphics__device_8h" startline="22">openage::renderer::vulkan::SurfaceSupportDetails::surface</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" compoundref="graphics__device_8h" startline="31">openage::renderer::vulkan::SurfaceSupportDetails::surface_caps</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" compoundref="graphics__device_8h" startline="28">openage::renderer::vulkan::SurfaceSupportDetails::surface_formats</references>
+        <references refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" compoundref="util_8h" startline="50">VK_CALL_CHECKED</references>
+        <references refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" compoundref="util_8h" startline="11" endline="18">vk_do_ritual</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a53d560e04eaa3886ef7993c6607746ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -163,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/render_target.h" line="150" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="150" bodyend="152"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="150" bodyend="152"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -172,12 +192,12 @@
 <para>A Vulkan representation of a display target that can be drawn onto directly, that is <emphasis>not</emphasis> by copying data from another object. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4946">
+      <node id="4809">
         <label>openage::renderer::vulkan::VlkDrawableDisplay</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/render_target.h" line="18" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="18" bodyend="153"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h" bodystart="18" bodyend="153"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>choose_best_present_mode</name></member>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>choose_best_surface_format</name></member>

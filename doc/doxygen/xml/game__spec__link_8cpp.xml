@@ -689,7 +689,7 @@
         <label>../gamedata/graphic.gen.h</label>
       </node>
       <node id="12319">
-        <label>libopenage/gui/game_spec_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</label>
         <link refid="game__spec__link_8cpp"/>
         <childnode refid="12320" relation="include">
         </childnode>
@@ -870,6 +870,6 @@
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_spec_link.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp"/>
   </compounddef>
 </doxygen>

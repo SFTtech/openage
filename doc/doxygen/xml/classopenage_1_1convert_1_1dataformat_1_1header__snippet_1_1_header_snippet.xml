@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::header_snippet::HeaderSnippet</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet" prot="public" virt="non-virtual">openage.convert.dataformat.content_snippet.ContentSnippet</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.header_snippet.HeaderSnippet::is_global</definition>
+        <argsstring></argsstring>
+        <name>is_global</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.header_snippet.HeaderSnippet::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" compoundref="header__snippet_8py" startline="26" endline="28">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a02cf3e2305980fbbcec2d8500a2e1779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.header_snippet.HeaderSnippet.__init__</definition>
+        <argsstring>(self, header_name, file_name=True, is_global=False)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>header_name</type>
+          <defname>header_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+          <defval>True</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" kindref="member">is_global</ref></type>
+          <defname>is_global</defname>
+          <defval>False</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_file_name</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="26" bodyend="28"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">openage::gui::CategoryContentsListModel::name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" compoundref="header__snippet_8py" startline="17">openage.convert.dataformat.header_snippet.HeaderSnippet.name</references>
+        <references refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" compoundref="game__control__link_8h" startline="39">openage::gui::OutputModeLink::name</references>
+        <references refid="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" compoundref="named__logsource_8h" startline="30">openage::log::NamedLogSource::name</references>
+        <references refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" compoundref="player_8h" startline="42">openage::Player::name</references>
+        <references refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" compoundref="team_8h" startline="44">openage::Team::name</references>
+        <references refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" compoundref="event_2tests_8cpp" startline="61">openage::event::tests::TestState::traceelement::name</references>
+        <references refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" compoundref="enum_8h" startline="89">openage::util::EnumValue&lt; DerivedType, NumericType &gt;::name</references>
+        <references refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" compoundref="options_8h" startline="150">openage::options::OptionAction::name</references>
+        <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__hash__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169">__hash__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>hash all relevant snippet properties </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="29" bodyend="31"/>
+        <references refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">openage::util::hash</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" compoundref="header__snippet_8py" startline="16">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">openage::gui::CategoryContentsListModel::name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" compoundref="header__snippet_8py" startline="17">openage.convert.dataformat.header_snippet.HeaderSnippet.name</references>
+        <references refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" compoundref="game__control__link_8h" startline="39">openage::gui::OutputModeLink::name</references>
+        <references refid="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" compoundref="named__logsource_8h" startline="30">openage::log::NamedLogSource::name</references>
+        <references refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" compoundref="player_8h" startline="42">openage::Player::name</references>
+        <references refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" compoundref="team_8h" startline="44">openage::Team::name</references>
+        <references refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" compoundref="event_2tests_8cpp" startline="61">openage::event::tests::TestState::traceelement::name</references>
+        <references refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" compoundref="enum_8h" startline="89">openage::util::EnumValue&lt; DerivedType, NumericType &gt;::name</references>
+        <references refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" compoundref="options_8h" startline="150">openage::options::OptionAction::name</references>
+        <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</definition>
+        <argsstring>(self, other)</argsstring>
+        <name>__eq__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084">__eq__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>other</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+<para>equality check for text snippets </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="32" bodyend="38"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" compoundref="header__snippet_8py" startline="16">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">openage::gui::CategoryContentsListModel::name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" compoundref="header__snippet_8py" startline="17">openage.convert.dataformat.header_snippet.HeaderSnippet.name</references>
+        <references refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" compoundref="game__control__link_8h" startline="39">openage::gui::OutputModeLink::name</references>
+        <references refid="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" compoundref="named__logsource_8h" startline="30">openage::log::NamedLogSource::name</references>
+        <references refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" compoundref="player_8h" startline="42">openage::Player::name</references>
+        <references refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" compoundref="team_8h" startline="44">openage::Team::name</references>
+        <references refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" compoundref="event_2tests_8cpp" startline="61">openage::event::tests::TestState::traceelement::name</references>
+        <references refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" compoundref="enum_8h" startline="89">openage::util::EnumValue&lt; DerivedType, NumericType &gt;::name</references>
+        <references refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" compoundref="options_8h" startline="150">openage::options::OptionAction::name</references>
+        <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="39" bodyend="43"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" compoundref="header__snippet_8py" startline="16">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">openage::gui::CategoryContentsListModel::name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" compoundref="header__snippet_8py" startline="17">openage.convert.dataformat.header_snippet.HeaderSnippet.name</references>
+        <references refid="classopenage_1_1gui_1_1_output_mode_link_1a884406759bbec9b74c180a514dc2054d" compoundref="game__control__link_8h" startline="39">openage::gui::OutputModeLink::name</references>
+        <references refid="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" compoundref="named__logsource_8h" startline="30">openage::log::NamedLogSource::name</references>
+        <references refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" compoundref="player_8h" startline="42">openage::Player::name</references>
+        <references refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" compoundref="team_8h" startline="44">openage::Team::name</references>
+        <references refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" compoundref="event_2tests_8cpp" startline="61">openage::event::tests::TestState::traceelement::name</references>
+        <references refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" compoundref="enum_8h" startline="89">openage::util::EnumValue&lt; DerivedType, NumericType &gt;::name</references>
+        <references refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" compoundref="options_8h" startline="150">openage::options::OptionAction::name</references>
+        <references refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" compoundref="options_8h" startline="216">openage::options::OptionNode::name</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>represents an includable C header </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1018">
+        <label>openage.convert.dataformat.content_snippet.ContentSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet"/>
+      </node>
+      <node id="1017">
+        <label>openage.convert.dataformat.header_snippet.HeaderSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet"/>
+        <childnode refid="1018" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1020">
+        <label>openage.convert.dataformat.content_snippet.ContentSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet"/>
+      </node>
+      <node id="1019">
+        <label>openage.convert.dataformat.header_snippet.HeaderSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet"/>
+        <childnode refid="1020" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/header_snippet.py" bodystart="13" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__eq__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__hash__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a02cf3e2305980fbbcec2d8500a2e1779" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a8f5812c44251f318ece4e3e42ba3ac01" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::content_snippet::ContentSnippet."><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a22298fb54ac07968189e0f917d48250f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__lt__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ae463a515baf512fb39d859990812481f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>add_required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aaeb6d3824f1ff77e825f5c7f75c63e00" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a071bf2d8c5acdd447c12228cd24db69f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>data_ready</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1afc550a2b9cedfe1e91a8852514cc0ecb" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>generate_content</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>get_file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a10e0cd36005a0c8dd477ad85dd52fd34" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>get_required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ad7eeab04d3902de3968f5bd1fb20e62c" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>includes</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ada32cb1c29401e1e457d783fedc8a6a1" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>is_global</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a387fbcbf71e1b1e53f10f9fbb44e5312" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a32cd75db124a10263e5f2ad4dfd1d4d2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>orderby</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a632d5671c29aac9dd69758b5f53da07b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>reprtxt</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a9e99bd808996cf7caf085b567948fe8b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2e9280dd29ab79acaf07fd3a26babc01" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>section</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>typedefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a1ccf4c662c36928f161e01542110768f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::header_snippet::HeaderSnippet</scope><name>typerefs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

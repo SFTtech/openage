@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="log_2____init_____8py" kind="file" language="Python">
+    <compoundname>__init__.py</compoundname>
+    <innerclass refid="classopenage_1_1log_1_1_cpp_handler" prot="public">openage::log::CppHandler</innerclass>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">#<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Python<sp/>logging.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">Log<sp/>messages<sp/>get<sp/>redirected<sp/>to<sp/>the<sp/>CPP<sp/>logging<sp/>system<sp/>if<sp/>the<sp/>library<sp/>has<sp/>been</highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral">loaded.</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>logging</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>logging<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Handler</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>os<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>environ</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.math<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>clamp</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">PYTHON_TO_CPP_LOG_LEVEL<sp/>=<sp/>{}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="namespaceopenage_1_1log_1aba6ceacbd33d6828bd46edb55569ab14" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1log_1_1_cpp_handler" kindref="compound">CppHandler</ref>(Handler):</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>CppHandler<sp/>calls<sp/>into<sp/>the<sp/>CPP<sp/>logging<sp/>system<sp/>if<sp/>the<sp/>library<sp/>has<sp/>been<sp/>loaded.</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">__init__(self):</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1log_1_1_cpp_handler" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classopenage_1_1log_1_1_cpp_handler_1ac48f1b2538eb438fb03b3a5f782195bc" kindref="member">__init__</ref>()</highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1log_1_1_cpp_handler_1ac48f1b2538eb438fb03b3a5f782195bc" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1log_1_1_cpp_handler_1a929f8210f951b31fbe45c0e976800b6f" kindref="member">setLevel</ref>(self,<sp/>level):</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>sets<sp/>the<sp/>log<sp/>level<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpp_level<sp/>=<sp/>PYTHON_TO_CPP_LOG_LEVEL.get(level,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1log_1_1_cpp_handler_1a929f8210f951b31fbe45c0e976800b6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cpp_level<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>C++<sp/>interface<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classopenage_1_1log_1_1_cpp_handler_1a929f8210f951b31fbe45c0e976800b6f" kindref="member">setLevel</ref>(level)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.log_cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>set_level<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>set_level_cpp</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_level_cpp(cpp_level)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1log_1_1_cpp_handler_1a8606ee97c7c0781c559046816117ece3" kindref="member">emit</ref>(self,<sp/>record):</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>logs<sp/>a<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cpp_level<sp/>=<sp/>PYTHON_TO_CPP_LOG_LEVEL.get(record.levelno,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1log_1_1_cpp_handler_1a8606ee97c7c0781c559046816117ece3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cpp_level<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>C++<sp/>interface<sp/>is<sp/>uninitialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(</highlight><highlight class="stringliteral">&quot;\x1b[&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceopenage_1_1log_1a37a9ba75ed4a75173bfe7c3a77345a7d" kindref="member">level_colorcode</ref>(record.levelno)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;m&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>record.levelname.rjust(4)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\x1b[m<sp/>&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>record.getMessage())</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.log_cpp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>log<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>log_cpp</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log_cpp(cpp_level,<sp/>record.getMessage(),<sp/>record.filename,<sp/>record.funcName,<sp/>record.lineno)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">CPP_HANDLER<sp/>=<sp/><ref refid="classopenage_1_1log_1_1_cpp_handler" kindref="compound">CppHandler</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="namespaceopenage_1_1log_1a46a996a4054d7e95ae33b1df746c4ec3" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a37a9ba75ed4a75173bfe7c3a77345a7d" kindref="member">level_colorcode</ref>(lvl):</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>returns<sp/>the<sp/>same<sp/>color<sp/>codes<sp/>as<sp/>in<sp/>libopenage/log/level.cpp.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="namespaceopenage_1_1log_1a37a9ba75ed4a75173bfe7c3a77345a7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>colorcodes<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.WARNING:<sp/></highlight><highlight class="stringliteral">&quot;33&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.ERROR:<sp/></highlight><highlight class="stringliteral">&quot;31;1&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.CRITICAL:<sp/></highlight><highlight class="stringliteral">&quot;31;1;47&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>colorcodes.get(lvl,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">SPAM<sp/>=<sp/>5</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="namespaceopenage_1_1log_1a4873e15c7fe197151a68a153904c2461" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a7cf607c879d89be419d5a68dedc211ab" kindref="member">_spam</ref>(self,<sp/>msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Log<sp/>&apos;msg<sp/>%<sp/>args&apos;<sp/>with<sp/>severity<sp/>&apos;SPAM&apos;.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>self.isEnabledFor(SPAM):</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self._log(SPAM,<sp/>msg,<sp/>args,<sp/>**kwargs)<sp/><sp/></highlight><highlight class="comment">#<sp/>pylint:<sp/>disable=W0212</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="namespaceopenage_1_1log_1a7cf607c879d89be419d5a68dedc211ab" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a701e516b9632ad3b4ccccf28d12fbc48" kindref="member">setup_logging</ref>():</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>setup<sp/>the<sp/>logging<sp/>system<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.Logger.spam<sp/>=<sp/>_spam</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>do<sp/>not<sp/>overwrite<sp/>any<sp/>of<sp/>the<sp/>predefined<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="namespaceopenage_1_1log_1a701e516b9632ad3b4ccccf28d12fbc48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>https://docs.python.org/3/library/logging.html#logging-levels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.addLevelName(1,<sp/></highlight><highlight class="stringliteral">&quot;MIN&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.addLevelName(SPAM,<sp/></highlight><highlight class="stringliteral">&quot;SPAM&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.addLevelName(51,<sp/></highlight><highlight class="stringliteral">&quot;MAX&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>root<sp/>=<sp/>logging.getLogger()</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>root.addHandler(CPP_HANDLER)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.spam<sp/>=<sp/>root.spam</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" kindref="member">set_loglevel</ref>(level):</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>sets<sp/>the<sp/>log<sp/>level<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>old_level<sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a2b8905069877587c7f8624a11d524bbc" kindref="member">get_loglevel</ref>()</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.root.setLevel(level)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>CPP_HANDLER.setLevel(level)</highlight></codeline>
+<codeline lineno="91" refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>old_level</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a2b8905069877587c7f8624a11d524bbc" kindref="member">get_loglevel</ref>():</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>gets<sp/>the<sp/>log<sp/>level<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>logging.root.level</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="namespaceopenage_1_1log_1a2b8905069877587c7f8624a11d524bbc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" kindref="member">spam</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>spam<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.spam(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>debug<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.debug(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>info<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.info(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>warning<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.warning(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>error<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.error(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" kindref="member">crit</ref>(msg,<sp/>*args,<sp/>**kwargs):</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>critical<sp/>error<sp/>message<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>logging.critical(msg,<sp/>*args,<sp/>**kwargs)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a10c8ba63b955b0c97dc3b3323f73a4b2" kindref="member">verbosity_to_level</ref>(verbosity):</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="131"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Translates<sp/>an<sp/>integer<sp/>verbosity<sp/>to<sp/>a<sp/>log<sp/>level.</highlight></codeline>
+<codeline lineno="132"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>levels<sp/>=<sp/>[logging.getLevelName(</highlight><highlight class="stringliteral">&quot;MIN&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.getLevelName(</highlight><highlight class="stringliteral">&quot;SPAM&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.DEBUG,</highlight></codeline>
+<codeline lineno="136" refid="namespaceopenage_1_1log_1a10c8ba63b955b0c97dc3b3323f73a4b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.INFO,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.WARNING,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.ERROR,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.CRITICAL,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging.getLevelName(</highlight><highlight class="stringliteral">&quot;MAX&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>return<sp/>INFO<sp/>when<sp/>verbosity<sp/>is<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>levels[<ref refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" kindref="member">clamp</ref>(-verbosity<sp/>+<sp/>3,<sp/>0,<sp/>len(levels)<sp/>-<sp/>1)]</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a8384c2e3977d17adc4ceac0e8aacc5d3" kindref="member">env_verbosity</ref>():</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="147"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Tries<sp/>to<sp/>retrieve<sp/>verbosity<sp/>from<sp/>the<sp/>VERBOSITY<sp/>environment<sp/>variable.</highlight></codeline>
+<codeline lineno="148"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>val<sp/>=<sp/>environ.get(</highlight><highlight class="stringliteral">&apos;VERBOSE&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;0&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>val.lower()<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>{</highlight><highlight class="stringliteral">&apos;y&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;yes&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;true&apos;</highlight><highlight class="normal">}:</highlight></codeline>
+<codeline lineno="152" refid="namespaceopenage_1_1log_1a8384c2e3977d17adc4ceac0e8aacc5d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>logging.WARNING</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>val.lower()<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>{</highlight><highlight class="stringliteral">&apos;max&apos;</highlight><highlight class="normal">}:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>logging.CRITICAL</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>int(val)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>ValueError:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>logging.INFO</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">ENV_VERBOSITY<sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a8384c2e3977d17adc4ceac0e8aacc5d3" kindref="member">env_verbosity</ref>()</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py"/>
+  </compounddef>
+</doxygen>

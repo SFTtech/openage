@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.cabextract.lzxdstream.LZXDStream Class Reference</title>
+<title>openage: openage.cabextract.lzxdstream.LZXDStream Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1cabextract_1_1lzxdstre
 
 <p>Read-only stream object that wraps LZXDecompressor.  
  <a href="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.cabextract.lzxdstream.LZXDStream:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.cabextract.lzxdstream.LZXDStream:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.cabextract.lzxdstream.LZXDStream:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.cabextract.lzxdstream.LZXDStream:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -238,7 +241,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00043">43</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        self.sourcestream = sourcestream</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        self.window_bits = window_bits</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        self.reset_interval = reset_interval</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment"># position in the decompressed output stream.</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        self.pos = <span class="keywordtype">None</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        self.buf = <span class="keywordtype">None</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        self.reset()</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">def </span>reset(self):</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -261,6 +264,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a007c0eefc1bd3165112c787fb5e70f75">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00098">98</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        del self.decompressor</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        del self.sourcestream</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="filelike_2abstract_8py_source.xhtml#l00113">openage.util.filelike.abstract.FileLikeObject.__exit__()</a>, and <a class="el" href="slp__converter__pool_8py_source.xhtml#l00127">openage.convert.slp_converter_pool.SLPConverterPool.__exit__()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_a0a78e07f80c2a50875e3d689df488e34_icgraph.svg" width="462" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -283,6 +296,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00083">83</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment"># size is unknown in advance</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> -1</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">def </span>seek(self, offset, whence=os.SEEK_SET):</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        del offset, whence  <span class="comment"># unused</span></div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="filelike_2abstract_8py_source.xhtml#l00127">openage.util.filelike.abstract.FileLikeObject.seek_helper()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_ab3cbec4d52b33409ea1569d92496b50b_icgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -318,6 +341,18 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a74f8e05ed5480518188044084cc0e902">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00069">69</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            size = INF</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">while</span> len(self.buf) &lt; size:</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            data = self.decompressor.decompress_next_frame()</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> data:</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="comment"># EOF; return all we have</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">return</span> self.buf.popleft(len(self.buf))</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            self.buf.append(data)</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> self.buf.popleft(size)</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">def </span>get_size(self):</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        del self  <span class="comment"># unused</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="lzxdstream_8py_source.xhtml#l00052">openage.cabextract.lzxdstream.LZXDStream.buf</a>, <a class="el" href="externalsstream_8h_source.xhtml#l00059">openage::util::ExternalOStringStream.buf</a>, <a class="el" href="console_8h_source.xhtml#l00071">openage::console::Console.buf</a>, and <a class="el" href="lzxdstream_8py_source.xhtml#l00062">openage.cabextract.lzxdstream.LZXDStream.decompressor</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="exportable_8py_source.xhtml#l00182">openage.convert.dataformat.exportable.Exportable.read()</a>, and <a class="el" href="peresource_8py_source.xhtml#l00138">openage.convert.peresource.StringLiteral.readall()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_a383153d8dbaf96c6e8ad44a200b2cfce_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -340,6 +375,16 @@ Public Attributes</h2></td></tr>
 <p>Resets the decompressor back to the start of the file. </p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00059">59</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        self.decompressor = LZXDecompressor(self.sourcestream.read,</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                            self.window_bits,</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                            self.reset_interval)</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        self.pos = 0</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        self.buf = ByteQueue()</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">def </span>read(self, size=-1):</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> size &lt; 0:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="lzxdstream_8py_source.xhtml#l00088">openage.cabextract.lzxdstream.LZXDStream.seek()</a>, and <a class="el" href="lzxdstream_8py_source.xhtml#l00046">openage.cabextract.lzxdstream.LZXDStream.sourcestream</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_a80e5ee0ecbe53e7d0c25d80701fd778a_cgraph.svg" width="475" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -387,6 +432,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#ad255ffd40c48e6610e464d5c3c43b2fb">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00088">88</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">raise</span> UnsupportedOperation(<span class="stringliteral">&quot;Cannot seek in LZXDStream.&quot;</span>)</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">def </span>seekable(self):</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="lzxdstream_8py_source.xhtml#l00059">openage.cabextract.lzxdstream.LZXDStream.reset()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_a8fd2e70117fac439af6bc4b7a1b003aa_icgraph.svg" width="475" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -411,7 +466,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a72fc53b76ba8da3a41cd61647dbaae6e">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00092">92</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">def </span>tell(self):</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> self.pos</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad60178631fe4c59543351deb02216676"></a>
@@ -436,6 +491,18 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a0ad9d642b58e227e95d4c03b49b57d0b">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00095">95</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">def </span>close(self):</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        self.closed = <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, and <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="filelike_2abstract_8py_source.xhtml#l00127">openage.util.filelike.abstract.FileLikeObject.seek_helper()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_ad60178631fe4c59543351deb02216676_icgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -454,6 +521,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00052">52</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00069">openage.cabextract.lzxdstream.LZXDStream.read()</a>, and <a class="el" href="stream_8py_source.xhtml#l00051">openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed()</a>.</p>
+
 </div>
 </div>
 <a id="a0a2b0d332332f214f45cf360462aea8b"></a>
@@ -469,6 +538,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00099">99</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
 
 </div>
 </div>
@@ -486,6 +557,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00062">62</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="lzxdstream_8py_source.xhtml#l00069">openage.cabextract.lzxdstream.LZXDStream.read()</a>.</p>
+
 </div>
 </div>
 <a id="ae74a4d495574f0140d51a02814837b7f"></a>
@@ -501,6 +574,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00051">51</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00043">openage.convert.binpack.Packer.height()</a>, <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>, <a class="el" href="fifo_8py_source.xhtml#l00099">openage.util.filelike.fifo.FIFO.read()</a>, <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment.read()</a>, <a class="el" href="cab_8py_source.xhtml#l00501">openage.cabextract.cab.CABFolderStream.read_blocks()</a>, <a class="el" href="readonly_8py_source.xhtml#l00055">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek()</a>, <a class="el" href="fifo_8py_source.xhtml#l00044">openage.util.filelike.fifo.FIFO.tell()</a>, <a class="el" href="readonly_8py_source.xhtml#l00061">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.tell()</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00095">openage.cabextract.lzxdstream.LZXDStream.tell()</a>, <a class="el" href="fifo_8py_source.xhtml#l00050">openage.util.filelike.fifo.FIFO.tellw()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00039">openage.convert.binpack.Packer.width()</a>.</p>
 
 </div>
 </div>
@@ -534,6 +609,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="lzxdstream_8py_source.xhtml#l00046">46</a> of file <a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="lzxdstream_8py_source.xhtml#l00059">openage.cabextract.lzxdstream.LZXDStream.reset()</a>.</p>
+
 </div>
 </div>
 <a id="ad93eb193636eb07b14ede6eb151c3dce"></a>
@@ -553,7 +630,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/cabextract/<a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/<a class="el" href="lzxdstream_8py_source.xhtml">lzxdstream.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

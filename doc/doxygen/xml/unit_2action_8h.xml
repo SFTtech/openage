@@ -10,13 +10,13 @@
     <includes refid="research_8h" local="yes">research.h</includes>
     <includes refid="unit_8h" local="yes">unit.h</includes>
     <includes refid="unit__container_8h" local="yes">unit_container.h</includes>
-    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
-    <includedby refid="ability_8cpp" local="yes">libopenage/unit/ability.cpp</includedby>
-    <includedby refid="unit_2action_8cpp" local="yes">libopenage/unit/action.cpp</includedby>
-    <includedby refid="producer_8cpp" local="yes">libopenage/unit/producer.cpp</includedby>
-    <includedby refid="selection_8cpp" local="yes">libopenage/unit/selection.cpp</includedby>
-    <includedby refid="unit_8cpp" local="yes">libopenage/unit/unit.cpp</includedby>
-    <includedby refid="unit__type_8cpp" local="yes">libopenage/unit/unit_type.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</includedby>
+    <includedby refid="ability_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</includedby>
+    <includedby refid="unit_2action_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</includedby>
+    <includedby refid="producer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</includedby>
+    <includedby refid="selection_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</includedby>
+    <includedby refid="unit_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</includedby>
+    <includedby refid="unit__type_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</includedby>
     <incdepgraph>
       <node id="15473">
         <label>list</label>
@@ -515,7 +515,7 @@
         <label>memory</label>
       </node>
       <node id="15440">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="15441" relation="include">
         </childnode>
@@ -547,35 +547,35 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="15514">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="15510">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="15512">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="15509">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="15515">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="15511">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="15513">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="15508">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="15509" relation="include">
         </childnode>
@@ -1070,6 +1070,6 @@
 <codeline lineno="647"><highlight class="normal"></highlight></codeline>
 <codeline lineno="648"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/action.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h"/>
   </compounddef>
 </doxygen>

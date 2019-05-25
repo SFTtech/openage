@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 387)">
 <title>openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-387 140,-387 140,4 -4,4"/>
-<!-- Node1 -->
-<g id="node1" class="node"><title>Node1</title>
+<!-- Node2 -->
+<g id="node1" class="node"><title>Node2</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-277.5 136,-277.5 136,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>
@@ -41,8 +41,8 @@
 </a>
 </g>
 </g>
-<!-- Node2 -->
-<g id="node2" class="node"><title>Node2</title>
+<!-- Node3 -->
+<g id="node2" class="node"><title>Node3</title>
 <g id="a_node2"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="41,-325.5 41,-382.5 95,-382.5 95,-325.5 41,-325.5"/>
 <text text-anchor="middle" x="68" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">compare</text>
@@ -53,8 +53,8 @@
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node1 -->
-<g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>
+<!-- Node3&#45;&gt;Node2 -->
+<g id="edge1" class="edge"><title>Node3&#45;&gt;Node2</title>
 <path fill="none" stroke="#404040" d="M68,-325.154C68,-315.225 68,-303.236 68,-290.188"/>
 <polygon fill="none" stroke="#404040" points="68.0001,-289.937 64,-283.937 68,-277.937 72,-283.937 68.0001,-289.937"/>
 <text text-anchor="middle" x="82" y="-299" font-family="Helvetica,sans-Serif" font-size="10.00"> #cmp</text>

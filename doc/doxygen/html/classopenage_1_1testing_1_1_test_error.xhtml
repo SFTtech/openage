@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::testing::TestError Class Reference</title>
+<title>openage: openage::testing::TestError Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,15 +97,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1testing_1_1_test_error
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="testing_8h_source.xhtml">testing.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::testing::TestError:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1testing_1_1_test_error__inherit__graph.svg" width="191" height="471"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::testing::TestError:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1testing_1_1_test_error__inherit__graph.svg" width="191" height="471"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::testing::TestError:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::testing::TestError:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1testing_1_1_test_error__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -173,11 +177,18 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="error_2error_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="error_2error_8cpp_source.xhtml">error.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    :</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::runtime_error{<a class="code" href="namespaceopenage_1_1error.xhtml#a1f2a2504ac8f64e3666ce4322b32f0e6">runtime_error_message</a>},</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a>(<a class="code" href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">msg</a>) {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(<a class="code" href="namespaceopenage_1_1error.xhtml#a69283bf7d976b89c848b6b413190e15a">enable_break_on_create</a>)) {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="compiler_8h.xhtml#a0409e98ff9aade482fcfc9e67e762a86">BREAKPOINT</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (generate_backtrace) {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">auto</span> <a class="code" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a> = std::make_shared&lt;StackAnalyzer&gt;();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a>-&gt;analyze();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a> = <a class="code" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">store_cause</a>) {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">store_cause</a>();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1error_xhtml_a69283bf7d976b89c848b6b413190e15a"><div class="ttname"><a href="namespaceopenage_1_1error.xhtml#a69283bf7d976b89c848b6b413190e15a">openage::error::enable_break_on_create</a></div><div class="ttdeci">static bool enable_break_on_create</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8cpp_source.xhtml#l00015">error.cpp:15</a></div></div>
+<div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_aa06c25a19f000f6ec51993e123b6681f"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#aa06c25a19f000f6ec51993e123b6681f">openage::error::Error::msg</a></div><div class="ttdeci">log::message msg</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00091">error.h:91</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_a27cbe56bc7dbab4d399072ef87fe2014"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#a27cbe56bc7dbab4d399072ef87fe2014">openage::error::Error::store_cause</a></div><div class="ttdeci">void store_cause()</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8cpp_source.xhtml#l00041">error.cpp:41</a></div></div>
+<div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_a8ad0320b8e32d6f187d0f4a74bd89d69"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">openage::error::Error::backtrace</a></div><div class="ttdeci">std::shared_ptr&lt; Backtrace &gt; backtrace</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00097">error.h:97</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1error_xhtml_a1f2a2504ac8f64e3666ce4322b32f0e6"><div class="ttname"><a href="namespaceopenage_1_1error.xhtml#a1f2a2504ac8f64e3666ce4322b32f0e6">openage::error::runtime_error_message</a></div><div class="ttdeci">constexpr const char * runtime_error_message</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8cpp_source.xhtml#l00013">error.cpp:13</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_a0409e98ff9aade482fcfc9e67e762a86"><div class="ttname"><a href="compiler_8h.xhtml#a0409e98ff9aade482fcfc9e67e762a86">BREAKPOINT</a></div><div class="ttdeci">#define BREAKPOINT</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00065">compiler.h:65</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/testing/<a class="el" href="testing_8h_source.xhtml">testing.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/<a class="el" href="testing_8h_source.xhtml">testing.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

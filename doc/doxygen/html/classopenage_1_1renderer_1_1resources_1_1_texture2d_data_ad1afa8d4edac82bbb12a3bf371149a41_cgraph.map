@@ -1,0 +1,9 @@
+<map id="openage::renderer::resources::Texture2dData::read_pixel" name="openage::renderer::resources::Texture2dData::read_pixel">
+<area shape="rect" id="node1" title=" " alt="" coords="5,147,176,203"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="251,5,361,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a09329202a589131b1c723fbffb1f806b" title=" " alt="" coords="224,56,388,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a2d87c131a3e1f175ce29d3ec146c2790" title=" " alt="" coords="436,107,600,163"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2" title="Returns the size in bytes of a single pixel of the specified format." alt="" coords="648,147,793,189"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a57830eb6623cc7171953bc0214c6ee2c" title=" " alt="" coords="224,237,388,293"/>
+<area shape="rect" id="node7" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="224,317,388,373"/>
+</map>

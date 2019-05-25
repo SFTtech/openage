@@ -1,0 +1,52 @@
+<map id="openage.log.info" name="openage.log.info">
+<area shape="rect" id="node1" title="info message" alt="" coords="1027,1185,1143,1211"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#ad1f48c54d3dd40436e868607fb7283f7" title="Creates a new empty texture with the given parameters on the graphics hardware." alt="" coords="771,97,913,153"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1changelog.xhtml#aacfbef73c68f07a70b75e8a01b4d0f99" title="return all changed components since the passed version number." alt="" coords="726,177,958,203"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1convert_1_1main.xhtml#a31f860d9262d979d980d859ced108126" title="Returns true if an asset conversion is required to run the game." alt="" coords="444,369,657,411"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="221,347,391,374"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1convert_1_1opus_1_1demo.xhtml#ae0391ea8f0edf327a1f80b107ef7b68e" title="Demonstrates the usage of the opusenc module." alt="" coords="727,587,957,614"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="453,697,648,723"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1convert_1_1main.xhtml#a06157ab72dcb855b2e993bf128e9faf1" title="Perform asset conversion." alt="" coords="454,435,647,476"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ad7f7fa271abe4e1c3bc43160e84bc58f" title="Converts the media part." alt="" coords="745,689,939,731"/>
+<area shape="rect" id="node15" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="745,755,939,796"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1log_1_1tests.xhtml#a10013d742153bb6a37a94e50e5249f7c" title=" " alt="" coords="775,820,909,861"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1error.xhtml#a036babcdd58261ba26288431876e7b02" title=" " alt="" coords="769,886,915,913"/>
+<area shape="rect" id="node19" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer.xhtml#a15177acc1d4eb10a786e021ea8eb0207" title="Testing function that draws a triangle. Not part of the final renderer implementation." alt="" coords="773,937,911,993"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0" title=" " alt="" coords="745,1017,939,1059"/>
+<area shape="rect" id="node22" href="$namespaceopenage_1_1pyinterface_1_1tests.xhtml#a6ae6b85d3f959e3cec4f7990e76b9c2b" title=" " alt="" coords="748,1083,936,1124"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_civilisation.xhtml#aac6dfa467902f19637b13afcbe2c927b" title=" " alt="" coords="772,1148,912,1189"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title=" " alt="" coords="755,1214,929,1241"/>
+<area shape="rect" id="node31" href="$classopenage_1_1_player.xhtml#ab1e818cc3361bbadd96add4cd83c86da" title=" " alt="" coords="771,1265,913,1307"/>
+<area shape="rect" id="node32" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a4414e2e8f56e36f6c4095886735bd03c" title="Create a GL context in the given SDL window." alt="" coords="746,1331,938,1372"/>
+<area shape="rect" id="node33" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_renderer.xhtml#a15f5acc6e4ee9c47809d7e73cb1aee42" title=" " alt="" coords="771,1397,913,1453"/>
+<area shape="rect" id="node34" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9ac3a40d0f546cf8026715d0f5a0f637" title="Create a shiny window with the given title." alt="" coords="745,1477,939,1519"/>
+<area shape="rect" id="node35" href="$namespaceopenage_1_1gui.xhtml#a92817cf5cb133b7059976330da2f9931" title=" " alt="" coords="769,1543,915,1570"/>
+<area shape="rect" id="node36" href="$classopenage_1_1_player.xhtml#a95a450855aec639900bf4b5d24e98521" title=" " alt="" coords="757,1595,927,1636"/>
+<area shape="rect" id="node37" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="766,1660,918,1701"/>
+<area shape="rect" id="node38" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="445,500,656,541"/>
+<area shape="rect" id="node39" href="$namespaceopenage_1_1cvar_1_1config__file.xhtml#aee5a9b4650b459614a87fe8adadb8ad7" title="Load a config file, with possible subfile, into the cvar system." alt="" coords="773,1725,911,1767"/>
+<area shape="rect" id="node40" href="$namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat.xhtml#a571729db3187f457aefbdb94af2364d0" title=" " alt="" coords="705,1791,979,1832"/>
+<area shape="rect" id="node41" href="$namespaceopenage_1_1convert_1_1singlefile.xhtml#a24cbe33666ca577f3d4bcb9ab5235b9f" title="CLI entry point for single file conversions." alt="" coords="741,1857,943,1883"/>
+<area shape="rect" id="node42" href="$classopenage_1_1renderer_1_1_s_d_l.xhtml#a49774bd3b06bf0ac40e5c471fed34013" title=" " alt="" coords="771,1908,913,1949"/>
+<area shape="rect" id="node43" href="$namespaceopenage_1_1convert_1_1main.xhtml#a607817dd5809140455a8b393c9a68fdc" title="Mount the input folders for conversion." alt="" coords="748,471,936,512"/>
+<area shape="rect" id="node44" href="$classopenage_1_1gui_1_1_main_args_link.xhtml#a27313ca71bc497664ab7a4ade01323e4" title=" " alt="" coords="751,1973,933,2015"/>
+<area shape="rect" id="node45" href="$classopenage_1_1gui_1_1_engine_link.xhtml#acb34bd8d343a973436e0652db23cce12" title=" " alt="" coords="758,2039,926,2080"/>
+<area shape="rect" id="node46" href="$namespaceopenage.xhtml#a6d1bbdba1ef04b571d6e84020406312e" title=" " alt="" coords="483,318,619,345"/>
+<area shape="rect" id="node47" href="$namespaceopenage_1_1convert_1_1main.xhtml#aa5695bc5f7849528b2fdd1f5b186a1cc" title="Yield a list of directory names where an installation might be found." alt="" coords="747,2104,937,2145"/>
+<area shape="rect" id="node48" href="$classopenage_1_1util_1_1_external_profiler.xhtml#a7b2962583089c8c5f691b3f411a5dd5b" title=" " alt="" coords="746,2169,938,2211"/>
+<area shape="rect" id="node49" href="$classopenage_1_1util_1_1_external_profiler.xhtml#ac3a5cc26c455355471efacdf59912abe" title=" " alt="" coords="746,2235,938,2276"/>
+<area shape="rect" id="node50" href="$classopenage_1_1renderer_1_1_s_d_l.xhtml#ac8f84c0598966ac7a51ae8139c6c797c" title=" " alt="" coords="775,2300,909,2341"/>
+<area shape="rect" id="node4" href="$classopenage_1_1event_1_1demo_1_1_pong_player.xhtml#a296f31cfd846d1dd543c6905c2bb61ac" title=" " alt="" coords="457,5,645,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1event_1_1demo_1_1_pong_ball.xhtml#a0b94d49da0d7c82cc56be793228045d2" title=" " alt="" coords="464,71,637,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1curve_1_1_value_container.xhtml#af7643c2abd7b18238a3092ac4f186368" title=" " alt="" coords="448,136,653,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1curve_1_1_value_container.xhtml#acb0b0b216cb64435edf52a01d16f70db" title=" " alt="" coords="448,201,653,243"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="216,442,396,469"/>
+<area shape="rect" id="node17" href="$namespaceopenage_1_1log_1_1tests.xhtml#a9ca6bf494467589807a56e954b8b3bb3" title="Demonstrates the Python logging facility." alt="" coords="470,827,631,854"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_screenshot_manager.xhtml#a810563b379906491c07a5c951cb4f535" title=" " alt="" coords="453,1017,648,1059"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_generator.xhtml#a5ba29f137cba8325e0dfff1b753f2d23" title=" " alt="" coords="483,1089,619,1131"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_object_producer.xhtml#aee34f7883059625ffd3fb4bd5a43371f" title=" " alt="" coords="466,1257,635,1299"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_movable_producer.xhtml#a3fc2ee02406d37a4106d51fee9d3c1c0" title=" " alt="" coords="217,1207,395,1248"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_living_producer.xhtml#ab1a0ef8e72b2db575f6c7b4fcdc09466" title=" " alt="" coords="5,1177,168,1219"/>
+<area shape="rect" id="node29" href="$classopenage_1_1_building_producer.xhtml#a8ee32ab40420fb82cea96603d01fc553" title=" " alt="" coords="462,1323,639,1364"/>
+<area shape="rect" id="node30" href="$namespaceopenage_1_1gameio.xhtml#ac86e0756708907f826cb04e6f13d588d" title=" " alt="" coords="460,1389,641,1415"/>
+</map>

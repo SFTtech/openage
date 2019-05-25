@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1unit" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::unit</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit" prot="public">openage::convert::gamedata::unit::ActionUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit" prot="public">openage::convert::gamedata::unit::AnimatedUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_annex" prot="public">openage::convert::gamedata::unit::BuildingAnnex</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit" prot="public">openage::convert::gamedata::unit::BuildingUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic" prot="public">openage::convert::gamedata::unit::DamageGraphic</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit" prot="public">openage::convert::gamedata::unit::DoppelgangerUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_hit_type" prot="public">openage::convert::gamedata::unit::HitType</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit" prot="public">openage::convert::gamedata::unit::LivingUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_missile_unit" prot="public">openage::convert::gamedata::unit::MissileUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit" prot="public">openage::convert::gamedata::unit::MovingUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit" prot="public">openage::convert::gamedata::unit::ProjectileUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost" prot="public">openage::convert::gamedata::unit::ResourceCost</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_storage" prot="public">openage::convert::gamedata::unit::ResourceStorage</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_tree_unit" prot="public">openage::convert::gamedata::unit::TreeUnit</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_command" prot="public">openage::convert::gamedata::unit::UnitCommand</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_header" prot="public">openage::convert::gamedata::unit::UnitHeader</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_line" prot="public">openage::convert::gamedata::unit::UnitLine</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object" prot="public">openage::convert::gamedata::unit::UnitObject</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1gamedata_1_1unit_1aace54c9038e983ef9a3a2fa12a9c7389" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::gamedata::unit.unit_type_lookup</definition>
+        <argsstring></argsstring>
+        <name>unit_type_lookup</name>
+        <initializer>=  {
+    10: &quot;object&quot;,
+    20: &quot;animated&quot;,
+    25: &quot;doppelganger&quot;,
+    30: &quot;moving&quot;,
+    40: &quot;action&quot;,
+    60: &quot;missile&quot;,
+    70: &quot;living&quot;,
+    80: &quot;building&quot;,
+    90: &quot;tree&quot;,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1323" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1gamedata_1_1unit_1a32f79a74085e2313e85108b6e3e2987e" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::gamedata::unit.unit_type_class_lookup</definition>
+        <argsstring></argsstring>
+        <name>unit_type_class_lookup</name>
+        <initializer>=  {
+    &quot;object&quot;:         UnitObject,
+    &quot;animated&quot;:       AnimatedUnit,
+    &quot;doppelganger&quot;:   DoppelgangerUnit,
+    &quot;moving&quot;:         MovingUnit,
+    &quot;action&quot;:         ActionUnit,
+    &quot;missile&quot;:        MissileUnit,
+    &quot;living&quot;:         LivingUnit,
+    &quot;building&quot;:       BuildingUnit,
+    &quot;tree&quot;:           TreeUnit,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1337" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" bodystart="1337" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/unit.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

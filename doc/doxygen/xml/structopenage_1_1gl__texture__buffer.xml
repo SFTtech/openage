@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="52" column="1" bodyfile="libopenage/texture.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a35cb39b23cff59f3dc0c8912840e2b38" prot="public" static="no" mutable="no">
         <type>GLuint</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="52" column="1" bodyfile="libopenage/texture.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a697bbf741b2eca6f560121aac3bc0c0a" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="55" column="1" bodyfile="libopenage/texture.h" bodystart="55" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1ac06991269c1a68d34684abbbefac807c" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="56" column="1" bodyfile="libopenage/texture.h" bodystart="56" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a14a0c70991272a36f844cb8d7d874a29" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="57" column="1" bodyfile="libopenage/texture.h" bodystart="57" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" prot="public" static="no" mutable="no">
         <type>std::unique_ptr&lt; uint32_t[]&gt;</type>
@@ -80,7 +80,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="58" column="1" bodyfile="libopenage/texture.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -89,12 +102,12 @@
 <para>enables transfer of data to opengl </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2375">
+      <node id="2796">
         <label>openage::gl_texture_buffer</label>
         <link refid="structopenage_1_1gl__texture__buffer"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/texture.h" line="51" column="1" bodyfile="libopenage/texture.h" bodystart="51" bodyend="59"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="51" bodyend="59"/>
     <listofallmembers>
       <member refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>data</name></member>
       <member refid="structopenage_1_1gl__texture__buffer_1aed6aaf0950f0fddb799d7ec956230138" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>id</name></member>

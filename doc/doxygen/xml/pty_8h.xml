@@ -3,12 +3,12 @@
   <compounddef id="pty_8h" kind="file" language="C++">
     <compoundname>pty.h</compoundname>
     <includes refid="pty_8h" local="no">pty.h</includes>
-    <includedby refid="console_2tests_8cpp" local="yes">libopenage/console/tests.cpp</includedby>
-    <includedby refid="pty_8h" local="no">libopenage/util/pty.h</includedby>
-    <includedby refid="fds_8cpp" local="yes">libopenage/util/fds.cpp</includedby>
+    <includedby refid="console_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</includedby>
+    <includedby refid="pty_8h" local="no">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/pty.h</includedby>
+    <includedby refid="fds_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</includedby>
     <incdepgraph>
       <node id="31501">
-        <label>libopenage/util/pty.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/pty.h</label>
         <link refid="pty_8h"/>
         <childnode refid="31501" relation="include">
         </childnode>
@@ -16,11 +16,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="31504">
-        <label>libopenage/util/fds.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</label>
         <link refid="fds_8cpp"/>
       </node>
       <node id="31502">
-        <label>libopenage/util/pty.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/pty.h</label>
         <link refid="pty_8h"/>
         <childnode refid="31503" relation="include">
         </childnode>
@@ -30,7 +30,7 @@
         </childnode>
       </node>
       <node id="31503">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -56,6 +56,6 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>include<sp/>&lt;<ref refid="pty_8h" kindref="compound">pty.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/pty.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/pty.h"/>
   </compounddef>
 </doxygen>

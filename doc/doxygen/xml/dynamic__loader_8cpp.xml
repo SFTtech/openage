@@ -19,7 +19,7 @@
         <label>functional</label>
       </node>
       <node id="375">
-        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</label>
         <link refid="dynamic__loader_8cpp"/>
         <childnode refid="376" relation="include">
         </childnode>
@@ -404,6 +404,6 @@
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/dynamic_loader.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp"/>
   </compounddef>
 </doxygen>

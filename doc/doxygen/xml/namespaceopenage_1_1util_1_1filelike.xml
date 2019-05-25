@@ -5,6 +5,10 @@
     <innerclass refid="classopenage_1_1util_1_1filelike_1_1_file_like" prot="public">openage::util::filelike::FileLike</innerclass>
     <innerclass refid="classopenage_1_1util_1_1filelike_1_1_native" prot="public">openage::util::filelike::Native</innerclass>
     <innerclass refid="classopenage_1_1util_1_1filelike_1_1_python" prot="public">openage::util::filelike::Python</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike_1_1abstract">openage::util::filelike::abstract</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike_1_1fifo">openage::util::filelike::fifo</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike_1_1readonly">openage::util::filelike::readonly</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike_1_1stream">openage::util::filelike::stream</innernamespace>
       <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, ssize_t &gt;</type>
@@ -17,7 +21,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="91" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="91" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="91" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" compoundref="filelike_2python_8cpp" startline="17" endline="19">openage::util::filelike::Python::read</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; size_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, void *, ssize_t &gt;</type>
@@ -30,7 +35,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="92" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="92" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="92" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" compoundref="filelike_2python_8cpp" startline="22" endline="24">openage::util::filelike::Python::read_to</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -43,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="93" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="93" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="93" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" compoundref="filelike_2python_8cpp" startline="27" endline="29">openage::util::filelike::Python::readable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::string &amp; &gt;</type>
@@ -56,7 +63,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="94" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" compoundref="filelike_2python_8cpp" startline="32" endline="34">openage::util::filelike::Python::write</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -69,7 +77,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="95" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" compoundref="filelike_2python_8cpp" startline="37" endline="39">openage::util::filelike::Python::writable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, ssize_t, int &gt;</type>
@@ -82,7 +91,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="96" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="96" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" compoundref="filelike_2python_8cpp" startline="42" endline="47">openage::util::filelike::Python::seek</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -95,7 +105,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="97" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="97" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" compoundref="filelike_2python_8cpp" startline="50" endline="52">openage::util::filelike::Python::seekable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; size_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -108,7 +119,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="98" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="98" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="98" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" compoundref="filelike_2python_8cpp" startline="55" endline="57">openage::util::filelike::Python::tell</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -121,7 +133,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="99" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="99" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" compoundref="filelike_2python_8cpp" startline="60" endline="62">openage::util::filelike::Python::close</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -134,7 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="100" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="100" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="100" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" compoundref="filelike_2python_8cpp" startline="65" endline="67">openage::util::filelike::Python::flush</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; ssize_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
@@ -147,13 +161,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.cpp" line="101" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="101" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="101" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" compoundref="filelike_2python_8cpp" startline="70" endline="72">openage::util::filelike::Python::get_size</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/filelike/filelike.cpp" line="7" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/filelike.cpp" line="7" column="1"/>
   </compounddef>
 </doxygen>

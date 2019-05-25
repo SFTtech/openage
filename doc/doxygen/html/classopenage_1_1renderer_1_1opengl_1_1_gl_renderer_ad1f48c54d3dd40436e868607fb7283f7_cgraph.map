@@ -1,0 +1,4 @@
+<map id="openage::renderer::opengl::GlRenderer::add_texture" name="openage::renderer::opengl::GlRenderer::add_texture">
+<area shape="rect" id="node1" title="Creates a new empty texture with the given parameters on the graphics hardware." alt="" coords="5,5,147,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="195,20,311,47"/>
+</map>

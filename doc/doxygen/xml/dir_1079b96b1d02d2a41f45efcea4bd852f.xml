@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_1079b96b1d02d2a41f45efcea4bd852f" kind="dir">
-    <compoundname>libopenage/pyinterface</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface</compoundname>
     <innerfile refid="defs_8cpp">defs.cpp</innerfile>
     <innerfile refid="defs_8h">defs.h</innerfile>
     <innerfile refid="exctranslate_8cpp">exctranslate.cpp</innerfile>
@@ -24,6 +24,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/pyinterface/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/"/>
   </compounddef>
 </doxygen>

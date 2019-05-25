@@ -29,7 +29,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/continuous.h" line="26" column="1" bodyfile="libopenage/curve/continuous.h" bodystart="32" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h" bodystart="32" bodyend="61"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" compoundref="curve__types_8cpp" startline="14" endline="146">openage::curve::tests::curve_types</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,42 +41,42 @@
 <para><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous</ref> Datatype. Stores a value container with continuous access. The bound template type T has to implement <computeroutput>operator+(T)</computeroutput> and <computeroutput>operator*(time_t)</computeroutput>. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="878">
+      <node id="1845">
         <label>openage::curve::Continuous&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_continuous"/>
-        <childnode refid="879" relation="public-inheritance">
+        <childnode refid="1846" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="880">
+      <node id="1847">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="879">
+      <node id="1846">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="880" relation="public-inheritance">
+        <childnode refid="1847" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="881">
+      <node id="1848">
         <label>openage::curve::Continuous&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_continuous"/>
-        <childnode refid="882" relation="public-inheritance">
+        <childnode refid="1849" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="883">
+      <node id="1850">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="882">
+      <node id="1849">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="883" relation="public-inheritance">
+        <childnode refid="1850" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/continuous.h" line="20" column="1" bodyfile="libopenage/curve/continuous.h" bodystart="20" bodyend="27"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h" bodystart="20" bodyend="27"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>add_dependent</name></member>

@@ -1,0 +1,6 @@
+<map id="openage.codegen.gamespec_structs.generate_gamespec_structs" name="openage.codegen.gamespec_structs.generate_gamespec_structs">
+<area shape="rect" id="node1" title="Header and C++ files for the gamespec structs." alt="" coords="804,5,995,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1codegen_1_1listing.xhtml#a8178b40ca254e32043552b4b3f13aeeb" title="Contains the listing of all code generator invocations." alt="" coords="520,20,756,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02" title=" " alt="" coords="241,20,472,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1codegen_1_1main.xhtml#a02b4f54f6bbc4cef5a3872eb60d639a6" title="Codegen CLI entry point." alt="" coords="5,20,193,47"/>
+</map>

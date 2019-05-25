@@ -14,7 +14,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/map.h" line="29" column="1" bodyfile="libopenage/curve/map.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
@@ -27,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/map.h" line="30" column="1" bodyfile="libopenage/curve/map.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
@@ -40,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/map.h" line="31" column="1" bodyfile="libopenage/curve/map.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -67,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/map.h" line="23" column="1" bodyfile="libopenage/curve/map.h" bodystart="23" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" bodystart="23" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,20 +77,33 @@
 <para>Internal container to access all data and metadata </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3173">
+      <node id="1913">
+        <label>int_type</label>
+      </node>
+      <node id="1912">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1913" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1910">
         <label>openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element</label>
         <link refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element"/>
-        <childnode refid="3174" relation="usage">
+        <childnode refid="1911" relation="usage">
           <edgelabel>+alive</edgelabel>
           <edgelabel>+dead</edgelabel>
         </childnode>
       </node>
-      <node id="3174">
+      <node id="1911">
         <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1912" relation="template-instance">
+          <edgelabel>&lt; int64_t, 16 &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/map.h" line="22" column="1" bodyfile="libopenage/curve/map.h" bodystart="22" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h" bodystart="22" bodyend="32"/>
     <listofallmembers>
       <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>alive</name></member>
       <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>dead</name></member>

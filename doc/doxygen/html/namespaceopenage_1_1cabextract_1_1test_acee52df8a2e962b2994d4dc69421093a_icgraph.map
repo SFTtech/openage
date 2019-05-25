@@ -1,0 +1,5 @@
+<map id="openage.cabextract.test.open_cached_test_archive" name="openage.cabextract.test.open_cached_test_archive">
+<area shape="rect" id="node1" title="Opens the cached test archive file." alt="" coords="484,5,679,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#af34db1a313c38a3853b23df18b8501ee" title="Opens the cached test archive file, or downloads it if necessary." alt="" coords="241,5,436,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#a37033bf8c1b43c7401ec96dadd3584c7" title="The actual test function; registered in openage.testing.testlist." alt="" coords="5,13,193,39"/>
+</map>

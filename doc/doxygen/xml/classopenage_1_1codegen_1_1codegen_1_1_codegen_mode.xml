@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode" kind="class" language="Python" prot="public">
+    <compoundname>openage::codegen::codegen::CodegenMode</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1a37deaf8b5c0e610381c730362bc27232" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.codegen.codegen.CodegenMode::codegen</definition>
+        <argsstring></argsstring>
+        <name>codegen</name>
+        <initializer>=  &quot;codegen&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1ab5adb084f4c5f9de696afa1f2cbb79be" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.codegen.codegen.CodegenMode::dryrun</definition>
+        <argsstring></argsstring>
+        <name>dryrun</name>
+        <initializer>=  &quot;dryrun&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1a88d0e915aa0b3173a9980f4fe2c39ae6" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.codegen.codegen.CodegenMode::clean</definition>
+        <argsstring></argsstring>
+        <name>clean</name>
+        <initializer>=  &quot;clean&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Modus operandi. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="789">
+        <label>openage.codegen.codegen.CodegenMode</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode"/>
+        <childnode refid="790" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="790">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="791">
+        <label>openage.codegen.codegen.CodegenMode</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode"/>
+        <childnode refid="792" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="792">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="28" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1a88d0e915aa0b3173a9980f4fe2c39ae6" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenMode</scope><name>clean</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1a37deaf8b5c0e610381c730362bc27232" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenMode</scope><name>codegen</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode_1ab5adb084f4c5f9de696afa1f2cbb79be" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::CodegenMode</scope><name>dryrun</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

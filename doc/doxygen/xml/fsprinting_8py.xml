@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fsprinting_8py" kind="file" language="Python">
+    <compoundname>fsprinting.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fsprinting">openage::util::fsprinting</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1util_1_1fsprinting" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Methods<sp/>for<sp/>printing<sp/>paths<sp/>and<sp/>other<sp/>file<sp/>system-related<sp/>info.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>collections<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>OrderedDict</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.strings<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>colorize</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.math<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>INF</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">RULE_CACHE<sp/>=<sp/>OrderedDict()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1util_1_1fsprinting_1a07b43c9c8f5a0442e94526f8472fbc86" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" kindref="member">get_color_rules</ref>():</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Returns<sp/>a<sp/>dict<sp/>of<sp/>pattern<sp/>:<sp/>colorcode,<sp/>retrieved<sp/>from<sp/>LS_COLORS.</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>RULE_CACHE:</highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>RULE_CACHE</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>os<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>environ</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rules<sp/>=<sp/>environ[</highlight><highlight class="stringliteral">&apos;LS_COLORS&apos;</highlight><highlight class="normal">]</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>KeyError:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>rule<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>rules.split(</highlight><highlight class="stringliteral">&apos;:&apos;</highlight><highlight class="normal">):</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rule<sp/>=<sp/>rule.strip()</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rule:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pattern,<sp/>colorcode<sp/>=<sp/>rule.split(</highlight><highlight class="stringliteral">&apos;=&apos;</highlight><highlight class="normal">,<sp/>maxsplit=1)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>ValueError:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Your<sp/>LS_COLORS<sp/>are<sp/>broken.<sp/>Go<sp/>fix<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>I<sp/>shouldn&apos;t<sp/>even<sp/>be<sp/>catching<sp/>the<sp/>error<sp/>for<sp/>you.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RULE_CACHE[pattern]<sp/>=<sp/>colorcode</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>RULE_CACHE</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" kindref="member">colorize_filename</ref>(filename):</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Colorizes<sp/>the<sp/>filename,<sp/>using<sp/>the<sp/>globbing<sp/>rules<sp/>from<sp/>LS_COLORS.</highlight></codeline>
+<codeline lineno="49"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>fnmatch<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>fnmatch</highlight></codeline>
+<codeline lineno="51" refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>rules<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" kindref="member">get_color_rules</ref>()</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>pattern,<sp/>colorcode<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>rules.items():</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>fnmatch(filename,<sp/>pattern):</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" kindref="member">colorize</ref>(filename,<sp/>colorcode)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" kindref="member">colorize</ref>(filename,<sp/>rules.get(</highlight><highlight class="stringliteral">&apos;fi&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" kindref="member">colorize_dirname</ref>(dirname):</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Colorizes<sp/>the<sp/>dirname,<sp/>using<sp/>the<sp/>&apos;di&apos;<sp/>rule<sp/>from<sp/>LS_COLORS.</highlight></codeline>
+<codeline lineno="64"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" kindref="member">colorize</ref>(dirname,<sp/><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" kindref="member">get_color_rules</ref>().get(</highlight><highlight class="stringliteral">&apos;di&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="66" refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" kindref="member">print_tree</ref>(obj,<sp/>path=&quot;&quot;,<sp/>prefix=&quot;&quot;,<sp/>max_entries=INF):</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="70"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Obj<sp/>is<sp/>a<sp/>filesystem-like<sp/>object;<sp/>path<sp/>must<sp/>be<sp/>a<sp/>string.</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Recursively<sp/>descends<sp/>into<sp/>subdirectories<sp/>using<sp/>prefix.</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>If<sp/>max_entries<sp/>is<sp/>given,<sp/>only<sp/>that<sp/>number<sp/>of<sp/>entries<sp/>per<sp/>directory</highlight></codeline>
+<codeline lineno="75"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>is<sp/>printed.</highlight></codeline>
+<codeline lineno="76"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>entries<sp/>is<sp/>a<sp/>list<sp/>of<sp/>tuples<sp/>of<sp/>entryname,<sp/>isdir,<sp/>ismeta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>entries<sp/>=<sp/>[]</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>entry<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>obj.listdirs(path):</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries.append((entry,<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>entry<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>obj.listfiles(path):</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries.append((entry,<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>entries:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries.append((</highlight><highlight class="stringliteral">&quot;[empty]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(entries)<sp/>&gt;<sp/>max_entries:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>omit<sp/>=<sp/>len(entries)<sp/>-<sp/>max_entries<sp/>+<sp/>1</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries<sp/>=<sp/>entries[:-omit]<sp/>+<sp/>[(</highlight><highlight class="stringliteral">&quot;[%d<sp/>omitted]&quot;</highlight><highlight class="normal"><sp/>%<sp/>omit,<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.iterators<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>denote_last</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(name,<sp/>isdir,<sp/>is_meta),<sp/>is_last<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1iterators_1a843780725ecd55c667e672085026f3be" kindref="member">denote_last</ref>(entries):</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>is_last:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>treesymbol,<sp/>nextindent<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;\u2514&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;<sp/><sp/><sp/>&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>treesymbol,<sp/>nextindent<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;\u251c&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;\u2502<sp/><sp/>&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>is_meta:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entryindent<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;\u257c<sp/>&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entryindent<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;\u2500<sp/>&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>isdir:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(prefix<sp/>+<sp/>treesymbol<sp/>+<sp/>entryindent<sp/>+<sp/><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" kindref="member">colorize_dirname</ref>(name))</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.print_tree(path<sp/>+<sp/></highlight><highlight class="stringliteral">&apos;/&apos;</highlight><highlight class="normal"><sp/>+<sp/>name,<sp/>prefix<sp/>+<sp/>nextindent,<sp/>max_entries)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(prefix<sp/>+<sp/>nextindent)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(prefix<sp/>+<sp/>treesymbol<sp/>+<sp/>entryindent<sp/>+<sp/><ref refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" kindref="member">colorize_filename</ref>(name))</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py"/>
+  </compounddef>
+</doxygen>

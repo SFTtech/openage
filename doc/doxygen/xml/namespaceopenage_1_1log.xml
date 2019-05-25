@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="namespaceopenage_1_1log" kind="namespace" language="C++">
     <compoundname>openage::log</compoundname>
+    <innerclass refid="classopenage_1_1log_1_1_cpp_handler" prot="public">openage::log::CppHandler</innerclass>
     <innerclass refid="classopenage_1_1log_1_1_file_sink" prot="public">openage::log::FileSink</innerclass>
     <innerclass refid="structopenage_1_1log_1_1level" prot="public">openage::log::level</innerclass>
     <innerclass refid="structopenage_1_1log_1_1level__value" prot="public">openage::log::level_value</innerclass>
@@ -26,7 +27,64 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/level.cpp" line="9" column="1" bodyfile="libopenage/log/level.cpp" bodystart="9" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.cpp" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.cpp" bodystart="9" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1log_1_1level_1aa1696d178fd623f05fbc9db281ddc8cc" compoundref="level_8cpp" startline="11" endline="11">openage::log::level::level</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1log_1aba6ceacbd33d6828bd46edb55569ab14" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::log::PYTHON_TO_CPP_LOG_LEVEL</definition>
+        <argsstring></argsstring>
+        <name>PYTHON_TO_CPP_LOG_LEVEL</name>
+        <initializer>=  {}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1log_1a46a996a4054d7e95ae33b1df746c4ec3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::log::CPP_HANDLER</definition>
+        <argsstring></argsstring>
+        <name>CPP_HANDLER</name>
+        <initializer>=  <ref refid="classopenage_1_1log_1_1_cpp_handler" kindref="compound">CppHandler</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1log_1a4873e15c7fe197151a68a153904c2461" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::log::SPAM</definition>
+        <argsstring></argsstring>
+        <name>SPAM</name>
+        <initializer>=  5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1log_1a96bf92c0c16156a44e3428bc2023dee2" prot="public" static="no" mutable="no">
+        <type>def</type>
+        <definition>def openage::log::ENV_VERBOSITY</definition>
+        <argsstring></argsstring>
+        <name>ENV_VERBOSITY</name>
+        <initializer>=  <ref refid="namespaceopenage_1_1log_1a8384c2e3977d17adc4ceac0e8aacc5d3" kindref="member">env_verbosity</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="167" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -47,7 +105,96 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/log.cpp" line="13" column="1" bodyfile="libopenage/log/log.cpp" bodystart="13" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp" bodystart="13" bodyend="15"/>
+        <references refid="namespaceopenage_1_1log_1a3fbb0c225d01e222648ec28a43507188" compoundref="named__logsource_8cpp" startline="19" endline="22">general_source</references>
+        <references refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" compoundref="logsource_8cpp" startline="19" endline="25">openage::log::LogSource::log</references>
+        <referencedby refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">openage::path::a_star</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" compoundref="eventqueue_8cpp" startline="82" endline="126">openage::event::EventQueue::add_change</referencedby>
+        <referencedby refid="namespaceopenage_1a012c2c0bdd9534a3d648ada6c608ebf2" compoundref="producer_8cpp" startline="28" endline="81">openage::allowed_terrains</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1af40a0b5e61397331f4efc9543f7fdd44" compoundref="terrain_8cpp" startline="82" endline="107">openage::Terrain::attach_chunk</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1afeb7fd105b03e822ff4ebe205cff3265" compoundref="game__control_8cpp" startline="355" endline="370">openage::ActionMode::available</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a51ca65c9475aa6b8b94e217d08a03bab" compoundref="game__control_8cpp" startline="579" endline="591">openage::EditorMode::available</referencedby>
+        <referencedby refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" compoundref="eventtarget_8cpp" startline="14" endline="61">openage::event::EventTarget::changes</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1add18a1e0933affe40c982f62c88f4c05" compoundref="assetmanager_8cpp" startline="133" endline="170">openage::AssetManager::check_updates</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1afee91926bb4d9b763527a7aa28ec95d4" compoundref="assetmanager_8cpp" startline="185" endline="197">openage::AssetManager::clear</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_action_manager_1a172292484fa92f4c391479d6e656808a" compoundref="input_2action_8cpp" startline="117" endline="147">openage::input::ActionManager::create</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1adde017808ad3b24a4a95c6cad4fcd2db" compoundref="event_2loop_8h" startline="137" endline="144">openage::event::Loop::create_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">openage::event::EventQueue::create_event</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">openage::Generator::create_regions</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" compoundref="csv_8cpp" startline="16" endline="67">openage::util::CSVCollection::CSVCollection</referencedby>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" compoundref="curve__types_8cpp" startline="14" endline="146">openage::curve::tests::curve_types</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" compoundref="demo_8cpp" startline="45" endline="58">openage::error::demo</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_1a8a965360b4fcaa417ffebc7e10c9d8d1" compoundref="event_2event_8cpp" startline="26" endline="34">openage::event::Event::depend_on</referencedby>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">openage::ScreenshotManager::encode_png</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a6ae6b85d3f959e3cec4f7990e76b9c2b" compoundref="exctranslate__tests_8cpp" startline="108" endline="119">openage::pyinterface::tests::err_py_to_cpp_demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1event_1_1tests_1ab950ba5156aefba0f5ecaab970fcc1aa" compoundref="event_2tests_8cpp" startline="228" endline="554">openage::event::tests::eventtrigger</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
+        <referencedby refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" compoundref="windowvk_8cpp" startline="39" endline="78">openage::renderer::vulkan::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" compoundref="civilisation_8cpp" startline="38" endline="44">openage::Civilisation::get_building_data</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_manager_1a18b41a56c570436c58435866c0a42faa" compoundref="font__manager_8cpp" startline="14" endline="47">openage::renderer::FontManager::get_font_filename</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1aa1f8784ca6aab9da489457d22b386443" compoundref="game__spec_8cpp" startline="136" endline="142">openage::GameSpec::get_graphic_data</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a1b83c8dcc455fd32056c418a993eb506" compoundref="game__spec_8cpp" startline="125" endline="133">openage::GameSpec::get_sound</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" compoundref="game__spec_8cpp" startline="91" endline="108">openage::GameSpec::get_texture</referencedby>
+        <referencedby refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</referencedby>
+        <referencedby refid="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" compoundref="player_8cpp" startline="129" endline="135">openage::Player::get_type_index</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a7ac1e52c333dbceea615911bd705fb88" compoundref="game__spec_8cpp" startline="115" endline="123">openage::GameSpec::get_unit_texture</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">openage::renderer::opengl::GlContext::GlContext</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" compoundref="opengl_2renderer_8cpp" startline="17" endline="21">openage::renderer::opengl::GlRenderer::GlRenderer</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" compoundref="opengl_2window_8cpp" startline="16" endline="41">openage::renderer::opengl::GlWindow::GlWindow</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_physics_1a8667e80722a83c0f0ff29835d5d54baf" compoundref="physics_8cpp" startline="362" endline="381">openage::event::demo::Physics::init</referencedby>
+        <referencedby refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" compoundref="civilisation_8cpp" startline="47" endline="53">openage::Civilisation::initialise_unit_types</referencedby>
+        <referencedby refid="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" compoundref="player_8cpp" startline="138" endline="146">openage::Player::initialise_unit_types</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1a6d3145302d7a6910d0e8e30d42380cc5" compoundref="event_2tests_8cpp" startline="100" endline="123">openage::event::tests::TestEventClass::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" compoundref="physics_8cpp" startline="138" endline="213">openage::event::demo::BallReflectPanel::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two_1af47dbc011710ba5e6986493b63dead0e" compoundref="event_2tests_8cpp" startline="146" endline="158">openage::event::tests::TestEventClassTwo::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1ac71424a13be1323a33f6f538a4d8a3e7" compoundref="event_2tests_8cpp" startline="185" endline="198">openage::event::tests::EventTypeTestClass::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" compoundref="physics_8cpp" startline="275" endline="352">openage::event::demo::ResetGame::invoke</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
+        <referencedby refid="classopenage_1_1cvar_1_1_c_var_manager_1a8fcaa20636cab773dc70db2c74a4308e" compoundref="cvar_8cpp" startline="49" endline="52">openage::cvar::CVarManager::load_all</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a6f6bbcfb3a4dd8586bbed00f62054bf1" compoundref="game__spec_8cpp" startline="329" endline="401">openage::GameSpec::load_terrain</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1aae3415abc6b2ba91c70ba2f0c9343436" compoundref="assetmanager_8cpp" startline="58" endline="108">openage::AssetManager::load_texture</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_state_1ae1464903f08fcc8b86ab86fcc995334e" compoundref="event_2tests_8cpp" startline="66" endline="71">openage::event::tests::TestState::log_dbg</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">openage::renderer::SDL::make_available</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" compoundref="game__spec_8cpp" startline="192" endline="270">openage::GameSpec::on_gamedata_loaded</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">openage::Engine::on_resize</referencedby>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">openage::Sound::play</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" compoundref="physics_8cpp" startline="215" endline="262">openage::event::demo::BallReflectPanel::predict_invoke_time</referencedby>
+        <referencedby refid="namespaceopenage_1a3acc47409b93e64eef42ad8add16052b" compoundref="generator_8cpp" startline="17" endline="26">openage::random_tile</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" compoundref="loop_8cpp" startline="56" endline="87">openage::event::Loop::reach_time</referencedby>
+        <referencedby refid="namespaceopenage_1_1os_1a2ff2ec43cb1353b31db1f7cae31b13be" compoundref="os_8cpp" startline="28" endline="55">openage::os::read_symlink</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1ac2256044717a0f7f7aafbb1f2be3a1eb" compoundref="renderer_2tests_8cpp" startline="280" endline="290">openage::renderer::tests::renderer_demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" compoundref="renderer_2tests_8cpp" startline="33" endline="278">openage::renderer::tests::renderer_demo_0</referencedby>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1ae351437c3a9fafc071961486f7eef075" compoundref="selection_8cpp" startline="228" endline="244">openage::UnitSelection::select_point</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" compoundref="actions__list__model_8cpp" startline="31" endline="118">openage::gui::ActionsListModel::set_active_buttons</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1aa44a60840b738c202e328902943d8162" compoundref="game__control_8cpp" startline="793" endline="821">openage::GameControl::set_modes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1acadce4dd71ef75305e148c0a98b42163" compoundref="event_2tests_8cpp" startline="175" endline="183">openage::event::tests::EventTypeTestClass::setup_event</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" compoundref="eventtarget_8cpp" startline="94" endline="105">openage::event::EventTarget::show_dependents</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">openage::util::ExternalProfiler::show_results</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">openage::util::ExternalProfiler::start</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" compoundref="job__manager_8cpp" startline="31" endline="40">openage::job::JobManager::start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">openage::util::ExternalProfiler::stop</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" compoundref="job__manager_8cpp" startline="43" endline="56">openage::job::JobManager::stop</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" compoundref="unit__texture_8cpp" startline="151" endline="160">openage::UnitTexture::subtexture</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" compoundref="eventtarget_8cpp" startline="64" endline="87">openage::event::EventTarget::trigger</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" compoundref="opengl_2window_8cpp" startline="58" endline="91">openage::renderer::opengl::GlWindow::update</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" compoundref="windowvk_8cpp" startline="22" endline="35">openage::renderer::vulkan::vlk_debug_cb</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" compoundref="graphics__device_8cpp" startline="93" endline="152">openage::renderer::vulkan::VlkGraphicsDevice::VlkGraphicsDevice</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
+        <referencedby refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">openage::subprocess::which</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" compoundref="sdl__global_8cpp" startline="39" endline="46">openage::renderer::SDL::~SDL</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a4855244807ea15873a7ecd3f25dcfc34" compoundref="terrain_8cpp" startline="45" endline="54">openage::Terrain::~Terrain</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1log_1ac8660073c35f9900e8c1169f2899b7d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -66,7 +213,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/log.cpp" line="18" column="1" bodyfile="libopenage/log/log.cpp" bodystart="18" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp" bodystart="18" bodyend="20"/>
+        <references refid="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" compoundref="stdout__logsink_8cpp" startline="64" endline="67">global_stdoutsink</references>
+        <references refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" compoundref="logsink_8cpp" startline="25" endline="28">openage::log::LogSink::set_loglevel</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -88,7 +237,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/message.cpp" line="51" column="1" bodyfile="libopenage/log/message.cpp" bodystart="51" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp" bodystart="51" bodyend="59"/>
+        <references refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" compoundref="message_8h" startline="63">openage::log::message::filename</references>
+        <references refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" compoundref="message_8h" startline="73">openage::log::message::functionname</references>
+        <references refid="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" compoundref="message_8h" startline="68">openage::log::message::lineno</references>
+        <references refid="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" compoundref="message_8h" startline="78">openage::log::message::lvl</references>
+        <references refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" compoundref="message_8h" startline="58">openage::log::message::text</references>
+        <references refid="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" compoundref="message_8h" startline="83">openage::log::message::thread_id</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1log_1a3fbb0c225d01e222648ec28a43507188" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1log_1_1_named_log_source" kindref="compound">NamedLogSource</ref> &amp;</type>
@@ -102,7 +257,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/named_logsource.cpp" line="19" column="1" bodyfile="libopenage/log/named_logsource.cpp" bodystart="19" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp" bodystart="19" bodyend="22"/>
+        <referencedby refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">log</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" compoundref="stdout__logsink_8cpp" startline="48" endline="61">openage::log::StdOutSink::output_log_message</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1log_1_1_std_out_sink" kindref="compound">StdOutSink</ref> &amp;</type>
@@ -116,13 +273,533 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/stdout_logsink.cpp" line="64" column="1" bodyfile="libopenage/log/stdout_logsink.cpp" bodystart="64" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp" bodystart="64" bodyend="67"/>
+        <referencedby refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" compoundref="logsource_8cpp" startline="19" endline="25">openage::log::LogSource::log</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1ac8660073c35f9900e8c1169f2899b7d2" compoundref="log_8cpp" startline="18" endline="20">set_level</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a37a9ba75ed4a75173bfe7c3a77345a7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.level_colorcode</definition>
+        <argsstring>(lvl)</argsstring>
+        <name>level_colorcode</name>
+        <param>
+          <type>lvl</type>
+          <defname>lvl</defname>
+        </param>
+        <briefdescription>
+<para>returns the same color codes as in <ref refid="level_8cpp" kindref="compound">libopenage/log/level.cpp</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="54" bodyend="63"/>
+        <referencedby refid="classopenage_1_1log_1_1_cpp_handler_1a8606ee97c7c0781c559046816117ece3" compoundref="log_2____init_____8py" startline="38" endline="49">openage.log.CppHandler.emit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a7cf607c879d89be419d5a68dedc211ab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log._spam</definition>
+        <argsstring>(self, msg, *args, **kwargs)</argsstring>
+        <name>_spam</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>Log &apos;msg % args&apos; with severity &apos;SPAM&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a701e516b9632ad3b4ccccf28d12fbc48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.setup_logging</definition>
+        <argsstring>()</argsstring>
+        <name>setup_logging</name>
+        <briefdescription>
+<para>setup the logging system </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="76" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.set_loglevel</definition>
+        <argsstring>(level)</argsstring>
+        <name>set_loglevel</name>
+        <param>
+          <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
+          <defname>level</defname>
+        </param>
+        <briefdescription>
+<para>sets the log level </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="91" bodyend="97"/>
+        <references refid="namespaceopenage_1_1log_1a2b8905069877587c7f8624a11d524bbc" compoundref="log_2____init_____8py" startline="99" endline="102">get_loglevel</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1slp__converter__pool_1a1f2e2c95486ce8b8bc86342dd862afc2" compoundref="slp__converter__pool_8py" startline="135" endline="166">openage.convert.slp_converter_pool.converter_process</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" compoundref="tests_8py" startline="15" endline="49">openage::log::tests.demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1____main_____1a2cf9c123d48ac683e5cf594b0114e5e3" compoundref="____main_____8py" startline="36" endline="133">openage.__main__.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a2b8905069877587c7f8624a11d524bbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.get_loglevel</definition>
+        <argsstring>()</argsstring>
+        <name>get_loglevel</name>
+        <briefdescription>
+<para>gets the log level </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="99" bodyend="102"/>
+        <referencedby refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" compoundref="log_2____init_____8py" startline="91" endline="97">set_loglevel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.spam</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>spam</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>spam message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="104" bodyend="107"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ae463a515baf512fb39d859990812481f" compoundref="content__snippet_8py" startline="60" endline="76">openage.convert.dataformat.content_snippet.ContentSnippet.add_required_snippets</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" compoundref="tests_8py" startline="15" endline="49">openage::log::tests.demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1cvar_1_1config__file_1aee5a9b4650b459614a87fe8adadb8ad7" compoundref="config__file_8py" startline="18" endline="54">openage.cvar.config_file.load_config_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat_1a571729db3187f457aefbdb94af2364d0" compoundref="empiresdat_8py" startline="382" endline="424">openage.convert.gamedata.empiresdat.load_gamespec</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1texture_1af986c2ec331f19840f4dc1eee51a5961" compoundref="texture_8py" startline="210" endline="260">openage.convert.texture.merge_frames</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.dbg</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>dbg</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>debug message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="109" bodyend="112"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a17b11fd7e416e7e4bac798af10470d54" compoundref="cab_8py" startline="229" endline="288">openage.cabextract.cab.CABFile.__init__</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">openage::path::a_star</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1af40a0b5e61397331f4efc9543f7fdd44" compoundref="terrain_8cpp" startline="82" endline="107">openage::Terrain::attach_chunk</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" compoundref="convert_2main_8py" startline="436" endline="502">openage.convert.main.conversion_required</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1a2147ca3608a15047a639e9661a7a928c" compoundref="driver_8py" startline="144" endline="204">openage.convert.driver.convert_metadata</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">openage::Generator::create_regions</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" compoundref="windowvk_8cpp" startline="39" endline="78">openage::renderer::vulkan::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" compoundref="colortable_8py" startline="86" endline="145">openage.convert.colortable.ColorTable.gen_image</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1aa1f8784ca6aab9da489457d22b386443" compoundref="game__spec_8cpp" startline="136" endline="142">openage::GameSpec::get_graphic_data</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a1b83c8dcc455fd32056c418a993eb506" compoundref="game__spec_8cpp" startline="125" endline="133">openage::GameSpec::get_sound</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" compoundref="game__spec_8cpp" startline="91" endline="108">openage::GameSpec::get_texture</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a7ac1e52c333dbceea615911bd705fb88" compoundref="game__spec_8cpp" startline="115" endline="123">openage::GameSpec::get_unit_texture</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">openage::renderer::opengl::GlContext::GlContext</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1aee34f7883059625ffd3fb4bd5a43371f" compoundref="producer_8cpp" startline="213" endline="292">openage::ObjectProducer::initialise</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a8ee32ab40420fb82cea96603d01fc553" compoundref="producer_8cpp" startline="585" endline="648">openage::BuildingProducer::initialise</referencedby>
+        <referencedby refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" compoundref="civilisation_8cpp" startline="47" endline="53">openage::Civilisation::initialise_unit_types</referencedby>
+        <referencedby refid="classopenage_1_1_move_ability_1a1d0ebbdd7b98efa293ebc91287a6dee4" compoundref="ability_8cpp" startline="79" endline="102">openage::MoveAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_garrison_ability_1afbd9de019824dcf92b3b5dd4e5e1aea7" compoundref="ability_8cpp" startline="140" endline="146">openage::GarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_ungarrison_ability_1a6ed7fdb59dc12befd1e0be6fbdd2b387" compoundref="ability_8cpp" startline="161" endline="169">openage::UngarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_train_ability_1af4ea7db282a8000eb59e8edc540d40c4" compoundref="ability_8cpp" startline="184" endline="190">openage::TrainAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_build_ability_1acf4dba9dcd9ed37efcbec8f14da3c3a2" compoundref="ability_8cpp" startline="230" endline="239">openage::BuildAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_gather_ability_1a24e201b13152f9cc654d2b69ec95940e" compoundref="ability_8cpp" startline="257" endline="269">openage::GatherAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_attack_ability_1ab607828e9d6469ea9405cfc5f1ab2735" compoundref="ability_8cpp" startline="292" endline="300">openage::AttackAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_repair_ability_1aac321a378657813f98a938df9be7256d" compoundref="ability_8cpp" startline="320" endline="328">openage::RepairAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_heal_ability_1a7da7aca0fca2b96e24874441df1a016e" compoundref="ability_8cpp" startline="348" endline="356">openage::HealAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_patrol_ability_1ad0b338306b2825e24536dc95bf4ae3d1" compoundref="ability_8cpp" startline="368" endline="374">openage::PatrolAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_convert_ability_1a3ed81fd0cceaa364654c89803c3b0e48" compoundref="ability_8cpp" startline="393" endline="401">openage::ConvertAbility::invoke</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat_1a571729db3187f457aefbdb94af2364d0" compoundref="empiresdat_8py" startline="382" endline="424">openage.convert.gamedata.empiresdat.load_gamespec</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a6f6bbcfb3a4dd8586bbed00f62054bf1" compoundref="game__spec_8cpp" startline="329" endline="401">openage::GameSpec::load_terrain</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" compoundref="logsink_8cpp" startline="13" endline="17">openage::log::LogSink::LogSink</referencedby>
+        <referencedby refid="classopenage_1_1_gather_action_1a578fcecec436b05efb5059bbb35837fe" compoundref="unit_2action_8cpp" startline="1155" endline="1179">openage::GatherAction::nearest_dropsite</referencedby>
+        <referencedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e" compoundref="unit_2action_8cpp" startline="932" endline="956">openage::BuildAction::on_completion</referencedby>
+        <referencedby refid="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c" compoundref="unit_2action_8cpp" startline="1135" endline="1153">openage::GatherAction::on_completion_in_range</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">openage::Engine::on_resize</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_nyan_type_1ae2f61064a00875267824a0bdfba63085" compoundref="unit__type_8cpp" startline="138" endline="157">openage::NyanType::place</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1ade45243e5c507f83f57d2ca5ad6a27e8" compoundref="cab_8py" startline="356" endline="429">openage.cabextract.cab.CABFile.read_file_headers</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a4d9e75ec517f4c47627143b3a950a7e7" compoundref="cab_8py" startline="300" endline="350">openage.cabextract.cab.CABFile.read_folder_headers</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" compoundref="hdlanguagefile_8py" startline="101" endline="126">openage.convert.hdlanguagefile.read_hd_language_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a3bd1c711bafb552611f48267652e0d17" compoundref="blendomatic_8py" startline="269" endline="277">openage.convert.blendomatic.Blendomatic.save</referencedby>
+        <referencedby refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" compoundref="setup_8py" startline="30" endline="59">openage.cppinterface.setup.setup</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" compoundref="convert_2main_8py" startline="382" endline="430">openage.convert.main.source_dir_proposals</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" compoundref="opengl_2window_8cpp" startline="58" endline="91">openage::renderer::opengl::GlWindow::update</referencedby>
+        <referencedby refid="classopenage_1_1_move_action_1afa4e4983c00b0207af76c7b717e81a05" compoundref="unit_2action_8cpp" startline="591" endline="685">openage::MoveAction::update</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" compoundref="windowvk_8cpp" startline="22" endline="35">openage::renderer::vulkan::vlk_debug_cb</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" compoundref="graphics__device_8cpp" startline="93" endline="152">openage::renderer::vulkan::VlkGraphicsDevice::VlkGraphicsDevice</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a4855244807ea15873a7ecd3f25dcfc34" compoundref="terrain_8cpp" startline="45" endline="54">openage::Terrain::~Terrain</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1accf1000738bfedfae052b9257509ef97" compoundref="terrain__object_8cpp" startline="32" endline="36">openage::TerrainObject::~TerrainObject</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.info</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>info</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>info message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="114" bodyend="117"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad1f48c54d3dd40436e868607fb7283f7" compoundref="opengl_2renderer_8cpp" startline="27" endline="29">openage::renderer::opengl::GlRenderer::add_texture</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" compoundref="changelog_8py" startline="52" endline="75">openage.convert.changelog.changes</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" compoundref="convert_2main_8py" startline="436" endline="502">openage.convert.main.conversion_required</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1opus_1_1demo_1ae0391ea8f0edf327a1f80b107ef7b68e" compoundref="demo_8py" startline="16" endline="52">openage.convert.opus.demo.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1ac0a5dae7195fabd749cffb70a062a647" compoundref="driver_8py" startline="114" endline="132">openage.convert.driver.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" compoundref="convert_2main_8py" startline="162" endline="216">openage.convert.main.convert_assets</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1ad7f7fa271abe4e1c3bc43160e84bc58f" compoundref="driver_8py" startline="239" endline="310">openage.convert.driver.convert_media</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1a2147ca3608a15047a639e9661a7a928c" compoundref="driver_8py" startline="144" endline="204">openage.convert.driver.convert_metadata</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" compoundref="demo_8cpp" startline="45" endline="58">openage::error::demo</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" compoundref="vulkan_2renderer_8cpp" startline="20" endline="311">openage::renderer::vulkan::VlkRenderer::do_the_thing</referencedby>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">openage::ScreenshotManager::encode_png</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a6ae6b85d3f959e3cec4f7990e76b9c2b" compoundref="exctranslate__tests_8cpp" startline="108" endline="119">openage::pyinterface::tests::err_py_to_cpp_demo</referencedby>
+        <referencedby refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" compoundref="civilisation_8cpp" startline="38" endline="44">openage::Civilisation::get_building_data</referencedby>
+        <referencedby refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</referencedby>
+        <referencedby refid="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" compoundref="player_8cpp" startline="129" endline="135">openage::Player::get_type_index</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">openage::renderer::opengl::GlContext::GlContext</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" compoundref="opengl_2renderer_8cpp" startline="17" endline="21">openage::renderer::opengl::GlRenderer::GlRenderer</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" compoundref="opengl_2window_8cpp" startline="16" endline="41">openage::renderer::opengl::GlWindow::GlWindow</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+        <referencedby refid="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" compoundref="player_8cpp" startline="138" endline="146">openage::Player::initialise_unit_types</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a4973f96b5a25450372f6d09c153284bf" compoundref="convert_2main_8py" startline="503" endline="561">openage.convert.main.interactive_browser</referencedby>
+        <referencedby refid="namespaceopenage_1_1cvar_1_1config__file_1aee5a9b4650b459614a87fe8adadb8ad7" compoundref="config__file_8py" startline="18" endline="54">openage.cvar.config_file.load_config_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat_1a571729db3187f457aefbdb94af2364d0" compoundref="empiresdat_8py" startline="382" endline="424">openage.convert.gamedata.empiresdat.load_gamespec</referencedby>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1singlefile_1a24cbe33666ca577f3d4bcb9ab5235b9f" compoundref="singlefile_8py" startline="39" endline="78">openage.convert.singlefile.main</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">openage::renderer::SDL::make_available</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_main_args_link_1a27313ca71bc497664ab7a4ade01323e4" compoundref="main__args__link_8cpp" startline="30" endline="37">openage::gui::MainArgsLink::provider</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_engine_link_1acb34bd8d343a973436e0652db23cce12" compoundref="engine__link_8cpp" startline="54" endline="69">openage::gui::EngineLink::provider</referencedby>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" compoundref="convert_2main_8py" startline="382" endline="430">openage.convert.main.source_dir_proposals</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">openage::util::ExternalProfiler::start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">openage::util::ExternalProfiler::stop</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" compoundref="sdl__global_8cpp" startline="39" endline="46">openage::renderer::SDL::~SDL</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.warn</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>warn</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>warning message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="119" bodyend="122"/>
+        <referencedby refid="namespaceopenage_1a012c2c0bdd9534a3d648ada6c608ebf2" compoundref="producer_8cpp" startline="28" endline="81">openage::allowed_terrains</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1afeb7fd105b03e822ff4ebe205cff3265" compoundref="game__control_8cpp" startline="355" endline="370">openage::ActionMode::available</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a51ca65c9475aa6b8b94e217d08a03bab" compoundref="game__control_8cpp" startline="579" endline="591">openage::EditorMode::available</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" compoundref="changelog_8py" startline="52" endline="75">openage.convert.changelog.changes</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1af4499be2634985e11b0c10f895978b85" compoundref="unit_8cpp" startline="163" endline="199">openage::Unit::draw</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1a0776d2eae35983b4c4a9ccd82a30d8e4" compoundref="program_8cpp" startline="147" endline="169">openage::shader::Program::dump_active_attributes</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a4973f96b5a25450372f6d09c153284bf" compoundref="convert_2main_8py" startline="503" endline="561">openage.convert.main.interactive_browser</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat_1a571729db3187f457aefbdb94af2364d0" compoundref="empiresdat_8py" startline="382" endline="424">openage.convert.gamedata.empiresdat.load_gamespec</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4aeeaaaef4924780b6ee886ea8ffe98e" compoundref="producer_8cpp" startline="749" endline="788">openage::BuildingProducer::make_annex</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" compoundref="game__control__link_8cpp" startline="135" endline="139">openage::gui::ActionModeLink::on_population_changed</referencedby>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">openage::Sound::play</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a0158a3e3bc758a1a1615d61ca2bb7000" compoundref="convert_2main_8py" startline="292" endline="321">openage.convert.main.query_source_dir</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1ae351437c3a9fafc071961486f7eef075" compoundref="selection_8cpp" startline="228" endline="244">openage::UnitSelection::select_point</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" compoundref="actions__list__model_8cpp" startline="31" endline="118">openage::gui::ActionsListModel::set_active_buttons</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1aa44a60840b738c202e328902943d8162" compoundref="game__control_8cpp" startline="793" endline="821">openage::GameControl::set_modes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">openage::util::ExternalProfiler::show_results</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.err</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>err</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>error message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="124" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="124" bodyend="127"/>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" compoundref="mesh__data_8cpp" startline="50" endline="58">openage::renderer::resources::VertexInputInfo::add_shader_input_map</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" compoundref="bitstream_8h" startline="269" endline="292">openage::util::compress::BitStream&lt; 4096 &gt;::align_bitstream</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">openage::util::array8_to_uint64</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" compoundref="buffer_8cpp" startline="47" endline="53">openage::renderer::opengl::GlBuffer::bind</referencedby>
+        <referencedby refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1ae0fd13dc3273cf93aa6330973c478e66" compoundref="program_8cpp" startline="72" endline="104">openage::shader::Program::check</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" compoundref="setup_8cpp" startline="73" endline="124">openage::pyinterface::check</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a22414f75ba491ef266e3453259825a50" compoundref="context_8cpp" startline="158" endline="208">openage::renderer::opengl::GlContext::check_error</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" compoundref="functional_8h" startline="111" endline="121">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1opengl_1a870cc53f47bfd0a6398f23667fa2d2e3" compoundref="shader__program_8cpp" startline="22" endline="48">openage::renderer::opengl::check_program_status</referencedby>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" compoundref="gl__debug_8cpp" startline="45" endline="67">openage::error::create_debug_context</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a345332e87684e73eeef16da46255882f" compoundref="loop_8cpp" startline="21" endline="33">openage::event::Loop::create_event</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0ced870a816503c5ae2c42756dc0adb2" compoundref="lzxd_8cpp" startline="617" endline="724">openage::util::compress::LZXDStream::decode_symbol_from_aligned_block</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a2830bc244fc83678fc56f6e44c057e7c" compoundref="lzxd_8cpp" startline="526" endline="614">openage::util::compress::LZXDStream::decode_symbol_from_verbatim_block</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" compoundref="lzxd_8cpp" startline="740" endline="860">openage::util::compress::LZXDStream::decompress_next_frame</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" compoundref="vulkan_2renderer_8cpp" startline="20" endline="311">openage::renderer::vulkan::VlkRenderer::do_the_thing</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a99c9999b09c6cf8916a8f8bc82dcdee5" compoundref="opengl_2geometry_8cpp" startline="54" endline="77">openage::renderer::opengl::GlGeometry::draw</referencedby>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">openage::ScreenshotManager::encode_png</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" compoundref="bitstream_8h" startline="214" endline="222">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_bits</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" compoundref="bitstream_8h" startline="140" endline="172">openage::util::compress::BitStream&lt; 4096 &gt;::ensure_input_bytes</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ac5cb0834a41caf9f84ee192cc307f24d" compoundref="exctranslate__tests_8cpp" startline="29" endline="39">openage::pyinterface::tests::err_cpp_to_py_helper</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a6ae6b85d3f959e3cec4f7990e76b9c2b" compoundref="exctranslate__tests_8cpp" startline="108" endline="119">openage::pyinterface::tests::err_py_to_cpp_demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4344b9058a349eaa6a8f3fd2ea4a0425" compoundref="shader__program_8cpp" startline="301" endline="365">openage::renderer::opengl::GlShaderProgram::execute_with</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" compoundref="constexpr__map_8h" startline="207" endline="210">openage::datastructure::ConstMap&lt; K, V, 0 &gt;::fetch</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" compoundref="context_8cpp" startline="20" endline="84">openage::renderer::opengl::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_free_type_library_1a9e8e9ce337ad8d411d6a82f48ca19299" compoundref="font__manager_8h" startline="22" endline="26">openage::renderer::FreeTypeLibrary::FreeTypeLibrary</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1ae7d9467b4f3d76c68a9a7f85a78510cd" compoundref="rng_8cpp" startline="157" endline="163">openage::rng::RNG::from_stream</referencedby>
+        <referencedby refid="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" compoundref="unit__container_8cpp" startline="42" endline="47">openage::UnitReference::get</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1a99b5e69d6cc3b17b942c5314c148731a" compoundref="program_8cpp" startline="118" endline="135">openage::shader::Program::get_attribute_id</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1aed1e983dee9b075a3343b72aed5678bd" compoundref="game__control_8cpp" startline="919" endline="925">openage::GameControl::get_engine</referencedby>
+        <referencedby refid="classopenage_1_1audio_1_1_audio_manager_1a4fcd0ea2e63f5035df72bdceb0ac22f2" compoundref="audio__manager_8cpp" startline="142" endline="160">openage::audio::AudioManager::get_sound</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" compoundref="texture__info_8cpp" startline="61" endline="67">openage::renderer::resources::Texture2dInfo::get_subtexture</referencedby>
+        <referencedby refid="classopenage_1_1_unit_container_1ad2ac232d0592daa1ecb4749081f33582" compoundref="unit__container_8cpp" startline="66" endline="71">openage::UnitContainer::get_terrain</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a72bef8f3b092e74cf890a38611b9bbc0" compoundref="opengl_8cpp" startline="12" endline="71">openage::util::gl_check_error</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">openage::renderer::opengl::GlContext::GlContext</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" compoundref="opengl_2window_8cpp" startline="16" endline="41">openage::renderer::opengl::GlWindow::GlWindow</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a942ae5fea51139bab5bdc29ac244125d" compoundref="exctranslate_8cpp" startline="137" endline="148">openage::pyinterface::init_exc_message</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" compoundref="lzxd_8cpp" startline="477" endline="523">openage::util::compress::LZXDStream::init_next_block</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" compoundref="font_8cpp" startline="111" endline="125">openage::renderer::Font::initialize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" compoundref="bitstream_8h" startline="127" endline="133">openage::util::compress::BitStream&lt; 4096 &gt;::input_bytes_available</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" compoundref="console_2tests_8cpp" startline="55" endline="181">openage::console::tests::interactive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" compoundref="quaternion_8h" startline="202" endline="210">openage::util::Quaternion&lt; T &gt;::inverse</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="50" endline="58">openage::console::Console::load_colors</referencedby>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">openage::renderer::SDL::make_available</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a1e2e81d74fd03fd894c4acf72227cc2d" compoundref="lzxd_8cpp" startline="259" endline="277">openage::util::compress::HuffmanTable&lt; LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS &gt;::make_decode_table</referencedby>
+        <referencedby refid="classopenage_1_1_move_action_1a038b06738db0c91b3f39144206ca3518" compoundref="unit_2action_8cpp" startline="706" endline="712">openage::MoveAction::next_waypoint</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" compoundref="terrain__object_8cpp" startline="71" endline="116">openage::TerrainObject::place</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_pairing_heap_1a17677ec830613746e38124b2eac7d2e6" compoundref="pairing__heap_8h" startline="246" endline="323">openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;::pop_node</referencedby>
+        <referencedby refid="namespaceopenage_1a3acc47409b93e64eef42ad8add16052b" compoundref="generator_8cpp" startline="17" endline="26">openage::random_tile</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" compoundref="bitstream_8h" startline="329" endline="346">openage::util::compress::BitStream&lt; 4096 &gt;::read_bytes</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" compoundref="bitstream_8h" startline="353" endline="361">openage::util::compress::BitStream&lt; 4096 &gt;::read_single_byte</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" compoundref="lzxd_8cpp" startline="240" endline="255">openage::util::compress::HuffmanTable&lt; LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS &gt;::read_sym</referencedby>
+        <referencedby refid="namespaceopenage_1_1os_1a2ff2ec43cb1353b31db1f7cae31b13be" compoundref="os_8cpp" startline="28" endline="55">openage::os::read_symlink</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">openage::Engine::render_text</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1ac2256044717a0f7f7aafbb1f2be3a1eb" compoundref="renderer_2tests_8cpp" startline="280" endline="290">openage::renderer::tests::renderer_demo</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a196e215960939e55ac626c9c75a451e0" compoundref="rng_8cpp" startline="58" endline="75">openage::rng::RNG::seed</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1a588b6b44da195cb0b83dabe74561f1ee" compoundref="program_8cpp" startline="137" endline="145">openage::shader::Program::set_attribute_id</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a2ad9a9df0f058487a4ec66b68ee390ed" compoundref="terrain__object_8cpp" startline="188" endline="210">openage::TerrainObject::set_ground</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" compoundref="shader_2shader_8cpp" startline="29" endline="61">openage::shader::Shader::Shader</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">openage::util::ExternalProfiler::show_results</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">openage::util::ExternalProfiler::start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">openage::util::ExternalProfiler::stop</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" compoundref="unit__texture_8cpp" startline="151" endline="160">openage::UnitTexture::subtexture</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" compoundref="bitstream_8h" startline="384" endline="399">openage::util::compress::BitStream&lt; 4096 &gt;::switch_to_bitstream_mode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" compoundref="bitstream_8h" startline="406" endline="421">openage::util::compress::BitStream&lt; 4096 &gt;::switch_to_bytestream_mode</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" compoundref="text__to__event_8cpp" startline="76" endline="109">openage::input::text_to_event</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ad1512b3a27b24f2e1edc45d361b30a3a" compoundref="texture__subinfo_8cpp" startline="10" endline="36">openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a406d5229bb14f10c386d0e09c77676d6" compoundref="exctranslate__tests_8cpp" startline="24" endline="26">openage::pyinterface::tests::throw_foo&lt; 0 &gt;</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1a3c24b782383d5e958a13572159e9218b" compoundref="terrain__chunk_8cpp" startline="160" endline="168">openage::TerrainChunk::tile_position</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a144e524ab2720b65d7369fdfaf6f3136" compoundref="rng_8cpp" startline="148" endline="154">openage::rng::RNG::to_stream</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1a86a49987e082055274e98a142baffad8" compoundref="unit_8cpp" startline="53" endline="58">openage::Unit::top</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" compoundref="exctranslate_8cpp" startline="47" endline="107">openage::pyinterface::translate_exc_cpp_to_py</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" compoundref="exctranslate_8cpp" startline="110" endline="134">openage::pyinterface::translate_exc_py_to_cpp</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a924b85bc82578378e68818dab9a247b6" compoundref="rng_8cpp" startline="191" endline="204">openage::rng::try_random_device</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ad7648faf2a3e82a63a95076d3ed98d33" compoundref="shader__program_8h" startline="69" endline="71">openage::renderer::ShaderProgram::update_uniform_input</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1ab1574744e9d7afafa476f648c2abcf21" compoundref="opengl_2geometry_8cpp" startline="41" endline="52">openage::renderer::opengl::GlGeometry::update_verts_offset</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" compoundref="renderer_2opengl_2texture_8cpp" startline="95" endline="110">openage::renderer::opengl::GlTexture2d::upload</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" compoundref="opengl_2texture__array_8cpp" startline="79" endline="98">openage::renderer::opengl::GlTexture2dArray::upload</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" compoundref="buffer_8cpp" startline="38" endline="45">openage::renderer::opengl::GlBuffer::upload_data</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1adfa825aeaadbb2ce0a8dd13c335ffee1" compoundref="terrain_8cpp" startline="173" endline="180">openage::Terrain::validate_mask</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a76cd02c887a27a6c91331573ecb84907" compoundref="terrain_8cpp" startline="164" endline="171">openage::Terrain::validate_terrain</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" compoundref="constexpr__map_8h" startline="122" endline="128">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1a9a6e2e6f743d06ad5c3102062cb429ce" compoundref="vulkan_2shader__program_8h" startline="16" endline="25">openage::renderer::vulkan::vk_shader_stage</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" compoundref="loader_8cpp" startline="25" endline="40">openage::renderer::vulkan::VlkLoader::vkCreateDebugReportCallbackEXT</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" compoundref="loader_8cpp" startline="42" endline="54">openage::renderer::vulkan::VlkLoader::vkDestroyDebugReportCallbackEXT</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" compoundref="graphics__device_8cpp" startline="93" endline="152">openage::renderer::vulkan::VlkGraphicsDevice::VlkGraphicsDevice</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.crit</definition>
+        <argsstring>(msg, *args, **kwargs)</argsstring>
+        <name>crit</name>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <param>
+          <type>*</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwargs</declname>
+        </param>
+        <briefdescription>
+<para>critical error message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="129" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="129" bodyend="132"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1opus_1_1demo_1ae0391ea8f0edf327a1f80b107ef7b68e" compoundref="demo_8py" startline="16" endline="52">openage.convert.opus.demo.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" compoundref="gui__log_8cpp" startline="12" endline="49">openage::gui::gui_log</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a10c8ba63b955b0c97dc3b3323f73a4b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.verbosity_to_level</definition>
+        <argsstring>(verbosity)</argsstring>
+        <name>verbosity_to_level</name>
+        <param>
+          <type>verbosity</type>
+          <defname>verbosity</defname>
+        </param>
+        <briefdescription>
+<para>Translates an integer verbosity to a log level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="136" bodyend="148"/>
+        <references refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" compoundref="math_8py" startline="29" endline="31">openage.util.math.clamp</references>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" compoundref="tests_8py" startline="15" endline="49">openage::log::tests.demo</referencedby>
+        <referencedby refid="namespaceopenage_1_1____main_____1a2cf9c123d48ac683e5cf594b0114e5e3" compoundref="____main_____8py" startline="36" endline="133">openage.__main__.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a8384c2e3977d17adc4ceac0e8aacc5d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.env_verbosity</definition>
+        <argsstring>()</argsstring>
+        <name>env_verbosity</name>
+        <briefdescription>
+<para>Tries to retrieve verbosity from the VERBOSITY environment variable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="152" bodyend="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/log/file_logsink.cpp" line="12" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp" line="12" column="1"/>
   </compounddef>
 </doxygen>

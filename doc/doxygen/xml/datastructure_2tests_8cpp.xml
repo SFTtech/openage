@@ -217,7 +217,7 @@
         <label>mutex</label>
       </node>
       <node id="2891">
-        <label>libopenage/datastructure/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</label>
         <link refid="datastructure_2tests_8cpp"/>
         <childnode refid="2892" relation="include">
         </childnode>
@@ -454,6 +454,6 @@
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
 <codeline lineno="195"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::datastructure::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/datastructure/tests.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp"/>
   </compounddef>
 </doxygen>

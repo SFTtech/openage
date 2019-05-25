@@ -15,7 +15,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/types.h" line="21" column="1" bodyfile="libopenage/audio/types.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1audio_1_1audio__chunk__t_1a7f19af0f743e2b6cb71ee0c9c9cc9b77" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -28,7 +41,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/types.h" line="22" column="1" bodyfile="libopenage/audio/types.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member_1a07b4dd518b5b9151d4510d893f8c07e5" compoundref="members_8py" startline="566" endline="569">openage.convert.dataformat.members.CharArrayMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae0a3a0241b823f90f1bcb74e1619df1f" compoundref="members_8py" startline="805" endline="812">openage.convert.dataformat.members.MultisubtypeMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1a160732dffbb5935f0b02b26938d2e658" compoundref="members_8py" startline="869" endline="872">openage.convert.dataformat.members.SubdataMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_array_member_1a5dc1be9f5fadd1b992d6f76befb07a27" compoundref="members_8py" startline="882" endline="884">openage.convert.dataformat.members.ArrayMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a9d61825e531ff63ac842efeb88376e8c" compoundref="members_8py" startline="221" endline="231">openage.convert.dataformat.members.DynLengthMember.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a5020d135379031c1726d24343ab23310" compoundref="members_8py" startline="62" endline="65">openage.convert.dataformat.members.DataMember.get_length</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a14ed52f719d6d07a9f4308b6824ae6ec" compoundref="members_8py" startline="173" endline="205">openage.convert.dataformat.members.DynLengthMember.get_length</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a65df1261e8a5c28c98ad325de5c4fdbe" compoundref="members_8py" startline="206" endline="220">openage.convert.dataformat.members.DynLengthMember.is_dynamic_length</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,12 +59,12 @@
 <para>special values: (nullptr, *) no data in the chunk (*, 0) end of stream </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="546">
+      <node id="461">
         <label>openage::audio::audio_chunk_t</label>
         <link refid="structopenage_1_1audio_1_1audio__chunk__t"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/audio/types.h" line="20" column="1" bodyfile="libopenage/audio/types.h" bodystart="20" bodyend="23"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" bodystart="20" bodyend="23"/>
     <listofallmembers>
       <member refid="structopenage_1_1audio_1_1audio__chunk__t_1a7c743fc27e3431d759716fc0d44bee1c" prot="public" virt="non-virtual"><scope>openage::audio::audio_chunk_t</scope><name>data</name></member>
       <member refid="structopenage_1_1audio_1_1audio__chunk__t_1a7f19af0f743e2b6cb71ee0c9c9cc9b77" prot="public" virt="non-virtual"><scope>openage::audio::audio_chunk_t</scope><name>length</name></member>

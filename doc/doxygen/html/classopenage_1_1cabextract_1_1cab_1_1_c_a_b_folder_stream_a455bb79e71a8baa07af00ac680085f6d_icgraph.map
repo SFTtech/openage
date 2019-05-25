@@ -1,0 +1,7 @@
+<map id="openage.cabextract.cab.CABFolderStream.read_block_data" name="openage.cabextract.cab.CABFolderStream.read_block_data">
+<area shape="rect" id="node1" title="reads the data of block block_id." alt="" coords="1091,59,1319,100"/>
+<area shape="rect" id="node2" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#ad9654069c6554f9859298fa5c1e85b73" title=" " alt="" coords="815,59,1043,100"/>
+<area shape="rect" id="node3" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#aa01e2f0b6657c5c629188cbc3a0e0a57" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="539,59,767,100"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#aadb76e27d69a7a94abc320498c316efe" title="recursively read defined binary data from raw at given offset." alt="" coords="241,29,491,71"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,59,193,100"/>
+</map>

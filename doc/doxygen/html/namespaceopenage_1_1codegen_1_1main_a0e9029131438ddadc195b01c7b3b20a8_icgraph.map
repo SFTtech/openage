@@ -1,0 +1,4 @@
+<map id="openage.codegen.main.init_subparser" name="openage.codegen.main.init_subparser">
+<area shape="rect" id="node1" title="Codegen&#45;specific CLI." alt="" coords="216,5,393,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1____main____.xhtml#a2cf9c123d48ac683e5cf594b0114e5e3" title="Top&#45;level argparsing; invokes subparser for all submodules." alt="" coords="5,13,168,39"/>
+</map>

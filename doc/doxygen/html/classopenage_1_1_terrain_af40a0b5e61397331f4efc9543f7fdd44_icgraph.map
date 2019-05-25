@@ -1,0 +1,10 @@
+<map id="openage::Terrain::attach_chunk" name="openage::Terrain::attach_chunk">
+<area shape="rect" id="node1" title=" " alt="" coords="619,100,781,141"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain.xhtml#a7837ff925b6c466824b2388e55c198f4" title=" " alt="" coords="427,100,571,141"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_editor_mode.xhtml#a1f47d053e9c09aaf9bc6ec3a85f4a49e" title=" " alt="" coords="233,5,379,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_editor_mode.xhtml#a1430647b024d4c9e7021756a6fa9700d" title=" " alt="" coords="233,71,379,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain.xhtml#ac5f73cac07115849392bb22598ae8fba" title=" " alt="" coords="237,137,375,163"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_terrain.xhtml#a9fc8a00464422b06cd5ea0dbda4c7d2f" title=" " alt="" coords="234,188,378,229"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="18,35,173,76"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#a5223d2c9c8019307e1c81e31b9b5124e" title=" " alt="" coords="5,129,185,171"/>
+</map>

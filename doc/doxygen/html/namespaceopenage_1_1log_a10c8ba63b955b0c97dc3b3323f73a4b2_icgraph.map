@@ -1,0 +1,5 @@
+<map id="openage.log.verbosity_to_level" name="openage.log.verbosity_to_level">
+<area shape="rect" id="node1" title="Translates an integer verbosity to a log level." alt="" coords="216,23,363,65"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log_1_1tests.xhtml#a9ca6bf494467589807a56e954b8b3bb3" title="Demonstrates the Python logging facility." alt="" coords="6,5,167,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1____main____.xhtml#a2cf9c123d48ac683e5cf594b0114e5e3" title="Top&#45;level argparsing; invokes subparser for all submodules." alt="" coords="5,56,168,83"/>
+</map>

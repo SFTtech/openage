@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1system" kind="namespace" language="Python">
+    <compoundname>openage::util::system</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1system_1a72914597dbcbffe50aec0047eb97f3db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.system.free_memory</definition>
+        <argsstring>()</argsstring>
+        <name>free_memory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/system.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/system.py" bodystart="22" bodyend="41"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/system.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

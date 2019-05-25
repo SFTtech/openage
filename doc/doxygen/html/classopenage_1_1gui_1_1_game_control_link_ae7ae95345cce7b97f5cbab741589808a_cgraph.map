@@ -1,0 +1,10 @@
+<map id="openage::gui::GameControlLink::set_game" name="openage::gui::GameControlLink::set_game">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,185,80"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" title=" " alt="" coords="233,5,395,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_control.xhtml#ae6ce3ec10ca18afc9cb7235c88ac7113" title=" " alt="" coords="237,71,391,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_control_signals.xhtml#acd3484cc1f7feb2163be431acfc88c96" title=" " alt="" coords="443,71,641,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_game_control.xhtml#a3d4b9fbef261d19138ba87083e4083a5" title=" " alt="" coords="689,71,904,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_game_control.xhtml#aa7c61c3caafc810355005e83c8f234e2" title=" " alt="" coords="952,41,1107,83"/>
+<area shape="rect" id="node8" href="$namespacestd.xhtml#a26aa0f4be3a77ac5cc3ce0cabb545042" title=" " alt="" coords="980,107,1079,134"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_engine.xhtml#a3e79c3919abbc3cab0716e4807f7c93e" title=" " alt="" coords="1155,49,1339,75"/>
+</map>

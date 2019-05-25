@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1drs_1_1_d_r_s" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::drs::DRS</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection" prot="public" virt="non-virtual">openage.util.fslike.filecollection.FileCollection</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_1abf97b39fe0ee9af8ae34e8c43d6d4660" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.drs.DRS::fileobj</definition>
+        <argsstring></argsstring>
+        <name>fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf_1aab2f9c67bf2e32d12e6199053c0bf429" compoundref="peresource_8py" startline="115" endline="119">openage.convert.peresource.ResourceLeaf.open</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" compoundref="pefile_8py" startline="212" endline="222">openage.convert.pefile.PEFile.open_section</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a2ef71aa76d73b4f14e86970a631c53ff" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.drs.DRS::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a0c3302fa47a91226ce9c8e15c76da24e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.drs.DRS::tables</definition>
+        <argsstring></argsstring>
+        <name>tables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="91" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a14482d2ac50d907231409dae36fd1085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.drs.DRS.__init__</definition>
+        <argsstring>(self, fileobj)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1abf97b39fe0ee9af8ae34e8c43d6d4660" kindref="member">fileobj</ref></type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="75" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.drs.DRS.read_tables</definition>
+        <argsstring>(self)</argsstring>
+        <name>read_tables</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="120" bodyend="132"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">openage::util::filelike::Python::fileobj</references>
+        <references refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1abf97b39fe0ee9af8ae34e8c43d6d4660" compoundref="drs_8py" startline="79">openage.convert.drs.DRS.fileobj</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" compoundref="cab_8py" startline="435">openage.cabextract.cab.CABFolderStream.fileobj</references>
+        <references refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" compoundref="log_2____init_____8py" startline="104" endline="107">openage::log.spam</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a0c3302fa47a91226ce9c8e15c76da24e" compoundref="drs_8py" startline="91">openage.convert.drs.DRS.tables</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>represents a file archive in <ref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s" kindref="compound">DRS</ref> format. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1159">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="1160" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1158">
+        <label>openage.util.fslike.filecollection.FileCollection</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection"/>
+        <childnode refid="1159" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1157">
+        <label>openage.convert.drs.DRS</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s"/>
+        <childnode refid="1158" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1160">
+        <label>ABC</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1163">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="1164" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1162">
+        <label>openage.util.fslike.filecollection.FileCollection</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection"/>
+        <childnode refid="1163" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1161">
+        <label>openage.convert.drs.DRS</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s"/>
+        <childnode refid="1162" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1164">
+        <label>ABC</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="74" bodyend="132"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a14482d2ac50d907231409dae36fd1085" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a7ba8bd6b8a645bdd6e4c6287e9b4b0f5" prot="public" virt="non-virtual" ambiguityscope="openage::util::fslike::filecollection::FileCollection."><scope>openage::convert::drs::DRS</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a28fd0619554d60027e2e2bf0568e2d4c" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>add_fileentry</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>exists</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1abf97b39fe0ee9af8ae34e8c43d6d4660" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>fileobj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1abb7acc5e29787c2826c467ce0111eaca" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a236b83a25d5f87c98604b37597c2baf9" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>get_direntries</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1ab46de614c539e3beed2affa49fd09779" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>get_fileentry</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a2ef71aa76d73b4f14e86970a631c53ff" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>header</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1aa840106df09c378f09ce7fcc83ef9192" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1aa67dc8d355a1c053942b3a375fc1985c" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a72c5cfc08a9a21cfdea7170e575b67c9" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a52f309a6859078d8e0abe44327476e31" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a732ece4991737e5dd9ea2a4961a899ca" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1aa7aa810fd31b2ab2290b57b3c8c3c123" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a4e32318feb8203a576433ef955b3883d" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1add6a1fab1021d80479844a34a79fe1f8" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>read_tables</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a717813dafeb60e3ba8c92c70c36b6985" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1afd7d5108b06dfc0b5f52d50fc58b9671" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a809932b9f25e26fd521c04a42c6cf484" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a75e62e8168ceeb224b2461f651dd61a1" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>rootentries</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1a0c3302fa47a91226ce9c8e15c76da24e" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>tables</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a76a84ca7fe498a12a5cb8c2dd5caadb4" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a289137f3b7c3813e05d87e89bad9e893" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1a2aabad3c9f6648ff2494ce83d30f24dc" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_1ab6065913c8c25261d0f71cc222483fb1" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRS</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -16,7 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="51" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" compoundref="gui__property__map_8cpp" startline="160" endline="162">get_csv</referencedby>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1afe5912a4774325783f28700059c847d4" compoundref="gui__property__map_8cpp" startline="70" endline="72">getv</referencedby>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1a133caf3ee8c0a9651d59f90fbb2cf768" compoundref="gui__property__map_8cpp" startline="164" endline="166">set_csv</referencedby>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1af3dd772c4e60a4b360f14adfc77b9d1d" compoundref="gui__property__map_8cpp" startline="75" endline="77">setv</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="14" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="18" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="18" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1afe5e149fb6fd163b454de8d6b27b74e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="15" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="25" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="25" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a1b0d6475eeb16f602dda8d52021bd18b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -66,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="18" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="18" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ab117e66375a65845d4790759709ab7cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -88,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="21" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="21" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -105,7 +109,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="25" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="160" bodyend="162"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="160" bodyend="162"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1ab528563d970fd1bacac54adf3ef5f0c5" compoundref="gui__property__map_8h" startline="27" endline="29">get_csv</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" compoundref="generator_8cpp" startline="144" endline="151">openage::Generator::player_names</referencedby>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ab528563d970fd1bacac54adf3ef5f0c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -122,7 +130,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="27" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="27" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="27" bodyend="29"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" compoundref="gui__property__map_8cpp" startline="160" endline="162">get_csv</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a16716bc541a6e80adf7e8affbf59e87c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -148,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="32" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="32" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a3c5f3a173c22de32aef041bb89788d06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -174,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="35" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="35" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="35" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a133caf3ee8c0a9651d59f90fbb2cf768" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -195,7 +204,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="39" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="164" bodyend="166"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="164" bodyend="166"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1a85748402c4cc40988b05b23b347cbdff" compoundref="gui__property__map_8h" startline="41" endline="43">set_csv</referencedby>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a85748402c4cc40988b05b23b347cbdff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -216,7 +227,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="41" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="41" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="41" bodyend="43"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a133caf3ee8c0a9651d59f90fbb2cf768" compoundref="gui__property__map_8cpp" startline="164" endline="166">set_csv</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a6b9660f0f33781318bf8eb6803107bea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -237,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="45" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="144" bodyend="146"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="144" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a5fe0988d911e91d0eb23d0127fd9b83e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -258,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="46" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="148" bodyend="150"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="148" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ad1466272e9af23bb8ddd70b5180db0c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -279,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="48" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="152" bodyend="154"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="152" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a725f2e91546176c55cdc9c5be5e1ba36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -300,7 +312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="49" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="156" bodyend="158"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1afe5912a4774325783f28700059c847d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -319,7 +331,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="70" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="70" bodyend="72"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="70" bodyend="72"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1af3dd772c4e60a4b360f14adfc77b9d1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -342,7 +355,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="75" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="75" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="75" bodyend="77"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1af70627c91bf7e819ef88568e2da3ff2a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -361,7 +375,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="80" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="80" bodyend="82"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ad409cf3fd5f878f81276c0a2ce1c8705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -384,7 +399,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="85" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="85" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="85" bodyend="87"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aff1500e141081b75cf2edf3c772dd6c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -403,7 +419,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="90" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="90" bodyend="92"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="90" bodyend="92"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aaa9fb270455b45b18394555a9d341888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -426,7 +443,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="95" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="95" bodyend="97"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="95" bodyend="97"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aeadcdae825c4ea0d3380995aeec60b7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -449,7 +467,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="110" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="110" bodyend="112"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="110" bodyend="112"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a79d1ccb1fc54a7617c52dc26420d6d4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -468,7 +487,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="125" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="125" bodyend="127"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="125" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="125" bodyend="127"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ad7b30ba8333d5694b1dbf0374c57c6cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -491,7 +511,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="130" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="130" bodyend="132"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="130" bodyend="132"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a730e24fb5fd9e8f16e4abb45cda91850" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -510,7 +531,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="135" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="135" bodyend="137"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="135" bodyend="137"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a9468581d39ce00181dc0fb86284593ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -533,7 +555,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.cpp" line="140" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="140" bodyend="142"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp" bodystart="140" bodyend="142"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" compoundref="gui__property__map_8h" startline="51">impl</references>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1afe5912a4774325783f28700059c847d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -552,7 +575,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="55" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="55" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1af3dd772c4e60a4b360f14adfc77b9d1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -575,7 +598,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="58" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="58" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1af70627c91bf7e819ef88568e2da3ff2a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -594,7 +617,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="61" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="61" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ad409cf3fd5f878f81276c0a2ce1c8705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -617,7 +640,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="64" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="64" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aff1500e141081b75cf2edf3c772dd6c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -636,7 +659,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="67" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="67" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aaa9fb270455b45b18394555a9d341888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -659,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="70" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="70" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a59fa1bf673dd5eae8a3b19efa0b4a8f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -678,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="73" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="73" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1ad2f7ca777feb21f0ad4b17a8c85b4bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -701,7 +724,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="76" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="76" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1aeadcdae825c4ea0d3380995aeec60b7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -724,7 +747,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="79" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="79" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a3bc07398563fc94455f9e291b89f867e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -743,7 +766,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="79" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="79" column="1"/>
       </memberdef>
       <memberdef kind="function" id="structqtsdl_1_1_gui_property_map_1a68bfdc10e974b33fe0bc2ba0fd04481b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -766,7 +789,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_property_map.h" line="85" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="85" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -774,24 +797,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2743">
+      <node id="6455">
         <label>openage::Generator</label>
         <link refid="classopenage_1_1_generator"/>
-        <childnode refid="2742" relation="public-inheritance">
+        <childnode refid="6454" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2742">
+      <node id="6454">
         <label>qtsdl::GuiPropertyMap</label>
         <link refid="structqtsdl_1_1_gui_property_map"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2744">
+      <node id="6456">
         <label>qtsdl::GuiPropertyMap</label>
         <link refid="structqtsdl_1_1_gui_property_map"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_property_map.h" line="13" column="1" bodyfile="libopenage/gui/guisys/public/gui_property_map.h" bodystart="13" bodyend="52"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.h" bodystart="13" bodyend="52"/>
     <listofallmembers>
       <member refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" prot="public" virt="non-virtual"><scope>qtsdl::GuiPropertyMap</scope><name>get_csv</name></member>
       <member refid="structqtsdl_1_1_gui_property_map_1ab528563d970fd1bacac54adf3ef5f0c5" prot="public" virt="non-virtual"><scope>qtsdl::GuiPropertyMap</scope><name>get_csv</name></member>

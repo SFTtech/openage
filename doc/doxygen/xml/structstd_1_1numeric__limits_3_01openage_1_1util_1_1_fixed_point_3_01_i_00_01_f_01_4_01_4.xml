@@ -25,7 +25,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="511" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="511" bodyend="513"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="511" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="511" bodyend="513"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" compoundref="fixed__point_8h" startline="209" endline="211">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::min_value</references>
       </memberdef>
       <memberdef kind="function" id="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1acd9652a369be3466ee4753147f2ec823" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
@@ -38,7 +39,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="515" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="515" bodyend="517"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="515" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="515" bodyend="517"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" compoundref="fixed__point_8h" startline="216" endline="218">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::max_value</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -46,12 +48,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3373">
+      <node id="6651">
         <label>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</label>
         <link refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fixed_point.h" line="510" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="510" bodyend="518"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="510" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="510" bodyend="518"/>
     <listofallmembers>
       <member refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1acd9652a369be3466ee4753147f2ec823" prot="public" virt="non-virtual"><scope>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>max</name></member>
       <member refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a6691046f0043d8eede86b6c920718b0e" prot="public" virt="non-virtual"><scope>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>min</name></member>

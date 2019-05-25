@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structqtsdl_1_1can__call__test.xhtml" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node1" href="$classqtsdl_1_1_ctx_extraction_mode.xhtml" title=" " alt="" coords="5,46,175,73"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_separate_rendering_context.xhtml" title=" " alt="" coords="223,5,411,47"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_unique_rendering_context.xhtml" title=" " alt="" coords="229,71,405,112"/>
 </map>

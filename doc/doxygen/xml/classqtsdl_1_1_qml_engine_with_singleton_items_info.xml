@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="37" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="41" endline="43">get_image_providers</referencedby>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="9" endline="12">QmlEngineWithSingletonItemsInfo</referencedby>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="30" endline="35">~QmlEngineWithSingletonItemsInfo</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" prot="private" static="no" mutable="no">
         <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
@@ -29,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="38" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="37" endline="39">get_singleton_items_info</referencedby>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="9" endline="12">QmlEngineWithSingletonItemsInfo</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,7 +58,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="29" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="9" bodyend="12"/>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" compoundref="qml__engine__with__singleton__items__info_8h" startline="37">image_providers</references>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" compoundref="qml__engine__with__singleton__items__info_8h" startline="38">singleton_items_info</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1acfc796de1ec7a3ddc546a31718edc8a2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -75,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="30" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="14" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="14" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -88,7 +95,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="31" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="30" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="30" bodyend="35"/>
+        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</references>
+        <references refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e">qtsdl::GuiImageProviderImpl::get_id</references>
+        <references refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99">qtsdl::GuiImageProviderImpl::give_up</references>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" compoundref="qml__engine__with__singleton__items__info_8h" startline="37">image_providers</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
@@ -101,7 +112,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="33" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="37" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="37" bodyend="39"/>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" compoundref="qml__engine__with__singleton__items__info_8h" startline="38">singleton_items_info</references>
+        <referencedby refid="classopenage_1_1gui_1_1_main_args_link_1a27313ca71bc497664ab7a4ade01323e4" compoundref="main__args__link_8cpp" startline="30" endline="37">openage::gui::MainArgsLink::provider</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_engine_link_1acb34bd8d343a973436e0652db23cce12" compoundref="engine__link_8cpp" startline="54" endline="69">openage::gui::EngineLink::provider</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> * &gt;</type>
@@ -114,7 +128,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="34" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="41" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="41" bodyend="43"/>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" compoundref="qml__engine__with__singleton__items__info_8h" startline="37">image_providers</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_image_provider_link_1ae433067db623c8643f5ed0103c4d6863" compoundref="gui__image__provider__link_8cpp" startline="66" endline="78">openage::gui::GuiImageProviderLink::provider</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -125,35 +141,35 @@
 <para>That way, the openage-engine and the qml-engine have a 1:1 relation and qml can access the main engine directly. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3812">
+      <node id="6549">
         <label>QQmlEngine</label>
       </node>
-      <node id="3811">
+      <node id="6548">
         <label>qtsdl::QmlEngineWithSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_qml_engine_with_singleton_items_info"/>
-        <childnode refid="3812" relation="public-inheritance">
+        <childnode refid="6549" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3814">
+      <node id="6551">
         <label>QQmlEngine</label>
       </node>
-      <node id="3815">
+      <node id="6552">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="3813">
+      <node id="6550">
         <label>qtsdl::QmlEngineWithSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_qml_engine_with_singleton_items_info"/>
-        <childnode refid="3814" relation="public-inheritance">
+        <childnode refid="6551" relation="public-inheritance">
         </childnode>
-        <childnode refid="3815" relation="usage">
+        <childnode refid="6552" relation="usage">
           <edgelabel>-singleton_items_info</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="25" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="25" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="25" bodyend="39"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>get_image_providers</name></member>
       <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>get_singleton_items_info</name></member>

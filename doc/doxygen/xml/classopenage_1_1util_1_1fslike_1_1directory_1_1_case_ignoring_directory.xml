@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::directory::CaseIgnoringDirectory</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" prot="public" virt="non-virtual">openage.util.fslike.directory.Directory</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a23ae8277e5fb70a7ac0eaa686a38abcf" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.directory.CaseIgnoringDirectory::cache</definition>
+        <argsstring></argsstring>
+        <name>cache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="134" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" compoundref="directory_8py" startline="165" endline="185">openage.util.fslike.directory.CaseIgnoringDirectory.resolve</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a72fb6d2aa2f5c1b1001b429f877c1fbb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.directory.CaseIgnoringDirectory::listings</definition>
+        <argsstring></argsstring>
+        <name>listings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="135" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af57fc26b68b337aa0a8a36fce91a1790" compoundref="directory_8py" startline="144" endline="164">openage.util.fslike.directory.CaseIgnoringDirectory.actual_name</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a253b1ff3205942dcc69e2fd8dc14f6eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.directory.CaseIgnoringDirectory.__init__</definition>
+        <argsstring>(self, path, create_if_missing=False)</argsstring>
+        <name>__init__</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a0aba1574a0d51aa0b8d4bd14f1174177">__init__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a9b605e81c1106a82ab8c4a4221ed43ff" kindref="member">path</ref></type>
+          <defname>path</defname>
+        </param>
+        <param>
+          <type>create_if_missing</type>
+          <defname>create_if_missing</defname>
+          <defval>False</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="132" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1ab533e87449e37812327d9a771186ab71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.directory.CaseIgnoringDirectory.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1abbb32dc478b13e8cae25d6d505eefcbd">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="137" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="137" bodyend="139"/>
+        <references refid="classopenage_1_1audio_1_1_dynamic_loader_1a527295cdc13c4a680af0ef0c022979f2" compoundref="dynamic__loader_8h" startline="26">openage::audio::DynamicLoader::path</references>
+        <references refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" compoundref="in__memory__loader_8h" startline="26">openage::audio::InMemoryLoader::path</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a9b605e81c1106a82ab8c4a4221ed43ff" compoundref="directory_8py" startline="41">openage.util.fslike.directory.Directory.path</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" compoundref="filelike_2native_8h" startline="44">openage::util::filelike::Native::path</references>
+        <references refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" compoundref="cvar_8h" startline="91">openage::cvar::CVarManager::path</references>
+        <references refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" compoundref="dynamic__resource_8h" startline="105">openage::audio::DynamicResource::path</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a28a782f1904cfb1a2e80bd141622b841" compoundref="cab_8py" startline="167">openage.cabextract.cab.CFFile.path</references>
+        <references refid="classopenage_1_1_move_action_1a0b53b70c09f569929f40a4b870e4e42d" compoundref="unit_2action_8h" startline="387">openage::MoveAction::path</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af57fc26b68b337aa0a8a36fce91a1790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.directory.CaseIgnoringDirectory.actual_name</definition>
+        <argsstring>(self, stem, name)</argsstring>
+        <name>actual_name</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>stem</type>
+          <defname>stem</defname>
+        </param>
+        <param>
+          <type>name</type>
+          <defname>name</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="144" bodyend="164"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a72fb6d2aa2f5c1b1001b429f877c1fbb" compoundref="directory_8py" startline="135">openage.util.fslike.directory.CaseIgnoringDirectory.listings</references>
+        <references refid="classopenage_1_1audio_1_1_dynamic_loader_1a527295cdc13c4a680af0ef0c022979f2" compoundref="dynamic__loader_8h" startline="26">openage::audio::DynamicLoader::path</references>
+        <references refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" compoundref="in__memory__loader_8h" startline="26">openage::audio::InMemoryLoader::path</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a9b605e81c1106a82ab8c4a4221ed43ff" compoundref="directory_8py" startline="41">openage.util.fslike.directory.Directory.path</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" compoundref="filelike_2native_8h" startline="44">openage::util::filelike::Native::path</references>
+        <references refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" compoundref="cvar_8h" startline="91">openage::cvar::CVarManager::path</references>
+        <references refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" compoundref="dynamic__resource_8h" startline="105">openage::audio::DynamicResource::path</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a28a782f1904cfb1a2e80bd141622b841" compoundref="cab_8py" startline="167">openage.cabextract.cab.CFFile.path</references>
+        <references refid="classopenage_1_1_move_action_1a0b53b70c09f569929f40a4b870e4e42d" compoundref="unit_2action_8h" startline="387">openage::MoveAction::path</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" compoundref="directory_8py" startline="165" endline="185">openage.util.fslike.directory.CaseIgnoringDirectory.resolve</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.directory.CaseIgnoringDirectory.resolve</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>resolve</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a64bdaf726aac07d4913107cc5ba9fe65">resolve</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>resolves parts to an actual path name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="165" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="165" bodyend="185"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af57fc26b68b337aa0a8a36fce91a1790" compoundref="directory_8py" startline="144" endline="164">openage.util.fslike.directory.CaseIgnoringDirectory.actual_name</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a23ae8277e5fb70a7ac0eaa686a38abcf" compoundref="directory_8py" startline="134">openage.util.fslike.directory.CaseIgnoringDirectory.cache</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af9d13b42632b797542414aed091b5093" compoundref="directory_8py" startline="186" endline="195">openage.util.fslike.directory.CaseIgnoringDirectory.list</references>
+        <references refid="classopenage_1_1audio_1_1_dynamic_loader_1a527295cdc13c4a680af0ef0c022979f2" compoundref="dynamic__loader_8h" startline="26">openage::audio::DynamicLoader::path</references>
+        <references refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" compoundref="in__memory__loader_8h" startline="26">openage::audio::InMemoryLoader::path</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a9b605e81c1106a82ab8c4a4221ed43ff" compoundref="directory_8py" startline="41">openage.util.fslike.directory.Directory.path</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" compoundref="filelike_2native_8h" startline="44">openage::util::filelike::Native::path</references>
+        <references refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" compoundref="cvar_8h" startline="91">openage::cvar::CVarManager::path</references>
+        <references refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" compoundref="dynamic__resource_8h" startline="105">openage::audio::DynamicResource::path</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a28a782f1904cfb1a2e80bd141622b841" compoundref="cab_8py" startline="167">openage.cabextract.cab.CFFile.path</references>
+        <references refid="classopenage_1_1_move_action_1a0b53b70c09f569929f40a4b870e4e42d" compoundref="unit_2action_8h" startline="387">openage::MoveAction::path</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af9d13b42632b797542414aed091b5093" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.directory.CaseIgnoringDirectory.list</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>list</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a25898fdc286da3d08b1a8010c96fca6b">list</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall yield the entry names of the given directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="186" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="186" bodyend="195"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" compoundref="directory_8py" startline="165" endline="185">openage.util.fslike.directory.CaseIgnoringDirectory.resolve</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5848">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5847">
+        <label>openage.util.fslike.directory.Directory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory"/>
+        <childnode refid="5848" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5849">
+        <label>ABC</label>
+      </node>
+      <node id="5846">
+        <label>openage.util.fslike.directory.CaseIgnoringDirectory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory"/>
+        <childnode refid="5847" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5852">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5853" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5851">
+        <label>openage.util.fslike.directory.Directory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory"/>
+        <childnode refid="5852" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5853">
+        <label>ABC</label>
+      </node>
+      <node id="5850">
+        <label>openage.util.fslike.directory.CaseIgnoringDirectory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory"/>
+        <childnode refid="5851" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/directory.py" bodystart="131" bodyend="195"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a253b1ff3205942dcc69e2fd8dc14f6eb" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1ab533e87449e37812327d9a771186ab71" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af57fc26b68b337aa0a8a36fce91a1790" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>actual_name</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a23ae8277e5fb70a7ac0eaa686a38abcf" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>cache</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a4ac25f156e1e61aaf181aeac4a8ed536" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a4b6007750c576514ea97305cd10299b1" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a2cd6e092ef3d99243d60ba7d05ff10c5" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1aaf5c2b924c92a941b7a0bb5044bad272" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af9d13b42632b797542414aed091b5093" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a72fb6d2aa2f5c1b1001b429f877c1fbb" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>listings</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1afcf06147cea96c5b86d105ec9c02af92" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1ad8d226499167ea30f6e47638ea498987" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1adc68385f8c0a0bb2e2bef0f10436574d" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1ad6e7f48b2d5c8f010c9c1088e6341559" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a3dfe1315b1f3db58f58c0bcd5febe499" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a250151bde89bbed4e41d7d203bc10fc4" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a99e770abe2bcbff7b472b348de2bf67c" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a9b605e81c1106a82ab8c4a4221ed43ff" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a65022ceabb3a9b9ed24acdcae5c6c8f8" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a3d1559d9fd9d3b3d7b8802b35865b734" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>resolve</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a26b80b14c729ade6d012864fc94423d7" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1aad6df15589e4b45b0b4ff322c5ae49a2" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a31bd13c783048d9480ee5c3cb1e7687b" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a14c1528593f6d0faa49110f25d1ba095" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a593147786283242dd86370ad6f97e068" prot="public" virt="non-virtual"><scope>openage::util::fslike::directory::CaseIgnoringDirectory</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

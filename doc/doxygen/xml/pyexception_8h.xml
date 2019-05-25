@@ -9,10 +9,10 @@
     <includes refid="backtrace_8h" local="yes">../error/backtrace.h</includes>
     <includes refid="functional_8h" local="yes">functional.h</includes>
     <includes refid="pyobject_8h" local="yes">pyobject.h</includes>
-    <includedby refid="exctranslate_8cpp" local="yes">libopenage/pyinterface/exctranslate.cpp</includedby>
-    <includedby refid="exctranslate__tests_8cpp" local="yes">libopenage/pyinterface/exctranslate_tests.cpp</includedby>
-    <includedby refid="pyexception_8cpp" local="yes">libopenage/pyinterface/pyexception.cpp</includedby>
-    <includedby refid="pyobject__tests_8cpp" local="yes">libopenage/pyinterface/pyobject_tests.cpp</includedby>
+    <includedby refid="exctranslate_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp</includedby>
+    <includedby refid="exctranslate__tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate_tests.cpp</includedby>
+    <includedby refid="pyexception_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp</includedby>
+    <includedby refid="pyobject__tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</includedby>
     <incdepgraph>
       <node id="19895">
         <label>list</label>
@@ -234,7 +234,7 @@
         <label>mutex</label>
       </node>
       <node id="19870">
-        <label>libopenage/pyinterface/pyexception.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h</label>
         <link refid="pyexception_8h"/>
         <childnode refid="19871" relation="include">
         </childnode>
@@ -277,19 +277,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="19911">
-        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</label>
         <link refid="pyobject__tests_8cpp"/>
       </node>
       <node id="19908">
-        <label>libopenage/pyinterface/exctranslate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp</label>
         <link refid="exctranslate_8cpp"/>
       </node>
       <node id="19909">
-        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate_tests.cpp</label>
         <link refid="exctranslate__tests_8cpp"/>
       </node>
       <node id="19907">
-        <label>libopenage/pyinterface/pyexception.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h</label>
         <link refid="pyexception_8h"/>
         <childnode refid="19908" relation="include">
         </childnode>
@@ -301,7 +301,7 @@
         </childnode>
       </node>
       <node id="19910">
-        <label>libopenage/pyinterface/pyexception.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp</label>
         <link refid="pyexception_8cpp"/>
       </node>
     </invincdepgraph>
@@ -368,6 +368,6 @@
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/pyexception.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h"/>
   </compounddef>
 </doxygen>

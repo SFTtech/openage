@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1context_1_1_dummy_guard" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::context::DummyGuard</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1context_1_1_dummy_guard_1a782d1e68f1ac90ba69e1d0b5457650e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.context.DummyGuard.__enter__</definition>
+        <argsstring>()</argsstring>
+        <name>__enter__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1context_1_1_dummy_guard_1a0ccc1009f230654d128b622bf4bf239f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.context.DummyGuard.__exit__</definition>
+        <argsstring>(exc_type, exc_value, traceback)</argsstring>
+        <name>__exit__</name>
+        <param>
+          <type>exc_type</type>
+          <defname>exc_type</defname>
+        </param>
+        <param>
+          <type>exc_value</type>
+          <defname>exc_value</defname>
+        </param>
+        <param>
+          <type>traceback</type>
+          <defname>traceback</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" bodystart="19" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides some utility context guards. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Context guard that does nothing. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5686">
+        <label>openage.util.context.DummyGuard</label>
+        <link refid="classopenage_1_1util_1_1context_1_1_dummy_guard"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/context.py" bodystart="11" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1context_1_1_dummy_guard_1a782d1e68f1ac90ba69e1d0b5457650e7" prot="public" virt="non-virtual"><scope>openage::util::context::DummyGuard</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1context_1_1_dummy_guard_1a0ccc1009f230654d128b622bf4bf239f" prot="public" virt="non-virtual"><scope>openage::util::context::DummyGuard</scope><name>__exit__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

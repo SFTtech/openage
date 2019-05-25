@@ -38,7 +38,7 @@
         <label>cstdint</label>
       </node>
       <node id="3086">
-        <label>libopenage/renderer/font/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp</label>
         <link refid="renderer_2font_2tests_8cpp"/>
         <childnode refid="3087" relation="include">
         </childnode>
@@ -323,6 +323,6 @@
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/font/tests.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp"/>
   </compounddef>
 </doxygen>

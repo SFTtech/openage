@@ -188,7 +188,7 @@
         <label>typeinfo</label>
       </node>
       <node id="7712">
-        <label>libopenage/event/eventfilter.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventfilter.cpp</label>
         <link refid="eventfilter_8cpp"/>
         <childnode refid="7713" relation="include">
         </childnode>
@@ -307,6 +307,6 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/eventfilter.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventfilter.cpp"/>
   </compounddef>
 </doxygen>

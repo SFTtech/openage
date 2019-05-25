@@ -16,7 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="58" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a72bffd9f2bb8e89418366ff39ac4498e" compoundref="context_8cpp" startline="150" endline="152">get_raw_context</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">GlContext</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a854eda8c6c825ebd569960d03eae603d" compoundref="context_8cpp" startline="142" endline="148">operator=</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a3f5d6f6ae168beaf0a9db7cbe14c0f21" compoundref="context_8cpp" startline="130" endline="134">~GlContext</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" prot="private" static="no" mutable="no">
         <type><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref></type>
@@ -31,7 +35,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="61" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="61" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1aa495f18ed15219f0e5b771db1d3a937b" compoundref="context_8cpp" startline="154" endline="156">get_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" compoundref="context_8cpp" startline="86" endline="128">GlContext</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a854eda8c6c825ebd569960d03eae603d" compoundref="context_8cpp" startline="142" endline="148">operator=</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +58,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="32" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="86" bodyend="128"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="86" bodyend="128"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" compoundref="context_8h" startline="61">capabilities</references>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" compoundref="context_8cpp" startline="20" endline="84">openage::renderer::opengl::find_capabilities</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" compoundref="context_8h" startline="58">gl_context</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" compoundref="context_8h" startline="24">openage::renderer::opengl::gl_context_capabilities::major_version</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" compoundref="context_8h" startline="19">openage::renderer::opengl::gl_context_capabilities::max_texture_size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" compoundref="context_8h" startline="17">openage::renderer::opengl::gl_context_capabilities::max_texture_slots</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" compoundref="context_8h" startline="25">openage::renderer::opengl::gl_context_capabilities::minor_version</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a3f5d6f6ae168beaf0a9db7cbe14c0f21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="33" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="130" bodyend="134"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="130" bodyend="134"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" compoundref="context_8h" startline="58">gl_context</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1ac40be129f0840356c0b8ee7698f4c7a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="36" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="36" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1ab90fd5c8528f5366562494b5a27e58bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref> &amp;</type>
@@ -97,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="37" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="37" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1ad5b91fc5dacc5b0ec53a6d126748ef7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -115,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="40" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="136" bodyend="140"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="136" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a854eda8c6c825ebd569960d03eae603d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref> &amp;</type>
@@ -132,7 +152,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="41" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="142" bodyend="148"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="142" bodyend="148"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" compoundref="context_8h" startline="61">capabilities</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" compoundref="context_8h" startline="58">gl_context</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a72bffd9f2bb8e89418366ff39ac4498e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>SDL_GLContext</type>
@@ -146,7 +168,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="44" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="150" bodyend="152"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="150" bodyend="152"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" compoundref="context_8h" startline="58">gl_context</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1aa495f18ed15219f0e5b771db1d3a937b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref></type>
@@ -160,7 +183,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="47" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="154" bodyend="156"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="154" bodyend="156"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" compoundref="context_8h" startline="61">capabilities</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a5b9cd6e0294a1f4ea8e309badff46167" compoundref="opengl_2renderer_8cpp" startline="31" endline="33">openage::renderer::opengl::GlRenderer::add_shader</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4ff9a4533dfa23d25d2e2c53bc94350e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -178,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="50" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="210" bodyend="221"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="210" bodyend="221"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -194,7 +219,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/context.h" line="54" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="158" bodyend="208"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp" bodystart="158" bodyend="208"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" compoundref="renderer_2tests_8cpp" startline="33" endline="278">openage::renderer::tests::renderer_demo_0</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -203,19 +231,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2382">
+      <node id="4660">
         <label>openage::renderer::opengl::gl_context_capabilities</label>
         <link refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities"/>
       </node>
-      <node id="2381">
+      <node id="4659">
         <label>openage::renderer::opengl::GlContext</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context"/>
-        <childnode refid="2382" relation="usage">
+        <childnode refid="4660" relation="usage">
           <edgelabel>-capabilities</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/context.h" line="29" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="29" bodyend="62"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h" bodystart="29" bodyend="62"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlContext</scope><name>capabilities</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a22414f75ba491ef266e3453259825a50" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlContext</scope><name>check_error</name></member>

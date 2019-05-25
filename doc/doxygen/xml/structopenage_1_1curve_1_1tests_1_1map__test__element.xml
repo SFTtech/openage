@@ -14,7 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="17" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1ae83c263763307d2e883c942afdeb6f2f" compoundref="container_8cpp" startline="28" endline="31">openage::curve::tests::operator&lt;&lt;</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -33,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="19" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="19" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="19" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab64149aebddf040c8d0b526a6a0a3098" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -50,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="22" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="22" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="22" bodyend="24"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,12 +60,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3176">
+      <node id="1906">
         <label>openage::curve::tests::map_test_element</label>
         <link refid="structopenage_1_1curve_1_1tests_1_1map__test__element"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/tests/container.cpp" line="16" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="16" bodyend="26"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="16" bodyend="26"/>
     <listofallmembers>
       <member refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab5ee4a5eb2bcc16a37e523b7c86e05fc" prot="public" virt="non-virtual"><scope>openage::curve::tests::map_test_element</scope><name>map_test_element</name></member>
       <member refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab64149aebddf040c8d0b526a6a0a3098" prot="public" virt="non-virtual"><scope>openage::curve::tests::map_test_element</scope><name>operator !=</name></member>

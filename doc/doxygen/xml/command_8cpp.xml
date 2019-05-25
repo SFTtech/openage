@@ -155,7 +155,7 @@
         <label>unordered_set</label>
       </node>
       <node id="25686">
-        <label>libopenage/unit/command.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.cpp</label>
         <link refid="command_8cpp"/>
         <childnode refid="25687" relation="include">
         </childnode>
@@ -433,6 +433,6 @@
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/command.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.cpp"/>
   </compounddef>
 </doxygen>

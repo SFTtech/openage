@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job_state_base.h" line="22" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" line="22" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1a031e479cce5b10af52a28ccb5301b588" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job_state_base.h" line="28" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" line="28" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1ae5c8164b998e8a1ba780c3114e4492b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job_state_base.h" line="35" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" line="35" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1aee0926a562a65f87308e1eda7d14040c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>size_t</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job_state_base.h" line="38" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" line="38" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,36 +75,36 @@
 <para>An abstract base class for a shared state of a job. A job state keeps track of its execution state and store&apos;s the job&apos;s result. Further it keeps track of exceptions that occurred during the job&apos;s execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3040">
+      <node id="3899">
         <label>openage::job::JobState&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_job_state"/>
-        <childnode refid="3038" relation="public-inheritance">
+        <childnode refid="3897" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3039">
+      <node id="3898">
         <label>openage::job::AbortableJobState&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_abortable_job_state"/>
-        <childnode refid="3038" relation="public-inheritance">
+        <childnode refid="3897" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3038">
+      <node id="3897">
         <label>openage::job::TypedJobStateBase&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_typed_job_state_base"/>
-        <childnode refid="3037" relation="public-inheritance">
+        <childnode refid="3896" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3037">
+      <node id="3896">
         <label>openage::job::JobStateBase</label>
         <link refid="classopenage_1_1job_1_1_job_state_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3041">
+      <node id="3900">
         <label>openage::job::JobStateBase</label>
         <link refid="classopenage_1_1job_1_1_job_state_base"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/job/job_state_base.h" line="19" column="1" bodyfile="libopenage/job/job_state_base.h" bodystart="19" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state_base.h" bodystart="19" bodyend="39"/>
     <listofallmembers>
       <member refid="classopenage_1_1job_1_1_job_state_base_1a031e479cce5b10af52a28ccb5301b588" prot="public" virt="pure-virtual"><scope>openage::job::JobStateBase</scope><name>execute</name></member>
       <member refid="classopenage_1_1job_1_1_job_state_base_1ae5c8164b998e8a1ba780c3114e4492b4" prot="public" virt="pure-virtual"><scope>openage::job::JobStateBase</scope><name>execute_callback</name></member>

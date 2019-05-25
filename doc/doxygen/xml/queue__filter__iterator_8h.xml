@@ -6,8 +6,8 @@
     <includes refid="iterator_8h" local="yes">iterator.h</includes>
     <includes local="no">iterator</includes>
     <includes local="no">limits</includes>
-    <includedby refid="queue_8h" local="yes">libopenage/curve/queue.h</includedby>
-    <includedby refid="queue__filter__iterator_8cpp" local="yes">libopenage/curve/queue_filter_iterator.cpp</includedby>
+    <includedby refid="queue_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h</includedby>
+    <includedby refid="queue__filter__iterator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.cpp</includedby>
     <incdepgraph>
       <node id="5338">
         <label>list</label>
@@ -105,7 +105,7 @@
         <label>string</label>
       </node>
       <node id="5303">
-        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.h</label>
         <link refid="queue__filter__iterator_8h"/>
         <childnode refid="5304" relation="include">
         </childnode>
@@ -282,7 +282,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5346">
-        <label>libopenage/curve/queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h</label>
         <link refid="queue_8h"/>
         <childnode refid="5347" relation="include">
         </childnode>
@@ -290,7 +290,7 @@
         </childnode>
       </node>
       <node id="5345">
-        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.h</label>
         <link refid="queue__filter__iterator_8h"/>
         <childnode refid="5346" relation="include">
         </childnode>
@@ -298,15 +298,15 @@
         </childnode>
       </node>
       <node id="5347">
-        <label>libopenage/curve/queue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp</label>
         <link refid="queue_8cpp"/>
       </node>
       <node id="5349">
-        <label>libopenage/curve/queue_filter_iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.cpp</label>
         <link refid="queue__filter__iterator_8cpp"/>
       </node>
       <node id="5348">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
     </invincdepgraph>
@@ -360,6 +360,6 @@
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/queue_filter_iterator.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.h"/>
   </compounddef>
 </doxygen>

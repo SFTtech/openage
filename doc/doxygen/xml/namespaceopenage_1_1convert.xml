@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert" kind="namespace" language="Python">
+    <compoundname>openage::convert</compoundname>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1binpack">openage::convert::binpack</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1blendomatic">openage::convert::blendomatic</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1changelog">openage::convert::changelog</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1colortable">openage::convert::colortable</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1dataformat">openage::convert::dataformat</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1driver">openage::convert::driver</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1drs">openage::convert::drs</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1fix__data">openage::convert::fix_data</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1game__versions">openage::convert::game_versions</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1gamedata">openage::convert::gamedata</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1hardcoded">openage::convert::hardcoded</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1hdlanguagefile">openage::convert::hdlanguagefile</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1interface">openage::convert::interface</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1main">openage::convert::main</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1opus">openage::convert::opus</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1pefile">openage::convert::pefile</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1peresource">openage::convert::peresource</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1singlefile">openage::convert::singlefile</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1slp__converter__pool">openage::convert::slp_converter_pool</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1stringresource">openage::convert::stringresource</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1texture">openage::convert::texture</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

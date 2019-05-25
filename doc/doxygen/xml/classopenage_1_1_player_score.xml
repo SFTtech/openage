@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="99" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_player_score_1a6fa8471a97c4835b863dbef852b7d6c8" compoundref="score_8cpp" startline="57" endline="61">PlayerScore</referencedby>
+        <referencedby refid="classopenage_1_1_player_score_1a335bfe5e296ab4563b6689a8cacca562" compoundref="score_8cpp" startline="63" endline="69">update_score</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="91" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="57" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="57" bodyend="61"/>
+        <references refid="classopenage_1_1_player_score_1a1af42313b91c4bb428b1c98864f7401f" compoundref="score_8h" startline="99">player</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_player_score_1a335bfe5e296ab4563b6689a8cacca562" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -50,7 +53,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="93" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="63" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="63" bodyend="69"/>
+        <references refid="classopenage_1_1_player_score_1a1af42313b91c4bb428b1c98864f7401f" compoundref="score_8h" startline="99">player</references>
+        <references refid="classopenage_1_1_team_1ac579ae1a33f33dfe6e53b738a9cfe160" compoundref="team_8h" startline="67">openage::Team::score</references>
+        <references refid="classopenage_1_1_player_1a49e6eb4d6794785417435205a53ae5cb" compoundref="player_8h" startline="48">openage::Player::team</references>
+        <references refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" compoundref="score_8cpp" startline="50" endline="55">openage::Score::update_score</references>
+        <references refid="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff" compoundref="score_8cpp" startline="77" endline="88">openage::TeamScore::update_score</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -59,81 +67,81 @@
 <para>The score of a player </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3677">
+      <node id="4489">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="3678" relation="public-inheritance">
+        <childnode refid="4490" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3678">
+      <node id="4490">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3683">
+      <node id="4495">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="3680" relation="public-inheritance">
+        <childnode refid="4492" relation="public-inheritance">
         </childnode>
-        <childnode refid="3682" relation="usage">
+        <childnode refid="4494" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="3679">
+      <node id="4491">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="3680" relation="public-inheritance">
+        <childnode refid="4492" relation="public-inheritance">
         </childnode>
-        <childnode refid="3681" relation="usage">
+        <childnode refid="4493" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="3680">
+      <node id="4492">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="3682">
+      <node id="4494">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="3683" relation="usage">
+        <childnode refid="4495" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="3686">
+      <node id="4498">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="3681">
+      <node id="4493">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="3679" relation="usage">
+        <childnode refid="4491" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="3682" relation="usage">
+        <childnode refid="4494" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="3684" relation="usage">
+        <childnode refid="4496" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="3685" relation="usage">
+        <childnode refid="4497" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="3686" relation="usage">
+        <childnode refid="4498" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="3684">
+      <node id="4496">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="3685">
+      <node id="4497">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/score.h" line="88" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="88" bodyend="100"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="88" bodyend="100"/>
     <listofallmembers>
       <member refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" prot="public" virt="non-virtual"><scope>openage::PlayerScore</scope><name>add_score</name></member>
       <member refid="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" prot="public" virt="non-virtual"><scope>openage::PlayerScore</scope><name>add_score</name></member>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::pyinterface::PyObjectRef Class Reference</title>
+<title>openage: openage::pyinterface::PyObjectRef Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1pyinterface_1_1_py_obj
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::pyinterface::PyObjectRef:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref__coll__graph.svg" width="154" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::pyinterface::PyObjectRef:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref__coll__graph.svg" width="154" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -239,7 +241,8 @@ Private Attributes</h2></td></tr>
 <p>Initializes reference with nullptr. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    :</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>{<span class="keyword">nullptr</span>} {}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0c2f2bd7dfd4f04b439793b220e02db9"></a>
@@ -260,6 +263,10 @@ Private Attributes</h2></td></tr>
 <p>Wraps a raw PyObject * pointer (calls Py_INCREF). </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    :</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>{<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>} {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">py_xincref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a7866f2cf6f90156274ac6b83776e73d9"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">openage::pyinterface::py_xincref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xincref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00272">pyobject.cpp:272</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -281,6 +288,10 @@ Private Attributes</h2></td></tr>
 <p>Clones a <a class="el" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml">PyObjectRef</a> (calls Py_INCREF). </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    :</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>{other.ref} {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">py_xincref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a7866f2cf6f90156274ac6b83776e73d9"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">openage::pyinterface::py_xincref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xincref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00272">pyobject.cpp:272</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -310,7 +321,8 @@ Private Attributes</h2></td></tr>
 <p>Move-constructs from an other <a class="el" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml">PyObjectRef</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00034">34</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    :</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>{other.ref} {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// don&#39;t incref, because we simultaneously clear other.ref.</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    other.ref = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad9e8f1a9f289eb345ec3565f888ae23a"></a>
@@ -330,6 +342,10 @@ Private Attributes</h2></td></tr>
 <p>Destroys the object, calls Py_XDECREF. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00096">96</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                          {</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">py_xdecref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ab5131b0e0209f78e76c5556cd7371dd7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">openage::pyinterface::py_xdecref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xdecref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00273">pyobject.cpp:273</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00273">openage::pyinterface::py_xdecref</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -382,7 +398,9 @@ template&lt;&gt; </div>
 <p>Integer conversion. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00073">73</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    :</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a>(<a class="code" href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7">py::integer</a>(number)) {}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a1f03713cea0d4ee15fc445111404e7d7"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7">openage::py::integer</a></div><div class="ttdeci">Obj integer(int value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00345">pyobject.cpp:345</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4bb8cbf285476e6ef7cd7a4bf5961a65"></a>
@@ -405,7 +423,9 @@ template&lt;&gt; </div>
 <p>Bytes conversion. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00082">82</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    :</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a>(<a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">py::bytes</a>(data)) {}</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1dc37921549165a63be1eecf48c31859"></a>
@@ -428,7 +448,9 @@ template&lt;&gt; </div>
 <p>String conversion. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00091">91</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    :</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a>(<a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">py::bytes</a>(txt)) {}</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -449,6 +471,20 @@ template&lt;&gt; </div>
 <p>bytes(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00132">132</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                   {</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a1da67fe4551652e4267a218123e27309">py_bytes</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a1da67fe4551652e4267a218123e27309"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a1da67fe4551652e4267a218123e27309">openage::pyinterface::py_bytes</a></div><div class="ttdeci">PyIfFunc&lt; std::string, PyObject * &gt; py_bytes</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00277">pyobject.cpp:277</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00277">openage::pyinterface::py_bytes</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fslike_2python_8cpp_source.xhtml#l00067">openage::util::fslike::Python::get_native_path()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a76e2c7f1e3147d1d726d5c277daff1f8_icgraph.svg" width="371" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -480,6 +516,18 @@ template&lt;typename ... Args&gt; </div>
 <p>obj(args...) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8h_source.xhtml#l00120">120</a> of file <a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                         {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment">// this vector collects the function call arguments</span></div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        std::vector&lt;PyObjectRef&gt; arg_objs {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a>(args)...</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        };</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaacc1330b0393004944477d15e9d82b0">call_impl</a>(arg_objs);</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_aaacc1330b0393004944477d15e9d82b0"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aaacc1330b0393004944477d15e9d82b0">openage::pyinterface::PyObjectRef::call_impl</a></div><div class="ttdeci">PyObjectRef call_impl(std::vector&lt; PyObjectRef &gt; &amp;args) const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00147">pyobject.cpp:147</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00133">openage::pyinterface::tests::pyobject_demo()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a54af3d98bf36729efd5a013bc124a2e9_icgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -509,6 +557,22 @@ template&lt;typename ... Args&gt; </div>
 <p>obj(args) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00147">147</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                                                     {</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span> (args.empty()) {</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a63957aa9bf0c9835493a16ff6b543418">py_call0</a>.call(&amp;<a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>, this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        std::vector&lt;PyObject *&gt; py_args{args.size()};</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        std::transform(args.begin(), args.end(), py_args.begin(),</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                       std::mem_fn(&amp;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">PyObjectRef::get_ref</a>));</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a8aa560a3c62f746b36bb98e84bf1934c">py_calln</a>.call(&amp;<a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>, this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, py_args);</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_ac75d8f60c25c4a7570dcdf83b601d639"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">openage::pyinterface::PyObjectRef::get_ref</a></div><div class="ttdeci">PyObject * get_ref() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00246">pyobject.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a63957aa9bf0c9835493a16ff6b543418"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a63957aa9bf0c9835493a16ff6b543418">openage::pyinterface::py_call0</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObjectRef *, PyObject * &gt; py_call0</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00280">pyobject.cpp:280</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a8aa560a3c62f746b36bb98e84bf1934c"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a8aa560a3c62f746b36bb98e84bf1934c">openage::pyinterface::py_calln</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObjectRef *, PyObject *, std::vector&lt; PyObject * &gt; &amp; &gt; py_calln</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00281">pyobject.cpp:281</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00280">openage::pyinterface::py_call0</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00281">openage::pyinterface::py_calln</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_aaacc1330b0393004944477d15e9d82b0_cgraph.svg" width="590" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -529,6 +593,20 @@ template&lt;typename ... Args&gt; </div>
 <p>callable(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00142">142</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                 {</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a2ff686c130c1870c58243e9f9530685a">py_callable</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a2ff686c130c1870c58243e9f9530685a"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a2ff686c130c1870c58243e9f9530685a">openage::pyinterface::py_callable</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject * &gt; py_callable</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00279">pyobject.cpp:279</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00279">openage::pyinterface::py_callable</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a2790fe7f033dc93a820a13535421aa98_icgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -549,6 +627,20 @@ template&lt;typename ... Args&gt; </div>
 <p>type(obj).__name__ </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00256">256</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                       {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a4912d8bb9e44d51c84e6363694941f42">py_classname</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a4912d8bb9e44d51c84e6363694941f42"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a4912d8bb9e44d51c84e6363694941f42">openage::pyinterface::py_classname</a></div><div class="ttdeci">PyIfFunc&lt; std::string, PyObject * &gt; py_classname</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00296">pyobject.cpp:296</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00296">openage::pyinterface::py_classname</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyexception_8cpp_source.xhtml#l00035">openage::pyinterface::PyException::type_name()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a912e76dc7854f9c1816533f6f8571767_icgraph.svg" width="612" height="150"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -577,7 +669,8 @@ template&lt;typename ... Args&gt; </div>
 <p>Clears the internal reference, but does <em>NOT</em> call PY_XDECREF. Only use in special cases, if you know exactly what you're doing. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8h_source.xhtml#l00273">273</a> of file <a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                                   {</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9a0172d320ad1f5f696dfe04d35570d5"></a>
@@ -598,6 +691,10 @@ template&lt;typename ... Args&gt; </div>
 <p>for elem in dir(obj): callback(elem) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00193">193</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                                                 {</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a7dd7680eb550d5db3c7f902316a748c1">py_dir</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, callback);</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a7dd7680eb550d5db3c7f902316a748c1"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a7dd7680eb550d5db3c7f902316a748c1">openage::pyinterface::py_dir</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, Func&lt; void, std::string &gt; &gt; py_dir</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00288">pyobject.cpp:288</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00288">openage::pyinterface::py_dir</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -619,6 +716,28 @@ template&lt;typename ... Args&gt; </div>
 <p>obj == other </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00203">203</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                                       {</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#acf53a5711df9e4c084c8db8a0da7c742">py_equals</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, other.get_ref());</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_acf53a5711df9e4c084c8db8a0da7c742"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#acf53a5711df9e4c084c8db8a0da7c742">openage::pyinterface::py_equals</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject *, PyObject * &gt; py_equals</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00289">pyobject.cpp:289</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00289">openage::pyinterface::py_equals</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_ad14d4168fbabc89c1b48186ba1df98b2_cgraph.svg" width="359" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_ad14d4168fbabc89c1b48186ba1df98b2_icgraph.svg" width="351" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -640,6 +759,30 @@ template&lt;typename ... Args&gt; </div>
 <p>eval(expression, obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00208">208</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                                               {</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a63919a2347c856579a992996c9c26d8a">py_eval</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, &amp;result, expression);</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a63919a2347c856579a992996c9c26d8a"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a63919a2347c856579a992996c9c26d8a">openage::pyinterface::py_eval</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, PyObjectRef *, std::string &gt; py_eval</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00291">pyobject.cpp:291</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00291">openage::pyinterface::py_eval</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00133">openage::pyinterface::tests::pyobject_demo()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a17d24db4d17d8aba1a9b71c79fe3aa40_cgraph.svg" width="570" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a17d24db4d17d8aba1a9b71c79fe3aa40_icgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -661,6 +804,20 @@ template&lt;typename ... Args&gt; </div>
 <p>exec(statement, obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00215">215</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                                                       {</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a22d3d2911cba5872786856d0cd41bf53">py_exec</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, statement);</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a22d3d2911cba5872786856d0cd41bf53"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a22d3d2911cba5872786856d0cd41bf53">openage::pyinterface::py_exec</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, std::string &gt; py_exec</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00290">pyobject.cpp:290</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00290">openage::pyinterface::py_exec</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00133">openage::pyinterface::tests::pyobject_demo()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a0d7ef968ad02a1d4a52251ccd16eb85f_icgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -682,6 +839,30 @@ template&lt;typename ... Args&gt; </div>
 <p>obj[key] </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00220">220</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                                         {</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a26ef6836021b3dc7fe2215b7fab97e9d">py_get</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, &amp;result, key.get_ref());</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a26ef6836021b3dc7fe2215b7fab97e9d"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a26ef6836021b3dc7fe2215b7fab97e9d">openage::pyinterface::py_get</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, PyObjectRef *, PyObject * &gt; py_get</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00292">pyobject.cpp:292</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00292">openage::pyinterface::py_get</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00227">get()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a853f15a5d55d1143418e208fac044119_cgraph.svg" width="570" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a853f15a5d55d1143418e208fac044119_icgraph.svg" width="344" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -703,6 +884,19 @@ template&lt;typename ... Args&gt; </div>
 <p>obj[key] </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00227">227</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                                       {</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> keyobj = <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">py::str</a>(key);</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119">get</a>(keyobj);</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a853f15a5d55d1143418e208fac044119"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119">openage::pyinterface::PyObjectRef::get</a></div><div class="ttdeci">PyObjectRef get(const PyObjectRef &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00220">pyobject.cpp:220</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00220">get()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00331">openage::py::str()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_aaff2674b9d1b7ffcf0a67f8ecba9f1b6_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -724,6 +918,19 @@ template&lt;typename ... Args&gt; </div>
 <p>obj[key] </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00233">233</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                          {</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> keyobj = <a class="code" href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7">py::integer</a>(key);</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119">get</a>(keyobj);</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a853f15a5d55d1143418e208fac044119"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a853f15a5d55d1143418e208fac044119">openage::pyinterface::PyObjectRef::get</a></div><div class="ttdeci">PyObjectRef get(const PyObjectRef &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00220">pyobject.cpp:220</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a1f03713cea0d4ee15fc445111404e7d7"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a1f03713cea0d4ee15fc445111404e7d7">openage::py::integer</a></div><div class="ttdeci">Obj integer(int value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00345">pyobject.cpp:345</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00220">get()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00345">openage::py::integer()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a6ff52951c29472ef3fd427f8c627f33c_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -752,6 +959,19 @@ template&lt;typename ... Args&gt; </div>
 <p>Provide the internal PyObject *. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8h_source.xhtml#l00246">246</a> of file <a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                       {</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00147">call_impl()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00203">equals()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00220">get()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00239">in()</a>, <a class="el" href="pyexception_8cpp_source.xhtml#l00030">openage::pyinterface::PyException::init_backtrace()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00198">is()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00188">isinstance()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00173">setattr()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_ac75d8f60c25c4a7570dcdf83b601d639_icgraph.svg" width="620" height="510"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -773,6 +993,30 @@ template&lt;typename ... Args&gt; </div>
 <p>getattr(obj, name) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00166">166</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                                            {</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a3cf5d417d7e8b932bd437163d1aa86d5">py_getattr</a>.call(&amp;result, this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, name);</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a3cf5d417d7e8b932bd437163d1aa86d5"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a3cf5d417d7e8b932bd437163d1aa86d5">openage::pyinterface::py_getattr</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObjectRef *, PyObject *, std::string &gt; py_getattr</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00283">pyobject.cpp:283</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00283">openage::pyinterface::py_getattr</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_afb0f22eaba43f4419e7edf3eaa1f957a_cgraph.svg" width="575" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_afb0f22eaba43f4419e7edf3eaa1f957a_icgraph.svg" width="350" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -794,6 +1038,20 @@ template&lt;typename ... Args&gt; </div>
 <p>hasattr(obj, name) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00161">161</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                                     {</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a72f6244131021857b5da82ec1a2b60b4">py_hasattr</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, name);</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a72f6244131021857b5da82ec1a2b60b4"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a72f6244131021857b5da82ec1a2b60b4">openage::pyinterface::py_hasattr</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject *, std::string &gt; py_hasattr</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00282">pyobject.cpp:282</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00282">openage::pyinterface::py_hasattr</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a0298b14066d342bc4b85a679ad777f28_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -815,6 +1073,19 @@ template&lt;typename ... Args&gt; </div>
 <p>obj in container </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00239">239</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                                       {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a963c22d15551b5aa2e567e9603ef79e1">py_in</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, <a class="code" href="namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7">container</a>.get_ref());</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a963c22d15551b5aa2e567e9603ef79e1"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a963c22d15551b5aa2e567e9603ef79e1">openage::pyinterface::py_in</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject *, PyObject * &gt; py_in</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00293">pyobject.cpp:293</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_1_1tests_xhtml_afc4e799a037edab37e1e35a74da593b7"><div class="ttname"><a href="namespaceopenage_1_1curve_1_1tests.xhtml#afc4e799a037edab37e1e35a74da593b7">openage::curve::tests::container</a></div><div class="ttdeci">void container()</div><div class="ttdef"><b>Definition:</b> <a href="container_8cpp_source.xhtml#l00205">container.cpp:205</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00293">openage::pyinterface::py_in</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_aae0a4f1161486c40b41b7f47e5b9fb96_cgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -836,6 +1107,27 @@ template&lt;typename ... Args&gt; </div>
 <p>obj is other </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00198">198</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                                   {</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> == other.get_ref();</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fslike_2python_8cpp_source.xhtml#l00067">openage::util::fslike::Python::get_native_path()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a078ffdebeb6488c9b045d8d49f0f47de_cgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a078ffdebeb6488c9b045d8d49f0f47de_icgraph.svg" width="371" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -857,6 +1149,30 @@ template&lt;typename ... Args&gt; </div>
 <p>isinstance(obj, type) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00188">188</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                                          {</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#afea8e32a161fe2e4644bda2196185215">py_isinstance</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aad12aea6d10bda9d75570193f562645e">type</a>.<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">get_ref</a>());</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_ac75d8f60c25c4a7570dcdf83b601d639"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">openage::pyinterface::PyObjectRef::get_ref</a></div><div class="ttdeci">PyObject * get_ref() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00246">pyobject.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_afea8e32a161fe2e4644bda2196185215"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#afea8e32a161fe2e4644bda2196185215">openage::pyinterface::py_isinstance</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject *, PyObject * &gt; py_isinstance</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00285">pyobject.cpp:285</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_aad12aea6d10bda9d75570193f562645e"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#aad12aea6d10bda9d75570193f562645e">openage::pyinterface::PyObjectRef::type</a></div><div class="ttdeci">PyObjectRef type() const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00244">pyobject.cpp:244</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00285">openage::pyinterface::py_isinstance</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a2b5e4fb00fdfa866cf3cf0abf78e07e1_cgraph.svg" width="380" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a2b5e4fb00fdfa866cf3cf0abf78e07e1_icgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -877,6 +1193,20 @@ template&lt;typename ... Args&gt; </div>
 <p>len(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00137">137</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                           {</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ad0be0c0750d33fff88a405db89a1dbe7">py_len</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ad0be0c0750d33fff88a405db89a1dbe7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ad0be0c0750d33fff88a405db89a1dbe7">openage::pyinterface::py_len</a></div><div class="ttdeci">PyIfFunc&lt; int, PyObject * &gt; py_len</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00278">pyobject.cpp:278</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00278">openage::pyinterface::py_len</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-24-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a09ea43fdc78d2458748887fa72ae1a9d_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -897,6 +1227,20 @@ template&lt;typename ... Args&gt; </div>
 <p>type(obj).__module__ </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00251">251</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                        {</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#aec589471ebd2cf0deea9cb901fa5b120">py_modulename</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_aec589471ebd2cf0deea9cb901fa5b120"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#aec589471ebd2cf0deea9cb901fa5b120">openage::pyinterface::py_modulename</a></div><div class="ttdeci">PyIfFunc&lt; std::string, PyObject * &gt; py_modulename</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00295">pyobject.cpp:295</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00295">openage::pyinterface::py_modulename</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyexception_8cpp_source.xhtml#l00035">openage::pyinterface::PyException::type_name()</a>.</p>
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_afd545e1817cad9ab9f5c84934d83e428_icgraph.svg" width="623" height="150"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -925,6 +1269,9 @@ template&lt;typename ... Args&gt; </div>
 <p>Implicit conversion to PyObject *. Mainly for convenience to avoid all the <a class="el" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">get_ref()</a> calls. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8h_source.xhtml#l00254">254</a> of file <a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                           {</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>;</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>.</p>
 
 </div>
 </div>
@@ -946,6 +1293,11 @@ template&lt;typename ... Args&gt; </div>
 <p>Assigns from an other <a class="el" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml">PyObjectRef</a> (calls Py_XDECREF on the old value, and Py_XINCREF on the new one). </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                             {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">py_xdecref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> = other.ref;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">py_xincref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a7866f2cf6f90156274ac6b83776e73d9"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">openage::pyinterface::py_xincref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xincref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00272">pyobject.cpp:272</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ab5131b0e0209f78e76c5556cd7371dd7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">openage::pyinterface::py_xdecref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xdecref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00273">pyobject.cpp:273</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00273">openage::pyinterface::py_xdecref</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00272">openage::pyinterface::py_xincref</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -967,6 +1319,10 @@ template&lt;typename ... Args&gt; </div>
 <p>Move-assigns from an other PyObject (calls Py_XDECREF on the old value). </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                        {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">py_xdecref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> = other.ref;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// don&#39;t incref, because we simultaneously clear other.ref.</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    other.ref = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ab5131b0e0209f78e76c5556cd7371dd7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">openage::pyinterface::py_xdecref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xdecref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00273">pyobject.cpp:273</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00273">openage::pyinterface::py_xdecref</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
 
 </div>
 </div>
@@ -987,6 +1343,20 @@ template&lt;typename ... Args&gt; </div>
 <p>repr(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00127">127</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                  {</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#afc5196e488904c84cd675b55494f3695">py_repr</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_afc5196e488904c84cd675b55494f3695"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#afc5196e488904c84cd675b55494f3695">openage::pyinterface::py_repr</a></div><div class="ttdeci">PyIfFunc&lt; std::string, PyObject * &gt; py_repr</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00276">pyobject.cpp:276</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00276">openage::pyinterface::py_repr</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_afc75f5918216b0b5c64c7a3f83626ea6_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1008,6 +1378,12 @@ template&lt;typename ... Args&gt; </div>
 <p>Like <a class="el" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a1c1b91b6056f0e370402678645129d8a">operator =(const PyObjectRef &amp;other)</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00103">103</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                       {</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> != <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">py_xdecref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> = <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">py_xincref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a7866f2cf6f90156274ac6b83776e73d9"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a7866f2cf6f90156274ac6b83776e73d9">openage::pyinterface::py_xincref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xincref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00272">pyobject.cpp:272</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ab5131b0e0209f78e76c5556cd7371dd7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">openage::pyinterface::py_xdecref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xdecref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00273">pyobject.cpp:273</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00273">openage::pyinterface::py_xdecref</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00272">openage::pyinterface::py_xincref</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
 
 </div>
 </div>
@@ -1029,6 +1405,11 @@ template&lt;typename ... Args&gt; </div>
 <p>Like set_ref, but does <em>NOT</em> call PY_XINCREF. Only use in special cases, if you know exactly what you're doing. </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00113">113</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                                            {</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> != <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">py_xdecref</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a> = <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ab5131b0e0209f78e76c5556cd7371dd7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ab5131b0e0209f78e76c5556cd7371dd7">openage::pyinterface::py_xdecref</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject * &gt; py_xdecref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00273">pyobject.cpp:273</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00273">openage::pyinterface::py_xdecref</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
 
 </div>
 </div>
@@ -1060,6 +1441,28 @@ template&lt;typename ... Args&gt; </div>
 <p>setattr(obj, name) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00173">173</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                                                              {</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a3316eef7fb6fbfced2f80c600bad8908">py_setattr</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, name, attr.get_ref());</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a3316eef7fb6fbfced2f80c600bad8908"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a3316eef7fb6fbfced2f80c600bad8908">openage::pyinterface::py_setattr</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, std::string, PyObject * &gt; py_setattr</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00284">pyobject.cpp:284</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8h_source.xhtml#l00246">get_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00284">openage::pyinterface::py_setattr</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-27-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-27-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-27-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a9c0069c03b9c5ab553f49b6cc790f8e0_cgraph.svg" width="358" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-28-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-28-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-28-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a9c0069c03b9c5ab553f49b6cc790f8e0_icgraph.svg" width="350" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1080,6 +1483,20 @@ template&lt;typename ... Args&gt; </div>
 <p>str(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00122">122</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                 {</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#aee648d1c95091e0207f3bf9d4f69dd01">py_str</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_aee648d1c95091e0207f3bf9d4f69dd01"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#aee648d1c95091e0207f3bf9d4f69dd01">openage::pyinterface::py_str</a></div><div class="ttdeci">PyIfFunc&lt; std::string, PyObject * &gt; py_str</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00275">pyobject.cpp:275</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00275">openage::pyinterface::py_str</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00133">openage::pyinterface::tests::pyobject_demo()</a>.</p>
+<div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-29-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-29-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-29-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_acd17e87d491659af8fb3ac621f9f4732_icgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1100,6 +1517,20 @@ template&lt;typename ... Args&gt; </div>
 <p>bool(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00178">178</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                {</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ad6ddd0e21b23d1b521586e0694a80a04">py_to_bool</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ad6ddd0e21b23d1b521586e0694a80a04"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ad6ddd0e21b23d1b521586e0694a80a04">openage::pyinterface::py_to_bool</a></div><div class="ttdeci">PyIfFunc&lt; bool, PyObject * &gt; py_to_bool</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00286">pyobject.cpp:286</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00286">openage::pyinterface::py_to_bool</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-30-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_a02b9a4b5f4123474f3d2c7be438eed21_icgraph.svg" width="355" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1120,6 +1551,20 @@ template&lt;typename ... Args&gt; </div>
 <p>int(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00183">183</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                  {</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a4c514ea8f04bb945cd0d0086c89e8aa3">py_to_int</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>);</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a4c514ea8f04bb945cd0d0086c89e8aa3"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a4c514ea8f04bb945cd0d0086c89e8aa3">openage::pyinterface::py_to_int</a></div><div class="ttdeci">PyIfFunc&lt; int64_t, PyObject * &gt; py_to_int</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00287">pyobject.cpp:287</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00287">openage::pyinterface::py_to_int</a>, and <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-31" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-31-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-31-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_ab33e45c3e5b581e5c1dbc74282f6f168_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1140,6 +1585,30 @@ template&lt;typename ... Args&gt; </div>
 <p>type(obj) </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00244">244</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                    {</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">PyObjectRef</a> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#ad33eb5ce8235933127b3d7ed2f519ce7">py_type</a>.call(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">ref</a>, &amp;result);</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a71d239927cc521d7d6cd2ff3f0e724ba"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a71d239927cc521d7d6cd2ff3f0e724ba">openage::pyinterface::PyObjectRef::ref</a></div><div class="ttdeci">PyObject * ref</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00239">pyobject.h:239</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a780793e26a1e574fda456f688e8d2f11"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a780793e26a1e574fda456f688e8d2f11">openage::pyinterface::PyObjectRef::PyObjectRef</a></div><div class="ttdeci">PyObjectRef() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00013">pyobject.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_ad33eb5ce8235933127b3d7ed2f519ce7"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#ad33eb5ce8235933127b3d7ed2f519ce7">openage::pyinterface::py_type</a></div><div class="ttdeci">PyIfFunc&lt; void, PyObject *, PyObjectRef * &gt; py_type</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00294">pyobject.cpp:294</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00294">openage::pyinterface::py_type</a>, <a class="el" href="pyobject_8h_source.xhtml#l00239">ref</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
+<div id="dynsection-32" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-32-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-32-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-32-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_aad12aea6d10bda9d75570193f562645e_cgraph.svg" width="570" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-33" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-33-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-33-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-33-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_object_ref_aad12aea6d10bda9d75570193f562645e_icgraph.svg" width="344" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1167,11 +1636,13 @@ template&lt;typename ... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8h_source.xhtml#l00239">239</a> of file <a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00132">bytes()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00147">call_impl()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00142">callable()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00256">classname()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00193">dir()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00203">equals()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00208">eval()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00215">exec()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00220">get()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00166">getattr()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00161">hasattr()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00239">in()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00198">is()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00188">isinstance()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00137">len()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00251">modulename()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00043">operator=()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00018">PyObjectRef()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00127">repr()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00103">set_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00113">set_ref_without_incrementing()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00173">setattr()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00122">str()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00178">to_bool()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00183">to_int()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00244">type()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00096">~PyObjectRef()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/pyinterface/<a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a></li>
-<li>libopenage/pyinterface/<a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/<a class="el" href="pyobject_8h_source.xhtml">pyobject.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/<a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

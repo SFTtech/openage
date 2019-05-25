@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1tech" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::tech</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_age_tech_tree" prot="public">openage::convert::gamedata::tech::AgeTechTree</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection" prot="public">openage::convert::gamedata::tech::BuildingConnection</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_effect" prot="public">openage::convert::gamedata::tech::Effect</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_mode" prot="public">openage::convert::gamedata::tech::Mode</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_research_connection" prot="public">openage::convert::gamedata::tech::ResearchConnection</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_tech" prot="public">openage::convert::gamedata::tech::Tech</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_unit_connection" prot="public">openage::convert::gamedata::tech::UnitConnection</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

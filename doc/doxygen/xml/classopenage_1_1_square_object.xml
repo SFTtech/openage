@@ -17,7 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="285" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="285" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="285" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="285" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">get_range</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" compoundref="terrain__object_8cpp" startline="380" endline="382">min_axis</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -32,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="317" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="317" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="317" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="317" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classopenage_1_1_square_object_1a7d9e2c6a94a6a3bc107607aa0318e804" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>
@@ -45,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="318" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="318" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="318" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="318" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="279" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="304" bodyend="304"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="279" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="304" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
@@ -94,7 +101,11 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="304" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="306" bodyend="308"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="304" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="306" bodyend="308"/>
+        <references refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">size</references>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">intersects</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -113,7 +124,14 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="306" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="310" bodyend="322"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="306" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="310" bodyend="322"/>
+        <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
+        <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
@@ -137,7 +155,13 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="307" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="324" bodyend="334"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="307" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="324" bodyend="334"/>
+        <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -156,7 +180,11 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="308" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="336" bodyend="345"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="308" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="336" bodyend="345"/>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" compoundref="tile_8h" startline="59" endline="61">openage::coord::tile3::to_tile</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1a8ed61fb85a083922af8fbbabd087ae31" compoundref="phys_8cpp" startline="16" endline="18">openage::coord::phys3::to_tile3</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -179,7 +207,17 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="309" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="347" bodyend="378"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="309" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="347" bodyend="378"/>
+        <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">get_range</references>
+        <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
+        <references refid="classopenage_1_1_terrain_object_1a8c5e009bd234e32fdcf21b51dde4061e" compoundref="terrain__object_8h" startline="248">openage::TerrainObject::terrain</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -194,7 +232,9 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="310" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="380" bodyend="382"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="310" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="380" bodyend="382"/>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">size</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -217,7 +257,7 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="313" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="292" bodyend="295"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="313" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="292" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_square_object_1a625e0ffb10a54ec8ed01d865a52bb2ce" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -242,7 +282,8 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="314" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="297" bodyend="302"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="314" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="297" bodyend="302"/>
+        <references refid="classopenage_1_1_terrain_object_1a48b30f255fce4952271b5fd633daa488" compoundref="terrain__object_8h" startline="261">openage::TerrainObject::outline_texture</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -251,239 +292,239 @@ set the center position to &quot;middle&quot;, start_pos is % and end_pos = &amp
 <para>terrain object class represents one immobile object on the map (building, trees, fish, ...). can only be constructed by unit-&gt;make_location&lt;SquareObject&gt;(...) </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4232">
+      <node id="5112">
         <label>openage::TerrainObject</label>
         <link refid="classopenage_1_1_terrain_object"/>
-        <childnode refid="4233" relation="public-inheritance">
+        <childnode refid="5113" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4231">
+      <node id="5111">
         <label>openage::SquareObject</label>
         <link refid="classopenage_1_1_square_object"/>
-        <childnode refid="4232" relation="public-inheritance">
+        <childnode refid="5112" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4233">
+      <node id="5113">
         <label>std::enable_shared_from_this&lt; TerrainObject &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4239">
+      <node id="5119">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="4235">
+      <node id="5115">
         <label>openage::TerrainObject</label>
         <link refid="classopenage_1_1_terrain_object"/>
-        <childnode refid="4236" relation="public-inheritance">
+        <childnode refid="5116" relation="public-inheritance">
         </childnode>
-        <childnode refid="4237" relation="usage">
+        <childnode refid="5117" relation="usage">
           <edgelabel>+pos</edgelabel>
         </childnode>
-        <childnode refid="4242" relation="usage">
+        <childnode refid="5122" relation="usage">
           <edgelabel>+unit</edgelabel>
         </childnode>
-        <childnode refid="4258" relation="usage">
+        <childnode refid="5138" relation="usage">
           <edgelabel>#occupied_chunk</edgelabel>
         </childnode>
-        <childnode refid="4235" relation="usage">
+        <childnode refid="5115" relation="usage">
           <edgelabel>#parent</edgelabel>
         </childnode>
       </node>
-      <node id="4238">
+      <node id="5118">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="4239" relation="public-inheritance">
+        <childnode refid="5119" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4254">
+      <node id="5134">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="4252" relation="public-inheritance">
+        <childnode refid="5132" relation="public-inheritance">
         </childnode>
-        <childnode refid="4253" relation="usage">
+        <childnode refid="5133" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="4251">
+      <node id="5131">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="4252" relation="public-inheritance">
+        <childnode refid="5132" relation="public-inheritance">
         </childnode>
-        <childnode refid="4250" relation="usage">
+        <childnode refid="5130" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="4252">
+      <node id="5132">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="4244">
+      <node id="5124">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
-        <childnode refid="4245" relation="usage">
+        <childnode refid="5125" relation="usage">
           <edgelabel>+foundation_size</edgelabel>
         </childnode>
-        <childnode refid="4247" relation="usage">
+        <childnode refid="5127" relation="usage">
           <edgelabel>+default_attributes</edgelabel>
         </childnode>
-        <childnode refid="4248" relation="usage">
+        <childnode refid="5128" relation="usage">
           <edgelabel>+cost</edgelabel>
         </childnode>
-        <childnode refid="4250" relation="usage">
+        <childnode refid="5130" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="4253">
+      <node id="5133">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="4254" relation="usage">
+        <childnode refid="5134" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="4258">
+      <node id="5138">
         <label>openage::TerrainChunk</label>
         <link refid="classopenage_1_1_terrain_chunk"/>
-        <childnode refid="4259" relation="usage">
+        <childnode refid="5139" relation="usage">
           <edgelabel>+data</edgelabel>
         </childnode>
-        <childnode refid="4260" relation="usage">
+        <childnode refid="5140" relation="usage">
           <edgelabel>+terrain</edgelabel>
         </childnode>
-        <childnode refid="4262" relation="usage">
+        <childnode refid="5142" relation="usage">
           <edgelabel>+neighbors</edgelabel>
         </childnode>
       </node>
-      <node id="4242">
+      <node id="5122">
         <label>openage::Unit</label>
         <link refid="classopenage_1_1_unit"/>
-        <childnode refid="4243" relation="public-inheritance">
+        <childnode refid="5123" relation="public-inheritance">
         </childnode>
-        <childnode refid="4244" relation="usage">
+        <childnode refid="5124" relation="usage">
           <edgelabel>+unit_type</edgelabel>
         </childnode>
-        <childnode refid="4257" relation="usage">
+        <childnode refid="5137" relation="usage">
           <edgelabel>-container</edgelabel>
         </childnode>
-        <childnode refid="4247" relation="usage">
+        <childnode refid="5127" relation="usage">
           <edgelabel>+attributes</edgelabel>
         </childnode>
       </node>
-      <node id="4241">
+      <node id="5121">
         <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
-      <node id="4256">
+      <node id="5136">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="4247">
+      <node id="5127">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
-      <node id="4240">
+      <node id="5120">
         <label>openage::coord::tile</label>
         <link refid="structopenage_1_1coord_1_1tile"/>
-        <childnode refid="4241" relation="public-inheritance">
+        <childnode refid="5121" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4250">
+      <node id="5130">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="4251" relation="usage">
+        <childnode refid="5131" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="4253" relation="usage">
+        <childnode refid="5133" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="4249" relation="usage">
+        <childnode refid="5129" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="4255" relation="usage">
+        <childnode refid="5135" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="4256" relation="usage">
+        <childnode refid="5136" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="4243">
+      <node id="5123">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
-      <node id="4245">
+      <node id="5125">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="4246" relation="public-inheritance">
+        <childnode refid="5126" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4249">
+      <node id="5129">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="4261">
+      <node id="5141">
         <label>openage::terrain_meta</label>
         <link refid="structopenage_1_1terrain__meta"/>
       </node>
-      <node id="4255">
+      <node id="5135">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="4262">
+      <node id="5142">
         <label>openage::chunk_neighbors</label>
         <link refid="structopenage_1_1chunk__neighbors"/>
-        <childnode refid="4258" relation="usage">
+        <childnode refid="5138" relation="usage">
           <edgelabel>+neighbor</edgelabel>
         </childnode>
       </node>
-      <node id="4237">
+      <node id="5117">
         <label>openage::tile_range</label>
         <link refid="structopenage_1_1tile__range"/>
-        <childnode refid="4238" relation="usage">
+        <childnode refid="5118" relation="usage">
           <edgelabel>+draw</edgelabel>
         </childnode>
-        <childnode refid="4240" relation="usage">
+        <childnode refid="5120" relation="usage">
           <edgelabel>+start</edgelabel>
           <edgelabel>+end</edgelabel>
         </childnode>
       </node>
-      <node id="4234">
+      <node id="5114">
         <label>openage::SquareObject</label>
         <link refid="classopenage_1_1_square_object"/>
-        <childnode refid="4235" relation="public-inheritance">
+        <childnode refid="5115" relation="public-inheritance">
         </childnode>
-        <childnode refid="4245" relation="usage">
+        <childnode refid="5125" relation="usage">
           <edgelabel>+size</edgelabel>
         </childnode>
       </node>
-      <node id="4236">
+      <node id="5116">
         <label>std::enable_shared_from_this&lt; TerrainObject &gt;</label>
       </node>
-      <node id="4248">
+      <node id="5128">
         <label>openage::ResourceCost</label>
         <link refid="classopenage_1_1_resource_cost"/>
-        <childnode refid="4249" relation="usage">
+        <childnode refid="5129" relation="usage">
           <edgelabel>-resources</edgelabel>
         </childnode>
       </node>
-      <node id="4260">
+      <node id="5140">
         <label>openage::Terrain</label>
         <link refid="classopenage_1_1_terrain"/>
-        <childnode refid="4261" relation="usage">
+        <childnode refid="5141" relation="usage">
           <edgelabel>-meta</edgelabel>
         </childnode>
       </node>
-      <node id="4257">
+      <node id="5137">
         <label>openage::UnitContainer</label>
         <link refid="classopenage_1_1_unit_container"/>
       </node>
-      <node id="4246">
+      <node id="5126">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
-      <node id="4259">
+      <node id="5139">
         <label>openage::TileContent</label>
         <link refid="classopenage_1_1_tile_content"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain_object.h" line="276" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="276" bodyend="319"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="276" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="276" bodyend="319"/>
     <listofallmembers>
       <member refid="classopenage_1_1_terrain_object_1a9ca18bc39c074f2172f12b4903ba0bb0" prot="public" virt="non-virtual"><scope>openage::SquareObject</scope><name>check_collisions</name></member>
       <member refid="classopenage_1_1_terrain_object_1a4ba763b25501e128abe64acdb073151d" prot="protected" virt="non-virtual"><scope>openage::SquareObject</scope><name>children</name></member>

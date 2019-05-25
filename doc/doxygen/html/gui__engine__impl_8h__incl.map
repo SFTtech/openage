@@ -1,13 +1,13 @@
-<map id="libopenage/gui/guisys/private/gui_engine_impl.h" name="libopenage/gui/guisys/private/gui_engine_impl.h">
-<area shape="rect" id="node1" title=" " alt="" coords="241,5,412,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,288,75,315"/>
-<area shape="rect" id="node3" title=" " alt="" coords="319,288,375,315"/>
-<area shape="rect" id="node4" href="$qml__engine__with__singleton__items__info_8h.xhtml" title=" " alt="" coords="139,95,290,151"/>
-<area shape="rect" id="node8" href="$recursive__directory__watcher_8h.xhtml" title=" " alt="" coords="443,102,586,143"/>
-<area shape="rect" id="node5" title=" " alt="" coords="251,206,347,233"/>
-<area shape="rect" id="node6" href="$gui__image__provider__impl_8h.xhtml" title=" " alt="" coords="91,199,226,240"/>
-<area shape="rect" id="node7" title=" " alt="" coords="99,288,245,315"/>
-<area shape="rect" id="node9" title=" " alt="" coords="422,206,477,233"/>
-<area shape="rect" id="node10" title=" " alt="" coords="501,206,571,233"/>
-<area shape="rect" id="node11" title=" " alt="" coords="595,206,682,233"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h">
+<area shape="rect" id="node1" title=" " alt="" coords="209,5,444,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,303,75,329"/>
+<area shape="rect" id="node3" title=" " alt="" coords="319,303,375,329"/>
+<area shape="rect" id="node4" href="$qml__engine__with__singleton__items__info_8h.xhtml" title=" " alt="" coords="139,109,290,165"/>
+<area shape="rect" id="node8" href="$recursive__directory__watcher_8h.xhtml" title=" " alt="" coords="443,117,586,158"/>
+<area shape="rect" id="node5" title=" " alt="" coords="251,221,347,247"/>
+<area shape="rect" id="node6" href="$gui__image__provider__impl_8h.xhtml" title=" " alt="" coords="91,213,226,255"/>
+<area shape="rect" id="node7" title=" " alt="" coords="99,303,245,329"/>
+<area shape="rect" id="node9" title=" " alt="" coords="422,221,477,247"/>
+<area shape="rect" id="node10" title=" " alt="" coords="501,221,571,247"/>
+<area shape="rect" id="node11" title=" " alt="" coords="595,221,682,247"/>
 </map>

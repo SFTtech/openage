@@ -2,24 +2,24 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="global__rng_8h" kind="file" language="C++">
     <compoundname>global_rng.h</compoundname>
-    <includedby refid="physics_8cpp" local="yes">libopenage/event/demo/physics.cpp</includedby>
-    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
-    <includedby refid="global__rng_8cpp" local="yes">libopenage/rng/global_rng.cpp</includedby>
+    <includedby refid="physics_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</includedby>
+    <includedby refid="global__rng_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp</includedby>
     <invincdepgraph>
       <node id="23808">
-        <label>libopenage/rng/global_rng.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp</label>
         <link refid="global__rng_8cpp"/>
       </node>
       <node id="23806">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="23807">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="23805">
-        <label>libopenage/rng/global_rng.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.h</label>
         <link refid="global__rng_8h"/>
         <childnode refid="23806" relation="include">
         </childnode>
@@ -57,6 +57,6 @@
 <codeline lineno="30"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>rng</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/rng/global_rng.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.h"/>
   </compounddef>
 </doxygen>

@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalsstream.h" line="21" column="1" bodyfile="libopenage/util/externalsstream.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_external_string_buf_1adfd17d9c74ef14b035ac068e3444d628" compoundref="externalsstream_8h" startline="23" endline="26">overflow</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_o_string_stream_1aa35d807fa9bc56758974bbe602bf1a8e" compoundref="externalsstream_8h" startline="54" endline="56">openage::util::ExternalOStringStream::use_with</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_string_buf_1a638c1843417cf92b96adfe9d662fc4ab" compoundref="externalsstream_8h" startline="28" endline="31">xsputn</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalsstream.h" line="23" column="1" bodyfile="libopenage/util/externalsstream.h" bodystart="23" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" bodystart="23" bodyend="26"/>
+        <references refid="classopenage_1_1util_1_1_external_string_buf_1a92b422e9e616bcdcb82489736983b65c" compoundref="externalsstream_8h" startline="21">output</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_external_string_buf_1a638c1843417cf92b96adfe9d662fc4ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::streamsize</type>
@@ -56,7 +60,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalsstream.h" line="28" column="1" bodyfile="libopenage/util/externalsstream.h" bodystart="28" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" bodystart="28" bodyend="31"/>
+        <references refid="classopenage_1_1util_1_1_external_string_buf_1a92b422e9e616bcdcb82489736983b65c" compoundref="externalsstream_8h" startline="21">output</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -66,28 +71,28 @@
 <para>If this object&apos;s write functionality is accessed before output has been manually set to a valid std::string object, or if the lifetime of that object has been exceeded, undefined behavior will result. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1478">
+      <node id="5714">
         <label>std::streambuf</label>
       </node>
-      <node id="1477">
+      <node id="5713">
         <label>openage::util::ExternalStringBuf</label>
         <link refid="classopenage_1_1util_1_1_external_string_buf"/>
-        <childnode refid="1478" relation="public-inheritance">
+        <childnode refid="5714" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1480">
+      <node id="5716">
         <label>std::streambuf</label>
       </node>
-      <node id="1479">
+      <node id="5715">
         <label>openage::util::ExternalStringBuf</label>
         <link refid="classopenage_1_1util_1_1_external_string_buf"/>
-        <childnode refid="1480" relation="public-inheritance">
+        <childnode refid="5716" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/externalsstream.h" line="19" column="1" bodyfile="libopenage/util/externalsstream.h" bodystart="19" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalsstream.h" bodystart="19" bodyend="32"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_external_string_buf_1a92b422e9e616bcdcb82489736983b65c" prot="public" virt="non-virtual"><scope>openage::util::ExternalStringBuf</scope><name>output</name></member>
       <member refid="classopenage_1_1util_1_1_external_string_buf_1adfd17d9c74ef14b035ac068e3444d628" prot="public" virt="non-virtual"><scope>openage::util::ExternalStringBuf</scope><name>overflow</name></member>

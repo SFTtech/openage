@@ -170,7 +170,7 @@
         </childnode>
       </node>
       <node id="30259">
-        <label>libopenage/util/fixed_point_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp</label>
         <link refid="fixed__point__test_8cpp"/>
         <childnode refid="30260" relation="include">
         </childnode>
@@ -378,6 +378,6 @@
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fixed_point_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp"/>
   </compounddef>
 </doxygen>

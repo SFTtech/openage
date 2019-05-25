@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="88" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="88" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1a428d93899638a0471ea60c5d9850292c" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; int_type, fractional_bits &gt;</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="89" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="89" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" prot="public" static="no">
         <type>typename std::make_unsigned&lt; int_type &gt;::type</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="90" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="90" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1a42da6bbdfdd34c65db112929c3f94e71" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; typename <ref refid="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" kindref="member">FixedPoint::unsigned_int_type</ref>, fractional_bits &gt;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="91" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="92" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -82,7 +82,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="107" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="107" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_raw_value</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int64_t, 16 &gt;::get_raw_value</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1ad6bf5d9ab688b4f8b56a0f1e5a68f572" compoundref="fixed__point_8h" startline="303" endline="305">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator !=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a0fc27c9ffb04dc23906380db8f228e53" compoundref="fixed__point_8h" startline="353" endline="356">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator -=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a1780e721d3db4c21864c9172a63198c6" compoundref="fixed__point_8h" startline="311" endline="313">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator &gt;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a97237e56fbe59abeec8469929c0f56b7" compoundref="fixed__point_8h" startline="319" endline="321">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator &gt;=</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a4decb3a80285baa0de819035ddbfe50b" compoundref="fixed__point_8h" startline="504" endline="506">std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::operator()</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a1066c5bc35ea84af4566a7950541a7ab" compoundref="fixed__point_8h" startline="348" endline="351">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator+=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a5caaef66c0cf9920f83bfb20524bb2ef" compoundref="fixed__point_8h" startline="307" endline="309">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator&lt;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a211506fc52a7e2a73b6eba2cf6d2f66a" compoundref="fixed__point_8h" startline="315" endline="317">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator&lt;=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a4e39dbaf3295e64070ba80f9972e3513" compoundref="fixed__point_8h" startline="144" endline="147">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1abc8d2dddcdda2d24df395759a4a3f1ab" compoundref="fixed__point_8h" startline="299" endline="301">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a2836456e5e71b3c8ddb7815c7040599b" compoundref="fixed__point_8h" startline="377" endline="379">openage::util::FixedPoint&lt; int64_t, 16 &gt;::swap</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -98,7 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="109" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="109" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a5f225133013eccb8bbdd9a4628308a59" compoundref="fixed__point_8h" startline="130" endline="132">openage::util::FixedPoint&lt; int64_t, 16 &gt;::raw_value_from_double</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a91787091503691b05e2bd1c0df99a326" prot="private" static="yes" mutable="no">
         <type>constexpr const double</type>
@@ -112,7 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="110" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="110" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int64_t, 16 &gt;::to_double</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a887393057ecf8e0b2505086842768776" prot="private" static="yes" mutable="no">
         <type>constexpr const float</type>
@@ -126,7 +141,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="111" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="111" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" compoundref="fixed__point_8h" startline="185" endline="187">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_float</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a10ad20f2db009ff3b153a1a5812038a6" prot="private" static="yes" mutable="no">
         <type>constexpr const float</type>
@@ -140,7 +156,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="112" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="112" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="112" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" compoundref="fixed__point_8h" startline="252" endline="254">openage::util::FixedPoint&lt; int64_t, 16 &gt;::to_float</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1aa5d7fef738e76cec9c68bc6412acaa5e" prot="private" static="yes" mutable="no">
         <type>constexpr const unsigned int</type>
@@ -156,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="114" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="114" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -175,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="96" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="96" bodyend="102"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="96" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a2858e0798bf7e033c56f6ec653180588" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" kindref="member">FixedPoint::unsigned_int_type</ref></type>
@@ -188,7 +205,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="119" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="119" bodyend="126"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="119" bodyend="126"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" compoundref="fixed__point_8h" startline="286" endline="296">openage::util::FixedPoint&lt; int64_t, 16 &gt;::get_fractional_part</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a5f225133013eccb8bbdd9a4628308a59" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr int_type</type>
@@ -205,7 +223,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="130" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="130" bodyend="132"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="130" bodyend="132"/>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -224,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="136" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="136" bodyend="138"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="136" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ac0e556f78cde2795b26c10709032f3e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -241,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="140" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="140" bodyend="142"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a4e39dbaf3295e64070ba80f9972e3513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
@@ -258,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="144" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="144" bodyend="147"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="144" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a65edb5b4e90d9e34dbe44d32890759b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
@@ -275,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="149" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="149" bodyend="152"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="149" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0a2d3297574a2e5996aefd540a7b0dfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -289,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="157" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="157" bodyend="159"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="157" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a52f8593a8358172f788ee3597c4b5981" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -307,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="166" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="166" bodyend="166"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="166" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr int_type</type>
@@ -321,7 +340,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="234" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="234" bodyend="236"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="234" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="234" bodyend="236"/>
+        <referencedby refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a6602fc6e0cf22db46a7a2c4d65bbf866" compoundref="fixed__point_8h" startline="200" endline="204">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_fixedpoint</referencedby>
+        <referencedby refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</referencedby>
+        <referencedby refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aa3949bf1d23f5c8446474135851399fc" compoundref="fixed__point_8h" startline="440" endline="442">openage::util::operator *</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a976790c1ec88a9cce32a887ca49526db" compoundref="fixed__point_8h" startline="422" endline="424">openage::util::operator -</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a4202ea3aad51da9bcef0572898fc7175" compoundref="fixed__point_8h" startline="406" endline="408">openage::util::operator+</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" compoundref="fixed__point_8h" startline="459" endline="461">openage::util::operator/</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a12dc86de2b985fdaff044ed9ab38e453" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr int_type</type>
@@ -335,7 +363,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="241" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="241" bodyend="243"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="241" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="241" bodyend="243"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a8adbb099a4f7a0db820f923e8ffc1a02" compoundref="fixed__point_8h" startline="245" endline="247">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator int</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a8adbb099a4f7a0db820f923e8ffc1a02" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -348,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="245" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="245" bodyend="247"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="245" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="245" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr float</type>
@@ -362,7 +392,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="252" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="252" bodyend="254"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="252" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="252" bodyend="254"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a132f65f53a2a87b36f880fc567ec857f" compoundref="fixed__point_8h" startline="256" endline="258">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator float</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">openage::path::to_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a132f65f53a2a87b36f880fc567ec857f" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -375,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="256" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="256" bodyend="258"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="256" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="256" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr double</type>
@@ -389,7 +422,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="263" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="263" bodyend="265"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="263" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="263" bodyend="265"/>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">openage::RadialObject::contains</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" compoundref="continuous_8h" startline="32" endline="61">openage::curve::Continuous&lt; T &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int64_t, 16 &gt;::hypot</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a215ab77e1d0c301cf5ee7c79da4ffd4a" compoundref="physics_8cpp" startline="46" endline="80">openage::event::demo::BallReflectWall::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" compoundref="physics_8cpp" startline="138" endline="213">openage::event::demo::BallReflectPanel::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" compoundref="physics_8cpp" startline="275" endline="352">openage::event::demo::ResetGame::invoke</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a0c4cacca4318bbc4f50a568b1fc1789c" compoundref="fixed__point_8h" startline="267" endline="269">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator double</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">openage::path::passable_line</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a3e60c155c12ea17e0c149b3eca114f70" compoundref="physics_8cpp" startline="82" endline="113">openage::event::demo::BallReflectWall::predict_invoke_time</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" compoundref="physics_8cpp" startline="215" endline="262">openage::event::demo::BallReflectPanel::predict_invoke_time</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" compoundref="fixed__point_8h" startline="394" endline="396">openage::util::FixedPoint&lt; int64_t, 16 &gt;::sqrt</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aff707b86b379bbb8491212631d1df769" compoundref="fixed__point_8h" startline="274" endline="281">openage::util::FixedPoint&lt; int64_t, 16 &gt;::str</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0c4cacca4318bbc4f50a568b1fc1789c" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -402,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="267" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="267" bodyend="269"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="267" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="267" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aff707b86b379bbb8491212631d1df769" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -416,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="274" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="274" bodyend="281"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="274" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="274" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point_1a42da6bbdfdd34c65db112929c3f94e71" kindref="member">FixedPoint::same_type_but_unsigned</ref></type>
@@ -430,7 +476,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="286" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="286" bodyend="296"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="286" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="286" bodyend="296"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1abc8d2dddcdda2d24df395759a4a3f1ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -447,7 +494,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="299" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="299" bodyend="301"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="299" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="299" bodyend="301"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ad6bf5d9ab688b4f8b56a0f1e5a68f572" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -464,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="303" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="303" bodyend="305"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="303" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="303" bodyend="305"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a5caaef66c0cf9920f83bfb20524bb2ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -481,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="307" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="307" bodyend="309"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="307" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="307" bodyend="309"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1780e721d3db4c21864c9172a63198c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -498,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="311" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="311" bodyend="313"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="311" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="311" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a211506fc52a7e2a73b6eba2cf6d2f66a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -515,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="315" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="315" bodyend="317"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="315" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="315" bodyend="317"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a97237e56fbe59abeec8469929c0f56b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -532,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="319" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="319" bodyend="321"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="319" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="319" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a78cd3057f1c6d052604a7ea7b3f97b8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -545,7 +592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="324" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="324" bodyend="326"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="324" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="324" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aec3105441d3a31509744116f782fe3e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -564,7 +611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="332" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="332" bodyend="335"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="332" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="332" bodyend="335"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -591,7 +638,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="338" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="338" bodyend="340"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="338" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="338" bodyend="340"/>
+        <referencedby refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a36dd5c06bff45023368c192f65f38182" compoundref="fixed__point_8h" startline="343" endline="345">openage::util::FixedPoint&lt; int64_t, 16 &gt;::hypotfp</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a36dd5c06bff45023368c192f65f38182" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -618,7 +667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="343" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="343" bodyend="345"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="343" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="343" bodyend="345"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1066c5bc35ea84af4566a7950541a7ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
@@ -635,7 +684,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="348" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="348" bodyend="351"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="348" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="348" bodyend="351"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0fc27c9ffb04dc23906380db8f228e53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
@@ -652,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="353" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="353" bodyend="356"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="353" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="353" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1acf610f0ece81e2c4cbf0a405aba9c7c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -675,7 +724,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="363" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="363" bodyend="366"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="363" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="363" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a8a479bc1182f83c94eecc577eb493d7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -698,7 +747,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="372" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="372" bodyend="375"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="372" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="372" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a2836456e5e71b3c8ddb7815c7040599b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -715,7 +764,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="377" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="377" bodyend="379"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="377" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="377" bodyend="379"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr double</type>
@@ -728,7 +777,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="394" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="394" bodyend="396"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="394" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="394" bodyend="396"/>
+        <referencedby refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -744,7 +794,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="171" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="171" bodyend="173"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="171" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="171" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -762,7 +812,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="178" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="178" bodyend="180"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="178" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="178" bodyend="180"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1ac15c9eac48a2d30284089c642f7176b5" compoundref="fixed__point_8h" startline="171" endline="173">openage::util::FixedPoint&lt; int64_t, 16 &gt;::zero</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -780,7 +832,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="185" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="185" bodyend="187"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="185" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="185" bodyend="187"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -798,7 +851,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="192" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="192" bodyend="194"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="192" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="192" bodyend="194"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a0691ea67643c9ec3e8ef552a45583a81" compoundref="fixed__point_8h" startline="430" endline="432">openage::util::operator -</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a4e4ab8c3700eebbe1f3367ea7aa4de17" compoundref="fixed__point_8h" startline="414" endline="416">openage::util::operator+</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a6602fc6e0cf22db46a7a2c4d65bbf866" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -826,7 +882,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="200" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="200" bodyend="204"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="200" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -840,7 +896,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="209" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="209" bodyend="211"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="209" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="209" bodyend="211"/>
+        <referencedby refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a6691046f0043d8eede86b6c920718b0e" compoundref="fixed__point_8h" startline="511" endline="513">std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::min</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -854,7 +911,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="216" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="216" bodyend="218"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="216" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="216" bodyend="218"/>
+        <referencedby refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1acd9652a369be3466ee4753147f2ec823" compoundref="fixed__point_8h" startline="515" endline="517">std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::max</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
@@ -872,7 +930,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="224" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="224" bodyend="228"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="224" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="224" bodyend="228"/>
+        <referencedby refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a6602fc6e0cf22db46a7a2c4d65bbf866" compoundref="fixed__point_8h" startline="200" endline="204">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_fixedpoint</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" compoundref="fixed__point_8h" startline="185" endline="187">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_float</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" compoundref="fixed__point_8h" startline="178" endline="180">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_int</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" compoundref="fixed__point_8h" startline="286" endline="296">openage::util::FixedPoint&lt; int64_t, 16 &gt;::get_fractional_part</referencedby>
+        <referencedby refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" compoundref="fixed__point_8h" startline="216" endline="218">openage::util::FixedPoint&lt; int64_t, 16 &gt;::max_value</referencedby>
+        <referencedby refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" compoundref="fixed__point_8h" startline="209" endline="211">openage::util::FixedPoint&lt; int64_t, 16 &gt;::min_value</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aa3949bf1d23f5c8446474135851399fc" compoundref="fixed__point_8h" startline="440" endline="442">openage::util::operator *</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aec3105441d3a31509744116f782fe3e7" compoundref="fixed__point_8h" startline="332" endline="335">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator -</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a976790c1ec88a9cce32a887ca49526db" compoundref="fixed__point_8h" startline="422" endline="424">openage::util::operator -</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a4202ea3aad51da9bcef0572898fc7175" compoundref="fixed__point_8h" startline="406" endline="408">openage::util::operator+</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" compoundref="fixed__point_8h" startline="459" endline="461">openage::util::operator/</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -895,7 +968,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="382" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="382" bodyend="385"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="382" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="382" bodyend="385"/>
       </memberdef>
       <memberdef kind="friend" id="classopenage_1_1util_1_1_fixed_point_1a37518ac1b10368036cfce134555d5512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>friend std::istream &amp;</type>
@@ -916,7 +989,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="387" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="387" bodyend="392"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="387" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="387" bodyend="392"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -926,19 +999,39 @@
 <para>this is designed to be used instead of floats in places where guaranteed precision is required.</para>
 <para>For example, FixedPoint&lt;int64_t, 32&gt; can store values from -2**32 to +2**32 with a constant precision of 2**-32. </para>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="1499">
-        <label>int_type</label>
-      </node>
-      <node id="1498">
+    <inheritancegraph>
+      <node id="5796">
         <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
-        <childnode refid="1499" relation="usage">
+      </node>
+      <node id="5798">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="5796" relation="template-instance">
+          <edgelabel>&lt; int64_t, 16 &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5797">
+        <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="5796" relation="template-instance">
+          <edgelabel>&lt; int64_t, phys_t_radix_pos &gt;</edgelabel>
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5800">
+        <label>int_type</label>
+      </node>
+      <node id="5799">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="5800" relation="usage">
           <edgelabel>-raw_value</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fixed_point.h" line="86" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="86" bodyend="397"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="86" bodyend="397"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_fixed_point_1aa5d7fef738e76cec9c68bc6412acaa5e" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>approx_decimal_places</name></member>
       <member refid="classopenage_1_1util_1_1_fixed_point_1a50908a8761e19864f030d822856c3227" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>FixedPoint</name></member>

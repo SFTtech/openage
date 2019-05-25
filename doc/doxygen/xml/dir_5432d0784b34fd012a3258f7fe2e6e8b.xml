@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_5432d0784b34fd012a3258f7fe2e6e8b" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage</compoundname>
+    <innerdir refid="dir_5787a3bf2e49997054fb051edd1fa96c">C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract</innerdir>
+    <innerdir refid="dir_50ca7421ab2f3fda9cc13a2d3f2b0d4a">C:/Users/Jameson/Documents/git-projects/openage/openage/codegen</innerdir>
+    <innerdir refid="dir_f8c2790f072062ca31393539e9a4c2e7">C:/Users/Jameson/Documents/git-projects/openage/openage/convert</innerdir>
+    <innerdir refid="dir_7ddfd8da8d69a03807cc6075528f15ef">C:/Users/Jameson/Documents/git-projects/openage/openage/cppinterface</innerdir>
+    <innerdir refid="dir_3c25615d8090de0b1e7266b47c86e6da">C:/Users/Jameson/Documents/git-projects/openage/openage/cvar</innerdir>
+    <innerdir refid="dir_0df824f95d051f7f75d875978fb57d3c">C:/Users/Jameson/Documents/git-projects/openage/openage/event</innerdir>
+    <innerdir refid="dir_582d63e99e6801c96a9b847c01c497a4">C:/Users/Jameson/Documents/git-projects/openage/openage/game</innerdir>
+    <innerdir refid="dir_25bcf6154347058b4315398e0f7663fe">C:/Users/Jameson/Documents/git-projects/openage/openage/log</innerdir>
+    <innerdir refid="dir_efc29fd8324ab323c6d6fa774b607925">C:/Users/Jameson/Documents/git-projects/openage/openage/renderer</innerdir>
+    <innerdir refid="dir_c2131c87632a366a6d52f07ca073ab90">C:/Users/Jameson/Documents/git-projects/openage/openage/testing</innerdir>
+    <innerdir refid="dir_add32c31ab2cc20d9f874152de79d6bd">C:/Users/Jameson/Documents/git-projects/openage/openage/util</innerdir>
+    <innerfile refid="____init_____8py">__init__.py</innerfile>
+    <innerfile refid="____main_____8py">__main__.py</innerfile>
+    <innerfile refid="assets_8py">assets.py</innerfile>
+    <innerfile refid="default__dirs_8py">default_dirs.py</innerfile>
+    <innerfile refid="devmode_8py">devmode.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/"/>
+  </compounddef>
+</doxygen>

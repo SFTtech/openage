@@ -12,8 +12,8 @@
     <includes refid="gui__renderer_8h" local="yes">guisys/public/gui_renderer.h</includes>
     <includes refid="gui__subtree_8h" local="yes">guisys/public/gui_subtree.h</includes>
     <includes refid="handlers_8h" local="yes">../handlers.h</includes>
-    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
-    <includedby refid="gui_2gui_8cpp" local="yes">libopenage/gui/gui.cpp</includedby>
+    <includedby refid="engine_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</includedby>
+    <includedby refid="gui_2gui_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</includedby>
     <incdepgraph>
       <node id="6996">
         <label>list</label>
@@ -317,7 +317,7 @@
         </childnode>
       </node>
       <node id="6946">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="6947" relation="include">
         </childnode>
@@ -383,15 +383,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="7003">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="7002">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="7001">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="7002" relation="include">
         </childnode>
@@ -445,7 +445,7 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" kindref="member">GUI</ref>(SDL_Window<sp/>*window,</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;source,</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;rootdir,</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref><sp/>*info=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref><sp/>*<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a82e8ee16b97b2616a2dccf4256d47fd0" kindref="member">~GUI</ref>();</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1afa4d056d76395d3d4041a4ec0e1b3cb8" kindref="member">process_events</ref>();</highlight></codeline>
@@ -477,6 +477,6 @@
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/gui.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h"/>
   </compounddef>
 </doxygen>

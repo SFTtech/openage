@@ -116,7 +116,7 @@
         </childnode>
       </node>
       <node id="21526">
-        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp</label>
         <link refid="renderer_2opengl_2shader_8cpp"/>
         <childnode refid="21527" relation="include">
         </childnode>
@@ -363,7 +363,7 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>type(<ref refid="namespaceopenage_1_1renderer_1_1opengl_1aa5bd688a2e55a9c7ba1377e213383de8" kindref="member">gl_shdr_type</ref>.get(<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_stage()))</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_lang()<sp/>!=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6" kindref="member">resources::shader_lang_t::glsl</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>shader<sp/>language<sp/>passed<sp/>to<sp/>OpenGL<sp/>renderer.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>shader<sp/>language<sp/>passed<sp/>to<sp/>OpenGL<sp/>renderer.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocate<sp/>shader<sp/>in<sp/>opengl</highlight><highlight class="normal"></highlight></codeline>
@@ -388,7 +388,7 @@
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;char&gt;<sp/>infolog(loglen);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetShaderInfoLog(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>,<sp/>loglen,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>infolog.data());</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>compile<sp/>shader:\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>infolog.data()<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>compile<sp/>shader:\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>infolog.data()<sp/>);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
@@ -398,6 +398,6 @@
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/shader.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp"/>
   </compounddef>
 </doxygen>

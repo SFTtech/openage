@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/macro/loop.h" line="5" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="5" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" line="5" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" bodystart="5" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="util_2macro_2loop_8h_1a2810e2892d646be048d6c422fef8f1a7" prot="public" static="no">
         <name>LOOP_2</name>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/macro/loop.h" line="6" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="6" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" line="6" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" bodystart="6" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="util_2macro_2loop_8h_1a7ff2e357e349e76b6f4e1a32d7cddb03" prot="public" static="no">
         <name>LOOP_3</name>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/macro/loop.h" line="7" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="7" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" line="7" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" bodystart="7" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="util_2macro_2loop_8h_1a0b21ea1a0fcab22ae20ba52f60f22b2c" prot="public" static="no">
         <name>LOOP_N</name>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/macro/loop.h" line="9" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="9" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" line="9" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="util_2macro_2loop_8h_1aa1b0c3e1629761c3e1bf6e23306dda87" prot="public" static="no">
         <name>LOOP</name>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/macro/loop.h" line="20" column="10" bodyfile="libopenage/util/macro/loop.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" line="20" column="10" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -106,6 +106,6 @@
 <codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>)<sp/>(MACRO,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/macro/loop.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/loop.h"/>
   </compounddef>
 </doxygen>

@@ -15,7 +15,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="61" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="61" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" compoundref="attributes_8cpp" startline="7" endline="9">add</referencedby>
+        <referencedby refid="classopenage_1_1_attributes_1ae27a84788906e6fd8786f950e8177704" compoundref="attributes_8cpp" startline="15" endline="30">add_copies</referencedby>
+        <referencedby refid="classopenage_1_1_attributes_1a08f927be3be6911e7cf77604f9ead10f" compoundref="attributes_8cpp" startline="40" endline="42">get</referencedby>
+        <referencedby refid="classopenage_1_1_attributes_1aee38f453ac85b68821958ad74cdd8df5" compoundref="attributes_8cpp" startline="36" endline="38">has</referencedby>
+        <referencedby refid="classopenage_1_1_attributes_1a3499621c25a8c9eda9250f15a8729fed" compoundref="attributes_8cpp" startline="32" endline="34">remove</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="17" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="17" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" bodystart="17" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -48,7 +53,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="22" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="7" bodyend="9"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="7" bodyend="9"/>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
+        <referencedby refid="classopenage_1_1_unit_1ab74b08bb7725863fc63839d798f6aedb" compoundref="unit_8cpp" startline="246" endline="248">openage::Unit::add_attribute</referencedby>
+        <referencedby refid="classopenage_1_1_attributes_1ae27a84788906e6fd8786f950e8177704" compoundref="attributes_8cpp" startline="15" endline="30">add_copies</referencedby>
+        <referencedby refid="classopenage_1_1_unit_type_1ad468f1258da7e164a0bc175ebdd11b2a" compoundref="unit__type_8cpp" startline="90" endline="92">openage::UnitType::upgrade</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1ae8924d1ae2fafd0c13418ab238848afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -66,7 +75,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="27" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="11" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="11" bodyend="13"/>
+        <referencedby refid="classopenage_1_1_unit_1af46fb7ca65071c68a85f492a8235302e" compoundref="unit_8cpp" startline="250" endline="252">openage::Unit::add_attributes</referencedby>
+        <referencedby refid="classopenage_1_1_unit_type_1a05d515d0c9b380bd9cb426b3bf3852f8" compoundref="unit__type_8cpp" startline="35" endline="45">openage::UnitType::reinitialise</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1ae27a84788906e6fd8786f950e8177704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -92,7 +103,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="34" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="15" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="15" bodyend="30"/>
+        <references refid="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" compoundref="attributes_8cpp" startline="7" endline="9">add</references>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1a3499621c25a8c9eda9250f15a8729fed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -110,7 +123,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="39" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1aee38f453ac85b68821958ad74cdd8df5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -128,7 +142,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="44" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="36" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="36" bodyend="38"/>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
+        <referencedby refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">openage::Unit::has_attribute</referencedby>
+        <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1a08f927be3be6911e7cf77604f9ead10f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -146,7 +163,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="49" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="40" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp" bodystart="40" bodyend="42"/>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
+        <referencedby refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</referencedby>
+        <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attributes_1a19e964a1ee9570f046f9db9dc1f48c62" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -167,7 +187,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attributes.h" line="55" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="55" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" bodystart="55" bodyend="57"/>
+        <references refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" compoundref="attributes_8h" startline="61">attrs</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -176,12 +197,12 @@
 <para>Contains a group of attributes. Can contain only one attribute of each type. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="544">
+      <node id="459">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attributes.h" line="15" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="15" bodyend="62"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h" bodystart="15" bodyend="62"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>add</name></member>
       <member refid="classopenage_1_1_attributes_1ae8924d1ae2fafd0c13418ab238848afb" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>add_copies</name></member>

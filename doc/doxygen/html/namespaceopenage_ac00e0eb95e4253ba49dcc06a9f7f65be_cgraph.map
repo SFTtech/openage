@@ -1,0 +1,11 @@
+<map id="openage::tiles_in_range" name="openage::tiles_in_range">
+<area shape="rect" id="node1" title=" " alt="" coords="5,97,164,123"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1coord_1_1tests.xhtml#ab5f6aa805a24bd58eb365e5af294d807" title=" " alt="" coords="235,5,383,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="212,71,407,98"/>
+<area shape="rect" id="node6" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="273,122,346,149"/>
+<area shape="rect" id="node9" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="275,173,344,199"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_f_string.xhtml#a262d81155e6d17ead2d4851faf6bec03" title=" " alt="" coords="465,5,611,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_string_formatter.xhtml#a3007d4045a594b7b18d9936908732cb1" title=" " alt="" coords="669,5,864,47"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="455,172,621,213"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="455,107,621,148"/>
+</map>

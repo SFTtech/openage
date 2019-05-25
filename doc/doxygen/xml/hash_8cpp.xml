@@ -183,7 +183,7 @@
         </childnode>
       </node>
       <node id="30535">
-        <label>libopenage/util/hash.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp</label>
         <link refid="hash_8cpp"/>
         <childnode refid="30536" relation="include">
         </childnode>
@@ -364,6 +364,6 @@
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/hash.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp"/>
   </compounddef>
 </doxygen>

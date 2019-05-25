@@ -334,7 +334,7 @@
         <label>stddef.h</label>
       </node>
       <node id="27039">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
         <childnode refid="27040" relation="include">
         </childnode>
@@ -1110,12 +1110,12 @@
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>placing<sp/>at<sp/>the<sp/>given<sp/>position<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>unit-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>place<sp/>object&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>unit-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>place<sp/>object&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="157"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/unit_type.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp"/>
   </compounddef>
 </doxygen>

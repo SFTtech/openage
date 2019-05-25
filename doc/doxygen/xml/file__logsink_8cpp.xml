@@ -24,7 +24,7 @@
         <label>cstdint</label>
       </node>
       <node id="16668">
-        <label>libopenage/log/file_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp</label>
         <link refid="file__logsink_8cpp"/>
         <childnode refid="16669" relation="include">
         </childnode>
@@ -241,6 +241,6 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/file_logsink.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp"/>
   </compounddef>
 </doxygen>

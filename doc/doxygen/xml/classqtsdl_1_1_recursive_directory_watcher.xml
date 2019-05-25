@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" compoundref="recursive__directory__watcher_8cpp" startline="34" endline="37">~RecursiveDirectoryWatcher</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="12" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="12" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -49,7 +50,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="34" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="34" bodyend="37"/>
+        <references refid="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7">quit</references>
+        <references refid="classqtsdl_1_1_recursive_directory_watcher_1aa0079513a72c29ae057b0432f7b1bb13" compoundref="recursive__directory__watcher_8h" startline="28">worker</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -64,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="23" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="23" column="1"/>
       </memberdef>
       <memberdef kind="signal" id="classqtsdl_1_1_recursive_directory_watcher_1aabc2911d48c9af1d435ccb894e216b0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -80,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="24" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="24" column="1"/>
       </memberdef>
       <memberdef kind="signal" id="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -93,7 +96,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="25" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="25" column="1"/>
+        <referencedby refid="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" compoundref="recursive__directory__watcher_8cpp" startline="34" endline="37">~RecursiveDirectoryWatcher</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,28 +106,28 @@
 <para>Emits a signal when anything changes in the directories. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3865">
+      <node id="6554">
         <label>QObject</label>
       </node>
-      <node id="3864">
+      <node id="6553">
         <label>qtsdl::RecursiveDirectoryWatcher</label>
         <link refid="classqtsdl_1_1_recursive_directory_watcher"/>
-        <childnode refid="3865" relation="public-inheritance">
+        <childnode refid="6554" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3867">
+      <node id="6556">
         <label>QObject</label>
       </node>
-      <node id="3866">
+      <node id="6555">
         <label>qtsdl::RecursiveDirectoryWatcher</label>
         <link refid="classqtsdl_1_1_recursive_directory_watcher"/>
-        <childnode refid="3867" relation="public-inheritance">
+        <childnode refid="6556" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="15" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="15" bodyend="29"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="15" bodyend="29"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_recursive_directory_watcher_1a8023f71a72a9b22765d88d33cd71b237" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>changeDetected</name></member>
       <member refid="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>quit</name></member>

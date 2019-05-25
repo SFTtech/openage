@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="15" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="18" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="18" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_application_with_logger_1a798636737357a5a22d4f06752978102d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="16" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="23" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="23" bodyend="24"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,30 +38,30 @@
 <para>Houses gui logic event queue and attaches to game logger. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2492">
+      <node id="3534">
         <label>qtsdl::GuiApplication</label>
         <link refid="classqtsdl_1_1_gui_application"/>
       </node>
-      <node id="2491">
+      <node id="3533">
         <label>openage::gui::GuiApplicationWithLogger</label>
         <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
-        <childnode refid="2492" relation="public-inheritance">
+        <childnode refid="3534" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2494">
+      <node id="3536">
         <label>qtsdl::GuiApplication</label>
         <link refid="classqtsdl_1_1_gui_application"/>
       </node>
-      <node id="2493">
+      <node id="3535">
         <label>openage::gui::GuiApplicationWithLogger</label>
         <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
-        <childnode refid="2494" relation="public-inheritance">
+        <childnode refid="3536" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="13" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.h" bodystart="13" bodyend="17"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.h" bodystart="13" bodyend="17"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>GuiApplication</name></member>
       <member refid="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>GuiApplication</name></member>

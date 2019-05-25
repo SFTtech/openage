@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::pefile::PEDOSHeader</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ad339a63e0d9e1bbdcbec102585bedb7f" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a123f18e9688e2306132980e94724655a" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::signature</definition>
+        <argsstring></argsstring>
+        <name>signature</name>
+        <initializer>=  &quot;2s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a873c11c0872caa17df955b8b316f0591" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::bytes_lastpage</definition>
+        <argsstring></argsstring>
+        <name>bytes_lastpage</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ab4b3526b1ac6a75a69d1abd4b317371a" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::count_pages</definition>
+        <argsstring></argsstring>
+        <name>count_pages</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a59320472bba54a1bae3ff21203afe8d0" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::crlc</definition>
+        <argsstring></argsstring>
+        <name>crlc</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a798f069cf6b43a7a65645d1ee3ab998b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::cparhdr</definition>
+        <argsstring></argsstring>
+        <name>cparhdr</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ab3210368d26465bb0392b95250e74fc9" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::minalloc</definition>
+        <argsstring></argsstring>
+        <name>minalloc</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a852118d78ac4df914bf7c0f2f6f7cea3" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::maxalloc</definition>
+        <argsstring></argsstring>
+        <name>maxalloc</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a08821aa65e212714b1574d009bfea88c" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::initial_ss</definition>
+        <argsstring></argsstring>
+        <name>initial_ss</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a034bf147e42c96a94633eedb74fc6927" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::initial_sp</definition>
+        <argsstring></argsstring>
+        <name>initial_sp</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a72abe047fa8aba05daefe75e998c3180" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::checksum</definition>
+        <argsstring></argsstring>
+        <name>checksum</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ada5a425df185635c9e7ee3ac476f49c9" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::initial_ip</definition>
+        <argsstring></argsstring>
+        <name>initial_ip</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a4904dbe2224f9b8f1eb8ba61ad6621eb" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::initial_cs</definition>
+        <argsstring></argsstring>
+        <name>initial_cs</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a2e545e6e234a1ec86da92d2e97a1cae0" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::lfarlc</definition>
+        <argsstring></argsstring>
+        <name>lfarlc</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a9bd0600d25de6ad65cb9dcbfbbc749ee" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::ovno</definition>
+        <argsstring></argsstring>
+        <name>ovno</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1af658711612d2287b0e7f40be19257944" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::reserved0</definition>
+        <argsstring></argsstring>
+        <name>reserved0</name>
+        <initializer>=  &quot;8s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a57d6532eb488d64631a94de9ff247d88" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::oemid</definition>
+        <argsstring></argsstring>
+        <name>oemid</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a05dd5f092dcbff4b3930ddc9ad7c74f8" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::oeminfo</definition>
+        <argsstring></argsstring>
+        <name>oeminfo</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1af367af7de38e761600c8ebc4a54e2e97" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::reserved1</definition>
+        <argsstring></argsstring>
+        <name>reserved1</name>
+        <initializer>=  &quot;20s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1afea03a6337d57c7acdc7f378b8200a81" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDOSHeader::coffheaderpos</definition>
+        <argsstring></argsstring>
+        <name>coffheaderpos</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The (legacy) DOS-compatible PE header. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In all modern PE files, only the &apos;lfanew&apos; pointer is relevant. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1530">
+        <label>openage.convert.pefile.PEDOSHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header"/>
+        <childnode refid="1531" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1534">
+        <label>type</label>
+      </node>
+      <node id="1533">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1534" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1531">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1532" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1533" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1532">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1535">
+        <label>openage.convert.pefile.PEDOSHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header"/>
+        <childnode refid="1536" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1539">
+        <label>type</label>
+      </node>
+      <node id="1538">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1539" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1536">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1537" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1538" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1537">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="22" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a873c11c0872caa17df955b8b316f0591" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>bytes_lastpage</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a72abe047fa8aba05daefe75e998c3180" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>checksum</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1afea03a6337d57c7acdc7f378b8200a81" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>coffheaderpos</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ab4b3526b1ac6a75a69d1abd4b317371a" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>count_pages</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a798f069cf6b43a7a65645d1ee3ab998b" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>cparhdr</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a59320472bba54a1bae3ff21203afe8d0" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>crlc</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ad339a63e0d9e1bbdcbec102585bedb7f" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a4904dbe2224f9b8f1eb8ba61ad6621eb" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>initial_cs</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ada5a425df185635c9e7ee3ac476f49c9" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>initial_ip</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a034bf147e42c96a94633eedb74fc6927" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>initial_sp</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a08821aa65e212714b1574d009bfea88c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>initial_ss</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a2e545e6e234a1ec86da92d2e97a1cae0" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>lfarlc</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a852118d78ac4df914bf7c0f2f6f7cea3" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>maxalloc</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1ab3210368d26465bb0392b95250e74fc9" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>minalloc</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a57d6532eb488d64631a94de9ff247d88" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>oemid</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a05dd5f092dcbff4b3930ddc9ad7c74f8" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>oeminfo</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a9bd0600d25de6ad65cb9dcbfbbc749ee" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>ovno</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1af658711612d2287b0e7f40be19257944" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>reserved0</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1af367af7de38e761600c8ebc4a54e2e97" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>reserved1</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header_1a123f18e9688e2306132980e94724655a" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>signature</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDOSHeader</scope><name>unpack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

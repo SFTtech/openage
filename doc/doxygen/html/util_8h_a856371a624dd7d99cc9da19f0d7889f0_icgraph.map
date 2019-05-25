@@ -1,0 +1,9 @@
+<map id="vk_do_ritual" name="vk_do_ritual">
+<area shape="rect" id="node1" title=" " alt="" coords="443,162,533,188"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer.xhtml#a15177acc1d4eb10a786e021ea8eb0207" title="Testing function that draws a triangle. Not part of the final renderer implementation." alt="" coords="5,42,143,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1vulkan.xhtml#ab2538fa764e64cb8a28639cb511058ae" title="Queries the Vulkan implementation for available extensions and layers." alt="" coords="213,41,372,82"/>
+<area shape="rect" id="node4" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device.xhtml#a5d8a1353bad85bd21c733fc21d8bef76" title=" " alt="" coords="197,107,389,163"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display.xhtml#ac140c8357daa5298ed6f04821a936ccb" title=" " alt="" coords="202,187,383,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device.xhtml#a6df789786ae44a2914cdb488bfbb7de3" title=" " alt="" coords="205,267,380,323"/>
+<area shape="rect" id="node7" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_window.xhtml#a21953253160e4583181b0bbb21a56601" title=" " alt="" coords="191,348,395,389"/>
+</map>

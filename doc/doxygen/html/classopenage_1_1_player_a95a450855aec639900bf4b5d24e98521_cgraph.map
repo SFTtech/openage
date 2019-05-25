@@ -1,0 +1,11 @@
+<map id="openage::Player::initialise_unit_types" name="openage::Player::initialise_unit_types">
+<area shape="rect" id="node1" title=" " alt="" coords="5,49,176,90"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="236,5,352,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="233,56,355,83"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_civilisation.xhtml#acc3a4d02c42d7f8eda5b9b87175f4613" title=" " alt="" coords="224,107,364,149"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="434,19,581,61"/>
+<area shape="rect" id="node5" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="412,85,603,112"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="680,13,819,54"/>
+<area shape="rect" id="node7" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="663,78,835,119"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="651,144,848,171"/>
+</map>

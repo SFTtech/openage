@@ -231,7 +231,7 @@
         </childnode>
       </node>
       <node id="20533">
-        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp</label>
         <link refid="font__manager_8cpp"/>
         <childnode refid="20534" relation="include">
         </childnode>
@@ -348,6 +348,6 @@
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/font/font_manager.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp"/>
   </compounddef>
 </doxygen>

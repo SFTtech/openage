@@ -1,0 +1,22 @@
+<map id="openage::Sound::play" name="openage::Sound::play">
+<area shape="rect" id="node1" title=" " alt="" coords="5,274,153,301"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#a3a21c92c49ec4d0add95e8aacd83ebe0" title=" " alt="" coords="226,5,378,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" title=" " alt="" coords="229,71,375,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" title=" " alt="" coords="221,136,383,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#a4fcd0ea2e63f5035df72bdceb0ac22f2" title=" " alt="" coords="201,201,403,243"/>
+<area shape="rect" id="node7" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#a6df7195e7f02f6959a9a241037e48657" title=" " alt="" coords="201,267,403,308"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="241,333,363,359"/>
+<area shape="rect" id="node14" href="$classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4" title=" " alt="" coords="225,384,379,425"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1rng.xhtml#a398e36f7942536cd461ca212dfee6cb5" title=" " alt="" coords="228,449,376,491"/>
+<area shape="rect" id="node20" href="$namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36" title="warning message" alt="" coords="241,515,363,542"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="496,209,607,235"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="478,267,625,308"/>
+<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="456,333,647,359"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="729,260,868,301"/>
+<area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="713,325,885,367"/>
+<area shape="rect" id="node13" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="700,391,897,418"/>
+<area shape="rect" id="node15" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#a558810ebb9233d8f80da70d48b0bf282" title=" " alt="" coords="451,384,652,425"/>
+<area shape="rect" id="node17" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#ad7b2ba8c495b7ee100b7708b633bc060" title=" " alt="" coords="481,449,622,491"/>
+<area shape="rect" id="node18" href="$classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154" title=" " alt="" coords="728,449,869,491"/>
+<area shape="rect" id="node19" href="$namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07" title=" " alt="" coords="945,457,1089,483"/>
+</map>

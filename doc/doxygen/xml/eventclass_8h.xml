@@ -7,19 +7,19 @@
     <includes local="no">memory</includes>
     <includes local="no">string</includes>
     <includes local="no">unordered_map</includes>
-    <includedby refid="eventqueue_8h" local="yes">libopenage/event/eventqueue.h</includedby>
-    <includedby refid="event_2event_8h" local="yes">libopenage/event/event.h</includedby>
-    <includedby refid="event_2event_8cpp" local="yes">libopenage/event/event.cpp</includedby>
-    <includedby refid="eventclass_8cpp" local="yes">libopenage/event/eventclass.cpp</includedby>
-    <includedby refid="eventqueue_8cpp" local="yes">libopenage/event/eventqueue.cpp</includedby>
-    <includedby refid="eventtarget_8cpp" local="yes">libopenage/event/eventtarget.cpp</includedby>
-    <includedby refid="loop_8cpp" local="yes">libopenage/event/loop.cpp</includedby>
+    <includedby refid="eventqueue_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h</includedby>
+    <includedby refid="event_2event_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.h</includedby>
+    <includedby refid="event_2event_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.cpp</includedby>
+    <includedby refid="eventclass_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp</includedby>
+    <includedby refid="eventqueue_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp</includedby>
+    <includedby refid="eventtarget_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp</includedby>
+    <includedby refid="loop_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp</includedby>
     <incdepgraph>
       <node id="7677">
         <label>list</label>
       </node>
       <node id="7642">
-        <label>libopenage/event/eventclass.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h</label>
         <link refid="eventclass_8h"/>
         <childnode refid="7643" relation="include">
         </childnode>
@@ -287,7 +287,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="7684">
-        <label>libopenage/event/eventclass.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h</label>
         <link refid="eventclass_8h"/>
         <childnode refid="7685" relation="include">
         </childnode>
@@ -305,15 +305,15 @@
         </childnode>
       </node>
       <node id="7710">
-        <label>libopenage/event/eventclass.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp</label>
         <link refid="eventclass_8cpp"/>
       </node>
       <node id="7697">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="7685">
-        <label>libopenage/event/eventqueue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h</label>
         <link refid="eventqueue_8h"/>
         <childnode refid="7686" relation="include">
         </childnode>
@@ -323,11 +323,11 @@
         </childnode>
       </node>
       <node id="7704">
-        <label>libopenage/event/eventtarget.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp</label>
         <link refid="eventtarget_8cpp"/>
       </node>
       <node id="7686">
-        <label>libopenage/event/loop.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h</label>
         <link refid="event_2loop_8h"/>
         <childnode refid="7687" relation="include">
         </childnode>
@@ -343,31 +343,31 @@
         </childnode>
       </node>
       <node id="7692">
-        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</label>
         <link refid="curve__types_8cpp"/>
       </node>
       <node id="7705">
-        <label>libopenage/event/loop.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp</label>
         <link refid="loop_8cpp"/>
       </node>
       <node id="7699">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="7695">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="7701">
-        <label>libopenage/curve/discrete.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.cpp</label>
         <link refid="discrete_8cpp"/>
       </node>
       <node id="7709">
-        <label>libopenage/event/event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.cpp</label>
         <link refid="event_2event_8cpp"/>
       </node>
       <node id="7688">
-        <label>libopenage/curve/value_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h</label>
         <link refid="value__container_8h"/>
         <childnode refid="7689" relation="include">
         </childnode>
@@ -377,7 +377,7 @@
         </childnode>
       </node>
       <node id="7698">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="7696" relation="include">
         </childnode>
@@ -385,15 +385,15 @@
         </childnode>
       </node>
       <node id="7707">
-        <label>libopenage/event/eventqueue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp</label>
         <link refid="eventqueue_8cpp"/>
       </node>
       <node id="7703">
-        <label>libopenage/curve/keyframe_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.cpp</label>
         <link refid="keyframe__container_8cpp"/>
       </node>
       <node id="7689">
-        <label>libopenage/curve/continuous.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h</label>
         <link refid="continuous_8h"/>
         <childnode refid="7690" relation="include">
         </childnode>
@@ -405,11 +405,11 @@
         </childnode>
       </node>
       <node id="7696">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="7687">
-        <label>libopenage/curve/keyframe_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h</label>
         <link refid="keyframe__container_8h"/>
         <childnode refid="7688" relation="include">
         </childnode>
@@ -419,7 +419,7 @@
         </childnode>
       </node>
       <node id="7694">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="7695" relation="include">
         </childnode>
@@ -427,11 +427,11 @@
         </childnode>
       </node>
       <node id="7706">
-        <label>libopenage/event/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp</label>
         <link refid="event_2tests_8cpp"/>
       </node>
       <node id="7708">
-        <label>libopenage/event/event.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.h</label>
         <link refid="event_2event_8h"/>
         <childnode refid="7686" relation="include">
         </childnode>
@@ -453,7 +453,7 @@
         </childnode>
       </node>
       <node id="7700">
-        <label>libopenage/curve/discrete.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h</label>
         <link refid="discrete_8h"/>
         <childnode refid="7701" relation="include">
         </childnode>
@@ -465,11 +465,11 @@
         </childnode>
       </node>
       <node id="7702">
-        <label>libopenage/curve/value_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.cpp</label>
         <link refid="value__container_8cpp"/>
       </node>
       <node id="7693">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="7694" relation="include">
         </childnode>
@@ -481,15 +481,15 @@
         </childnode>
       </node>
       <node id="7711">
-        <label>libopenage/event/eventstore.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp</label>
         <link refid="eventstore_8cpp"/>
       </node>
       <node id="7691">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
       <node id="7690">
-        <label>libopenage/curve/continuous.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp</label>
         <link refid="continuous_8cpp"/>
       </node>
     </invincdepgraph>
@@ -638,6 +638,6 @@
 <codeline lineno="217"><highlight class="normal"></highlight></codeline>
 <codeline lineno="218"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/eventclass.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h"/>
   </compounddef>
 </doxygen>

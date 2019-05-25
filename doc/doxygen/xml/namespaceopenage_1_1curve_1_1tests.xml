@@ -23,7 +23,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="28" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="28" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="28" bodyend="31"/>
+        <references refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" compoundref="container_8cpp" startline="17">openage::curve::tests::map_test_element::value</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1adaea2f0357531c64ef6af72d720e37f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -48,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="34" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="34" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="34" bodyend="38"/>
+        <references refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" compoundref="setup_8cpp" startline="25">map</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,7 +63,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="40" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="40" bodyend="132"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="40" bodyend="132"/>
+        <references refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" compoundref="setup_8cpp" startline="25">map</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">container</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -74,7 +79,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="134" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="134" bodyend="136"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="134" bodyend="136"/>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">container</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -87,7 +93,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="138" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="138" bodyend="202"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="138" bodyend="202"/>
+        <references refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" compoundref="queue_8h" startline="79" endline="91">openage::curve::Queue&lt; T &gt;::begin</references>
+        <references refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" compoundref="queue_8h" startline="105" endline="118">openage::curve::Queue&lt; T &gt;::between</references>
+        <references refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" compoundref="queue_8h" startline="95" endline="101">openage::curve::Queue&lt; T &gt;::end</references>
+        <references refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" compoundref="queue_8h" startline="129" endline="154">openage::curve::Queue&lt; T &gt;::insert</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">container</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -100,7 +112,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/container.cpp" line="205" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="205" bodyend="209"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="205" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" bodystart="205" bodyend="209"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" compoundref="container_8cpp" startline="134" endline="136">test_list</references>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" compoundref="container_8cpp" startline="40" endline="132">test_map</references>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" compoundref="container_8cpp" startline="138" endline="202">test_queue</references>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" compoundref="queue_8h" startline="79" endline="91">openage::curve::Queue&lt; T &gt;::begin</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" compoundref="queue_8h" startline="105" endline="118">openage::curve::Queue&lt; T &gt;::between</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1ac48eba75b18f46ba566155cb9a18d478" compoundref="queue_8h" startline="164" endline="169">openage::curve::Queue&lt; T &gt;::clean</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1a5ee4f2514bc1ea089a5aa32567ec0195" compoundref="queue_8h" startline="158" endline="160">openage::curve::Queue&lt; T &gt;::clear</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" compoundref="queue_8h" startline="95" endline="101">openage::curve::Queue&lt; T &gt;::end</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1acb732f8f9c5ec59d691d59067fa09d66" compoundref="queue_8h" startline="122" endline="125">openage::curve::Queue&lt; T &gt;::erase</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" compoundref="keyframe__container_8h" startline="267" endline="269">openage::curve::KeyframeContainer&lt; T &gt;::erase</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" compoundref="keyframe__container_8h" startline="248" endline="260">openage::curve::KeyframeContainer&lt; T &gt;::erase_after</referencedby>
+        <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" compoundref="value__container_8h" startline="91" endline="94">openage::curve::ValueContainer&lt; T &gt;::frame</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1a7fe7c6b582f57ac867d198e9677a2156" compoundref="queue_8h" startline="73" endline="75">openage::curve::Queue&lt; T &gt;::front</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" compoundref="continuous_8h" startline="32" endline="61">openage::curve::Continuous&lt; T &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" compoundref="discrete_8h" startline="45" endline="49">openage::curve::Discrete&lt; T &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_discrete_1a9be982a0d41cb6b5f2968aafcf147c82" compoundref="discrete_8h" startline="61" endline="73">openage::curve::Discrete&lt; T &gt;::get_previous</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_discrete_1a4b2bddacdb81de7e9d1f207ca7cd15c2" compoundref="discrete_8h" startline="53" endline="57">openage::curve::Discrete&lt; T &gt;::get_time</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" compoundref="queue_8h" startline="129" endline="154">openage::curve::Queue&lt; T &gt;::insert</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" compoundref="keyframe__container_8h" startline="194" endline="229">openage::curve::KeyframeContainer&lt; T &gt;::last</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" compoundref="value__container_8h" startline="98" endline="102">openage::curve::ValueContainer&lt; T &gt;::next_frame</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a3865e557756044d8183a3d24cd5b8ab4" compoundref="game__control_8cpp" startline="411" endline="443">openage::ActionMode::place_selection</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" compoundref="algorithm_8h" startline="28" endline="33">openage::util::remove_from</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" compoundref="value__container_8h" startline="84" endline="87">openage::curve::ValueContainer&lt; T &gt;::set_insert</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" compoundref="value__container_8h" startline="63" endline="80">openage::curve::ValueContainer&lt; T &gt;::set_last</referencedby>
+        <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -113,13 +153,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/tests/curve_types.cpp" line="14" column="1" bodyfile="libopenage/curve/tests/curve_types.cpp" bodystart="14" bodyend="146"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp" bodystart="14" bodyend="146"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" compoundref="continuous_8h" startline="32" endline="61">openage::curve::Continuous&lt; T &gt;::get</references>
+        <references refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" compoundref="discrete_8h" startline="45" endline="49">openage::curve::Discrete&lt; T &gt;::get</references>
+        <references refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" compoundref="keyframe__container_8h" startline="101" endline="103">openage::curve::KeyframeContainer&lt; T &gt;::insert</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" compoundref="value__container_8h" startline="84" endline="87">openage::curve::ValueContainer&lt; T &gt;::set_insert</references>
+        <references refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" compoundref="value__container_8h" startline="63" endline="80">openage::curve::ValueContainer&lt; T &gt;::set_last</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <references refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" compoundref="testing_8h" startline="68">TESTEQUALS_FLOAT</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/curve/tests/container.cpp" line="14" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp" line="14" column="1"/>
   </compounddef>
 </doxygen>

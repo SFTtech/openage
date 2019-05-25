@@ -1,0 +1,13 @@
+<map id="openage.convert.game_versions.has_x1_p1" name="openage.convert.game_versions.has_x1_p1">
+<area shape="rect" id="node1" title="Determine whether any of the versions has patch 1, i.e." alt="" coords="971,71,1123,112"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#af952f8f82261ef86e5c83facd56758f9" title="reads empires.dat and fixes it" alt="" coords="743,5,915,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1driver.xhtml#adbdd640ef25ad8535078cc706f314686" title="reads the (language) string resources" alt="" coords="743,71,915,112"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1main.xhtml#aa61aac4f71477fb39e50782b54c1c7c6" title=" " alt="" coords="735,136,923,177"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="492,40,687,81"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="241,47,436,74"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1main.xhtml#a607817dd5809140455a8b393c9a68fdc" title="Mount the input folders for conversion." alt="" coords="495,136,683,177"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1convert_1_1main.xhtml#a06157ab72dcb855b2e993bf128e9faf1" title="Perform asset conversion." alt="" coords="242,167,435,208"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="233,101,444,143"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="5,117,185,143"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="10,174,181,201"/>
+</map>

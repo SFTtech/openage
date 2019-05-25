@@ -1,0 +1,12 @@
+<map id="openage::Player::owns" name="openage::Player::owns">
+<area shape="rect" id="node1" title=" " alt="" coords="1465,46,1620,73"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#aba4a16068cf5a6b218a4c78f499874b0" title=" " alt="" coords="1239,46,1417,73"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_selection.xhtml#a2cc48ccbea18ec579f9ad27a89b1d96a" title=" " alt="" coords="820,5,976,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_selection.xhtml#a9ec8fd5cfcfa451cce1123ff87894719" title=" " alt="" coords="1024,68,1191,109"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,35,160,76"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit_selection.xhtml#ac7668d88460dbf57f79a75cbe55e34f3" title=" " alt="" coords="820,71,976,112"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_selection.xhtml#ae76387eeee60f994b678d79ca4a198e8" title=" " alt="" coords="616,65,772,107"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="412,129,568,171"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="412,64,568,105"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="208,64,364,105"/>
+</map>

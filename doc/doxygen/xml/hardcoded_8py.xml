@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hardcoded_8py" kind="file" language="Python">
+    <compoundname>hardcoded.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded">openage::convert::interface::hardcoded</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Additional<sp/>hardcoded<sp/>information<sp/>about<sp/>user<sp/>interface<sp/>assets<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">INGAME_HUD_BACKGROUNDS<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>51141,</highlight></codeline>
+<codeline lineno="8" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a3022641fbad107bed61aca7e921ffc32" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>51142,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>51143,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>51144,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>51145,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>51146,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>51147,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>51148,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>51149,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>51150,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>51151,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>51152,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>51153,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>51154,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>51157,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>51158,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>51159,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>51160,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">]</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">INGAME_HUD_BACKGROUNDS_SET<sp/>=<sp/>set(INGAME_HUD_BACKGROUNDS)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a73a94894832812c6ddfe78903a8ae9e2" refkind="member"><highlight class="normal">ASSETS<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;50721&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;hudactions&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1af31374d0767b4a243e8df8f028b20419" refkind="member"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">TOP_STRIP_PATTERN_CORNERS<sp/>=<sp/>(400,<sp/>0,<sp/>464,<sp/>32)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS<sp/>=<sp/>(400,<sp/>0,<sp/>1024,<sp/>32)</highlight></codeline>
+<codeline lineno="35" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a6b6558c51e72696b7feed6fa91d87738" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a90308c5f6f3f3c3213c6238f1b0962b3" refkind="member"><highlight class="normal">MID_STRIP_PATTERN_CORNERS<sp/>=<sp/>(339,<sp/>806,<sp/>403,<sp/>818)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">MID_STRIP_PATTERN_SEARCH_AREA_CORNERS<sp/>=<sp/>(339,<sp/>806,<sp/>850,<sp/>818)</highlight></codeline>
+<codeline lineno="38" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a770ababfe4dcf7b61bcfba8e83ed69ce" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a6cb62dc5d8f54fb79005545b9d7f82a8" refkind="member"><highlight class="normal">KNOWN_SUBTEX_CORNER_COORDS<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>(0,<sp/>806,<sp/>339,<sp/>1024),</highlight></codeline>
+<codeline lineno="41" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1adcc8fca8e363e186326eef65af5760de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>(850,<sp/>806,<sp/>1280,<sp/>1024),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>(8,<sp/>10,<sp/>34,<sp/>27),</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>(85,<sp/>10,<sp/>111,<sp/>27),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>(162,<sp/>10,<sp/>188,<sp/>27),</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>(239,<sp/>10,<sp/>265,<sp/>27),</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>(316,<sp/>10,<sp/>342,<sp/>27),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">]</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a5269bff8c865ba582e87918dd9e28d0d" kindref="member">ingame_hud_background_index</ref>(idx):</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="52"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Index<sp/>in<sp/>the<sp/>hardcoded<sp/>list<sp/>of<sp/>the<sp/>known<sp/>ingame<sp/>hud<sp/>backgrounds<sp/>to<sp/>match<sp/>the<sp/>civ.</highlight></codeline>
+<codeline lineno="53"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>INGAME_HUD_BACKGROUNDS.index(int(idx))</highlight></codeline>
+<codeline lineno="55" refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a5269bff8c865ba582e87918dd9e28d0d" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a14220af93f607567195b1ad3617d64cc" kindref="member">is_ingame_hud_background</ref>(idx):</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="59"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>True<sp/>if<sp/>in<sp/>the<sp/>hardcoded<sp/>list<sp/>of<sp/>the<sp/>known<sp/>ingame<sp/>hud<sp/>backgrounds.</highlight></codeline>
+<codeline lineno="60"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>int(idx)<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>INGAME_HUD_BACKGROUNDS_SET</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py"/>
+  </compounddef>
+</doxygen>

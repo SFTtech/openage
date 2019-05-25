@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::TargetAction Class Reference</title>
+<title>openage: openage::TargetAction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1_target_action.xhtml',
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::TargetAction:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::TargetAction:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::TargetAction:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::TargetAction:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -250,7 +254,16 @@ Additional Inherited Members</h2></td></tr>
 <p>action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00218">218</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    :</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">UnitAction</a>(u, gt),</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>{r},</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">target_type_id</a>{0},</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a>{10},</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a>{<span class="keyword">false</span>},</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">radius</a>{rad} {</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">// update type</span></div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>()) {</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>();</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">target_type_id</a> = target_ptr-&gt;unit_type-&gt;id();</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">// initial value for distance</span></div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">update_distance</a>();</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ab11cdd208c9eb76eb88bfdea0c0d054a"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">openage::TargetAction::target_type_id</a></div><div class="ttdeci">int target_type_id</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00261">action.h:261</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a2ad32343ebe475f1f3c1477f659314db"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">openage::TargetAction::update_distance</a></div><div class="ttdeci">Unit * update_distance()</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00303">action.cpp:303</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_abf5a6940a40fea92b70b36482c1d1ee0"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">openage::TargetAction::radius</a></div><div class="ttdeci">coord::phys_t radius</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a6303ff3facc18acf10aa335ee9d318d8"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">openage::UnitReference::get</a></div><div class="ttdeci">Unit * get() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00042">unit_container.cpp:42</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a5b6ca88d9b6aec08b4d03697f0cd03a1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">openage::TargetAction::repath_attempts</a></div><div class="ttdeci">int repath_attempts</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00262">action.h:262</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8ac661518fe44bcbdca2f97212d90bf7"></a>
@@ -287,7 +300,9 @@ Additional Inherited Members</h2></td></tr>
 <p>this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00237">237</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    :</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">TargetAction</a>(u, gt, r, <a class="code" href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">adjacent_range</a>(u)) {</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6a13e1e645b744982544ae65ef1addf3"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3">openage::UnitAction::adjacent_range</a></div><div class="ttdeci">static coord::phys_t adjacent_range(Unit *u)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00067">action.cpp:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_adc56f07dc94e70968fb02276f1a3ae57"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#adc56f07dc94e70968fb02276f1a3ae57">openage::TargetAction::TargetAction</a></div><div class="ttdeci">TargetAction(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00218">action.cpp:218</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a18396367c24eafefd498e141875fed8a"></a>
@@ -314,7 +329,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00232">232</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -346,7 +361,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00238">238</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a50d20cedc299a1257f5a8dc2c0396b72"></a>
@@ -376,7 +391,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00237">237</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="acd97248a087415b6d08fa3e97e90397d"></a>
@@ -406,6 +421,32 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">290</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                   {</div><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> ||</div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>() ||</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>()-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>) {</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf">completed_in_range</a>(this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>());</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a43bd7367738e16d715df0a1bfbd080cf"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf">openage::TargetAction::completed_in_range</a></div><div class="ttdeci">virtual bool completed_in_range(Unit *) const =0</div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a6303ff3facc18acf10aa335ee9d318d8"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">openage::UnitReference::get</a></div><div class="ttdeci">Unit * get() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00042">unit_container.cpp:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1_target_action.xhtml#a43bd7367738e16d715df0a1bfbd080cf">completed_in_range()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00263">end_action</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00042">openage::UnitReference::get()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00036">openage::UnitReference::is_valid()</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00260">target</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l01155">openage::GatherAction::nearest_dropsite()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00932">openage::BuildAction::on_completion()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_cgraph.svg" width="606" height="163"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_acd97248a087415b6d08fa3e97e90397d_icgraph.svg" width="568" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -435,6 +476,16 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_convert_action.xhtml#a5f925361d63b2d1186b142b26e367b6a">openage::ConvertAction</a>, <a class="el" href="classopenage_1_1_heal_action.xhtml#ad6d47ca5bb338861aa787901f64aafe2">openage::HealAction</a>, <a class="el" href="classopenage_1_1_attack_action.xhtml#a9a21f5da5f56d1c157b0a1806a8e49e3">openage::AttackAction</a>, <a class="el" href="classopenage_1_1_gather_action.xhtml#a1234dabb1549d67aaa1dbf3db7fce494">openage::GatherAction</a>, <a class="el" href="classopenage_1_1_repair_action.xhtml#a8559cb6b16e07caa6635517db0a064f1">openage::RepairAction</a>, <a class="el" href="classopenage_1_1_build_action.xhtml#a7f3e8b2b3bff26c39e9bd24ba6cf0f70">openage::BuildAction</a>, and <a class="el" href="classopenage_1_1_garrison_action.xhtml#a842b80d5d090c1fb0ba6b3c6dfacf8b3">openage::GarrisonAction</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">completed()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a43bd7367738e16d715df0a1bfbd080cf_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a285c6a59466e76c934a21221e9990f86"></a>
@@ -453,6 +504,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00299">299</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                             {</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a>;</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00268">dist_to_target</a>.</p>
 
 </div>
 </div>
@@ -472,6 +526,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00321">321</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                             {</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>;</div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00260">target</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00932">openage::BuildAction::on_completion()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a234df6738799d71928d3fc3acc8d39ab_icgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -491,6 +558,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00325">325</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                                           {</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">target_type_id</a>;</div><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_ab11cdd208c9eb76eb88bfdea0c0d054a"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">openage::TargetAction::target_type_id</a></div><div class="ttdeci">int target_type_id</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00261">action.h:261</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00261">target_type_id</a>.</p>
 
 </div>
 </div>
@@ -521,6 +591,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70">openage::UnitAction</a>.</p>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_convert_action.xhtml#ace65fad3f2004e467446b03fdf1f12bb">openage::ConvertAction</a>, <a class="el" href="classopenage_1_1_heal_action.xhtml#ad4da9c08bcfd22e4287aa508730e02e2">openage::HealAction</a>, <a class="el" href="classopenage_1_1_attack_action.xhtml#af9602b031e61a4bc8b06596b494ffa3a">openage::AttackAction</a>, <a class="el" href="classopenage_1_1_gather_action.xhtml#ac69d3b907af6b3a737e64779f46e4bd4">openage::GatherAction</a>, <a class="el" href="classopenage_1_1_repair_action.xhtml#a1817a51710b65024edd0d811683f1f96">openage::RepairAction</a>, <a class="el" href="classopenage_1_1_build_action.xhtml#a0277fa2bdd5367376df7fc4084cccd18">openage::BuildAction</a>, and <a class="el" href="classopenage_1_1_garrison_action.xhtml#a196a384261e4e6624faa2db6c970d9e4">openage::GarrisonAction</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00291">openage.util.fslike.path.Path::stem()</a>, <a class="el" href="path_8py_source.xhtml#l00274">openage.util.fslike.path.Path::suffix()</a>, and <a class="el" href="path_8py_source.xhtml#l00283">openage.util.fslike.path.Path::suffixes()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ab57d1777fed0ced4ee1e6788ee5e445d_icgraph.svg" width="576" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -553,6 +633,21 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e">openage::BuildAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00277">277</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                 {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="comment">// do not retask if action is forced to end</span></div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> ||</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        !this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>) {</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="comment">// retask units on nearby objects</span></div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="comment">// such as gathers targeting a new resource</span></div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">// when the current target expires</span></div><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range</a>(this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">target_type_id</a>);</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a32fc1723b0f6ce5e3bdb76794ff1ccf1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">openage::TargetAction::on_completion_in_range</a></div><div class="ttdeci">virtual void on_completion_in_range(int target_type)=0</div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ab11cdd208c9eb76eb88bfdea0c0d054a"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ab11cdd208c9eb76eb88bfdea0c0d054a">openage::TargetAction::target_type_id</a></div><div class="ttdeci">int target_type_id</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00261">action.h:261</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00263">end_action</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, <a class="el" href="classopenage_1_1_target_action.xhtml#a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range()</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00261">target_type_id</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_ac489c70f995ea358f685676e403df8cc_cgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -582,6 +677,16 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_convert_action.xhtml#a505c0166e44a58f7ed38a18f20044f47">openage::ConvertAction</a>, <a class="el" href="classopenage_1_1_heal_action.xhtml#afce58e504c017064316f4973cdcb38c6">openage::HealAction</a>, <a class="el" href="classopenage_1_1_attack_action.xhtml#a81feceee7d59ee1b7b1451da070819bd">openage::AttackAction</a>, <a class="el" href="classopenage_1_1_gather_action.xhtml#ab76d756df9989badfa91e272f85dee9c">openage::GatherAction</a>, <a class="el" href="classopenage_1_1_repair_action.xhtml#af04fb9e6fe97ed9891db7130698e5502">openage::RepairAction</a>, <a class="el" href="classopenage_1_1_build_action.xhtml#a4b2708cddc233df42c55c93cce4c3768">openage::BuildAction</a>, and <a class="el" href="classopenage_1_1_garrison_action.xhtml#a3aea7ec7c376adb40dee1d9cdc94fd25">openage::GarrisonAction</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00277">on_completion()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a32fc1723b0f6ce5e3bdb76794ff1ccf1_icgraph.svg" width="382" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a48de4ef9580b1202464808af55b78fae"></a>
@@ -602,6 +707,29 @@ Additional Inherited Members</h2></td></tr>
 <p>changes target, ending action when new target is invalid </p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">329</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                                      {</div><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">if</span> (new_target.is_valid()) {</div><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a> = new_target;</div><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">update_distance</a>();</div><div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    }</div><div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a2ad32343ebe475f1f3c1477f659314db"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">openage::TargetAction::update_distance</a></div><div class="ttdeci">Unit * update_distance()</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00303">action.cpp:303</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00263">end_action</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00036">openage::UnitReference::is_valid()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00260">target</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">update_distance()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l01050">openage::GatherAction::update_in_range()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_cgraph.svg" width="100%" height="391"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a48de4ef9580b1202464808af55b78fae_icgraph.svg" width="366" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -633,6 +761,23 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">242</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                           {</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">update_distance</a>();</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">if</span> (!target_ptr) {</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">return</span>; <span class="comment">// target has become invalid</span></div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">// this update moves a unit within radius of the target</span></div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="comment">// once within the radius the update gets passed to the class</span></div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// derived from TargetAction</span></div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">// set direction unit should face</span></div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">face_towards</a>(target_ptr-&gt;location-&gt;pos.draw);</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">// move to within the set radius</span></div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> (this-&gt;dist_to_target &lt;= this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">radius</a>) {</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">// the derived class controls what to</span></div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="comment">// do when in range of the target</span></div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">update_in_range</a>(time, target_ptr);</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a> = 10;</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a>) {</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// out of range so try move towards</span></div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="comment">// if this unit has a move ability</span></div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">move_to</a>(*target_ptr);</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">repath_attempts</a> -= 1;</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// unit is stuck</span></div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">end_action</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a16660bd780984c6f11ba30e0c7f634ad"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad">openage::UnitAction::move_to</a></div><div class="ttdeci">void move_to(Unit &amp;target, bool use_range=true)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00208">action.cpp:208</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a0689cb2d55ae8ad82e704c79b4596bca"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">openage::TargetAction::update_in_range</a></div><div class="ttdeci">virtual void update_in_range(unsigned int, Unit *)=0</div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a2ad32343ebe475f1f3c1477f659314db"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db">openage::TargetAction::update_distance</a></div><div class="ttdeci">Unit * update_distance()</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00303">action.cpp:303</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_abf5a6940a40fea92b70b36482c1d1ee0"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#abf5a6940a40fea92b70b36482c1d1ee0">openage::TargetAction::radius</a></div><div class="ttdeci">coord::phys_t radius</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3ab11130480adc3cfe156af7cfb7a58d"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d">openage::UnitAction::face_towards</a></div><div class="ttdeci">void face_towards(const coord::phys3 pos)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00140">action.cpp:140</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_ace49b8e31592f2e8671dff1d681e8a59"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#ace49b8e31592f2e8671dff1d681e8a59">openage::TargetAction::end_action</a></div><div class="ttdeci">bool end_action</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00263">action.h:263</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_a5b6ca88d9b6aec08b4d03697f0cd03a1"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a5b6ca88d9b6aec08b4d03697f0cd03a1">openage::TargetAction::repath_attempts</a></div><div class="ttdeci">int repath_attempts</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00262">action.h:262</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00263">end_action</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00140">openage::UnitAction::face_towards()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00208">openage::UnitAction::move_to()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00268">radius</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00262">repath_attempts</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">update_distance()</a>, and <a class="el" href="classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca">update_in_range()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_af63a55c8043382d2648815d46e2c4c92_cgraph.svg" width="100%" height="528"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -652,6 +797,32 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">303</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                    {</div><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>()) {</div><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// make sure object is not garrisoned</span></div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">auto</span> target_ptr = this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">target</a>.<a class="code" href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">get</a>();</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (!target_ptr-&gt;location) {</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">// update distance</span></div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">dist_to_target</a> = target_ptr-&gt;location-&gt;from_edge(this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">location</a>-&gt;pos.draw);</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// return the targeted unit</span></div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">return</span> target_ptr;</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div><div class="ttc" id="classopenage_1_1_target_action_xhtml_a440df45773b6e3b6e2a0b60f1ba6ca98"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#a440df45773b6e3b6e2a0b60f1ba6ca98">openage::TargetAction::dist_to_target</a></div><div class="ttdeci">coord::phys_t dist_to_target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00268">action.h:268</a></div></div>
+<div class="ttc" id="classopenage_1_1_target_action_xhtml_af0c0298b57d0752f89b4e732f7446f78"><div class="ttname"><a href="classopenage_1_1_target_action.xhtml#af0c0298b57d0752f89b4e732f7446f78">openage::TargetAction::target</a></div><div class="ttdeci">UnitReference target</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00260">action.h:260</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a12811894b98383b4c3cfe6769bc3ff80"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a12811894b98383b4c3cfe6769bc3ff80">openage::Unit::location</a></div><div class="ttdeci">std::unique_ptr&lt; TerrainObject &gt; location</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00068">unit.h:68</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a6303ff3facc18acf10aa335ee9d318d8"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8">openage::UnitReference::get</a></div><div class="ttdeci">Unit * get() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00042">unit_container.cpp:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00268">dist_to_target</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00042">openage::UnitReference::get()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00036">openage::UnitReference::is_valid()</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, and <a class="el" href="unit_2action_8h_source.xhtml#l00260">target</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">set_target()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">update()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a2ad32343ebe475f1f3c1477f659314db_cgraph.svg" width="606" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a2ad32343ebe475f1f3c1477f659314db_icgraph.svg" width="566" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -692,6 +863,16 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classopenage_1_1_convert_action.xhtml#a55db575cd964d3900afde6969e93dcfe">openage::ConvertAction</a>, <a class="el" href="classopenage_1_1_heal_action.xhtml#a95b9324fe05d86e7528f3a5334b6fc7c">openage::HealAction</a>, <a class="el" href="classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c">openage::AttackAction</a>, <a class="el" href="classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858">openage::GatherAction</a>, <a class="el" href="classopenage_1_1_repair_action.xhtml#ae093970227ea03a75f1ee278770640f0">openage::RepairAction</a>, <a class="el" href="classopenage_1_1_build_action.xhtml#a808f1932658b9bbdb98849c406e1d426">openage::BuildAction</a>, and <a class="el" href="classopenage_1_1_garrison_action.xhtml#ae38a294e107776e93a2a4198fed82b9e">openage::GarrisonAction</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">update()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_target_action_a0689cb2d55ae8ad82e704c79b4596bca_icgraph.svg" width="363" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -718,6 +899,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00268">268</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00299">distance_to_target()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">update_distance()</a>.</p>
+
 </div>
 </div>
 <a id="ace49b8e31592f2e8671dff1d681e8a59"></a>
@@ -741,6 +924,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00263">263</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">completed()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00277">on_completion()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">set_target()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">update()</a>.</p>
 
 </div>
 </div>
@@ -766,6 +951,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00268">268</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">update()</a>.</p>
+
 </div>
 </div>
 <a id="a5b6ca88d9b6aec08b4d03697f0cd03a1"></a>
@@ -789,6 +976,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00262">262</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00242">update()</a>.</p>
 
 </div>
 </div>
@@ -814,6 +1003,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00260">260</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">completed()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l01227">openage::AttackAction::fire_projectile()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00321">get_target()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l01276">openage::HealAction::heal()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">set_target()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">update_distance()</a>.</p>
+
 </div>
 </div>
 <a id="ab11cdd208c9eb76eb88bfdea0c0d054a"></a>
@@ -838,11 +1029,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00261">261</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00325">get_target_type_id()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00277">on_completion()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

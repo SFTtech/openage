@@ -269,7 +269,7 @@
         </childnode>
       </node>
       <node id="13812">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
         <childnode refid="13813" relation="include">
         </childnode>
@@ -773,6 +773,6 @@
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp"/>
   </compounddef>
 </doxygen>

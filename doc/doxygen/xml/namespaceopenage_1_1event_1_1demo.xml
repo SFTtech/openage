@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/main.cpp" line="34" column="1" bodyfile="libopenage/event/demo/main.cpp" bodystart="34" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" bodystart="34" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -73,7 +73,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/main.cpp" line="42" column="1" bodyfile="libopenage/event/demo/main.cpp" bodystart="42" bodyend="206"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" bodystart="42" bodyend="206"/>
+        <references refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1abebd72cf34d6cf5c8042782560241047" compoundref="aicontroller_8cpp" startline="7" endline="27">openage::event::demo::AIInput::get_inputs</references>
+        <references refid="namespaceopenage_1_1util_1_1tests_1ab1596e1f3cfa6d6c8554e6a539731687" compoundref="init_8cpp" startline="20" endline="40">openage::util::tests::init</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_physics_1a808f9e14e491c56f818471417ea08396" compoundref="physics_8cpp" startline="383" endline="486">openage::event::demo::Physics::process_input</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1event_1_1demo_1a1607b8f39e576983b7c82860db47e224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -86,13 +90,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/loop.h" line="20" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h" line="20" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/event/demo/aicontroller.cpp" line="5" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp" line="5" column="1"/>
   </compounddef>
 </doxygen>

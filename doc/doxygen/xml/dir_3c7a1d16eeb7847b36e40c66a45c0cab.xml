@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_3c7a1d16eeb7847b36e40c66a45c0cab" kind="dir">
-    <compoundname>libopenage/error</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error</compoundname>
     <innerfile refid="backtrace_8cpp">backtrace.cpp</innerfile>
     <innerfile refid="backtrace_8h">backtrace.h</innerfile>
     <innerfile refid="demo_8cpp">demo.cpp</innerfile>
@@ -17,6 +17,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/error/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/"/>
   </compounddef>
 </doxygen>

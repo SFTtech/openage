@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/main.h" line="28" column="1" bodyfile="libopenage/main.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" prot="public" static="no" mutable="no">
         <type>int32_t</type>
@@ -28,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/main.h" line="29" column="1" bodyfile="libopenage/main.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -41,7 +43,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/main.h" line="30" column="1" bodyfile="libopenage/main.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -52,19 +55,19 @@
 <para>cppclass <ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref>: Path root_path int32_t fps_limit bool gl_debug </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3166">
+      <node id="4102">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="3165">
+      <node id="4101">
         <label>openage::main_arguments</label>
         <link refid="structopenage_1_1main__arguments"/>
-        <childnode refid="3166" relation="usage">
+        <childnode refid="4102" relation="usage">
           <edgelabel>+root_path</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/main.h" line="27" column="1" bodyfile="libopenage/main.h" bodystart="27" bodyend="31"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h" bodystart="27" bodyend="31"/>
     <listofallmembers>
       <member refid="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" prot="public" virt="non-virtual"><scope>openage::main_arguments</scope><name>fps_limit</name></member>
       <member refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" prot="public" virt="non-virtual"><scope>openage::main_arguments</scope><name>gl_debug</name></member>

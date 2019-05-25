@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::entry_parser::EntryParser</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a02e4ed64fb404697d072fce1a64bd8cb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.entry_parser.EntryParser::lines</definition>
+        <argsstring></argsstring>
+        <name>lines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ab89b12b87e755a83978ea244595ed54d" compoundref="entry__parser_8py" startline="33" endline="37">openage.convert.dataformat.entry_parser.EntryParser.get_code</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ac14db373178cf1050938f3654c8a72c3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.entry_parser.EntryParser::headers</definition>
+        <argsstring></argsstring>
+        <name>headers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a17ae96a6c5788c63c74d646c51ea5f78" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.entry_parser.EntryParser::typerefs</definition>
+        <argsstring></argsstring>
+        <name>typerefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a8e4dd2d7dee594667ecbfd690a143276" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.entry_parser.EntryParser::destination</definition>
+        <argsstring></argsstring>
+        <name>destination</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1afaa1d8386d3d73ab137d7b81d57cc748" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.entry_parser.EntryParser.__init__</definition>
+        <argsstring>(self, lines, headers, typerefs, destination=&quot;fill&quot;)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a02e4ed64fb404697d072fce1a64bd8cb" kindref="member">lines</ref></type>
+          <defname>lines</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ac14db373178cf1050938f3654c8a72c3" kindref="member">headers</ref></type>
+          <defname>headers</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a17ae96a6c5788c63c74d646c51ea5f78" kindref="member">typerefs</ref></type>
+          <defname>typerefs</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a8e4dd2d7dee594667ecbfd690a143276" kindref="member">destination</ref></type>
+          <defname>destination</defname>
+          <defval>&quot;fill&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="24" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ab89b12b87e755a83978ea244595ed54d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.entry_parser.EntryParser.get_code</definition>
+        <argsstring>(self, indentlevel=1)</argsstring>
+        <name>get_code</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>indentlevel</type>
+          <defname>indentlevel</defname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Return the parser code, indented correctly. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="33" bodyend="37"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a02e4ed64fb404697d072fce1a64bd8cb" compoundref="entry__parser_8py" startline="25">openage.convert.dataformat.entry_parser.EntryParser.lines</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An entry parser for reading a single column value from a data file. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="954">
+        <label>openage.convert.dataformat.entry_parser.EntryParser</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/entry_parser.py" bodystart="19" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1afaa1d8386d3d73ab137d7b81d57cc748" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a8e4dd2d7dee594667ecbfd690a143276" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>destination</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ab89b12b87e755a83978ea244595ed54d" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>get_code</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1ac14db373178cf1050938f3654c8a72c3" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a02e4ed64fb404697d072fce1a64bd8cb" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>lines</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_entry_parser_1a17ae96a6c5788c63c74d646c51ea5f78" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::entry_parser::EntryParser</scope><name>typerefs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

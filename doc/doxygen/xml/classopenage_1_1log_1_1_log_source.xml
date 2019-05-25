@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="43" column="1" bodyfile="libopenage/log/logsource.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="29" column="1" bodyfile="libopenage/log/logsource.cpp" bodystart="14" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp" bodystart="14" bodyend="16"/>
+        <references refid="classopenage_1_1log_1_1_log_source_1a10cb7dc55a04eb782bbed1d4dbc688bf" compoundref="logsource_8cpp" startline="28" endline="33">get_unique_logger_id</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_log_source_1aa74e829150dd523fea5173cd5d864285" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -47,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="32" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="32" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -65,7 +66,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="37" column="1" bodyfile="libopenage/log/logsource.cpp" bodystart="19" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp" bodystart="19" bodyend="25"/>
+        <references refid="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" compoundref="stdout__logsink_8cpp" startline="64" endline="67">openage::log::global_stdoutsink</references>
+        <references refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" compoundref="logsink_8cpp" startline="36" endline="39">openage::log::LogSinkList::instance</references>
+        <references refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" compoundref="logsink_8cpp" startline="42" endline="50">openage::log::LogSinkList::log</references>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1af4499be2634985e11b0c10f895978b85" compoundref="unit_8cpp" startline="163" endline="199">openage::Unit::draw</referencedby>
+        <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1aee34f7883059625ffd3fb4bd5a43371f" compoundref="producer_8cpp" startline="213" endline="292">openage::ObjectProducer::initialise</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a8ee32ab40420fb82cea96603d01fc553" compoundref="producer_8cpp" startline="585" endline="648">openage::BuildingProducer::initialise</referencedby>
+        <referencedby refid="classopenage_1_1_move_ability_1a1d0ebbdd7b98efa293ebc91287a6dee4" compoundref="ability_8cpp" startline="79" endline="102">openage::MoveAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_garrison_ability_1afbd9de019824dcf92b3b5dd4e5e1aea7" compoundref="ability_8cpp" startline="140" endline="146">openage::GarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_ungarrison_ability_1a6ed7fdb59dc12befd1e0be6fbdd2b387" compoundref="ability_8cpp" startline="161" endline="169">openage::UngarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_train_ability_1af4ea7db282a8000eb59e8edc540d40c4" compoundref="ability_8cpp" startline="184" endline="190">openage::TrainAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_build_ability_1acf4dba9dcd9ed37efcbec8f14da3c3a2" compoundref="ability_8cpp" startline="230" endline="239">openage::BuildAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_gather_ability_1a24e201b13152f9cc654d2b69ec95940e" compoundref="ability_8cpp" startline="257" endline="269">openage::GatherAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_attack_ability_1ab607828e9d6469ea9405cfc5f1ab2735" compoundref="ability_8cpp" startline="292" endline="300">openage::AttackAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_repair_ability_1aac321a378657813f98a938df9be7256d" compoundref="ability_8cpp" startline="320" endline="328">openage::RepairAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_heal_ability_1a7da7aca0fca2b96e24874441df1a016e" compoundref="ability_8cpp" startline="348" endline="356">openage::HealAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_patrol_ability_1ad0b338306b2825e24536dc95bf4ae3d1" compoundref="ability_8cpp" startline="368" endline="374">openage::PatrolAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_convert_ability_1a3ed81fd0cceaa364654c89803c3b0e48" compoundref="ability_8cpp" startline="393" endline="401">openage::ConvertAbility::invoke</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4aeeaaaef4924780b6ee886ea8ffe98e" compoundref="producer_8cpp" startline="749" endline="788">openage::BuildingProducer::make_annex</referencedby>
+        <referencedby refid="classopenage_1_1_gather_action_1a578fcecec436b05efb5059bbb35837fe" compoundref="unit_2action_8cpp" startline="1155" endline="1179">openage::GatherAction::nearest_dropsite</referencedby>
+        <referencedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e" compoundref="unit_2action_8cpp" startline="932" endline="956">openage::BuildAction::on_completion</referencedby>
+        <referencedby refid="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c" compoundref="unit_2action_8cpp" startline="1135" endline="1153">openage::GatherAction::on_completion_in_range</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_nyan_type_1ae2f61064a00875267824a0bdfba63085" compoundref="unit__type_8cpp" startline="138" endline="157">openage::NyanType::place</referencedby>
+        <referencedby refid="classopenage_1_1_move_action_1afa4e4983c00b0207af76c7b717e81a05" compoundref="unit_2action_8cpp" startline="591" endline="685">openage::MoveAction::update</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1accf1000738bfedfae052b9257509ef97" compoundref="terrain__object_8cpp" startline="32" endline="36">openage::TerrainObject::~TerrainObject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -81,7 +110,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="45" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="45" column="1"/>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">openage::log::FileSink::output_log_message</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" compoundref="stdout__logsink_8cpp" startline="48" endline="61">openage::log::StdOutSink::output_log_message</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -97,7 +128,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/logsource.h" line="51" column="1" bodyfile="libopenage/log/logsource.cpp" bodystart="28" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp" bodystart="28" bodyend="33"/>
+        <referencedby refid="classopenage_1_1log_1_1_log_source_1aa2ff50c079c20b6ff1dfa08f45080b0a" compoundref="logsource_8cpp" startline="14" endline="16">LogSource</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -108,36 +140,36 @@
 <para>cppclass <ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref>: void log(message msg) except + const size_t logger_id string <ref refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc" kindref="member">logsource_name()</ref> except + </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3139">
+      <node id="4034">
         <label>openage::log::NamedLogSource</label>
         <link refid="classopenage_1_1log_1_1_named_log_source"/>
-        <childnode refid="3138" relation="public-inheritance">
+        <childnode refid="4033" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3141">
+      <node id="4036">
         <label>openage::Unit</label>
         <link refid="classopenage_1_1_unit"/>
-        <childnode refid="3138" relation="public-inheritance">
+        <childnode refid="4033" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3140">
+      <node id="4035">
         <label>openage::log::tests::TestLogSource</label>
         <link refid="classopenage_1_1log_1_1tests_1_1_test_log_source"/>
-        <childnode refid="3138" relation="public-inheritance">
+        <childnode refid="4033" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3138">
+      <node id="4033">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3142">
+      <node id="4037">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/logsource.h" line="27" column="1" bodyfile="libopenage/log/logsource.h" bodystart="27" bodyend="52"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h" bodystart="27" bodyend="52"/>
     <listofallmembers>
       <member refid="classopenage_1_1log_1_1_log_source_1a10cb7dc55a04eb782bbed1d4dbc688bf" prot="private" virt="non-virtual"><scope>openage::log::LogSource</scope><name>get_unique_logger_id</name></member>
       <member refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" prot="public" virt="non-virtual"><scope>openage::log::LogSource</scope><name>log</name></member>

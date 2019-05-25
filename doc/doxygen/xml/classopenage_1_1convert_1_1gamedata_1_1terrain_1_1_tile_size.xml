@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::terrain::TileSize</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a647d6e419eb962aae0ff675c60356a45" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.terrain.TileSize::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;tile_size&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="214" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a20e2f9295956b5cfa3d0a87fcbe39e4a" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.terrain.TileSize::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;terrain&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="215" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a7e90fae113168d454c231c2b521b8187" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.terrain.TileSize::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;size definition of one terrain tile.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="216" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a1404ecc1e0411a9fdd3a5ceae5d20ec0" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.terrain.TileSize::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ_EXPORT, &quot;width&quot;, &quot;int16_t&quot;),
+        (READ_EXPORT, &quot;height&quot;, &quot;int16_t&quot;),
+        (READ_EXPORT, &quot;delta_z&quot;, &quot;int16_t&quot;),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="218" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1328">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1327">
+        <label>openage.convert.gamedata.terrain.TileSize</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size"/>
+        <childnode refid="1328" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1330">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1329">
+        <label>openage.convert.gamedata.terrain.TileSize</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size"/>
+        <childnode refid="1330" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="213" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="213" bodyend="223"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a1404ecc1e0411a9fdd3a5ceae5d20ec0" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a647d6e419eb962aae0ff675c60356a45" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a20e2f9295956b5cfa3d0a87fcbe39e4a" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size_1a7e90fae113168d454c231c2b521b8187" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TileSize</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

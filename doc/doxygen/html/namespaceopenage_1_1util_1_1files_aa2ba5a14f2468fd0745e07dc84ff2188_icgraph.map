@@ -1,0 +1,13 @@
+<map id="openage.util.files.read_guaranteed" name="openage.util.files.read_guaranteed">
+<area shape="rect" id="node1" title=" " alt="" coords="1396,133,1544,175"/>
+<area shape="rect" id="node2" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml#a17b11fd7e416e7e4bac798af10470d54" title=" " alt="" coords="827,168,1045,209"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#a10cfd96f5d25886cfe84b8fe739f1deb" title="Reads the appropriate amount of data from fileobj, and unpacks it." alt="" coords="565,9,740,51"/>
+<area shape="rect" id="node5" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#a455bb79e71a8baa07af00ac680085f6d" title="reads the data of block block_id." alt="" coords="1113,75,1341,116"/>
+<area shape="rect" id="node9" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml#a4d9e75ec517f4c47627143b3a950a7e7" title="Called during the constructor run." alt="" coords="1105,192,1348,233"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1util_1_1files.xhtml#a648056f11b83f759c99f551f483e9bef" title="Reads bytes until a null terminator is reached." alt="" coords="1152,257,1301,299"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,89,193,131"/>
+<area shape="rect" id="node6" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#ad9654069c6554f9859298fa5c1e85b73" title=" " alt="" coords="822,77,1050,119"/>
+<area shape="rect" id="node7" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#aa01e2f0b6657c5c629188cbc3a0e0a57" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="539,89,767,131"/>
+<area shape="rect" id="node8" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#aadb76e27d69a7a94abc320498c316efe" title="recursively read defined binary data from raw at given offset." alt="" coords="241,89,491,131"/>
+<area shape="rect" id="node11" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file.xhtml#ade45243e5c507f83f57d2ca5ad6a27e8" title="Called during the constructor run." alt="" coords="815,257,1057,299"/>
+</map>

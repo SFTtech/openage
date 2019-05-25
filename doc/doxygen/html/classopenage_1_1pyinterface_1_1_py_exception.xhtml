@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::pyinterface::PyException Class Reference</title>
+<title>openage: openage::pyinterface::PyException Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1pyinterface_1_1_py_exc
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="pyexception_8h_source.xhtml">pyexception.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::pyinterface::PyException:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception__inherit__graph.svg" width="191" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::pyinterface::PyException:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception__inherit__graph.svg" width="191" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::pyinterface::PyException:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::pyinterface::PyException:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -169,6 +173,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Initializes this-&gt;backtrace with a <a class="el" href="classopenage_1_1pyinterface_1_1_py_exception_backtrace.xhtml">PyExceptionBacktrace</a> object that points at this-&gt;py_obj-&gt;get_ref(). </p>
 
 <p class="definition">Definition at line <a class="el" href="pyexception_8cpp_source.xhtml#l00030">30</a> of file <a class="el" href="pyexception_8cpp_source.xhtml">pyexception.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                 {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">backtrace</a> = std::make_shared&lt;PyExceptionBacktrace&gt;(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#ac541a09011ddd24b3e16700f9979b3fc">py_obj</a>.<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">get_ref</a>());</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_ac75d8f60c25c4a7570dcdf83b601d639"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#ac75d8f60c25c4a7570dcdf83b601d639">openage::pyinterface::PyObjectRef::get_ref</a></div><div class="ttdeci">PyObject * get_ref() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8h_source.xhtml#l00246">pyobject.h:246</a></div></div>
+<div class="ttc" id="classopenage_1_1error_1_1_error_xhtml_a8ad0320b8e32d6f187d0f4a74bd89d69"><div class="ttname"><a href="classopenage_1_1error_1_1_error.xhtml#a8ad0320b8e32d6f187d0f4a74bd89d69">openage::error::Error::backtrace</a></div><div class="ttdeci">std::shared_ptr&lt; Backtrace &gt; backtrace</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00097">error.h:97</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_exception_xhtml_ac541a09011ddd24b3e16700f9979b3fc"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#ac541a09011ddd24b3e16700f9979b3fc">openage::pyinterface::PyException::py_obj</a></div><div class="ttdeci">PyObjectRef py_obj</div><div class="ttdef"><b>Definition:</b> <a href="pyexception_8h_source.xhtml#l00071">pyexception.h:71</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="error_2error_8h_source.xhtml#l00097">openage::error::Error::backtrace</a>, <a class="el" href="pyobject_8h_source.xhtml#l00246">openage::pyinterface::PyObjectRef::get_ref()</a>, and <a class="el" href="pyexception_8h_source.xhtml#l00071">py_obj</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception_aa8b1811a748a3b9098ecea916a925393_cgraph.svg" width="403" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -199,6 +216,30 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1error_1_1_error.xhtml#a6c5c486df5943aa399b6c051d9eb9059">openage::error::Error</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="pyexception_8cpp_source.xhtml#l00035">35</a> of file <a class="el" href="pyexception_8cpp_source.xhtml">pyexception.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                       {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::string <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.append(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#ac541a09011ddd24b3e16700f9979b3fc">py_obj</a>.<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428">modulename</a>());</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    result.push_back(<span class="charliteral">&#39;.&#39;</span>);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>.append(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#ac541a09011ddd24b3e16700f9979b3fc">py_obj</a>.<a class="code" href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767">classname</a>());</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_a912e76dc7854f9c1816533f6f8571767"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#a912e76dc7854f9c1816533f6f8571767">openage::pyinterface::PyObjectRef::classname</a></div><div class="ttdeci">std::string classname() const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00256">pyobject.cpp:256</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_object_ref_xhtml_afd545e1817cad9ab9f5c84934d83e428"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_object_ref.xhtml#afd545e1817cad9ab9f5c84934d83e428">openage::pyinterface::PyObjectRef::modulename</a></div><div class="ttdeci">std::string modulename() const</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00251">pyobject.cpp:251</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_py_exception_xhtml_ac541a09011ddd24b3e16700f9979b3fc"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_py_exception.xhtml#ac541a09011ddd24b3e16700f9979b3fc">openage::pyinterface::PyException::py_obj</a></div><div class="ttdeci">PyObjectRef py_obj</div><div class="ttdef"><b>Definition:</b> <a href="pyexception_8h_source.xhtml#l00071">pyexception.h:71</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00256">openage::pyinterface::PyObjectRef::classname()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00251">openage::pyinterface::PyObjectRef::modulename()</a>, <a class="el" href="pyexception_8h_source.xhtml#l00071">py_obj</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="exctranslate__tests_8cpp_source.xhtml#l00042">openage::pyinterface::tests::err_py_to_cpp()</a>, and <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00133">openage::pyinterface::tests::pyobject_demo()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception_a1352d1476e7824c11aca00df918879e1_cgraph.svg" width="603" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_exception_a1352d1476e7824c11aca00df918879e1_icgraph.svg" width="390" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -218,11 +259,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="pyexception_8h_source.xhtml#l00071">71</a> of file <a class="el" href="pyexception_8h_source.xhtml">pyexception.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyexception_8cpp_source.xhtml#l00030">init_backtrace()</a>, and <a class="el" href="pyexception_8cpp_source.xhtml#l00035">type_name()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/pyinterface/<a class="el" href="pyexception_8h_source.xhtml">pyexception.h</a></li>
-<li>libopenage/pyinterface/<a class="el" href="pyexception_8cpp_source.xhtml">pyexception.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/<a class="el" href="pyexception_8h_source.xhtml">pyexception.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/<a class="el" href="pyexception_8cpp_source.xhtml">pyexception.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

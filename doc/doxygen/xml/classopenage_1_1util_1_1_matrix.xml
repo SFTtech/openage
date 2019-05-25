@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="24" column="1" bodyfile="libopenage/util/matrix.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="26" column="1" bodyfile="libopenage/util/matrix.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_matrix_1a05cddcbaea57d38a247fc3f6bfe9732b" prot="public" static="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="28" column="1" bodyfile="libopenage/util/matrix.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_matrix_1a5e6ca60e377f5be70baace533d677b79" prot="public" static="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="29" column="1" bodyfile="libopenage/util/matrix.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_matrix_1a775ebdbef36a23cf8a7e62d7517f9303" prot="public" static="yes" mutable="no">
         <type>constexpr bool</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="30" column="1" bodyfile="libopenage/util/matrix.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_matrix_1a797428914210319763ae300a914e9177" prot="public" static="yes" mutable="no">
         <type>constexpr bool</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="31" column="1" bodyfile="libopenage/util/matrix.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_matrix_1a7eeb76d6d746657e82580bca16bd0b95" prot="public" static="yes" mutable="no">
         <type>constexpr bool</type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="32" column="1" bodyfile="libopenage/util/matrix.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="37" column="1" bodyfile="libopenage/util/matrix.h" bodystart="37" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="37" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1aceff6c42bedce3eb5850b05ab6145112" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="45" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="45" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1aaf3e43eed1934588bcf877c435502934" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="52" column="1" bodyfile="libopenage/util/matrix.h" bodystart="52" bodyend="56"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="52" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a19707201a8fcd11cbeb9f91f72f7ccfd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="62" column="1" bodyfile="libopenage/util/matrix.h" bodystart="62" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="62" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -226,7 +226,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="89" column="1" bodyfile="libopenage/util/matrix.h" bodystart="89" bodyend="98"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="89" bodyend="98"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a23f79a50b5b6c3461e674e7b07432ff7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -251,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="104" column="1" bodyfile="libopenage/util/matrix.h" bodystart="104" bodyend="115"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="104" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1aa58e34206c0925efc722483e34ada587" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, 1, T &gt;</type>
@@ -269,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="120" column="1" bodyfile="libopenage/util/matrix.h" bodystart="120" bodyend="122"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="120" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a7b100e3972d47f11b30e241809ec29a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix_1a5ea0a61c6ed750526162578bb981ee24" kindref="member">this_type</ref></type>
@@ -287,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="127" column="1" bodyfile="libopenage/util/matrix.h" bodystart="127" bodyend="135"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="127" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1ad13f1ffce8d8f40098cb63cb8a609330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix_1a5ea0a61c6ed750526162578bb981ee24" kindref="member">this_type</ref></type>
@@ -305,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="140" column="1" bodyfile="libopenage/util/matrix.h" bodystart="140" bodyend="148"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="140" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a7e2887f1612a7a82733967b1856434ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -323,7 +325,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="153" column="1" bodyfile="libopenage/util/matrix.h" bodystart="153" bodyend="159"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="153" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="153" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a7b93d69889c489a4137c3f7a07708050" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix_1a5ea0a61c6ed750526162578bb981ee24" kindref="member">this_type</ref></type>
@@ -341,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="164" column="1" bodyfile="libopenage/util/matrix.h" bodystart="164" bodyend="168"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="164" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="164" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a3d5d06bd34e0a9eea626b00b080ad3d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -359,7 +361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="173" column="1" bodyfile="libopenage/util/matrix.h" bodystart="173" bodyend="179"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="173" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="173" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a47559fde49b3a9634d95596d87fbea98" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix_1a5ea0a61c6ed750526162578bb981ee24" kindref="member">this_type</ref></type>
@@ -377,7 +379,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="184" column="1" bodyfile="libopenage/util/matrix.h" bodystart="184" bodyend="188"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="184" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="184" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a4950945a55363fd77668b983001d55b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; N, M, T &gt;</type>
@@ -391,7 +393,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="193" column="1" bodyfile="libopenage/util/matrix.h" bodystart="193" bodyend="201"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="193" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="193" bodyend="201"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" compoundref="matrix__test_8cpp" startline="12" endline="101">openage::util::tests::matrix</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1a58d27b46e7ceaddc0c7ff2e0e9f2a6cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -417,7 +420,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="208" column="1" bodyfile="libopenage/util/matrix.h" bodystart="208" bodyend="214"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="208" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="208" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_matrix_1ae8e23f59ac0793b10d8487abac1e2edb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -443,7 +446,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="221" column="1" bodyfile="libopenage/util/matrix.h" bodystart="221" bodyend="229"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="221" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="221" bodyend="229"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" compoundref="quaternion_8h" startline="66" endline="133">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -471,7 +475,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="76" column="1" bodyfile="libopenage/util/matrix.h" bodystart="76" bodyend="84"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="76" bodyend="84"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -495,7 +500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="234" column="1" bodyfile="libopenage/util/matrix.h" bodystart="234" bodyend="251"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="234" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="234" bodyend="251"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -504,28 +509,28 @@
 <para><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref> class with arithmetic. M rows, N columns. T = underlying single value type (float, double, ...) </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3187">
+      <node id="5957">
         <label>std::array&lt; std::array&lt; T, N &gt;, M &gt;</label>
       </node>
-      <node id="3186">
+      <node id="5956">
         <label>openage::util::Matrix&lt; M, N, T &gt;</label>
         <link refid="classopenage_1_1util_1_1_matrix"/>
-        <childnode refid="3187" relation="public-inheritance">
+        <childnode refid="5957" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3189">
+      <node id="5959">
         <label>std::array&lt; std::array&lt; T, N &gt;, M &gt;</label>
       </node>
-      <node id="3188">
+      <node id="5958">
         <label>openage::util::Matrix&lt; M, N, T &gt;</label>
         <link refid="classopenage_1_1util_1_1_matrix"/>
-        <childnode refid="3189" relation="public-inheritance">
+        <childnode refid="5959" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/matrix.h" line="20" column="1" bodyfile="libopenage/util/matrix.h" bodystart="20" bodyend="252"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="20" bodyend="252"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_matrix_1a5e6ca60e377f5be70baace533d677b79" prot="public" virt="non-virtual"><scope>openage::util::Matrix</scope><name>cols</name></member>
       <member refid="classopenage_1_1util_1_1_matrix_1a17a9f1eb11a77fa366b55f0a1143b541" prot="public" virt="non-virtual"><scope>openage::util::Matrix</scope><name>default_eps</name></member>

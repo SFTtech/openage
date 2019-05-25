@@ -17,7 +17,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="69" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="69" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" compoundref="score_8cpp" startline="24" endline="27">add_score</referencedby>
+        <referencedby refid="classopenage_1_1_score_1a544fc32ebabe81bb0122dcd4ea9c7931" compoundref="score_8h" startline="62" endline="62">get_score</referencedby>
+        <referencedby refid="classopenage_1_1_score_1aa5c379cb015205d10950f61b40a51f10" compoundref="score_8cpp" startline="33" endline="36">remove_score</referencedby>
+        <referencedby refid="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff" compoundref="score_8cpp" startline="77" endline="88">openage::TeamScore::update_score</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_score_1a88422345732818ee036e2f25898c08ef" prot="protected" static="no" mutable="no">
         <type>int</type>
@@ -30,7 +34,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="73" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="73" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_score_1aaae75d0638c4c4f1dbd9905d39855821" compoundref="score_8h" startline="65" endline="65">get_score_total</referencedby>
+        <referencedby refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" compoundref="score_8cpp" startline="50" endline="55">update_score</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -46,7 +52,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="78" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="78" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="78" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_score_1a6a66aa42a2fc87950c5b26ed4a4ce6fb" compoundref="score_8cpp" startline="38" endline="42">update_map_explored</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_score_1ab682c48786831b860a6f43e4c08c46b5" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -60,7 +67,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="81" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="81" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="81" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" compoundref="score_8cpp" startline="44" endline="48">update_resources</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -75,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="36" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="12" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="12" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -96,7 +104,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="38" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="20" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="20" bodyend="22"/>
+        <referencedby refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" compoundref="player_8cpp" startline="148" endline="191">openage::Player::active_unit_added</referencedby>
+        <referencedby refid="classopenage_1_1_player_1a2d3f269dc4b0acd1972e4d0a32f97c2f" compoundref="player_8cpp" startline="233" endline="236">openage::Player::killed_unit</referencedby>
+        <referencedby refid="classopenage_1_1_score_1a6a66aa42a2fc87950c5b26ed4a4ce6fb" compoundref="score_8cpp" startline="38" endline="42">update_map_explored</referencedby>
+        <referencedby refid="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" compoundref="score_8cpp" startline="44" endline="48">update_resources</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -117,7 +129,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="39" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="24" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="24" bodyend="27"/>
+        <references refid="classopenage_1_1_score_1a34656b36845ee87f8678156079551a7f" compoundref="score_8h" startline="69">score</references>
+        <references refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" compoundref="score_8cpp" startline="50" endline="55">update_score</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1a7867975c457c1de476f8d5ecd1ae452f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -138,7 +152,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="41" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="29" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="29" bodyend="31"/>
+        <referencedby refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" compoundref="player_8cpp" startline="193" endline="231">openage::Player::active_unit_removed</referencedby>
+        <referencedby refid="classopenage_1_1_score_1a6a66aa42a2fc87950c5b26ed4a4ce6fb" compoundref="score_8cpp" startline="38" endline="42">update_map_explored</referencedby>
+        <referencedby refid="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" compoundref="score_8cpp" startline="44" endline="48">update_resources</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1aa5c379cb015205d10950f61b40a51f10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -159,7 +176,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="42" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="33" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="33" bodyend="36"/>
+        <references refid="classopenage_1_1_score_1a34656b36845ee87f8678156079551a7f" compoundref="score_8h" startline="69">score</references>
+        <references refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" compoundref="score_8cpp" startline="50" endline="55">update_score</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1a6a66aa42a2fc87950c5b26ed4a4ce6fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -177,7 +196,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="47" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="38" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="38" bodyend="42"/>
+        <references refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" compoundref="score_8cpp" startline="20" endline="22">add_score</references>
+        <references refid="classopenage_1_1_score_1a7867975c457c1de476f8d5ecd1ae452f" compoundref="score_8cpp" startline="29" endline="31">remove_score</references>
+        <references refid="classopenage_1_1_score_1af2083adedafe04b9f0ff56e77ec3f032" compoundref="score_8h" startline="78">score_exploration</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a83ec45960b80c035a0068df1d9df5aa8">openage::technology</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -195,7 +218,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="52" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="44" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="44" bodyend="48"/>
+        <references refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" compoundref="score_8cpp" startline="20" endline="22">add_score</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a0959a8b663be96468a1c5c1d456243a2">openage::economy</references>
+        <references refid="classopenage_1_1_score_1a7867975c457c1de476f8d5ecd1ae452f" compoundref="score_8cpp" startline="29" endline="31">remove_score</references>
+        <references refid="classopenage_1_1_score_1ab682c48786831b860a6f43e4c08c46b5" compoundref="score_8h" startline="81">score_resources</references>
+        <references refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" compoundref="gamestate_2resource_8cpp" startline="177" endline="183">openage::ResourceBundle::sum</references>
+        <referencedby refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" compoundref="player_8cpp" startline="242" endline="253">openage::Player::on_resources_change</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -211,7 +240,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="58" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="50" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="50" bodyend="55"/>
+        <references refid="classopenage_1_1_score_1a544fc32ebabe81bb0122dcd4ea9c7931" compoundref="score_8h" startline="62" endline="62">get_score</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830aab18b2d5fd1535004e3d8428c3056523">openage::SCORE_CATEGORY_COUNT</references>
+        <references refid="classopenage_1_1_score_1a88422345732818ee036e2f25898c08ef" compoundref="score_8h" startline="73">score_total</references>
+        <referencedby refid="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" compoundref="score_8cpp" startline="24" endline="27">add_score</referencedby>
+        <referencedby refid="classopenage_1_1_score_1aa5c379cb015205d10950f61b40a51f10" compoundref="score_8cpp" startline="33" endline="36">remove_score</referencedby>
+        <referencedby refid="classopenage_1_1_player_score_1a335bfe5e296ab4563b6689a8cacca562" compoundref="score_8cpp" startline="63" endline="69">openage::PlayerScore::update_score</referencedby>
+        <referencedby refid="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff" compoundref="score_8cpp" startline="77" endline="88">openage::TeamScore::update_score</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1a544fc32ebabe81bb0122dcd4ea9c7931" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -228,7 +264,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="62" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="62" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="62" bodyend="62"/>
+        <references refid="classopenage_1_1_score_1a34656b36845ee87f8678156079551a7f" compoundref="score_8h" startline="69">score</references>
+        <referencedby refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd" compoundref="score_8cpp" startline="50" endline="55">update_score</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1af89e51c1d6fa79f4c919ab3149ecabd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -245,7 +283,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="63" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="63" bodyend="63"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="63" bodyend="63"/>
+        <references refid="classopenage_1_1_score_1a34656b36845ee87f8678156079551a7f" compoundref="score_8h" startline="69">score</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_score_1aaae75d0638c4c4f1dbd9905d39855821" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -258,7 +297,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="65" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="65" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="65" bodyend="65"/>
+        <references refid="classopenage_1_1_score_1a88422345732818ee036e2f25898c08ef" compoundref="score_8h" startline="73">score_total</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -267,30 +307,30 @@
 <para>Keeps track of a score and all the sub-scores </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4128">
+      <node id="5034">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="4126" relation="public-inheritance">
+        <childnode refid="5032" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4127">
+      <node id="5033">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="4126" relation="public-inheritance">
+        <childnode refid="5032" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4126">
+      <node id="5032">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4129">
+      <node id="5035">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/score.h" line="33" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="33" bodyend="82"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="33" bodyend="82"/>
     <listofallmembers>
       <member refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" prot="public" virt="non-virtual"><scope>openage::Score</scope><name>add_score</name></member>
       <member refid="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" prot="public" virt="non-virtual"><scope>openage::Score</scope><name>add_score</name></member>

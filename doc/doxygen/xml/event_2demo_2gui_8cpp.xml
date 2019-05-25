@@ -5,7 +5,7 @@
     <includes refid="event_2demo_2gui_8h" local="yes">gui.h</includes>
     <incdepgraph>
       <node id="6804">
-        <label>libopenage/event/demo/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.cpp</label>
         <link refid="event_2demo_2gui_8cpp"/>
         <childnode refid="6805" relation="include">
         </childnode>
@@ -293,6 +293,6 @@
 <codeline lineno="266"><highlight class="normal"></highlight></codeline>
 <codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/gui.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.cpp"/>
   </compounddef>
 </doxygen>

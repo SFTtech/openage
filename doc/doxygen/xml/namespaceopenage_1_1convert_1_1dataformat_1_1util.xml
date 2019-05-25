@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1dataformat_1_1util" kind="namespace" language="Python">
+    <compoundname>openage::convert::dataformat::util</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a7f2333e8a836d3ce2a476726ed0bbfed" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::dataformat::util.struct_type_lookup</definition>
+        <argsstring></argsstring>
+        <name>struct_type_lookup</name>
+        <initializer>=  {
+    &quot;char&quot;:               &quot;b&quot;,
+    &quot;unsigned char&quot;:      &quot;B&quot;,
+    &quot;int8_t&quot;:             &quot;b&quot;,
+    &quot;uint8_t&quot;:            &quot;B&quot;,
+    &quot;short&quot;:              &quot;h&quot;,
+    &quot;unsigned short&quot;:     &quot;H&quot;,
+    &quot;int16_t&quot;:            &quot;h&quot;,
+    &quot;uint16_t&quot;:           &quot;H&quot;,
+    &quot;int&quot;:                &quot;i&quot;,
+    &quot;unsigned int&quot;:       &quot;I&quot;,
+    &quot;int32_t&quot;:            &quot;i&quot;,
+    &quot;uint32_t&quot;:           &quot;I&quot;,
+    &quot;long&quot;:               &quot;l&quot;,
+    &quot;unsigned long&quot;:      &quot;L&quot;,
+    &quot;long long&quot;:          &quot;q&quot;,
+    &quot;unsigned long long&quot;: &quot;Q&quot;,
+    &quot;int64_t&quot;:            &quot;q&quot;,
+    &quot;uint64_t&quot;:           &quot;Q&quot;,
+    &quot;float&quot;:              &quot;f&quot;,
+    &quot;double&quot;:             &quot;d&quot;,
+    &quot;char[]&quot;:             &quot;s&quot;,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a54a8af4c9c5573541a15c7660e862111" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.util.encode_value</definition>
+        <argsstring>(val)</argsstring>
+        <name>encode_value</name>
+        <param>
+          <type><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref></type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="42" bodyend="58"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a356499a04a03d301b12a37c3ade40415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.util.gather_data</definition>
+        <argsstring>(obj, members)</argsstring>
+        <name>gather_data</name>
+        <param>
+          <type>obj</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>members</type>
+          <defname>members</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="59" bodyend="67"/>
+        <references refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</references>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1abe9d9997e55017fa14737a7603afadba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.util.determine_header</definition>
+        <argsstring>(for_type)</argsstring>
+        <name>determine_header</name>
+        <param>
+          <type>for_type</type>
+          <defname>for_type</defname>
+        </param>
+        <briefdescription>
+<para>returns the includable headers for using the given C type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="71" bodyend="127"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a5e3a7c5e8aeddbd762f9a158f9bc5aab" compoundref="util_8py" startline="128" endline="138">openage.convert.dataformat.util.determine_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1ae1554def5866507bb2a22a7e8eb1812e" compoundref="members_8py" startline="299" endline="304">openage.convert.dataformat.members.NumberMember.get_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member_1aeaf778094650f419072b942ff8d0dc8e" compoundref="members_8py" startline="548" endline="556">openage.convert.dataformat.members.CharArrayMember.get_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abff2c6510cd43895368ddb3b8e75fa3a" compoundref="members_8py" startline="615" endline="624">openage.convert.dataformat.members.MultisubtypeMember.get_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1affdef24b47a64dae69159b0e27b46b65" compoundref="members_8py" startline="828" endline="833">openage.convert.dataformat.members.SubdataMember.get_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1af99a4c7a2f6bae6c07dfa914831eb8c2" compoundref="members_8py" startline="286" endline="298">openage.convert.dataformat.members.NumberMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member_1ad63fed30ee3cf877fa333088b1cab269" compoundref="members_8py" startline="523" endline="547">openage.convert.dataformat.members.CharArrayMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a5e3a7c5e8aeddbd762f9a158f9bc5aab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.util.determine_headers</definition>
+        <argsstring>(for_types)</argsstring>
+        <name>determine_headers</name>
+        <param>
+          <type>for_types</type>
+          <defname>for_types</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="128" bodyend="138"/>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1abe9d9997e55017fa14737a7603afadba" compoundref="util_8py" startline="71" endline="127">openage.convert.dataformat.util.determine_header</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1af495eeb0589a107c03a789b9b59a37c8" compoundref="members_8py" startline="361" endline="383">openage.convert.dataformat.members.ContinueReadMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" compoundref="members_8py" startline="394" endline="427">openage.convert.dataformat.members.EnumMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1dataformat_1_1util_1ad2937bddd2ac154bee7b301341da2e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.util.commentify_lines</definition>
+        <argsstring>(commentstr, text)</argsstring>
+        <name>commentify_lines</name>
+        <param>
+          <type>commentstr</type>
+          <defname>commentstr</defname>
+        </param>
+        <param>
+          <type>text</type>
+          <defname>text</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" bodystart="139" bodyend="141"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/util.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

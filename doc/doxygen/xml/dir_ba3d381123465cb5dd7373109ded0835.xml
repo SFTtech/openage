@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_ba3d381123465cb5dd7373109ded0835" kind="dir">
-    <compoundname>libopenage/util/compress</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress</compoundname>
     <innerfile refid="bitstream_8h">bitstream.h</innerfile>
     <innerfile refid="lzxd_8cpp">lzxd.cpp</innerfile>
     <innerfile refid="lzxd_8h">lzxd.h</innerfile>
@@ -9,6 +9,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/compress/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/"/>
   </compounddef>
 </doxygen>

@@ -5,8 +5,8 @@
     <includes local="no">memory</includes>
     <includes refid="heuristics_8h" local="yes">heuristics.h</includes>
     <includes refid="pathfinding_2path_8h" local="yes">path.h</includes>
-    <includedby refid="a__star_8cpp" local="yes">libopenage/pathfinding/a_star.cpp</includedby>
-    <includedby refid="unit_2action_8cpp" local="yes">libopenage/unit/action.cpp</includedby>
+    <includedby refid="a__star_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</includedby>
+    <includedby refid="unit_2action_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</includedby>
     <incdepgraph>
       <node id="18516">
         <label>list</label>
@@ -211,7 +211,7 @@
         <label>typeinfo</label>
       </node>
       <node id="18482">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="18483" relation="include">
         </childnode>
@@ -348,15 +348,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="18532">
-        <label>libopenage/pathfinding/a_star.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</label>
         <link refid="a__star_8cpp"/>
       </node>
       <node id="18533">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="18531">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="18532" relation="include">
         </childnode>
@@ -406,6 +406,6 @@
 <codeline lineno="50"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>path</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pathfinding/a_star.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h"/>
   </compounddef>
 </doxygen>

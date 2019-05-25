@@ -1,0 +1,11 @@
+<map id="openage::TerrainChunk::get_size" name="openage::TerrainChunk::get_size">
+<area shape="rect" id="node1" title=" " alt="" coords="1904,107,2059,148"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a248471b44bfea2faad6d97d9dd07eb00" title="Helper function for use by implementations of seek()." alt="" coords="1669,107,1856,148"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object.xhtml#a2312775f74be5a112a1ab18f0f581173" title="Seeks to a given position." alt="" coords="1367,107,1621,148"/>
+<area shape="rect" id="node4" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#a455bb79e71a8baa07af00ac680085f6d" title="reads the data of block block_id." alt="" coords="1091,76,1319,117"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment.xhtml#a2c451557a21c0bb2481bd4a8da2f6df5" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="839,139,1019,180"/>
+<area shape="rect" id="node5" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#ad9654069c6554f9859298fa5c1e85b73" title=" " alt="" coords="815,73,1043,115"/>
+<area shape="rect" id="node6" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#aa01e2f0b6657c5c629188cbc3a0e0a57" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="539,73,767,115"/>
+<area shape="rect" id="node7" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#aadb76e27d69a7a94abc320498c316efe" title="recursively read defined binary data from raw at given offset." alt="" coords="241,29,491,71"/>
+<area shape="rect" id="node8" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,88,193,129"/>
+</map>

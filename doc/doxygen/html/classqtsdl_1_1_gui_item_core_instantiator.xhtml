@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiItemCoreInstantiator&lt; T &gt; Class Template Reference</title>
+<title>openage: qtsdl::GuiItemCoreInstantiator&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_item_core_instantia
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiItemCoreInstantiator&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiItemCoreInstantiator&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_core_instantiator__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiItemCoreInstantiator&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiItemCoreInstantiator&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_core_instantiator__coll__graph.svg" width="236" height="375"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -183,7 +188,10 @@ template&lt;typename T&gt; </div>
 <p>Sets up a factory for the type T. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00244">244</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        :</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        GuiItemMethods&lt;T&gt;{} {</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keyword">using namespace </span>std::placeholders;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        item_base-&gt;instantiate_core_func = <a class="code" href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">std::bind</a>(&amp;<a class="code" href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a72c1388c7758fe72b737e8a17b291c88">GuiItemCoreInstantiator::instantiate_core</a>, <span class="keyword">this</span>);</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        item_base-&gt;do_adopt_core_func = <a class="code" href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">std::bind</a>(&amp;<a class="code" href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732">GuiItemCoreInstantiator::do_adopt_core</a>, <span class="keyword">this</span>, _1, _2);</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div><div class="ttc" id="namespaceopenage_1_1renderer_xhtml_a00b1f2873c9bbd71a19b3a26bd11d03e"><div class="ttname"><a href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">openage::renderer::bind</a></div><div class="ttdeci">void bind() const</div><div class="ttdoc">Make this vertex array object the current one.</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_core_instantiator_xhtml_a72c1388c7758fe72b737e8a17b291c88"><div class="ttname"><a href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a72c1388c7758fe72b737e8a17b291c88">qtsdl::GuiItemCoreInstantiator::instantiate_core</a></div><div class="ttdeci">std::unique_ptr&lt; PersistentCoreHolderBase &gt; instantiate_core()</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00258">gui_item.h:258</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_core_instantiator_xhtml_a2069f6020034faeaae197821519fb732"><div class="ttname"><a href="classqtsdl_1_1_gui_item_core_instantiator.xhtml#a2069f6020034faeaae197821519fb732">qtsdl::GuiItemCoreInstantiator::do_adopt_core</a></div><div class="ttdeci">void do_adopt_core(PersistentCoreHolderBase *holder, const QString &amp;tag)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00272">gui_item.h:272</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae117ca57234ffdf888f9dda756c706e0"></a>
@@ -253,7 +261,9 @@ template&lt;typename T&gt; </div>
 <p>Attaches to a core object. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00272">272</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                                                             {</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        assert(holder);</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        T *origin = checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">if</span> (origin-&gt;holder) {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            qFatal(<span class="stringliteral">&quot;Error in QML code: GuiLiveReloader was asked to use same tag &#39;%s&#39; for multiple objects.&quot;</span>, qUtf8Printable(tag));</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">typeid</span>(decltype(*origin-&gt;holder)) != <span class="keyword">typeid</span>(*holder)) {</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                qFatal(</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    <span class="stringliteral">&quot;Error in QML code: GuiLiveReloader was asked &quot;</span></div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    <span class="stringliteral">&quot;to restore &#39;%s&#39; into different type &#39;%s&#39; &quot;</span></div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    <span class="stringliteral">&quot;using tag &#39;%s&#39;.&quot;</span>,</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    qUtf8Printable(<a class="code" href="namespaceqtsdl.xhtml#adfa85f2323dd14fc4cd2381acab77960">name_tidier</a>(<span class="keyword">typeid</span>(decltype(*origin-&gt;holder)).name())),</div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    qUtf8Printable(<a class="code" href="namespaceqtsdl.xhtml#adfa85f2323dd14fc4cd2381acab77960">name_tidier</a>(<span class="keyword">typeid</span>(*holder).name())),</div><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    qUtf8Printable(tag)</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                );</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                origin-&gt;holder = <a class="code" href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">checked_static_cast</a>&lt;decltype(origin-&gt;holder)&gt;(holder);</div><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                origin-&gt;holder-&gt;adopt_shell(origin);</div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div><div class="ttc" id="namespaceqtsdl_xhtml_adfa85f2323dd14fc4cd2381acab77960"><div class="ttname"><a href="namespaceqtsdl.xhtml#adfa85f2323dd14fc4cd2381acab77960">qtsdl::name_tidier</a></div><div class="ttdeci">QString name_tidier(const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8cpp_source.xhtml#l00008">gui_item.cpp:8</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_a220ce9f0bb41d3f42a8b559e454ed4bc"><div class="ttname"><a href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">qtsdl::checked_static_cast</a></div><div class="ttdeci">T checked_static_cast(U *u)</div><div class="ttdef"><b>Definition:</b> <a href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">qtsdl_checked_static_cast.h:10</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a72c1388c7758fe72b737e8a17b291c88"></a>
@@ -283,7 +293,7 @@ template&lt;typename T&gt; </div>
 <p>Creates and returns a core object of type Unwrap&lt;T&gt;::Type inside a holder. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00258">258</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                                               {</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        T *origin = checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">if</span> (origin-&gt;holder) {</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">return</span> std::unique_ptr&lt;PersistentCoreHolderBase&gt;();</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keyword">auto</span> core = std::make_unique&lt;typename Unwrap&lt;T&gt;::Type&gt;(origin);</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">return</span> std::make_unique&lt;<span class="keyword">typename</span> std::remove_reference&lt;decltype(*origin-&gt;holder)&gt;::type&gt;(std::move(core));</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aac199f6ace73ba00c049c3f1b664e948"></a>
@@ -315,7 +325,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/gui/guisys/link/<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

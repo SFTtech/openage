@@ -1,0 +1,7 @@
+<map id="openage.cvar.config_file.load_config_file" name="openage.cvar.config_file.load_config_file">
+<area shape="rect" id="node1" title="Load a config file, with possible subfile, into the cvar system." alt="" coords="5,49,143,90"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="197,5,313,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="191,56,318,83"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a173fdf777356d529586708570ee36be4" title="spam message" alt="" coords="191,107,319,133"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="367,56,560,83"/>
+</map>

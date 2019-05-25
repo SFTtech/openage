@@ -5,11 +5,11 @@
     <includes local="no">memory</includes>
     <includes local="no">QSGTexture</includes>
     <includes local="no">epoxy/gl.h</includes>
-    <includedby refid="gui__make__standalone__subtexture_8cpp" local="yes">libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</includedby>
-    <includedby refid="gui__texture_8cpp" local="yes">libopenage/gui/integration/private/gui_texture.cpp</includedby>
+    <includedby refid="gui__make__standalone__subtexture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</includedby>
+    <includedby refid="gui__texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</includedby>
     <incdepgraph>
       <node id="14465">
-        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
         <link refid="gui__make__standalone__subtexture_8h"/>
         <childnode refid="14466" relation="include">
         </childnode>
@@ -30,11 +30,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14470">
-        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</label>
         <link refid="gui__make__standalone__subtexture_8cpp"/>
       </node>
       <node id="14469">
-        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
         <link refid="gui__make__standalone__subtexture_8h"/>
         <childnode refid="14470" relation="include">
         </childnode>
@@ -42,7 +42,7 @@
         </childnode>
       </node>
       <node id="14471">
-        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</label>
         <link refid="gui__texture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -77,6 +77,6 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_make_standalone_subtexture.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.h"/>
   </compounddef>
 </doxygen>

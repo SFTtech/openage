@@ -223,7 +223,7 @@
         <label>iostream</label>
       </node>
       <node id="3492">
-        <label>libopenage/coord/declarations.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.cpp</label>
         <link refid="declarations_8cpp"/>
         <childnode refid="3493" relation="include">
         </childnode>
@@ -277,6 +277,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/declarations.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.cpp"/>
   </compounddef>
 </doxygen>

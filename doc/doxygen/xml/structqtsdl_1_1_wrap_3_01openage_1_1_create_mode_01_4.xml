@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="74" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="74" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,12 +25,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4979">
+      <node id="6607">
         <label>qtsdl::Wrap&lt; openage::CreateMode &gt;</label>
         <link refid="structqtsdl_1_1_wrap_3_01openage_1_1_create_mode_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/game_control_link.h" line="73" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="73" bodyend="75"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="73" bodyend="75"/>
     <listofallmembers>
       <member refid="structqtsdl_1_1_wrap_3_01openage_1_1_create_mode_01_4_1abf4e526ee1f87b5cfc4fd2cae06ee19f" prot="public" virt="non-virtual"><scope>qtsdl::Wrap&lt; openage::CreateMode &gt;</scope><name>Type</name></member>
     </listofallmembers>

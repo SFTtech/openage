@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.stringresource.StringResource Class Reference</title>
+<title>openage: openage.convert.stringresource.StringResource Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1stringresou
 <div class="title">openage.convert.stringresource.StringResource Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for openage.convert.stringresource.StringResource:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource__inherit__graph.svg" width="218" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.stringresource.StringResource:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource__inherit__graph.svg" width="218" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.stringresource.StringResource:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource__coll__graph.svg" width="218" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.stringresource.StringResource:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource__coll__graph.svg" width="218" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -158,7 +161,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stringresource_8py_source.xhtml#l00024">24</a> of file <a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        self.strings = defaultdict(<span class="keyword">lambda</span>: {})</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">def </span>fill_from(self, stringtable):</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -189,6 +192,26 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stringresource_8py_source.xhtml#l00035">35</a> of file <a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">for</span> lang, langstrings <span class="keywordflow">in</span> self.strings.items():</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">for</span> idx, text <span class="keywordflow">in</span> langstrings.items():</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                entry = {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="stringliteral">&quot;id&quot;</span>: idx,</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    <span class="stringliteral">&quot;lang&quot;</span>: lang,</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="stringliteral">&quot;text&quot;</span>: text,</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                data.append(entry)</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        data = sorted(data, key=<span class="keyword">lambda</span> x: x[<span class="stringliteral">&quot;id&quot;</span>])</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> [data_definition.DataDefinition(self, data, filename)]</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    @classmethod</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">def </span>structs(cls):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00359">openage::py.list()</a>, <a class="el" href="stringresource_8py_source.xhtml#l00026">openage.convert.stringresource.StringResource.strings</a>, and <a class="el" href="peresource_8py_source.xhtml#l00155">openage.convert.peresource.PEResources.strings</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00166">openage.convert.texture.Texture.save()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource_a4534f9e425147656e2c2669608b29127_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1stringresource_1_1_string_resource_a4534f9e425147656e2c2669608b29127_icgraph.svg" width="430" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -221,6 +244,10 @@ Static Public Attributes</h2></td></tr>
 <p>stringtable is a dict {langcode: {id: string}} </p>
 
 <p class="definition">Definition at line <a class="el" href="stringresource_8py_source.xhtml#l00031">31</a> of file <a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            self.strings[lang].update(langstrings)</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1curve_1_1tests.xhtml#adaea2f0357531c64ef6af72d720e37f2">dump</a>(self, filename):</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        data = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>()</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_1_1tests_xhtml_adaea2f0357531c64ef6af72d720e37f2"><div class="ttname"><a href="namespaceopenage_1_1curve_1_1tests.xhtml#adaea2f0357531c64ef6af72d720e37f2">openage::curve::tests::dump</a></div><div class="ttdeci">void dump(const std::unordered_map&lt; key_t, val_t &gt; &amp;map)</div><div class="ttdef"><b>Definition:</b> <a href="container_8cpp_source.xhtml#l00034">container.cpp:34</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="stringresource_8py_source.xhtml#l00026">openage.convert.stringresource.StringResource.strings</a>, and <a class="el" href="peresource_8py_source.xhtml#l00155">openage.convert.peresource.PEResources.strings</a>.</p>
 
 </div>
 </div>
@@ -241,7 +268,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stringresource_8py_source.xhtml#l00051">51</a> of file <a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a>.</p>
-
+<div class="fragment"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -331,6 +358,8 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="stringresource_8py_source.xhtml#l00026">26</a> of file <a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="stringresource_8py_source.xhtml#l00035">openage.convert.stringresource.StringResource.dump()</a>, and <a class="el" href="stringresource_8py_source.xhtml#l00031">openage.convert.stringresource.StringResource.fill_from()</a>.</p>
+
 </div>
 </div>
 <a id="a29b70717309e904f5e5e4bc9fa390e06"></a>
@@ -358,7 +387,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="stringresource_8py_source.xhtml">stringresource.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

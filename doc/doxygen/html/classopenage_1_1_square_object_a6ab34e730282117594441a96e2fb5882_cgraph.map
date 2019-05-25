@@ -1,0 +1,18 @@
+<map id="openage::SquareObject::intersects" name="openage::SquareObject::intersects">
+<area shape="rect" id="node1" title=" " alt="" coords="5,179,164,221"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title=" " alt="" coords="212,59,371,101"/>
+<area shape="rect" id="node10" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="251,129,331,156"/>
+<area shape="rect" id="node12" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="255,237,328,264"/>
+<area shape="rect" id="node15" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="257,187,326,213"/>
+<area shape="rect" id="node16" href="$structopenage_1_1coord_1_1tile.xhtml#a26e7ddc05f99069e9df2f35f3338d037" title=" " alt="" coords="223,289,359,330"/>
+<area shape="rect" id="node3" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title=" " alt="" coords="419,64,585,91"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="633,5,827,32"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1phys2.xhtml#a2cbf9e4669fb9702e6b086de22ac5eac" title=" " alt="" coords="653,57,807,98"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="653,122,807,163"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="889,5,1015,32"/>
+<area shape="rect" id="node8" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="875,154,1029,195"/>
+<area shape="rect" id="node9" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="881,89,1023,130"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa0eb736578910b123ea19652c670daab" title=" " alt="" coords="419,115,585,157"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="419,181,585,222"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="419,246,585,287"/>
+</map>

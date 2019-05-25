@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.h" line="21" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.h" line="23" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="23" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="23" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -41,30 +41,50 @@
 <para>cppclass testenum_value(EnumValue[testenum_value, int]): int numeric const char *name const char *stuff </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4395">
-        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
+      <node id="6106">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
       </node>
-      <node id="4394">
+      <node id="6105">
+        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="6106" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6104">
         <label>openage::util::tests::testenum_value</label>
         <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
-        <childnode refid="4395" relation="public-inheritance">
+        <childnode refid="6105" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4397">
+      <node id="6109">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="6110" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="6110">
+        <label>NumericType</label>
+      </node>
+      <node id="6108">
         <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="6109" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="4396">
+      <node id="6107">
         <label>openage::util::tests::testenum_value</label>
         <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
-        <childnode refid="4397" relation="public-inheritance">
+        <childnode refid="6108" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/enum_test.h" line="20" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="20" bodyend="26"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="20" bodyend="26"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum_value</scope><name>EnumValue</name></member>
       <member refid="structopenage_1_1util_1_1tests_1_1testenum__value_1a9e183b97bc101efff9981c266b9c3514" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum_value</scope><name>get_stuff</name></member>

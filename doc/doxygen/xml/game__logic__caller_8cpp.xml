@@ -25,7 +25,7 @@
         </childnode>
       </node>
       <node id="12906">
-        <label>libopenage/gui/guisys/private/game_logic_caller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.cpp</label>
         <link refid="game__logic__caller_8cpp"/>
         <childnode refid="12907" relation="include">
         </childnode>
@@ -69,6 +69,6 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/game_logic_caller.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.cpp"/>
   </compounddef>
 </doxygen>

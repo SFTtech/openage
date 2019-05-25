@@ -1,9 +1,9 @@
-<map id="libopenage/gui/guisys/link/gui_singleton_item.h" name="libopenage/gui/guisys/link/gui_singleton_item.h">
-<area shape="rect" id="node1" title=" " alt="" coords="388,5,557,47"/>
-<area shape="rect" id="node2" href="$engine__link_8h.xhtml" title=" " alt="" coords="305,95,451,136"/>
-<area shape="rect" id="node7" href="$gui__singleton__item_8cpp.xhtml" title=" " alt="" coords="476,95,659,136"/>
-<area shape="rect" id="node3" href="$assetmanager__link_8cpp.xhtml" title=" " alt="" coords="5,184,196,225"/>
-<area shape="rect" id="node4" href="$engine__link_8cpp.xhtml" title=" " alt="" coords="221,184,367,225"/>
-<area shape="rect" id="node5" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="391,184,533,225"/>
-<area shape="rect" id="node6" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="557,184,698,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/link/gui_singleton_item.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/link/gui_singleton_item.h">
+<area shape="rect" id="node1" title=" " alt="" coords="469,5,701,61"/>
+<area shape="rect" id="node2" href="$engine__link_8h.xhtml" title=" " alt="" coords="355,109,564,165"/>
+<area shape="rect" id="node7" href="$gui__singleton__item_8cpp.xhtml" title=" " alt="" coords="588,109,835,165"/>
+<area shape="rect" id="node3" href="$assetmanager__link_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$engine__link_8cpp.xhtml" title=" " alt="" coords="239,213,448,269"/>
+<area shape="rect" id="node5" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="472,213,681,269"/>
+<area shape="rect" id="node6" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="705,213,915,269"/>
 </map>

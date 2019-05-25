@@ -401,7 +401,7 @@
         </childnode>
       </node>
       <node id="23898">
-        <label>libopenage/screenshot.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp</label>
         <link refid="screenshot_8cpp"/>
         <childnode refid="23899" relation="include">
         </childnode>
@@ -584,10 +584,10 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" kindref="member">coord::pixel_t</ref><sp/>width<sp/>=<sp/>size.x,</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>height<sp/>=<sp/>size.y;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>warn_fn<sp/>=<sp/>[]<sp/>(png_structp<sp/></highlight><highlight class="comment">/*png_ptr*/</highlight><highlight class="normal">,<sp/>png_const_charp<sp/>message)<sp/>{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>err_fn<sp/>=<sp/>[]<sp/>(png_structp<sp/>png_ptr,<sp/>png_const_charp<sp/>message)<sp/>{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>longjmp(png_jmpbuf(png_ptr),<sp/>1);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
@@ -613,7 +613,7 @@
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>fout<sp/>=<sp/>std::fopen(<ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>.c_str(),<sp/></highlight><highlight class="stringliteral">&quot;wb&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fout<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>png_destroy_write_struct(&amp;png_ptr,<sp/>&amp;info_ptr);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>open<sp/>&apos;&quot;</highlight><highlight class="normal">&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>open<sp/>&apos;&quot;</highlight><highlight class="normal">&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::string(strerror(errno)));</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -636,7 +636,7 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>png_set_rows(png_ptr,<sp/>info_ptr,<sp/>&amp;row_ptrs[0]);</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO:<sp/>print<sp/>ingame<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>screenshot<sp/>to<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>screenshot<sp/>to<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>png_write_png(png_ptr,<sp/>info_ptr,<sp/>PNG_TRANSFORM_STRIP_FILLER_AFTER,<sp/>NULL);</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
@@ -647,6 +647,6 @@
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
 <codeline lineno="132"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/screenshot.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp"/>
   </compounddef>
 </doxygen>

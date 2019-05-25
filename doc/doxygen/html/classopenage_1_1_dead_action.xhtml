@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::DeadAction Class Reference</title>
+<title>openage: openage::DeadAction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1_dead_action.xhtml',''
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::DeadAction:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::DeadAction:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::DeadAction:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::DeadAction:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -211,6 +214,14 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00360">360</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    :</div><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <a class="code" href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">UnitAction</a>(e, <a class="code" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3ba564202d4005974a8279609ef0f95d43b">graphic_type::dying</a>),</div><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <a class="code" href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">end_frame</a>{.0f},</div><div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="classopenage_1_1_dead_action.xhtml#a2a3c6b2261bdcffe1bd35253e488d9cb">on_complete_func</a>{on_complete} {</div><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">auto</span> &amp;g_set = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">current_graphics</a>();</div><div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordflow">if</span> (g_set.count(<a class="code" href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">graphic</a>) &gt; 0) {</div><div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">end_frame</a> = g_set.at(<a class="code" href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">graphic</a>)-&gt;frame_count - 1;</div><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    }</div><div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a6cd7405af72dd0cf3994cee74608cf8b"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b">openage::UnitAction::current_graphics</a></div><div class="ttdeci">virtual const graphic_set &amp; current_graphics() const</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00127">action.cpp:127</a></div></div>
+<div class="ttc" id="classopenage_1_1_dead_action_xhtml_a2a3c6b2261bdcffe1bd35253e488d9cb"><div class="ttname"><a href="classopenage_1_1_dead_action.xhtml#a2a3c6b2261bdcffe1bd35253e488d9cb">openage::DeadAction::on_complete_func</a></div><div class="ttdeci">std::function&lt; void()&gt; on_complete_func</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00309">action.h:309</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_afe08a940aa0b7040c3a59d816de00fed"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#afe08a940aa0b7040c3a59d816de00fed">openage::UnitAction::graphic</a></div><div class="ttdeci">graphic_type graphic</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00202">action.h:202</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a5e6378e44a27518a589cc11f2ee36a3ba564202d4005974a8279609ef0f95d43b"><div class="ttname"><a href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3ba564202d4005974a8279609ef0f95d43b">openage::graphic_type::dying</a></div></div>
+<div class="ttc" id="classopenage_1_1_dead_action_xhtml_af2f70e785f65066f0cf4e0aeede0ef50"><div class="ttname"><a href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">openage::DeadAction::end_frame</a></div><div class="ttdeci">float end_frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00308">action.h:308</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a3fd3dd936ea6a850726bcfce9664909a"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a3fd3dd936ea6a850726bcfce9664909a">openage::UnitAction::UnitAction</a></div><div class="ttdeci">UnitAction(Unit *u, graphic_type initial_gt)</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8cpp_source.xhtml#l00089">action.cpp:89</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a5e6378e44a27518a589cc11f2ee36a3ba564202d4005974a8279609ef0f95d43b">openage::dying</a>.</p>
 
 </div>
 </div>
@@ -238,7 +249,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00298">298</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -270,7 +281,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a3e222303072f926fa7c925163b8ac10c">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00304">304</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="afc1e5863b40242b38c9f3d2e6ef37d96"></a>
@@ -300,7 +311,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a622cf307ee5d3f8f4581d9a7ec7ecfbf">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00303">303</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad89ee79aa618b974b24f76e54e81ec29"></a>
@@ -330,6 +341,23 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a7814554a94e930595ed5dad9b0f03255">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00405">405</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                                 {</div><div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div><div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="comment">// check resource, trees/huntables with resource are not removed but not workers</span></div><div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>) &amp;&amp; !this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">attr_type::worker</a>)) {</div><div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keyword">auto</span> &amp;res_attr = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>&gt;();</div><div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">return</span> res_attr.amount &lt;= 0; <span class="comment">// cannot complete when resource remains</span></div><div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div><div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a> &gt; this-&gt;<a class="code" href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">end_frame</a>;</div><div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a8f995b745da73c4e95ec83d8b14c38c6"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">openage::UnitAction::frame</a></div><div class="ttdeci">float frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00203">action.h:203</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a6c56a8b7e9856a8e0535cacbe831bae7"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">openage::Unit::has_attribute</a></div><div class="ttdeci">bool has_attribute(attr_type type) const</div><div class="ttdef"><b>Definition:</b> <a href="unit_8cpp_source.xhtml#l00258">unit.cpp:258</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::attr_type::resource</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">openage::attr_type::worker</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_dead_action_xhtml_af2f70e785f65066f0cf4e0aeede0ef50"><div class="ttname"><a href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">openage::DeadAction::end_frame</a></div><div class="ttdeci">float end_frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00308">action.h:308</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00308">end_frame</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00203">openage::UnitAction::frame</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::resource</a>, and <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">openage::worker</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action_ad89ee79aa618b974b24f76e54e81ec29_cgraph.svg" width="548" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -360,6 +388,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a67647c63a20cec9714a6463b1c823a70">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00305">305</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;dead&quot;</span>; }</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00291">openage.util.fslike.path.Path::stem()</a>, <a class="el" href="path_8py_source.xhtml#l00274">openage.util.fslike.path.Path::suffix()</a>, and <a class="el" href="path_8py_source.xhtml#l00283">openage.util.fslike.path.Path::suffixes()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action_a435c5c1651c2fd4c0652d4195615ee81_icgraph.svg" width="571" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -390,6 +428,21 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#ac84d3cbfa3c489b3975952af157929cb">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00396">396</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                               {</div><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">attr_type::owner</a>)) {</div><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="keyword">auto</span> &amp;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a> = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">attr_type::owner</a>&gt;().player;</div><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a>.active_unit_removed(this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>); <span class="comment">// TODO move before the start of dead action?</span></div><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    }</div><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_dead_action.xhtml#a2a3c6b2261bdcffe1bd35253e488d9cb">on_complete_func</a>();</div><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a6c56a8b7e9856a8e0535cacbe831bae7"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">openage::Unit::has_attribute</a></div><div class="ttdeci">bool has_attribute(attr_type type) const</div><div class="ttdef"><b>Definition:</b> <a href="unit_8cpp_source.xhtml#l00258">unit.cpp:258</a></div></div>
+<div class="ttc" id="classopenage_1_1_dead_action_xhtml_a2a3c6b2261bdcffe1bd35253e488d9cb"><div class="ttname"><a href="classopenage_1_1_dead_action.xhtml#a2a3c6b2261bdcffe1bd35253e488d9cb">openage::DeadAction::on_complete_func</a></div><div class="ttdeci">std::function&lt; void()&gt; on_complete_func</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00309">action.h:309</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::attr_type::owner</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00309">on_complete_func</a>, and <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action_a27ffe695020847a2bb58018a1133a342_cgraph.svg" width="548" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -421,6 +474,24 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_action.xhtml#a0196263da38bfa208d50c2241809cd62">openage::UnitAction</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8cpp_source.xhtml#l00372">372</a> of file <a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                                         {</div><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>)) {</div><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">auto</span> &amp;dm = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">attr_type::damaged</a>&gt;();</div><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        dm.hp = 0;</div><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    }</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="comment">// decay resources</span></div><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">has_attribute</a>(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>)) {</div><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keyword">auto</span> &amp;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">resource</a> = this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">entity</a>-&gt;<a class="code" href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">get_attribute</a>&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">attr_type::resource</a>&gt;();</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">resource</a>.decay &gt; 0) {</div><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">resource</a>.amount -= <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">resource</a>.decay;</div><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        }</div><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">// inc frame but do not pass the end frame</span></div><div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="comment">// the end frame will remain if the object carries resources</span></div><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">if</span> (this-&gt;frame &lt; this-&gt;<a class="code" href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">end_frame</a>) {</div><div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a> += 0.001 + time * this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">frame_rate</a> / 3.0f;</div><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div><div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">frame</a> = this-&gt;<a class="code" href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">end_frame</a>;</div><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div><div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_action_xhtml_a8f995b745da73c4e95ec83d8b14c38c6"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a8f995b745da73c4e95ec83d8b14c38c6">openage::UnitAction::frame</a></div><div class="ttdeci">float frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00203">action.h:203</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a3e12324401051119f44e212dae1a87ce"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce">openage::Unit::get_attribute</a></div><div class="ttdeci">Attribute&lt; T &gt; &amp; get_attribute()</div><div class="ttdef"><b>Definition:</b> <a href="unit_8h_source.xhtml#l00199">unit.h:199</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_xhtml_a6c56a8b7e9856a8e0535cacbe831bae7"><div class="ttname"><a href="classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7">openage::Unit::has_attribute</a></div><div class="ttdeci">bool has_attribute(attr_type type) const</div><div class="ttdef"><b>Definition:</b> <a href="unit_8cpp_source.xhtml#l00258">unit.cpp:258</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::attr_type::damaged</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::attr_type::resource</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d47af0412db504ab95c58b12418d55c"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d47af0412db504ab95c58b12418d55c">openage::UnitAction::entity</a></div><div class="ttdeci">Unit * entity</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00197">action.h:197</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_action_xhtml_a5d0154b413ca914966b9796bc37193b8"><div class="ttname"><a href="classopenage_1_1_unit_action.xhtml#a5d0154b413ca914966b9796bc37193b8">openage::UnitAction::frame_rate</a></div><div class="ttdeci">float frame_rate</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00204">action.h:204</a></div></div>
+<div class="ttc" id="classopenage_1_1_dead_action_xhtml_af2f70e785f65066f0cf4e0aeede0ef50"><div class="ttname"><a href="classopenage_1_1_dead_action.xhtml#af2f70e785f65066f0cf4e0aeede0ef50">openage::DeadAction::end_frame</a></div><div class="ttdeci">float end_frame</div><div class="ttdef"><b>Definition:</b> <a href="unit_2action_8h_source.xhtml#l00308">action.h:308</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::damaged</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00308">end_frame</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00197">openage::UnitAction::entity</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00203">openage::UnitAction::frame</a>, <a class="el" href="unit_2action_8h_source.xhtml#l00204">openage::UnitAction::frame_rate</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, and <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">openage::resource</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_dead_action_aed142b3043beef29d27b16b06887c701_cgraph.svg" width="548" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -447,6 +518,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00308">308</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00405">completed()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00372">update()</a>.</p>
+
 </div>
 </div>
 <a id="a2a3c6b2261bdcffe1bd35253e488d9cb"></a>
@@ -471,11 +544,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit_2action_8h_source.xhtml#l00309">309</a> of file <a class="el" href="unit_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00396">on_completion()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8h_source.xhtml">action.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit_2action_8cpp_source.xhtml">action.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

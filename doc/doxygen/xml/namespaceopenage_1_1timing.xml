@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timing.cpp" line="13" column="1" bodyfile="libopenage/util/timing.cpp" bodystart="13" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp" bodystart="13" bodyend="18"/>
+        <referencedby refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">openage::log::message::init</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" compoundref="rng_8cpp" startline="207" endline="214">openage::rng::time_seed</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -30,13 +32,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timing.cpp" line="20" column="1" bodyfile="libopenage/util/timing.cpp" bodystart="20" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp" bodystart="20" bodyend="25"/>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">openage::util::Timer::getandresetval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">openage::util::Timer::getval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">openage::util::Timer::reset</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" compoundref="timer_8cpp" startline="30" endline="35">openage::util::Timer::start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" compoundref="timer_8cpp" startline="23" endline="28">openage::util::Timer::stop</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/timing.cpp" line="11" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp" line="11" column="1"/>
   </compounddef>
 </doxygen>

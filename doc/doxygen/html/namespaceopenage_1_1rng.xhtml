@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::rng Namespace Reference</title>
+<title>openage: openage::rng Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -199,6 +200,27 @@ template&lt;class T , class Lambda &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00100">100</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                          {</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    uint64_t s0 = state[0];</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    uint64_t s1 = state[1];</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">size_t</span> ev_len = len - (len &amp; 1);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; ev_len; i += 2) {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        op(<a class="code" href="namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07">do_rng</a>(s1, s0), dat, i);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        op(<a class="code" href="namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07">do_rng</a>(s0, s1), dat, i + 1);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (len &amp; 1) {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        op(<a class="code" href="namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07">do_rng</a>(s1, s0), dat, len-1);</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::swap(s1, s0);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    state[0] = s0;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    state[1] = s1;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_af7d90437e58aaa4fe1d816ad7b62dc07"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#af7d90437e58aaa4fe1d816ad7b62dc07">openage::rng::do_rng</a></div><div class="ttdeci">static uint64_t do_rng(uint64_t &amp;s0, uint64_t &amp;s1)</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00082">rng.cpp:82</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00082">do_rng()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="rng_8cpp_source.xhtml#l00138">openage::rng::RNG::fill_real()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_acffdd6abc0140eac8c12d879172f8566_cgraph.svg" width="346" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_acffdd6abc0140eac8c12d879172f8566_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -237,6 +259,16 @@ template&lt;class T , class Lambda &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00082">82</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                                          {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    s1 ^= s1 &lt;&lt; 23;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    s1 = (s1 ^ s0 ^ (s1 &gt;&gt; 17) ^ (s0 &gt;&gt; 26));</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> s1 + s0;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="rng_8cpp_source.xhtml#l00100">act_fill()</a>, and <a class="el" href="rng_8cpp_source.xhtml#l00089">openage::rng::RNG::random()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_af7d90437e58aaa4fe1d816ad7b62dc07_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -257,6 +289,17 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns the value of the global seed. </p>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                       {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> uint64_t seed = <a class="code" href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a">random_seed</a>();</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> seed;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_a510f1a8aa7487e18b60b1844cd2af86a"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a510f1a8aa7487e18b60b1844cd2af86a">openage::rng::random_seed</a></div><div class="ttdeci">uint64_t random_seed()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00222">rng.cpp:222</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00222">random_seed()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a595e7ab593687bbb092d69186c65c45a_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -293,6 +336,16 @@ template&lt;class T , class Lambda &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00185">185</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                                          {</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    inrng.from_stream(instream);</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> instream;</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00157">openage::rng::RNG::from_stream()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_ace26b663b1fa6bbbaeec1f5903bbc70c_cgraph.svg" width="563" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -329,6 +382,16 @@ template&lt;class T , class Lambda &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00179">179</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                                               {</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    inrng.to_stream(ostream);</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> ostream;</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00148">openage::rng::RNG::to_stream()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_acb0200a44ab02cc735041096cad88fbe_cgraph.svg" width="559" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -349,6 +412,29 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a random number from the global rng. </p>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                  {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::lock_guard&lt;std::mutex&gt; rand_lock(<a class="code" href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">rand_mutex</a>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>.<a class="code" href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154">random</a>();</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classopenage_1_1rng_1_1_r_n_g_xhtml_a95f8c2c7e00ab2531e0e6c33ae70e154"><div class="ttname"><a href="classopenage_1_1rng_1_1_r_n_g.xhtml#a95f8c2c7e00ab2531e0e6c33ae70e154">openage::rng::RNG::random</a></div><div class="ttdeci">uint64_t random()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00089">rng.cpp:89</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a02d68ac1512d65be1f7ab591f925b734"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">openage::rng::global_rand_gen</a></div><div class="ttdeci">static RNG global_rand_gen(global_seed())</div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a30037f3422443d178167adf0e31acc05"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">openage::rng::rand_mutex</a></div><div class="ttdeci">static std::mutex rand_mutex</div><div class="ttdef"><b>Definition:</b> <a href="global__rng_8cpp_source.xhtml#l00010">global_rng.cpp:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00010">rand_mutex</a>, and <a class="el" href="rng_8cpp_source.xhtml#l00089">openage::rng::RNG::random()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="physics_8cpp_source.xhtml#l00275">openage::event::demo::ResetGame::invoke()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_ac3379af641e8c899794429fd6e8fa70a_cgraph.svg" width="540" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_ac3379af641e8c899794429fd6e8fa70a_icgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -380,6 +466,29 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a random number n [lower, upper) from the global rng. </p>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                      {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::lock_guard&lt;std::mutex&gt; rand_lock(<a class="code" href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">rand_mutex</a>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>.<a class="code" href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad7b2ba8c495b7ee100b7708b633bc060">random_range</a>(lower, upper);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_a02d68ac1512d65be1f7ab591f925b734"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">openage::rng::global_rand_gen</a></div><div class="ttdeci">static RNG global_rand_gen(global_seed())</div></div>
+<div class="ttc" id="classopenage_1_1rng_1_1_r_n_g_xhtml_ad7b2ba8c495b7ee100b7708b633bc060"><div class="ttname"><a href="classopenage_1_1rng_1_1_r_n_g.xhtml#ad7b2ba8c495b7ee100b7708b633bc060">openage::rng::RNG::random_range</a></div><div class="ttdeci">uint64_t random_range(uint64_t lower, uint64_t upper)</div><div class="ttdef"><b>Definition:</b> <a href="rng_8h_source.xhtml#l00085">rng.h:85</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a30037f3422443d178167adf0e31acc05"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">openage::rng::rand_mutex</a></div><div class="ttdeci">static std::mutex rand_mutex</div><div class="ttdef"><b>Definition:</b> <a href="global__rng_8cpp_source.xhtml#l00010">global_rng.cpp:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00010">rand_mutex</a>, and <a class="el" href="rng_8h_source.xhtml#l00085">openage::rng::RNG::random_range()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__spec_8cpp_source.xhtml#l00431">openage::Sound::play()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a398e36f7942536cd461ca212dfee6cb5_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a398e36f7942536cd461ca212dfee6cb5_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -400,6 +509,27 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a seed based on time since epoch as well as data from std::random_device if available </p>
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00222">222</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                       {</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">time_seed</a>(<span class="keyword">true</span>);</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_adde6a014119705e9ea92a28bae96f385"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">openage::rng::time_seed</a></div><div class="ttdeci">uint64_t time_seed()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00217">rng.cpp:217</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00207">time_seed()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="rng__tests_8cpp_source.xhtml#l00084">openage::rng::tests::bool_dist()</a>, <a class="el" href="rng__tests_8cpp_source.xhtml#l00194">openage::rng::tests::fill()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00013">global_seed()</a>, and <a class="el" href="rng__tests_8cpp_source.xhtml#l00175">openage::rng::tests::serialize()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a510f1a8aa7487e18b60b1844cd2af86a_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a510f1a8aa7487e18b60b1844cd2af86a_icgraph.svg" width="100%" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -420,6 +550,19 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a double in [0, 1) from the global rng. </p>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::lock_guard&lt;std::mutex&gt; rand_lock(<a class="code" href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">rand_mutex</a>);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>.<a class="code" href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8">real</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_a02d68ac1512d65be1f7ab591f925b734"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">openage::rng::global_rand_gen</a></div><div class="ttdeci">static RNG global_rand_gen(global_seed())</div></div>
+<div class="ttc" id="classopenage_1_1rng_1_1_r_n_g_xhtml_a2d906c2de63a31a89589a34bac2a3dd8"><div class="ttname"><a href="classopenage_1_1rng_1_1_r_n_g.xhtml#a2d906c2de63a31a89589a34bac2a3dd8">openage::rng::RNG::real</a></div><div class="ttdeci">double real()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8h_source.xhtml#l00101">rng.h:101</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a30037f3422443d178167adf0e31acc05"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">openage::rng::rand_mutex</a></div><div class="ttdeci">static std::mutex rand_mutex</div><div class="ttdef"><b>Definition:</b> <a href="global__rng_8cpp_source.xhtml#l00010">global_rng.cpp:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00010">rand_mutex</a>, and <a class="el" href="rng_8h_source.xhtml#l00101">openage::rng::RNG::real()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_aadfcdd4f8b418047382e29828d81b157_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -451,6 +594,19 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a double in [lower, upper) from the global rng. </p>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                              {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::lock_guard&lt;std::mutex&gt; rand_lock(<a class="code" href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">rand_mutex</a>);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>.<a class="code" href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec">real_range</a>(lower, upper);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_a02d68ac1512d65be1f7ab591f925b734"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">openage::rng::global_rand_gen</a></div><div class="ttdeci">static RNG global_rand_gen(global_seed())</div></div>
+<div class="ttc" id="classopenage_1_1rng_1_1_r_n_g_xhtml_a7f8fa5c414eb4888ee638441585fdcec"><div class="ttname"><a href="classopenage_1_1rng_1_1_r_n_g.xhtml#a7f8fa5c414eb4888ee638441585fdcec">openage::rng::RNG::real_range</a></div><div class="ttdeci">double real_range(double lower, double upper)</div><div class="ttdef"><b>Definition:</b> <a href="rng_8h_source.xhtml#l00109">rng.h:109</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a30037f3422443d178167adf0e31acc05"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a30037f3422443d178167adf0e31acc05">openage::rng::rand_mutex</a></div><div class="ttdeci">static std::mutex rand_mutex</div><div class="ttdef"><b>Definition:</b> <a href="global__rng_8cpp_source.xhtml#l00010">global_rng.cpp:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1rng.xhtml#a02d68ac1512d65be1f7ab591f925b734">global_rand_gen</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00010">rand_mutex</a>, and <a class="el" href="rng_8h_source.xhtml#l00109">openage::rng::RNG::real_range()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a459eb99bb9ad49587a1cbb0bb3de8750_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -479,6 +635,28 @@ template&lt;class T , class Lambda &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00207">207</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                          {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    uint64_t nanos = <a class="code" href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">timing::get_real_time</a>();</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (randomize) {</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        nanos ^= <a class="code" href="namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6">try_random_device</a>();</div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span> nanos;</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_a924b85bc82578378e68818dab9a247b6"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a924b85bc82578378e68818dab9a247b6">openage::rng::try_random_device</a></div><div class="ttdeci">static uint64_t try_random_device()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00191">rng.cpp:191</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1timing_xhtml_aea51f4c8e71a8c326e3dd9dcc05c00eb"><div class="ttname"><a href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">openage::timing::get_real_time</a></div><div class="ttdeci">time_nsec_t get_real_time()</div><div class="ttdef"><b>Definition:</b> <a href="timing_8cpp_source.xhtml#l00013">timing.cpp:13</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="timing_8cpp_source.xhtml#l00013">openage::timing::get_real_time()</a>, and <a class="el" href="rng_8cpp_source.xhtml#l00191">try_random_device()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="rng__tests_8cpp_source.xhtml#l00216">openage::rng::tests::fill_real()</a>, <a class="el" href="rng__tests_8cpp_source.xhtml#l00036">openage::rng::tests::freq_dist()</a>, <a class="el" href="rng_8cpp_source.xhtml#l00222">random_seed()</a>, <a class="el" href="rng__tests_8cpp_source.xhtml#l00108">openage::rng::tests::real_dist()</a>, <a class="el" href="rng__tests_8cpp_source.xhtml#l00143">openage::rng::tests::reproduce()</a>, and <a class="el" href="rng_8cpp_source.xhtml#l00217">time_seed()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a4bdd2cc5c7f7f5d81ff514287f65eef0_cgraph.svg" width="554" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a4bdd2cc5c7f7f5d81ff514287f65eef0_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -499,6 +677,17 @@ template&lt;class T , class Lambda &gt; </div>
 <p>Returns a seed based on time since epoch </p>
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00217">217</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                     {</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">time_seed</a>(<span class="keyword">false</span>);</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1rng_xhtml_adde6a014119705e9ea92a28bae96f385"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#adde6a014119705e9ea92a28bae96f385">openage::rng::time_seed</a></div><div class="ttdeci">uint64_t time_seed()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.xhtml#l00217">rng.cpp:217</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="rng_8cpp_source.xhtml#l00207">time_seed()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_adde6a014119705e9ea92a28bae96f385_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -526,6 +715,28 @@ template&lt;class T , class Lambda &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00191">191</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                    {</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    uint64_t rand1 = 0;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// std::random_device constructor may throw if it isn&#39;t available</span></div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        std::random_device rnd;</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> (rnd.entropy() &gt; 0) {</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            rand1 = rnd() + (uint64_t(rnd()) &lt;&lt; 32);</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">catch</span> (std::exception &amp;e) {</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;failed using std::random_device: &quot;</span> &lt;&lt; e.what());</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">return</span> rand1;</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="rng_8cpp_source.xhtml#l00207">time_seed()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a924b85bc82578378e68818dab9a247b6_cgraph.svg" width="340" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1rng_a924b85bc82578378e68818dab9a247b6_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -549,6 +760,8 @@ template&lt;class T , class Lambda &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="global__rng_8cpp_source.xhtml#l00018">random()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00023">random_range()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00028">real()</a>, and <a class="el" href="global__rng_8cpp_source.xhtml#l00033">real_range()</a>.</p>
 
 </div>
 </div>
@@ -574,6 +787,8 @@ template&lt;class T , class Lambda &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="global__rng_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="global__rng_8cpp_source.xhtml">global_rng.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="global__rng_8cpp_source.xhtml#l00018">random()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00023">random_range()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00028">real()</a>, and <a class="el" href="global__rng_8cpp_source.xhtml#l00033">real_range()</a>.</p>
+
 </div>
 </div>
 <a id="ade4748f2ea78310c4c2d84f1ce7d1990"></a>
@@ -597,6 +812,8 @@ template&lt;class T , class Lambda &gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{{</div><div class="line">    0xba, 0xda, 0x55, 0x00, 0x5e, 0xed, 0x00, 0x00,</div><div class="line">    0xab, 0xcd, 0xef, 0x12, 0x34, 0x56, 0x78, 0x90</div><div class="line">}}</div></div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="rng_8cpp_source.xhtml#l00027">27</a> of file <a class="el" href="rng_8cpp_source.xhtml">rng.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="rng_8cpp_source.xhtml#l00058">openage::rng::RNG::seed()</a>.</p>
 
 </div>
 </div>

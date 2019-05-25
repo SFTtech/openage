@@ -4,7 +4,7 @@
     <compoundname>registrations.h</compoundname>
     <includes local="no">QMetaType</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="registrations_8cpp" local="yes">libopenage/gui/registrations.cpp</includedby>
+    <includedby refid="registrations_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.cpp</includedby>
     <incdepgraph>
       <node id="14985">
         <label>list</label>
@@ -269,7 +269,7 @@
         <label>config.h</label>
       </node>
       <node id="14952">
-        <label>libopenage/gui/registrations.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.h</label>
         <link refid="registrations_8h"/>
         <childnode refid="14953" relation="include">
         </childnode>
@@ -292,11 +292,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14994">
-        <label>libopenage/gui/registrations.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.cpp</label>
         <link refid="registrations_8cpp"/>
       </node>
       <node id="14993">
-        <label>libopenage/gui/registrations.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.h</label>
         <link refid="registrations_8h"/>
         <childnode refid="14994" relation="include">
         </childnode>
@@ -325,6 +325,6 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">Q_DECLARE_METATYPE(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref>)</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/registrations.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.h"/>
   </compounddef>
 </doxygen>

@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="87" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="87" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" bodystart="87" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_manager_1aad7b3064f24f643334e008bbe681af7b" compoundref="font__manager_8cpp" startline="57" endline="59">get_ft_library</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_manager_1ae632f6de94d4ebc7ffcf4acc80f90261" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; size_t, std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> &gt; &gt;</type>
@@ -28,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="90" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="90" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_manager_1ae84aeac58608733bb241bd015bed3dc3" compoundref="font__manager_8cpp" startline="66" endline="79">get_font</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -72,7 +74,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="54" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="14" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="14" bodyend="47"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1a9b6afa901b4a5a7b433aa014ce4b6929" compoundref="font_8cpp" startline="30" endline="34">openage::renderer::font_description::font_description</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_manager_1a099c7a53ec483208d26f1d33c52dcbef" compoundref="font__manager_8cpp" startline="61" endline="64">get_font</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="57" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="49" bodyend="51"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="49" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1a66a311fb4bf5851ec5a44209ea1b6ce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -100,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="59" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="53" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1aad7b3064f24f643334e008bbe681af7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>FT_Library</type>
@@ -114,7 +121,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="64" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="57" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="57" bodyend="59"/>
+        <references refid="classopenage_1_1renderer_1_1_free_type_library_1a2d87d4a6d52325b7009f7e77a66f1f3c" compoundref="font__manager_8h" startline="19">openage::renderer::FreeTypeLibrary::ft_library</references>
+        <references refid="classopenage_1_1renderer_1_1_font_manager_1a9f0694d6e8513ffa6cacfca03bf39344" compoundref="font__manager_8h" startline="87">library</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1a099c7a53ec483208d26f1d33c52dcbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
@@ -168,7 +177,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="74" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="61" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="61" bodyend="64"/>
+        <references refid="classopenage_1_1renderer_1_1_font_manager_1a18b41a56c570436c58435866c0a42faa" compoundref="font__manager_8cpp" startline="14" endline="47">get_font_filename</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1ae84aeac58608733bb241bd015bed3dc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
@@ -210,7 +220,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font_manager.h" line="83" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="66" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp" bodystart="66" bodyend="79"/>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" compoundref="renderer_2font_2tests_8cpp" startline="59" endline="61">openage::renderer::tests::font</references>
+        <references refid="classopenage_1_1renderer_1_1_font_manager_1ae632f6de94d4ebc7ffcf4acc80f90261" compoundref="font__manager_8h" startline="90">fonts</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -218,19 +231,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1509">
+      <node id="4634">
         <label>openage::renderer::FreeTypeLibrary</label>
         <link refid="classopenage_1_1renderer_1_1_free_type_library"/>
       </node>
-      <node id="1508">
+      <node id="4633">
         <label>openage::renderer::FontManager</label>
         <link refid="classopenage_1_1renderer_1_1_font_manager"/>
-        <childnode refid="1509" relation="usage">
+        <childnode refid="4634" relation="usage">
           <edgelabel>-library</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/font_manager.h" line="44" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="44" bodyend="92"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h" bodystart="44" bodyend="92"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_font_manager_1adece42697c9e7c17114f1a244467e296" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>FontManager</name></member>
       <member refid="classopenage_1_1renderer_1_1_font_manager_1ae632f6de94d4ebc7ffcf4acc80f90261" prot="private" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>fonts</name></member>

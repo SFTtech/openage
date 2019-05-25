@@ -4,9 +4,9 @@
     <compoundname>fds.h</compoundname>
     <includes local="no">stdlib.h</includes>
     <includes local="no">termios.h</includes>
-    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
-    <includedby refid="console_2tests_8cpp" local="yes">libopenage/console/tests.cpp</includedby>
-    <includedby refid="fds_8cpp" local="yes">libopenage/util/fds.cpp</includedby>
+    <includedby refid="draw_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</includedby>
+    <includedby refid="console_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</includedby>
+    <includedby refid="fds_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</includedby>
     <incdepgraph>
       <node id="29198">
         <label>stdlib.h</label>
@@ -15,7 +15,7 @@
         <label>termios.h</label>
       </node>
       <node id="29197">
-        <label>libopenage/util/fds.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h</label>
         <link refid="fds_8h"/>
         <childnode refid="29198" relation="include">
         </childnode>
@@ -25,11 +25,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="29203">
-        <label>libopenage/util/fds.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</label>
         <link refid="fds_8cpp"/>
       </node>
       <node id="29200">
-        <label>libopenage/util/fds.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h</label>
         <link refid="fds_8h"/>
         <childnode refid="29201" relation="include">
         </childnode>
@@ -39,11 +39,11 @@
         </childnode>
       </node>
       <node id="29201">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="29202">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -104,6 +104,6 @@
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fds.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h"/>
   </compounddef>
 </doxygen>

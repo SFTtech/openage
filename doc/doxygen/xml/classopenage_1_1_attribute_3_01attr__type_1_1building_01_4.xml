@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="462" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="462" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="462" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="462" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a4ad785c022a478c67c29afe8656e2186" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="463" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="463" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="463" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="463" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a1160fe58df48aa030282f8b1bd34beaa" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465e" kindref="member">object_state</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="467" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="467" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="467" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="467" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1abb4aabcc168d648c885735c501c6c4ed" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="470" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="470" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="470" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="470" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a75da9282ba7f9a1d5d8ca6242f0a0d8a" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="475" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="475" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="475" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="475" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -98,7 +98,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="450" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="450" bodyend="456"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="450" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="450" bodyend="456"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::building</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1ac1d1151929d175aa8d64c8401e184f06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -113,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="458" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="458" bodyend="460"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="458" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="458" bodyend="460"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -122,154 +123,154 @@
 <para>TODO revisit after unit training is improved </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="387">
+      <node id="298">
         <label>openage::Attribute&lt; attr_type::building &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4"/>
-        <childnode refid="388" relation="public-inheritance">
+        <childnode refid="299" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="388">
+      <node id="299">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="389" relation="public-inheritance">
+        <childnode refid="300" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="389">
+      <node id="300">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="394">
+      <node id="305">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="393">
+      <node id="304">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="394" relation="public-inheritance">
+        <childnode refid="305" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="405">
+      <node id="316">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="403" relation="public-inheritance">
+        <childnode refid="314" relation="public-inheritance">
         </childnode>
-        <childnode refid="404" relation="usage">
+        <childnode refid="315" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="402">
+      <node id="313">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="403" relation="public-inheritance">
+        <childnode refid="314" relation="public-inheritance">
         </childnode>
-        <childnode refid="401" relation="usage">
+        <childnode refid="312" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="403">
+      <node id="314">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="395">
+      <node id="306">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
-        <childnode refid="396" relation="usage">
+        <childnode refid="307" relation="usage">
           <edgelabel>+foundation_size</edgelabel>
         </childnode>
-        <childnode refid="398" relation="usage">
+        <childnode refid="309" relation="usage">
           <edgelabel>+default_attributes</edgelabel>
         </childnode>
-        <childnode refid="399" relation="usage">
+        <childnode refid="310" relation="usage">
           <edgelabel>+cost</edgelabel>
         </childnode>
-        <childnode refid="401" relation="usage">
+        <childnode refid="312" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="404">
+      <node id="315">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="405" relation="usage">
+        <childnode refid="316" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="407">
+      <node id="318">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="398">
+      <node id="309">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
-      <node id="390">
+      <node id="301">
         <label>openage::Attribute&lt; attr_type::building &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4"/>
-        <childnode refid="391" relation="public-inheritance">
+        <childnode refid="302" relation="public-inheritance">
         </childnode>
-        <childnode refid="393" relation="usage">
+        <childnode refid="304" relation="usage">
           <edgelabel>+gather_point</edgelabel>
         </childnode>
-        <childnode refid="395" relation="usage">
+        <childnode refid="306" relation="usage">
           <edgelabel>+pp</edgelabel>
         </childnode>
       </node>
-      <node id="401">
+      <node id="312">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="402" relation="usage">
+        <childnode refid="313" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="404" relation="usage">
+        <childnode refid="315" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="400" relation="usage">
+        <childnode refid="311" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="406" relation="usage">
+        <childnode refid="317" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="407" relation="usage">
+        <childnode refid="318" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="396">
+      <node id="307">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="397" relation="public-inheritance">
+        <childnode refid="308" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="400">
+      <node id="311">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="391">
+      <node id="302">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="392" relation="public-inheritance">
+        <childnode refid="303" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="406">
+      <node id="317">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="392">
+      <node id="303">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="399">
+      <node id="310">
         <label>openage::ResourceCost</label>
         <link refid="classopenage_1_1_resource_cost"/>
-        <childnode refid="400" relation="usage">
+        <childnode refid="311" relation="usage">
           <edgelabel>-resources</edgelabel>
         </childnode>
       </node>
-      <node id="397">
+      <node id="308">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="448" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="448" bodyend="476"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="448" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="448" bodyend="476"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1aeb69bdddb4f9d4f807008fd34000f933" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>AttributeContainer</name></member>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1changelog" kind="namespace" language="Python">
+    <compoundname>openage::convert::changelog</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1changelog_1aa44aa39efb37bd220370c5fd7f21d788" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::convert::changelog.ASSET_VERSION_FILENAME</definition>
+        <argsstring></argsstring>
+        <name>ASSET_VERSION_FILENAME</name>
+        <initializer>=  &quot;asset_version&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1changelog_1a83878c6c094bb6f4761354b6b63be330" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::convert::changelog.GAMESPEC_VERSION_FILENAME</definition>
+        <argsstring></argsstring>
+        <name>GAMESPEC_VERSION_FILENAME</name>
+        <initializer>=  &quot;gamespec_version&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1changelog_1ab2096b07283a3ee67478f71ede14b01d" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::changelog.COMPONENTS</definition>
+        <argsstring></argsstring>
+        <name>COMPONENTS</name>
+        <initializer>=  {
+    &quot;graphics&quot;,
+    &quot;sounds&quot;,
+    &quot;metadata&quot;,
+    &quot;interface&quot;,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1changelog_1a8b5ef3c6929552c2d8d65fe57fe9ad3f" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage::convert::changelog.CHANGES</definition>
+        <argsstring></argsstring>
+        <name>CHANGES</name>
+        <initializer>=  (
+    {&quot;graphics&quot;, &quot;sounds&quot;},
+    {&quot;sounds&quot;},
+    {&quot;graphics&quot;},
+    {&quot;interface&quot;},
+    {&quot;interface&quot;},
+    {&quot;metadata&quot;},
+    {&quot;metadata&quot;},
+    {&quot;graphics&quot;},
+)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1changelog_1a919d054655bbfa7e286b5a084556bb2b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::changelog.ASSET_VERSION</definition>
+        <argsstring></argsstring>
+        <name>ASSET_VERSION</name>
+        <initializer>=  len(<ref refid="namespaceopenage_1_1convert_1_1changelog_1a8b5ef3c6929552c2d8d65fe57fe9ad3f" kindref="member">CHANGES</ref>) - 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.changelog.changes</definition>
+        <argsstring>(asset_version, spec_version)</argsstring>
+        <name>changes</name>
+        <param>
+          <type>asset_version</type>
+          <defname>asset_version</defname>
+        </param>
+        <param>
+          <type>spec_version</type>
+          <defname>spec_version</defname>
+        </param>
+        <briefdescription>
+<para>return all changed components since the passed version number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="52" bodyend="75"/>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a296f31cfd846d1dd543c6905c2bb61ac" compoundref="gamestate_8h" startline="81" endline="83">openage::event::demo::PongPlayer::child_changes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a0b94d49da0d7c82cc56be793228045d2" compoundref="gamestate_8h" startline="109" endline="111">openage::event::demo::PongBall::child_changes</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" compoundref="value__container_8h" startline="84" endline="87">openage::curve::ValueContainer&lt; T &gt;::set_insert</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" compoundref="value__container_8h" startline="63" endline="80">openage::curve::ValueContainer&lt; T &gt;::set_last</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1changelog_1acb36077c51fecae45689096576d2be9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.changelog.test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <briefdescription>
+<para>verify only allowed versions are stored in the changes </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" bodystart="79" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/changelog.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -16,7 +16,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="75" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="75" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="75" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" compoundref="population__tracker_8cpp" startline="15" endline="18">demand_population</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" compoundref="population__tracker_8cpp" startline="20" endline="23">free_population</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" compoundref="population__tracker_8cpp" startline="56" endline="58">get_demand</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" compoundref="population__tracker_8cpp" startline="64" endline="66">get_space</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" compoundref="population__tracker_8cpp" startline="7" endline="13">PopulationTracker</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -30,7 +35,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="80" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="80" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="80" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" compoundref="population__tracker_8cpp" startline="25" endline="28">add_capacity_static</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" compoundref="population__tracker_8cpp" startline="7" endline="13">PopulationTracker</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -44,7 +52,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="85" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="85" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="85" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" compoundref="population__tracker_8cpp" startline="30" endline="33">add_capacity</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" compoundref="population__tracker_8cpp" startline="7" endline="13">PopulationTracker</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" compoundref="population__tracker_8cpp" startline="35" endline="38">remove_capacity</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -58,7 +70,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="90" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="90" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="90" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" compoundref="population__tracker_8cpp" startline="40" endline="43">add_capacity_max</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" compoundref="population__tracker_8cpp" startline="72" endline="74">is_capacity_maxed</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" compoundref="population__tracker_8cpp" startline="7" endline="13">PopulationTracker</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -72,7 +88,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="97" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" compoundref="population__tracker_8cpp" startline="68" endline="70">get_capacity_overflow</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -86,7 +104,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="102" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="102" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" compoundref="population__tracker_8cpp" startline="60" endline="62">get_capacity</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" compoundref="population__tracker_8cpp" startline="68" endline="70">get_capacity_overflow</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" compoundref="population__tracker_8cpp" startline="64" endline="66">get_space</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" compoundref="population__tracker_8cpp" startline="72" endline="74">is_capacity_maxed</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -109,7 +132,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="13" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="7" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="7" bodyend="13"/>
+        <references refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" compoundref="population__tracker_8h" startline="90">capacity_max</references>
+        <references refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" compoundref="population__tracker_8h" startline="85">capacity_real</references>
+        <references refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" compoundref="population__tracker_8h" startline="80">capacity_static</references>
+        <references refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" compoundref="population__tracker_8h" startline="75">demand</references>
+        <references refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +155,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="18" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="15" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="15" bodyend="18"/>
+        <references refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" compoundref="population__tracker_8h" startline="75">demand</references>
+        <referencedby refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" compoundref="player_8cpp" startline="148" endline="191">openage::Player::active_unit_added</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -145,7 +175,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="23" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="20" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="20" bodyend="23"/>
+        <references refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" compoundref="population__tracker_8h" startline="75">demand</references>
+        <referencedby refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" compoundref="player_8cpp" startline="193" endline="231">openage::Player::active_unit_removed</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -163,7 +195,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="28" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="25" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="25" bodyend="28"/>
+        <references refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" compoundref="population__tracker_8h" startline="80">capacity_static</references>
+        <references refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -181,7 +215,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="33" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="30" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="30" bodyend="33"/>
+        <references refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" compoundref="population__tracker_8h" startline="85">capacity_real</references>
+        <references refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</references>
+        <referencedby refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" compoundref="player_8cpp" startline="148" endline="191">openage::Player::active_unit_added</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -199,7 +236,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="38" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="35" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="35" bodyend="38"/>
+        <references refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" compoundref="population__tracker_8h" startline="85">capacity_real</references>
+        <references refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</references>
+        <referencedby refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" compoundref="player_8cpp" startline="193" endline="231">openage::Player::active_unit_removed</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -217,7 +257,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="43" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="40" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="40" bodyend="43"/>
+        <references refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" compoundref="population__tracker_8h" startline="90">capacity_max</references>
+        <references refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" compoundref="population__tracker_8cpp" startline="45" endline="54">update_capacity</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -230,7 +272,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="45" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="56" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="56" bodyend="58"/>
+        <references refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" compoundref="population__tracker_8h" startline="75">demand</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -243,7 +286,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="47" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="60" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="60" bodyend="62"/>
+        <references refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" compoundref="population__tracker_8h" startline="102">capacity</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -257,7 +301,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="52" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="64" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="64" bodyend="66"/>
+        <references refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" compoundref="population__tracker_8h" startline="102">capacity</references>
+        <references refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" compoundref="population__tracker_8h" startline="75">demand</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -271,7 +317,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="57" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="68" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="68" bodyend="70"/>
+        <references refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" compoundref="population__tracker_8h" startline="102">capacity</references>
+        <references refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" compoundref="population__tracker_8h" startline="97">capacity_total</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -285,7 +333,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="62" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="72" bodyend="74"/>
+        <references refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" compoundref="population__tracker_8h" startline="102">capacity</references>
+        <references refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" compoundref="population__tracker_8h" startline="90">capacity_max</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -301,7 +351,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/population_tracker.h" line="70" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="45" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.cpp" bodystart="45" bodyend="54"/>
+        <references refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" compoundref="population__tracker_8h" startline="102">capacity</references>
+        <references refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" compoundref="population__tracker_8h" startline="90">capacity_max</references>
+        <references refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" compoundref="population__tracker_8h" startline="85">capacity_real</references>
+        <references refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" compoundref="population__tracker_8h" startline="80">capacity_static</references>
+        <references refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" compoundref="population__tracker_8h" startline="97">capacity_total</references>
+        <referencedby refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" compoundref="population__tracker_8cpp" startline="30" endline="33">add_capacity</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" compoundref="population__tracker_8cpp" startline="40" endline="43">add_capacity_max</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" compoundref="population__tracker_8cpp" startline="25" endline="28">add_capacity_static</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" compoundref="population__tracker_8cpp" startline="7" endline="13">PopulationTracker</referencedby>
+        <referencedby refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" compoundref="population__tracker_8cpp" startline="35" endline="38">remove_capacity</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -310,12 +370,12 @@
 <para>Keeps track of the population size and capacity. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3702">
+      <node id="4500">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/population_tracker.h" line="10" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="10" bodyend="104"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/population_tracker.h" bodystart="10" bodyend="104"/>
     <listofallmembers>
       <member refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>add_capacity</name></member>
       <member refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>add_capacity_max</name></member>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="132" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="132" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="134" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="134" bodyend="137"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="134" bodyend="137"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,12 +45,12 @@
 <para>hasher for score_category TODO decide if needed, not used at the moment </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2835">
+      <node id="6641">
         <label>std::hash&lt; openage::score_category &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1score__category_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/score.h" line="131" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="131" bodyend="138"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="131" bodyend="138"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1score__category_01_4_1a88d11ba57ed5700f04b22564cf3a7f64" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::score_category &gt;</scope><name>operator()</name></member>
       <member refid="structstd_1_1hash_3_01openage_1_1score__category_01_4_1a6fa665318653eb32728812aeb8641733" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::score_category &gt;</scope><name>underlying_type</name></member>

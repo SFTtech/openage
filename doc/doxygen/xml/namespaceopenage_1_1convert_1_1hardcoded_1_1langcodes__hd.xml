@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1hardcoded_1_1langcodes__hd" kind="namespace" language="Python">
+    <compoundname>openage::convert::hardcoded::langcodes_hd</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1langcodes__hd_1aed8eede6e48aed0a3260f43bc4245771" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::hardcoded::langcodes_hd.LANGCODE_MAP_HD</definition>
+        <argsstring></argsstring>
+        <name>LANGCODE_MAP_HD</name>
+        <initializer>=  {
+    &apos;br&apos;: &apos;pt_BR&apos;,
+    &apos;cn&apos;: &apos;zh_CN&apos;,
+    &apos;de&apos;: &apos;de_DE&apos;,
+    &apos;en&apos;: &apos;en_US&apos;,
+    &apos;es&apos;: &apos;es_ES&apos;,
+    &apos;fr&apos;: &apos;fr_FR&apos;,
+    &apos;it&apos;: &apos;it_IT&apos;,
+    &apos;ja&apos;: &apos;ja_JP&apos;,
+    &apos;ko&apos;: &apos;ko_KR&apos;,
+    &apos;nl&apos;: &apos;nl_NL&apos;,
+    &apos;ru&apos;: &apos;ru_RU&apos;
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/langcodes_hd.py" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/langcodes_hd.py" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/langcodes_hd.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

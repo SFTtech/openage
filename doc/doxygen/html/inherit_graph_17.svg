@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 84)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-84 201,-84 201,4 -4,4"/>
-<!-- Node596 -->
-<g id="node1" class="node"><title>Node596</title>
+<!-- Node706 -->
+<g id="node1" class="node"><title>Node706</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="0,-30 0,-49 42,-49 42,-30 0,-30"/>
 <text text-anchor="middle" x="21" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00">Enum</text>
@@ -26,13 +26,13 @@
 </a>
 </g>
 </g>
-<!-- Node596&#45;&gt;Node0 -->
-<g id="edge1" class="edge"><title>Node596&#45;&gt;Node0</title>
+<!-- Node706&#45;&gt;Node0 -->
+<g id="edge1" class="edge"><title>Node706&#45;&gt;Node0</title>
 <path fill="none" stroke="midnightblue" d="M52.0275,-46.0562C59.9501,-47.786 68.7792,-49.7138 77.6594,-51.6527"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="52.7232,-42.6257 42.2067,-43.912 51.2299,-49.4646 52.7232,-42.6257"/>
 </g>
-<!-- Node598 -->
-<g id="node3" class="node"><title>Node598</title>
+<!-- Node708 -->
+<g id="node3" class="node"><title>Node708</title>
 <g id="a_node3"><a xlink:href="classopenage_1_1convert_1_1game__versions_1_1_support.xhtml" target="_top" xlink:title="Support state of a game version.">
 <polygon fill="white" stroke="black" points="80.5,-0.5 80.5,-30.5 194.5,-30.5 194.5,-0.5 80.5,-0.5"/>
 <text text-anchor="start" x="88.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage.convert.game</text>
@@ -40,8 +40,8 @@
 </a>
 </g>
 </g>
-<!-- Node596&#45;&gt;Node598 -->
-<g id="edge2" class="edge"><title>Node596&#45;&gt;Node598</title>
+<!-- Node706&#45;&gt;Node708 -->
+<g id="edge2" class="edge"><title>Node706&#45;&gt;Node708</title>
 <path fill="none" stroke="midnightblue" d="M52.1269,-33.1852C60.755,-31.3767 70.452,-29.3441 80.1161,-27.3185"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="51.276,-29.7874 42.2067,-35.2645 52.7121,-36.6385 51.276,-29.7874"/>
 </g>

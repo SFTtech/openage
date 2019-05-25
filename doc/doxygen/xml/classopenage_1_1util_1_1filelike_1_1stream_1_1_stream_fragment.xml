@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::filelike::stream::StreamFragment</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a0c38dcc7e239f0c837d700b80121aebe" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamFragment::stream</definition>
+        <argsstring></argsstring>
+        <name>stream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="123" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2b00006f2cd86fc8f6bb20bb3e0cf88a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamFragment::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="124" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="124" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamFragment::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="125" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="125" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a6feb49befd79b8cc0f8302f4bba739f9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamFragment::closed</definition>
+        <argsstring></argsstring>
+        <name>closed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="153" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="153" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" compoundref="threading_8py" startline="75" endline="79">openage.util.threading.ClosableQueue.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a63d871f86bc66b017f2a5a71dbf20a25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamFragment.__init__</definition>
+        <argsstring>(self, stream, start, size)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a0c38dcc7e239f0c837d700b80121aebe" kindref="member">stream</ref></type>
+          <defname>stream</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2b00006f2cd86fc8f6bb20bb3e0cf88a" kindref="member">start</ref></type>
+          <defname>start</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" kindref="member">size</ref></type>
+          <defname>size</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="120" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamFragment.read</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902">read</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" kindref="member">size</ref></type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Read at most size bytes (less if EOF has been reached). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for write-only objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="130" bodyend="148"/>
+        <references refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" compoundref="math_8py" startline="29" endline="31">openage.util.math.clamp</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" compoundref="readonly_8py" startline="55" endline="57">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek</references>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">openage::gui::GuiStandaloneSubtexture::size</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">openage::renderer::opengl::GlBuffer::size</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" compoundref="bytequeue_8py" startline="38">openage.util.bytequeue.ByteQueue.size</references>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" compoundref="dynamic__resource_8h" startline="43">openage::audio::chunk_info_t::size</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" compoundref="terrain__chunk_8h" startline="51">openage::TerrainChunk::size</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" compoundref="opengl_2shader__program_8h" startline="71">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a2c618ac38d89bf3b912c9e4ffbf5cc7f" compoundref="gamestate_8h" startline="71">openage::event::demo::PongPlayer::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" compoundref="opengl_2shader__program_8h" startline="99">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" compoundref="stream_8py" startline="125">openage.util.filelike.stream.StreamFragment.size</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" compoundref="pefile_8py" startline="130">openage.convert.pefile.PEDataDirectory.size</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a8a297a8b66c23a207b305333c3963246" compoundref="cab_8py" startline="151">openage.cabextract.cab.CFFile.size</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">openage::SquareObject::size</references>
+        <references refid="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" compoundref="profiler_8h" startline="34">openage::util::component_time_data::start</references>
+        <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
+        <references refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" compoundref="terrain__search_8h" startline="67">openage::TerrainSearch::start</references>
+        <references refid="classopenage_1_1_unit_selection_1a3605e8a7e9e8c75b869556cd4b8174ac" compoundref="selection_8h" startline="107">openage::UnitSelection::start</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2b00006f2cd86fc8f6bb20bb3e0cf88a" compoundref="stream_8py" startline="124">openage.util.filelike.stream.StreamFragment.start</references>
+        <references refid="classopenage_1_1util_1_1_cachable_o_s_stream_1a286e7e1b4c5d5340c8bc35f87660f621" compoundref="stringformatter_8h" startline="34">openage::util::CachableOSStream::stream</references>
+        <references refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1a476d05993567d0c02d6ced2e6216795e" compoundref="lzxd_8h" startline="80">openage::util::compress::LZXDecompressor::stream</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a0c38dcc7e239f0c837d700b80121aebe" compoundref="stream_8py" startline="123">openage.util.filelike.stream.StreamFragment.stream</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamFragment.get_size</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7">get_size</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="149" bodyend="151"/>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">openage::gui::SizedTextureHandle::size</references>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">openage::gui::GuiStandaloneSubtexture::size</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" compoundref="buffer_8h" startline="37">openage::renderer::opengl::GlBuffer::size</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a553ee1fda70a2f1c6e7f0d3575b73678" compoundref="bytequeue_8py" startline="38">openage.util.bytequeue.ByteQueue.size</references>
+        <references refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" compoundref="dynamic__resource_8h" startline="43">openage::audio::chunk_info_t::size</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" compoundref="terrain__chunk_8h" startline="51">openage::TerrainChunk::size</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">openage::renderer::font_description::size</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a2c618ac38d89bf3b912c9e4ffbf5cc7f" compoundref="gamestate_8h" startline="71">openage::event::demo::PongPlayer::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" compoundref="opengl_2shader__program_8h" startline="71">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" compoundref="opengl_2shader__program_8h" startline="99">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" compoundref="stream_8py" startline="125">openage.util.filelike.stream.StreamFragment.size</references>
+        <references refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" compoundref="pefile_8py" startline="130">openage.convert.pefile.PEDataDirectory.size</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a8a297a8b66c23a207b305333c3963246" compoundref="cab_8py" startline="151">openage.cabextract.cab.CFFile.size</references>
+        <references refid="classopenage_1_1_square_object_1a3c42ee56a8eedf741695e75ef70faeb7" compoundref="terrain__object_8h" startline="285">openage::SquareObject::size</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a489c819f30f6d16e34a051db6755af6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamFragment.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75">close</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="152" bodyend="155"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5777">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5776">
+        <label>openage.util.filelike.stream.StreamFragment</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment"/>
+        <childnode refid="5777" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5780">
+        <label>ABC</label>
+      </node>
+      <node id="5778">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5779">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5780" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5782">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5783" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5781">
+        <label>openage.util.filelike.stream.StreamFragment</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment"/>
+        <childnode refid="5782" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5785">
+        <label>ABC</label>
+      </node>
+      <node id="5783">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5784" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5784">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5785" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="118" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a63d871f86bc66b017f2a5a71dbf20a25" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a1d17d3141151809fc8ae179baf150ac7" prot="public" virt="non-virtual" ambiguityscope="openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject."><scope>openage::util::filelike::stream::StreamFragment</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a489c819f30f6d16e34a051db6755af6c" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a6feb49befd79b8cc0f8302f4bba739f9" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>pos</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a4bf4ea1cc9983a0de92608d672d8d93b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1af3e0f1ad0917fbfd719abc21da0ba7a8" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2b00006f2cd86fc8f6bb20bb3e0cf88a" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>start</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a0c38dcc7e239f0c837d700b80121aebe" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>stream</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamFragment</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -45,7 +45,7 @@
         <label>QSemaphore</label>
       </node>
       <node id="13367">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
         <link refid="recursive__directory__watcher_8cpp"/>
         <childnode refid="13368" relation="include">
         </childnode>
@@ -112,6 +112,6 @@
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp"/>
   </compounddef>
 </doxygen>

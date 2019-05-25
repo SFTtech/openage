@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_c6d7fa0c813753c0f98eb2e8312d518f" kind="dir">
-    <compoundname>libopenage/simulation</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation</compoundname>
     <innerfile refid="entity_8cpp">entity.cpp</innerfile>
     <innerfile refid="entity_8h">entity.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/simulation/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/simulation/"/>
   </compounddef>
 </doxygen>

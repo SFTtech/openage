@@ -8,8 +8,8 @@
     <includes refid="dynamic__loader_8h" local="yes">dynamic_loader.h</includes>
     <includes refid="audio_2types_8h" local="yes">types.h</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="dynamic__loader_8cpp" local="yes">libopenage/audio/dynamic_loader.cpp</includedby>
-    <includedby refid="opus__dynamic__loader_8cpp" local="yes">libopenage/audio/opus_dynamic_loader.cpp</includedby>
+    <includedby refid="dynamic__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</includedby>
+    <includedby refid="opus__dynamic__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</includedby>
     <incdepgraph>
       <node id="1603">
         <label>list</label>
@@ -125,7 +125,7 @@
         <label>ostream</label>
       </node>
       <node id="1569">
-        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h</label>
         <link refid="opus__dynamic__loader_8h"/>
         <childnode refid="1570" relation="include">
         </childnode>
@@ -352,11 +352,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1616">
-        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</label>
         <link refid="dynamic__loader_8cpp"/>
       </node>
       <node id="1615">
-        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h</label>
         <link refid="opus__dynamic__loader_8h"/>
         <childnode refid="1616" relation="include">
         </childnode>
@@ -364,7 +364,7 @@
         </childnode>
       </node>
       <node id="1617">
-        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</label>
         <link refid="opus__dynamic__loader_8cpp"/>
       </node>
     </invincdepgraph>
@@ -410,6 +410,6 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/opus_dynamic_loader.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h"/>
   </compounddef>
 </doxygen>

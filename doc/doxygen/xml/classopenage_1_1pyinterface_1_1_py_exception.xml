@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyexception.h" line="71" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="71" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" compoundref="pyexception_8cpp" startline="30" endline="32">init_backtrace</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" compoundref="pyexception_8cpp" startline="35" endline="43">type_name</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +36,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyexception.h" line="65" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="35" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp" bodystart="35" bodyend="43"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" compoundref="pyobject_8cpp" startline="256" endline="258">openage::pyinterface::PyObjectRef::classname</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" compoundref="pyobject_8cpp" startline="251" endline="253">openage::pyinterface::PyObjectRef::modulename</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_exception_1ac541a09011ddd24b3e16700f9979b3fc" compoundref="pyexception_8h" startline="71">py_obj</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" compoundref="exctranslate__tests_8cpp" startline="42" endline="105">openage::pyinterface::tests::err_py_to_cpp</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -48,7 +56,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyexception.h" line="78" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="30" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp" bodystart="30" bodyend="32"/>
+        <references refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" compoundref="error_2error_8h" startline="97">openage::error::Error::backtrace</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">openage::pyinterface::PyObjectRef::get_ref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_exception_1ac541a09011ddd24b3e16700f9979b3fc" compoundref="pyexception_8h" startline="71">py_obj</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,83 +71,109 @@
 <para>cppclass PyException(Error): <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> py_obj void <ref refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" kindref="member">init_backtrace()</ref> except + </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3781">
+      <node id="4543">
         <label>runtime_error</label>
       </node>
-      <node id="3779">
+      <node id="4541">
         <label>openage::pyinterface::PyException</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
-        <childnode refid="3780" relation="public-inheritance">
+        <childnode refid="4542" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3780">
+      <node id="4542">
         <label>openage::error::Error</label>
         <link refid="classopenage_1_1error_1_1_error"/>
-        <childnode refid="3781" relation="public-inheritance">
+        <childnode refid="4543" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3784">
+      <node id="4546">
         <label>runtime_error</label>
       </node>
-      <node id="3785">
+      <node id="4547">
         <label>openage::log::message</label>
         <link refid="structopenage_1_1log_1_1message"/>
-        <childnode refid="3786" relation="usage">
+        <childnode refid="4548" relation="usage">
           <edgelabel>+lvl</edgelabel>
         </childnode>
       </node>
-      <node id="3782">
+      <node id="4552">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4553" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="4544">
         <label>openage::pyinterface::PyException</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
-        <childnode refid="3783" relation="public-inheritance">
+        <childnode refid="4545" relation="public-inheritance">
         </childnode>
-        <childnode refid="3790" relation="usage">
+        <childnode refid="4556" relation="usage">
           <edgelabel>+py_obj</edgelabel>
         </childnode>
       </node>
-      <node id="3789">
+      <node id="4553">
+        <label>NumericType</label>
+      </node>
+      <node id="4551">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4552" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3787">
+      <node id="4549">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="3788" relation="usage">
+        <childnode refid="4550" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="4554" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3786">
+      <node id="4548">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="3787" relation="public-inheritance">
+        <childnode refid="4549" relation="public-inheritance">
         </childnode>
-        <childnode refid="3788" relation="usage">
+        <childnode refid="4550" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="3783">
+      <node id="4554">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4555" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4555">
+        <label>DerivedType</label>
+      </node>
+      <node id="4545">
         <label>openage::error::Error</label>
         <link refid="classopenage_1_1error_1_1_error"/>
-        <childnode refid="3784" relation="public-inheritance">
+        <childnode refid="4546" relation="public-inheritance">
         </childnode>
-        <childnode refid="3785" relation="usage">
+        <childnode refid="4547" relation="usage">
           <edgelabel>+msg</edgelabel>
         </childnode>
       </node>
-      <node id="3788">
+      <node id="4550">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="3789" relation="public-inheritance">
+        <childnode refid="4551" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3790">
+      <node id="4556">
         <label>openage::pyinterface::PyObjectRef</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_object_ref"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pyinterface/pyexception.h" line="60" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="60" bodyend="79"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h" bodystart="60" bodyend="79"/>
     <listofallmembers>
       <member refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>backtrace</name></member>
       <member refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>debug_break_on_create</name></member>

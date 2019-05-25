@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1files" kind="namespace" language="Python">
+    <compoundname>openage::util::files</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1files_1aa2ba5a14f2468fd0745e07dc84ff2188" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.files.read_guaranteed</definition>
+        <argsstring>(fileobj, size)</argsstring>
+        <name>read_guaranteed</name>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" bodystart="15" bodyend="29"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a17b11fd7e416e7e4bac798af10470d54" compoundref="cab_8py" startline="229" endline="288">openage.cabextract.cab.CABFile.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" compoundref="struct_8py" startline="170" endline="173">openage.util.struct.NamedStruct.read</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a4d9e75ec517f4c47627143b3a950a7e7" compoundref="cab_8py" startline="300" endline="350">openage.cabextract.cab.CABFile.read_folder_headers</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1files_1a648056f11b83f759c99f551f483e9bef" compoundref="files_8py" startline="33" endline="53">openage.util.files.read_nullterminated_string</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1files_1a648056f11b83f759c99f551f483e9bef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.files.read_nullterminated_string</definition>
+        <argsstring>(fileobj, maxlen=255)</argsstring>
+        <name>read_nullterminated_string</name>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <param>
+          <type>maxlen</type>
+          <defname>maxlen</defname>
+          <defval>255</defval>
+        </param>
+        <briefdescription>
+<para>Reads bytes until a null terminator is reached. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" bodystart="33" bodyend="53"/>
+        <references refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" compoundref="pyobject_8cpp" startline="338" endline="342">openage::py::bytes</references>
+        <references refid="namespaceopenage_1_1util_1_1files_1aa2ba5a14f2468fd0745e07dc84ff2188" compoundref="files_8py" startline="15" endline="29">openage.util.files.read_guaranteed</references>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a17b11fd7e416e7e4bac798af10470d54" compoundref="cab_8py" startline="229" endline="288">openage.cabextract.cab.CABFile.__init__</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1ade45243e5c507f83f57d2ca5ad6a27e8" compoundref="cab_8py" startline="356" endline="429">openage.cabextract.cab.CABFile.read_file_headers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1files_1aefc9024dcd367647401c6682c2d0d7a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.files.which</definition>
+        <argsstring>(filename)</argsstring>
+        <name>which</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref></type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" bodystart="54" bodyend="74"/>
+        <references refid="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" compoundref="subprocess_8cpp" startline="25" endline="35">openage::subprocess::is_executable</references>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/files.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

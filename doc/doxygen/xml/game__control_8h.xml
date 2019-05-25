@@ -12,10 +12,10 @@
     <includes refid="selection_8h" local="yes">unit/selection.h</includes>
     <includes refid="unit__type_8h" local="yes">unit/unit_type.h</includes>
     <includes refid="handlers_8h" local="yes">handlers.h</includes>
-    <includedby refid="game__control_8cpp" local="yes">libopenage/game_control.cpp</includedby>
-    <includedby refid="game__control__link_8h" local="yes">libopenage/gui/game_control_link.h</includedby>
-    <includedby refid="resources__list__model_8cpp" local="yes">libopenage/gui/resources_list_model.cpp</includedby>
-    <includedby refid="main_8cpp" local="yes">libopenage/main.cpp</includedby>
+    <includedby refid="game__control_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</includedby>
+    <includedby refid="game__control__link_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</includedby>
+    <includedby refid="resources__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</includedby>
     <incdepgraph>
       <node id="8502">
         <label>list</label>
@@ -365,7 +365,7 @@
         <label>limits.h</label>
       </node>
       <node id="8463">
-        <label>libopenage/game_control.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h</label>
         <link refid="game__control_8h"/>
         <childnode refid="8464" relation="include">
         </childnode>
@@ -986,7 +986,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="8579">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="8580" relation="include">
         </childnode>
@@ -1000,25 +1000,25 @@
         </childnode>
       </node>
       <node id="8580">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="8581" relation="include">
         </childnode>
       </node>
       <node id="8585">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="8582">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="8581">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
       <node id="8577">
-        <label>libopenage/game_control.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h</label>
         <link refid="game__control_8h"/>
         <childnode refid="8578" relation="include">
         </childnode>
@@ -1030,15 +1030,15 @@
         </childnode>
       </node>
       <node id="8583">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="8578">
-        <label>libopenage/game_control.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</label>
         <link refid="game__control_8cpp"/>
       </node>
       <node id="8584">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
     </invincdepgraph>
@@ -1161,7 +1161,7 @@
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal">signals:</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_action_mode_signals_1a5184e9ff66287616fc73fda928e7b762" kindref="member">resource_changed</ref>(<ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204" kindref="member">resource</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>amount);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_action_mode_signals_1af13facb512270e9d9c134aeabf4bd1a7" kindref="member">population_changed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>warn);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_action_mode_signals_1af13facb512270e9d9c134aeabf4bd1a7" kindref="member">population_changed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>);</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_action_mode_signals_1a01cb90fdc3c3530ffa273437d9f03048" kindref="member">ability_changed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;ability);</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_action_mode_signals_1ad7a3ad25de355b8fea260dca15f56323" kindref="member">buttons_type_changed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/>type);</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
@@ -1343,6 +1343,6 @@
 <codeline lineno="385"><highlight class="normal"></highlight></codeline>
 <codeline lineno="386"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/game_control.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h"/>
   </compounddef>
 </doxygen>

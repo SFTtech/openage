@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::member_access::MemberAccess</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a1765e85cbfcc969bf001c2a9247049ac" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.member_access.MemberAccess::READ</definition>
+        <argsstring></argsstring>
+        <name>READ</name>
+        <initializer>=  &quot;binary-read_member&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a519262966a0b49e5a030eafb9ce42bcf" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.member_access.MemberAccess::READ_EXPORT</definition>
+        <argsstring></argsstring>
+        <name>READ_EXPORT</name>
+        <initializer>=  &quot;binary-read-export_member&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a759286c760790e90fd94d0f6f8621391" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.member_access.MemberAccess::NOREAD_EXPORT</definition>
+        <argsstring></argsstring>
+        <name>NOREAD_EXPORT</name>
+        <initializer>=  &quot;noread-export_member&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1ac890404e0bb2ee3c89fee7a1ed97aca4" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.member_access.MemberAccess::READ_UNKNOWN</definition>
+        <argsstring></argsstring>
+        <name>READ_UNKNOWN</name>
+        <initializer>=  &quot;read-unknown_member&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1021">
+        <label>openage.convert.dataformat.member_access.MemberAccess</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access"/>
+        <childnode refid="1022" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1022">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1023">
+        <label>openage.convert.dataformat.member_access.MemberAccess</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access"/>
+        <childnode refid="1024" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1024">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py" bodystart="11" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a759286c760790e90fd94d0f6f8621391" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::member_access::MemberAccess</scope><name>NOREAD_EXPORT</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a1765e85cbfcc969bf001c2a9247049ac" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::member_access::MemberAccess</scope><name>READ</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a519262966a0b49e5a030eafb9ce42bcf" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::member_access::MemberAccess</scope><name>READ_EXPORT</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1ac890404e0bb2ee3c89fee7a1ed97aca4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::member_access::MemberAccess</scope><name>READ_UNKNOWN</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

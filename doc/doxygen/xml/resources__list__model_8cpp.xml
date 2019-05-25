@@ -1042,7 +1042,7 @@
         <label>../gamedata/graphic.gen.h</label>
       </node>
       <node id="14995">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
         <childnode refid="14996" relation="include">
         </childnode>
@@ -1201,6 +1201,6 @@
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/resources_list_model.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp"/>
   </compounddef>
 </doxygen>

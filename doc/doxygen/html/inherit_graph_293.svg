@@ -9,24 +9,24 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 62)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-62 497,-62 497,4 -4,4"/>
-<!-- Node747 -->
-<g id="node1" class="node"><title>Node747</title>
+<!-- Node749 -->
+<g id="node1" class="node"><title>Node749</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="55.5,-38.5 55.5,-57.5 84.5,-57.5 84.5,-38.5 55.5,-38.5"/>
 <text text-anchor="middle" x="70" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">T</text>
 </a>
 </g>
 </g>
-<!-- Node748 -->
-<g id="node2" class="node"><title>Node748</title>
+<!-- Node750 -->
+<g id="node2" class="node"><title>Node750</title>
 <g id="a_node2"><a xlink:href="classqtsdl_1_1_shadow.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="210.5,-38.5 210.5,-57.5 311.5,-57.5 311.5,-38.5 210.5,-38.5"/>
 <text text-anchor="middle" x="261" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
 </a>
 </g>
 </g>
-<!-- Node747&#45;&gt;Node748 -->
-<g id="edge1" class="edge"><title>Node747&#45;&gt;Node748</title>
+<!-- Node749&#45;&gt;Node750 -->
+<g id="edge1" class="edge"><title>Node749&#45;&gt;Node750</title>
 <path fill="none" stroke="midnightblue" d="M94.9279,-48C123.779,-48 173.028,-48 210.242,-48"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="94.5924,-44.5001 84.5924,-48 94.5924,-51.5001 94.5924,-44.5001"/>
 </g>
@@ -38,8 +38,8 @@
 </a>
 </g>
 </g>
-<!-- Node748&#45;&gt;Node2 -->
-<g id="edge2" class="edge"><title>Node748&#45;&gt;Node2</title>
+<!-- Node750&#45;&gt;Node2 -->
+<g id="edge2" class="edge"><title>Node750&#45;&gt;Node2</title>
 <path fill="none" stroke="midnightblue" d="M321.557,-41.5153C341.123,-39.3849 362.761,-37.0288 381.938,-34.9409"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="321.1,-38.0442 311.538,-42.6062 321.858,-45.0031 321.1,-38.0442"/>
 </g>

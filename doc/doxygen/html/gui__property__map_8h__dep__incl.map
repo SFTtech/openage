@@ -1,13 +1,13 @@
-<map id="libopenage/gui/guisys/public/gui_property_map.h" name="libopenage/gui/guisys/public/gui_property_map.h">
-<area shape="rect" id="node1" title=" " alt="" coords="537,5,715,47"/>
-<area shape="rect" id="node2" href="$generator_8h.xhtml" title=" " alt="" coords="466,102,615,143"/>
-<area shape="rect" id="node11" href="$gui__property__map_8cpp.xhtml" title=" " alt="" coords="639,95,786,151"/>
-<area shape="rect" id="node3" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,206,156,233"/>
-<area shape="rect" id="node4" href="$game__main_8cpp.xhtml" title=" " alt="" coords="181,199,330,240"/>
-<area shape="rect" id="node5" href="$generator_8cpp.xhtml" title=" " alt="" coords="354,199,503,240"/>
-<area shape="rect" id="node6" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="413,288,554,329"/>
-<area shape="rect" id="node7" href="$generator__link_8h.xhtml" title=" " alt="" coords="578,199,741,240"/>
-<area shape="rect" id="node8" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="765,288,906,329"/>
-<area shape="rect" id="node10" href="$main_8cpp.xhtml" title=" " alt="" coords="815,206,957,233"/>
-<area shape="rect" id="node9" href="$generator__link_8cpp.xhtml" title=" " alt="" coords="578,288,741,329"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_property_map.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_property_map.h">
+<area shape="rect" id="node1" title=" " alt="" coords="727,5,968,61"/>
+<area shape="rect" id="node2" href="$generator_8h.xhtml" title=" " alt="" coords="615,109,824,165"/>
+<area shape="rect" id="node11" href="$gui__property__map_8cpp.xhtml" title=" " alt="" coords="848,109,1103,165"/>
+<area shape="rect" id="node3" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$game__main_8cpp.xhtml" title=" " alt="" coords="239,213,448,269"/>
+<area shape="rect" id="node5" href="$generator_8cpp.xhtml" title=" " alt="" coords="472,213,681,269"/>
+<area shape="rect" id="node6" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="524,317,733,373"/>
+<area shape="rect" id="node7" href="$generator__link_8h.xhtml" title=" " alt="" coords="757,213,967,269"/>
+<area shape="rect" id="node8" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="991,317,1200,373"/>
+<area shape="rect" id="node10" href="$main_8cpp.xhtml" title=" " alt="" coords="1043,213,1252,269"/>
+<area shape="rect" id="node9" href="$generator__link_8cpp.xhtml" title=" " alt="" coords="757,317,967,373"/>
 </map>

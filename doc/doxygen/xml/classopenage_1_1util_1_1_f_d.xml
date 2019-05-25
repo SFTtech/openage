@@ -15,7 +15,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="33" column="1" bodyfile="libopenage/util/fds.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a832a1b981d9ae02efe69ecf59a4f76d3" compoundref="fds_8cpp" startline="23" endline="25">FD</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" compoundref="fds_8cpp" startline="130" endline="139">restoreinputmode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" compoundref="fds_8cpp" startline="112" endline="128">setinputmodecanon</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" compoundref="fds_8cpp" startline="53" endline="55">write</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" compoundref="fds_8cpp" startline="43" endline="51">~FD</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -30,7 +35,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="39" column="1" bodyfile="libopenage/util/fds.h" bodystart="39" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a7be00038f51e04a9aeb8ef67fcb27fff" compoundref="fds_8cpp" startline="27" endline="37">FD</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" compoundref="fds_8cpp" startline="43" endline="51">~FD</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -45,7 +52,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="45" column="1" bodyfile="libopenage/util/fds.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" compoundref="fds_8cpp" startline="130" endline="139">restoreinputmode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" compoundref="fds_8cpp" startline="112" endline="128">setinputmodecanon</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" compoundref="fds_8cpp" startline="43" endline="51">~FD</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1a04fbb0344faa51064a9e6f1beebc29ac" prot="public" static="no" mutable="no">
         <type>struct termios</type>
@@ -58,7 +68,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="85" column="1" bodyfile="libopenage/util/fds.h" bodystart="88" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" bodystart="88" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" compoundref="fds_8cpp" startline="130" endline="139">restoreinputmode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" compoundref="fds_8cpp" startline="112" endline="128">setinputmodecanon</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -78,7 +90,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="22" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="23" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="23" bodyend="25"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a7be00038f51e04a9aeb8ef67fcb27fff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -100,7 +113,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="28" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="27" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="27" bodyend="37"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" compoundref="fds_8h" startline="39">close_on_destroy</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a2e25fcf3aa2ab408ead85e312de80888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -121,7 +136,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="29" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="39" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="39" bodyend="41"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -134,7 +150,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="31" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="43" bodyend="51"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="43" bodyend="51"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" compoundref="fds_8h" startline="39">close_on_destroy</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" compoundref="fds_8h" startline="45">restore_input_mode_on_destroy</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" compoundref="fds_8cpp" startline="130" endline="139">restoreinputmode</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -156,7 +176,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="50" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="53" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="53" bodyend="55"/>
+        <references refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" compoundref="pyobject_8cpp" startline="338" endline="342">openage::py::bytes</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" compoundref="fds_8cpp" startline="61" endline="63">putbyte</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">puts</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -174,7 +198,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="55" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="57" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="57" bodyend="59"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" compoundref="fds_8cpp" startline="53" endline="55">write</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1tests_1a4a108e620e3fead2c08ff14841552186" compoundref="console_2tests_8cpp" startline="55" endline="181">openage::console::tests::interactive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" compoundref="fds_8cpp" startline="75" endline="110">printf</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" compoundref="fds_8cpp" startline="65" endline="73">putcp</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -192,7 +223,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="60" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="61" bodyend="63"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="61" bodyend="63"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" compoundref="fds_8cpp" startline="53" endline="55">write</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -210,7 +243,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="65" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="65" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="65" bodyend="73"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">puts</references>
+        <references refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" compoundref="unicode_8cpp" startline="120" endline="152">openage::util::utf8_encode</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -231,7 +267,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="70" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="75" bodyend="110"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="75" bodyend="110"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">puts</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -250,7 +289,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="79" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="112" bodyend="128"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="112" bodyend="128"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a04fbb0344faa51064a9e6f1beebc29ac" compoundref="fds_8h" startline="88">old_tio</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" compoundref="fds_8h" startline="45">restore_input_mode_on_destroy</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -264,7 +306,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fds.h" line="85" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="130" bodyend="139"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp" bodystart="130" bodyend="139"/>
+        <references refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" compoundref="fds_8h" startline="33">fd</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a04fbb0344faa51064a9e6f1beebc29ac" compoundref="fds_8h" startline="88">old_tio</references>
+        <references refid="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" compoundref="fds_8h" startline="45">restore_input_mode_on_destroy</references>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" compoundref="fds_8cpp" startline="43" endline="51">~FD</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -273,12 +319,18 @@
 <para>wraps a POSIX file descriptor </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1482">
+      <node id="5719">
+        <label>struct</label>
+      </node>
+      <node id="5718">
         <label>openage::util::FD</label>
         <link refid="classopenage_1_1util_1_1_f_d"/>
+        <childnode refid="5719" relation="usage">
+          <edgelabel>+old_tio</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fds.h" line="17" column="1" bodyfile="libopenage/util/fds.h" bodystart="17" bodyend="90"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.h" bodystart="17" bodyend="90"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>close_on_destroy</name></member>
       <member refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>fd</name></member>

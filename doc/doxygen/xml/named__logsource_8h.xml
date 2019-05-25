@@ -4,9 +4,9 @@
     <compoundname>named_logsource.h</compoundname>
     <includes local="no">string</includes>
     <includes refid="logsource_8h" local="yes">logsource.h</includes>
-    <includedby refid="log_8cpp" local="yes">libopenage/log/log.cpp</includedby>
-    <includedby refid="named__logsource_8cpp" local="yes">libopenage/log/named_logsource.cpp</includedby>
-    <includedby refid="stdout__logsink_8cpp" local="yes">libopenage/log/stdout_logsink.cpp</includedby>
+    <includedby refid="log_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</includedby>
+    <includedby refid="named__logsource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp</includedby>
+    <includedby refid="stdout__logsink_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</includedby>
     <incdepgraph>
       <node id="18263">
         <label>list</label>
@@ -50,7 +50,7 @@
         </childnode>
       </node>
       <node id="18239">
-        <label>libopenage/log/named_logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h</label>
         <link refid="named__logsource_8h"/>
         <childnode refid="18240" relation="include">
         </childnode>
@@ -186,11 +186,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="18270">
-        <label>libopenage/log/named_logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp</label>
         <link refid="named__logsource_8cpp"/>
       </node>
       <node id="18268">
-        <label>libopenage/log/named_logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h</label>
         <link refid="named__logsource_8h"/>
         <childnode refid="18269" relation="include">
         </childnode>
@@ -200,11 +200,11 @@
         </childnode>
       </node>
       <node id="18269">
-        <label>libopenage/log/log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</label>
         <link refid="log_8cpp"/>
       </node>
       <node id="18271">
-        <label>libopenage/log/stdout_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</label>
         <link refid="stdout__logsink_8cpp"/>
       </node>
     </invincdepgraph>
@@ -246,6 +246,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/named_logsource.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h"/>
   </compounddef>
 </doxygen>

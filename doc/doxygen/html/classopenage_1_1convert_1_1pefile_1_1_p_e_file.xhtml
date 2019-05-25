@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.pefile.PEFile Class Reference</title>
+<title>openage: openage.convert.pefile.PEFile Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1pefile_1_1_
 
 <p>Reads Microsoft PE files.  
  <a href="classopenage_1_1convert_1_1pefile_1_1_p_e_file.xhtml#details">More...</a></p>
-<div class="dynheader">
-Collaboration diagram for openage.convert.pefile.PEFile:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1pefile_1_1_p_e_file__coll__graph.svg" width="204" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.pefile.PEFile:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1pefile_1_1_p_e_file__coll__graph.svg" width="204" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -162,6 +164,17 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pefile_8py_source.xhtml#l00158">158</a> of file <a class="el" href="pefile_8py_source.xhtml">pefile.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        doshdr = PEDOSHeader.read(fileobj)</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> doshdr.signature != b<span class="stringliteral">&#39;MZ&#39;</span>:</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;not a PE file&quot;</span>)</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment"># read COFF header</span></div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        fileobj.seek(doshdr.coffheaderpos)</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        coffhdr = PECOFFHeader.read(fileobj)</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> coffhdr.signature != b<span class="stringliteral">&#39;PE\0\0&#39;</span>:</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;not a Win32 PE file&quot;</span>)</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">if</span> coffhdr.opt_header_size != 224:</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;unknown optional header size&quot;</span>)</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="comment"># read optional header</span></div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        opthdr = PEOptionalHeader.read(fileobj)</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> opthdr.signature <span class="keywordflow">not</span> <span class="keywordflow">in</span> {267, 523}:</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;Not an x86{_64} file&quot;</span>)</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment"># read data directories</span></div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        opthdr.data_directories = []</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(opthdr.data_directory_count):</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            opthdr.data_directories.append(PEDataDirectory.read(fileobj))</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment"># read section headers</span></div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        sections = {}</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(coffhdr.number_of_sections):</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            section = PESection.read(fileobj)</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            section.name = section.name.decode(<span class="stringliteral">&#39;ascii&#39;</span>).<a class="code" href="namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec">rstrip</a>(<span class="stringliteral">&#39;\0&#39;</span>)</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> section.name.startswith(<span class="stringliteral">&#39;.&#39;</span>):</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;Invalid section name: &quot;</span> + section.name)</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            sections[section.name] = section</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment"># store all read header info</span></div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        self.fileobj = fileobj</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        self.doshdr = doshdr</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        self.coffhdr = coffhdr</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        self.opthdr = opthdr</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        self.sections = sections</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keyword">def </span>open_section(self, section_name):</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1util_xhtml_abeb6a94572d93a14498661545b8332ec"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#abeb6a94572d93a14498661545b8332ec">openage::util::rstrip</a></div><div class="ttdeci">size_t rstrip(char *s)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00072">strings.cpp:72</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="strings_8cpp_source.xhtml#l00072">openage::util.rstrip()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1pefile_1_1_p_e_file_a60449ccfe2e14452ec0fcdde0b4bcfbc_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -197,6 +210,8 @@ Public Attributes</h2></td></tr>
    and va is the RVA of the section start.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="pefile_8py_source.xhtml#l00212">212</a> of file <a class="el" href="pefile_8py_source.xhtml">pefile.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;no such section in PE file: &quot;</span> + section_name)</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        section = self.sections[section_name]</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">return</span> StreamFragment(</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            self.fileobj,</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            section.file_offset,</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            section.virtual_size), section.virtual_address</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keyword">def </span>resources(self):</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filelike_2python_8h_source.xhtml#l00057">openage::util::filelike::Python.fileobj</a>, <a class="el" href="drs_8py_source.xhtml#l00079">openage.convert.drs.DRS.fileobj</a>, <a class="el" href="pefile_8py_source.xhtml#l00198">openage.convert.pefile.PEFile.fileobj</a>, <a class="el" href="cab_8py_source.xhtml#l00435">openage.cabextract.cab.CABFolderStream.fileobj</a>, and <a class="el" href="pefile_8py_source.xhtml#l00204">openage.convert.pefile.PEFile.sections</a>.</p>
 
 </div>
 </div>
@@ -219,7 +234,7 @@ Public Attributes</h2></td></tr>
 <p>Returns a PEResources object for self. </p>
 
 <p class="definition">Definition at line <a class="el" href="pefile_8py_source.xhtml#l00226">226</a> of file <a class="el" href="pefile_8py_source.xhtml">pefile.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> PEResources(self)</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -269,6 +284,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="pefile_8py_source.xhtml#l00198">198</a> of file <a class="el" href="pefile_8py_source.xhtml">pefile.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="peresource_8py_source.xhtml#l00115">openage.convert.peresource.ResourceLeaf.open()</a>, and <a class="el" href="pefile_8py_source.xhtml#l00212">openage.convert.pefile.PEFile.open_section()</a>.</p>
+
 </div>
 </div>
 <a id="a1b4bc09936e1d838803b5410a5655c99"></a>
@@ -301,10 +318,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="pefile_8py_source.xhtml#l00204">204</a> of file <a class="el" href="pefile_8py_source.xhtml">pefile.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pefile_8py_source.xhtml#l00212">openage.convert.pefile.PEFile.open_section()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="pefile_8py_source.xhtml">pefile.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="pefile_8py_source.xhtml">pefile.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

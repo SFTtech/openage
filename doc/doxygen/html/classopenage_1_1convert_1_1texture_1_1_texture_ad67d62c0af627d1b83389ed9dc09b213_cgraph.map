@@ -1,0 +1,15 @@
+<map id="openage.convert.texture.Texture.__init__" name="openage.convert.texture.Texture.__init__">
+<area shape="rect" id="node1" title=" " alt="" coords="5,231,169,272"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1texture_1_1_texture.xhtml#af19cc8a0f6ae7ae951086a2125419e5d" title="convert slp to subtexture or subtextures, use a palette." alt="" coords="224,5,411,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a8916e3ed3816885ba27b052d461ac59e" title="Gets the total height of the packing." alt="" coords="233,71,402,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#a8d22836ef3fc3a4cd2175f2ec2d1ac5b" title=" " alt="" coords="233,201,402,243"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1texture.xhtml#af986c2ec331f19840f4dc1eee51a5961" title="merge all given frames of this slp to a single image file." alt="" coords="217,319,417,360"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a173fdf777356d529586708570ee36be4" title="spam message" alt="" coords="532,271,660,298"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="254,385,381,411"/>
+<area shape="rect" id="node12" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a2975fbf546612145bd425fad338adf24" title="Gets the total width of the packing." alt="" coords="233,136,402,177"/>
+<area shape="rect" id="node13" href="$classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#a194969df56d5b8df837c4aae21ab9060" title=" " alt="" coords="233,436,402,477"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="499,142,693,169"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a9755eed59f354457fb58dcb946986c81" title=" " alt="" coords="511,73,681,115"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1texture.xhtml#a0fee08e92bb6bd623d2a15d56af23aed" title=" " alt="" coords="465,326,727,353"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="499,385,693,411"/>
+</map>

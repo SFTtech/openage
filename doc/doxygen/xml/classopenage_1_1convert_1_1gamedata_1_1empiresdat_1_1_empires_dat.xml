@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::empiresdat::EmpiresDat</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a7b38a904c3e5519dff4ed044dfcde629" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.empiresdat.EmpiresDat::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;gamedata&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a86063966607abd571cedacce33e57582" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.empiresdat.EmpiresDat::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;empiresdat&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a572e82ee54bdc4070cc73814f79e0ede" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.empiresdat.EmpiresDat::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;empires2_x1_p1.dat structure&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1aeb040d3fe8a228c36f0fd13292605ca6" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.empiresdat.EmpiresDat::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [(READ, &quot;versionstr&quot;, &quot;char[8]&quot;)]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1ac03cb1fa789e78ec10c7c2404d149f5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.gamedata.empiresdat.EmpiresDat.get_hash</definition>
+        <argsstring>(cls)</argsstring>
+        <name>get_hash</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>return the unique hash for the data format tree </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="346" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="346" bodyend="359"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>class for fighting and beating the compressed empires2*.dat </para>
+    </briefdescription>
+    <detaileddescription>
+<para>represents the main game data file. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1207">
+        <label>openage.convert.gamedata.empiresdat.EmpiresDat</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat"/>
+        <childnode refid="1208" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1208">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1209">
+        <label>openage.convert.gamedata.empiresdat.EmpiresDat</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat"/>
+        <childnode refid="1210" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1210">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="42" bodyend="360"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1aeb040d3fe8a228c36f0fd13292605ca6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1ac03cb1fa789e78ec10c7c2404d149f5a" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>get_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a86063966607abd571cedacce33e57582" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a7b38a904c3e5519dff4ed044dfcde629" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1a572e82ee54bdc4070cc73814f79e0ede" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::empiresdat::EmpiresDat</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

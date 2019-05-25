@@ -1,8 +1,10 @@
 <map id="openage::util::compress::LZXDStream" name="openage::util::compress::LZXDStream">
-<area shape="rect" id="node1" title=" " alt="" coords="526,483,737,941"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="5,1011,311,1250"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="335,1004,621,1257"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="645,1004,868,1257"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="892,1011,1192,1250"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="527,5,735,420"/>
+<area shape="rect" id="node1" title=" " alt="" coords="599,960,810,1419"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="5,1819,311,2058"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="605,1481,804,1720"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="335,1812,621,2065"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="1032,1812,1255,2065"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="1279,1819,1579,2058"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="601,483,809,897"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="601,5,809,420"/>
 </map>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen_1_1main" kind="namespace" language="Python">
+    <compoundname>openage::codegen::main</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1main_1a0e9029131438ddadc195b01c7b3b20a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.main.init_subparser</definition>
+        <argsstring>(cli)</argsstring>
+        <name>init_subparser</name>
+        <param>
+          <type>cli</type>
+          <defname>cli</defname>
+        </param>
+        <briefdescription>
+<para>Codegen-specific CLI. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/main.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/main.py" bodystart="59" bodyend="108"/>
+        <referencedby refid="namespaceopenage_1_1____main_____1a2cf9c123d48ac683e5cf594b0114e5e3" compoundref="____main_____8py" startline="36" endline="133">openage.__main__.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1main_1a02b4f54f6bbc4cef5a3872eb60d639a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.main.main</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>main</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+<para>Codegen CLI entry point. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/main.py" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/main.py" bodystart="110" bodyend="177"/>
+        <references refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/main.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

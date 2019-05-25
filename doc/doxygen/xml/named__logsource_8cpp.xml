@@ -17,7 +17,7 @@
         <label>functional</label>
       </node>
       <node id="18208">
-        <label>libopenage/log/named_logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp</label>
         <link refid="named__logsource_8cpp"/>
         <childnode refid="18209" relation="include">
         </childnode>
@@ -219,6 +219,6 @@
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/named_logsource.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp"/>
   </compounddef>
 </doxygen>

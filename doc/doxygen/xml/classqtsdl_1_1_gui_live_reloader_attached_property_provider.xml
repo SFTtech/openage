@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="59" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp" bodystart="51" bodyend="53"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp" bodystart="51" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,28 +29,28 @@
 <para>Non-instantiable type that is needed to use a &apos;LR.tag&apos; attached property. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2739">
+      <node id="6451">
         <label>QObject</label>
       </node>
-      <node id="2738">
+      <node id="6450">
         <label>qtsdl::GuiLiveReloaderAttachedPropertyProvider</label>
         <link refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider"/>
-        <childnode refid="2739" relation="public-inheritance">
+        <childnode refid="6451" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2741">
+      <node id="6453">
         <label>QObject</label>
       </node>
-      <node id="2740">
+      <node id="6452">
         <label>qtsdl::GuiLiveReloaderAttachedPropertyProvider</label>
         <link refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider"/>
-        <childnode refid="2741" relation="public-inheritance">
+        <childnode refid="6453" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="55" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="55" bodyend="60"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="55" bodyend="60"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider_1ad0644731e7183f440c023eb4390c84e8" prot="public" virt="non-virtual"><scope>qtsdl::GuiLiveReloaderAttachedPropertyProvider</scope><name>qmlAttachedProperties</name></member>
     </listofallmembers>

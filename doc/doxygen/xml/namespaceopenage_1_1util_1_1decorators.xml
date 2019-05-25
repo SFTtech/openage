@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1decorators" kind="namespace" language="Python">
+    <compoundname>openage::util::decorators</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1decorators_1a99f2a50dadb1f0bd895aa655a743e09b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.decorators.run_once</definition>
+        <argsstring>(func)</argsstring>
+        <name>run_once</name>
+        <param>
+          <type>func</type>
+          <defname>func</defname>
+        </param>
+        <briefdescription>
+<para>Some utility function decorators. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Decorator to run func only at its first invocation.</para>
+<para>Set func.has_run to False to manually re-run. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/decorators.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/decorators.py" bodystart="15" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/decorators.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

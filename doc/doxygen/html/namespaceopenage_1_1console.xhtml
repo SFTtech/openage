@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::console Namespace Reference</title>
+<title>openage: openage::console Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -256,6 +257,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8cpp_source.xhtml#l00598">598</a> of file <a class="el" href="buf_8cpp_source.xhtml">buf.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                                           {</div><div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i: *v) {</div><div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        <span class="keywordflow">if</span> (i &gt;= 0x20 and i &lt; 0x7f) {</div><div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            fprintf(f, <span class="stringliteral">&quot;%c&quot;</span>, (<span class="keywordtype">char</span>) i);</div><div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            fprintf(f, <span class="stringliteral">&quot;?&quot;</span>);</div><div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        }</div><div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    }</div><div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00608">openage::console::Buf::escape_sequence_aborted()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1console_ac6af4ff8acdecaf3ebf91c57e2c20953_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -274,6 +285,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00119">119</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l01125">openage::console::Buf::linedata_clear()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00156">openage::console::NewBuf::move_ptrs_to_next_line()</a>.</p>
+
 </div>
 </div>
 <a id="af47bf3d97cd359c6c10f897202d86f6e"></a>
@@ -289,6 +302,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00033">33</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>, <a class="el" href="draw_8cpp_source.xhtml#l00022">openage::console::draw::to_opengl()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
 
 </div>
 </div>
@@ -306,6 +321,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00034">34</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00022">openage::console::draw::to_opengl()</a>.</p>
+
 </div>
 </div>
 <a id="a9745bb286bb9090f6a1108ab396a7b8a"></a>
@@ -321,6 +338,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00030">30</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
 
 </div>
 </div>
@@ -338,6 +357,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00041">41</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="a8344de72e80fee53e75bb2d8ed0d05fa"></a>
@@ -353,6 +374,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00031">31</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
 
 </div>
 </div>
@@ -370,6 +393,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00037">37</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="a5ed01c84ea51ab071895ba4893def65a"></a>
@@ -385,6 +410,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00040">40</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
 
 </div>
 </div>
@@ -402,6 +429,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00039">39</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00022">openage::console::draw::to_opengl()</a>.</p>
+
 </div>
 </div>
 <a id="a0c77f6f996bfc8d29bcf3328dd59a7ed"></a>
@@ -417,6 +446,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00032">32</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
 
 </div>
 </div>
@@ -434,6 +465,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00044">44</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="a704887dfb1063ef039b3d0b3a47c8e3a"></a>
@@ -449,6 +482,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00038">38</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>, <a class="el" href="draw_8cpp_source.xhtml#l00022">openage::console::draw::to_opengl()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00091">openage::console::draw::to_terminal()</a>.</p>
 
 </div>
 </div>
@@ -466,6 +501,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00042">42</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="ad9457c58e4cd80cf614f2fdfd9746a52"></a>
@@ -481,6 +518,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00043">43</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
 
 </div>
 </div>
@@ -498,6 +537,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00045">45</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="a5e51abe4b309530b0e3ce99dd7e15542"></a>
@@ -514,6 +555,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00036">36</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
+
 </div>
 </div>
 <a id="a93039d0f5b2e81d5c16ea27f24726d46"></a>
@@ -529,6 +572,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00035">35</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00918">openage::console::Buf::process_sgr_code()</a>.</p>
 
 </div>
 </div>
@@ -547,6 +592,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00099">99</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00392">openage::console::Buf::pop_last_char()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00478">openage::console::Buf::print_codepoint()</a>.</p>
+
 </div>
 </div>
 <a id="a2f8b6f12c1655f3259fbdc6873ccb0a2"></a>
@@ -563,6 +610,8 @@ Variables</h2></td></tr>
 <p>the line has some contents </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00103">103</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00191">openage::console::NewBuf::new_chr()</a>, <a class="el" href="buf_8cpp_source.xhtml#l00392">openage::console::Buf::pop_last_char()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00478">openage::console::Buf::print_codepoint()</a>.</p>
 
 </div>
 </div>
@@ -581,6 +630,8 @@ Variables</h2></td></tr>
 <p>this value is required for re-calculating the buffer on resize </p>
 
 <p class="definition">Definition at line <a class="el" href="buf_8h_source.xhtml#l00110">110</a> of file <a class="el" href="buf_8h_source.xhtml">buf.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="buf_8cpp_source.xhtml#l00191">openage::console::NewBuf::new_chr()</a>, <a class="el" href="buf_8cpp_source.xhtml#l00392">openage::console::Buf::pop_last_char()</a>, and <a class="el" href="buf_8cpp_source.xhtml#l00478">openage::console::Buf::print_codepoint()</a>.</p>
 
 </div>
 </div>

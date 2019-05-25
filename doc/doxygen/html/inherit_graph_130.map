@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1job_1_1_worker.xhtml" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node1" href="$classopenage_1_1log_1_1_log_sink.xhtml" title=" " alt="" coords="5,56,156,83"/>
+<area shape="rect" id="node2" href="$classopenage_1_1log_1_1_file_sink.xhtml" title=" " alt="" coords="214,5,365,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1log_1_1_std_out_sink.xhtml" title=" " alt="" coords="204,56,375,83"/>
+<area shape="rect" id="node4" href="$classopenage_1_1log_1_1tests_1_1_test_log_sink.xhtml" title=" " alt="" coords="223,107,356,149"/>
 </map>

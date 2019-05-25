@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::GameMain Class Reference</title>
+<title>openage: openage::GameMain Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,17 +100,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1_game_main.xhtml','');
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="game__main_8h_source.xhtml">game_main.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::GameMain:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::GameMain:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::GameMain:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::GameMain:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -214,7 +217,15 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00015">15</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    :</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#a3764c2b88f493980f4b46eb9f21dbc77">OptionNode</a>{<span class="stringliteral">&quot;GameMain&quot;</span>},</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classopenage_1_1_game_main.xhtml#a0a2423176e649f9865eb97fc0f187b63">terrain</a>{generator.terrain()},</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1_game_main.xhtml#ac0651e2cfcbf6733dfe637b6b72eaefc">placed_units</a>{},</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">spec</a>{generator.get_spec()} {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// players</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">players</a>.reserve(generator.player_names().size());</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;<a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a> : generator.player_names()) {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">players</a>.push_back(std::make_shared&lt;Player&gt;(this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a08149fd6c63e67e2d495e77fb52439a9">add_civ</a>(i), i, <a class="code" href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">name</a>));</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        i++;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// initialise types only after all players are added</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">players</a>) {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        p-&gt;initialise_unit_types();</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// initialise units</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#ac0651e2cfcbf6733dfe637b6b72eaefc">placed_units</a>.<a class="code" href="classopenage_1_1_unit_container.xhtml#a92cc414be8c128d27d1cd27326d05c7e">set_terrain</a>(this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a0a2423176e649f9865eb97fc0f187b63">terrain</a>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    generator.add_units(*<span class="keyword">this</span>);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_a3764c2b88f493980f4b46eb9f21dbc77"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#a3764c2b88f493980f4b46eb9f21dbc77">openage::options::OptionNode::OptionNode</a></div><div class="ttdeci">OptionNode(const std::string &amp;panel_name)</div><div class="ttdef"><b>Definition:</b> <a href="options_8cpp_source.xhtml#l00231">options.cpp:231</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_a2e33821ccae8d83b550256b96fef381e"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">openage::GameMain::players</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Player &gt; &gt; players</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00095">game_main.h:95</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_ac0651e2cfcbf6733dfe637b6b72eaefc"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#ac0651e2cfcbf6733dfe637b6b72eaefc">openage::GameMain::placed_units</a></div><div class="ttdeci">UnitContainer placed_units</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00087">game_main.h:87</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a92cc414be8c128d27d1cd27326d05c7e"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a92cc414be8c128d27d1cd27326d05c7e">openage::UnitContainer::set_terrain</a></div><div class="ttdeci">void set_terrain(std::shared_ptr&lt; Terrain &gt; &amp;t)</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00062">unit_container.cpp:62</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_a08149fd6c63e67e2d495e77fb52439a9"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a08149fd6c63e67e2d495e77fb52439a9">openage::GameMain::add_civ</a></div><div class="ttdeci">Civilisation * add_civ(int civ_id)</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8cpp_source.xhtml#l00067">game_main.cpp:67</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_aec9c7942bfc1d0c83058ededba2bbfe2"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">openage::GameMain::spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; spec</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00107">game_main.h:107</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_a0a2423176e649f9865eb97fc0f187b63"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a0a2423176e649f9865eb97fc0f187b63">openage::GameMain::terrain</a></div><div class="ttdeci">std::shared_ptr&lt; Terrain &gt; terrain</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00072">game_main.h:72</a></div></div>
+<div class="ttc" id="classopenage_1_1options_1_1_option_node_xhtml_aa016978791629312b59e2f4ec64471c5"><div class="ttname"><a href="classopenage_1_1options_1_1_option_node.xhtml#aa016978791629312b59e2f4ec64471c5">openage::options::OptionNode::name</a></div><div class="ttdeci">const std::string name</div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.xhtml#l00216">options.h:216</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9fd586efcead21e5e63965db6cdf1313"></a>
@@ -233,7 +244,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -263,6 +274,10 @@ Additional Inherited Members</h2></td></tr>
 <p>creates a random civ, owned and managed by this game </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00067">67</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                          {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> new_civ = std::make_shared&lt;Civilisation&gt;(*this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">spec</a>, civ_id);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#aac754495a630309c256b41aeeb6f6a2e">civs</a>.emplace_back(new_civ);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> new_civ.get();</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_aec9c7942bfc1d0c83058ededba2bbfe2"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">openage::GameMain::spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; spec</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00107">game_main.h:107</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_main_xhtml_aac754495a630309c256b41aeeb6f6a2e"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#aac754495a630309c256b41aeeb6f6a2e">openage::GameMain::civs</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Civilisation &gt; &gt; civs</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00105">game_main.h:105</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main_8h_source.xhtml#l00105">civs</a>, and <a class="el" href="game__main_8h_source.xhtml#l00107">spec</a>.</p>
 
 </div>
 </div>
@@ -284,6 +299,17 @@ Additional Inherited Members</h2></td></tr>
 <p>player by index </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                   {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">players</a>.at(player_id).get();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_a2e33821ccae8d83b550256b96fef381e"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">openage::GameMain::players</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Player &gt; &gt; players</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00095">game_main.h:95</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="generator_8cpp_source.xhtml#l00252">openage::Generator::add_units()</a>, and <a class="el" href="game__save_8cpp_source.xhtml#l00033">openage::gameio::load_unit()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main_ace86de3be7238212c0b49ecc1247e8a4_icgraph.svg" width="100%" height="383"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -304,6 +330,19 @@ Additional Inherited Members</h2></td></tr>
 <p>the spec in this games settings </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00059">59</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                             {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">spec</a>.get();</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_aec9c7942bfc1d0c83058ededba2bbfe2"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#aec9c7942bfc1d0c83058ededba2bbfe2">openage::GameMain::spec</a></div><div class="ttdeci">std::shared_ptr&lt; GameSpec &gt; spec</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00107">game_main.h:107</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main_8h_source.xhtml#l00107">spec</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__renderer_8cpp_source.xhtml#l00219">openage::GameRenderer::game_spec()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main_a9c18854cb18678045a149d3dba99eba1_icgraph.svg" width="376" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -325,6 +364,9 @@ Additional Inherited Members</h2></td></tr>
 <p>team by id </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                             {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a9499997a06046df21b4c76940c8d704d">teams</a>.at(team_id);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_a9499997a06046df21b4c76940c8d704d"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a9499997a06046df21b4c76940c8d704d">openage::GameMain::teams</a></div><div class="ttdeci">std::vector&lt; Team &gt; teams</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00077">game_main.h:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main_8h_source.xhtml#l00077">teams</a>.</p>
 
 </div>
 </div>
@@ -345,7 +387,8 @@ Additional Inherited Members</h2></td></tr>
 <p>the number of players </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                          {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">players</a>.size();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_a2e33821ccae8d83b550256b96fef381e"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a2e33821ccae8d83b550256b96fef381e">openage::GameMain::players</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Player &gt; &gt; players</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00095">game_main.h:95</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6f8adc595bd010a815f5783fd72df591"></a>
@@ -365,6 +408,9 @@ Additional Inherited Members</h2></td></tr>
 <p>the number of teams </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                        {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#a9499997a06046df21b4c76940c8d704d">teams</a>.size();</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_a9499997a06046df21b4c76940c8d704d"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#a9499997a06046df21b4c76940c8d704d">openage::GameMain::teams</a></div><div class="ttdeci">std::vector&lt; Team &gt; teams</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00077">game_main.h:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main_8h_source.xhtml#l00077">teams</a>.</p>
 
 </div>
 </div>
@@ -386,6 +432,18 @@ Additional Inherited Members</h2></td></tr>
 <p>updates the game by one frame </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                    {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_game_main.xhtml#ac0651e2cfcbf6733dfe637b6b72eaefc">placed_units</a>.<a class="code" href="classopenage_1_1_unit_container.xhtml#a1db074862697abdf24998bdf978ce7d3">update_all</a>(lastframe_duration);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_xhtml_ac0651e2cfcbf6733dfe637b6b72eaefc"><div class="ttname"><a href="classopenage_1_1_game_main.xhtml#ac0651e2cfcbf6733dfe637b6b72eaefc">openage::GameMain::placed_units</a></div><div class="ttdeci">UnitContainer placed_units</div><div class="ttdef"><b>Definition:</b> <a href="game__main_8h_source.xhtml#l00087">game_main.h:87</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a1db074862697abdf24998bdf978ce7d3"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a1db074862697abdf24998bdf978ce7d3">openage::UnitContainer::update_all</a></div><div class="ttdeci">bool update_all(time_nsec_t lastframe_duration)</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00143">unit_container.cpp:143</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main_8h_source.xhtml#l00087">placed_units</a>, and <a class="el" href="unit__container_8cpp_source.xhtml#l00143">openage::UnitContainer::update_all()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_game_main_a0bec5982fb6c7685722b204ce199e458_cgraph.svg" width="367" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -412,6 +470,8 @@ Additional Inherited Members</h2></td></tr>
 <p>civs used in this game </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8h_source.xhtml#l00105">105</a> of file <a class="el" href="game__main_8h_source.xhtml">game_main.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__main_8cpp_source.xhtml#l00067">add_civ()</a>.</p>
 
 </div>
 </div>
@@ -446,6 +506,8 @@ Additional Inherited Members</h2></td></tr>
 <p>all the objects that have been placed. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8h_source.xhtml#l00087">87</a> of file <a class="el" href="game__main_8h_source.xhtml">game_main.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="generator_8cpp_source.xhtml#l00252">openage::Generator::add_units()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00102">openage::gameio::load()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00033">openage::gameio::load_unit()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00102">openage::ActionMode::on_game_control_set()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00625">openage::EditorMode::paint_entity_at()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00411">openage::ActionMode::place_selection()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00070">openage::gameio::save()</a>, and <a class="el" href="game__main_8cpp_source.xhtml#l00063">update()</a>.</p>
 
 </div>
 </div>
@@ -496,6 +558,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8h_source.xhtml#l00107">107</a> of file <a class="el" href="game__main_8h_source.xhtml">game_main.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__main_8cpp_source.xhtml#l00067">add_civ()</a>, and <a class="el" href="game__main_8cpp_source.xhtml#l00059">get_spec()</a>.</p>
+
 </div>
 </div>
 <a id="a9499997a06046df21b4c76940c8d704d"></a>
@@ -512,6 +576,8 @@ Additional Inherited Members</h2></td></tr>
 <p>all teams in the game </p>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8h_source.xhtml#l00077">77</a> of file <a class="el" href="game__main_8h_source.xhtml">game_main.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__main_8cpp_source.xhtml#l00055">get_team()</a>, and <a class="el" href="game__main_8cpp_source.xhtml#l00051">team_count()</a>.</p>
 
 </div>
 </div>
@@ -530,11 +596,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__main_8h_source.xhtml#l00072">72</a> of file <a class="el" href="game__main_8h_source.xhtml">game_main.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="generator_8cpp_source.xhtml#l00252">openage::Generator::add_units()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00390">openage::ActionMode::get_action()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00102">openage::gameio::load()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00033">openage::gameio::load_unit()</a>, <a class="el" href="game__renderer_8cpp_source.xhtml#l00199">openage::GameRenderer::on_draw()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00102">openage::ActionMode::on_game_control_set()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00625">openage::EditorMode::paint_entity_at()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00615">openage::EditorMode::paint_terrain_at()</a>, and <a class="el" href="game__save_8cpp_source.xhtml#l00070">openage::gameio::save()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gamestate/<a class="el" href="game__main_8h_source.xhtml">game_main.h</a></li>
-<li>libopenage/gamestate/<a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/<a class="el" href="game__main_8h_source.xhtml">game_main.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/<a class="el" href="game__main_8cpp_source.xhtml">game_main.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,52 +1,52 @@
-<map id="libopenage/gui/generator_link.h" name="libopenage/gui/generator_link.h">
-<area shape="rect" id="node1" title=" " alt="" coords="689,5,852,47"/>
-<area shape="rect" id="node2" href="$generator_8h.xhtml" title=" " alt="" coords="501,95,665,121"/>
-<area shape="rect" id="node33" href="$gui__list__model_8h.xhtml" title=" " alt="" coords="707,259,837,300"/>
-<area shape="rect" id="node49" href="$gui__item__list__model_8h.xhtml" title=" " alt="" coords="809,169,946,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="575,177,679,203"/>
-<area shape="rect" id="node4" href="$tile_8h.xhtml" title=" " alt="" coords="331,177,429,203"/>
-<area shape="rect" id="node32" href="$gui__property__map_8h.xhtml" title=" " alt="" coords="626,430,766,471"/>
-<area shape="rect" id="node5" href="$declarations_8h.xhtml" title=" " alt="" coords="34,266,137,293"/>
-<area shape="rect" id="node15" href="$misc_8h.xhtml" title=" " alt="" coords="499,437,560,464"/>
-<area shape="rect" id="node30" title=" " alt="" coords="161,266,287,293"/>
-<area shape="rect" id="node31" title=" " alt="" coords="311,266,449,293"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5,691,67,717"/>
-<area shape="rect" id="node7" href="$fixed__point_8h.xhtml" title=" " alt="" coords="212,348,340,375"/>
-<area shape="rect" id="node8" title=" " alt="" coords="100,534,175,561"/>
-<area shape="rect" id="node9" title=" " alt="" coords="246,437,306,464"/>
-<area shape="rect" id="node10" title=" " alt="" coords="199,534,257,561"/>
-<area shape="rect" id="node11" title=" " alt="" coords="331,437,397,464"/>
-<area shape="rect" id="node12" title=" " alt="" coords="421,437,475,464"/>
-<area shape="rect" id="node13" title=" " alt="" coords="51,437,120,464"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1444,534,1527,561"/>
-<area shape="rect" id="node16" title=" " alt="" coords="407,534,471,561"/>
-<area shape="rect" id="node17" title=" " alt="" coords="545,534,607,561"/>
-<area shape="rect" id="node18" title=" " alt="" coords="481,691,535,717"/>
-<area shape="rect" id="node19" title=" " alt="" coords="833,534,889,561"/>
-<area shape="rect" id="node20" title=" " alt="" coords="769,616,839,643"/>
-<area shape="rect" id="node21" href="$error_2error_8h.xhtml" title=" " alt="" coords="281,534,383,561"/>
-<area shape="rect" id="node24" href="$compiler_8h.xhtml" title=" " alt="" coords="631,616,745,643"/>
-<area shape="rect" id="node22" title=" " alt="" coords="295,616,367,643"/>
-<area shape="rect" id="node23" title=" " alt="" coords="391,616,470,643"/>
-<area shape="rect" id="node27" href="$message_8h.xhtml" title=" " alt="" coords="101,616,219,643"/>
-<area shape="rect" id="node25" title=" " alt="" coords="721,691,788,717"/>
-<area shape="rect" id="node26" href="$signal_8h.xhtml" title=" " alt="" coords="607,691,673,717"/>
-<area shape="rect" id="node28" title=" " alt="" coords="243,691,309,717"/>
-<area shape="rect" id="node29" href="$constexpr_8h.xhtml" title=" " alt="" coords="96,691,219,717"/>
-<area shape="rect" id="node34" title=" " alt="" coords="737,348,788,375"/>
-<area shape="rect" id="node35" title=" " alt="" coords="575,348,713,375"/>
-<area shape="rect" id="node36" href="$gui__item_8h.xhtml" title=" " alt="" coords="1533,348,1616,375"/>
-<area shape="rect" id="node37" title=" " alt="" coords="1389,616,1454,643"/>
-<area shape="rect" id="node38" title=" " alt="" coords="1725,534,1803,561"/>
-<area shape="rect" id="node39" title=" " alt="" coords="1967,437,2033,464"/>
-<area shape="rect" id="node40" title=" " alt="" coords="2057,437,2111,464"/>
-<area shape="rect" id="node41" title=" " alt="" coords="2227,534,2298,561"/>
-<area shape="rect" id="node42" title=" " alt="" coords="2135,437,2225,464"/>
-<area shape="rect" id="node43" title=" " alt="" coords="1257,437,1399,464"/>
-<area shape="rect" id="node44" title=" " alt="" coords="1423,437,1492,464"/>
-<area shape="rect" id="node45" href="$game__logic__caller_8h.xhtml" title=" " alt="" coords="1801,430,1943,471"/>
-<area shape="rect" id="node46" href="$deferred__initial__constant__property__values_8h.xhtml" title=" " alt="" coords="1015,423,1182,479"/>
-<area shape="rect" id="node47" href="$qtsdl__checked__static__cast_8h.xhtml" title=" " alt="" coords="1551,527,1697,568"/>
-<area shape="rect" id="node48" href="$gui__item__link_8h.xhtml" title=" " alt="" coords="1567,437,1676,464"/>
-<area shape="rect" id="node50" href="$gui__property__map__impl_8h.xhtml" title=" " alt="" coords="1958,348,2125,375"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/generator_link.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/generator_link.h">
+<area shape="rect" id="node1" title=" " alt="" coords="666,5,875,61"/>
+<area shape="rect" id="node2" href="$generator_8h.xhtml" title=" " alt="" coords="501,109,665,136"/>
+<area shape="rect" id="node33" href="$gui__list__model_8h.xhtml" title=" " alt="" coords="707,273,837,315"/>
+<area shape="rect" id="node49" href="$gui__item__list__model_8h.xhtml" title=" " alt="" coords="809,184,946,225"/>
+<area shape="rect" id="node3" title=" " alt="" coords="575,191,679,218"/>
+<area shape="rect" id="node4" href="$tile_8h.xhtml" title=" " alt="" coords="331,191,429,218"/>
+<area shape="rect" id="node32" href="$gui__property__map_8h.xhtml" title=" " alt="" coords="626,445,766,486"/>
+<area shape="rect" id="node5" href="$declarations_8h.xhtml" title=" " alt="" coords="34,281,137,307"/>
+<area shape="rect" id="node15" href="$misc_8h.xhtml" title=" " alt="" coords="499,452,560,479"/>
+<area shape="rect" id="node30" title=" " alt="" coords="161,281,287,307"/>
+<area shape="rect" id="node31" title=" " alt="" coords="311,281,449,307"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,705,67,732"/>
+<area shape="rect" id="node7" href="$fixed__point_8h.xhtml" title=" " alt="" coords="212,363,340,389"/>
+<area shape="rect" id="node8" title=" " alt="" coords="100,549,175,575"/>
+<area shape="rect" id="node9" title=" " alt="" coords="246,452,306,479"/>
+<area shape="rect" id="node10" title=" " alt="" coords="199,549,257,575"/>
+<area shape="rect" id="node11" title=" " alt="" coords="331,452,397,479"/>
+<area shape="rect" id="node12" title=" " alt="" coords="421,452,475,479"/>
+<area shape="rect" id="node13" title=" " alt="" coords="51,452,120,479"/>
+<area shape="rect" id="node14" title=" " alt="" coords="1444,549,1527,575"/>
+<area shape="rect" id="node16" title=" " alt="" coords="407,549,471,575"/>
+<area shape="rect" id="node17" title=" " alt="" coords="545,549,607,575"/>
+<area shape="rect" id="node18" title=" " alt="" coords="481,705,535,732"/>
+<area shape="rect" id="node19" title=" " alt="" coords="833,549,889,575"/>
+<area shape="rect" id="node20" title=" " alt="" coords="769,631,839,657"/>
+<area shape="rect" id="node21" href="$error_2error_8h.xhtml" title=" " alt="" coords="281,549,383,575"/>
+<area shape="rect" id="node24" href="$compiler_8h.xhtml" title=" " alt="" coords="631,631,745,657"/>
+<area shape="rect" id="node22" title=" " alt="" coords="295,631,367,657"/>
+<area shape="rect" id="node23" title=" " alt="" coords="391,631,470,657"/>
+<area shape="rect" id="node27" href="$message_8h.xhtml" title=" " alt="" coords="101,631,219,657"/>
+<area shape="rect" id="node25" title=" " alt="" coords="721,705,788,732"/>
+<area shape="rect" id="node26" href="$signal_8h.xhtml" title=" " alt="" coords="607,705,673,732"/>
+<area shape="rect" id="node28" title=" " alt="" coords="243,705,309,732"/>
+<area shape="rect" id="node29" href="$constexpr_8h.xhtml" title=" " alt="" coords="96,705,219,732"/>
+<area shape="rect" id="node34" title=" " alt="" coords="737,363,788,389"/>
+<area shape="rect" id="node35" title=" " alt="" coords="575,363,713,389"/>
+<area shape="rect" id="node36" href="$gui__item_8h.xhtml" title=" " alt="" coords="1533,363,1616,389"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1389,631,1454,657"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1725,549,1803,575"/>
+<area shape="rect" id="node39" title=" " alt="" coords="1967,452,2033,479"/>
+<area shape="rect" id="node40" title=" " alt="" coords="2057,452,2111,479"/>
+<area shape="rect" id="node41" title=" " alt="" coords="2227,549,2298,575"/>
+<area shape="rect" id="node42" title=" " alt="" coords="2135,452,2225,479"/>
+<area shape="rect" id="node43" title=" " alt="" coords="1257,452,1399,479"/>
+<area shape="rect" id="node44" title=" " alt="" coords="1423,452,1492,479"/>
+<area shape="rect" id="node45" href="$game__logic__caller_8h.xhtml" title=" " alt="" coords="1801,445,1943,486"/>
+<area shape="rect" id="node46" href="$deferred__initial__constant__property__values_8h.xhtml" title=" " alt="" coords="1015,437,1182,493"/>
+<area shape="rect" id="node47" href="$qtsdl__checked__static__cast_8h.xhtml" title=" " alt="" coords="1551,541,1697,583"/>
+<area shape="rect" id="node48" href="$gui__item__link_8h.xhtml" title=" " alt="" coords="1567,452,1676,479"/>
+<area shape="rect" id="node50" href="$gui__property__map__impl_8h.xhtml" title=" " alt="" coords="1958,363,2125,389"/>
 </map>

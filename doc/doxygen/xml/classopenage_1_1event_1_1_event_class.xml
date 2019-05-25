@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="32" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="32" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="32" bodyend="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -79,7 +79,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="135" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="135" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" compoundref="eventclass_8cpp" startline="13" endline="15">EventClass</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1a5321e145f5eea940554f18a71aa1b639" compoundref="event_2tests_8cpp" startline="200" endline="224">openage::event::tests::EventTypeTestClass::predict_invoke_time</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -95,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="186" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="186" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="186" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="186" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" compoundref="eventclass_8cpp" startline="18" endline="20">id</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -119,7 +122,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="128" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="13" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp" bodystart="13" bodyend="15"/>
+        <references refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" compoundref="eventclass_8h" startline="135">type</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -132,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="130" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="130" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -146,7 +150,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="140" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="18" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp" bodystart="18" bodyend="20"/>
+        <references refid="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" compoundref="eventclass_8h" startline="186">_id</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -174,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="147" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="147" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -215,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="156" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="156" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
@@ -274,7 +279,7 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="178" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="178" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -283,84 +288,84 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
 <para>A eventclass has to be implemented for every type of event that exists. It determines what the event means and how it is handled. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1431">
+      <node id="2224">
         <label>openage::event::demo::BallReflectPanel</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
-        <childnode refid="1430" relation="public-inheritance">
+        <childnode refid="2223" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1439">
+      <node id="2232">
         <label>openage::event::tests::TestEventClassTwo</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1429">
+      <node id="2222">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="1433">
+      <node id="2226">
         <label>openage::event::DependencyImmediatelyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_immediately_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1436">
+      <node id="2229">
         <label>openage::event::RepeatEventClass</label>
         <link refid="classopenage_1_1event_1_1_repeat_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1438">
+      <node id="2231">
         <label>openage::event::tests::TestEventClass</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1434">
+      <node id="2227">
         <label>openage::event::OnceEventClass</label>
         <link refid="classopenage_1_1event_1_1_once_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1435">
+      <node id="2228">
         <label>openage::event::demo::ResetGame</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
-        <childnode refid="1434" relation="public-inheritance">
+        <childnode refid="2227" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1440">
+      <node id="2233">
         <label>openage::event::TriggerEventClass</label>
         <link refid="classopenage_1_1event_1_1_trigger_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1430">
+      <node id="2223">
         <label>openage::event::DependencyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1432">
+      <node id="2225">
         <label>openage::event::demo::BallReflectWall</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall"/>
-        <childnode refid="1430" relation="public-inheritance">
+        <childnode refid="2223" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1437">
+      <node id="2230">
         <label>openage::event::tests::EventTypeTestClass</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="2222" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1441">
+      <node id="2234">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventclass.h" line="26" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="26" bodyend="187"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="26" bodyend="187"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" prot="private" virt="non-virtual"><scope>openage::event::EventClass</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::EventClass</scope><name>EventClass</name></member>

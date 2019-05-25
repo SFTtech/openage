@@ -37,7 +37,7 @@
         <label>thread</label>
       </node>
       <node id="12942">
-        <label>libopenage/gui/guisys/private/gui_application_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.cpp</label>
         <link refid="gui__application__impl_8cpp"/>
         <childnode refid="12943" relation="include">
         </childnode>
@@ -114,6 +114,6 @@
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_application_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.cpp"/>
   </compounddef>
 </doxygen>

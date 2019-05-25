@@ -8,7 +8,7 @@
     <includes local="no">memory</includes>
     <includes refid="game__spec_8h" local="yes">../gamestate/game_spec.h</includes>
     <includes local="no">QAbstractListModel</includes>
-    <includedby refid="category__contents__list__model_8cpp" local="yes">libopenage/gui/category_contents_list_model.cpp</includedby>
+    <includedby refid="category__contents__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</includedby>
     <incdepgraph>
       <node id="11163">
         <label>list</label>
@@ -443,7 +443,7 @@
         <link refid="fslike_2native_8h"/>
       </node>
       <node id="11131">
-        <label>libopenage/gui/category_contents_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h</label>
         <link refid="category__contents__list__model_8h"/>
         <childnode refid="11132" relation="include">
         </childnode>
@@ -656,11 +656,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="11216">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="11215">
-        <label>libopenage/gui/category_contents_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h</label>
         <link refid="category__contents__list__model_8h"/>
         <childnode refid="11216" relation="include">
         </childnode>
@@ -695,8 +695,8 @@
 <codeline lineno="22" refid="classopenage_1_1gui_1_1_category_contents_list_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_category_contents_list_model" kindref="compound">CategoryContentsListModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractListModel<sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" kindref="member">name</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" kindref="member">get_name</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" kindref="member">set_name</ref>)</highlight></codeline>
-<codeline lineno="26" refid="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" kindref="member">editorMode</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" kindref="member">get_editor_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" kindref="member">set_editor_mode</ref>)</highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" kindref="member">name</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" kindref="member">get_name</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" kindref="member">set_name</ref>)</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" kindref="member">editorMode</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" kindref="member">get_editor_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" kindref="member">set_editor_mode</ref>)</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_category_contents_list_model" kindref="compound">CategoryContentsListModel</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -725,6 +725,6 @@
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/category_contents_list_model.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h"/>
   </compounddef>
 </doxygen>

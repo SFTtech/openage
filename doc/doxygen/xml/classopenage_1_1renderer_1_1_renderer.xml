@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="74" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="74" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1a07fe03ec7257b6dfa803988be4607740" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="78" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="78" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1ae35bdd48e24b2942a4ef5b55271f46c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="81" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="81" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1a9371f6d9b258db3b287e5fcab73a4996" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_shader_program" kindref="compound">ShaderProgram</ref> &gt;</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="85" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="85" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1ac7faabd63826f110062b7fbf5202c7c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> &gt;</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="89" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="89" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1a67a77e7702c68b2fa880f9c26f877eed" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> &gt;</type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="93" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="93" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1aaf1729acc8160a03eca5b91cf6e7dc3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> &gt;</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="99" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="99" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1a2a55ee0bda543175600d17b62d24dbf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> const  *</type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="103" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="103" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1a9e2749c186084a43f41a77fb8c999647" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="106" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="106" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_renderer_1aa6810194c364c0708a7af3407a8c3447" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="109" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="109" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -178,24 +178,24 @@
 <para>The renderer. This class is used for performing all graphics operations. It is abstract and has implementations for various low-level graphics APIs like OpenGL. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3898">
+      <node id="4746">
         <label>openage::renderer::Renderer</label>
         <link refid="classopenage_1_1renderer_1_1_renderer"/>
       </node>
-      <node id="3899">
+      <node id="4747">
         <label>openage::renderer::opengl::GlRenderer</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer"/>
-        <childnode refid="3898" relation="public-inheritance">
+        <childnode refid="4746" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3900">
+      <node id="4748">
         <label>openage::renderer::Renderer</label>
         <link refid="classopenage_1_1renderer_1_1_renderer"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/renderer.h" line="72" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="72" bodyend="110"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="72" bodyend="110"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_renderer_1a67a77e7702c68b2fa880f9c26f877eed" prot="public" virt="pure-virtual"><scope>openage::renderer::Renderer</scope><name>add_bufferless_quad</name></member>
       <member refid="classopenage_1_1renderer_1_1_renderer_1ac7faabd63826f110062b7fbf5202c7c9" prot="public" virt="pure-virtual"><scope>openage::renderer::Renderer</scope><name>add_mesh_geometry</name></member>

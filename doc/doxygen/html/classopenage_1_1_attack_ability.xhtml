@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::AttackAbility Class Reference</title>
+<title>openage: openage::AttackAbility Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1_attack_ability.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="ability_8h_source.xhtml">ability.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::AttackAbility:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_ability__inherit__graph.svg" width="164" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::AttackAbility:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_ability__inherit__graph.svg" width="164" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::AttackAbility:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::AttackAbility:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -169,7 +173,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00271">271</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    :</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <a class="code" href="classopenage_1_1_attack_ability.xhtml#aa53e618a783e5614878cefd7fca79c71">sound</a>{s} {</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attack_ability_xhtml_aa53e618a783e5614878cefd7fca79c71"><div class="ttname"><a href="classopenage_1_1_attack_ability.xhtml#aa53e618a783e5614878cefd7fca79c71">openage::AttackAbility::sound</a></div><div class="ttdeci">const Sound * sound</div><div class="ttdef"><b>Definition:</b> <a href="ability_8h_source.xhtml#l00284">ability.h:284</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -211,6 +216,21 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a68b5f695172d6ebb6ce4381b3b94eb34">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00276">276</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                                                  {</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">if</span> (cmd.has_unit()) {</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        Unit &amp;target = *cmd.unit();</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordtype">bool</span> target_is_resource = <a class="code" href="classopenage_1_1_unit_ability.xhtml#ae5e064045861e1c9ca9ba94b7b05b7d8">has_resource</a>(target);</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">return</span> &amp;to_modify != &amp;target &amp;&amp;</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;               to_modify.location &amp;&amp;</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;               target.location &amp;&amp;</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;               target.location-&gt;is_placed() &amp;&amp;</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;               to_modify.has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">attr_type::attack</a>) &amp;&amp;</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;               <a class="code" href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">has_hitpoints</a>(target) &amp;&amp;</div><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;               (<a class="code" href="classopenage_1_1_unit_ability.xhtml#abec7dd778de809e475630a0ec2204ef0">is_enemy</a>(to_modify, target) || target_is_resource) &amp;&amp;</div><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;               (cmd.has_flag(<a class="code" href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa2a71c2ff2e6e5f1d2d3342d476a6d4dc">command_flag::attack_res</a>) == target_is_resource);</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_ability_xhtml_a462d1ece390e2508e943f2d1a1f8d64e"><div class="ttname"><a href="classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e">openage::UnitAbility::has_hitpoints</a></div><div class="ttdeci">bool has_hitpoints(Unit &amp;target)</div><div class="ttdef"><b>Definition:</b> <a href="ability_8cpp_source.xhtml#l00016">ability.cpp:16</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_ability_xhtml_ae5e064045861e1c9ca9ba94b7b05b7d8"><div class="ttname"><a href="classopenage_1_1_unit_ability.xhtml#ae5e064045861e1c9ca9ba94b7b05b7d8">openage::UnitAbility::has_resource</a></div><div class="ttdeci">bool has_resource(Unit &amp;target)</div><div class="ttdef"><b>Definition:</b> <a href="ability_8cpp_source.xhtml#l00026">ability.cpp:26</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_ability_xhtml_abec7dd778de809e475630a0ec2204ef0"><div class="ttname"><a href="classopenage_1_1_unit_ability.xhtml#abec7dd778de809e475630a0ec2204ef0">openage::UnitAbility::is_enemy</a></div><div class="ttdeci">bool is_enemy(Unit &amp;to_modify, Unit &amp;target)</div><div class="ttdef"><b>Definition:</b> <a href="ability_8cpp_source.xhtml#l00052">ability.cpp:52</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">openage::attr_type::attack</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a355391982e6c1257c3fc4de3b6402b3aa2a71c2ff2e6e5f1d2d3342d476a6d4dc"><div class="ttname"><a href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa2a71c2ff2e6e5f1d2d3342d476a6d4dc">openage::command_flag::attack_res</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">openage::attack</a>, <a class="el" href="namespaceopenage.xhtml#a355391982e6c1257c3fc4de3b6402b3aa2a71c2ff2e6e5f1d2d3342d476a6d4dc">openage::attack_res</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="command_8cpp_source.xhtml#l00099">openage::Command::has_flag()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00016">openage::UnitAbility::has_hitpoints()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00026">openage::UnitAbility::has_resource()</a>, <a class="el" href="command_8cpp_source.xhtml#l00050">openage::Command::has_unit()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00052">openage::UnitAbility::is_enemy()</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, and <a class="el" href="command_8cpp_source.xhtml#l00066">openage::Command::unit()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_ability_aed325cf408ccfcfc099dfad62aa1dbbd_cgraph.svg" width="100%" height="577"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -258,6 +278,20 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a63afa7eff4171d24a312b0c05be4aa41">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00292">292</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                                                               {</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    to_modify.log(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;invoke attack action&quot;</span>);</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span> (play_sound &amp;&amp; this-&gt;<a class="code" href="classopenage_1_1_attack_ability.xhtml#aa53e618a783e5614878cefd7fca79c71">sound</a>) {</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_attack_ability.xhtml#aa53e618a783e5614878cefd7fca79c71">sound</a>-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">play</a>();</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    Unit *target = cmd.unit();</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    to_modify.push_action(std::make_unique&lt;AttackAction&gt;(&amp;to_modify, target-&gt;get_ref()));</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="classopenage_1_1_attack_ability_xhtml_aa53e618a783e5614878cefd7fca79c71"><div class="ttname"><a href="classopenage_1_1_attack_ability.xhtml#aa53e618a783e5614878cefd7fca79c71">openage::AttackAbility::sound</a></div><div class="ttdeci">const Sound * sound</div><div class="ttdef"><b>Definition:</b> <a href="ability_8h_source.xhtml#l00284">ability.h:284</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
+<div class="ttc" id="classopenage_1_1_sound_xhtml_a526acd600cd69f6f421a253fc169398b"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">openage::Sound::play</a></div><div class="ttdeci">void play() const</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8cpp_source.xhtml#l00431">game_spec.cpp:431</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00109">openage::log::dbg()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00303">openage::Unit::get_ref()</a>, <a class="el" href="logsource_8cpp_source.xhtml#l00019">openage::log::LogSource::log()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="game__spec_8cpp_source.xhtml#l00431">openage::Sound::play()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00235">openage::Unit::push_action()</a>, <a class="el" href="ability_8h_source.xhtml#l00284">sound</a>, and <a class="el" href="command_8cpp_source.xhtml#l00066">openage::Command::unit()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attack_ability_ab607828e9d6469ea9405cfc5f1ab2735_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -287,6 +321,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#ab14c09721b496b167d0bd48ac201c885">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8h_source.xhtml#l00275">275</a> of file <a class="el" href="ability_8h_source.xhtml">ability.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                 {</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">ability_type::attack</a>;</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">openage::ability_type::attack</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">openage::attack</a>.</p>
 
 </div>
 </div>
@@ -313,11 +350,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ability_8h_source.xhtml#l00284">284</a> of file <a class="el" href="ability_8h_source.xhtml">ability.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ability_8cpp_source.xhtml#l00292">invoke()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="ability_8h_source.xhtml">ability.h</a></li>
-<li>libopenage/unit/<a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="ability_8h_source.xhtml">ability.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

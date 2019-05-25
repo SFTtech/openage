@@ -29,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="504" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="504" bodyend="506"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="504" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="504" bodyend="506"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3bf715e5d34cd92f0d595d414888f69b" compoundref="fixed__point_8h" startline="107">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::raw_value</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,12 +38,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2837">
+      <node id="6643">
         <label>std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fixed_point.h" line="503" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="503" bodyend="507"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="503" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="503" bodyend="507"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a4decb3a80285baa0de819035ddbfe50b" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>operator()</name></member>
     </listofallmembers>

@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="48" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" static="no" mutable="no">
         <type>const size_t</type>
@@ -38,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="53" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="53" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="53" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1aa4ccad0b4eae016862241e5a662575c6" compoundref="value__container_8h" startline="40" endline="42">openage::curve::ValueContainer&lt; T &gt;::id</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_value_container_1af307dc2d35246999cea18dfb1d478be9" prot="protected" static="no" mutable="yes">
         <type><ref refid="classopenage_1_1curve_1_1_keyframe_container" kindref="compound">KeyframeContainer</ref>&lt; T &gt;::KeyframeIterator</type>
@@ -52,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="58" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="16" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="16" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="16" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1aa72ebf92805c7aed981f9c3fbf2c7efb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -93,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="25" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="25" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af35f74af0eb47d6c852c5b8f8f83ae60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>T</type>
@@ -112,7 +113,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="27" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="27" column="1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_value_container_1a21af7f25367a85a49ed2d2391d8ffd3f" compoundref="value__container_8h" startline="29" endline="31">openage::curve::ValueContainer&lt; T &gt;::operator()</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1a21af7f25367a85a49ed2d2391d8ffd3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>T</type>
@@ -129,7 +131,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="29" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="29" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="29" bodyend="31"/>
+        <references refid="classopenage_1_1curve_1_1_value_container_1af35f74af0eb47d6c852c5b8f8f83ae60">openage::curve::ValueContainer&lt; T &gt;::get</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, const T &amp; &gt;</type>
@@ -146,7 +149,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="33" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="91" bodyend="94"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="91" bodyend="94"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, const T &amp; &gt;</type>
@@ -163,7 +167,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="34" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="98" bodyend="102"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="98" bodyend="102"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -184,7 +189,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="37" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="63" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="63" bodyend="80"/>
+        <references refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" compoundref="changelog_8py" startline="52" endline="75">openage.convert.changelog.changes</references>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" compoundref="curve__types_8cpp" startline="14" endline="146">openage::curve::tests::curve_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -205,7 +213,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="38" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="84" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="84" bodyend="87"/>
+        <references refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" compoundref="changelog_8py" startline="52" endline="75">openage.convert.changelog.changes</references>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" compoundref="curve__types_8cpp" startline="14" endline="146">openage::curve::tests::curve_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1aa4ccad0b4eae016862241e5a662575c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
@@ -220,7 +231,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/value_container.h" line="40" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="40" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="40" bodyend="42"/>
+        <references refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" compoundref="value__container_8h" startline="53">openage::curve::ValueContainer&lt; T &gt;::_id</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -228,42 +240,42 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4907">
+      <node id="1917">
         <label>openage::curve::Discrete&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_discrete"/>
-        <childnode refid="4904" relation="public-inheritance">
+        <childnode refid="1914" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4906">
+      <node id="1916">
         <label>openage::curve::Continuous&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_continuous"/>
-        <childnode refid="4904" relation="public-inheritance">
+        <childnode refid="1914" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4905">
+      <node id="1915">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="4904">
+      <node id="1914">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="4905" relation="public-inheritance">
+        <childnode refid="1915" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4909">
+      <node id="1919">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="4908">
+      <node id="1918">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="4909" relation="public-inheritance">
+        <childnode refid="1919" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/value_container.h" line="14" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="14" bodyend="59"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h" bodystart="14" bodyend="59"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>add_dependent</name></member>

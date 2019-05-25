@@ -64,7 +64,6 @@ var searchData=
   ['attributes',['attributes',['../classopenage_1_1_unit.xhtml#a49ca534b218c7a77336914f450d71602',1,'openage::Unit']]],
   ['attrs',['attrs',['../classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee',1,'openage::Attributes']]],
   ['audio_5fmanager',['audio_manager',['../classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba',1,'openage::audio::Sound::audio_manager()'],['../classopenage_1_1_engine.xhtml#a8d07f7c047d94e7406e58de892842ebc',1,'openage::Engine::audio_manager()']]],
-  ['author',['author',['../namespaceopenage_1_1conf.xhtml#afb4d9f8eccee017cfcdd02bc9272a586',1,'openage::conf']]],
   ['auto_5fabilities',['auto_abilities',['../classopenage_1_1_idle_action.xhtml#ac20b323a66cb5a327a56bee631acb49d',1,'openage::IdleAction']]],
   ['available',['available',['../classopenage_1_1audio_1_1_audio_manager.xhtml#ad9a24264ec70c9075d21fb84ce5b9fc6',1,'openage::audio::AudioManager']]],
   ['available_5fids',['available_ids',['../classopenage_1_1_player.xhtml#a3fd34994e4ac44efd89e567de46eb05f',1,'openage::Player']]],

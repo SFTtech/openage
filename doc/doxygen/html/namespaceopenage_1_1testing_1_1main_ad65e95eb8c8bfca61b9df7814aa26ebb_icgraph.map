@@ -1,0 +1,4 @@
+<map id="openage.testing.main.print_test_list" name="openage.testing.main.print_test_list">
+<area shape="rect" id="node1" title="Prints a list of all tests and demos in test_list." alt="" coords="232,5,407,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="5,13,184,39"/>
+</map>

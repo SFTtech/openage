@@ -10,7 +10,7 @@
         <label>QtGlobal</label>
       </node>
       <node id="14738">
-        <label>libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
         <link refid="gui__application__with__logger_8cpp"/>
         <childnode refid="14739" relation="include">
         </childnode>
@@ -91,6 +91,6 @@
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/public/gui_application_with_logger.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp"/>
   </compounddef>
 </doxygen>

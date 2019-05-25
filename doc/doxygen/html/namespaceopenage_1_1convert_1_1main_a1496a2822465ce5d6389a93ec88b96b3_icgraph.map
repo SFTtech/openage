@@ -1,0 +1,11 @@
+<map id="openage.convert.main.expand_relative_path" name="openage.convert.main.expand_relative_path">
+<area shape="rect" id="node1" title="Expand relative path to an absolute one, including abbreviations like ~ and environment variables." alt="" coords="1203,39,1397,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1main.xhtml#a3974808f6a0e99b94c7dea8fdea4bceb" title="Acquires source dir for the asset conversion." alt="" coords="728,39,923,80"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1convert_1_1main.xhtml#a0158a3e3bc758a1a1615d61ca2bb7000" title=" " alt="" coords="971,39,1155,80"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1convert_1_1main.xhtml#a83fe7e9eb04e731e92c18a14eba73870" title="Allow the customization of the WINEPREFIX environment variable." alt="" coords="977,104,1148,145"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1main.xhtml#a607817dd5809140455a8b393c9a68fdc" title="Mount the input folders for conversion." alt="" coords="492,39,680,80"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1main.xhtml#a06157ab72dcb855b2e993bf128e9faf1" title="Perform asset conversion." alt="" coords="242,5,435,47"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="233,71,444,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="10,13,181,39"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="5,70,185,97"/>
+</map>

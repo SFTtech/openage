@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::binpack::BinaryTreePacker</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1binpack_1_1_packer" prot="public" virt="non-virtual">openage.convert.binpack.Packer</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1aebf84e116a138514f0d139cb9201c788" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BinaryTreePacker::aspect_ratio</definition>
+        <argsstring></argsstring>
+        <name>aspect_ratio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="162" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" compoundref="binpack_8py" startline="212" endline="230">openage.convert.binpack.BinaryTreePacker.grow_node</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a1a9fc5489b2784da4a4419a3cab18841" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BinaryTreePacker::heuristic</definition>
+        <argsstring></argsstring>
+        <name>heuristic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="163" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BinaryTreePacker::root</definition>
+        <argsstring></argsstring>
+        <name>root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="164" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="164" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" compoundref="binpack_8py" startline="243" endline="254">openage.convert.binpack.BinaryTreePacker.grow_down</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" compoundref="binpack_8py" startline="212" endline="230">openage.convert.binpack.BinaryTreePacker.grow_node</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" compoundref="binpack_8py" startline="231" endline="242">openage.convert.binpack.BinaryTreePacker.grow_right</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a75eb8c7fa063315819779923a5a4f248" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BinaryTreePacker::mapping</definition>
+        <argsstring></argsstring>
+        <name>mapping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a8b748f8896932ba15c26f98177ba7202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.__init__</definition>
+        <argsstring>(self, margin, aspect_ratio=1, heuristic=maxside_heuristic)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" kindref="member">margin</ref></type>
+          <defname>margin</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1aebf84e116a138514f0d139cb9201c788" kindref="member">aspect_ratio</ref></type>
+          <defname>aspect_ratio</defname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a1a9fc5489b2784da4a4419a3cab18841" kindref="member">heuristic</ref></type>
+          <defname>heuristic</defname>
+          <defval><ref refid="namespaceopenage_1_1convert_1_1binpack_1ac86edd0acbc07bb4b440e2f911ca50f3" kindref="member">maxside_heuristic</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="160" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="160" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ada535734ec9cd8314c97b931843ee216" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.pack</definition>
+        <argsstring>(self, blocks)</argsstring>
+        <name>pack</name>
+        <reimplements refid="classopenage_1_1convert_1_1binpack_1_1_packer_1ac0edc354fd6c4e1d7396e66e877fc3f3">pack</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>blocks</type>
+          <defname>blocks</defname>
+        </param>
+        <briefdescription>
+<para>Pack all the blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Each block must have a width and height attribute.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="166" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a461f1dcbab5392fa90e45f52efe1c36e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.pos</definition>
+        <argsstring>(self, block)</argsstring>
+        <name>pos</name>
+        <reimplements refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81">pos</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="173" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="173" bodyend="176"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" compoundref="binpack_8py" startline="25">openage.convert.binpack.Packer.mapping</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.fit</definition>
+        <argsstring>(self, block)</argsstring>
+        <name>fit</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="177" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="177" bodyend="196"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" compoundref="binpack_8py" startline="197" endline="203">openage.convert.binpack.BinaryTreePacker.find_node</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" compoundref="binpack_8py" startline="212" endline="230">openage.convert.binpack.BinaryTreePacker.grow_node</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" compoundref="binpack_8py" startline="25">openage.convert.binpack.Packer.mapping</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" compoundref="binpack_8py" startline="24">openage.convert.binpack.Packer.margin</references>
+        <references refid="classqtsdl_1_1_gui_subtree_impl_1acfe92a1b1a4e0334c9d29d276949f652" compoundref="gui__subtree__impl_8h" startline="94">qtsdl::GuiSubtreeImpl::root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" compoundref="binpack_8py" startline="164">openage.convert.binpack.BinaryTreePacker.root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a32c685bf642e7e1d51c8236da236e7d3" compoundref="binpack_8py" startline="204" endline="211">openage.convert.binpack.BinaryTreePacker.split_node</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.find_node</definition>
+        <argsstring>(self, root, width, height)</argsstring>
+        <name>find_node</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" kindref="member">root</ref></type>
+          <defname>root</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="197" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="197" bodyend="203"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" compoundref="binpack_8py" startline="197" endline="203">openage.convert.binpack.BinaryTreePacker.find_node</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" compoundref="binpack_8py" startline="197" endline="203">openage.convert.binpack.BinaryTreePacker.find_node</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" compoundref="binpack_8py" startline="243" endline="254">openage.convert.binpack.BinaryTreePacker.grow_down</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" compoundref="binpack_8py" startline="231" endline="242">openage.convert.binpack.BinaryTreePacker.grow_right</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a32c685bf642e7e1d51c8236da236e7d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.split_node</definition>
+        <argsstring>(self, node, width, height)</argsstring>
+        <name>split_node</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>node</type>
+          <defname>node</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="204" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="204" bodyend="211"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" compoundref="binpack_8py" startline="243" endline="254">openage.convert.binpack.BinaryTreePacker.grow_down</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" compoundref="binpack_8py" startline="231" endline="242">openage.convert.binpack.BinaryTreePacker.grow_right</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.grow_node</definition>
+        <argsstring>(self, width, height)</argsstring>
+        <name>grow_node</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="212" bodyend="230"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1aebf84e116a138514f0d139cb9201c788" compoundref="binpack_8py" startline="162">openage.convert.binpack.BinaryTreePacker.aspect_ratio</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" compoundref="binpack_8py" startline="243" endline="254">openage.convert.binpack.BinaryTreePacker.grow_down</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" compoundref="binpack_8py" startline="231" endline="242">openage.convert.binpack.BinaryTreePacker.grow_right</references>
+        <references refid="classqtsdl_1_1_gui_subtree_impl_1acfe92a1b1a4e0334c9d29d276949f652" compoundref="gui__subtree__impl_8h" startline="94">qtsdl::GuiSubtreeImpl::root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" compoundref="binpack_8py" startline="164">openage.convert.binpack.BinaryTreePacker.root</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.grow_right</definition>
+        <argsstring>(self, width, height)</argsstring>
+        <name>grow_right</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="231" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="231" bodyend="242"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" compoundref="binpack_8py" startline="197" endline="203">openage.convert.binpack.BinaryTreePacker.find_node</references>
+        <references refid="classqtsdl_1_1_gui_subtree_impl_1acfe92a1b1a4e0334c9d29d276949f652" compoundref="gui__subtree__impl_8h" startline="94">qtsdl::GuiSubtreeImpl::root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" compoundref="binpack_8py" startline="164">openage.convert.binpack.BinaryTreePacker.root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a32c685bf642e7e1d51c8236da236e7d3" compoundref="binpack_8py" startline="204" endline="211">openage.convert.binpack.BinaryTreePacker.split_node</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" compoundref="binpack_8py" startline="212" endline="230">openage.convert.binpack.BinaryTreePacker.grow_node</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BinaryTreePacker.grow_down</definition>
+        <argsstring>(self, width, height)</argsstring>
+        <name>grow_down</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="243" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="243" bodyend="254"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" compoundref="binpack_8py" startline="197" endline="203">openage.convert.binpack.BinaryTreePacker.find_node</references>
+        <references refid="classqtsdl_1_1_gui_subtree_impl_1acfe92a1b1a4e0334c9d29d276949f652" compoundref="gui__subtree__impl_8h" startline="94">qtsdl::GuiSubtreeImpl::root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" compoundref="binpack_8py" startline="164">openage.convert.binpack.BinaryTreePacker.root</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a32c685bf642e7e1d51c8236da236e7d3" compoundref="binpack_8py" startline="204" endline="211">openage.convert.binpack.BinaryTreePacker.split_node</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" compoundref="binpack_8py" startline="212" endline="230">openage.convert.binpack.BinaryTreePacker.grow_node</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Binary tree bin packing strategy. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Very close to <ulink url="http://codeincomplete.com/posts/2011/5/7/bin_packing/">http://codeincomplete.com/posts/2011/5/7/bin_packing/</ulink>.</para>
+<para>Aditionally can target a given aspect ratio. 97/49 is optimal for terrain textures. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="902">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+      <node id="901">
+        <label>openage.convert.binpack.BinaryTreePacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer"/>
+        <childnode refid="902" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="904">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+      <node id="903">
+        <label>openage.convert.binpack.BinaryTreePacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer"/>
+        <childnode refid="904" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="159" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="159" bodyend="254"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a8b748f8896932ba15c26f98177ba7202" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1adfd10fb188f5f1bd4336fe574dbe92ad" prot="public" virt="non-virtual" ambiguityscope="openage::convert::binpack::Packer."><scope>openage::convert::binpack::BinaryTreePacker</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1aebf84e116a138514f0d139cb9201c788" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>aspect_ratio</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a3bc196b2ae9a97ca5e35fbd0c0d25ca1" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>find_node</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>fit</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ab2ad7afcbebffd5353e9004157b45644" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>grow_down</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a61f11eee28580e8d9f377e2a2a2be97f" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>grow_node</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1abf53a5df2edae1fc544296ab05c08ff9" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>grow_right</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a1a9fc5489b2784da4a4419a3cab18841" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>heuristic</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a75eb8c7fa063315819779923a5a4f248" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>mapping</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>margin</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ada535734ec9cd8314c97b931843ee216" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>pack</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a461f1dcbab5392fa90e45f52efe1c36e" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>pos</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1af79bf0a8e996808285dfc798f072e598" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>root</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a32c685bf642e7e1d51c8236da236e7d3" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>split_node</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BinaryTreePacker</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

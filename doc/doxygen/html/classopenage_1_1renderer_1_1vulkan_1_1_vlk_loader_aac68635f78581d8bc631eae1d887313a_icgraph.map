@@ -1,0 +1,4 @@
+<map id="openage::renderer::vulkan::VlkLoader::vkDestroyDebugReportCallbackEXT" name="openage::renderer::vulkan::VlkLoader::vkDestroyDebugReportCallbackEXT">
+<area shape="rect" id="node1" title="Part of VK_EXT_debug_report, destroys the debug callback object." alt="" coords="192,5,381,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_window.xhtml#a5b80c390551f775211503e3baeedf02a" title=" " alt="" coords="5,5,144,61"/>
+</map>

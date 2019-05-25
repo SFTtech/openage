@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl Namespace Reference</title>
+<title>openage: qtsdl Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -344,6 +345,8 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="opengl__debug__logger_8cpp_source.xhtml#l00030">30</a> of file <a class="el" href="opengl__debug__logger_8cpp_source.xhtml">opengl_debug_logger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                                                                                      {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (params.is_debug &amp;&amp; params.callback) {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">auto</span> functions = current_dest_context.versionFunctions&lt;QOpenGLFunctions_4_4_Core&gt;()) {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            functions-&gt;initializeOpenGLFunctions();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            functions-&gt;glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, <span class="keyword">nullptr</span>, GL_FALSE);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            functions-&gt;glDebugMessageControl(GL_DONT_CARE, GL_DEBUG_TYPE_ERROR, GL_DONT_CARE, 0, <span class="keyword">nullptr</span>, GL_TRUE);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            functions-&gt;glDebugMessageControl(GL_DONT_CARE, GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR, GL_DONT_CARE, 0, <span class="keyword">nullptr</span>, GL_TRUE);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            functions-&gt;glDebugMessageCallback((GLDEBUGPROC)params.callback, <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (params.synchronous)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="opengl__debug__logger_8h_source.xhtml#l00019">qtsdl::gl_debug_parameters::callback</a>, <a class="el" href="opengl__debug__logger_8h_source.xhtml#l00014">qtsdl::gl_debug_parameters::is_debug</a>, and <a class="el" href="opengl__debug__logger_8h_source.xhtml#l00024">qtsdl::gl_debug_parameters::synchronous</a>.</p>
 
 </div>
 </div>
@@ -366,6 +369,16 @@ template&lt;typename T , typename U &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">10</a> of file <a class="el" href="qtsdl__checked__static__cast_8h_source.xhtml">qtsdl_checked_static_cast.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                            {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    assert(dynamic_cast&lt;T&gt;(u));</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> static_cast&lt;T&gt;(u);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item_8h_source.xhtml#l00272">qtsdl::GuiItemCoreInstantiator&lt; GameSpecLink &gt;::do_adopt_core()</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00047">wrap()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a220ce9f0bb41d3f42a8b559e454ed4bc_icgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -387,7 +400,7 @@ template&lt;typename T , typename U &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>current context (or null) and id of the window </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="context__extraction__cocoa_8mm_source.xhtml#l00014">14</a> of file <a class="el" href="context__extraction__cocoa_8mm_source.xhtml">context_extraction_cocoa.mm</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                                                   {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    assert(window);</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    NSOpenGLContext *current_context = [NSOpenGLContext currentContext];</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    assert(current_context);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    NSView *view = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    SDL_SysWMinfo wm_info;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    SDL_VERSION(&amp;wm_info.version);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (SDL_GetWindowWMInfo(window, &amp;wm_info)) {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        NSWindow *ns_window = wm_info.info.cocoa.window;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        view = [ns_window contentView];</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        assert(view);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> std::make_tuple(QVariant::fromValue&lt;QCocoaNativeContext&gt;(QCocoaNativeContext(current_context)), reinterpret_cast&lt;WId&gt;(view));</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4932b95840fb2a53ea19d235b68dc6c8"></a>
@@ -408,7 +421,7 @@ template&lt;typename T , typename U &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>current context (or null) and function to get it back to the window </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="context__extraction__cocoa_8mm_source.xhtml#l00035">35</a> of file <a class="el" href="context__extraction__cocoa_8mm_source.xhtml">context_extraction_cocoa.mm</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                                                                       {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    assert(window);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    NSOpenGLContext *current_context = [NSOpenGLContext currentContext];</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    assert(current_context);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    NSView *view = <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    SDL_SysWMinfo wm_info;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    SDL_VERSION(&amp;wm_info.version);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> (SDL_GetWindowWMInfo(window, &amp;wm_info)) {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        NSWindow *ns_window = wm_info.info.cocoa.window;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        view = [ns_window contentView];</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        assert(view);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> std::make_tuple(QVariant::fromValue&lt;QCocoaNativeContext&gt;(QCocoaNativeContext(current_context)), [current_context] {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            [current_context makeCurrentContext];</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        });</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> std::tuple&lt;QVariant, std::function&lt;void()&gt;&gt;{};</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ac53ee23059783401c6e7bcdfc1dfd314"></a>
@@ -436,7 +449,7 @@ template&lt;typename T , typename U &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>debugging settings </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="opengl__debug__logger_8cpp_source.xhtml#l00018">18</a> of file <a class="el" href="opengl__debug__logger_8cpp_source.xhtml">opengl_debug_logger.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                                                                                                       {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    gl_debug_parameters params{};</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span> (current_source_context.versionFunctions&lt;QOpenGLFunctions_4_4_Core&gt;())</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> ((params.is_debug = current_source_context.format().options().testFlag(QSurfaceFormat::DebugContext))) {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            glGetPointerv(GL_DEBUG_CALLBACK_FUNCTION, &amp;params.callback);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            params.synchronous = glIsEnabled(GL_DEBUG_OUTPUT_SYNCHRONOUS);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> params;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aca5f9f84e1ed643cfcc32eda09cae365"></a>
@@ -458,7 +471,7 @@ template&lt;&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map_8cpp_source.xhtml#l00100">100</a> of file <a class="el" href="gui__property__map_8cpp_source.xhtml">gui_property_map.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                                {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> getter&lt;QString&gt;(*this-&gt;impl, name).toStdString();</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a52fafee7e81c09f448f3606473fd6f92"></a>
@@ -480,7 +493,7 @@ template&lt;&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map_8cpp_source.xhtml#l00115">115</a> of file <a class="el" href="gui__property__map_8cpp_source.xhtml">gui_property_map.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                                                      {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> strings_to_vector(getter&lt;QStringList&gt;(*this-&gt;impl, name));</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a48d15a444bc80695bf6dc177097de411"></a>
@@ -512,7 +525,7 @@ template&lt;&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map_8cpp_source.xhtml#l00105">105</a> of file <a class="el" href="gui__property__map_8cpp_source.xhtml">gui_property_map.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                                                                {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    setter(*this-&gt;impl, name, QString::fromStdString(v));</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4f0cb678fe41ddc34eb16568a756fcf9"></a>
@@ -544,7 +557,7 @@ template&lt;&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map_8cpp_source.xhtml#l00120">120</a> of file <a class="el" href="gui__property__map_8cpp_source.xhtml">gui_property_map.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                                                                      {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    setter(*this-&gt;impl, name, vector_to_strings(v));</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="adfa85f2323dd14fc4cd2381acab77960"></a>
@@ -565,6 +578,16 @@ template&lt;&gt; </div>
 <p>Cleans a text from unneeded content like "qtsdl". </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8cpp_source.xhtml#l00008">8</a> of file <a class="el" href="gui__item_8cpp_source.xhtml">gui_item.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                      {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    QString cleaner_name = QString::fromLatin1(name);</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    cleaner_name.remove(QRegularExpression(<span class="stringliteral">&quot;qtsdl|PersistentCoreHolder&quot;</span>));</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> cleaner_name;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item_8h_source.xhtml#l00272">qtsdl::GuiItemCoreInstantiator&lt; GameSpecLink &gt;::do_adopt_core()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_adfa85f2323dd14fc4cd2381acab77960_icgraph.svg" width="412" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -595,7 +618,7 @@ template&lt;typename F , typename ... Args&gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00117">117</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    static_assert(can_call&lt;F, Args...&gt;{}, <span class="stringliteral">&quot;One of possible causes: if you&#39;re passing SomethingLink*, then don&#39;t forget to #include \&quot;something_link.h\&quot;.&quot;</span>);</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="af1666c815e9f0f5791315530fd76b18d"></a>
@@ -617,6 +640,16 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00037">37</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                     {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> t ? t-&gt;template get&lt;typename Unwrap&lt;T&gt;::Type&gt;() : <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item_8h_source.xhtml#l00217">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::assign_while_catching_constant_properies_inits()</a>, <a class="el" href="gui__item__list__model_8h_source.xhtml#l00052">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::do_initial_to_gui_propagation()</a>, <a class="el" href="gui__item__list__model_8h_source.xhtml#l00035">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_from_gui_propagation()</a>, <a class="el" href="gui__item__list__model_8h_source.xhtml#l00045">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_to_gui_propagation()</a>, <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::i()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00073">openage::gui::OutputModeLink::on_core_adopted()</a>, <a class="el" href="game__main__link_8cpp_source.xhtml#l00034">openage::gui::GameMainLink::on_core_adopted()</a>, <a class="el" href="game__spec__link_8cpp_source.xhtml#l00036">openage::gui::GameSpecLink::on_core_adopted()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00141">openage::gui::ActionModeLink::on_core_adopted()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00223">openage::gui::EditorModeLink::on_core_adopted()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">openage::gui::GameControlLink::on_core_adopted()</a>, <a class="el" href="resources__list__model_8cpp_source.xhtml#l00040">openage::gui::ResourcesListModel::set_action_mode()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00291">openage::gui::GameControlLink::set_modes()</a>, <a class="el" href="gui__item__link_8h_source.xhtml#l00082">unwrap_if_can()</a>, and <a class="el" href="engine__link_8cpp_source.xhtml#l00046">openage::gui::EngineLink::~EngineLink()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_af1666c815e9f0f5791315530fd76b18d_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -639,7 +672,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00042">42</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                 {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> t ? t-&gt;template get&lt;typename Unwrap&lt;T&gt;::Type&gt;() : <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a83a6e7a16478b7ba6d336c26542afa71"></a>
@@ -661,6 +694,16 @@ template&lt;typename P &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00077">77</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                      {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> p;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item_8h_source.xhtml#l00217">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::assign_while_catching_constant_properies_inits()</a>, and <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::i()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a83a6e7a16478b7ba6d336c26542afa71_icgraph.svg" width="380" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -683,6 +726,17 @@ template&lt;typename T , typename Unwrap&lt; T &gt;::Type *  = nullptr&gt; </div
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00082">82</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                            {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceqtsdl.xhtml#a82d73e11702a9770cca7fd06eb671a63">unwrap</a>(t);</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_a82d73e11702a9770cca7fd06eb671a63"><div class="ttname"><a href="namespaceqtsdl.xhtml#a82d73e11702a9770cca7fd06eb671a63">qtsdl::unwrap</a></div><div class="ttdeci">const Unwrap&lt; T &gt;::Type * unwrap(const T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00042">gui_item_link.h:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item__link_8h_source.xhtml#l00037">unwrap()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a993df7502f716e746ca8c9a2568c3292_cgraph.svg" width="298" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -705,6 +759,27 @@ template&lt;typename U &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00047">47</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                             {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">checked_static_cast</a>&lt;<span class="keyword">typename</span> Wrap&lt;U&gt;::Type*&gt;(u-&gt;gui_link);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_a220ce9f0bb41d3f42a8b559e454ed4bc"><div class="ttname"><a href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">qtsdl::checked_static_cast</a></div><div class="ttdeci">T checked_static_cast(U *u)</div><div class="ttdef"><b>Definition:</b> <a href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">qtsdl_checked_static_cast.h:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">checked_static_cast()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">openage::gui::GameControlLink::on_mode_changed()</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00072">wrap_if_can()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a5a0a6c84da4886196d22ea5de4477e66_cgraph.svg" width="323" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a5a0a6c84da4886196d22ea5de4477e66_icgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -737,6 +812,17 @@ template&lt;typename U &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00057">57</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                                                                                                    {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> u ? <a class="code" href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">checked_static_cast</a>&lt;<span class="keyword">typename</span> Wrap&lt;U&gt;::Type*&gt;(u-&gt;gui_link) : <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_a220ce9f0bb41d3f42a8b559e454ed4bc"><div class="ttname"><a href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">qtsdl::checked_static_cast</a></div><div class="ttdeci">T checked_static_cast(U *u)</div><div class="ttdef"><b>Definition:</b> <a href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">qtsdl_checked_static_cast.h:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">checked_static_cast()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a47e2bf10f69ccb92b771184271a47241_cgraph.svg" width="323" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -769,6 +855,17 @@ template&lt;typename U &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00062">62</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                                                                                                   {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> u ? <a class="code" href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">checked_static_cast</a>&lt;<span class="keyword">typename</span> Wrap&lt;U&gt;::Type*&gt;(u-&gt;gui_link) : <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_a220ce9f0bb41d3f42a8b559e454ed4bc"><div class="ttname"><a href="namespaceqtsdl.xhtml#a220ce9f0bb41d3f42a8b559e454ed4bc">qtsdl::checked_static_cast</a></div><div class="ttdeci">T checked_static_cast(U *u)</div><div class="ttdef"><b>Definition:</b> <a href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">qtsdl_checked_static_cast.h:10</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="qtsdl__checked__static__cast_8h_source.xhtml#l00010">checked_static_cast()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a82f72a1001442aaeee79d5952de48b20_cgraph.svg" width="323" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -799,7 +896,7 @@ template&lt;typename P &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00067">67</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                            {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> std::forward&lt;P&gt;(p);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a182757d03b4347d5c8577102b0c3259f"></a>
@@ -821,6 +918,17 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__link_8h_source.xhtml#l00072">72</a> of file <a class="el" href="gui__item__link_8h_source.xhtml">gui_item_link.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                                         {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceqtsdl.xhtml#a82f72a1001442aaeee79d5952de48b20">wrap</a>(u);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_a82f72a1001442aaeee79d5952de48b20"><div class="ttname"><a href="namespaceqtsdl.xhtml#a82f72a1001442aaeee79d5952de48b20">qtsdl::wrap</a></div><div class="ttdeci">Wrap&lt; U &gt;::Type * wrap(U *u, typename std::enable_if&lt; std::is_base_of&lt; GuiSingletonItem, typename Wrap&lt; U &gt;::Type &gt;::value &gt;::type *=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00062">gui_item_link.h:62</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item__link_8h_source.xhtml#l00047">wrap()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceqtsdl_a182757d03b4347d5c8577102b0c3259f_cgraph.svg" width="498" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

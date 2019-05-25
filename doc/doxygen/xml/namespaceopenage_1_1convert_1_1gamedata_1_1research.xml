@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1research" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::research</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research" prot="public">openage::convert::gamedata::research::Research</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research_resource_cost" prot="public">openage::convert::gamedata::research::ResearchResourceCost</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/research.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_d037ee21b1d08cda7e27f2ce4ee48ec3" kind="dir">
-    <compoundname>libopenage/gui</compoundname>
-    <innerdir refid="dir_acb330e0bd97d2656bfb843bf4718018">libopenage/gui/guisys</innerdir>
-    <innerdir refid="dir_cbf204bd148c4f3791294990ca88307d">libopenage/gui/integration</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui</compoundname>
+    <innerdir refid="dir_acb330e0bd97d2656bfb843bf4718018">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys</innerdir>
+    <innerdir refid="dir_cbf204bd148c4f3791294990ca88307d">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration</innerdir>
     <innerfile refid="actions__list__model_8cpp">actions_list_model.cpp</innerfile>
     <innerfile refid="actions__list__model_8h">actions_list_model.h</innerfile>
     <innerfile refid="assetmanager__link_8cpp">assetmanager_link.cpp</innerfile>
@@ -38,6 +38,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/"/>
   </compounddef>
 </doxygen>

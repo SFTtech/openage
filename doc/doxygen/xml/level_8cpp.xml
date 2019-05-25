@@ -5,7 +5,7 @@
     <includes refid="level_8h" local="yes">level.h</includes>
     <incdepgraph>
       <node id="16738">
-        <label>libopenage/log/level.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.cpp</label>
         <link refid="level_8cpp"/>
         <childnode refid="16739" relation="include">
         </childnode>
@@ -76,6 +76,6 @@
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/level.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.cpp"/>
   </compounddef>
 </doxygen>

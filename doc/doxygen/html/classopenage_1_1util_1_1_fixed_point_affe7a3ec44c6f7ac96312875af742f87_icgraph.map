@@ -1,0 +1,52 @@
+<map id="openage::util::FixedPoint::get_raw_value" name="openage::util::FixedPoint::get_raw_value">
+<area shape="rect" id="node1" title=" " alt="" coords="919,1489,1085,1530"/>
+<area shape="rect" id="node2" href="$namespacestd.xhtml#a6af851cc1249a970adde4dc422ff824a" title=" " alt="" coords="735,344,804,371"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1util_1_1tests.xhtml#a66cf54ea365e3f8f1357577ddaa1adfb" title=" " alt="" coords="444,603,577,645"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a6602fc6e0cf22db46a7a2c4d65bbf866" title=" " alt="" coords="668,954,871,995"/>
+<area shape="rect" id="node20" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="733,1020,806,1047"/>
+<area shape="rect" id="node33" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="735,1496,804,1523"/>
+<area shape="rect" id="node47" href="$namespaceopenage_1_1util.xhtml#aa3949bf1d23f5c8446474135851399fc" title=" " alt="" coords="689,1547,849,1573"/>
+<area shape="rect" id="node48" href="$namespaceopenage_1_1util.xhtml#a976790c1ec88a9cce32a887ca49526db" title=" " alt="" coords="690,1597,849,1624"/>
+<area shape="rect" id="node49" href="$namespaceopenage_1_1util.xhtml#a4202ea3aad51da9bcef0572898fc7175" title=" " alt="" coords="690,1648,849,1675"/>
+<area shape="rect" id="node50" href="$namespaceopenage_1_1util.xhtml#a4e6ea5affdccd958479d0eba1b74ce0f" title=" " alt="" coords="692,1699,847,1725"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1path.xhtml#a825dde52e9d0fd7fe6fa6970a1ec58e0" title=" " alt="" coords="408,5,613,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1path.xhtml#a7d47462a02dd8b972acca24d5e05f179" title=" " alt="" coords="408,552,613,579"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1rng_1_1tests.xhtml#acad40865d58b96a35f6f453e04642f00" title=" " alt="" coords="443,57,578,98"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ab46fd4b091c16460f3ed825fe2ec269b" title=" " alt="" coords="443,122,578,163"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1rng_1_1tests.xhtml#a1270464ae98991431da5e3fa6ee60ab5" title=" " alt="" coords="443,187,578,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_terrain.xhtml#ab0736d57ce5014c9caea96125ad87b0d" title=" " alt="" coords="429,253,592,294"/>
+<area shape="rect" id="node11" href="$namespaceopenage.xhtml#a8f7c4c46ae7b03cd0cc8ceae47ae7139" title=" " alt="" coords="429,319,592,345"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_matrix.xhtml#ac1bc212dbfd151ce922ba27cad25a074" title=" " alt="" coords="200,307,340,349"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1_quaternion.xhtml#aae617726f6df2524bd7402fdefb3cc0f" title=" " alt="" coords="427,421,594,462"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_vector.xhtml#adb9d43a588f0d7044f201a2dff2db844" title=" " alt="" coords="439,486,582,527"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1rng_1_1tests.xhtml#ae22d2c6364226e0169f0eed1c9701592" title=" " alt="" coords="190,129,350,156"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" title=" " alt="" coords="193,256,347,283"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1util_1_1tests.xhtml#ab3f1d081c603b383598beeee8e4429df" title=" " alt="" coords="5,402,139,443"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1_quaternion.xhtml#a2e1d1f1785181562048952f28858bea9" title=" " alt="" coords="187,373,353,414"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1util_1_1tests.xhtml#a7deb96e08e8e82e52d83fb34f6db25da" title=" " alt="" coords="203,490,337,531"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_generator.xhtml#ae221973cf4125fbf62af6f9626609b4a" title=" " alt="" coords="443,669,579,710"/>
+<area shape="rect" id="node23" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa24165b0ea4cee5ea03cec1e0609499c" title=" " alt="" coords="412,1326,609,1367"/>
+<area shape="rect" id="node24" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display.xhtml#ac140c8357daa5298ed6f04821a936ccb" title=" " alt="" coords="420,735,601,791"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title=" " alt="" coords="431,1078,590,1119"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title=" " alt="" coords="431,1143,590,1185"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="431,1209,590,1250"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_radial_object.xhtml#af59b8ff3a8aa105883ac3b1ed61ef68a" title=" " alt="" coords="434,815,587,857"/>
+<area shape="rect" id="node29" href="$classopenage_1_1_unit_selection.xhtml#a1c3efeb8415c50094d66844e69402342" title=" " alt="" coords="192,1267,348,1309"/>
+<area shape="rect" id="node30" href="$namespaceopenage.xhtml#ac00e0eb95e4253ba49dcc06a9f7f65be" title=" " alt="" coords="431,1275,590,1301"/>
+<area shape="rect" id="node31" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a2858e0798bf7e033c56f6ec653180588" title=" " alt="" coords="427,932,594,988"/>
+<area shape="rect" id="node32" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a30783d598a6f1a133ba94b3e0bf319a0" title=" " alt="" coords="423,1013,599,1054"/>
+<area shape="rect" id="node22" href="$classopenage_1_1_generator.xhtml#ab7579f771b73612867f7d07482e0a540" title=" " alt="" coords="202,669,338,710"/>
+<area shape="rect" id="node34" href="$classopenage_1_1curve_1_1_keyframe_container.xhtml#a5721f82c417b564e2adac32f2ef34492" title=" " alt="" coords="413,2098,608,2139"/>
+<area shape="rect" id="node35" href="$classopenage_1_1event_1_1_event_queue.xhtml#ac5abd71bf0167e4b7d36f19a29f4a611" title=" " alt="" coords="417,2163,604,2205"/>
+<area shape="rect" id="node36" href="$classopenage_1_1event_1_1_loop.xhtml#aa73104f71472a83e1afff4f11e0c619f" title=" " alt="" coords="438,2229,583,2270"/>
+<area shape="rect" id="node37" href="$classopenage_1_1event_1_1_loop.xhtml#a3cb0ae638435b575fe689c550b27a823" title=" " alt="" coords="438,1391,583,1433"/>
+<area shape="rect" id="node38" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a6a410aaea79c35f3e06113b1096ee248" title=" " alt="" coords="425,1457,597,1498"/>
+<area shape="rect" id="node39" href="$classopenage_1_1_square_object.xhtml#ac5232c53c071a31afb4be3f6ffe45b10" title=" " alt="" coords="431,1522,590,1563"/>
+<area shape="rect" id="node40" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml#a12047565515e79d8fa7ae56c1459a724" title=" " alt="" coords="420,1588,601,1644"/>
+<area shape="rect" id="node41" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a1432784032d62a4b43961b88de32ae86" title=" " alt="" coords="425,1669,597,1710"/>
+<area shape="rect" id="node42" href="$namespaceopenage_1_1util.xhtml#aa30219231e1ac7a89ef5d1fb44894e9e" title=" " alt="" coords="441,1734,581,1775"/>
+<area shape="rect" id="node43" href="$classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#a94a5247cf3049d7b95b2937858d0db31" title=" " alt="" coords="426,1799,595,1841"/>
+<area shape="rect" id="node44" href="$namespaceopenage_1_1convert_1_1binpack.xhtml#ac86edd0acbc07bb4b440e2f911ca50f3" title="Heuristic Order blocks by maximum side." alt="" coords="401,1865,620,1906"/>
+<area shape="rect" id="node45" href="$classopenage_1_1util_1_1bytequeue_1_1_byte_buffer.xhtml#a11543b907256b66c6b74af27ebb7c82c" title=" " alt="" coords="417,1930,604,1971"/>
+<area shape="rect" id="node46" href="$namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a" title="clamps val to be at least minval, and at most maxval." alt="" coords="429,1996,593,2023"/>
+</map>

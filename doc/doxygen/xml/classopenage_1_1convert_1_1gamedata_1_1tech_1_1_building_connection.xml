@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::tech::BuildingConnection</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a989371662fc6cab4194406f76ffa31a0" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.tech.BuildingConnection::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;building_connection&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="208" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a584a3b8c3d800c615a83bd1ca4df7ecb" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.tech.BuildingConnection::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;tech&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="209" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1aa857e5aab381a9edbd8214a7b83425b6" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.tech.BuildingConnection::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;new available buildings/units/researches when this building was created.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="210" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a103231b269208bce8be88e70ab20a8ee" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.tech.BuildingConnection::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ_EXPORT, &quot;id&quot;, &quot;int32_t&quot;),                   # unit id of the current building
+        # 0=generic
+        # 1=TODO
+        # 2=default
+        # 3=marks as not available
+        # 4=upgrading, constructing, creating
+        # 5=research completed, building built
+        (READ, &quot;status&quot;, &quot;int8_t&quot;),                       # maybe always 2 because we got 2 of them hardcoded below (unit_or_research, mode)
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1279">
+        <label>openage.convert.gamedata.tech.BuildingConnection</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection"/>
+        <childnode refid="1280" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1280">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1281">
+        <label>openage.convert.gamedata.tech.BuildingConnection</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection"/>
+        <childnode refid="1282" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1282">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/tech.py" bodystart="207" bodyend="270"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a103231b269208bce8be88e70ab20a8ee" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a989371662fc6cab4194406f76ffa31a0" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1a584a3b8c3d800c615a83bd1ca4df7ecb" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection_1aa857e5aab381a9edbd8214a7b83425b6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::tech::BuildingConnection</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

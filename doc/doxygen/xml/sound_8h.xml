@@ -4,8 +4,8 @@
     <compoundname>sound.h</compoundname>
     <includes local="no">memory</includes>
     <includes refid="category_8h" local="yes">category.h</includes>
-    <includedby refid="audio__manager_8h" local="yes">libopenage/audio/audio_manager.h</includedby>
-    <includedby refid="sound_8cpp" local="yes">libopenage/audio/sound.cpp</includedby>
+    <includedby refid="audio__manager_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.h</includedby>
+    <includedby refid="sound_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.cpp</includedby>
     <incdepgraph>
       <node id="2239">
         <label>category.h</label>
@@ -14,7 +14,7 @@
         </childnode>
       </node>
       <node id="2237">
-        <label>libopenage/audio/sound.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.h</label>
         <link refid="sound_8h"/>
         <childnode refid="2238" relation="include">
         </childnode>
@@ -30,55 +30,55 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2246">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="2267">
-        <label>libopenage/audio/sound.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.cpp</label>
         <link refid="sound_8cpp"/>
       </node>
       <node id="2259">
-        <label>libopenage/terrain/terrain.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp</label>
         <link refid="terrain_8cpp"/>
       </node>
       <node id="2265">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="2263">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="2251">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="2253">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="2258">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="2257">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="2244">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="2247">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="2262">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="2242">
-        <label>libopenage/audio/audio_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.h</label>
         <link refid="audio__manager_8h"/>
         <childnode refid="2243" relation="include">
         </childnode>
@@ -90,7 +90,7 @@
         </childnode>
       </node>
       <node id="2241">
-        <label>libopenage/audio/sound.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.h</label>
         <link refid="sound_8h"/>
         <childnode refid="2242" relation="include">
         </childnode>
@@ -98,19 +98,19 @@
         </childnode>
       </node>
       <node id="2264">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="2254">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="2249">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="2245">
-        <label>libopenage/engine.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h</label>
         <link refid="engine_8h"/>
         <childnode refid="2244" relation="include">
         </childnode>
@@ -158,39 +158,39 @@
         </childnode>
       </node>
       <node id="2261">
-        <label>libopenage/terrain/terrain_object.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp</label>
         <link refid="terrain__object_8cpp"/>
       </node>
       <node id="2266">
-        <label>libopenage/util/profiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.cpp</label>
         <link refid="profiler_8cpp"/>
       </node>
       <node id="2260">
-        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.cpp</label>
         <link refid="terrain__chunk_8cpp"/>
       </node>
       <node id="2243">
-        <label>libopenage/audio/audio_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</label>
         <link refid="audio__manager_8cpp"/>
       </node>
       <node id="2255">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="2252">
-        <label>libopenage/gamestate/game_main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp</label>
         <link refid="game__main_8cpp"/>
       </node>
       <node id="2248">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="2256">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="2250">
-        <label>libopenage/game_control.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</label>
         <link refid="game__control_8cpp"/>
       </node>
     </invincdepgraph>
@@ -292,6 +292,6 @@
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/sound.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.h"/>
   </compounddef>
 </doxygen>

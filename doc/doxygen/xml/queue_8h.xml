@@ -6,8 +6,8 @@
     <includes refid="queue__filter__iterator_8h" local="yes">queue_filter_iterator.h</includes>
     <includes local="no">deque</includes>
     <includes local="no">iostream</includes>
-    <includedby refid="queue_8cpp" local="yes">libopenage/curve/queue.cpp</includedby>
-    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
+    <includedby refid="queue_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp</includedby>
+    <includedby refid="container_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</includedby>
     <incdepgraph>
       <node id="5247">
         <label>list</label>
@@ -57,7 +57,7 @@
         </childnode>
       </node>
       <node id="5212">
-        <label>libopenage/curve/queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h</label>
         <link refid="queue_8h"/>
         <childnode refid="5213" relation="include">
         </childnode>
@@ -297,7 +297,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5256">
-        <label>libopenage/curve/queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h</label>
         <link refid="queue_8h"/>
         <childnode refid="5257" relation="include">
         </childnode>
@@ -305,11 +305,11 @@
         </childnode>
       </node>
       <node id="5257">
-        <label>libopenage/curve/queue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp</label>
         <link refid="queue_8cpp"/>
       </node>
       <node id="5258">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
     </invincdepgraph>
@@ -490,6 +490,6 @@
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/queue.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h"/>
   </compounddef>
 </doxygen>

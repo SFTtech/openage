@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" kind="class" language="Python" prot="public">
+    <compoundname>openage::codegen::cpp_testlist::Namespace</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.codegen.cpp_testlist.Namespace::namespaces</definition>
+        <argsstring></argsstring>
+        <name>namespaces</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" compoundref="cpp__testlist_8py" startline="31" endline="37">openage.codegen.cpp_testlist.Namespace.add_functionname</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" compoundref="cpp__testlist_8py" startline="42" endline="51">openage.codegen.cpp_testlist.Namespace.gen_prototypes</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" compoundref="cpp__testlist_8py" startline="56" endline="64">openage.codegen.cpp_testlist.Namespace.get_functionnames</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1aca0798e335bb1af131dc172dfa3957a6" compoundref="generated__file_8py" startline="23" endline="25">openage.convert.dataformat.generated_file.GeneratedFile.namespacify</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.codegen.cpp_testlist.Namespace::functions</definition>
+        <argsstring></argsstring>
+        <name>functions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" compoundref="cpp__testlist_8py" startline="31" endline="37">openage.codegen.cpp_testlist.Namespace.add_functionname</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" compoundref="cpp__testlist_8py" startline="42" endline="51">openage.codegen.cpp_testlist.Namespace.gen_prototypes</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" compoundref="cpp__testlist_8py" startline="56" endline="64">openage.codegen.cpp_testlist.Namespace.get_functionnames</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a87c5ab3e18756c3afc68c0045af377ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.cpp_testlist.Namespace.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.cpp_testlist.Namespace.add_functionname</definition>
+        <argsstring>(self, path)</argsstring>
+        <name>add_functionname</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+<para>Adds a function to the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Path is the qualified function &quot;path&quot; (e.g., openage::test::foo)
+   has the path [&quot;openage&quot;, &quot;test&quot;, &quot;foo&quot;].
+
+   Descends recursively, creating subnamespaces as required.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="31" bodyend="37"/>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" compoundref="cpp__testlist_8py" startline="21">openage.codegen.cpp_testlist.Namespace.functions</references>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" compoundref="cpp__testlist_8py" startline="20">openage.codegen.cpp_testlist.Namespace.namespaces</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.cpp_testlist.Namespace.gen_prototypes</definition>
+        <argsstring>(self)</argsstring>
+        <name>gen_prototypes</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="42" bodyend="51"/>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" compoundref="cpp__testlist_8py" startline="21">openage.codegen.cpp_testlist.Namespace.functions</references>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" compoundref="cpp__testlist_8py" startline="20">openage.codegen.cpp_testlist.Namespace.namespaces</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.cpp_testlist.Namespace.get_functionnames</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_functionnames</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="56" bodyend="64"/>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" compoundref="cpp__testlist_8py" startline="21">openage.codegen.cpp_testlist.Namespace.functions</references>
+        <references refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" compoundref="cpp__testlist_8py" startline="20">openage.codegen.cpp_testlist.Namespace.namespaces</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a C++ namespace, which contains other namespaces and functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" kindref="member">gen_prototypes()</ref> generates the code for the namespace. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="802">
+        <label>openage.codegen.cpp_testlist.Namespace</label>
+        <link refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py" bodystart="18" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a87c5ab3e18756c3afc68c0045af377ac" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>add_functionname</name></member>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>functions</name></member>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>gen_prototypes</name></member>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>get_functionnames</name></member>
+      <member refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" prot="public" virt="non-virtual"><scope>openage::codegen::cpp_testlist::Namespace</scope><name>namespaces</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_2220708b3a09db22ca7ba5a5fcfaa7ea" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat</compoundname>
+    <innerfile refid="convert_2dataformat_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="content__snippet_8py">content_snippet.py</innerfile>
+    <innerfile refid="data__definition_8py">data_definition.py</innerfile>
+    <innerfile refid="data__formatter_8py">data_formatter.py</innerfile>
+    <innerfile refid="entry__parser_8py">entry_parser.py</innerfile>
+    <innerfile refid="exportable_8py">exportable.py</innerfile>
+    <innerfile refid="generated__file_8py">generated_file.py</innerfile>
+    <innerfile refid="header__snippet_8py">header_snippet.py</innerfile>
+    <innerfile refid="member__access_8py">member_access.py</innerfile>
+    <innerfile refid="members_8py">members.py</innerfile>
+    <innerfile refid="multisubtype__base_8py">multisubtype_base.py</innerfile>
+    <innerfile refid="struct__definition_8py">struct_definition.py</innerfile>
+    <innerfile refid="struct__snippet_8py">struct_snippet.py</innerfile>
+    <innerfile refid="util_8py">util.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/"/>
+  </compounddef>
+</doxygen>

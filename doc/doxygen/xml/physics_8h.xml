@@ -5,8 +5,8 @@
     <includes refid="gamestate_8h" local="yes">gamestate.h</includes>
     <includes refid="curve_8h" local="yes">../../curve/curve.h</includes>
     <includes local="no">vector</includes>
-    <includedby refid="event_2demo_2main_8cpp" local="yes">libopenage/event/demo/main.cpp</includedby>
-    <includedby refid="physics_8cpp" local="yes">libopenage/event/demo/physics.cpp</includedby>
+    <includedby refid="event_2demo_2main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</includedby>
+    <includedby refid="physics_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</includedby>
     <incdepgraph>
       <node id="7363">
         <label>list</label>
@@ -226,7 +226,7 @@
         <label>unordered_set</label>
       </node>
       <node id="7356">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="7357" relation="include">
         </childnode>
@@ -496,11 +496,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="7420">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="7418">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="7419" relation="include">
         </childnode>
@@ -508,7 +508,7 @@
         </childnode>
       </node>
       <node id="7419">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
     </invincdepgraph>
@@ -556,6 +556,6 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::event::demo</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/physics.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h"/>
   </compounddef>
 </doxygen>

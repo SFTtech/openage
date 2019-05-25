@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="demo_8py" kind="file" language="Python">
+    <compoundname>demo.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1opus_1_1demo">openage::convert::opus::demo</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1opus_1_1demo" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2018-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="3"><highlight class="stringliteral">Demo<sp/>for<sp/>the<sp/>opusenc<sp/>module.</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>argparse</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>time</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>opusenc</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>...log<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>info,<sp/>crit</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1opus_1_1demo_1ae0391ea8f0edf327a1f80b107ef7b68e" kindref="member">convert</ref>(args):</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Demonstrates<sp/>the<sp/>usage<sp/>of<sp/>the<sp/>opusenc<sp/>module.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1convert_1_1opus_1_1demo_1ae0391ea8f0edf327a1f80b107ef7b68e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cli<sp/>=<sp/>argparse.ArgumentParser()</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;input&quot;</highlight><highlight class="normal">,<sp/>metavar=</highlight><highlight class="stringliteral">&apos;file.wav&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=</highlight><highlight class="stringliteral">&quot;a<sp/>wave<sp/>file<sp/>that<sp/>should<sp/>be<sp/>converted&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;--out&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-o&quot;</highlight><highlight class="normal">,<sp/>default=</highlight><highlight class="keywordtype">None</highlight><highlight class="normal">,<sp/>metavar=</highlight><highlight class="stringliteral">&apos;file.opus&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=</highlight><highlight class="stringliteral">&quot;the<sp/>name<sp/>for<sp/>the<sp/>resulting<sp/>opus<sp/>file&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>=<sp/>cli.parse_args(args)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>wavname<sp/>=<sp/>args.input</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Reading<sp/>%s...&quot;</highlight><highlight class="normal">,<sp/>wavname)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>wav<sp/>=<sp/>open(wavname,<sp/>mode=</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">).read()</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Encoding...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>tic<sp/>=<sp/>time.time()</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>=<sp/>opusenc.encode(wav)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>tic<sp/>=<sp/>time.time()<sp/>-<sp/>tic</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>isinstance(out,<sp/>(str,<sp/>int)):</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" kindref="member">crit</ref>(</highlight><highlight class="stringliteral">&quot;Encoding<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>out)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>outname<sp/>=<sp/>args.out</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>outname<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outname<sp/>=<sp/>wavname[:-3]<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;opus&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>wavname[-3:]<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;wav&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>wavname<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.opus&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Writing<sp/>%s.&quot;</highlight><highlight class="normal">,<sp/>outname)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>open(outname,<sp/>mode=</highlight><highlight class="stringliteral">&apos;wb&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>fil:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fil.write(out)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Wave<sp/>size:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;{:&gt;8}&quot;</highlight><highlight class="normal">.format(len(wav)))</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Opus<sp/>size:<sp/>%s<sp/>(%s%)&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;{:&gt;8}&quot;</highlight><highlight class="normal">.format(len(out)),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;{:2.1f}&quot;</highlight><highlight class="normal">.format(100<sp/>*<sp/>len(out)<sp/>/<sp/>len(wav)))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;Encoding<sp/>time:<sp/>%s<sp/>seconds.&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;{:.3f}&quot;</highlight><highlight class="normal">.format(tic))</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus/demo.py"/>
+  </compounddef>
+</doxygen>

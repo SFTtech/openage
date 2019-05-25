@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="19" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" prot="public" static="no" mutable="no">
         <type>VkSurfaceKHR</type>
@@ -30,7 +31,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkPresentModeKHR &gt;</type>
@@ -44,7 +47,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkSurfaceFormatKHR &gt;</type>
@@ -58,7 +63,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="28" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" prot="public" static="no" mutable="no">
         <type>VkSurfaceCapabilitiesKHR</type>
@@ -72,7 +79,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="31" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -86,7 +95,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="34" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" prot="public" static="no" mutable="no">
         <type>std::optional&lt; uint32_t &gt;</type>
@@ -100,7 +111,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/graphics_device.h" line="38" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -109,12 +122,12 @@
 <para>Contains information about the support of a given physical device for a given surface, for example the formats using which it can present onto the surface. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4287">
+      <node id="4805">
         <label>openage::renderer::vulkan::SurfaceSupportDetails</label>
         <link refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/graphics_device.h" line="17" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="17" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.h" bodystart="17" bodyend="39"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>graphics_fam</name></member>
       <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>maybe_present_fam</name></member>

@@ -1,0 +1,5 @@
+<map id="openage.convert.blendomatic.Blendomatic.save" name="openage.convert.blendomatic.Blendomatic.save">
+<area shape="rect" id="node1" title="Save the blending mask textures to disk." alt="" coords="5,27,200,69"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="287,5,404,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1blendomatic_1_1_blendomatic.xhtml#a289ac918b5495e290fd58e9096504238" title="generate a list of textures." alt="" coords="248,57,443,98"/>
+</map>

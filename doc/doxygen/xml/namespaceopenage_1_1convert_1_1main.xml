@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1main" kind="namespace" language="Python">
+    <compoundname>openage::convert::main</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1a6a7f8d0a6cdc6571839485fa2d6da0a0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::main.STANDARD_PATH_IN_32BIT_WINEPREFIX</definition>
+        <argsstring></argsstring>
+        <name>STANDARD_PATH_IN_32BIT_WINEPREFIX</name>
+        <initializer>= \</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1a5ba5d75db0d2c0400a162edddde443df" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::main.STANDARD_PATH_IN_64BIT_WINEPREFIX</definition>
+        <argsstring></argsstring>
+        <name>STANDARD_PATH_IN_64BIT_WINEPREFIX</name>
+        <initializer>= \</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1aa47c97f3aad6e2f3b6a5213527523c77" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::main.STANDARD_PATH_IN_WINEPREFIX_STEAM</definition>
+        <argsstring></argsstring>
+        <name>STANDARD_PATH_IN_WINEPREFIX_STEAM</name>
+        <initializer>=  \</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1acb7f9765fec6bf5ea635b20c3856eaa8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::main.REGISTRY_KEY</definition>
+        <argsstring></argsstring>
+        <name>REGISTRY_KEY</name>
+        <initializer>=  \</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1a4d2116e099daa1aaa208b7964ecfab7b" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::convert::main.REGISTRY_SUFFIX_AOK</definition>
+        <argsstring></argsstring>
+        <name>REGISTRY_SUFFIX_AOK</name>
+        <initializer>=  &quot;Age of Empires\\2.0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1main_1a7a915c943729022a8a8843705d0f999e" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::convert::main.REGISTRY_SUFFIX_TC</definition>
+        <argsstring></argsstring>
+        <name>REGISTRY_SUFFIX_TC</name>
+        <initializer>=  &quot;Age of Empires II: The Conquerors Expansion\\1.0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1aa61aac4f71477fb39e50782b54c1c7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.mount_drs_archives</definition>
+        <argsstring>(srcdir, game_versions=None)</argsstring>
+        <name>mount_drs_archives</name>
+        <param>
+          <type>srcdir</type>
+          <defname>srcdir</defname>
+        </param>
+        <param>
+          <type>game_versions</type>
+          <defname>game_versions</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="42" bodyend="94"/>
+        <references refid="namespaceopenage_1_1convert_1_1game__versions_1a34537bbd9836f1e83d73d08545ff07c6" compoundref="game__versions_8py" startline="130" endline="136">openage.convert.game_versions.has_x1_p1</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.mount_input</definition>
+        <argsstring>(srcdir=None, prev_source_dir_path=None)</argsstring>
+        <name>mount_input</name>
+        <param>
+          <type>srcdir</type>
+          <defname>srcdir</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>prev_source_dir_path</type>
+          <defname>prev_source_dir_path</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>Mount the input folders for conversion. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="98" bodyend="147"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</references>
+        <references refid="namespaceopenage_1_1convert_1_1game__versions_1ada336dd772d11efcb72fc7ce67aba0c2" compoundref="game__versions_8py" startline="120" endline="126">openage.convert.game_versions.get_game_versions</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1aa61aac4f71477fb39e50782b54c1c7c6" compoundref="convert_2main_8py" startline="42" endline="94">openage.convert.main.mount_drs_archives</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" compoundref="convert_2main_8py" startline="162" endline="216">openage.convert.main.convert_assets</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a4973f96b5a25450372f6d09c153284bf" compoundref="convert_2main_8py" startline="503" endline="561">openage.convert.main.interactive_browser</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.convert_assets</definition>
+        <argsstring>(assets, args, srcdir=None, prev_source_dir_path=None)</argsstring>
+        <name>convert_assets</name>
+        <param>
+          <type>assets</type>
+          <defname>assets</defname>
+        </param>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>srcdir</type>
+          <defname>srcdir</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>prev_source_dir_path</type>
+          <defname>prev_source_dir_path</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>Perform asset conversion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Requires original assets and stores them in usable and free formats.</para>
+<para>assets must be a filesystem-like object pointing at the game&apos;s asset dir. srcdir must be None, or point at some source directory.</para>
+<para>If gen_extra_files is True, some more files, mostly for debugging purposes, are created.</para>
+<para>This method prepares srcdir and targetdir to allow a pleasant, unified conversion experience, then passes them to .<ref refid="namespaceopenage_1_1convert_1_1driver_1ac0a5dae7195fabd749cffb70a062a647" kindref="member">driver.convert()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="162" bodyend="216"/>
+        <references refid="namespaceopenage_1_1util_1_1strings_1a16e727f3dbbdb651bec86f64231a2d54" compoundref="strings_8py" startline="114" endline="118">openage.util.strings.format_progress</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</references>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" compoundref="convert_2main_8py" startline="624" endline="653">openage.convert.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a1496a2822465ce5d6389a93ec88b96b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.expand_relative_path</definition>
+        <argsstring>(path)</argsstring>
+        <name>expand_relative_path</name>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+<para>Expand relative path to an absolute one, including abbreviations like ~ and environment variables. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="219" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="219" bodyend="226"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a0158a3e3bc758a1a1615d61ca2bb7000" compoundref="convert_2main_8py" startline="292" endline="321">openage.convert.main.query_source_dir</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a83fe7e9eb04e731e92c18a14eba73870" compoundref="convert_2main_8py" startline="258" endline="291">openage.convert.main.set_custom_wineprefix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a4a6e38f51a7b482ac175c932acd397e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.wanna_use_wine</definition>
+        <argsstring>()</argsstring>
+        <name>wanna_use_wine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="227" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="227" bodyend="254"/>
+        <references refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">openage::subprocess::which</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a83fe7e9eb04e731e92c18a14eba73870" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.set_custom_wineprefix</definition>
+        <argsstring>()</argsstring>
+        <name>set_custom_wineprefix</name>
+        <briefdescription>
+<para>Allow the customization of the WINEPREFIX environment variable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="258" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="258" bodyend="291"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a1496a2822465ce5d6389a93ec88b96b3" compoundref="convert_2main_8py" startline="219" endline="226">openage.convert.main.expand_relative_path</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a0158a3e3bc758a1a1615d61ca2bb7000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.query_source_dir</definition>
+        <argsstring>(proposals)</argsstring>
+        <name>query_source_dir</name>
+        <param>
+          <type>proposals</type>
+          <defname>proposals</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="292" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="292" bodyend="321"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a1496a2822465ce5d6389a93ec88b96b3" compoundref="convert_2main_8py" startline="219" endline="226">openage.convert.main.expand_relative_path</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.acquire_conversion_source_dir</definition>
+        <argsstring>(prev_source_dir_path=None)</argsstring>
+        <name>acquire_conversion_source_dir</name>
+        <param>
+          <type>prev_source_dir_path</type>
+          <defname>prev_source_dir_path</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>Acquires source dir for the asset conversion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a file system-like object that holds all the required files. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="327" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="327" bodyend="368"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a1496a2822465ce5d6389a93ec88b96b3" compoundref="convert_2main_8py" startline="219" endline="226">openage.convert.main.expand_relative_path</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a0158a3e3bc758a1a1615d61ca2bb7000" compoundref="convert_2main_8py" startline="292" endline="321">openage.convert.main.query_source_dir</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a83fe7e9eb04e731e92c18a14eba73870" compoundref="convert_2main_8py" startline="258" endline="291">openage.convert.main.set_custom_wineprefix</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" compoundref="convert_2main_8py" startline="382" endline="430">openage.convert.main.source_dir_proposals</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a4a6e38f51a7b482ac175c932acd397e9" compoundref="convert_2main_8py" startline="227" endline="254">openage.convert.main.wanna_use_wine</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1aaa17c535c5bc580e7b8eefb2d754e806" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.wine_to_real_path</definition>
+        <argsstring>(path)</argsstring>
+        <name>wine_to_real_path</name>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+<para>Turn a Wine file path (C:\xyz) into a local filesystem path (~/.wine/xyz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="372" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="372" bodyend="375"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" compoundref="convert_2main_8py" startline="382" endline="430">openage.convert.main.source_dir_proposals</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1af8a76f3d32546fca995c8f50f164f9b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.unescape_winereg</definition>
+        <argsstring>(value)</argsstring>
+        <name>unescape_winereg</name>
+        <param>
+          <type>value</type>
+          <defname>value</defname>
+        </param>
+        <briefdescription>
+<para>Remove quotes and escapes from a Wine registry value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="377" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="377" bodyend="380"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" compoundref="convert_2main_8py" startline="382" endline="430">openage.convert.main.source_dir_proposals</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1aa5695bc5f7849528b2fdd1f5b186a1cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.source_dir_proposals</definition>
+        <argsstring>(call_wine)</argsstring>
+        <name>source_dir_proposals</name>
+        <param>
+          <type>call_wine</type>
+          <defname>call_wine</defname>
+        </param>
+        <briefdescription>
+<para>Yield a list of directory names where an installation might be found. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="382" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="382" bodyend="430"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1af8a76f3d32546fca995c8f50f164f9b7" compoundref="convert_2main_8py" startline="377" endline="380">openage.convert.main.unescape_winereg</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1aaa17c535c5bc580e7b8eefb2d754e806" compoundref="convert_2main_8py" startline="372" endline="375">openage.convert.main.wine_to_real_path</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a3974808f6a0e99b94c7dea8fdea4bceb" compoundref="convert_2main_8py" startline="327" endline="368">openage.convert.main.acquire_conversion_source_dir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.conversion_required</definition>
+        <argsstring>(asset_dir, args)</argsstring>
+        <name>conversion_required</name>
+        <param>
+          <type>asset_dir</type>
+          <defname>asset_dir</defname>
+        </param>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <briefdescription>
+<para>Returns true if an asset conversion is required to run the game. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets options in args according to what sorts of conversion are required. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="436" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="436" bodyend="502"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" compoundref="convert_2main_8py" startline="624" endline="653">openage.convert.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a4973f96b5a25450372f6d09c153284bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.interactive_browser</definition>
+        <argsstring>(srcdir=None)</argsstring>
+        <name>interactive_browser</name>
+        <param>
+          <type>srcdir</type>
+          <defname>srcdir</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="503" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="503" bodyend="561"/>
+        <references refid="namespaceopenage_1_1convert_1_1driver_1af79fabd89ea708bced76ef970ae9f413" compoundref="driver_8py" startline="136" endline="142">openage.convert.driver.get_palette</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a607817dd5809140455a8b393c9a68fdc" compoundref="convert_2main_8py" startline="98" endline="147">openage.convert.main.mount_input</references>
+        <references refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" compoundref="convert_2main_8py" startline="624" endline="653">openage.convert.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1a9c17582a1f5d2492a87b777811a4873c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.init_subparser</definition>
+        <argsstring>(cli)</argsstring>
+        <name>init_subparser</name>
+        <param>
+          <type>cli</type>
+          <defname>cli</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the parser for convert-specific args. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="563" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="563" bodyend="622"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1main_1ab4e998cdda52db3b3cae6efbcd2eda23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.main.main</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>main</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+<para>CLI entry point. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="624" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" bodystart="624" bodyend="653"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" compoundref="convert_2main_8py" startline="436" endline="502">openage.convert.main.conversion_required</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" compoundref="convert_2main_8py" startline="162" endline="216">openage.convert.main.convert_assets</references>
+        <references refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" compoundref="assets_8py" startline="30" endline="62">openage.assets.get_asset_path</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a4973f96b5a25450372f6d09c153284bf" compoundref="convert_2main_8py" startline="503" endline="561">openage.convert.main.interactive_browser</references>
+        <references refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" compoundref="setup_8py" startline="30" endline="59">openage.cppinterface.setup.setup</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/main.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

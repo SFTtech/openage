@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1testing_1_1testlist" kind="namespace" language="Python">
+    <compoundname>openage::testing::testlist</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1affbf4b84b1472a1c7d54133a9470ce78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.doctest_modules</definition>
+        <argsstring>()</argsstring>
+        <name>doctest_modules</name>
+        <briefdescription>
+<para>Lists of all possible tests; enter your tests here. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Yields the names of all Python modules that shall be tested during doctest. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="11" bodyend="23"/>
+        <referencedby refid="namespaceopenage_1_1testing_1_1doctest_1a87b8d1a38cc5279012bdaff5b2783fec" compoundref="doctest_8py" startline="19" endline="24">openage.testing.doctest.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1a6fe7d8faa00358a083aac3ef5115e2bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.tests_py</definition>
+        <argsstring>()</argsstring>
+        <name>tests_py</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="24" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1ab782b117f5d6a4c0fee88311ae75dee5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.demos_py</definition>
+        <argsstring>()</argsstring>
+        <name>demos_py</name>
+        <briefdescription>
+<para>Yields tuples of (name, description) for all Python demo methods. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="45" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1afb36abde711807f4cfe54a030a097bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.benchmark_py</definition>
+        <argsstring>()</argsstring>
+        <name>benchmark_py</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="63" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1a606444ca40a097ce512c89e7455c1e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.tests_cpp</definition>
+        <argsstring>()</argsstring>
+        <name>tests_cpp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="76" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1a7a79528560a1040d097e7f5161d9f314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.demos_cpp</definition>
+        <argsstring>()</argsstring>
+        <name>demos_cpp</name>
+        <briefdescription>
+<para>Yields tuples of (name, description) for all C++ demo methods. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="106" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testlist_1adbeea1efa015c5b0644825bda7652047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testlist.benchmark_cpp</definition>
+        <argsstring>()</argsstring>
+        <name>benchmark_cpp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" bodystart="126" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testlist.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

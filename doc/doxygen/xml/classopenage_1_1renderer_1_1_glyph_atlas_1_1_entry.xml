@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="34" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -30,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="35" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -44,7 +48,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="36" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -58,7 +64,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="37" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -72,7 +80,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="38" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -81,19 +91,19 @@
 <para>Datastructure for a single atlas entry </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1383">
+      <node id="4648">
         <label>openage::renderer::GlyphAtlas::Entry</label>
         <link refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry"/>
-        <childnode refid="1384" relation="usage">
+        <childnode refid="4649" relation="usage">
           <edgelabel>+glyph</edgelabel>
         </childnode>
       </node>
-      <node id="1384">
+      <node id="4649">
         <label>openage::renderer::Glyph</label>
         <link refid="classopenage_1_1renderer_1_1_glyph"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/glyph_atlas.h" line="32" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="32" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="32" bodyend="39"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>glyph</name></member>
       <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>u0</name></member>

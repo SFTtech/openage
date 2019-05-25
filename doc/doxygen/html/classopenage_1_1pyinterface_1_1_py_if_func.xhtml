@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt; Class Template Reference</title>
+<title>openage: openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,16 +97,20 @@ $(document).ready(function(){initNavTree('classopenage_1_1pyinterface_1_1_py_if_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="functional_8h_source.xhtml">functional.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func__inherit__graph.svg" width="239" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func__coll__graph.svg" width="239" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <table class="memberdecls">
@@ -211,6 +216,18 @@ template&lt;typename ReturnType, typename ... ArgTypes&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="functional_8h_source.xhtml#l00409">409</a> of file <a class="el" href="functional_8h_source.xhtml">functional.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;               {</div><div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d">add_py_if_component</a>(<span class="keyword">this</span>, [=]() -&gt; <span class="keywordtype">bool</span> {</div><div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">try</span> {</div><div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f">check_fptr</a>();</div><div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            } <span class="keywordflow">catch</span> (Error &amp;) {</div><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div><div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        });</div><div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_func_xhtml_a83b9691db46167c2637c86f5a71cb40f"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_func.xhtml#a83b9691db46167c2637c86f5a71cb40f">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</a></div><div class="ttdeci">void check_fptr() const</div><div class="ttdef"><b>Definition:</b> <a href="functional_8h_source.xhtml#l00111">functional.h:111</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a591d9bd55fa1f9904547f3f2dcb3796d"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a591d9bd55fa1f9904547f3f2dcb3796d">openage::pyinterface::add_py_if_component</a></div><div class="ttdeci">void add_py_if_component(void *thisptr, std::function&lt; bool()&gt; checker)</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00044">setup.cpp:44</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00044">openage::pyinterface::add_py_if_component()</a>, and <a class="el" href="functional_8h_source.xhtml#l00111">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func_a151c2faee8d91169645204f1eb3a6a22_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -240,6 +257,17 @@ template&lt;typename ReturnType, typename ... ArgTypes&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="functional_8h_source.xhtml#l00420">420</a> of file <a class="el" href="functional_8h_source.xhtml">functional.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                {</div><div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a3eda9726ffb3eeec9b423f300ec70c07">destroy_py_if_component</a>(<span class="keyword">this</span>);</div><div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    }</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a3eda9726ffb3eeec9b423f300ec70c07"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a3eda9726ffb3eeec9b423f300ec70c07">openage::pyinterface::destroy_py_if_component</a></div><div class="ttdeci">void destroy_py_if_component(void *thisptr)</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00063">setup.cpp:63</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00063">openage::pyinterface::destroy_py_if_component()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1pyinterface_1_1_py_if_func_a1ac0419304a48f6c323317604c117388_cgraph.svg" width="386" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -326,6 +354,10 @@ template&lt;typename ReturnType, typename ... ArgTypes&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="functional_8h_source.xhtml#l00431">431</a> of file <a class="el" href="functional_8h_source.xhtml">functional.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                                                      {</div><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="classopenage_1_1pyinterface_1_1_func.xhtml#a9aafa14c1e14d75e4c65258650e2281b">Func</a>&lt;ReturnType, ArgTypes ...<span class="keyword">&gt;</span>&gt;(this-&gt;<a class="code" href="classopenage_1_1pyinterface_1_1_func.xhtml#a4d8d1e21e00ba9a5da7606354abb136a">fptr</a>);</div><div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div><div class="ttc" id="classopenage_1_1pyinterface_1_1_func_xhtml_a9aafa14c1e14d75e4c65258650e2281b"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_func.xhtml#a9aafa14c1e14d75e4c65258650e2281b">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::Func</a></div><div class="ttdeci">Func()</div><div class="ttdef"><b>Definition:</b> <a href="functional_8h_source.xhtml#l00060">functional.h:60</a></div></div>
+<div class="ttc" id="classopenage_1_1pyinterface_1_1_func_xhtml_a4d8d1e21e00ba9a5da7606354abb136a"><div class="ttname"><a href="classopenage_1_1pyinterface_1_1_func.xhtml#a4d8d1e21e00ba9a5da7606354abb136a">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::fptr</a></div><div class="ttdeci">std::function&lt; ReturnType(ArgTypes ...)&gt; fptr</div><div class="ttdef"><b>Definition:</b> <a href="functional_8h_source.xhtml#l00248">functional.h:248</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="functional_8h_source.xhtml#l00248">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::fptr</a>.</p>
 
 </div>
 </div>
@@ -386,7 +418,7 @@ template&lt;typename ReturnType, typename ... ArgTypes&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/pyinterface/<a class="el" href="functional_8h_source.xhtml">functional.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/<a class="el" href="functional_8h_source.xhtml">functional.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

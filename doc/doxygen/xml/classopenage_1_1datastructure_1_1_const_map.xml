@@ -29,7 +29,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="147" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="147" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="147" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="147" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" compoundref="constexpr__map_8h" startline="133" endline="142">openage::datastructure::ConstMap&lt; K, V, pos &gt;::fetch</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" compoundref="constexpr__map_8h" startline="100" endline="102">openage::datastructure::ConstMap&lt; K, V, pos &gt;::has_entry</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" compoundref="constexpr__map_8h" startline="107" endline="109">openage::datastructure::ConstMap&lt; K, V, pos &gt;::is_unique</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" prot="private" static="no" mutable="no">
         <type>const <ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt; K, V, pos - 1 &gt;</type>
@@ -43,7 +47,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="152" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="152" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="152" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" compoundref="constexpr__map_8h" startline="115" endline="117">openage::datastructure::ConstMap&lt; K, V, pos &gt;::all_are_unique</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" compoundref="constexpr__map_8h" startline="100" endline="102">openage::datastructure::ConstMap&lt; K, V, pos &gt;::has_entry</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" compoundref="constexpr__map_8h" startline="107" endline="109">openage::datastructure::ConstMap&lt; K, V, pos &gt;::is_unique</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -59,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="152" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="157" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -92,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="63" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="63" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1ae822962367b642bfa68c99e252d291c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr int</type>
@@ -106,7 +113,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="71" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="71" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="71" bodyend="73"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" compoundref="constexpr__map_8h" startline="122" endline="128">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1a3caa562639c438a7c2bc63ad69d34f49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -124,7 +132,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="78" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="78" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="78" bodyend="80"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" compoundref="constexpr__map_8h" startline="100" endline="102">openage::datastructure::ConstMap&lt; K, V, pos &gt;::has_entry</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" compoundref="constexpr__map_8h" startline="122" endline="128">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr const V &amp;</type>
@@ -142,7 +152,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="85" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="85" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="85" bodyend="87"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" compoundref="constexpr__map_8h" startline="133" endline="142">openage::datastructure::ConstMap&lt; K, V, pos &gt;::fetch</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" compoundref="constexpr__map_8h" startline="122" endline="128">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ad8f8c677660172db066e684daf334754" compoundref="constexpr__map_8h" startline="92" endline="94">openage::datastructure::ConstMap&lt; K, V, pos &gt;::operator []</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1ad8f8c677660172db066e684daf334754" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr const V &amp;</type>
@@ -160,7 +173,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="92" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="92" bodyend="94"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="92" bodyend="94"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" compoundref="constexpr__map_8h" startline="85" endline="87">openage::datastructure::ConstMap&lt; K, V, pos &gt;::get</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -180,7 +194,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="100" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="100" bodyend="102"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="100" bodyend="102"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" compoundref="constexpr__map_8h" startline="152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" compoundref="constexpr__map_8h" startline="147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a3caa562639c438a7c2bc63ad69d34f49" compoundref="constexpr__map_8h" startline="78" endline="80">openage::datastructure::ConstMap&lt; K, V, pos &gt;::contains</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -194,7 +211,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="107" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="107" bodyend="109"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="107" bodyend="109"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" compoundref="constexpr__map_8h" startline="152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" compoundref="constexpr__map_8h" startline="147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" compoundref="constexpr__map_8h" startline="115" endline="117">openage::datastructure::ConstMap&lt; K, V, pos &gt;::all_are_unique</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -208,7 +228,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="115" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="115" bodyend="117"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="115" bodyend="117"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" compoundref="constexpr__map_8h" startline="107" endline="109">openage::datastructure::ConstMap&lt; K, V, pos &gt;::is_unique</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" compoundref="constexpr__map_8h" startline="152">openage::datastructure::ConstMap&lt; K, V, pos &gt;::tail</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" compoundref="constexpr__map_8h" startline="122" endline="128">openage::datastructure::ConstMap&lt; K, V, pos &gt;::verify_no_duplicates</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -222,7 +245,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="122" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="122" bodyend="128"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="122" bodyend="128"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" compoundref="constexpr__map_8h" startline="115" endline="117">openage::datastructure::ConstMap&lt; K, V, pos &gt;::all_are_unique</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1a3caa562639c438a7c2bc63ad69d34f49" compoundref="constexpr__map_8h" startline="78" endline="80">openage::datastructure::ConstMap&lt; K, V, pos &gt;::contains</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" compoundref="constexpr__map_8h" startline="85" endline="87">openage::datastructure::ConstMap&lt; K, V, pos &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ae822962367b642bfa68c99e252d291c7" compoundref="constexpr__map_8h" startline="71" endline="73">openage::datastructure::ConstMap&lt; K, V, pos &gt;::size</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr const V &amp;</type>
@@ -240,7 +269,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="133" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="133" bodyend="142"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="133" bodyend="142"/>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" compoundref="constexpr__map_8h" startline="147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</references>
+        <referencedby refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" compoundref="constexpr__map_8h" startline="85" endline="87">openage::datastructure::ConstMap&lt; K, V, pos &gt;::get</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -252,12 +283,12 @@
 <para>Messages include: &quot;error: ‘*0u’ is not a constant expression&quot; -&gt; nonexistant key </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="873">
+      <node id="1927">
         <label>openage::datastructure::ConstMap&lt; K, V, pos &gt;</label>
         <link refid="classopenage_1_1datastructure_1_1_const_map"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/datastructure/constexpr_map.h" line="60" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="60" bodyend="158"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="60" bodyend="158"/>
     <listofallmembers>
       <member refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" prot="private" virt="non-virtual"><scope>openage::datastructure::ConstMap</scope><name>all_are_unique</name></member>
       <member refid="classopenage_1_1datastructure_1_1_const_map_1aee73d4e17e38feb41141d985d82082e0" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMap</scope><name>ConstMap</name></member>

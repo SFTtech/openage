@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.dataformat.header_snippet.HeaderSnippet Class Reference</title>
+<title>openage: openage.convert.dataformat.header_snippet.HeaderSnippet Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1dataformat_
 
 <p>represents an includable C header  
  <a href="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.dataformat.header_snippet.HeaderSnippet:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet__inherit__graph.svg" width="239" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.dataformat.header_snippet.HeaderSnippet:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet__inherit__graph.svg" width="239" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.dataformat.header_snippet.HeaderSnippet:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet__coll__graph.svg" width="239" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.dataformat.header_snippet.HeaderSnippet:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet__coll__graph.svg" width="239" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -214,7 +217,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00015">15</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        self.name = header_name</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">if</span> self.is_global:</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            data = <span class="stringliteral">&quot;#include &lt;%s&gt;\n&quot;</span> % self.name</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            data = <span class="stringliteral">&quot;#include \&quot;%s\&quot;\n&quot;</span> % self.name</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        super().__init__(data, file_name, SectionType.section_header, orderby=header_name)</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">def </span>get_file_name(self):</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> self.name</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -249,6 +252,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a08264818a289ac0da53e77168136b084">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00032">32</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            type(self) <span class="keywordflow">is</span> type(other) <span class="keywordflow">and</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            self.name == other.name <span class="keywordflow">and</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            self.is_global == other.is_global</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        )</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        sym0 = <span class="stringliteral">&quot;&lt;&quot;</span> <span class="keywordflow">if</span> self.is_global <span class="keywordflow">else</span> <span class="stringliteral">&quot;\&quot;&quot;</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="header__snippet_8py_source.xhtml#l00016">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</a>, <a class="el" href="category__contents__list__model_8h_source.xhtml#l00025">openage::gui::CategoryContentsListModel.name</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00017">openage.convert.dataformat.header_snippet.HeaderSnippet.name</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00039">openage::gui::OutputModeLink.name</a>, <a class="el" href="named__logsource_8h_source.xhtml#l00030">openage::log::NamedLogSource.name</a>, <a class="el" href="player_8h_source.xhtml#l00042">openage::Player.name</a>, <a class="el" href="team_8h_source.xhtml#l00044">openage::Team.name</a>, <a class="el" href="event_2tests_8cpp_source.xhtml#l00061">openage::event::tests::TestState::traceelement.name</a>, <a class="el" href="enum_8h_source.xhtml#l00089">openage::util::EnumValue&lt; DerivedType, NumericType &gt;.name</a>, <a class="el" href="options_8h_source.xhtml#l00150">openage::options::OptionAction.name</a>, and <a class="el" href="options_8h_source.xhtml#l00216">openage::options::OptionNode.name</a>.</p>
 
 </div>
 </div>
@@ -273,6 +278,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#aac51f2cc25a8fd6dd2949923bd704169">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00029">29</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">def </span>__eq__(self, other):</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">return</span> (</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util.hash()</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00016">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</a>, <a class="el" href="category__contents__list__model_8h_source.xhtml#l00025">openage::gui::CategoryContentsListModel.name</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00017">openage.convert.dataformat.header_snippet.HeaderSnippet.name</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00039">openage::gui::OutputModeLink.name</a>, <a class="el" href="named__logsource_8h_source.xhtml#l00030">openage::log::NamedLogSource.name</a>, <a class="el" href="player_8h_source.xhtml#l00042">openage::Player.name</a>, <a class="el" href="team_8h_source.xhtml#l00044">openage::Team.name</a>, <a class="el" href="event_2tests_8cpp_source.xhtml#l00061">openage::event::tests::TestState::traceelement.name</a>, <a class="el" href="enum_8h_source.xhtml#l00089">openage::util::EnumValue&lt; DerivedType, NumericType &gt;.name</a>, <a class="el" href="options_8h_source.xhtml#l00150">openage::options::OptionAction.name</a>, and <a class="el" href="options_8h_source.xhtml#l00216">openage::options::OptionNode.name</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -295,6 +310,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a3438f4467204b7b82248f31f1485087a">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00039">39</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        sym1 = <span class="stringliteral">&quot;&gt;&quot;</span> <span class="keywordflow">if</span> self.is_global <span class="keywordflow">else</span> <span class="stringliteral">&quot;\&quot;&quot;</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;HeaderSnippet(%s%s%s)&quot;</span> % (sym0, self.name, sym1)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="header__snippet_8py_source.xhtml#l00016">openage.convert.dataformat.header_snippet.HeaderSnippet.is_global</a>, <a class="el" href="category__contents__list__model_8h_source.xhtml#l00025">openage::gui::CategoryContentsListModel.name</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00017">openage.convert.dataformat.header_snippet.HeaderSnippet.name</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00039">openage::gui::OutputModeLink.name</a>, <a class="el" href="named__logsource_8h_source.xhtml#l00030">openage::log::NamedLogSource.name</a>, <a class="el" href="player_8h_source.xhtml#l00042">openage::Player.name</a>, <a class="el" href="team_8h_source.xhtml#l00044">openage::Team.name</a>, <a class="el" href="event_2tests_8cpp_source.xhtml#l00061">openage::event::tests::TestState::traceelement.name</a>, <a class="el" href="enum_8h_source.xhtml#l00089">openage::util::EnumValue&lt; DerivedType, NumericType &gt;.name</a>, <a class="el" href="options_8h_source.xhtml#l00150">openage::options::OptionAction.name</a>, and <a class="el" href="options_8h_source.xhtml#l00216">openage::options::OptionNode.name</a>.</p>
 
 </div>
 </div>
@@ -315,6 +332,9 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00026">26</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">def </span>__hash__(self):</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>((self.name, self.is_global))</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="category__contents__list__model_8h_source.xhtml#l00025">openage::gui::CategoryContentsListModel.name</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00017">openage.convert.dataformat.header_snippet.HeaderSnippet.name</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00039">openage::gui::OutputModeLink.name</a>, <a class="el" href="named__logsource_8h_source.xhtml#l00030">openage::log::NamedLogSource.name</a>, <a class="el" href="player_8h_source.xhtml#l00042">openage::Player.name</a>, <a class="el" href="team_8h_source.xhtml#l00044">openage::Team.name</a>, <a class="el" href="event_2tests_8cpp_source.xhtml#l00061">openage::event::tests::TestState::traceelement.name</a>, <a class="el" href="enum_8h_source.xhtml#l00089">openage::util::EnumValue&lt; DerivedType, NumericType &gt;.name</a>, <a class="el" href="options_8h_source.xhtml#l00150">openage::options::OptionAction.name</a>, and <a class="el" href="options_8h_source.xhtml#l00216">openage::options::OptionNode.name</a>.</p>
 
 </div>
 </div>
@@ -333,6 +353,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00016">16</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="header__snippet_8py_source.xhtml#l00032">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__()</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00029">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__()</a>, and <a class="el" href="header__snippet_8py_source.xhtml#l00039">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__()</a>.</p>
+
 </div>
 </div>
 <a id="a387fbcbf71e1b1e53f10f9fbb44e5312"></a>
@@ -349,10 +371,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="header__snippet_8py_source.xhtml#l00017">17</a> of file <a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="header__snippet_8py_source.xhtml#l00032">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__()</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00029">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__()</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00039">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__()</a>, <a class="el" href="header__snippet_8py_source.xhtml#l00026">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name()</a>, <a class="el" href="path_8py_source.xhtml#l00291">openage.util.fslike.path.Path.stem()</a>, <a class="el" href="path_8py_source.xhtml#l00274">openage.util.fslike.path.Path.suffix()</a>, and <a class="el" href="path_8py_source.xhtml#l00283">openage.util.fslike.path.Path.suffixes()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/dataformat/<a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/<a class="el" href="header__snippet_8py_source.xhtml">header_snippet.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,39 +1,39 @@
-<map id="libopenage/pyinterface/pyexception.h" name="libopenage/pyinterface/pyexception.h">
-<area shape="rect" id="node1" title=" " alt="" coords="793,5,943,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="144,617,213,644"/>
-<area shape="rect" id="node3" title=" " alt="" coords="330,767,385,793"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1253,617,1309,644"/>
-<area shape="rect" id="node5" href="$error_2error_8h.xhtml" title=" " alt="" coords="712,319,813,345"/>
-<area shape="rect" id="node31" href="$backtrace_8h.xhtml" title=" " alt="" coords="1102,543,1234,569"/>
-<area shape="rect" id="node32" href="$functional_8h.xhtml" title=" " alt="" coords="1201,169,1289,196"/>
-<area shape="rect" id="node36" href="$pyobject_8h.xhtml" title=" " alt="" coords="1248,95,1331,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="712,692,784,719"/>
-<area shape="rect" id="node7" title=" " alt="" coords="790,393,869,420"/>
-<area shape="rect" id="node8" href="$compiler_8h.xhtml" title=" " alt="" coords="1152,692,1267,719"/>
-<area shape="rect" id="node11" href="$message_8h.xhtml" title=" " alt="" coords="647,393,766,420"/>
-<area shape="rect" id="node9" title=" " alt="" coords="1131,767,1197,793"/>
-<area shape="rect" id="node10" href="$signal_8h.xhtml" title=" " alt="" coords="1221,767,1288,793"/>
-<area shape="rect" id="node12" title=" " alt="" coords="941,468,1003,495"/>
-<area shape="rect" id="node13" title=" " alt="" coords="555,468,621,495"/>
-<area shape="rect" id="node14" href="$constexpr_8h.xhtml" title=" " alt="" coords="645,468,768,495"/>
-<area shape="rect" id="node16" href="$stringformatter_8h.xhtml" title=" " alt="" coords="331,468,480,495"/>
-<area shape="rect" id="node25" href="$logsink_8h.xhtml" title=" " alt="" coords="843,468,917,495"/>
-<area shape="rect" id="node28" href="$level_8h.xhtml" title=" " alt="" coords="821,543,880,569"/>
-<area shape="rect" id="node15" title=" " alt="" coords="737,543,797,569"/>
-<area shape="rect" id="node17" title=" " alt="" coords="549,543,611,569"/>
-<area shape="rect" id="node18" title=" " alt="" coords="392,543,475,569"/>
-<area shape="rect" id="node19" href="$externalsstream_8h.xhtml" title=" " alt="" coords="562,617,689,644"/>
-<area shape="rect" id="node20" href="$strings_8h.xhtml" title=" " alt="" coords="296,543,368,569"/>
-<area shape="rect" id="node21" title=" " alt="" coords="473,617,538,644"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1152,617,1229,644"/>
-<area shape="rect" id="node23" title=" " alt="" coords="288,617,355,644"/>
-<area shape="rect" id="node24" title=" " alt="" coords="379,617,448,644"/>
-<area shape="rect" id="node26" title=" " alt="" coords="905,543,943,569"/>
-<area shape="rect" id="node27" title=" " alt="" coords="968,543,1027,569"/>
-<area shape="rect" id="node29" href="$enum_8h.xhtml" title=" " alt="" coords="815,617,913,644"/>
-<area shape="rect" id="node30" title=" " alt="" coords="831,692,897,719"/>
-<area shape="rect" id="node33" href="$language_8h.xhtml" title=" " alt="" coords="1085,244,1203,271"/>
-<area shape="rect" id="node34" href="$exctranslate_8h.xhtml" title=" " alt="" coords="956,244,1060,271"/>
-<area shape="rect" id="node35" href="$setup_8h.xhtml" title=" " alt="" coords="1310,543,1375,569"/>
-<area shape="rect" id="node37" href="$defs_8h.xhtml" title=" " alt="" coords="1366,169,1423,196"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pyinterface/pyexception.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/pyinterface/pyexception.h">
+<area shape="rect" id="node1" title=" " alt="" coords="763,5,973,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="144,632,213,659"/>
+<area shape="rect" id="node3" title=" " alt="" coords="330,781,385,808"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1253,632,1309,659"/>
+<area shape="rect" id="node5" href="$error_2error_8h.xhtml" title=" " alt="" coords="712,333,813,360"/>
+<area shape="rect" id="node31" href="$backtrace_8h.xhtml" title=" " alt="" coords="1102,557,1234,584"/>
+<area shape="rect" id="node32" href="$functional_8h.xhtml" title=" " alt="" coords="1201,184,1289,211"/>
+<area shape="rect" id="node36" href="$pyobject_8h.xhtml" title=" " alt="" coords="1248,109,1331,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="712,707,784,733"/>
+<area shape="rect" id="node7" title=" " alt="" coords="790,408,869,435"/>
+<area shape="rect" id="node8" href="$compiler_8h.xhtml" title=" " alt="" coords="1152,707,1267,733"/>
+<area shape="rect" id="node11" href="$message_8h.xhtml" title=" " alt="" coords="647,408,766,435"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1131,781,1197,808"/>
+<area shape="rect" id="node10" href="$signal_8h.xhtml" title=" " alt="" coords="1221,781,1288,808"/>
+<area shape="rect" id="node12" title=" " alt="" coords="941,483,1003,509"/>
+<area shape="rect" id="node13" title=" " alt="" coords="555,483,621,509"/>
+<area shape="rect" id="node14" href="$constexpr_8h.xhtml" title=" " alt="" coords="645,483,768,509"/>
+<area shape="rect" id="node16" href="$stringformatter_8h.xhtml" title=" " alt="" coords="331,483,480,509"/>
+<area shape="rect" id="node25" href="$logsink_8h.xhtml" title=" " alt="" coords="843,483,917,509"/>
+<area shape="rect" id="node28" href="$level_8h.xhtml" title=" " alt="" coords="821,557,880,584"/>
+<area shape="rect" id="node15" title=" " alt="" coords="737,557,797,584"/>
+<area shape="rect" id="node17" title=" " alt="" coords="549,557,611,584"/>
+<area shape="rect" id="node18" title=" " alt="" coords="392,557,475,584"/>
+<area shape="rect" id="node19" href="$externalsstream_8h.xhtml" title=" " alt="" coords="562,632,689,659"/>
+<area shape="rect" id="node20" href="$strings_8h.xhtml" title=" " alt="" coords="296,557,368,584"/>
+<area shape="rect" id="node21" title=" " alt="" coords="473,632,538,659"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1152,632,1229,659"/>
+<area shape="rect" id="node23" title=" " alt="" coords="288,632,355,659"/>
+<area shape="rect" id="node24" title=" " alt="" coords="379,632,448,659"/>
+<area shape="rect" id="node26" title=" " alt="" coords="905,557,943,584"/>
+<area shape="rect" id="node27" title=" " alt="" coords="968,557,1027,584"/>
+<area shape="rect" id="node29" href="$enum_8h.xhtml" title=" " alt="" coords="815,632,913,659"/>
+<area shape="rect" id="node30" title=" " alt="" coords="831,707,897,733"/>
+<area shape="rect" id="node33" href="$language_8h.xhtml" title=" " alt="" coords="1085,259,1203,285"/>
+<area shape="rect" id="node34" href="$exctranslate_8h.xhtml" title=" " alt="" coords="956,259,1060,285"/>
+<area shape="rect" id="node35" href="$setup_8h.xhtml" title=" " alt="" coords="1310,557,1375,584"/>
+<area shape="rect" id="node37" href="$defs_8h.xhtml" title=" " alt="" coords="1366,184,1423,211"/>
 </map>

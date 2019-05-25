@@ -7,11 +7,11 @@
     <includes refid="category_8h" local="yes">category.h</includes>
     <includes refid="resource__def_8h" local="yes">resource_def.h</includes>
     <includes refid="audio_2types_8h" local="yes">types.h</includes>
-    <includedby refid="audio__manager_8cpp" local="yes">libopenage/audio/audio_manager.cpp</includedby>
-    <includedby refid="dynamic__resource_8h" local="yes">libopenage/audio/dynamic_resource.h</includedby>
-    <includedby refid="in__memory__resource_8h" local="yes">libopenage/audio/in_memory_resource.h</includedby>
-    <includedby refid="audio_2resource_8cpp" local="yes">libopenage/audio/resource.cpp</includedby>
-    <includedby refid="sound_8cpp" local="yes">libopenage/audio/sound.cpp</includedby>
+    <includedby refid="audio__manager_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</includedby>
+    <includedby refid="dynamic__resource_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</includedby>
+    <includedby refid="in__memory__resource_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h</includedby>
+    <includedby refid="audio_2resource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</includedby>
+    <includedby refid="sound_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.cpp</includedby>
     <incdepgraph>
       <node id="1973">
         <label>list</label>
@@ -26,7 +26,7 @@
         <label>functional</label>
       </node>
       <node id="1939">
-        <label>libopenage/audio/resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.h</label>
         <link refid="audio_2resource_8h"/>
         <childnode refid="1940" relation="include">
         </childnode>
@@ -349,11 +349,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1989">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="1985">
-        <label>libopenage/audio/resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.h</label>
         <link refid="audio_2resource_8h"/>
         <childnode refid="1986" relation="include">
         </childnode>
@@ -367,19 +367,19 @@
         </childnode>
       </node>
       <node id="1992">
-        <label>libopenage/audio/sound.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.cpp</label>
         <link refid="sound_8cpp"/>
       </node>
       <node id="1991">
-        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp</label>
         <link refid="in__memory__resource_8cpp"/>
       </node>
       <node id="1988">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="1987">
-        <label>libopenage/audio/dynamic_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</label>
         <link refid="dynamic__resource_8h"/>
         <childnode refid="1988" relation="include">
         </childnode>
@@ -387,11 +387,11 @@
         </childnode>
       </node>
       <node id="1986">
-        <label>libopenage/audio/audio_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</label>
         <link refid="audio__manager_8cpp"/>
       </node>
       <node id="1990">
-        <label>libopenage/audio/in_memory_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h</label>
         <link refid="in__memory__resource_8h"/>
         <childnode refid="1991" relation="include">
         </childnode>
@@ -460,6 +460,6 @@
 <codeline lineno="87"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/resource.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.h"/>
   </compounddef>
 </doxygen>

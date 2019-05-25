@@ -6,13 +6,13 @@
     <includes local="no">mutex</includes>
     <includes local="no">queue</includes>
     <includes local="no">thread</includes>
-    <includedby refid="dynamic__resource_8h" local="yes">libopenage/audio/dynamic_resource.h</includedby>
+    <includedby refid="dynamic__resource_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</includedby>
     <incdepgraph>
       <node id="5718">
         <label>queue</label>
       </node>
       <node id="5715">
-        <label>libopenage/datastructure/concurrent_queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/concurrent_queue.h</label>
         <link refid="concurrent__queue_8h"/>
         <childnode refid="5716" relation="include">
         </childnode>
@@ -35,21 +35,21 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5723">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="5720">
-        <label>libopenage/datastructure/concurrent_queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/concurrent_queue.h</label>
         <link refid="concurrent__queue_8h"/>
         <childnode refid="5721" relation="include">
         </childnode>
       </node>
       <node id="5722">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="5721">
-        <label>libopenage/audio/dynamic_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</label>
         <link refid="dynamic__resource_8h"/>
         <childnode refid="5722" relation="include">
         </childnode>
@@ -134,6 +134,6 @@
 <codeline lineno="91"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/datastructure/concurrent_queue.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/concurrent_queue.h"/>
   </compounddef>
 </doxygen>

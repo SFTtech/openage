@@ -191,7 +191,7 @@
         </childnode>
       </node>
       <node id="30951">
-        <label>libopenage/util/matrix_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp</label>
         <link refid="matrix__test_8cpp"/>
         <childnode refid="30952" relation="include">
         </childnode>
@@ -364,6 +364,6 @@
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/matrix_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp"/>
   </compounddef>
 </doxygen>

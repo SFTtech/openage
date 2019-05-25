@@ -1,0 +1,4 @@
+<map id="openage::renderer::resources::vertex_input_size" name="openage::renderer::resources::vertex_input_size">
+<area shape="rect" id="node1" title="Returns the size in bytes of a per&#45;vertex input." alt="" coords="227,13,413,54"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a32cc6408584ff4eecd6d43565eed9864" title="Returns the size of a single vertex." alt="" coords="5,5,179,61"/>
+</map>

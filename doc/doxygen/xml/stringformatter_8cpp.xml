@@ -97,7 +97,7 @@
         <label>type_traits</label>
       </node>
       <node id="32019">
-        <label>libopenage/util/stringformatter.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.cpp</label>
         <link refid="stringformatter_8cpp"/>
         <childnode refid="32020" relation="include">
         </childnode>
@@ -180,6 +180,6 @@
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/stringformatter.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.cpp"/>
   </compounddef>
 </doxygen>

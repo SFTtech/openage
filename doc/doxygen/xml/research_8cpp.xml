@@ -411,7 +411,7 @@
         </childnode>
       </node>
       <node id="26078">
-        <label>libopenage/unit/research.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp</label>
         <link refid="research_8cpp"/>
         <childnode refid="26079" relation="include">
         </childnode>
@@ -761,6 +761,6 @@
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/research.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp"/>
   </compounddef>
 </doxygen>

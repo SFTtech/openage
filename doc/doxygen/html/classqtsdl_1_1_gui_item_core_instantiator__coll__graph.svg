@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 277)">
 <title>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-277 173,-277 173,4 -4,4"/>
-<!-- Node4 -->
-<g id="node1" class="node"><title>Node4</title>
+<!-- Node31 -->
+<g id="node1" class="node"><title>Node31</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-101.5 169,-101.5 169,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="84.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator&lt; T &gt;</text>
@@ -25,8 +25,8 @@
 </a>
 </g>
 </g>
-<!-- Node5 -->
-<g id="node2" class="node"><title>Node5</title>
+<!-- Node32 -->
+<g id="node2" class="node"><title>Node32</title>
 <g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="15.5,-138.5 15.5,-272.5 153.5,-272.5 153.5,-138.5 15.5,-138.5"/>
 <text text-anchor="middle" x="84.5" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
@@ -44,8 +44,8 @@
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node4 -->
-<g id="edge1" class="edge"><title>Node5&#45;&gt;Node4</title>
+<!-- Node32&#45;&gt;Node31 -->
+<g id="edge1" class="edge"><title>Node32&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M84.5,-128.274C84.5,-119.194 84.5,-110.113 84.5,-101.547"/>
 <polygon fill="none" stroke="midnightblue" points="81.0001,-128.498 84.5,-138.498 88.0001,-128.498 81.0001,-128.498"/>
 </g>

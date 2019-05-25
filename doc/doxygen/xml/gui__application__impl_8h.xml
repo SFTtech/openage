@@ -5,13 +5,13 @@
     <includes local="no">thread</includes>
     <includes local="no">memory</includes>
     <includes local="no">QGuiApplication</includes>
-    <includedby refid="gui__application__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_application_impl.cpp</includedby>
-    <includedby refid="gui__dedicated__thread_8cpp" local="yes">libopenage/gui/guisys/private/gui_dedicated_thread.cpp</includedby>
-    <includedby refid="gui__application_8cpp" local="yes">libopenage/gui/guisys/public/gui_application.cpp</includedby>
-    <includedby refid="gui__application__with__logger_8cpp" local="yes">libopenage/gui/integration/public/gui_application_with_logger.cpp</includedby>
+    <includedby refid="gui__application__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.cpp</includedby>
+    <includedby refid="gui__dedicated__thread_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp</includedby>
+    <includedby refid="gui__application_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp</includedby>
+    <includedby refid="gui__application__with__logger_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp</includedby>
     <incdepgraph>
       <node id="12952">
-        <label>libopenage/gui/guisys/private/gui_application_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.h</label>
         <link refid="gui__application__impl_8h"/>
         <childnode refid="12953" relation="include">
         </childnode>
@@ -32,19 +32,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12959">
-        <label>libopenage/gui/guisys/public/gui_application.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp</label>
         <link refid="gui__application_8cpp"/>
       </node>
       <node id="12958">
-        <label>libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
         <link refid="gui__dedicated__thread_8cpp"/>
       </node>
       <node id="12960">
-        <label>libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
         <link refid="gui__application__with__logger_8cpp"/>
       </node>
       <node id="12956">
-        <label>libopenage/gui/guisys/private/gui_application_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.h</label>
         <link refid="gui__application__impl_8h"/>
         <childnode refid="12957" relation="include">
         </childnode>
@@ -56,7 +56,7 @@
         </childnode>
       </node>
       <node id="12957">
-        <label>libopenage/gui/guisys/private/gui_application_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.cpp</label>
         <link refid="gui__application__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -103,6 +103,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_application_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_application_impl.h"/>
   </compounddef>
 </doxygen>

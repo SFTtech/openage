@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen_1_1listing" kind="namespace" language="Python">
+    <compoundname>openage::codegen::listing</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1listing_1a8178b40ca254e32043552b4b3f13aeeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.listing.generate_all</definition>
+        <argsstring>(projectdir)</argsstring>
+        <name>generate_all</name>
+        <param>
+          <type>projectdir</type>
+          <defname>projectdir</defname>
+        </param>
+        <briefdescription>
+<para>Contains the listing of all code generator invocations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates all source files in targetdir. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/listing.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/listing.py" bodystart="13" bodyend="22"/>
+        <references refid="namespaceopenage_1_1codegen_1_1coord_1a2341aa453809671c3d83be849d9e731d" compoundref="coord_8py" startline="17" endline="66">openage.codegen.coord.generate_coord_basetypes</references>
+        <references refid="namespaceopenage_1_1codegen_1_1gamespec__structs_1a2faab3571b3ad054145c22c81765f653" compoundref="gamespec__structs_8py" startline="20" endline="32">openage.codegen.gamespec_structs.generate_gamespec_structs</references>
+        <references refid="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" compoundref="cpp__testlist_8py" startline="70" endline="94">openage.codegen.cpp_testlist.generate_testlist</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/listing.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -27,7 +27,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.h" line="19" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="362" bodyend="381"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="362" bodyend="381"/>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -52,7 +54,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.h" line="29" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="489" bodyend="495"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="489" bodyend="495"/>
+        <references refid="classopenage_1_1event_1_1_loop_1a345332e87684e73eeef16da46255882f" compoundref="loop_8cpp" startline="21" endline="33">openage::event::Loop::create_event</references>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" compoundref="physics_8cpp" startline="138" endline="213">openage::event::demo::BallReflectPanel::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_physics_1a808f9e14e491c56f818471417ea08396" compoundref="physics_8cpp" startline="383" endline="486">process_input</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,7 +92,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.h" line="23" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="383" bodyend="486"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="383" bodyend="486"/>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaa4d80ef707f224cf7055ac1c7fc5ea403" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::DOWN</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaa28b496791c9c4dec421dec318d576c68" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::IDLE</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a6d9ff911f4cd25cd30d169378b7cfb5e" compoundref="gamestate_8h" startline="32">openage::event::demo::PongEvent::player</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" compoundref="physics_8cpp" startline="489" endline="495">reset</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaa8b5086a6d55ac55b34228876b42a7a26" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::START</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaab9eff9ad1c50ede6bf15f9dc46da201a" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::UP</references>
+        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="206">openage::event::demo::curvepong</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -95,12 +108,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3667">
+      <node id="2183">
         <label>openage::event::demo::Physics</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_physics"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/demo/physics.h" line="17" column="1" bodyfile="libopenage/event/demo/physics.h" bodystart="17" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h" bodystart="17" bodyend="32"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1demo_1_1_physics_1a8667e80722a83c0f0ff29835d5d54baf" prot="public" virt="non-virtual"><scope>openage::event::demo::Physics</scope><name>init</name></member>
       <member refid="classopenage_1_1event_1_1demo_1_1_physics_1a808f9e14e491c56f818471417ea08396" prot="public" virt="non-virtual"><scope>openage::event::demo::Physics</scope><name>process_input</name></member>

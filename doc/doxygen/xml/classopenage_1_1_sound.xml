@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="52" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">play</referencedby>
+        <referencedby refid="classopenage_1_1_sound_1a455248d7cd4b745b0816a5b34d5acd48" compoundref="game__spec_8h" startline="45" endline="48">Sound</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> *</type>
@@ -28,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="54" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="54" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="54" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">play</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +54,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="45" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="45" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="45" bodyend="48"/>
+        <references refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" compoundref="game__spec_8h" startline="52">sound_items</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -64,7 +68,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="50" column="1" bodyfile="libopenage/gamestate/game_spec.cpp" bodystart="431" bodyend="453"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp" bodystart="431" bodyend="453"/>
+        <references refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13">openage::audio::GAME</references>
+        <references refid="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" compoundref="game__spec_8h" startline="54">game_spec</references>
+        <references refid="classopenage_1_1_game_spec_1a3a21c92c49ec4d0add95e8aacd83ebe0" compoundref="game__spec_8cpp" startline="187" endline="189">openage::GameSpec::get_asset_manager</references>
+        <references refid="classopenage_1_1_engine_1ad925a7a6258d1382edd274ee4ceafdbd" compoundref="engine_8cpp" startline="495" endline="497">openage::Engine::get_audio_manager</references>
+        <references refid="classopenage_1_1_asset_manager_1a50069b4b3cd4b5fcf8fb5f4b480c721d" compoundref="assetmanager_8cpp" startline="53" endline="55">openage::AssetManager::get_engine</references>
+        <references refid="classopenage_1_1audio_1_1_audio_manager_1a4fcd0ea2e63f5035df72bdceb0ac22f2" compoundref="audio__manager_8cpp" startline="142" endline="160">openage::audio::AudioManager::get_sound</references>
+        <references refid="classopenage_1_1audio_1_1_audio_manager_1a6df7195e7f02f6959a9a241037e48657" compoundref="audio__manager_8cpp" startline="225" endline="227">openage::audio::AudioManager::is_available</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1audio_1_1_sound_1a7e4854e55386f2498a332eed36e374d4" compoundref="sound_8cpp" startline="51" endline="61">openage::audio::Sound::play</references>
+        <references refid="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" compoundref="global__rng_8cpp" startline="23" endline="26">openage::rng::random_range</references>
+        <references refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" compoundref="game__spec_8h" startline="52">sound_items</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_move_ability_1a1d0ebbdd7b98efa293ebc91287a6dee4" compoundref="ability_8cpp" startline="79" endline="102">openage::MoveAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_garrison_ability_1afbd9de019824dcf92b3b5dd4e5e1aea7" compoundref="ability_8cpp" startline="140" endline="146">openage::GarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_ungarrison_ability_1a6ed7fdb59dc12befd1e0be6fbdd2b387" compoundref="ability_8cpp" startline="161" endline="169">openage::UngarrisonAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_train_ability_1af4ea7db282a8000eb59e8edc540d40c4" compoundref="ability_8cpp" startline="184" endline="190">openage::TrainAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_research_ability_1a47bc3b71628ece52bceeafdae473d039" compoundref="ability_8cpp" startline="207" endline="212">openage::ResearchAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_build_ability_1acf4dba9dcd9ed37efcbec8f14da3c3a2" compoundref="ability_8cpp" startline="230" endline="239">openage::BuildAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_gather_ability_1a24e201b13152f9cc654d2b69ec95940e" compoundref="ability_8cpp" startline="257" endline="269">openage::GatherAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_attack_ability_1ab607828e9d6469ea9405cfc5f1ab2735" compoundref="ability_8cpp" startline="292" endline="300">openage::AttackAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_repair_ability_1aac321a378657813f98a938df9be7256d" compoundref="ability_8cpp" startline="320" endline="328">openage::RepairAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_heal_ability_1a7da7aca0fca2b96e24874441df1a016e" compoundref="ability_8cpp" startline="348" endline="356">openage::HealAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_patrol_ability_1ad0b338306b2825e24536dc95bf4ae3d1" compoundref="ability_8cpp" startline="368" endline="374">openage::PatrolAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_convert_ability_1a3ed81fd0cceaa364654c89803c3b0e48" compoundref="ability_8cpp" startline="393" endline="401">openage::ConvertAbility::invoke</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -73,313 +105,337 @@
 <para>simple sound object TODO: move to assetmanager </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4223">
+      <node id="5105">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="4191">
+      <node id="5070">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="4199">
+      <node id="5081">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="4200" relation="public-inheritance">
+        <childnode refid="5082" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4224">
+      <node id="5106">
         <label>openage::coord::camgame_delta</label>
         <link refid="structopenage_1_1coord_1_1camgame__delta"/>
-        <childnode refid="4225" relation="public-inheritance">
+        <childnode refid="5107" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4197">
+      <node id="5076">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4202">
+      <node id="5084">
         <label>openage::ScreenshotManager</label>
         <link refid="classopenage_1_1_screenshot_manager"/>
-        <childnode refid="4203" relation="usage">
+        <childnode refid="5085" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="4204" relation="usage">
+        <childnode refid="5086" relation="usage">
           <edgelabel>+window_size</edgelabel>
         </childnode>
       </node>
-      <node id="4227">
+      <node id="5078">
+        <label>T</label>
+      </node>
+      <node id="5109">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="4205">
+      <node id="5087">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="4196">
+      <node id="5075">
         <label>openage::util::Variable&lt; bool &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4197" relation="public-inheritance">
+        <childnode refid="5076" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5077" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4200">
+      <node id="5082">
         <label>QObject</label>
       </node>
-      <node id="4201">
+      <node id="5083">
         <label>openage::cvar::CVarManager</label>
         <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
-        <childnode refid="4191" relation="usage">
+        <childnode refid="5070" relation="usage">
           <edgelabel>-path</edgelabel>
         </childnode>
       </node>
-      <node id="4222">
+      <node id="5104">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="4223" relation="public-inheritance">
+        <childnode refid="5105" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4208">
+      <node id="5090">
         <label>openage::util::ExternalProfiler</label>
         <link refid="classopenage_1_1util_1_1_external_profiler"/>
       </node>
-      <node id="4194">
+      <node id="5073">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="4194" relation="usage">
+        <childnode refid="5073" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="4220">
+      <node id="5102">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="4221" relation="public-inheritance">
+        <childnode refid="5103" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4216">
+      <node id="5098">
         <label>openage::input::ActionManager</label>
         <link refid="classopenage_1_1input_1_1_action_manager"/>
-        <childnode refid="4201" relation="usage">
+        <childnode refid="5083" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="4209" relation="usage">
+        <childnode refid="5091" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4218">
+      <node id="5100">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="4204">
+      <node id="5086">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="4205" relation="public-inheritance">
+        <childnode refid="5087" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4189">
+      <node id="5068">
         <label>openage::GameSpec</label>
         <link refid="classopenage_1_1_game_spec"/>
-        <childnode refid="4190" relation="usage">
+        <childnode refid="5069" relation="usage">
           <edgelabel>-assetmanager</edgelabel>
         </childnode>
-        <childnode refid="4228" relation="usage">
+        <childnode refid="5110" relation="usage">
           <edgelabel>-terrain_data</edgelabel>
         </childnode>
       </node>
-      <node id="4215">
+      <node id="5097">
         <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="4211">
-        <label>openage::coord::input</label>
-        <link refid="structopenage_1_1coord_1_1input"/>
-        <childnode refid="4212" relation="public-inheritance">
+      <node id="5079">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="5077" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4225">
+      <node id="5093">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="5094" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5107">
         <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
       </node>
-      <node id="4203">
+      <node id="5085">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
-      <node id="4212">
+      <node id="5094">
         <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="4206">
+      <node id="5088">
         <label>openage::util::FrameCounter</label>
         <link refid="classopenage_1_1util_1_1_frame_counter"/>
-        <childnode refid="4207" relation="usage">
+        <childnode refid="5089" relation="usage">
           <edgelabel>-frame_timer</edgelabel>
         </childnode>
       </node>
-      <node id="4213">
+      <node id="5095">
         <label>openage::input::InputContext</label>
         <link refid="classopenage_1_1input_1_1_input_context"/>
-        <childnode refid="4209" relation="usage">
+        <childnode refid="5091" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4228">
+      <node id="5110">
         <label>openage::terrain_meta</label>
         <link refid="structopenage_1_1terrain__meta"/>
       </node>
-      <node id="4217">
+      <node id="5099">
         <label>openage::gui::EngineQMLInfo</label>
         <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
-        <childnode refid="4218" relation="public-inheritance">
+        <childnode refid="5100" relation="public-inheritance">
         </childnode>
-        <childnode refid="4191" relation="usage">
+        <childnode refid="5070" relation="usage">
           <edgelabel>+asset_dir</edgelabel>
         </childnode>
-        <childnode refid="4192" relation="usage">
+        <childnode refid="5071" relation="usage">
           <edgelabel>+engine</edgelabel>
         </childnode>
       </node>
-      <node id="4226">
+      <node id="5108">
         <label>openage::audio::AudioManager</label>
         <link refid="classopenage_1_1audio_1_1_audio_manager"/>
-        <childnode refid="4203" relation="usage">
+        <childnode refid="5085" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4198">
+      <node id="5080">
         <label>openage::util::Profiler</label>
         <link refid="classopenage_1_1util_1_1_profiler"/>
-        <childnode refid="4192" relation="usage">
+        <childnode refid="5071" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
       </node>
-      <node id="4192">
+      <node id="5071">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="4193" relation="public-inheritance">
+        <childnode refid="5072" relation="public-inheritance">
         </childnode>
-        <childnode refid="4194" relation="public-inheritance">
+        <childnode refid="5073" relation="public-inheritance">
         </childnode>
-        <childnode refid="4195" relation="usage">
+        <childnode refid="5074" relation="usage">
           <edgelabel>+drawing_huds</edgelabel>
           <edgelabel>+drawing_debug_overlay</edgelabel>
         </childnode>
-        <childnode refid="4198" relation="usage">
+        <childnode refid="5080" relation="usage">
           <edgelabel>-profiler</edgelabel>
         </childnode>
-        <childnode refid="4191" relation="usage">
+        <childnode refid="5070" relation="usage">
           <edgelabel>-root_dir</edgelabel>
         </childnode>
-        <childnode refid="4199" relation="usage">
+        <childnode refid="5081" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="4201" relation="usage">
+        <childnode refid="5083" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="4202" relation="usage">
+        <childnode refid="5084" relation="usage">
           <edgelabel>-screenshot_manager</edgelabel>
         </childnode>
-        <childnode refid="4206" relation="usage">
+        <childnode refid="5088" relation="usage">
           <edgelabel>-fps_counter</edgelabel>
         </childnode>
-        <childnode refid="4208" relation="usage">
+        <childnode refid="5090" relation="usage">
           <edgelabel>+external_profiler</edgelabel>
         </childnode>
-        <childnode refid="4209" relation="usage">
+        <childnode refid="5091" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
-        <childnode refid="4217" relation="usage">
+        <childnode refid="5099" relation="usage">
           <edgelabel>-qml_info</edgelabel>
         </childnode>
-        <childnode refid="4219" relation="usage">
+        <childnode refid="5101" relation="usage">
           <edgelabel>+coord</edgelabel>
         </childnode>
-        <childnode refid="4203" relation="usage">
+        <childnode refid="5085" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="4216" relation="usage">
+        <childnode refid="5098" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
-        <childnode refid="4226" relation="usage">
+        <childnode refid="5108" relation="usage">
           <edgelabel>-audio_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4221">
+      <node id="5103">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="4193">
+      <node id="5072">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
-      <node id="4195">
+      <node id="5074">
         <label>openage::options::Var&lt; bool &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="4196" relation="public-inheritance">
+        <childnode refid="5075" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5079" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4214">
+      <node id="5096">
         <label>openage::coord::input_delta</label>
         <link refid="structopenage_1_1coord_1_1input__delta"/>
-        <childnode refid="4215" relation="public-inheritance">
+        <childnode refid="5097" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4207">
+      <node id="5089">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
-      <node id="4210">
+      <node id="5092">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
-      <node id="4188">
+      <node id="5077">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="5076" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5078" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+      <node id="5067">
         <label>openage::Sound</label>
         <link refid="classopenage_1_1_sound"/>
-        <childnode refid="4189" relation="usage">
+        <childnode refid="5068" relation="usage">
           <edgelabel>+game_spec</edgelabel>
         </childnode>
       </node>
-      <node id="4209">
+      <node id="5091">
         <label>openage::input::InputManager</label>
         <link refid="classopenage_1_1input_1_1_input_manager"/>
-        <childnode refid="4210" relation="public-inheritance">
+        <childnode refid="5092" relation="public-inheritance">
         </childnode>
-        <childnode refid="4211" relation="usage">
+        <childnode refid="5093" relation="usage">
           <edgelabel>-mouse_position</edgelabel>
         </childnode>
-        <childnode refid="4213" relation="usage">
+        <childnode refid="5095" relation="usage">
           <edgelabel>-global_context</edgelabel>
         </childnode>
-        <childnode refid="4214" relation="usage">
+        <childnode refid="5096" relation="usage">
           <edgelabel>-mouse_motion</edgelabel>
         </childnode>
-        <childnode refid="4216" relation="usage">
+        <childnode refid="5098" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4190">
+      <node id="5069">
         <label>openage::AssetManager</label>
         <link refid="classopenage_1_1_asset_manager"/>
-        <childnode refid="4191" relation="usage">
+        <childnode refid="5070" relation="usage">
           <edgelabel>-asset_path</edgelabel>
         </childnode>
-        <childnode refid="4192" relation="usage">
+        <childnode refid="5071" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="4227" relation="usage">
+        <childnode refid="5109" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
       </node>
-      <node id="4219">
+      <node id="5101">
         <label>openage::coord::CoordManager</label>
         <link refid="classopenage_1_1coord_1_1_coord_manager"/>
-        <childnode refid="4220" relation="usage">
+        <childnode refid="5102" relation="usage">
           <edgelabel>+camgame_viewport</edgelabel>
           <edgelabel>+camhud_viewport</edgelabel>
         </childnode>
-        <childnode refid="4222" relation="usage">
+        <childnode refid="5104" relation="usage">
           <edgelabel>+camgame_phys</edgelabel>
         </childnode>
-        <childnode refid="4224" relation="usage">
+        <childnode refid="5106" relation="usage">
           <edgelabel>+tile_size</edgelabel>
         </childnode>
-        <childnode refid="4204" relation="usage">
+        <childnode refid="5086" relation="usage">
           <edgelabel>+viewport_size</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/game_spec.h" line="43" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="43" bodyend="55"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="43" bodyend="55"/>
     <listofallmembers>
       <member refid="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" prot="public" virt="non-virtual"><scope>openage::Sound</scope><name>game_spec</name></member>
       <member refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" prot="public" virt="non-virtual"><scope>openage::Sound</scope><name>play</name></member>

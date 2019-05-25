@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::util::ExternalOStringStream Class Reference</title>
+<title>openage: openage::util::ExternalOStringStream Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_external_o_st
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::util::ExternalOStringStream:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__inherit__graph.svg" width="207" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::util::ExternalOStringStream:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__inherit__graph.svg" width="207" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::util::ExternalOStringStream:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__coll__graph.svg" width="336" height="399"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::ExternalOStringStream:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream__coll__graph.svg" width="336" height="399"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -153,6 +156,9 @@ Private Attributes</h2></td></tr>
 <p>Creates a stream without a valid accumulator. </p>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00046">46</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        :</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::ostream{&amp;this-&gt;<a class="code" href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#af185ce8ba6b25166cceaca7a2e55bacc">buf</a>} {}</div><div class="ttc" id="classopenage_1_1util_1_1_external_o_string_stream_xhtml_af185ce8ba6b25166cceaca7a2e55bacc"><div class="ttname"><a href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#af185ce8ba6b25166cceaca7a2e55bacc">openage::util::ExternalOStringStream::buf</a></div><div class="ttdeci">ExternalStringBuf buf</div><div class="ttdef"><b>Definition:</b> <a href="externalsstream_8h_source.xhtml#l00059">externalsstream.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="externalsstream_8h_source.xhtml#l00059">buf</a>.</p>
 
 </div>
 </div>
@@ -183,6 +189,20 @@ Private Attributes</h2></td></tr>
 <p>Resets the stream's flags, and sets ptr as the internally-used accumulator. </p>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00054">54</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                     {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#af185ce8ba6b25166cceaca7a2e55bacc">buf</a>.<a class="code" href="classopenage_1_1util_1_1_external_string_buf.xhtml#a92b422e9e616bcdcb82489736983b65c">output</a> = &amp;output;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div><div class="ttc" id="classopenage_1_1util_1_1_external_string_buf_xhtml_a92b422e9e616bcdcb82489736983b65c"><div class="ttname"><a href="classopenage_1_1util_1_1_external_string_buf.xhtml#a92b422e9e616bcdcb82489736983b65c">openage::util::ExternalStringBuf::output</a></div><div class="ttdeci">std::string * output</div><div class="ttdef"><b>Definition:</b> <a href="externalsstream_8h_source.xhtml#l00021">externalsstream.h:21</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_external_o_string_stream_xhtml_af185ce8ba6b25166cceaca7a2e55bacc"><div class="ttname"><a href="classopenage_1_1util_1_1_external_o_string_stream.xhtml#af185ce8ba6b25166cceaca7a2e55bacc">openage::util::ExternalOStringStream::buf</a></div><div class="ttdeci">ExternalStringBuf buf</div><div class="ttdef"><b>Definition:</b> <a href="externalsstream_8h_source.xhtml#l00059">externalsstream.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="externalsstream_8h_source.xhtml#l00059">buf</a>, and <a class="el" href="externalsstream_8h_source.xhtml#l00021">openage::util::ExternalStringBuf::output</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="stringformatter_8cpp_source.xhtml#l00022">openage::util::CachableOSStream::acquire()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_external_o_string_stream_aa35d807fa9bc56758974bbe602bf1a8e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -209,10 +229,12 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="externalsstream_8h_source.xhtml#l00059">59</a> of file <a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="externalsstream_8h_source.xhtml#l00046">ExternalOStringStream()</a>, <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer::read()</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00069">openage.cabextract.lzxdstream.LZXDStream::read()</a>, <a class="el" href="stream_8py_source.xhtml#l00051">openage.util.filelike.stream.StreamSeekBuffer::resetwrappeed()</a>, and <a class="el" href="externalsstream_8h_source.xhtml#l00054">use_with()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/util/<a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="externalsstream_8h_source.xhtml">externalsstream.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -12,11 +12,11 @@
     <includes local="no">QQuickRenderControl</includes>
     <includes local="no">QOffscreenSurface</includes>
     <includes refid="gui__rendering__setup__routines_8h" local="yes">gui_rendering_setup_routines.h</includes>
-    <includedby refid="gui__engine__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_engine_impl.cpp</includedby>
-    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
-    <includedby refid="gui__renderer__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_renderer_impl.cpp</includedby>
-    <includedby refid="gui__subtree__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
-    <includedby refid="gui__renderer_8cpp" local="yes">libopenage/gui/guisys/public/gui_renderer.cpp</includedby>
+    <includedby refid="gui__engine__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__renderer__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
+    <includedby refid="gui__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</includedby>
     <incdepgraph>
       <node id="13183">
         <label>atomic</label>
@@ -34,7 +34,7 @@
         <label>QtGlobal</label>
       </node>
       <node id="13181">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h</label>
         <link refid="gui__renderer__impl_8h"/>
         <childnode refid="13182" relation="include">
         </childnode>
@@ -80,11 +80,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13195">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
         <link refid="gui__renderer__impl_8cpp"/>
       </node>
       <node id="13192">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h</label>
         <link refid="gui__renderer__impl_8h"/>
         <childnode refid="13193" relation="include">
         </childnode>
@@ -98,19 +98,19 @@
         </childnode>
       </node>
       <node id="13194">
-        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</label>
         <link refid="gui__input__impl_8cpp"/>
       </node>
       <node id="13196">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="13193">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
       </node>
       <node id="13197">
-        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</label>
         <link refid="gui__renderer_8cpp"/>
       </node>
     </invincdepgraph>
@@ -237,6 +237,6 @@
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal">Q_DECLARE_METATYPE(std::atomic&lt;bool&gt;*)</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h"/>
   </compounddef>
 </doxygen>

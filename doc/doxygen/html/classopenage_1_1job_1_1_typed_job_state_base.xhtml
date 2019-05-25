@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::job::TypedJobStateBase&lt; T &gt; Class Template Reference</title>
+<title>openage: openage::job::TypedJobStateBase&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1job_1_1_typed_job_stat
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::job::TypedJobStateBase&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base__inherit__graph.svg" width="400" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::job::TypedJobStateBase&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base__inherit__graph.svg" width="400" height="574"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::job::TypedJobStateBase&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base__coll__graph.svg" width="202" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::job::TypedJobStateBase&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base__coll__graph.svg" width="202" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -187,6 +190,20 @@ template&lt;class T &gt; </div>
 <p>Creates a new typed job with the given callback. </p>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00051">51</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        :</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#ad75c622c0f6282b5d58208099a0d70fa">thread_id</a>{<a class="code" href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">openage::util::get_current_thread_id</a>()},</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">callback</a>{<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">callback</a>},</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">finished</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a830096838fa28692b52e346b3b3e7294"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">openage::job::TypedJobStateBase::callback</a></div><div class="ttdeci">callback_function_t&lt; T &gt; callback</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00035">typed_job_state_base.h:35</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac99f61e1d0c06d9b83650a71cff2f02f"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">openage::util::get_current_thread_id</a></div><div class="ttdeci">size_t get_current_thread_id()</div><div class="ttdef"><b>Definition:</b> <a href="thread__id_8cpp_source.xhtml#l00044">thread_id.cpp:44</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_ad75c622c0f6282b5d58208099a0d70fa"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#ad75c622c0f6282b5d58208099a0d70fa">openage::job::TypedJobStateBase::thread_id</a></div><div class="ttdeci">size_t thread_id</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00029">typed_job_state_base.h:29</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a7d8c9d88ba8f01ae168995baf750af8e"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">openage::job::TypedJobStateBase::finished</a></div><div class="ttdeci">std::atomic_bool finished</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00042">typed_job_state_base.h:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="thread__id_8cpp_source.xhtml#l00044">openage::util::get_current_thread_id()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base_a8e29b857a4d99759518b542746a02936_cgraph.svg" width="379" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -249,6 +266,20 @@ template&lt;class T &gt; </div>
 <p>Implements <a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#a031e479cce5b10af52a28ccb5301b588">openage::job::JobStateBase</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00066">66</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                       {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a12857f0200ece6f5d1205ea7f2c36a76">result</a> = this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6db4bc3757e40d5c04618c472ac75257">execute_and_get</a>(should_abort);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        } <span class="keywordflow">catch</span> (JobAbortedException &amp;e) {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        } <span class="keywordflow">catch</span> (...) {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc">exception</a> = std::current_exception();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">finished</a>.store(<span class="keyword">true</span>);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a6f32f7f56cacd11e8efbd695997f1bdc"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc">openage::job::TypedJobStateBase::exception</a></div><div class="ttdeci">std::exception_ptr exception</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00048">typed_job_state_base.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a12857f0200ece6f5d1205ea7f2c36a76"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a12857f0200ece6f5d1205ea7f2c36a76">openage::job::TypedJobStateBase::result</a></div><div class="ttdeci">T result</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00045">typed_job_state_base.h:45</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a7d8c9d88ba8f01ae168995baf750af8e"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">openage::job::TypedJobStateBase::finished</a></div><div class="ttdeci">std::atomic_bool finished</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00042">typed_job_state_base.h:42</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a6db4bc3757e40d5c04618c472ac75257"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6db4bc3757e40d5c04618c472ac75257">openage::job::TypedJobStateBase::execute_and_get</a></div><div class="ttdeci">virtual T execute_and_get(should_abort_t should_abort)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6db4bc3757e40d5c04618c472ac75257">openage::job::TypedJobStateBase&lt; T &gt;::execute_and_get()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base_a417161d234770ebadb0f98ecf1fece50_cgraph.svg" width="440" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -281,6 +312,16 @@ template&lt;class T &gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1job_1_1_abortable_job_state.xhtml#abbf6faad72065feb6dcf3691cbbe52b5">openage::job::AbortableJobState&lt; T &gt;</a>, and <a class="el" href="classopenage_1_1job_1_1_job_state.xhtml#a79a232a28e4517f7dcb2c7dcd66eea41">openage::job::JobState&lt; T &gt;</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="typed__job__state__base_8h_source.xhtml#l00066">openage::job::TypedJobStateBase&lt; T &gt;::execute()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_typed_job_state_base_a6db4bc3757e40d5c04618c472ac75257_icgraph.svg" width="440" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a4c8a6b1c64e615799feafc50842dd93c"></a>
@@ -312,6 +353,14 @@ template&lt;class T &gt; </div>
 <p>Implements <a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#ae5c8164b998e8a1ba780c3114e4492b4">openage::job::JobStateBase</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00082">82</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                     {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">finished</a>.load(), <span class="stringliteral">&quot;trying to report a result of an unfinished job&quot;</span>);</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">callback</a>) {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keyword">auto</span> get_result = [<span class="keyword">this</span>]() {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc">exception</a> != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    std::rethrow_exception(this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc">exception</a>);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a12857f0200ece6f5d1205ea7f2c36a76">result</a>);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            };</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">callback</a>(get_result);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a830096838fa28692b52e346b3b3e7294"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a830096838fa28692b52e346b3b3e7294">openage::job::TypedJobStateBase::callback</a></div><div class="ttdeci">callback_function_t&lt; T &gt; callback</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00035">typed_job_state_base.h:35</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a6f32f7f56cacd11e8efbd695997f1bdc"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc">openage::job::TypedJobStateBase::exception</a></div><div class="ttdeci">std::exception_ptr exception</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00048">typed_job_state_base.h:48</a></div></div>
+<div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a12857f0200ece6f5d1205ea7f2c36a76"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a12857f0200ece6f5d1205ea7f2c36a76">openage::job::TypedJobStateBase::result</a></div><div class="ttdeci">T result</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00045">typed_job_state_base.h:45</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_a7d8c9d88ba8f01ae168995baf750af8e"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#a7d8c9d88ba8f01ae168995baf750af8e">openage::job::TypedJobStateBase::finished</a></div><div class="ttdeci">std::atomic_bool finished</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00042">typed_job_state_base.h:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="typed__job__state__base_8h_source.xhtml#l00035">openage::job::TypedJobStateBase&lt; T &gt;::callback</a>, <a class="el" href="error_2error_8h_source.xhtml#l00155">ENSURE</a>, and <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>.</p>
 
 </div>
 </div>
@@ -344,6 +393,9 @@ template&lt;class T &gt; </div>
 <p>Implements <a class="el" href="classopenage_1_1job_1_1_job_state_base.xhtml#aee0926a562a65f87308e1eda7d14040c">openage::job::JobStateBase</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00096">96</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                    {</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#ad75c622c0f6282b5d58208099a0d70fa">thread_id</a>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_typed_job_state_base_xhtml_ad75c622c0f6282b5d58208099a0d70fa"><div class="ttname"><a href="classopenage_1_1job_1_1_typed_job_state_base.xhtml#ad75c622c0f6282b5d58208099a0d70fa">openage::job::TypedJobStateBase::thread_id</a></div><div class="ttdeci">size_t thread_id</div><div class="ttdef"><b>Definition:</b> <a href="typed__job__state__base_8h_source.xhtml#l00029">typed_job_state_base.h:29</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="typed__job__state__base_8h_source.xhtml#l00029">openage::job::TypedJobStateBase&lt; T &gt;::thread_id</a>.</p>
 
 </div>
 </div>
@@ -364,6 +416,8 @@ template&lt;class T &gt; </div>
 <p>A callback function that is called when the job has finished. Can be empty. </p>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00035">35</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="abortable__job__state_8h_source.xhtml#l00027">openage::job::AbortableJobState&lt; T &gt;::AbortableJobState()</a>, <a class="el" href="typed__job__state__base_8h_source.xhtml#l00082">openage::job::TypedJobStateBase&lt; T &gt;::execute_callback()</a>, and <a class="el" href="job__state_8h_source.xhtml#l00024">openage::job::JobState&lt; T &gt;::JobState()</a>.</p>
 
 </div>
 </div>
@@ -441,10 +495,12 @@ template&lt;class T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="typed__job__state__base_8h_source.xhtml#l00029">29</a> of file <a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="typed__job__state__base_8h_source.xhtml#l00096">openage::job::TypedJobStateBase&lt; T &gt;::get_thread_id()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/job/<a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/<a class="el" href="typed__job__state__base_8h_source.xhtml">typed_job_state_base.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

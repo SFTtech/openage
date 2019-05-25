@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1fix__data" kind="namespace" language="Python">
+    <compoundname>openage::convert::fix_data</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1fix__data_1aa8a9618d6c503e4ea34ed5854a8d534f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.fix_data.fix_data</definition>
+        <argsstring>(data)</argsstring>
+        <name>fix_data</name>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>modernizes/patches the gamespec. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>updates given input with modifications.</para>
+<para>input empiresdat object, vanilla, fully read. output empiresdat object, fixed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/fix_data.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/fix_data.py" bodystart="14" bodyend="49"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1af952f8f82261ef86e5c83facd56758f9" compoundref="driver_8py" startline="81" endline="113">openage.convert.driver.get_gamespec</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/fix_data.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

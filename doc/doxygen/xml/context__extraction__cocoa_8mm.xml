@@ -42,7 +42,7 @@
         <label>QVariant</label>
       </node>
       <node id="13428">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
         <link refid="context__extraction__cocoa_8mm"/>
         <childnode refid="13429" relation="include">
         </childnode>
@@ -125,6 +125,6 @@
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm"/>
   </compounddef>
 </doxygen>

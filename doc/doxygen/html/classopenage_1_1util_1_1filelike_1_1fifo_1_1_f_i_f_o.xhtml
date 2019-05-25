@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.filelike.fifo.FIFO Class Reference</title>
+<title>openage: openage.util.filelike.fifo.FIFO Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1filelike_1_1fi
 
 <p>File-like wrapper around ByteQueue.  
  <a href="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.util.filelike.fifo.FIFO:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.filelike.fifo.FIFO:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.filelike.fifo.FIFO:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.filelike.fifo.FIFO:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -202,7 +205,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#ad1e8617a5d0fedd8596e6bb8ad5a6bb2">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00033">33</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        self.eof = <span class="keyword">False</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        self.queue = ByteQueue()</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        self.pos = 0</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">def </span>tell(self):</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -225,6 +228,8 @@ Public Attributes</h2></td></tr>
 <p>Returns the amount of currently-enqueued data. </p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00067">67</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">def </span>seteof(self):</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00036">openage.util.filelike.fifo.FIFO.queue</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">openage::datastructure::ConcurrentQueue&lt; T &gt;.queue</a>, and <a class="el" href="event_2loop_8h_source.xhtml#l00124">openage::event::Loop.queue</a>.</p>
 
 </div>
 </div>
@@ -249,7 +254,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1codegen_1_1codegen_1_1_write_catcher.xhtml#a81a39d07ebb17dfc512f9c4f904fb692">openage.codegen.codegen.WriteCatcher</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00119">119</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        self.queue = <span class="keywordtype">None</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad5dbe366edae03adfb5fc0bc9a7c65ca"></a>
@@ -271,7 +276,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#af0f454daf7adab7c0dbbe38f3ec8dedb">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00115">115</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">pass</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">def </span>close(self):</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        self.closed = <span class="keyword">True</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="a9b982f9dc63389db10c765590221724c"></a>
@@ -293,6 +298,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00112">112</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">def </span>flush(self):</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment"># no-op</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00036">openage.util.filelike.fifo.FIFO.queue</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">openage::datastructure::ConcurrentQueue&lt; T &gt;.queue</a>, and <a class="el" href="event_2loop_8h_source.xhtml#l00124">openage::event::Loop.queue</a>.</p>
 
 </div>
 </div>
@@ -330,6 +337,18 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1codegen_1_1codegen_1_1_write_catcher.xhtml#ad481d2443b0fd3d9f33567caf73b4512">openage.codegen.codegen.WriteCatcher</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00099">99</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            size = len(self.queue)</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">elif</span> self.eof <span class="keywordflow">and</span> size &gt; len(self.queue):</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            size = len(self.queue)</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        self.pos += size</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">return</span> self.queue.popleft(size)</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">def </span>readable(self):</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00035">openage.util.filelike.fifo.FIFO.eof</a>, <a class="el" href="codegen_8py_source.xhtml#l00049">openage.codegen.codegen.WriteCatcher.eof</a>, <a class="el" href="bitstream_8h_source.xhtml#l00074">openage::util::compress::BitStream&lt; inbuf_size &gt;.eof</a>, <a class="el" href="fifo_8py_source.xhtml#l00037">openage.util.filelike.fifo.FIFO.pos</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>, <a class="el" href="fifo_8py_source.xhtml#l00036">openage.util.filelike.fifo.FIFO.queue</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">openage::datastructure::ConcurrentQueue&lt; T &gt;.queue</a>, and <a class="el" href="event_2loop_8h_source.xhtml#l00124">openage::event::Loop.queue</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="peresource_8py_source.xhtml#l00138">openage.convert.peresource.StringLiteral.readall()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_a77dba0458d85fcf0bec2fd7d11b3737a_icgraph.svg" width="403" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -354,7 +373,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a921de3bfb2d8bcaae526bd93347d4764">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00109">109</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">def </span>get_size(self):</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">return</span> len(self.queue)</div></div><!-- fragment -->
 </div>
 </div>
 <a id="adbb99e71fbabcc53639c4ad1c02d381b"></a>
@@ -394,7 +413,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#ad255ffd40c48e6610e464d5c3c43b2fb">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00056">56</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">raise</span> UnsupportedOperation(<span class="stringliteral">&quot;unseekable stream&quot;</span>)</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">def </span>seekable(self):</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="af21b86aeeaeb8df5d14d08d39c8fa454"></a>
@@ -418,7 +437,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a72fc53b76ba8da3a41cd61647dbaae6e">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00061">61</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">def </span>__len__(self):</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="af9bde4cd9fa0a8d6e1e3f2bc338c245a"></a>
@@ -442,6 +461,8 @@ Public Attributes</h2></td></tr>
    through write; the queue may still hold some data.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00076">76</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">def </span>write(self, data):</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00035">openage.util.filelike.fifo.FIFO.eof</a>, <a class="el" href="codegen_8py_source.xhtml#l00049">openage.codegen.codegen.WriteCatcher.eof</a>, and <a class="el" href="bitstream_8h_source.xhtml#l00074">openage::util::compress::BitStream&lt; inbuf_size &gt;.eof</a>.</p>
 
 </div>
 </div>
@@ -466,6 +487,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a0ad9d642b58e227e95d4c03b49b57d0b">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00044">44</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">def </span>tellw(self):</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00037">openage.util.filelike.fifo.FIFO.pos</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, and <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>.</p>
 
 </div>
 </div>
@@ -488,6 +511,8 @@ Public Attributes</h2></td></tr>
 <p>Returns the position for writing. </p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00050">50</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">def </span>seek(self, offset, whence=os.SEEK_SET):</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00037">openage.util.filelike.fifo.FIFO.pos</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>, <a class="el" href="fifo_8py_source.xhtml#l00036">openage.util.filelike.fifo.FIFO.queue</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">openage::datastructure::ConcurrentQueue&lt; T &gt;.queue</a>, and <a class="el" href="event_2loop_8h_source.xhtml#l00124">openage::event::Loop.queue</a>.</p>
 
 </div>
 </div>
@@ -512,6 +537,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a08761f78387658db85dc2f1137cb3db6">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00088">88</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">def </span>read(self, size=-1):</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="wrapper_8py_source.xhtml#l00071">openage.util.fslike.wrapper.Wrapper.resolve_w()</a>, and <a class="el" href="fslike_2abstract_8py_source.xhtml#l00095">openage.util.fslike.abstract.FSLikeObject.resolve_w()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_a7e3c29ecf26b6f213c6c06d0eceba8fe_icgraph.svg" width="396" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -546,6 +581,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a118b6ae6f4476f578a6cee666adc02cb">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00082">82</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;EOF has been set; can&#39;t write more data&quot;</span>)</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        self.queue.append(data)</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">def </span>writable(self):</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00035">openage.util.filelike.fifo.FIFO.eof</a>, <a class="el" href="codegen_8py_source.xhtml#l00049">openage.codegen.codegen.WriteCatcher.eof</a>, <a class="el" href="bitstream_8h_source.xhtml#l00074">openage::util::compress::BitStream&lt; inbuf_size &gt;.eof</a>, <a class="el" href="fifo_8py_source.xhtml#l00036">openage.util.filelike.fifo.FIFO.queue</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">openage::datastructure::ConcurrentQueue&lt; T &gt;.queue</a>, and <a class="el" href="event_2loop_8h_source.xhtml#l00124">openage::event::Loop.queue</a>.</p>
 
 </div>
 </div>
@@ -564,6 +601,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00120">120</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
+
 </div>
 </div>
 <a id="ab8e9bdd7b5972c84559402085435c81d"></a>
@@ -579,6 +618,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00035">35</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="fifo_8py_source.xhtml#l00099">openage.util.filelike.fifo.FIFO.read()</a>, <a class="el" href="fifo_8py_source.xhtml#l00076">openage.util.filelike.fifo.FIFO.seteof()</a>, and <a class="el" href="fifo_8py_source.xhtml#l00082">openage.util.filelike.fifo.FIFO.write()</a>.</p>
 
 </div>
 </div>
@@ -596,6 +637,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00037">37</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00043">openage.convert.binpack.Packer.height()</a>, <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>, <a class="el" href="fifo_8py_source.xhtml#l00099">openage.util.filelike.fifo.FIFO.read()</a>, <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment.read()</a>, <a class="el" href="cab_8py_source.xhtml#l00501">openage.cabextract.cab.CABFolderStream.read_blocks()</a>, <a class="el" href="readonly_8py_source.xhtml#l00055">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek()</a>, <a class="el" href="fifo_8py_source.xhtml#l00044">openage.util.filelike.fifo.FIFO.tell()</a>, <a class="el" href="readonly_8py_source.xhtml#l00061">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.tell()</a>, <a class="el" href="fifo_8py_source.xhtml#l00050">openage.util.filelike.fifo.FIFO.tellw()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00039">openage.convert.binpack.Packer.width()</a>.</p>
+
 </div>
 </div>
 <a id="af8c5faf14bb51ad9707f209200b43ec0"></a>
@@ -612,10 +655,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8py_source.xhtml#l00036">36</a> of file <a class="el" href="fifo_8py_source.xhtml">fifo.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="fifo_8py_source.xhtml#l00067">openage.util.filelike.fifo.FIFO.__len__()</a>, <a class="el" href="fifo_8py_source.xhtml#l00112">openage.util.filelike.fifo.FIFO.get_size()</a>, <a class="el" href="fifo_8py_source.xhtml#l00099">openage.util.filelike.fifo.FIFO.read()</a>, <a class="el" href="fifo_8py_source.xhtml#l00050">openage.util.filelike.fifo.FIFO.tellw()</a>, and <a class="el" href="fifo_8py_source.xhtml#l00082">openage.util.filelike.fifo.FIFO.write()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/filelike/<a class="el" href="fifo_8py_source.xhtml">fifo.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/<a class="el" href="fifo_8py_source.xhtml">fifo.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

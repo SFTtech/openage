@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::timing Namespace Reference</title>
+<title>openage: openage::timing Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -120,6 +121,16 @@ Functions</h2></td></tr>
 <p>not influenced by system time changes. </p>
 
 <p class="definition">Definition at line <a class="el" href="timing_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="timing_8cpp_source.xhtml">timing.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                 {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::chrono::steady_clock::time_point t;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    t = std::chrono::steady_clock::now();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">auto</span> ns = std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;(t.time_since_epoch()).count();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> static_cast&lt;time_nsec_t&gt;(ns);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="timer_8cpp_source.xhtml#l00045">openage::util::Timer::getandresetval()</a>, <a class="el" href="timer_8cpp_source.xhtml#l00037">openage::util::Timer::getval()</a>, <a class="el" href="timer_8cpp_source.xhtml#l00014">openage::util::Timer::reset()</a>, <a class="el" href="timer_8cpp_source.xhtml#l00030">openage::util::Timer::start()</a>, <a class="el" href="timer_8cpp_source.xhtml#l00023">openage::util::Timer::stop()</a>, and <a class="el" href="draw_8cpp_source.xhtml#l00022">openage::console::draw::to_opengl()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1timing_a7d40886347e44f74660d8f9f00b24b95_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -140,6 +151,16 @@ Functions</h2></td></tr>
 <p>returns the number of nanoseconds since the UNIX epoch. </p>
 
 <p class="definition">Definition at line <a class="el" href="timing_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="timing_8cpp_source.xhtml">timing.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                            {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::chrono::system_clock::time_point t;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    t = std::chrono::system_clock::now();</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">auto</span> ns = std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;(t.time_since_epoch()).count();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> static_cast&lt;time_nsec_t&gt;(ns);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00017">openage::log::message::init()</a>, and <a class="el" href="rng_8cpp_source.xhtml#l00207">openage::rng::time_seed()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1timing_aea51f4c8e71a8c326e3dd9dcc05c00eb_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>

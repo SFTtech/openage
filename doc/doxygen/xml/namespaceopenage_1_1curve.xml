@@ -25,13 +25,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/curve.h" line="16" column="1" bodyfile="libopenage/curve/curve.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/curve.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/curve.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/curve/continuous.cpp" line="5" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp" line="5" column="1"/>
   </compounddef>
 </doxygen>

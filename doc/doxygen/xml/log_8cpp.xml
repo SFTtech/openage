@@ -113,7 +113,7 @@
         </childnode>
       </node>
       <node id="17123">
-        <label>libopenage/log/log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</label>
         <link refid="log_8cpp"/>
         <childnode refid="17124" relation="include">
         </childnode>
@@ -240,6 +240,6 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/log.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp"/>
   </compounddef>
 </doxygen>

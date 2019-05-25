@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1struct_1_1_named_struct_meta" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::struct::NamedStructMeta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">type</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStructMeta.__prepare__</definition>
+        <argsstring>(mcs, name, bases, **kwds)</argsstring>
+        <name>__prepare__</name>
+        <param>
+          <type>mcs</type>
+          <defname>mcs</defname>
+        </param>
+        <param>
+          <type>name</type>
+          <defname>name</defname>
+        </param>
+        <param>
+          <type>bases</type>
+          <defname>bases</defname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="24" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStructMeta.__new__</definition>
+        <argsstring>(mcs, name, bases, classdict, **kwds)</argsstring>
+        <name>__new__</name>
+        <param>
+          <type>mcs</type>
+          <defname>mcs</defname>
+        </param>
+        <param>
+          <type>name</type>
+          <defname>name</defname>
+        </param>
+        <param>
+          <type>bases</type>
+          <defname>bases</defname>
+        </param>
+        <param>
+          <type>classdict</type>
+          <defname>classdict</defname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>kwds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="29" bodyend="82"/>
+        <references refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Metaclass for <ref refid="classopenage_1_1util_1_1struct_1_1_named_struct" kindref="compound">NamedStruct</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Not unlike the meta-class for <ref refid="classopenage_1_1util_1_1_enum" kindref="compound">Enum</ref>, processes all the member attributes at class-creation time. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6083">
+        <label>openage.convert.pefile.PEDataDirectory</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6087">
+        <label>openage.convert.peresource.ResourceDirectory</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6084">
+        <label>openage.convert.pefile.PEDOSHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6081">
+        <label>openage.convert.drs.DRSTableInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_table_info"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6079">
+        <label>openage.convert.drs.DRSFileInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6080">
+        <label>openage.convert.drs.DRSHeader</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_header"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6088">
+        <label>openage.convert.peresource.ResourceDirectoryEntry</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_entry"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6074">
+        <label>openage.cabextract.cab.CFData</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_data"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6075">
+        <label>openage.cabextract.cab.CFFile</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6076">
+        <label>openage.cabextract.cab.CFFolder</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_folder"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6072">
+        <label>type</label>
+      </node>
+      <node id="6090">
+        <label>openage.convert.peresource.StringLiteral</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_string_literal"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6071">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="6072" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6085">
+        <label>openage.convert.pefile.PEOptionalHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_optional_header"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6077">
+        <label>openage.cabextract.cab.CFHeader</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6082">
+        <label>openage.convert.pefile.PECOFFHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_c_o_f_f_header"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6086">
+        <label>openage.convert.pefile.PESection</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6073">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="6071" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6089">
+        <label>openage.convert.peresource.ResourceLeaf</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6078">
+        <label>openage.cabextract.cab.CFHeaderReservedFields</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_reserved_fields"/>
+        <childnode refid="6073" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6092">
+        <label>type</label>
+      </node>
+      <node id="6091">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="6092" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="22" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStructMeta</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStructMeta</scope><name>__prepare__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

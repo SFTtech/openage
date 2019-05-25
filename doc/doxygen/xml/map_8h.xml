@@ -7,8 +7,8 @@
     <includes local="no">optional</includes>
     <includes local="no">iostream</includes>
     <includes local="no">unordered_map</includes>
-    <includedby refid="map_8cpp" local="yes">libopenage/curve/map.cpp</includedby>
-    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
+    <includedby refid="map_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.cpp</includedby>
+    <includedby refid="container_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</includedby>
     <incdepgraph>
       <node id="5062">
         <label>list</label>
@@ -76,7 +76,7 @@
         </childnode>
       </node>
       <node id="5027">
-        <label>libopenage/curve/map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h</label>
         <link refid="map_8h"/>
         <childnode refid="5028" relation="include">
         </childnode>
@@ -303,7 +303,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5072">
-        <label>libopenage/curve/map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h</label>
         <link refid="map_8h"/>
         <childnode refid="5073" relation="include">
         </childnode>
@@ -311,11 +311,11 @@
         </childnode>
       </node>
       <node id="5073">
-        <label>libopenage/curve/map.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.cpp</label>
         <link refid="map_8cpp"/>
       </node>
       <node id="5074">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
     </invincdepgraph>
@@ -527,6 +527,6 @@
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/map.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h"/>
   </compounddef>
 </doxygen>

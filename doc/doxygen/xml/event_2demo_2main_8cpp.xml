@@ -310,7 +310,7 @@
         <label>any</label>
       </node>
       <node id="7004">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
         <childnode refid="7005" relation="include">
         </childnode>
@@ -568,7 +568,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/main.cpp" line="25" column="1" bodyfile="libopenage/event/demo/main.cpp" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -783,6 +783,6 @@
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event::demo</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/main.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp"/>
   </compounddef>
 </doxygen>

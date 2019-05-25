@@ -333,7 +333,7 @@
         </childnode>
       </node>
       <node id="6808">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
         <childnode refid="6809" relation="include">
         </childnode>
@@ -1116,7 +1116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/gui.cpp" line="154" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="154" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" line="154" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" prot="private" static="no" mutable="no">
         <type>GLint</type>
@@ -1129,7 +1129,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/gui.cpp" line="155" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="155" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" line="155" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" bodystart="155" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
       </memberdef>
       <memberdef kind="variable" id="gui_2gui_8cpp_1a23565c9b2eaea3643515aad6f5f82e1f" prot="private" static="no" mutable="no">
         <type>GLint</type>
@@ -1142,7 +1143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/gui.cpp" line="156" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="156" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1170,7 +1171,7 @@
 <codeline lineno="18" refid="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" kindref="member">GUI::GUI</ref>(SDL_Window<sp/>*window,</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;source,</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;rootdir,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref><sp/>*info)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref><sp/>*<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>application{},</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>render_updater{},</highlight></codeline>
@@ -1195,7 +1196,7 @@
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;image_provider_by_graphic_id,</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;image_provider_by_terrain_id</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>},</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>subtree{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;renderer,</highlight></codeline>
@@ -1206,11 +1207,11 @@
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>},</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>input{&amp;renderer,<sp/>&amp;game_logic_updater}<sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>info-&gt;engine-&gt;register_resize_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>info-&gt;engine-&gt;register_input_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>info-&gt;engine-&gt;register_drawhud_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>-&gt;engine-&gt;register_resize_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>-&gt;engine-&gt;register_input_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>-&gt;engine-&gt;register_drawhud_action(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>util::Path<sp/>shader_dir<sp/>=<sp/>info-&gt;asset_dir<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;shaders&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>util::Path<sp/>shader_dir<sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>-&gt;asset_dir<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;shaders&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*shader_header_code<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#version<sp/>120\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
@@ -1347,6 +1348,6 @@
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/gui.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp"/>
   </compounddef>
 </doxygen>

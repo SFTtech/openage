@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1hardcoded_1_1texture" kind="namespace" language="Python">
+    <compoundname>openage::convert::hardcoded::texture</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1texture_1a60856854c240e9b1c7ecd68a789aa3c1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::hardcoded::texture.MAX_TEXTURE_DIMENSION</definition>
+        <argsstring></argsstring>
+        <name>MAX_TEXTURE_DIMENSION</name>
+        <initializer>=  8194</initializer>
+        <briefdescription>
+<para>Constants for texture generation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1texture_1acde7021edc0730af5f105bac40b7cdbe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::hardcoded::texture.MARGIN</definition>
+        <argsstring></argsstring>
+        <name>MARGIN</name>
+        <initializer>=  1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1texture_1ae6a0ad68fa1c0eec98863699ecbdc54c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::hardcoded::texture.TERRAIN_ASPECT_RATIO</definition>
+        <argsstring></argsstring>
+        <name>TERRAIN_ASPECT_RATIO</name>
+        <initializer>=  97 / 94</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/texture.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::log::message Struct Reference</title>
+<title>openage: openage::log::message Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,9 +98,11 @@ $(document).ready(function(){initNavTree('structopenage_1_1log_1_1message.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="message_8h_source.xhtml">message.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::log::message:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::log::message:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -154,6 +157,30 @@ Public Attributes</h2></td></tr>
 <p>Sets all members except for filename, lineno, functionname and level. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="message_8cpp_source.xhtml">message.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                   {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">thread_id</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">util::get_current_thread_id</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">timestamp</a> = <a class="code" href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">timing::get_real_time</a>();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a5042e9fbcd8e802dcd75346ce1fc03c7"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a5042e9fbcd8e802dcd75346ce1fc03c7">openage::log::message::thread_id</a></div><div class="ttdeci">size_t thread_id</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00083">message.h:83</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac99f61e1d0c06d9b83650a71cff2f02f"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac99f61e1d0c06d9b83650a71cff2f02f">openage::util::get_current_thread_id</a></div><div class="ttdeci">size_t get_current_thread_id()</div><div class="ttdef"><b>Definition:</b> <a href="thread__id_8cpp_source.xhtml#l00044">thread_id.cpp:44</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1timing_xhtml_aea51f4c8e71a8c326e3dd9dcc05c00eb"><div class="ttname"><a href="namespaceopenage_1_1timing.xhtml#aea51f4c8e71a8c326e3dd9dcc05c00eb">openage::timing::get_real_time</a></div><div class="ttdeci">time_nsec_t get_real_time()</div><div class="ttdef"><b>Definition:</b> <a href="timing_8cpp_source.xhtml#l00013">timing.cpp:13</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ad4a1ced68cb228cfb824b5d185be726d"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ad4a1ced68cb228cfb824b5d185be726d">openage::log::message::timestamp</a></div><div class="ttdeci">int64_t timestamp</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00088">message.h:88</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="thread__id_8cpp_source.xhtml#l00044">openage::util::get_current_thread_id()</a>, <a class="el" href="timing_8cpp_source.xhtml#l00013">openage::timing::get_real_time()</a>, <a class="el" href="message_8h_source.xhtml#l00083">thread_id</a>, and <a class="el" href="message_8h_source.xhtml#l00088">timestamp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00023">init_with_metadata_copy()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_cgraph.svg" width="356" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a45dd1bfdd4fc1c55af0c093dac14b624_icgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -187,6 +214,20 @@ Public Attributes</h2></td></tr>
 <p>Designed to be used when filename and functionname are temporary objects (e.g. from Python). </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="message_8cpp_source.xhtml">message.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                                                              {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> std::unordered_set&lt;std::string&gt; stringconstants;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> std::mutex stringconstants_mutex;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::lock_guard&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{stringconstants_mutex};</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">init</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">filename</a>).first-&gt;c_str();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    this-&gt;<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a> = stringconstants.insert(<a class="code" href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">functionname</a>).first-&gt;c_str();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="structopenage_1_1log_1_1message_xhtml_ac3ad82d38502272df446a781982b4fc0"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#ac3ad82d38502272df446a781982b4fc0">openage::log::message::filename</a></div><div class="ttdeci">const char * filename</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00063">message.h:63</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45dd1bfdd4fc1c55af0c093dac14b624"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45dd1bfdd4fc1c55af0c093dac14b624">openage::log::message::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="message_8cpp_source.xhtml#l00017">message.cpp:17</a></div></div>
+<div class="ttc" id="structopenage_1_1log_1_1message_xhtml_a45eb775bf38f7423cd7fb27895d17e06"><div class="ttname"><a href="structopenage_1_1log_1_1message.xhtml#a45eb775bf38f7423cd7fb27895d17e06">openage::log::message::functionname</a></div><div class="ttdeci">const char * functionname</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00073">message.h:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="message_8h_source.xhtml#l00063">filename</a>, <a class="el" href="message_8h_source.xhtml#l00073">functionname</a>, <a class="el" href="message_8cpp_source.xhtml#l00017">init()</a>, and <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1log_1_1message_a9f25c53eaa48cd37d1d5753e53db9549_cgraph.svg" width="578" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -206,6 +247,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00063">63</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00023">init_with_metadata_copy()</a>, <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="error_2error_8cpp_source.xhtml#l00089">openage::error::operator&lt;&lt;()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
+
 </div>
 </div>
 <a id="a45eb775bf38f7423cd7fb27895d17e06"></a>
@@ -222,6 +265,8 @@ Public Attributes</h2></td></tr>
 <p>The (pretty) function name where the message has been constructed. </p>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00073">73</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00023">init_with_metadata_copy()</a>, <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="error_2error_8cpp_source.xhtml#l00089">openage::error::operator&lt;&lt;()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
 
 </div>
 </div>
@@ -240,6 +285,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00068">68</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="error_2error_8cpp_source.xhtml#l00089">openage::error::operator&lt;&lt;()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
+
 </div>
 </div>
 <a id="a6bfced2ea9be3c5943d269dcb2094b96"></a>
@@ -257,6 +304,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00078">78</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="logsink_8cpp_source.xhtml#l00042">openage::log::LogSinkList::log()</a>, <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="stdout__logsink_8cpp_source.xhtml#l00048">openage::log::StdOutSink::output_log_message()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
+
 </div>
 </div>
 <a id="a8c610dd442b678978bf3414c61a69695"></a>
@@ -272,6 +321,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00058">58</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00035">openage::log::MessageBuilder::MessageBuilder()</a>, <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="error_2error_8cpp_source.xhtml#l00089">openage::error::operator&lt;&lt;()</a>, <a class="el" href="stdout__logsink_8cpp_source.xhtml#l00048">openage::log::StdOutSink::output_log_message()</a>, <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>, and <a class="el" href="error_2error_8cpp_source.xhtml#l00072">openage::error::Error::what()</a>.</p>
 
 </div>
 </div>
@@ -290,6 +341,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00083">83</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00017">init()</a>, <a class="el" href="message_8cpp_source.xhtml#l00051">openage::log::operator&lt;&lt;()</a>, <a class="el" href="stdout__logsink_8cpp_source.xhtml#l00048">openage::log::StdOutSink::output_log_message()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
+
 </div>
 </div>
 <a id="ad4a1ced68cb228cfb824b5d185be726d"></a>
@@ -307,11 +360,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="message_8h_source.xhtml#l00088">88</a> of file <a class="el" href="message_8h_source.xhtml">message.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="message_8cpp_source.xhtml#l00017">init()</a>, and <a class="el" href="file__logsink_8cpp_source.xhtml#l00020">openage::log::FileSink::output_log_message()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>libopenage/log/<a class="el" href="message_8h_source.xhtml">message.h</a></li>
-<li>libopenage/log/<a class="el" href="message_8cpp_source.xhtml">message.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/<a class="el" href="message_8h_source.xhtml">message.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/<a class="el" href="message_8cpp_source.xhtml">message.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

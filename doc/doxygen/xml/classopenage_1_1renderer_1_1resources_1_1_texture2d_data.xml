@@ -16,7 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="65" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" compoundref="texture__data_8cpp" startline="125" endline="140">flip_y</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" compoundref="texture__data_8cpp" startline="142" endline="144">get_info</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">store</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">Texture2dData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" prot="private" static="no" mutable="no">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -30,7 +34,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="68" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" compoundref="texture__data_8cpp" startline="125" endline="140">flip_y</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" compoundref="texture__data_8cpp" startline="146" endline="148">get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">read_pixel</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">store</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">Texture2dData</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,7 +86,22 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="27" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="56" bodyend="119"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="56" bodyend="119"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39">openage::renderer::resources::bgr8</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">data</references>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" compoundref="util_2path_8cpp" startline="247" endline="249">openage::util::Path::get_parent</references>
+        <references refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" compoundref="util_2path_8cpp" startline="282" endline="290">openage::util::Path::get_stem</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" compoundref="texture__data_8cpp" startline="22" endline="54">openage::renderer::resources::guess_row_alignment</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" compoundref="texture__data_8h" startline="65">info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" compoundref="util_2path_8cpp" startline="163" endline="173">openage::util::Path::resolve_native_path</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a">openage::renderer::resources::rgb8</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">openage::renderer::resources::rgba8</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" compoundref="texture__data_8cpp" startline="125" endline="140">flip_y</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ac914d524baaf0ac61f42ca7fcd24a8bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -86,7 +123,8 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="30" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="121" bodyend="123"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="121" bodyend="123"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">Texture2dData</ref></type>
@@ -100,7 +138,13 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="34" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="125" bodyend="140"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="125" bodyend="140"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">openage::renderer::resources::Texture2dInfo::get_row_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" compoundref="texture__info_8cpp" startline="28" endline="30">openage::renderer::resources::Texture2dInfo::get_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" compoundref="texture__data_8h" startline="65">info</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">Texture2dData</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> &amp;</type>
@@ -114,7 +158,9 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="37" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="142" bodyend="144"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="142" bodyend="144"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" compoundref="texture__data_8h" startline="65">info</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" compoundref="renderer_2opengl_2texture_8cpp" startline="95" endline="110">openage::renderer::opengl::GlTexture2d::upload</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const uint8_t *</type>
@@ -128,7 +174,10 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="40" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="146" bodyend="148"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="146" bodyend="148"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">data</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" compoundref="renderer_2opengl_2texture_8cpp" startline="95" endline="110">openage::renderer::opengl::GlTexture2d::upload</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" compoundref="opengl_2texture__array_8cpp" startline="79" endline="98">openage::renderer::opengl::GlTexture2dArray::upload</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -155,7 +204,16 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="47" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="47" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" bodystart="47" bodyend="58"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">data</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" compoundref="texture__info_8cpp" startline="53" endline="55">openage::renderer::resources::Texture2dInfo::get_data_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" compoundref="texture__info_8cpp" startline="32" endline="34">openage::renderer::resources::Texture2dInfo::get_format</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">openage::renderer::resources::Texture2dInfo::get_row_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" compoundref="texture__info_8cpp" startline="28" endline="30">openage::renderer::resources::Texture2dInfo::get_size</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" compoundref="texture__info_8h" startline="36" endline="48">openage::renderer::resources::pixel_size</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" compoundref="renderer_2tests_8cpp" startline="33" endline="278">openage::renderer::tests::renderer_demo_0</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -173,7 +231,17 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.h" line="61" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="150" bodyend="204"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="150" bodyend="204"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">data</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" compoundref="texture__info_8cpp" startline="32" endline="34">openage::renderer::resources::Texture2dInfo::get_format</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">openage::renderer::resources::Texture2dInfo::get_row_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" compoundref="texture__info_8cpp" startline="28" endline="30">openage::renderer::resources::Texture2dInfo::get_size</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" compoundref="texture__data_8h" startline="65">info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" compoundref="util_2path_8cpp" startline="188" endline="197">openage::util::Path::resolve_native_path_w</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">openage::renderer::resources::rgba8</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -182,19 +250,19 @@ Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref
 <para>Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from and storing onto disk, as well as sending to and receiving from graphics hardware. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4468">
+      <node id="4761">
         <label>openage::renderer::resources::Texture2dData</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data"/>
-        <childnode refid="4469" relation="usage">
+        <childnode refid="4762" relation="usage">
           <edgelabel>-info</edgelabel>
         </childnode>
       </node>
-      <node id="4469">
+      <node id="4762">
         <label>openage::renderer::resources::Texture2dInfo</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/resources/texture_data.h" line="19" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="19" bodyend="69"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h" bodystart="19" bodyend="69"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>data</name></member>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>flip_y</name></member>

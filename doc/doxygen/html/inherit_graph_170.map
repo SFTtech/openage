@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structopenage_1_1renderer_1_1_render_pass.xhtml" title="A render pass is a series of draw calls represented by renderables that output into the given render ..." alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node1" href="$classopenage_1_1renderer_1_1_render_target.xhtml" title="The abstract base for a render target." alt="" coords="5,39,140,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_render_target.xhtml" title=" " alt="" coords="188,5,347,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer.xhtml" title=" " alt="" coords="191,71,344,112"/>
 </map>

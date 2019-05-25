@@ -15,7 +15,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="49" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" compoundref="gui__subtree__impl_8cpp" startline="221" endline="236">disconnect</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1a679c00b61c59c7eaba774b7e4788bbbd" compoundref="gui__subtree__impl_8cpp" startline="269" endline="273">get_qml_engine</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1af9d75573df9d5f7b433c54eb6f2690fa" compoundref="gui__subtree__impl_8cpp" startline="195" endline="215">GuiEngineImplConnection</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1aeb1d2cd3646f38fa8bc7733e16c99885" compoundref="gui__subtree__impl_8cpp" startline="259" endline="261">has_subtree</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1a53fe06a5892eaa14cf0a9f4b8d0004a6" compoundref="gui__subtree__impl_8cpp" startline="263" endline="267">rootContext</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_engine_impl_connection_1a2663b1ea6f047c599811111a33b4382f" prot="private" static="no" mutable="no">
         <type><ref refid="classqtsdl_1_1_gui_engine_impl" kindref="compound">GuiEngineImpl</ref> *</type>
@@ -28,7 +33,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="50" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="50" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" compoundref="gui__subtree__impl_8cpp" startline="221" endline="236">disconnect</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1a679c00b61c59c7eaba774b7e4788bbbd" compoundref="gui__subtree__impl_8cpp" startline="269" endline="273">get_qml_engine</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1a53fe06a5892eaa14cf0a9f4b8d0004a6" compoundref="gui__subtree__impl_8cpp" startline="263" endline="267">rootContext</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_engine_impl_connection_1a38c787b5f4a17c1adccf0e8cfebcdf13" prot="private" static="no" mutable="no">
         <type>QString</type>
@@ -41,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="51" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" compoundref="gui__subtree__impl_8cpp" startline="221" endline="236">disconnect</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -56,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="29" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="189" bodyend="193"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="189" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1af9d75573df9d5f7b433c54eb6f2690fa" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +90,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="195" bodyend="215"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="195" bodyend="215"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac87ff227188ad449ede10af2a8af1ae0" compoundref="gui__subtree__impl_8h" startline="49">subtree</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a838d04049e7a234096ddc630de0fee59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -94,7 +104,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="33" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="217" bodyend="219"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="217" bodyend="219"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" compoundref="gui__subtree__impl_8cpp" startline="221" endline="236">disconnect</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a4c562054452367a7e826a4612fa1dee7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -111,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="238" bodyend="245"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="238" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a3de39e1c4b2cc6b97f38d9c1217d5de5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classqtsdl_1_1_gui_engine_impl_connection" kindref="compound">GuiEngineImplConnection</ref> &amp;</type>
@@ -128,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="36" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="247" bodyend="257"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="247" bodyend="257"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1aeb1d2cd3646f38fa8bc7733e16c99885" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -141,7 +152,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="38" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="259" bodyend="261"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="259" bodyend="261"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac87ff227188ad449ede10af2a8af1ae0" compoundref="gui__subtree__impl_8h" startline="49">subtree</references>
+        <referencedby refid="classqtsdl_1_1_gui_subtree_impl_1a903d02ad6f5349af96add80f99ddf345" compoundref="gui__subtree__impl_8cpp" startline="111" endline="130">qtsdl::GuiSubtreeImpl::attach_to</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" compoundref="gui__subtree__impl_8cpp" startline="221" endline="236">disconnect</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a53fe06a5892eaa14cf0a9f4b8d0004a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QQmlContext *</type>
@@ -154,7 +168,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="40" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="263" bodyend="267"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="263" bodyend="267"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1a2663b1ea6f047c599811111a33b4382f" compoundref="gui__subtree__impl_8h" startline="50">engine</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_1af1dc911943688d3c296909af70dfc62e" compoundref="gui__engine__impl_8cpp" startline="56" endline="58">qtsdl::GuiEngineImpl::get_qml_engine</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac87ff227188ad449ede10af2a8af1ae0" compoundref="gui__subtree__impl_8h" startline="49">subtree</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a679c00b61c59c7eaba774b7e4788bbbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QQmlEngine *</type>
@@ -167,7 +184,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="41" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="269" bodyend="273"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="269" bodyend="273"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1a2663b1ea6f047c599811111a33b4382f" compoundref="gui__subtree__impl_8h" startline="50">engine</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_1af1dc911943688d3c296909af70dfc62e" compoundref="gui__engine__impl_8cpp" startline="56" endline="58">qtsdl::GuiEngineImpl::get_qml_engine</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac87ff227188ad449ede10af2a8af1ae0" compoundref="gui__subtree__impl_8h" startline="49">subtree</references>
+        <referencedby refid="classqtsdl_1_1_gui_subtree_impl_1aea9b559c07846786ebcf6c41ef58ff78" compoundref="gui__subtree__impl_8cpp" startline="73" endline="88">qtsdl::GuiSubtreeImpl::onEngineReloaded</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -186,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="44" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="44" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1a49a0f59430e7092758aa94f1e039d36a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classqtsdl_1_1_gui_engine_impl_connection" kindref="compound">GuiEngineImplConnection</ref> &amp;</type>
@@ -203,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="45" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="45" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -216,7 +237,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="47" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="221" bodyend="236"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp" bodystart="221" bodyend="236"/>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1a2663b1ea6f047c599811111a33b4382f" compoundref="gui__subtree__impl_8h" startline="50">engine</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1aeb1d2cd3646f38fa8bc7733e16c99885" compoundref="gui__subtree__impl_8cpp" startline="259" endline="261">has_subtree</references>
+        <references refid="classqtsdl_1_1_gui_subtree_impl_1aea9b559c07846786ebcf6c41ef58ff78" compoundref="gui__subtree__impl_8cpp" startline="73" endline="88">qtsdl::GuiSubtreeImpl::onEngineReloaded</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_1ad57811cbb531486d7aadd98aedfdcf31">qtsdl::GuiEngineImpl::reload</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_1a7ad899a288943e1bd4266fee8fb79b30" compoundref="gui__engine__impl_8cpp" startline="71" endline="76">qtsdl::GuiEngineImpl::remove_root_dir_path</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1a38c787b5f4a17c1adccf0e8cfebcdf13" compoundref="gui__subtree__impl_8h" startline="51">root_dir</references>
+        <references refid="classqtsdl_1_1_gui_engine_impl_connection_1ac87ff227188ad449ede10af2a8af1ae0" compoundref="gui__subtree__impl_8h" startline="49">subtree</references>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_connection_1a838d04049e7a234096ddc630de0fee59" compoundref="gui__subtree__impl_8cpp" startline="217" endline="219">~GuiEngineImplConnection</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -224,99 +253,99 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2519">
+      <node id="6205">
         <label>qtsdl::GuiRenderingSetupRoutines</label>
         <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
       </node>
-      <node id="2516">
+      <node id="6202">
         <label>QObject</label>
       </node>
-      <node id="2514">
+      <node id="6200">
         <label>qtsdl::GuiEngineImplConnection</label>
         <link refid="classqtsdl_1_1_gui_engine_impl_connection"/>
-        <childnode refid="2515" relation="usage">
+        <childnode refid="6201" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="2523" relation="usage">
+        <childnode refid="6209" relation="usage">
           <edgelabel>-subtree</edgelabel>
         </childnode>
       </node>
-      <node id="2517">
+      <node id="6203">
         <label>qtsdl::RecursiveDirectoryWatcher</label>
         <link refid="classqtsdl_1_1_recursive_directory_watcher"/>
-        <childnode refid="2516" relation="public-inheritance">
+        <childnode refid="6202" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2523">
+      <node id="6209">
         <label>qtsdl::GuiSubtreeImpl</label>
         <link refid="classqtsdl_1_1_gui_subtree_impl"/>
-        <childnode refid="2516" relation="public-inheritance">
+        <childnode refid="6202" relation="public-inheritance">
         </childnode>
-        <childnode refid="2514" relation="usage">
+        <childnode refid="6200" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="2524" relation="usage">
+        <childnode refid="6210" relation="usage">
           <edgelabel>-game_logic_callback</edgelabel>
         </childnode>
-        <childnode refid="2518" relation="usage">
+        <childnode refid="6204" relation="usage">
           <edgelabel>-renderer</edgelabel>
         </childnode>
-        <childnode refid="2525" relation="usage">
+        <childnode refid="6211" relation="usage">
           <edgelabel>-reloader</edgelabel>
         </childnode>
       </node>
-      <node id="2515">
+      <node id="6201">
         <label>qtsdl::GuiEngineImpl</label>
         <link refid="classqtsdl_1_1_gui_engine_impl"/>
-        <childnode refid="2516" relation="public-inheritance">
+        <childnode refid="6202" relation="public-inheritance">
         </childnode>
-        <childnode refid="2517" relation="usage">
+        <childnode refid="6203" relation="usage">
           <edgelabel>-watcher</edgelabel>
         </childnode>
-        <childnode refid="2518" relation="usage">
+        <childnode refid="6204" relation="usage">
           <edgelabel>-renderer</edgelabel>
         </childnode>
-        <childnode refid="2520" relation="usage">
+        <childnode refid="6206" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
       </node>
-      <node id="2521">
+      <node id="6207">
         <label>QQmlEngine</label>
       </node>
-      <node id="2522">
+      <node id="6208">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="2524">
+      <node id="6210">
         <label>qtsdl::GuiCallback</label>
         <link refid="classqtsdl_1_1_gui_callback"/>
-        <childnode refid="2516" relation="public-inheritance">
+        <childnode refid="6202" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2525">
+      <node id="6211">
         <label>qtsdl::GuiLiveReloader</label>
         <link refid="classqtsdl_1_1_gui_live_reloader"/>
       </node>
-      <node id="2518">
+      <node id="6204">
         <label>qtsdl::GuiRendererImpl</label>
         <link refid="classqtsdl_1_1_gui_renderer_impl"/>
-        <childnode refid="2516" relation="public-inheritance">
+        <childnode refid="6202" relation="public-inheritance">
         </childnode>
-        <childnode refid="2519" relation="usage">
+        <childnode refid="6205" relation="usage">
           <edgelabel>-gui_rendering_setup_routines</edgelabel>
         </childnode>
       </node>
-      <node id="2520">
+      <node id="6206">
         <label>qtsdl::QmlEngineWithSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_qml_engine_with_singleton_items_info"/>
-        <childnode refid="2521" relation="public-inheritance">
+        <childnode refid="6207" relation="public-inheritance">
         </childnode>
-        <childnode refid="2522" relation="usage">
+        <childnode refid="6208" relation="usage">
           <edgelabel>-singleton_items_info</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_subtree_impl.h" line="27" column="1" bodyfile="libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="27" bodyend="52"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h" bodystart="27" bodyend="52"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_engine_impl_connection_1ac2ef61bcd0cdb991b399a29eeb5ec74c" prot="private" virt="non-virtual"><scope>qtsdl::GuiEngineImplConnection</scope><name>disconnect</name></member>
       <member refid="classqtsdl_1_1_gui_engine_impl_connection_1a2663b1ea6f047c599811111a33b4382f" prot="private" virt="non-virtual"><scope>qtsdl::GuiEngineImplConnection</scope><name>engine</name></member>

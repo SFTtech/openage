@@ -3,14 +3,14 @@
   <compounddef id="math_8h" kind="file" language="C++">
     <compoundname>math.h</compoundname>
     <includes local="no">cmath</includes>
-    <includedby refid="phys_8cpp" local="yes">libopenage/coord/phys.cpp</includedby>
-    <includedby refid="screenshot_8cpp" local="no">libopenage/screenshot.cpp</includedby>
-    <includedby refid="terrain__outline_8cpp" local="no">libopenage/terrain/terrain_outline.cpp</includedby>
-    <includedby refid="unit__texture_8cpp" local="yes">libopenage/unit/unit_texture.cpp</includedby>
-    <includedby refid="fps_8cpp" local="no">libopenage/util/fps.cpp</includedby>
+    <includedby refid="phys_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp</includedby>
+    <includedby refid="screenshot_8cpp" local="no">C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp</includedby>
+    <includedby refid="terrain__outline_8cpp" local="no">C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp</includedby>
+    <includedby refid="unit__texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp</includedby>
+    <includedby refid="fps_8cpp" local="no">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp</includedby>
     <incdepgraph>
       <node id="30855">
-        <label>libopenage/util/math.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h</label>
         <link refid="math_8h"/>
         <childnode refid="30856" relation="include">
         </childnode>
@@ -21,7 +21,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="30857">
-        <label>libopenage/util/math.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h</label>
         <link refid="math_8h"/>
         <childnode refid="30858" relation="include">
         </childnode>
@@ -35,23 +35,23 @@
         </childnode>
       </node>
       <node id="30860">
-        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp</label>
         <link refid="terrain__outline_8cpp"/>
       </node>
       <node id="30861">
-        <label>libopenage/unit/unit_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp</label>
         <link refid="unit__texture_8cpp"/>
       </node>
       <node id="30862">
-        <label>libopenage/util/fps.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp</label>
         <link refid="fps_8cpp"/>
       </node>
       <node id="30859">
-        <label>libopenage/screenshot.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp</label>
         <link refid="screenshot_8cpp"/>
       </node>
       <node id="30858">
-        <label>libopenage/coord/phys.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp</label>
         <link refid="phys_8cpp"/>
       </node>
     </invincdepgraph>
@@ -84,6 +84,6 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/math.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h"/>
   </compounddef>
 </doxygen>

@@ -80,7 +80,7 @@
         <link refid="language_8h"/>
       </node>
       <node id="1348">
-        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp</label>
         <link refid="in__memory__resource_8cpp"/>
         <childnode refid="1349" relation="include">
         </childnode>
@@ -433,6 +433,6 @@
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/in_memory_resource.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp"/>
   </compounddef>
 </doxygen>

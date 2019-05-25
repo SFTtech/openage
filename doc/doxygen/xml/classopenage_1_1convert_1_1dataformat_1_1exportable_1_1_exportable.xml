@@ -1,0 +1,733 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::exportable::Exportable</compoundname>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic" prot="public" virt="non-virtual">openage.convert.blendomatic.Blendomatic</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1colortable_1_1_color_table" prot="public" virt="non-virtual">openage.convert.colortable.ColorTable</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file" prot="public" virt="non-virtual">openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1civ_1_1_civ" prot="public" virt="non-virtual">openage.convert.gamedata.civ.Civ</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat" prot="public" virt="non-virtual">openage.convert.gamedata.empiresdat.EmpiresDat</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_wrapper" prot="public" virt="non-virtual">openage.convert.gamedata.empiresdat.EmpiresDatWrapper</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic" prot="public" virt="non-virtual">openage.convert.gamedata.graphic.Graphic</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_attack_sound" prot="public" virt="non-virtual">openage.convert.gamedata.graphic.GraphicAttackSound</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_delta" prot="public" virt="non-virtual">openage.convert.gamedata.graphic.GraphicDelta</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_sound_prop" prot="public" virt="non-virtual">openage.convert.gamedata.graphic.SoundProp</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map" prot="public" virt="non-virtual">openage.convert.gamedata.maps.Map</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_elevation" prot="public" virt="non-virtual">openage.convert.gamedata.maps.MapElevation</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_info" prot="public" virt="non-virtual">openage.convert.gamedata.maps.MapInfo</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_land" prot="public" virt="non-virtual">openage.convert.gamedata.maps.MapLand</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_terrain" prot="public" virt="non-virtual">openage.convert.gamedata.maps.MapTerrain</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit" prot="public" virt="non-virtual">openage.convert.gamedata.maps.MapUnit</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color" prot="public" virt="non-virtual">openage.convert.gamedata.playercolor.PlayerColor</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research" prot="public" virt="non-virtual">openage.convert.gamedata.research.Research</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research_resource_cost" prot="public" virt="non-virtual">openage.convert.gamedata.research.ResearchResourceCost</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound" prot="public" virt="non-virtual">openage.convert.gamedata.sound.Sound</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound_item" prot="public" virt="non-virtual">openage.convert.gamedata.sound.SoundItem</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_age_tech_tree" prot="public" virt="non-virtual">openage.convert.gamedata.tech.AgeTechTree</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection" prot="public" virt="non-virtual">openage.convert.gamedata.tech.BuildingConnection</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_effect" prot="public" virt="non-virtual">openage.convert.gamedata.tech.Effect</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_mode" prot="public" virt="non-virtual">openage.convert.gamedata.tech.Mode</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_research_connection" prot="public" virt="non-virtual">openage.convert.gamedata.tech.ResearchConnection</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_tech" prot="public" virt="non-virtual">openage.convert.gamedata.tech.Tech</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_unit_connection" prot="public" virt="non-virtual">openage.convert.gamedata.tech.UnitConnection</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_frame_data" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.FrameData</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.Terrain</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_animation" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.TerrainAnimation</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_border" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.TerrainBorder</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.TerrainPassGraphic</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_restriction" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.TerrainRestriction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size" prot="public" virt="non-virtual">openage.convert.gamedata.terrain.TileSize</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_annex" prot="public" virt="non-virtual">openage.convert.gamedata.unit.BuildingAnnex</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic" prot="public" virt="non-virtual">openage.convert.gamedata.unit.DamageGraphic</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_hit_type" prot="public" virt="non-virtual">openage.convert.gamedata.unit.HitType</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost" prot="public" virt="non-virtual">openage.convert.gamedata.unit.ResourceCost</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_storage" prot="public" virt="non-virtual">openage.convert.gamedata.unit.ResourceStorage</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_command" prot="public" virt="non-virtual">openage.convert.gamedata.unit.UnitCommand</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_header" prot="public" virt="non-virtual">openage.convert.gamedata.unit.UnitHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_line" prot="public" virt="non-virtual">openage.convert.gamedata.unit.UnitLine</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object" prot="public" virt="non-virtual">openage.convert.gamedata.unit.UnitObject</derivedcompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a80169988e903e4a2344a7c963da419a3" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.exportable.Exportable::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ac09e6c33a6e513d8e880fec2422c4c7a" compoundref="data__definition_8py" startline="136" endline="138">openage.convert.dataformat.data_definition.DataDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a09caba3631e9613aa48899149d860e18" compoundref="struct__definition_8py" startline="235" endline="237">openage.convert.dataformat.struct_definition.StructDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" compoundref="exportable_8py" startline="483" endline="485">openage.convert.dataformat.exportable.Exportable.get_effective_type</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa7c6718c1514ed9bf32e7ac7110309d2" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.exportable.Exportable::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a500014c8262964c15fea0c5e59ed5cb3" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.exportable.Exportable::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.exportable.Exportable::game_versions</definition>
+        <argsstring></argsstring>
+        <name>game_versions</name>
+        <initializer>=  list()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a8959e5aeedc57bfce4f9430708a35a3f" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.exportable.Exportable::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  list()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.__init__</definition>
+        <argsstring>(self, **args)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>**</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.dump</definition>
+        <argsstring>(self, filename)</argsstring>
+        <name>dump</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3">dump</reimplementedby>
+        <reimplementedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a259476ed46a4076dcd1aa3d82914d2f1">dump</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+<para>main data dumping function, the magic happens in here. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   recursively dumps all object members as DataDefinitions.
+
+   returns [DataDefinition, ..]
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="57" bodyend="176"/>
+        <references refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.read</definition>
+        <argsstring>(self, raw, offset, cls=None, members=None)</argsstring>
+        <name>read</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>raw</type>
+          <defname>raw</defname>
+        </param>
+        <param>
+          <type>offset</type>
+          <defname>offset</defname>
+        </param>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>members</type>
+          <defname>members</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>recursively read defined binary data from raw at given offset. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   this is used to fill the python classes with data from the binary input.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="182" bodyend="399"/>
+        <references refid="namespaceopenage_1_1util_1_1strings_1ac1fba27a561107c1b6134c7552093594" compoundref="strings_8py" startline="17" endline="24">openage.util.strings.decode_until_null</references>
+        <references refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" compoundref="exportable_8py" startline="41">openage.convert.dataformat.exportable.Exportable.game_versions</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" compoundref="filelike_2native_8cpp" startline="55" endline="82">openage::util::filelike::Native::read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" compoundref="filelike_2python_8cpp" startline="17" endline="19">openage::util::filelike::Python::read</references>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" compoundref="codegen_8py" startline="51" endline="57">openage.codegen.codegen.WriteCatcher.read</references>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a383153d8dbaf96c6e8ad44a200b2cfce" compoundref="lzxdstream_8py" startline="69" endline="82">openage.cabextract.lzxdstream.LZXDStream.read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb">openage::util::filelike::FileLike::read</references>
+        <references refid="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" compoundref="file_8cpp" startline="46" endline="48">openage::util::File::read</references>
+        <references refid="structopenage_1_1util_1_1csv__subdata_1a24b1327a670ab69e55c089234bdcbfec" compoundref="csv_8h" startline="157" endline="166">openage::util::csv_subdata&lt; lineformat &gt;::read</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa01e2f0b6657c5c629188cbc3a0e0a57" compoundref="cab_8py" startline="543" endline="545">openage.cabextract.cab.CABFolderStream.read</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.structs</definition>
+        <argsstring>(cls)</argsstring>
+        <name>structs</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a10b07bce8d65fa9165a529a96a3fa3b7">structs</reimplementedby>
+        <reimplementedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a6753e8c61d0a3df53ff6a5868d9501c5">structs</reimplementedby>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>create struct definitions for this class and its subdata references. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="404" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="404" bodyend="439"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.format_hash</definition>
+        <argsstring>(cls, hasher=None)</argsstring>
+        <name>format_hash</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>hasher</type>
+          <defname>hasher</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>provides a deterministic hash of all exported structure members </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   used for determining changes in the exported data, which requires
+   data reconversion.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="447" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="447" bodyend="481"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1afc5f277541d4b9ea2a01e3c5cc671331" compoundref="colortable_8py" startline="16">openage.convert.colortable.ColorTable.name_struct</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a80169988e903e4a2344a7c963da419a3" compoundref="exportable_8py" startline="32">openage.convert.dataformat.exportable.Exportable.name_struct</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a83eecfa18e9ff264f5e5da9cae3af3e2" compoundref="blendomatic_8py" startline="204">openage.convert.blendomatic.Blendomatic.name_struct</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae0cd434a08e48a1ca8e5010d1c5f43e9" compoundref="colortable_8py" startline="17">openage.convert.colortable.ColorTable.name_struct_file</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa7c6718c1514ed9bf32e7ac7110309d2" compoundref="exportable_8py" startline="35">openage.convert.dataformat.exportable.Exportable.name_struct_file</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1ad5ed31b1a5c68ac839489b9ca643dbf1" compoundref="blendomatic_8py" startline="205">openage.convert.blendomatic.Blendomatic.name_struct_file</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8bce36e82e0d01a644ab260c0c41f29e" compoundref="colortable_8py" startline="18">openage.convert.colortable.ColorTable.struct_description</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a500014c8262964c15fea0c5e59ed5cb3" compoundref="exportable_8py" startline="38">openage.convert.dataformat.exportable.Exportable.struct_description</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a498035a9000fbe2e5934603c8034b08d" compoundref="blendomatic_8py" startline="206">openage.convert.blendomatic.Blendomatic.struct_description</references>
+        <referencedby refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_1ac03cb1fa789e78ec10c7c2404d149f5a" compoundref="empiresdat_8py" startline="346" endline="359">openage.convert.gamedata.empiresdat.EmpiresDat.get_hash</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.get_effective_type</definition>
+        <argsstring>(cls)</argsstring>
+        <name>get_effective_type</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="483" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="483" bodyend="485"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1afc5f277541d4b9ea2a01e3c5cc671331" compoundref="colortable_8py" startline="16">openage.convert.colortable.ColorTable.name_struct</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a80169988e903e4a2344a7c963da419a3" compoundref="exportable_8py" startline="32">openage.convert.dataformat.exportable.Exportable.name_struct</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a83eecfa18e9ff264f5e5da9cae3af3e2" compoundref="blendomatic_8py" startline="204">openage.convert.blendomatic.Blendomatic.name_struct</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member_1a07b4dd518b5b9151d4510d893f8c07e5" compoundref="members_8py" startline="566" endline="569">openage.convert.dataformat.members.CharArrayMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" compoundref="members_8py" startline="76" endline="79">openage.convert.dataformat.members.DataMember.get_struct_entries</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member_1ac0404b086e8c2e7e8ab74c72ad542ba6" compoundref="members_8py" startline="107" endline="109">openage.convert.dataformat.members.GroupMember.get_typerefs</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a389a1dcae4781387c6e38f14e907f21f" compoundref="members_8py" startline="431" endline="433">openage.convert.dataformat.members.EnumMember.get_typerefs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.exportable.Exportable.get_data_format</definition>
+        <argsstring>(cls, allowed_modes=False, flatten_includes=False, is_parent=False)</argsstring>
+        <name>get_data_format</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>allowed_modes</type>
+          <defname>allowed_modes</defname>
+          <defval>False</defval>
+        </param>
+        <param>
+          <type>flatten_includes</type>
+          <defname>flatten_includes</defname>
+          <defval>False</defval>
+        </param>
+        <param>
+          <type>is_parent</type>
+          <defname>is_parent</defname>
+          <defval>False</defval>
+        </param>
+        <briefdescription>
+<para>return all members of this exportable (a struct.) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   can filter by export modes and can also return included members:
+   inherited members can either be returned as to-be-included,
+   or can be fetched and displayed as if they weren&apos;t inherited.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="494" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="494" bodyend="519"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a6261d704ebd64dd435f50b8e3e44dda0" compoundref="colortable_8py" startline="20">openage.convert.colortable.ColorTable.data_format</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a8959e5aeedc57bfce4f9430708a35a3f" compoundref="exportable_8py" startline="44">openage.convert.dataformat.exportable.Exportable.data_format</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a69f5b5dbbe7f5db9349df504ae4c503a" compoundref="blendomatic_8py" startline="209">openage.convert.blendomatic.Blendomatic.data_format</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" compoundref="exportable_8py" startline="57" endline="176">openage.convert.dataformat.exportable.Exportable.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" compoundref="exportable_8py" startline="404" endline="439">openage.convert.dataformat.exportable.Exportable.structs</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>superclass for all exportable data members </para>
+    </briefdescription>
+    <detaileddescription>
+<para>exportable classes shall inherit from this. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="984">
+        <label>openage.convert.gamedata.tech.Effect</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_effect"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="987">
+        <label>openage.convert.gamedata.tech.Tech</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_tech"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="988">
+        <label>openage.convert.gamedata.tech.UnitConnection</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_unit_connection"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="969">
+        <label>openage.convert.gamedata.graphic.GraphicDelta</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_delta"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="961">
+        <label>openage.convert.colortable.ColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_color_table"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="966">
+        <label>openage.convert.gamedata.empiresdat.EmpiresDatWrapper</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_wrapper"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="973">
+        <label>openage.convert.gamedata.maps.MapInfo</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_info"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="985">
+        <label>openage.convert.gamedata.tech.Mode</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_mode"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="971">
+        <label>openage.convert.gamedata.maps.Map</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="983">
+        <label>openage.convert.gamedata.tech.BuildingConnection</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_building_connection"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1007">
+        <label>openage.convert.gamedata.unit.MovingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_moving_unit"/>
+        <childnode refid="1006" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="990">
+        <label>openage.convert.gamedata.terrain.Terrain</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="992">
+        <label>openage.convert.gamedata.terrain.TerrainBorder</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_border"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1001">
+        <label>openage.convert.gamedata.unit.UnitCommand</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_command"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1010">
+        <label>openage.convert.gamedata.unit.LivingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_living_unit"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1004">
+        <label>openage.convert.gamedata.unit.UnitObject</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_object"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="980">
+        <label>openage.convert.gamedata.sound.Sound</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="964">
+        <label>openage.convert.gamedata.civ.Civ</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1civ_1_1_civ"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="960">
+        <label>openage.convert.blendomatic.Blendomatic</label>
+        <link refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="968">
+        <label>openage.convert.gamedata.graphic.GraphicAttackSound</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic_attack_sound"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="970">
+        <label>openage.convert.gamedata.graphic.SoundProp</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_sound_prop"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="975">
+        <label>openage.convert.gamedata.maps.MapTerrain</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_terrain"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1003">
+        <label>openage.convert.gamedata.unit.UnitLine</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_line"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="965">
+        <label>openage.convert.gamedata.empiresdat.EmpiresDat</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="994">
+        <label>openage.convert.gamedata.terrain.TerrainRestriction</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_restriction"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1002">
+        <label>openage.convert.gamedata.unit.UnitHeader</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_unit_header"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="982">
+        <label>openage.convert.gamedata.tech.AgeTechTree</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_age_tech_tree"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1012">
+        <label>openage.convert.gamedata.unit.MissileUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_missile_unit"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="972">
+        <label>openage.convert.gamedata.maps.MapElevation</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_elevation"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="967">
+        <label>openage.convert.gamedata.graphic.Graphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1graphic_1_1_graphic"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="999">
+        <label>openage.convert.gamedata.unit.ResourceCost</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_cost"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="963">
+        <label>openage.convert.dataformat.multisubtype_base.MultisubtypeBaseFile</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="978">
+        <label>openage.convert.gamedata.research.Research</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="959">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="979">
+        <label>openage.convert.gamedata.research.ResearchResourceCost</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1research_1_1_research_resource_cost"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="981">
+        <label>openage.convert.gamedata.sound.SoundItem</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1sound_1_1_sound_item"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1013">
+        <label>openage.convert.gamedata.unit.TreeUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_tree_unit"/>
+        <childnode refid="1004" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1006">
+        <label>openage.convert.gamedata.unit.DoppelgangerUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_doppelganger_unit"/>
+        <childnode refid="1005" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="996">
+        <label>openage.convert.gamedata.unit.BuildingAnnex</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_annex"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="974">
+        <label>openage.convert.gamedata.maps.MapLand</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_land"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="977">
+        <label>openage.convert.gamedata.playercolor.PlayerColor</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="989">
+        <label>openage.convert.gamedata.terrain.FrameData</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_frame_data"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1000">
+        <label>openage.convert.gamedata.unit.ResourceStorage</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_resource_storage"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="997">
+        <label>openage.convert.gamedata.unit.DamageGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_damage_graphic"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1009">
+        <label>openage.convert.gamedata.unit.ProjectileUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_projectile_unit"/>
+        <childnode refid="1008" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1011">
+        <label>openage.convert.gamedata.unit.BuildingUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_building_unit"/>
+        <childnode refid="1010" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="995">
+        <label>openage.convert.gamedata.terrain.TileSize</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_tile_size"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="986">
+        <label>openage.convert.gamedata.tech.ResearchConnection</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1tech_1_1_research_connection"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="998">
+        <label>openage.convert.gamedata.unit.HitType</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_hit_type"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1008">
+        <label>openage.convert.gamedata.unit.ActionUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_action_unit"/>
+        <childnode refid="1007" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="991">
+        <label>openage.convert.gamedata.terrain.TerrainAnimation</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_animation"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="993">
+        <label>openage.convert.gamedata.terrain.TerrainPassGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="962">
+        <label>openage.convert.colortable.PlayerColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table"/>
+        <childnode refid="961" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="976">
+        <label>openage.convert.gamedata.maps.MapUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1005">
+        <label>openage.convert.gamedata.unit.AnimatedUnit</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1unit_1_1_animated_unit"/>
+        <childnode refid="1004" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1014">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/exportable.py" bodystart="29" bodyend="519"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a8959e5aeedc57bfce4f9430708a35a3f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a80169988e903e4a2344a7c963da419a3" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa7c6718c1514ed9bf32e7ac7110309d2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a500014c8262964c15fea0c5e59ed5cb3" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::exportable::Exportable</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

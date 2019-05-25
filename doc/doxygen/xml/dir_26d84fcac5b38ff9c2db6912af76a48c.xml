@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_26d84fcac5b38ff9c2db6912af76a48c" kind="dir">
-    <compoundname>libopenage/job</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job</compoundname>
     <innerfile refid="abortable__job__state_8h">abortable_job_state.h</innerfile>
     <innerfile refid="job_8h">job.h</innerfile>
     <innerfile refid="job__aborted__exception_8h">job_aborted_exception.h</innerfile>
@@ -20,6 +20,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/job/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/"/>
   </compounddef>
 </doxygen>

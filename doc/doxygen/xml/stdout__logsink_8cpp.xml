@@ -161,7 +161,7 @@
         <label>iostream</label>
       </node>
       <node id="18272">
-        <label>libopenage/log/stdout_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</label>
         <link refid="stdout__logsink_8cpp"/>
         <childnode refid="18273" relation="include">
         </childnode>
@@ -279,6 +279,6 @@
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/stdout_logsink.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp"/>
   </compounddef>
 </doxygen>

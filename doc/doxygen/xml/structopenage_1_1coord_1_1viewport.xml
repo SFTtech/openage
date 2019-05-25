@@ -20,7 +20,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="80" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="71" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="71" bodyend="74"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" compoundref="coordmanager_8h" startline="37">openage::coord::CoordManager::camgame_viewport</references>
+        <referencedby refid="structopenage_1_1coord_1_1input_1a36c619fe6d0f99917204848208285fef" compoundref="pixel_8cpp" startline="128" endline="130">openage::coord::input::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1viewport_1ae8aa028a39351652937d97680ff11afd" compoundref="pixel_8cpp" startline="51" endline="53">to_phys3</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1input_1a9eba1358725d529a26f871308794ab36" compoundref="pixel_8cpp" startline="133" endline="135">openage::coord::input::to_phys3</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1viewport_1ad78ba1b1f9b64caa7b6eda78aaf7513a" compoundref="pixel_8cpp" startline="77" endline="79">to_tile</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1viewport_1ae8aa028a39351652937d97680ff11afd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
@@ -42,7 +47,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="81" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="51" bodyend="53"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="51" bodyend="53"/>
+        <references refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" compoundref="pixel_8cpp" startline="71" endline="74">to_camgame</references>
+        <references refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" compoundref="pixel_8cpp" startline="40" endline="42">openage::coord::camgame::to_phys3</references>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1viewport_1ad78ba1b1f9b64caa7b6eda78aaf7513a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">tile</ref></type>
@@ -64,7 +72,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="82" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="77" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="77" bodyend="79"/>
+        <references refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" compoundref="pixel_8cpp" startline="71" endline="74">to_camgame</references>
+        <references refid="structopenage_1_1coord_1_1camgame_1a323da0da625f2160938843dc8a248e6c" compoundref="pixel_8cpp" startline="82" endline="84">openage::coord::camgame::to_tile</references>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref></type>
@@ -81,7 +93,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="83" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="87" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="87" bodyend="89"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" compoundref="coordmanager_8h" startline="43">openage::coord::CoordManager::camhud_viewport</references>
+        <referencedby refid="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" compoundref="pixel_8cpp" startline="56" endline="58">openage::coord::camgame::to_camhud</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1a851739e9304a9ed9f55f51ef99c814e7" compoundref="phys_8cpp" startline="101" endline="103">openage::coord::phys3::to_camhud</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -89,28 +104,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4935">
+      <node id="1780">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="4936" relation="public-inheritance">
+        <childnode refid="1781" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4936">
+      <node id="1781">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4937">
+      <node id="1782">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="4938" relation="public-inheritance">
+        <childnode refid="1783" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4938">
+      <node id="1783">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/pixel.h" line="77" column="1" bodyfile="libopenage/coord/pixel.h" bodystart="77" bodyend="84"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" bodystart="77" bodyend="84"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" prot="public" virt="non-virtual"><scope>openage::coord::viewport</scope><name>to_camgame</name></member>
       <member refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" prot="public" virt="non-virtual"><scope>openage::coord::viewport</scope><name>to_camhud</name></member>

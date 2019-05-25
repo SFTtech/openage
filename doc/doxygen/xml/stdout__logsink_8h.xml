@@ -3,9 +3,9 @@
   <compounddef id="stdout__logsink_8h" kind="file" language="C++">
     <compoundname>stdout_logsink.h</compoundname>
     <includes refid="logsink_8h" local="yes">logsink.h</includes>
-    <includedby refid="log_8cpp" local="yes">libopenage/log/log.cpp</includedby>
-    <includedby refid="logsource_8cpp" local="yes">libopenage/log/logsource.cpp</includedby>
-    <includedby refid="stdout__logsink_8cpp" local="yes">libopenage/log/stdout_logsink.cpp</includedby>
+    <includedby refid="log_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</includedby>
+    <includedby refid="logsource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp</includedby>
+    <includedby refid="stdout__logsink_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</includedby>
     <incdepgraph>
       <node id="18306">
         <label>list</label>
@@ -58,7 +58,7 @@
         <label>mutex</label>
       </node>
       <node id="18304">
-        <label>libopenage/log/stdout_logsink.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.h</label>
         <link refid="stdout__logsink_8h"/>
         <childnode refid="18305" relation="include">
         </childnode>
@@ -76,19 +76,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="18317">
-        <label>libopenage/log/log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</label>
         <link refid="log_8cpp"/>
       </node>
       <node id="18318">
-        <label>libopenage/log/logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp</label>
         <link refid="logsource_8cpp"/>
       </node>
       <node id="18319">
-        <label>libopenage/log/stdout_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</label>
         <link refid="stdout__logsink_8cpp"/>
       </node>
       <node id="18316">
-        <label>libopenage/log/stdout_logsink.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.h</label>
         <link refid="stdout__logsink_8h"/>
         <childnode refid="18317" relation="include">
         </childnode>
@@ -129,6 +129,6 @@
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/stdout_logsink.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.h"/>
   </compounddef>
 </doxygen>

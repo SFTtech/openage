@@ -1,0 +1,17 @@
+<map id="openage::console::Console::interpret" name="openage::console::Console::interpret">
+<area shape="rect" id="node1" title=" " alt="" coords="5,151,184,193"/>
+<area shape="rect" id="node2" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml#abf47769212763bbf43146a97443779da" title=" " alt="" coords="232,5,447,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_engine.xhtml#ab9a7642ba035448c4a3c22e11ad40646" title=" " alt="" coords="267,57,412,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1options_1_1_option_node.xhtml#a39b02a21c2c4b5693dba2e515a81dd2d" title=" " alt="" coords="256,122,423,163"/>
+<area shape="rect" id="node7" href="$classopenage_1_1cvar_1_1_c_var_manager.xhtml#a972739b7927c488b0761a10319653e8a" title=" " alt="" coords="232,188,447,215"/>
+<area shape="rect" id="node8" href="$classopenage_1_1console_1_1_console.xhtml#a8a86e7fece57c47da16e37633c624ece" title=" " alt="" coords="250,239,429,281"/>
+<area shape="rect" id="node14" href="$classopenage_1_1console_1_1_console.xhtml#a4d97e8f7fc2d7ba24490bf5f0b494332" title=" " alt="" coords="250,337,429,378"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="495,123,688,149"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="767,123,893,149"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_engine.xhtml#a248149eac4678d70fe55d6ba5cdc695a" title=" " alt="" coords="519,174,664,215"/>
+<area shape="rect" id="node10" href="$classopenage_1_1input_1_1_input_manager.xhtml#a2ece2b2ad4a08c15fb00a39b0f553d3c" title=" " alt="" coords="495,239,688,281"/>
+<area shape="rect" id="node12" href="$classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" title=" " alt="" coords="495,305,688,346"/>
+<area shape="rect" id="node11" href="$classopenage_1_1input_1_1_input_context.xhtml#a0a5d3374a164faf57483d7555f0b84b5" title=" " alt="" coords="736,239,924,281"/>
+<area shape="rect" id="node13" href="$classopenage_1_1input_1_1_input_context.xhtml#a12ae83daa8c6bfefef320a07377a9246" title=" " alt="" coords="736,305,924,346"/>
+<area shape="rect" id="node15" href="$classopenage_1_1console_1_1_buf.xhtml#a3db6d160e44c8db825a37c0cfbc143ea" title=" " alt="" coords="516,370,667,411"/>
+</map>

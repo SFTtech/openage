@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_0568487d55e2441d52cc8103196705cb" kind="dir">
-    <compoundname>libopenage/renderer/resources</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources</compoundname>
     <innerfile refid="mesh__data_8cpp">mesh_data.cpp</innerfile>
     <innerfile refid="mesh__data_8h">mesh_data.h</innerfile>
     <innerfile refid="shader__source_8cpp">shader_source.cpp</innerfile>
@@ -16,6 +16,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/resources/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/"/>
   </compounddef>
 </doxygen>

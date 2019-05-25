@@ -576,7 +576,7 @@
         <label>ciso646</label>
       </node>
       <node id="9814">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
         <childnode refid="9815" relation="include">
         </childnode>
@@ -1014,7 +1014,7 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17" refid="namespaceopenage_1a3acc47409b93e64eef42ad8add16052b" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref><sp/><ref refid="namespaceopenage_1a3acc47409b93e64eef42ad8add16052b" kindref="member">random_tile</ref>(<ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">rng::RNG</ref><sp/>&amp;rng,<sp/><ref refid="namespaceopenage_1aec1b23983a95168bf5f310c0d5ea8e08" kindref="member">tileset_t</ref><sp/>tiles)<sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tiles.empty())<sp/>{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;random<sp/>tile<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;random<sp/>tile<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref>{0,<sp/>0};</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>index<sp/>=<sp/>rng.<ref refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" kindref="member">random</ref>()<sp/>%<sp/>tiles.size();</highlight></codeline>
@@ -1140,12 +1140,12 @@
 <codeline lineno="142"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
 <codeline lineno="144" refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" kindref="member">Generator::player_names</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>this-&gt;<ref refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" kindref="member">get_csv</ref>(</highlight><highlight class="stringliteral">&quot;player_names&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/>this-&gt;<ref refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" kindref="member">get_csv</ref>(</highlight><highlight class="stringliteral">&quot;player_names&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>gaia<sp/>is<sp/>player<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>result.insert(result.begin(),<sp/></highlight><highlight class="stringliteral">&quot;gaia&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.insert(<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.begin(),<sp/></highlight><highlight class="stringliteral">&quot;gaia&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153" refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" kindref="member">Generator::create_regions</ref>()<sp/>{</highlight></codeline>
@@ -1170,7 +1170,7 @@
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player_count<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" kindref="member">player_names</ref>().size()<sp/>-<sp/>1;</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>player_count;<sp/>++i)<sp/>{</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;generate<sp/>player<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;generate<sp/>player<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>space<sp/>players<sp/>in<sp/>a<sp/>circular<sp/>pattern</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle<sp/>=<sp/>static_cast&lt;double&gt;(i)<sp/>/<sp/>static_cast&lt;double&gt;(player_count);</highlight></codeline>
@@ -1319,6 +1319,6 @@
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/generator.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp"/>
   </compounddef>
 </doxygen>

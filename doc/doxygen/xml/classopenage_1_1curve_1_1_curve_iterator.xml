@@ -34,7 +34,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="122" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="122" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1a45e14ddb2e3759afe9b36d4b01d55cd0" compoundref="iterator_8h" startline="42" endline="50">openage::curve::CurveIterator&lt; val_t, container_t &gt;::CurveIterator</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" compoundref="iterator_8h" startline="102" endline="104">openage::curve::CurveIterator&lt; val_t, container_t &gt;::get_base</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" compoundref="iterator_8h" startline="84" endline="86">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator !=</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" compoundref="iterator_8h" startline="91" endline="97">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator++</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" compoundref="iterator_8h" startline="76" endline="78">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" prot="protected" static="no" mutable="no">
         <type>const container_t *</type>
@@ -48,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="125" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="125" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="125" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="125" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" compoundref="iterator_8h" startline="91" endline="97">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator++</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" prot="protected" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
@@ -62,7 +68,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="128" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="128" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" compoundref="iterator_8h" startline="109" endline="111">openage::curve::CurveIterator&lt; val_t, container_t &gt;::get_from</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" prot="protected" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
@@ -76,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="131" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="131" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="131" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" compoundref="iterator_8h" startline="116" endline="118">openage::curve::CurveIterator&lt; val_t, container_t &gt;::get_to</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -94,7 +102,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="20" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="20" column="1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" compoundref="iterator_8h" startline="63" endline="65">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator *</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" compoundref="iterator_8h" startline="68" endline="70">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator -&gt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -110,7 +121,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="26" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="26" column="1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" compoundref="iterator_8h" startline="91" endline="97">openage::curve::CurveIterator&lt; val_t, container_t &gt;::operator++</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -128,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="31" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="31" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="31" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a40ebee2d0fa0286de5626196595fdeae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -145,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="54" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="54" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a46f039556f6f516d51e05a608319aba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -158,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="56" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="56" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a984fc87d7f98bcf2ad157b46b8859719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt; val_t, container_t, iterator_t &gt; &amp;</type>
@@ -175,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="59" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="59" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const val_t &amp;</type>
@@ -189,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="63" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="63" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const val_t *</type>
@@ -203,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="68" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="68" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -221,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="76" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -239,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="84" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="84" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt; val_t, container_t &gt; &amp;</type>
@@ -253,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="91" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="91" bodyend="97"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="91" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const iterator_t &amp;</type>
@@ -267,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="102" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="102" bodyend="104"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
@@ -281,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="109" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="109" bodyend="111"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
@@ -295,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="116" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="116" bodyend="118"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="116" bodyend="118"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -327,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/iterator.h" line="42" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="42" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="42" bodyend="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -335,33 +347,78 @@
     <detaileddescription>
 <para>Default interface for curve containers </para>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="1044">
-        <label>container_t</label>
-      </node>
-      <node id="1042">
+    <inheritancegraph>
+      <node id="1851">
         <label>openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;</label>
         <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
-        <childnode refid="1043" relation="usage">
+      </node>
+      <node id="1853">
+        <label>openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_queue_filter_iterator"/>
+        <childnode refid="1852" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1852">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t, container_t::const_iterator &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+        <childnode refid="1851" relation="template-instance">
+          <edgelabel>&lt; val_t, container_t, container_t::const_iterator &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="1855">
+        <label>openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_map_filter_iterator"/>
+        <childnode refid="1854" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1854">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+        <childnode refid="1851" relation="template-instance">
+          <edgelabel>&lt; val_t, container_t &gt;</edgelabel>
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1860">
+        <label>container_t</label>
+      </node>
+      <node id="1856">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+        <childnode refid="1857" relation="usage">
           <edgelabel>#from</edgelabel>
           <edgelabel>#to</edgelabel>
         </childnode>
-        <childnode refid="1044" relation="usage">
+        <childnode refid="1860" relation="usage">
           <edgelabel>#container</edgelabel>
         </childnode>
-        <childnode refid="1045" relation="usage">
+        <childnode refid="1861" relation="usage">
           <edgelabel>#base</edgelabel>
         </childnode>
       </node>
-      <node id="1045">
+      <node id="1859">
+        <label>int_type</label>
+      </node>
+      <node id="1858">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1859" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1861">
         <label>iterator_t</label>
       </node>
-      <node id="1043">
+      <node id="1857">
         <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1858" relation="template-instance">
+          <edgelabel>&lt; int64_t, 16 &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/iterator.h" line="15" column="1" bodyfile="libopenage/curve/iterator.h" bodystart="15" bodyend="132"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h" bodystart="15" bodyend="132"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" prot="protected" virt="non-virtual"><scope>openage::curve::CurveIterator</scope><name>base</name></member>
       <member refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" prot="protected" virt="non-virtual"><scope>openage::curve::CurveIterator</scope><name>container</name></member>

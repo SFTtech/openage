@@ -19,7 +19,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/subprocess.cpp" line="25" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="25" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" bodystart="25" bodyend="35"/>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
+        <referencedby refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">which</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1files_1aefc9024dcd367647401c6682c2d0d7a5" compoundref="files_8py" startline="54" endline="74">openage.util.files.which</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -37,7 +40,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/subprocess.cpp" line="37" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="37" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" bodystart="37" bodyend="70"/>
+        <references refid="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" compoundref="strings_8cpp" startline="64" endline="69">openage::util::copy_string</references>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
+        <references refid="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" compoundref="subprocess_8cpp" startline="25" endline="35">is_executable</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a271d8f7f52be750e5c744a394ec71344" compoundref="message_8h" startline="178">WARN</references>
+        <referencedby refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">openage::util::ExternalProfiler::show_results</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a4a6e38f51a7b482ac175c932acd397e9" compoundref="convert_2main_8py" startline="227" endline="254">openage.convert.main.wanna_use_wine</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -92,7 +103,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/subprocess.cpp" line="72" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="72" bodyend="240"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" bodystart="72" bodyend="240"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">openage::util::ExternalProfiler::show_results</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -100,6 +117,6 @@
     <detaileddescription>
 <para>similar in its goals to Python&apos;s subprocess module </para>
     </detaileddescription>
-    <location file="libopenage/util/subprocess.cpp" line="23" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp" line="23" column="1"/>
   </compounddef>
 </doxygen>

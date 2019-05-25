@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.gamedata.empiresdat.EmpiresDat Class Reference</title>
+<title>openage: openage.convert.gamedata.empiresdat.EmpiresDat Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1gamedata_1_
 
 <p>class for fighting and beating the compressed empires2*.dat  
  <a href="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.gamedata.empiresdat.EmpiresDat:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat__inherit__graph.svg" width="260" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.gamedata.empiresdat.EmpiresDat:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat__inherit__graph.svg" width="260" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.gamedata.empiresdat.EmpiresDat:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat__coll__graph.svg" width="260" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.gamedata.empiresdat.EmpiresDat:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat__coll__graph.svg" width="260" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -184,6 +187,16 @@ Static Public Attributes</h2></td></tr>
 <p>return the unique hash for the data format tree </p>
 
 <p class="definition">Definition at line <a class="el" href="empiresdat_8py_source.xhtml#l00346">346</a> of file <a class="el" href="empiresdat_8py_source.xhtml">empiresdat.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordflow">return</span> cls.format_hash().hexdigest()</div><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div><div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keyword">class </span>EmpiresDatWrapper(Exportable):</div><div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="stringliteral">    This wrapper exists because the top-level element is discarded:</span></div><div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="stringliteral">    The gathered data fields are passed to the parent,</span></div><div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="stringliteral">    and are accumulated there to be written out.</span></div><div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="stringliteral">    This class acts as the parent for the &quot;real&quot; data values,</span></div><div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="stringliteral">    and has no parent itself. Thereby this class is discarded</span></div><div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="stringliteral">    and the child classes use this as parent for their return values.</span></div><div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="exportable_8py_source.xhtml#l00447">openage.convert.dataformat.exportable.Exportable.format_hash()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_ac03cb1fa789e78ec10c7c2404d149f5a_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -285,7 +298,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/gamedata/<a class="el" href="empiresdat_8py_source.xhtml">empiresdat.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/<a class="el" href="empiresdat_8py_source.xhtml">empiresdat.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

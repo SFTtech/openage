@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1game__versions_1_1_game_version" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::game_versions::GameVersion</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af76207084c5bb197ea1c053c13d2b5b0" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age_1</definition>
+        <argsstring></argsstring>
+        <name>age_1</name>
+        <initializer>=  (
+        7.2,
+        &quot;Age of Empires 1&quot;,
+        Support.nope,
+        {&apos;empires.exe&apos;, &apos;data/empires.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ae079f1815b2c339a678a7a222dfb1826" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age_ror</definition>
+        <argsstring></argsstring>
+        <name>age_ror</name>
+        <initializer>=  (
+        7.24,
+        &quot;Age of Empires 1: The Rise of Rome&quot;,
+        Support.nope,
+        {&apos;empiresx.exe&apos;, &apos;data2/empires2.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af2c66f95e78ca6f81930368393ebca33" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_aok</definition>
+        <argsstring></argsstring>
+        <name>age2_aok</name>
+        <initializer>=  (
+        11.5,
+        &quot;Age of Empires 2: The Age of Kings&quot;,
+        Support.nope,
+        {&apos;empires2.exe&apos;, &apos;data/empires2.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a1442989afc9fb24d7f4c41acde2f0c34" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_tc</definition>
+        <argsstring></argsstring>
+        <name>age2_tc</name>
+        <initializer>=  (
+        11.76,
+        &quot;Age of Empires 2: The Conquerors&quot;,
+        Support.yes,
+        {&apos;age2_x1/age2_x1.exe&apos;, &apos;data/empires2_x1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac7f5b64ce9e8e074c2ebcb7cca89ebc8" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_tc_10c</definition>
+        <argsstring></argsstring>
+        <name>age2_tc_10c</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: The Conquerors, Patch 1.0c&quot;,
+        Support.yes,
+        {&apos;age2_x1/age2_x1.exe&apos;, &apos;data/empires2_x1_p1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a9a97301f65dd9b7e807a1f1d9e0a7a3e" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::swgb_10</definition>
+        <argsstring></argsstring>
+        <name>swgb_10</name>
+        <initializer>=  (
+        12.1,
+        &quot;Star Wars: Galactic Battlegrounds&quot;,
+        Support.nope,
+        {&apos;Game/Battlegrounds.exe&apos;, &apos;Game/Data/GENIE.DAT&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ab52f56978e2a0a24037d8c4eaf91c958" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::swgb_cc</definition>
+        <argsstring></argsstring>
+        <name>swgb_cc</name>
+        <initializer>=  (
+        12.2,
+        &quot;Star Wars: Galactic Battlegrounds: Clone Campaigns&quot;,
+        Support.nope,
+        {&apos;Game/battlegrounds_x1.exe&apos;, &apos;Game/Data/genie_x1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a81f57ace79275a3f0ae6b7174bd4de92" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_tc_fe</definition>
+        <argsstring></argsstring>
+        <name>age2_tc_fe</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: Forgotten Empires&quot;,
+        Support.yes,
+        {&apos;age2_x1/age2_x2.exe&apos;,
+         &apos;games/forgotten empires/data/empires2_x1_p1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a82fe43e6803ccbe9bc9ca70c1e3d1d6a" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_hd_3x</definition>
+        <argsstring></argsstring>
+        <name>age2_hd_3x</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: HD Edition (Version 3.0+)&quot;,
+        Support.yes,
+        {&apos;AoK HD.exe&apos;, &apos;data/empires2_x1_p1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ad99a02e1ed086a68a5fbbb7b643046f2" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_hd_fe</definition>
+        <argsstring></argsstring>
+        <name>age2_hd_fe</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: HD + Forgotten Empires (Version 4.0+)&quot;,
+        Support.yes,
+        {&apos;AoK HD.exe&apos;, &apos;resources/_common/dat/empires2_x1_p1.dat&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1adfcd4f1bd95ad8825f67c1b119526379" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_hd_ak</definition>
+        <argsstring></argsstring>
+        <name>age2_hd_ak</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: HD + African Kingdoms (Version 4.7+)&quot;,
+        Support.yes,
+        {&apos;AoK HD.exe&apos;, &apos;resources/_common/dat/empires2_x2_p1.dat&apos;,
+         &apos;resources/_packages/african-kingdoms/config.json&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aee654afc5f8f9301baeddfdeae62c4ba" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.game_versions.GameVersion::age2_hd_rajas</definition>
+        <argsstring></argsstring>
+        <name>age2_hd_rajas</name>
+        <initializer>=  (
+        12.0,
+        &quot;Age of Empires 2: HD + Rise of the Rajas (Version 5.x)&quot;,
+        Support.breaks,
+        {&apos;AoK HD.exe&apos;, &apos;resources/_common/dat/empires2_x2_p1.dat&apos;,
+         &apos;resources/_packages/rise-of-the-rajas/config.json&apos;},
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac74c8ad1b0669a87abbd984337754e69" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.game_versions.GameVersion::engine_version</definition>
+        <argsstring></argsstring>
+        <name>engine_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.game_versions.GameVersion::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aed58c5ffa90ac28007062b087c2bf472" compoundref="game__versions_8py" startline="112" endline="119">openage.convert.game_versions.GameVersion.__str__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a5be793ab73b03a819ec2d013ffe3111b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.game_versions.GameVersion::support</definition>
+        <argsstring></argsstring>
+        <name>support</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a3103aa8c82a2dbbcf767086b15c05662" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.game_versions.GameVersion::required_files</definition>
+        <argsstring></argsstring>
+        <name>required_files</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1afba0fc6205a68cefe5dd061dd700aa40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.game_versions.GameVersion.__init__</definition>
+        <argsstring>(self, engine_version, description, support, required_files=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac74c8ad1b0669a87abbd984337754e69" kindref="member">engine_version</ref></type>
+          <defname>engine_version</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" kindref="member">description</ref></type>
+          <defname>description</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a5be793ab73b03a819ec2d013ffe3111b" kindref="member">support</ref></type>
+          <defname>support</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a3103aa8c82a2dbbcf767086b15c05662" kindref="member">required_files</ref></type>
+          <defname>required_files</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="106" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aed58c5ffa90ac28007062b087c2bf472" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.game_versions.GameVersion.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="112" bodyend="119"/>
+        <references refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" compoundref="game__versions_8py" startline="108">openage.convert.game_versions.GameVersion.description</references>
+        <references refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" compoundref="font_8h" startline="184">openage::renderer::Font::description</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1195">
+        <label>openage.convert.game_versions.GameVersion</label>
+        <link refid="classopenage_1_1convert_1_1game__versions_1_1_game_version"/>
+        <childnode refid="1196" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1196">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1197">
+        <label>openage.convert.game_versions.GameVersion</label>
+        <link refid="classopenage_1_1convert_1_1game__versions_1_1_game_version"/>
+        <childnode refid="1198" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1198">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/game_versions.py" bodystart="26" bodyend="120"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1afba0fc6205a68cefe5dd061dd700aa40" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aed58c5ffa90ac28007062b087c2bf472" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af2c66f95e78ca6f81930368393ebca33" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_aok</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a82fe43e6803ccbe9bc9ca70c1e3d1d6a" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_hd_3x</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1adfcd4f1bd95ad8825f67c1b119526379" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_hd_ak</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ad99a02e1ed086a68a5fbbb7b643046f2" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_hd_fe</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1aee654afc5f8f9301baeddfdeae62c4ba" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_hd_rajas</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a1442989afc9fb24d7f4c41acde2f0c34" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_tc</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac7f5b64ce9e8e074c2ebcb7cca89ebc8" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_tc_10c</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a81f57ace79275a3f0ae6b7174bd4de92" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age2_tc_fe</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1af76207084c5bb197ea1c053c13d2b5b0" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age_1</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ae079f1815b2c339a678a7a222dfb1826" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>age_ror</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ada19b24f76896d7768b1212f0a1f6eb1" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>description</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ac74c8ad1b0669a87abbd984337754e69" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>engine_version</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a3103aa8c82a2dbbcf767086b15c05662" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>required_files</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a5be793ab73b03a819ec2d013ffe3111b" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>support</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1a9a97301f65dd9b7e807a1f1d9e0a7a3e" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>swgb_10</name></member>
+      <member refid="classopenage_1_1convert_1_1game__versions_1_1_game_version_1ab52f56978e2a0a24037d8c4eaf91c958" prot="public" virt="non-virtual"><scope>openage::convert::game_versions::GameVersion</scope><name>swgb_cc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

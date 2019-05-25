@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_renderer.h" line="31" column="1" bodyfile="libopenage/game_renderer.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_render_options_1afa9ff97e7c4c0d15f01e0765f9a05ce0" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
@@ -29,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_renderer.h" line="32" column="1" bodyfile="libopenage/game_renderer.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -44,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_renderer.h" line="29" column="1" bodyfile="libopenage/game_renderer.cpp" bodystart="29" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp" bodystart="29" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,53 +55,77 @@
 <para>TODO include fog drawing etc </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3901">
+      <node id="4832">
         <label>openage::RenderOptions</label>
         <link refid="classopenage_1_1_render_options"/>
-        <childnode refid="3902" relation="public-inheritance">
+        <childnode refid="4833" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3902">
+      <node id="4833">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3907">
+      <node id="4838">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="3906">
+      <node id="4840">
+        <label>T</label>
+      </node>
+      <node id="4837">
         <label>openage::util::Variable&lt; bool &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="3907" relation="public-inheritance">
+        <childnode refid="4838" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4839" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3903">
+      <node id="4834">
         <label>openage::RenderOptions</label>
         <link refid="classopenage_1_1_render_options"/>
-        <childnode refid="3904" relation="public-inheritance">
+        <childnode refid="4835" relation="public-inheritance">
         </childnode>
-        <childnode refid="3905" relation="usage">
+        <childnode refid="4836" relation="usage">
           <edgelabel>+draw_debug</edgelabel>
           <edgelabel>+terrain_blending</edgelabel>
         </childnode>
       </node>
-      <node id="3904">
+      <node id="4835">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="3904" relation="usage">
+        <childnode refid="4835" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="3905">
+      <node id="4841">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4839" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4836">
         <label>openage::options::Var&lt; bool &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="3906" relation="public-inheritance">
+        <childnode refid="4837" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4841" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="4839">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="4838" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4840" relation="usage">
+          <edgelabel>+value</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/game_renderer.h" line="27" column="1" bodyfile="libopenage/game_renderer.h" bodystart="27" bodyend="33"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h" bodystart="27" bodyend="33"/>
     <listofallmembers>
       <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::RenderOptions</scope><name>add</name></member>
       <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::RenderOptions</scope><name>add_action</name></member>

@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::bytequeue::ByteBuffer</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1_1_discarded_error" prot="public">openage::util::bytequeue::ByteBuffer::DiscardedError</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a60669c78ad161b24f39f67aceb7133cb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteBuffer::bufs</definition>
+        <argsstring></argsstring>
+        <name>bufs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" compoundref="bytequeue_8py" startline="111" endline="117">openage.util.bytequeue.ByteBuffer.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteBuffer::index</definition>
+        <argsstring></argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="97" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8722db6380bb4a3ebdcd2d13ba93e2e6" compoundref="bytequeue_8py" startline="105" endline="107">openage.util.bytequeue.ByteBuffer.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" compoundref="bytequeue_8py" startline="111" endline="117">openage.util.bytequeue.ByteBuffer.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1ad7247d326981f0413e482caf0c3b4895" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteBuffer::discardedbufs</definition>
+        <argsstring></argsstring>
+        <name>discardedbufs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="101" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a02c578c8742bad4dbce84f46e407f497" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.bytequeue.ByteBuffer::discardedbytes</definition>
+        <argsstring></argsstring>
+        <name>discardedbytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="103" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a609749224fa2bf063e6200c4bd6b09ed" compoundref="bytequeue_8py" startline="140" endline="142">openage.util.bytequeue.ByteBuffer.hasbeendiscarded</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a1a65252620cb1d77527c18c0a0dc36d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="91" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8722db6380bb4a3ebdcd2d13ba93e2e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.__len__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__len__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="105" bodyend="107"/>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1adce9300df866809346ad9b8ff64feaad" compoundref="opengl_2shader__program_8h" startline="83">openage::renderer::opengl::GlShaderProgram::GlUniformBlock::index</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" compoundref="bytequeue_8py" startline="97">openage.util.bytequeue.ByteBuffer.index</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.append</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>append</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>appends new data to the right of the buffer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="111" bodyend="117"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" compoundref="bytequeue_8py" startline="35">openage.util.bytequeue.ByteQueue.bufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a60669c78ad161b24f39f67aceb7133cb" compoundref="bytequeue_8py" startline="94">openage.util.bytequeue.ByteBuffer.bufs</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1adce9300df866809346ad9b8ff64feaad" compoundref="opengl_2shader__program_8h" startline="83">openage::renderer::opengl::GlShaderProgram::GlUniformBlock::index</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" compoundref="bytequeue_8py" startline="97">openage.util.bytequeue.ByteBuffer.index</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.discardleft</definition>
+        <argsstring>(self, keep)</argsstring>
+        <name>discardleft</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>keep</type>
+          <defname>keep</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="122" bodyend="135"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" compoundref="bytequeue_8py" startline="35">openage.util.bytequeue.ByteQueue.bufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a60669c78ad161b24f39f67aceb7133cb" compoundref="bytequeue_8py" startline="94">openage.util.bytequeue.ByteBuffer.bufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1ad7247d326981f0413e482caf0c3b4895" compoundref="bytequeue_8py" startline="101">openage.util.bytequeue.ByteBuffer.discardedbufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a02c578c8742bad4dbce84f46e407f497" compoundref="bytequeue_8py" startline="103">openage.util.bytequeue.ByteBuffer.discardedbytes</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1adce9300df866809346ad9b8ff64feaad" compoundref="opengl_2shader__program_8h" startline="83">openage::renderer::opengl::GlShaderProgram::GlUniformBlock::index</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" compoundref="bytequeue_8py" startline="97">openage.util.bytequeue.ByteBuffer.index</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a609749224fa2bf063e6200c4bd6b09ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.hasbeendiscarded</definition>
+        <argsstring>(self, position)</argsstring>
+        <name>hasbeendiscarded</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>position</type>
+          <defname>position</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="140" bodyend="142"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a02c578c8742bad4dbce84f46e407f497" compoundref="bytequeue_8py" startline="103">openage.util.bytequeue.ByteBuffer.discardedbytes</references>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8c0eddc43c1430a5397dbaba48d1d65e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.__getitem__</definition>
+        <argsstring>(self, pos)</argsstring>
+        <name>__getitem__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>pos</type>
+          <defname>pos</defname>
+        </param>
+        <briefdescription>
+<para>a slice with default stepping is required. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   when attempting to access already-discarded data, a ValueError
+   is raised.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="149" bodyend="173"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.bytequeue.ByteBuffer.get_buffers</definition>
+        <argsstring>(self, start, end)</argsstring>
+        <name>get_buffers</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>start</type>
+          <defname>start</defname>
+        </param>
+        <param>
+          <type>end</type>
+          <defname>end</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="189" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="189" bodyend="222"/>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a41b75b7e6e36eeea0cf35cbac3ad9519" compoundref="bytequeue_8py" startline="35">openage.util.bytequeue.ByteQueue.bufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a60669c78ad161b24f39f67aceb7133cb" compoundref="bytequeue_8py" startline="94">openage.util.bytequeue.ByteBuffer.bufs</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a609749224fa2bf063e6200c4bd6b09ed" compoundref="bytequeue_8py" startline="140" endline="142">openage.util.bytequeue.ByteBuffer.hasbeendiscarded</references>
+        <references refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1adce9300df866809346ad9b8ff64feaad" compoundref="opengl_2shader__program_8h" startline="83">openage::renderer::opengl::GlShaderProgram::GlUniformBlock::index</references>
+        <references refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" compoundref="bytequeue_8py" startline="97">openage.util.bytequeue.ByteBuffer.index</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8c0eddc43c1430a5397dbaba48d1d65e" compoundref="bytequeue_8py" startline="149" endline="173">openage.util.bytequeue.ByteBuffer.__getitem__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5626">
+        <label>openage.util.bytequeue.ByteBuffer</label>
+        <link refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/bytequeue.py" bodystart="90" bodyend="222"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8c0eddc43c1430a5397dbaba48d1d65e" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a1a65252620cb1d77527c18c0a0dc36d0" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8722db6380bb4a3ebdcd2d13ba93e2e6" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>append</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a60669c78ad161b24f39f67aceb7133cb" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>bufs</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1ad7247d326981f0413e482caf0c3b4895" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>discardedbufs</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a02c578c8742bad4dbce84f46e407f497" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>discardedbytes</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>discardleft</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>get_buffers</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a609749224fa2bf063e6200c4bd6b09ed" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>hasbeendiscarded</name></member>
+      <member refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a78672162d5ac03dfe3a133d4ebdd39bb" prot="public" virt="non-virtual"><scope>openage::util::bytequeue::ByteBuffer</scope><name>index</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

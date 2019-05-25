@@ -5,8 +5,8 @@
     <includes refid="assetmanager_8h" local="yes">../assetmanager.h</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
     <includes refid="gui__item_8h" local="yes">guisys/link/gui_item.h</includes>
-    <includedby refid="assetmanager__link_8cpp" local="yes">libopenage/gui/assetmanager_link.cpp</includedby>
-    <includedby refid="game__spec__link_8cpp" local="yes">libopenage/gui/game_spec_link.cpp</includedby>
+    <includedby refid="assetmanager__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</includedby>
+    <includedby refid="game__spec__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</includedby>
     <incdepgraph>
       <node id="10978">
         <label>list</label>
@@ -251,7 +251,7 @@
         </childnode>
       </node>
       <node id="10944">
-        <label>libopenage/gui/assetmanager_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.h</label>
         <link refid="assetmanager__link_8h"/>
         <childnode refid="10945" relation="include">
         </childnode>
@@ -390,11 +390,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="10998">
-        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</label>
         <link refid="assetmanager__link_8cpp"/>
       </node>
       <node id="10997">
-        <label>libopenage/gui/assetmanager_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.h</label>
         <link refid="assetmanager__link_8h"/>
         <childnode refid="10998" relation="include">
         </childnode>
@@ -402,7 +402,7 @@
         </childnode>
       </node>
       <node id="10999">
-        <label>libopenage/gui/game_spec_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</label>
         <link refid="game__spec__link_8cpp"/>
       </node>
     </invincdepgraph>
@@ -452,8 +452,8 @@
 <codeline lineno="33" refid="classopenage_1_1gui_1_1_asset_manager_link" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_asset_manager_link" kindref="compound">AssetManagerLink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_q_object" kindref="compound">qtsdl::GuiItemQObject</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item" kindref="compound">qtsdl::GuiItem</ref>&lt;AssetManagerLink&gt;<sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36" refid="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref><sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" kindref="member">assetDir</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a6566b17b489083a396b9bb3fae5a1929" kindref="member">get_asset_dir</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a78cdab0ef894c100ba296a3fc56b9a96" kindref="member">set_asset_dir</ref>)</highlight></codeline>
-<codeline lineno="37" refid="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" kindref="member">engine</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a624202289589dc11dad8958aaf3c5e31" kindref="member">get_engine</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1ae86376a20e9bad6811574df8f9e70a40" kindref="member">set_engine</ref>)</highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref><sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" kindref="member">assetDir</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a6566b17b489083a396b9bb3fae5a1929" kindref="member">get_asset_dir</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a78cdab0ef894c100ba296a3fc56b9a96" kindref="member">set_asset_dir</ref>)</highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" kindref="member">engine</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1a624202289589dc11dad8958aaf3c5e31" kindref="member">get_engine</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link_1ae86376a20e9bad6811574df8f9e70a40" kindref="member">set_engine</ref>)</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/><ref refid="classopenage_1_1gui_1_1_asset_manager_link" kindref="compound">AssetManagerLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -472,6 +472,6 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/assetmanager_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.h"/>
   </compounddef>
 </doxygen>

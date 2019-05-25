@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="16" column="1" bodyfile="libopenage/job/types.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1job_1aae93538aa9f8440cd9bbd3fe67d88e75" prot="public" static="no">
         <templateparamlist>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="25" column="1" bodyfile="libopenage/job/types.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1job_1aa7f614139b9f8585d91285475c260c2f" prot="public" static="no">
         <templateparamlist>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="34" column="1" bodyfile="libopenage/job/types.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1job_1a9e457e59ab065783dbb679ab82cfdfa4" prot="public" static="no">
         <templateparamlist>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="43" column="1" bodyfile="libopenage/job/types.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1job_1aa67062d8c4a001038067eb490177604b" prot="public" static="no">
         <type>std::function&lt; bool()&gt;</type>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="46" column="1" bodyfile="libopenage/job/types.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1job_1a8e43d5cc58984baa7a8d4f3ea294cee8" prot="public" static="no">
         <type>std::function&lt; void()&gt;</type>
@@ -155,13 +155,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/types.h" line="49" column="1" bodyfile="libopenage/job/types.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/types.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/audio/audio_manager.h" line="22" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.h" line="22" column="1"/>
   </compounddef>
 </doxygen>

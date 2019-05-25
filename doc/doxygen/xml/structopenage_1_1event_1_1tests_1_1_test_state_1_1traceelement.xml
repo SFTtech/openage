@@ -14,7 +14,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="60" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="60" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="60" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a83ebdbc18d10c912a9940a8c4e15c545" compoundref="event_2tests_8cpp" startline="55" endline="58">traceelement</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -27,7 +28,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="61" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="61" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="61" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" compoundref="header__snippet_8py" startline="26" endline="28">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,7 +58,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="55" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="55" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="55" bodyend="58"/>
+        <references refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a259e055907453f783d9bbe82acc1c89b" compoundref="event_2tests_8cpp" startline="60">time</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,19 +67,32 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4522">
+      <node id="2317">
+        <label>int_type</label>
+      </node>
+      <node id="2316">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="2317" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2314">
         <label>openage::event::tests::TestState::traceelement</label>
         <link refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement"/>
-        <childnode refid="4523" relation="usage">
+        <childnode refid="2315" relation="usage">
           <edgelabel>+time</edgelabel>
         </childnode>
       </node>
-      <node id="4523">
+      <node id="2315">
         <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="2316" relation="template-instance">
+          <edgelabel>&lt; int64_t, 16 &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/tests.cpp" line="54" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="54" bodyend="62"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="54" bodyend="62"/>
     <listofallmembers>
       <member refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::traceelement</scope><name>name</name></member>
       <member refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a259e055907453f783d9bbe82acc1c89b" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::traceelement</scope><name>time</name></member>

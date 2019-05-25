@@ -14,7 +14,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="101" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="101" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a03c5c6eddef4b261cd75b5552b3e646d" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -27,7 +28,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="102" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="102" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" compoundref="glyph__atlas_8cpp" startline="66" endline="79">openage::renderer::GlyphAtlas::bind</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1ab129f3e096e3ac26c8a30c6c4b61c9bf" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -40,7 +43,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="103" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="103" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="103" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1ad7c02afbf4a178faa77234d0d9b36f5b" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -53,7 +57,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="104" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="104" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -61,12 +66,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1117">
+      <node id="4646">
         <label>openage::renderer::GlyphAtlas::dirty_rect</label>
         <link refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/glyph_atlas.h" line="100" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="100" bodyend="105"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="100" bodyend="105"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a2fb201b9372b565c35baeff0ea27e90c" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::dirty_rect</scope><name>x1</name></member>
       <member refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1ab129f3e096e3ac26c8a30c6c4b61c9bf" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::dirty_rect</scope><name>x2</name></member>

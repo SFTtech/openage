@@ -183,7 +183,7 @@
         </childnode>
       </node>
       <node id="6345">
-        <label>libopenage/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.cpp</label>
         <link refid="handlers_8cpp"/>
         <childnode refid="6346" relation="include">
         </childnode>
@@ -296,6 +296,6 @@
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/handlers.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.cpp"/>
   </compounddef>
 </doxygen>

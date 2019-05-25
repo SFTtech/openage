@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_input.h" line="29" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_input.h" line="30" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_input_1ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" compoundref="gui__input_8cpp" startline="17" endline="19">process</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_input.h" line="20" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_input_1aa170b7bbb3f930640f1e163100817c47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -66,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_input.h" line="21" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.cpp" bodystart="14" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp" bodystart="14" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_input_1ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -84,7 +85,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_input.h" line="26" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.cpp" bodystart="17" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp" bodystart="17" bodyend="19"/>
+        <references refid="classqtsdl_1_1_gui_input_1a9d9dffc99f3fe645ceaf0c62c5527da3" compoundref="gui__input_8h" startline="30">impl</references>
+        <referencedby refid="classopenage_1_1gui_1_1_g_u_i_1a957c6b92e9d51577da3e414f0307e455" compoundref="gui_2gui_8cpp" startline="120" endline="122">openage::gui::GUI::on_input</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -93,12 +96,12 @@
 <para>Converts SDL input events into Qt events. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2621">
+      <node id="6229">
         <label>qtsdl::GuiInput</label>
         <link refid="classqtsdl_1_1_gui_input"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_input.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_input.h" bodystart="18" bodyend="31"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h" bodystart="18" bodyend="31"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_input_1a41491a3956d49de96946dadf5d5b55e1" prot="public" virt="non-virtual"><scope>qtsdl::GuiInput</scope><name>GuiInput</name></member>
       <member refid="classqtsdl_1_1_gui_input_1aa9d1d34acb30b85086713798e1a93394" prot="private" virt="non-virtual"><scope>qtsdl::GuiInput</scope><name>GuiInputImpl</name></member>

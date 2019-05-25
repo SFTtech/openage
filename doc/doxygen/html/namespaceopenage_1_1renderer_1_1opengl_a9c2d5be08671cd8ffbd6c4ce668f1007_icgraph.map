@@ -1,0 +1,4 @@
+<map id="openage::renderer::opengl::find_capabilities" name="openage::renderer::opengl::find_capabilities">
+<area shape="rect" id="node1" title="Finds out the supported graphics functions and OpenGL version of the device." alt="" coords="245,5,405,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_context.xhtml#a4414e2e8f56e36f6c4095886735bd03c" title="Create a GL context in the given SDL window." alt="" coords="5,5,197,47"/>
+</map>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1peresource" kind="namespace" language="Python">
+    <compoundname>openage::convert::peresource</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources" prot="public">openage::convert::peresource::PEResources</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory" prot="public">openage::convert::peresource::ResourceDirectory</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_entry" prot="public">openage::convert::peresource::ResourceDirectoryEntry</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf" prot="public">openage::convert::peresource::ResourceLeaf</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1peresource_1_1_string_literal" prot="public">openage::convert::peresource::StringLiteral</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1peresource_1a862a07a2492357db01ccf04bb49db7a1" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::peresource.RESOURCE_TYPES</definition>
+        <argsstring></argsstring>
+        <name>RESOURCE_TYPES</name>
+        <initializer>=  {
+    0: &apos;unknown&apos;,
+    1: &apos;cursor&apos;,
+    2: &apos;bitmap&apos;,
+    3: &apos;icon&apos;,
+    4: &apos;menu&apos;,
+    5: &apos;dialog&apos;,
+    6: &apos;string&apos;,
+    7: &apos;fontdir&apos;,
+    8: &apos;font&apos;,
+    9: &apos;accelerator&apos;,
+    10: &apos;rcdata&apos;,
+    11: &apos;messagetable&apos;,
+    12: &apos;group_cursor&apos;,
+    14: &apos;group_icon&apos;,
+    16: &apos;version&apos;,
+    17: &apos;dlginclude&apos;,
+    19: &apos;plugplay&apos;,
+    20: &apos;vxd&apos;,
+    21: &apos;anicursor&apos;,
+    22: &apos;aniicon&apos;,
+    23: &apos;html&apos;,
+    24: &apos;manifest&apos;
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1peresource_1a6ef315d4f7f3f48c133ece70922f7dd8" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::peresource.RESOURCE_IDS</definition>
+        <argsstring></argsstring>
+        <name>RESOURCE_IDS</name>
+        <initializer>=  {value: key for key, value in RESOURCE_TYPES.items()}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1peresource_1a8bfe6cd8fc0e15d40eddb626467e0493" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::peresource.STRINGTABLE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>STRINGTABLE_SIZE</name>
+        <initializer>=  16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

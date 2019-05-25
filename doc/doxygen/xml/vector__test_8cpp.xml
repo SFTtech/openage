@@ -119,7 +119,7 @@
         </childnode>
       </node>
       <node id="33232">
-        <label>libopenage/util/vector_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp</label>
         <link refid="vector__test_8cpp"/>
         <childnode refid="33233" relation="include">
         </childnode>
@@ -303,6 +303,6 @@
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/vector_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp"/>
   </compounddef>
 </doxygen>

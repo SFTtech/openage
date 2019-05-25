@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="381" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="381" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="381" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="381" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -35,7 +35,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="317" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="317" bodyend="321"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="317" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="317" bodyend="321"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a5e10f968ee5f44d64489eff5791a2b93" compoundref="pyobject_8cpp" startline="298">openage::pyinterface::py_builtin</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -53,7 +56,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="324" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="324" bodyend="328"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="324" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="324" bodyend="328"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a019072ec9dc9b26854864b8d639545f6" compoundref="pyobject_8cpp" startline="299">openage::pyinterface::py_import</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -71,7 +77,40 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="331" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="331" bodyend="335"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="331" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="331" bodyend="335"/>
+        <references refid="namespaceopenage_1_1pyinterface_1acf94e2be78e15a835eef9c8346c16f14" compoundref="pyobject_8cpp" startline="300">openage::pyinterface::py_createstr</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" compoundref="struct_8py" startline="208" endline="210">openage.util.struct.NamedStruct.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" compoundref="struct_8py" startline="211" endline="217">openage.util.struct.NamedStruct.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a31d656f8b2b72517f347404d7eba9e04" compoundref="blendomatic_8py" startline="278" endline="280">openage.convert.blendomatic.Blendomatic.__str__</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1ac0a5dae7195fabd749cffb70a062a647" compoundref="driver_8py" startline="114" endline="132">openage.convert.driver.convert</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a671299bb61bb30cecb3fa42de25333b0" compoundref="constexpr_8h" startline="75" endline="77">openage::util::constexpr_::create_truncated_string_literal</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a54a8af4c9c5573541a15c7660e862111" compoundref="util_8py" startline="42" endline="58">openage.convert.dataformat.util.encode_value</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member_1a4d654b6ba05da6a0aba27b9008fa38cb" compoundref="members_8py" startline="502" endline="513">openage.convert.dataformat.members.EnumLookupMember.entry_hook</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a9d61825e531ff63ac842efeb88376e8c" compoundref="members_8py" startline="221" endline="231">openage.convert.dataformat.members.DynLengthMember.format_hash</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1strings_1a16e727f3dbbdb651bec86f64231a2d54" compoundref="strings_8py" startline="114" endline="118">openage.util.strings.format_progress</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" compoundref="colortable_8py" startline="86" endline="145">openage.convert.colortable.ColorTable.gen_image</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaff2674b9d1b7ffcf0a67f8ecba9f1b6" compoundref="pyobject_8cpp" startline="227" endline="230">openage::pyinterface::PyObjectRef::get</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a61c4b546903316ecf379bfe7bd9553f1" compoundref="constexpr_8h" startline="59" endline="69">openage::util::constexpr_::get_prefix</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1aa4f041b85b8ae3df628165f73397d1fa" compoundref="constexpr_8h" startline="82" endline="89">openage::util::constexpr_::has_prefix</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1interface_1_1rename_1a045e4e1a64322c77bfee10f24e8613e7" compoundref="rename_8py" startline="14" endline="24">openage.convert.interface.rename.hud_rename</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" compoundref="physics_8cpp" startline="138" endline="213">openage::event::demo::BallReflectPanel::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" compoundref="physics_8cpp" startline="275" endline="352">openage::event::demo::ResetGame::invoke</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a3e60c155c12ea17e0c149b3eca114f70" compoundref="physics_8cpp" startline="82" endline="113">openage::event::demo::BallReflectWall::predict_invoke_time</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" compoundref="physics_8cpp" startline="215" endline="262">openage::event::demo::BallReflectPanel::predict_invoke_time</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" compoundref="fslike_2abstract_8py" startline="53" endline="58">openage.util.fslike.abstract.FSLikeObject.pretty</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">openage::util::FD::puts</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aae9cd09351bc11ad2c9fcf701786340a" compoundref="strings_8cpp" startline="92" endline="133">openage::util::string_matches_pattern</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1ae2139acfbb2a838e378d0652e23943b8" compoundref="constexpr_8h" startline="97" endline="103">openage::util::constexpr_::strip_prefix</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" compoundref="struct_8py" startline="305" endline="309">openage.util.struct.Flags.unknown</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" compoundref="unicode_8cpp" startline="154" endline="165">openage::util::utf8_last_char_size</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" compoundref="unicode_8cpp" startline="167" endline="169">openage::util::utf8_pop_back</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -89,7 +128,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="338" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="338" bodyend="342"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="338" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="338" bodyend="342"/>
+        <references refid="namespaceopenage_1_1pyinterface_1abc65c10c883e9b61d86316e6e0d71318" compoundref="pyobject_8cpp" startline="301">openage::pyinterface::py_createbytes</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a0aba1574a0d51aa0b8d4bd14f1174177" compoundref="directory_8py" startline="25" endline="42">openage.util.fslike.directory.Directory.__init__</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1files_1a648056f11b83f759c99f551f483e9bef" compoundref="files_8py" startline="33" endline="53">openage.util.files.read_nullterminated_string</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" compoundref="fds_8cpp" startline="53" endline="55">openage::util::FD::write</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -107,7 +152,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="345" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="345" bodyend="349"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="345" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="345" bodyend="349"/>
+        <references refid="namespaceopenage_1_1pyinterface_1afdb5d7025dc1ed4583dfdf6d14ecbb2c" compoundref="pyobject_8cpp" startline="302">openage::pyinterface::py_createint</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a6ff52951c29472ef3fd427f8c627f33c" compoundref="pyobject_8cpp" startline="233" endline="236">openage::pyinterface::PyObjectRef::get</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -121,7 +170,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="352" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="352" bodyend="356"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="352" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="352" bodyend="356"/>
+        <references refid="namespaceopenage_1_1pyinterface_1afd53890300da035a2fa6cf0366f3f755" compoundref="pyobject_8cpp" startline="303">openage::pyinterface::py_createdict</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" compoundref="struct_8py" startline="29" endline="82">openage.util.struct.NamedStructMeta.__new__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" compoundref="exportable_8py" startline="57" endline="176">openage.convert.dataformat.exportable.Exportable.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1a28ccfa2e5a8c4ad49ed409f882732472" compoundref="driver_8py" startline="205" endline="225">openage.convert.driver.extract_mediafiles_names_map</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a356499a04a03d301b12a37c3ade40415" compoundref="util_8py" startline="59" endline="67">openage.convert.dataformat.util.gather_data</referencedby>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1coord_1a2341aa453809671c3d83be849d9e731d" compoundref="coord_8py" startline="17" endline="66">openage.codegen.coord.generate_coord_basetypes</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
@@ -135,7 +195,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="359" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="359" bodyend="363"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="359" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="359" bodyend="363"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a3b908fa94eb8b9a2209772fb111795a9" compoundref="pyobject_8cpp" startline="304">openage::pyinterface::py_createlist</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1a6dce2cf04f6cf53afeba4c3dc859a3f0" compoundref="driver_8py" startline="332" endline="348">openage.convert.driver.change_dir</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1ad72bef762bb38fb93c944d490bf5c113" compoundref="game__spec_8cpp" startline="404" endline="428">openage::GameSpec::create_abilities</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a4534f9e425147656e2c2669608b29127" compoundref="stringresource_8py" startline="35" endline="49">openage.convert.stringresource.StringResource.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" compoundref="exportable_8py" startline="57" endline="176">openage.convert.dataformat.exportable.Exportable.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" compoundref="colortable_8py" startline="149" endline="164">openage.convert.colortable.ColorTable.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" compoundref="cpp__testlist_8py" startline="70" endline="94">openage.codegen.cpp_testlist.generate_testlist</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a2b0c3e9b8181b04312a30d3471796acc" compoundref="members_8py" startline="628" endline="630">openage.convert.dataformat.members.MultisubtypeMember.get_empty_value</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" compoundref="members_8py" startline="394" endline="427">openage.convert.dataformat.members.EnumMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a15c617e71bf0ced91bf11ef18c134c6c" compoundref="blendomatic_8py" startline="37" endline="72">openage.convert.blendomatic.BlendingTile.get_picture_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a10e0cd36005a0c8dd477ad85dd52fd34" compoundref="content__snippet_8py" startline="81" endline="92">openage.convert.dataformat.content_snippet.ContentSnippet.get_required_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" compoundref="members_8py" startline="446" endline="472">openage.convert.dataformat.members.EnumMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1aa1b9333b1bb2ac9110c8adaf1dd13113" compoundref="members_8py" startline="859" endline="862">openage.convert.dataformat.members.SubdataMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_mode_1a1301aa1adfc9ad82d074d3af9ea85bd1" compoundref="blendomatic_8py" startline="150" endline="201">openage.convert.blendomatic.BlendingMode.get_tile_from_data</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1acbe30bd72e3a9ef46c461e497d726711" compoundref="game__spec_8cpp" startline="282" endline="291">openage::GameSpec::load_building</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a51a1664688173a588e6ead16703f8e82" compoundref="game__spec_8cpp" startline="293" endline="304">openage::GameSpec::load_living</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a67579e89ee667f00dc301433a23458af" compoundref="game__spec_8cpp" startline="317" endline="326">openage::GameSpec::load_missile</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1af210d4508dea9f8f87aa98c3fc0e3359" compoundref="game__spec_8cpp" startline="306" endline="315">openage::GameSpec::load_object</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1a189674ed7c17e3398bf7e39919e3b641" compoundref="hdlanguagefile_8py" startline="59" endline="97">openage.convert.hdlanguagefile.read_age2_hd_3x_stringresources</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" compoundref="exportable_8py" startline="404" endline="439">openage.convert.dataformat.exportable.Exportable.structs</referencedby>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" compoundref="cabextract_2test_8py" startline="64" endline="137">openage.cabextract.test.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" compoundref="threading_8py" startline="117" endline="137">openage.util.threading.test_concurrent_chain</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" compoundref="util_2fslike_2test_8py" startline="57" endline="133">openage.util.fslike.test.test_union</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -143,6 +233,6 @@
     <detaileddescription>
 <para>Convenience functions and types for the python interface. </para>
     </detaileddescription>
-    <location file="libopenage/pyinterface/pyobject.cpp" line="313" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="313" column="1"/>
   </compounddef>
 </doxygen>

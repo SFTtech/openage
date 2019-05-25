@@ -1,0 +1,6 @@
+<map id="openage.assets.get_asset_path" name="openage.assets.get_asset_path">
+<area shape="rect" id="node1" title="Returns a Path object for the game assets." alt="" coords="233,49,369,90"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1game_1_1main.xhtml#ae53287c14640e82b47c8b3af1e85c4ca" title=" " alt="" coords="10,5,181,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="5,56,185,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1assets.xhtml#a362b18ac5b307e65b5ee2a0e2bc69b77" title="Tests whether a specific asset exists." alt="" coords="25,107,165,133"/>
+</map>

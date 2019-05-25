@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/category.h" line="11" column="1" bodyfile="libopenage/audio/category.h" bodystart="11" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.h" bodystart="11" bodyend="16"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" prot="public" static="no" strong="yes">
         <type></type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/format.h" line="11" column="1" bodyfile="libopenage/audio/format.h" bodystart="11" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.h" bodystart="11" bodyend="16"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" prot="public" static="no" strong="yes">
         <type></type>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/loader_policy.h" line="12" column="1" bodyfile="libopenage/audio/loader_policy.h" bodystart="12" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.h" bodystart="12" bodyend="15"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/types.h" line="29" column="1" bodyfile="libopenage/audio/types.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1audio_1ad72fe21475d7ce551d709dde4c0f25b2" prot="public" static="no">
         <type>std::vector&lt; int16_t &gt;</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/types.h" line="35" column="1" bodyfile="libopenage/audio/types.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/types.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -170,7 +170,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="13" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="13" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" compoundref="opus__loading_8cpp" startline="57" endline="125">open_opus_file</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1audio_1abc71c7bb569b2f8285a952869a27bbdc" prot="public" static="yes" mutable="no">
         <type>op_read_func</type>
@@ -190,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="20" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1audio_1aab7fb6278a7b011a6c16393f1565539f" prot="public" static="yes" mutable="no">
         <type>op_seek_func</type>
@@ -215,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="29" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1audio_1ade8247a60ce2857dac8eff8f84e924a0" prot="public" static="yes" mutable="no">
         <type>op_tell_func</type>
@@ -232,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="43" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1audio_1ab561da007292cf943f198ac54454aa19" prot="public" static="yes" mutable="no">
         <type>OpusFileCallbacks</type>
@@ -251,7 +252,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="49" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="49" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" compoundref="opus__loading_8cpp" startline="57" endline="125">open_opus_file</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -270,7 +272,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/category.cpp" line="13" column="1" bodyfile="libopenage/audio/category.cpp" bodystart="13" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp" bodystart="13" bodyend="21"/>
+        <references refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13">GAME</references>
+        <references refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060a596acbde60b98295256f8e4073a8e341">INTERFACE</references>
+        <references refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060ad74c735013cdd2b883e25ccca502a2e9">MUSIC</references>
+        <references refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060ae221efa5e7bfc56d59f71cb211533def">TAUNT</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
+        <referencedby refid="namespaceopenage_1_1audio_1a3db10b8f65422a7a97adbcdb9d97b398" compoundref="category_8cpp" startline="24" endline="27">operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1a3db10b8f65422a7a97adbcdb9d97b398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -291,7 +299,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/category.cpp" line="24" column="1" bodyfile="libopenage/audio/category.cpp" bodystart="24" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp" bodystart="24" bodyend="27"/>
+        <references refid="namespaceopenage_1_1audio_1a654fb5fc6eaf35a9cd040d670f0fa8ce" compoundref="category_8cpp" startline="13" endline="21">category_t_to_str</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1ac238d5cf0dbb7b5166bbabbe3a1d9e1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const char *</type>
@@ -308,7 +318,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/format.cpp" line="11" column="1" bodyfile="libopenage/audio/format.cpp" bodystart="11" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp" bodystart="11" bodyend="19"/>
+        <references refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dbaa417ad68c0d44a64cc77fcbba552fd6e">FLAC</references>
+        <references refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba27bcd310c52f6445cf4b93b90f52f5ef">MP3</references>
+        <references refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9">OPUS</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
+        <references refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba76bae86742a2ec93bb56ae064ce7bd54">WAV</references>
+        <referencedby refid="namespaceopenage_1_1audio_1a6d666589a0841fdfe50d91061e10a574" compoundref="format_8cpp" startline="22" endline="25">operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1a6d666589a0841fdfe50d91061e10a574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -329,7 +345,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/format.cpp" line="22" column="1" bodyfile="libopenage/audio/format.cpp" bodystart="22" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp" bodystart="22" bodyend="25"/>
+        <references refid="namespaceopenage_1_1audio_1ac238d5cf0dbb7b5166bbabbe3a1d9e1d" compoundref="format_8cpp" startline="11" endline="19">format_t_to_str</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const char *</type>
@@ -346,7 +364,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/loader_policy.cpp" line="11" column="1" bodyfile="libopenage/audio/loader_policy.cpp" bodystart="11" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.cpp" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.cpp" bodystart="11" bodyend="17"/>
+        <references refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a0fcc90da4811c877ba9f9c12f7d60bc9">DYNAMIC</references>
+        <references refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a722a256b864f768da20a4b31fdc6dfec">IN_MEMORY</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
+        <referencedby refid="namespaceopenage_1_1audio_1ad2b75e7dbf6cd2f85e5d71b587a5e447" compoundref="loader__policy_8cpp" startline="20" endline="23">operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1ad2b75e7dbf6cd2f85e5d71b587a5e447" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -367,7 +389,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/loader_policy.cpp" line="20" column="1" bodyfile="libopenage/audio/loader_policy.cpp" bodystart="20" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.cpp" bodystart="20" bodyend="23"/>
+        <references refid="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" compoundref="loader__policy_8cpp" startline="11" endline="17">loader_policy_t_to_str</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1audio_1_1opus__file__t" kindref="compound">opus_file_t</ref></type>
@@ -385,13 +409,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/opus_loading.cpp" line="57" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="57" bodyend="125"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp" bodystart="57" bodyend="125"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="structopenage_1_1audio_1_1opus__file__t_1a249e11933a2c73d85513f0c38f07cfa8" compoundref="opus__loading_8h" startline="30">openage::audio::opus_file_t::file</references>
+        <references refid="structopenage_1_1audio_1_1opus__file__t_1a581840588795e9b90c6546ff24b8e189" compoundref="opus__loading_8h" startline="24">openage::audio::opus_file_t::handle</references>
+        <references refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" compoundref="util_2path_8cpp" startline="80" endline="82">openage::util::Path::is_file</references>
+        <references refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" compoundref="util_2path_8cpp" startline="133" endline="135">openage::util::Path::open_r</references>
+        <references refid="namespaceopenage_1_1audio_1ab561da007292cf943f198ac54454aa19" compoundref="opus__loading_8cpp" startline="49">opus_access_funcs</references>
+        <references refid="namespaceopenage_1_1audio_1a16038cc5c4922bb30824b731b58215ce" compoundref="opus__loading_8cpp" startline="13">opus_deleter</references>
+        <references refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" compoundref="util_2path_8cpp" startline="163" endline="173">openage::util::Path::resolve_native_path</references>
+        <referencedby refid="classopenage_1_1audio_1_1_opus_in_memory_loader_1afd535fc99780b2823cdd38c8dfc03f5d" compoundref="opus__in__memory__loader_8cpp" startline="21" endline="70">openage::audio::OpusInMemoryLoader::get_resource</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/audio/audio_manager.cpp" line="17" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp" line="17" column="1"/>
   </compounddef>
 </doxygen>

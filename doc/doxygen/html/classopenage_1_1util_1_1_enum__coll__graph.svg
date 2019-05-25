@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 299)">
 <title>openage::util::Enum&lt; DerivedType &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-299 163,-299 163,4 -4,4"/>
-<!-- Node1 -->
-<g id="node1" class="node"><title>Node1</title>
+<!-- Node5 -->
+<g id="node1" class="node"><title>Node5</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-189.5 159,-189.5 159,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Enum</text>
@@ -33,8 +33,8 @@
 </a>
 </g>
 </g>
-<!-- Node2 -->
-<g id="node2" class="node"><title>Node2</title>
+<!-- Node6 -->
+<g id="node2" class="node"><title>Node6</title>
 <g id="a_node2"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="45,-237.5 45,-294.5 114,-294.5 114,-237.5 45,-237.5"/>
 <text text-anchor="middle" x="79.5" y="-282.5" font-family="Helvetica,sans-Serif" font-size="10.00">DerivedType</text>
@@ -45,8 +45,8 @@
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node1 -->
-<g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>
+<!-- Node6&#45;&gt;Node5 -->
+<g id="edge1" class="edge"><title>Node6&#45;&gt;Node5</title>
 <path fill="none" stroke="#404040" d="M79.5,-237.471C79.5,-227.231 79.5,-214.901 79.5,-201.844"/>
 <polygon fill="none" stroke="#404040" points="79.5001,-201.687 75.5,-195.687 79.5,-189.687 83.5,-195.687 79.5001,-201.687"/>
 <text text-anchor="middle" x="95" y="-211" font-family="Helvetica,sans-Serif" font-size="10.00"> #value</text>

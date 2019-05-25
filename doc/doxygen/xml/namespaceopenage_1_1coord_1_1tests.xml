@@ -15,13 +15,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coord_test.cpp" line="36" column="1" bodyfile="libopenage/coord/coord_test.cpp" bodystart="36" bodyend="90"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coord_test.cpp" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coord_test.cpp" bodystart="36" bodyend="90"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" compoundref="stringformatter_8h" startline="312" endline="315">openage::util::FString::reset</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">openage::UnitTexture::sample</referencedby>
+        <referencedby refid="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" compoundref="selection_8cpp" startline="331" endline="362">openage::tiles_in_range</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/coord/coord_test.cpp" line="12" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coord_test.cpp" line="12" column="1"/>
   </compounddef>
 </doxygen>

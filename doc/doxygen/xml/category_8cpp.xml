@@ -41,7 +41,7 @@
         </childnode>
       </node>
       <node id="304">
-        <label>libopenage/audio/category.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp</label>
         <link refid="category_8cpp"/>
         <childnode refid="305" relation="include">
         </childnode>
@@ -250,6 +250,6 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/category.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp"/>
   </compounddef>
 </doxygen>

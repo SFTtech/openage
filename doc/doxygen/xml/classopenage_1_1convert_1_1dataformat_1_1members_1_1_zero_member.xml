@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::members::ZeroMember</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.NumberMember</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1ad379a03fd796e58c4b51d0ccd1944d8e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.ZeroMember::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="326" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1a4bb50a3a2aea91c7a98d9671a3386fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ZeroMember.__init__</definition>
+        <argsstring>(self, raw_type, length=1)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1affbdd39c2c544f82875f65ed1837840b" kindref="member">raw_type</ref></type>
+          <defname>raw_type</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1ad379a03fd796e58c4b51d0ccd1944d8e" kindref="member">length</ref></type>
+          <defname>length</defname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="324" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="324" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1aa2d18ece0f269df3d8823dfe4ab880bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ZeroMember.verify_read_data</definition>
+        <argsstring>(self, obj, data)</argsstring>
+        <name>verify_read_data</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a8cc54e765c92a42b17dbe2786cfdef08">verify_read_data</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>obj</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>gets called for each entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>used to check for storage validity (e.g. 0 expected) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="328" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="328" bodyend="335"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1140">
+        <label>openage.convert.dataformat.members.ZeroMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member"/>
+        <childnode refid="1141" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1141">
+        <label>openage.convert.dataformat.members.NumberMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member"/>
+        <childnode refid="1142" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1142">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1143">
+        <label>openage.convert.dataformat.members.ZeroMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member"/>
+        <childnode refid="1144" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1144">
+        <label>openage.convert.dataformat.members.NumberMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member"/>
+        <childnode refid="1145" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1145">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="322" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="322" bodyend="336"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1a4bb50a3a2aea91c7a98d9671a3386fbc" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a460fd49b84ff2ba62e3c67418486f8ca" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::NumberMember."><scope>openage::convert::dataformat::members::ZeroMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1af93da463756c79f7fb06eb46898fd6c5" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DataMember."><scope>openage::convert::dataformat::members::ZeroMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1acebacec44c129380eab30beb999434eb" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ade5ee2745546cc6f70341b34958900cf" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>do_raw_read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a1d8cd7ab645eb4e99a36a3627021111f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>entry_hook</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a21171b4018d202687aff259ac8bdedb4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a27b0a04796782524796716eed105a9a4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aac3076daf9912b2241f0651797a8a506" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_empty_value</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1ae1554def5866507bb2a22a7e8eb1812e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a5020d135379031c1726d24343ab23310" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1af99a4c7a2f6bae6c07dfa914831eb8c2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_parsers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_struct_entries</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aa4968dab9239c251b3415aefcfa53ae1" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>get_typerefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1ad379a03fd796e58c4b51d0ccd1944d8e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a560151f3ad460070c406eaeddb3d46ec" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>number_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1affbdd39c2c544f82875f65ed1837840b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a8a80cc8cc673dbfc246312409daa426f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>type_scan_lookup</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member_1aa2d18ece0f269df3d8823dfe4ab880bf" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ZeroMember</scope><name>verify_read_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

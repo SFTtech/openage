@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiEngineImpl Class Reference</title>
+<title>openage: qtsdl::GuiEngineImpl Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -100,17 +101,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_engine_impl.xhtml',
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiEngineImpl:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl__inherit__graph.svg" width="176" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiEngineImpl:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl__inherit__graph.svg" width="176" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiEngineImpl:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiEngineImpl:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
@@ -201,7 +204,17 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    :</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    QObject{},</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">renderer</a>{},</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>{<a class="code" href="classqtsdl_1_1_gui_image_provider_impl.xhtml#a1cf6dfe2bc7558c22f3af638e0286cf1">GuiImageProviderImpl::take_ownership</a>(image_providers), singleton_items_info} {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    QThread *gui_thread = QCoreApplication::instance()-&gt;thread();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    this-&gt;moveToThread(gui_thread);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>.moveToThread(gui_thread);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a42567da87e28cbae9978f57330a23103">watcher</a>.moveToThread(gui_thread);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    assert(!this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>.incubationController());</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a5b83bd915fa9ce9bf9e36f26000143cc">attach_to</a>(<a class="code" href="classqtsdl_1_1_gui_renderer_impl.xhtml#a84a47f6f426e8f5342b656f76c023d82">GuiRendererImpl::impl</a>(<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">renderer</a>));</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QObject::connect(<span class="keyword">this</span>,</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                     &amp;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">GuiEngineImpl::rootDirsPathsChanged</a>,</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                     &amp;this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a42567da87e28cbae9978f57330a23103">watcher</a>,</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                     &amp;<a class="code" href="classqtsdl_1_1_recursive_directory_watcher.xhtml#aabc2911d48c9af1d435ccb894e216b0e">RecursiveDirectoryWatcher::rootDirsPathsChanged</a>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    QObject::connect(&amp;this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a42567da87e28cbae9978f57330a23103">watcher</a>,</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                     &amp;<a class="code" href="classqtsdl_1_1_recursive_directory_watcher.xhtml#a8023f71a72a9b22765d88d33cd71b237">RecursiveDirectoryWatcher::changeDetected</a>,</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                     <span class="keyword">this</span>,</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                     &amp;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a8a5e647f1df22a102c691e721dcc8f26">GuiEngineImpl::onReload</a>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_recursive_directory_watcher_xhtml_aabc2911d48c9af1d435ccb894e216b0e"><div class="ttname"><a href="classqtsdl_1_1_recursive_directory_watcher.xhtml#aabc2911d48c9af1d435ccb894e216b0e">qtsdl::RecursiveDirectoryWatcher::rootDirsPathsChanged</a></div><div class="ttdeci">void rootDirsPathsChanged(const QStringList &amp;)</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_renderer_impl_xhtml_a84a47f6f426e8f5342b656f76c023d82"><div class="ttname"><a href="classqtsdl_1_1_gui_renderer_impl.xhtml#a84a47f6f426e8f5342b656f76c023d82">qtsdl::GuiRendererImpl::impl</a></div><div class="ttdeci">static GuiRendererImpl * impl(GuiRenderer *renderer)</div><div class="ttdef"><b>Definition:</b> <a href="gui__renderer__impl_8cpp_source.xhtml#l00141">gui_renderer_impl.cpp:141</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a5b83bd915fa9ce9bf9e36f26000143cc"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a5b83bd915fa9ce9bf9e36f26000143cc">qtsdl::GuiEngineImpl::attach_to</a></div><div class="ttdeci">void attach_to(GuiRendererImpl *renderer)</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8cpp_source.xhtml#l00051">gui_engine_impl.cpp:51</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a8a5e647f1df22a102c691e721dcc8f26"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a8a5e647f1df22a102c691e721dcc8f26">qtsdl::GuiEngineImpl::onReload</a></div><div class="ttdeci">void onReload()</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8cpp_source.xhtml#l00060">gui_engine_impl.cpp:60</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a6c207f5585af640ff7b32e90c31c9508"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">qtsdl::GuiEngineImpl::engine</a></div><div class="ttdeci">QmlEngineWithSingletonItemsInfo engine</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00048">gui_engine_impl.h:48</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_image_provider_impl_xhtml_a1cf6dfe2bc7558c22f3af638e0286cf1"><div class="ttname"><a href="classqtsdl_1_1_gui_image_provider_impl.xhtml#a1cf6dfe2bc7558c22f3af638e0286cf1">qtsdl::GuiImageProviderImpl::take_ownership</a></div><div class="ttdeci">static std::unique_ptr&lt; GuiImageProviderImpl &gt; take_ownership(GuiImageProvider *image_provider)</div><div class="ttdef"><b>Definition:</b> <a href="gui__image__provider__impl_8cpp_source.xhtml#l00019">gui_image_provider_impl.cpp:19</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a3f9eb6dff849859000c60bc556c4c65c"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">qtsdl::GuiEngineImpl::rootDirsPathsChanged</a></div><div class="ttdeci">void rootDirsPathsChanged(const QStringList &amp;)</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a42567da87e28cbae9978f57330a23103"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a42567da87e28cbae9978f57330a23103">qtsdl::GuiEngineImpl::watcher</a></div><div class="ttdeci">RecursiveDirectoryWatcher watcher</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00049">gui_engine_impl.h:49</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_recursive_directory_watcher_xhtml_a8023f71a72a9b22765d88d33cd71b237"><div class="ttname"><a href="classqtsdl_1_1_recursive_directory_watcher.xhtml#a8023f71a72a9b22765d88d33cd71b237">qtsdl::RecursiveDirectoryWatcher::changeDetected</a></div><div class="ttdeci">void changeDetected()</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a420e7d89f9adfd52c422f058a8fdbe6b"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">qtsdl::GuiEngineImpl::renderer</a></div><div class="ttdeci">GuiRendererImpl * renderer</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00046">gui_engine_impl.h:46</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7b14a50a70e1bc615b38e618e011a899"></a>
@@ -228,7 +241,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                              {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -249,6 +262,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00066">66</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                  {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">root_dirs_paths</a>.push_back(root_dir_path);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    emit this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">rootDirsPathsChanged</a>(this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">root_dirs_paths</a>);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a3f9eb6dff849859000c60bc556c4c65c"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">qtsdl::GuiEngineImpl::rootDirsPathsChanged</a></div><div class="ttdeci">void rootDirsPathsChanged(const QStringList &amp;)</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a9e079732f149647eb9e47529e2cb7b67"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">qtsdl::GuiEngineImpl::root_dirs_paths</a></div><div class="ttdeci">QStringList root_dirs_paths</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00051">gui_engine_impl.h:51</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00051">root_dirs_paths</a>, and <a class="el" href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">rootDirsPathsChanged()</a>.</p>
 
 </div>
 </div>
@@ -277,6 +294,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                       {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">renderer</a> = <a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">renderer</a>;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>.setIncubationController(this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">renderer</a>-&gt;<a class="code" href="classqtsdl_1_1_gui_renderer_impl.xhtml#a6c76b7a4a79a481cf8962e268ae56bb4">get_window</a>()-&gt;incubationController());</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a6c207f5585af640ff7b32e90c31c9508"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">qtsdl::GuiEngineImpl::engine</a></div><div class="ttdeci">QmlEngineWithSingletonItemsInfo engine</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00048">gui_engine_impl.h:48</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_renderer_impl_xhtml_a6c76b7a4a79a481cf8962e268ae56bb4"><div class="ttname"><a href="classqtsdl_1_1_gui_renderer_impl.xhtml#a6c76b7a4a79a481cf8962e268ae56bb4">qtsdl::GuiRendererImpl::get_window</a></div><div class="ttdeci">EventHandlingQuickWindow * get_window()</div><div class="ttdef"><b>Definition:</b> <a href="gui__renderer__impl_8cpp_source.xhtml#l00240">gui_renderer_impl.cpp:240</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a420e7d89f9adfd52c422f058a8fdbe6b"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a420e7d89f9adfd52c422f058a8fdbe6b">qtsdl::GuiEngineImpl::renderer</a></div><div class="ttdeci">GuiRendererImpl * renderer</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00046">gui_engine_impl.h:46</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00048">engine</a>, <a class="el" href="gui__renderer__impl_8cpp_source.xhtml#l00240">qtsdl::GuiRendererImpl::get_window()</a>, and <a class="el" href="gui__engine__impl_8h_source.xhtml#l00046">renderer</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl_a5b83bd915fa9ce9bf9e36f26000143cc_cgraph.svg" width="356" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -296,6 +326,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00056">56</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                          {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a6c207f5585af640ff7b32e90c31c9508"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">qtsdl::GuiEngineImpl::engine</a></div><div class="ttdeci">QmlEngineWithSingletonItemsInfo engine</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00048">gui_engine_impl.h:48</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00048">engine</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__subtree__impl_8cpp_source.xhtml#l00111">qtsdl::GuiSubtreeImpl::attach_to()</a>, <a class="el" href="gui__subtree__impl_8cpp_source.xhtml#l00269">qtsdl::GuiEngineImplConnection::get_qml_engine()</a>, and <a class="el" href="gui__subtree__impl_8cpp_source.xhtml#l00263">qtsdl::GuiEngineImplConnection::rootContext()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl_af1dc911943688d3c296909af70dfc62e_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -324,6 +367,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                    {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>-&gt;impl.get();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a6c207f5585af640ff7b32e90c31c9508"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">qtsdl::GuiEngineImpl::engine</a></div><div class="ttdeci">QmlEngineWithSingletonItemsInfo engine</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00048">gui_engine_impl.h:48</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00048">engine</a>.</p>
 
 </div>
 </div>
@@ -351,6 +397,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                             {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    qDebug(<span class="stringliteral">&quot;reloading GUI&quot;</span>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">engine</a>.clearComponentCache();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    emit this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#ad57811cbb531486d7aadd98aedfdcf31">reload</a>();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a6c207f5585af640ff7b32e90c31c9508"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a6c207f5585af640ff7b32e90c31c9508">qtsdl::GuiEngineImpl::engine</a></div><div class="ttdeci">QmlEngineWithSingletonItemsInfo engine</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00048">gui_engine_impl.h:48</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_ad57811cbb531486d7aadd98aedfdcf31"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#ad57811cbb531486d7aadd98aedfdcf31">qtsdl::GuiEngineImpl::reload</a></div><div class="ttdeci">void reload()</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00048">engine</a>, and <a class="el" href="classqtsdl_1_1_gui_engine_impl.xhtml#ad57811cbb531486d7aadd98aedfdcf31">reload()</a>.</p>
 
 </div>
 </div>
@@ -377,6 +427,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="gui__subtree__impl_8cpp_source.xhtml#l00221">qtsdl::GuiEngineImplConnection::disconnect()</a>, and <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00060">onReload()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl_ad57811cbb531486d7aadd98aedfdcf31_icgraph.svg" width="663" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a7ad899a288943e1bd4266fee8fb79b30"></a>
@@ -396,6 +456,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00071">71</a> of file <a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                                     {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">root_dirs_paths</a>.removeOne(root_dir_path))</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        emit this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">rootDirsPathsChanged</a>(this-&gt;<a class="code" href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">root_dirs_paths</a>);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">else</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        qWarning() &lt;&lt; <span class="stringliteral">&quot;Failed to remove path watched by ReloadableQmlEngine.&quot;</span>;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a3f9eb6dff849859000c60bc556c4c65c"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">qtsdl::GuiEngineImpl::rootDirsPathsChanged</a></div><div class="ttdeci">void rootDirsPathsChanged(const QStringList &amp;)</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_engine_impl_xhtml_a9e079732f149647eb9e47529e2cb7b67"><div class="ttname"><a href="classqtsdl_1_1_gui_engine_impl.xhtml#a9e079732f149647eb9e47529e2cb7b67">qtsdl::GuiEngineImpl::root_dirs_paths</a></div><div class="ttdeci">QStringList root_dirs_paths</div><div class="ttdef"><b>Definition:</b> <a href="gui__engine__impl_8h_source.xhtml#l00051">gui_engine_impl.h:51</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__engine__impl_8h_source.xhtml#l00051">root_dirs_paths</a>, and <a class="el" href="classqtsdl_1_1_gui_engine_impl.xhtml#a3f9eb6dff849859000c60bc556c4c65c">rootDirsPathsChanged()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__subtree__impl_8cpp_source.xhtml#l00221">qtsdl::GuiEngineImplConnection::disconnect()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl_a7ad899a288943e1bd4266fee8fb79b30_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -423,6 +497,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00066">add_root_dir_path()</a>, and <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00071">remove_root_dir_path()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_engine_impl_a3f9eb6dff849859000c60bc556c4c65c_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -448,6 +532,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8h_source.xhtml#l00048">48</a> of file <a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00051">attach_to()</a>, <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00056">get_qml_engine()</a>, <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00047">impl()</a>, and <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00060">onReload()</a>.</p>
+
 </div>
 </div>
 <a id="a420e7d89f9adfd52c422f058a8fdbe6b"></a>
@@ -472,6 +558,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8h_source.xhtml#l00046">46</a> of file <a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00051">attach_to()</a>.</p>
+
 </div>
 </div>
 <a id="a9e079732f149647eb9e47529e2cb7b67"></a>
@@ -495,6 +583,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__engine__impl_8h_source.xhtml#l00051">51</a> of file <a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00066">add_root_dir_path()</a>, and <a class="el" href="gui__engine__impl_8cpp_source.xhtml#l00071">remove_root_dir_path()</a>.</p>
 
 </div>
 </div>
@@ -523,8 +613,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a></li>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__engine__impl_8h_source.xhtml">gui_engine_impl.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__engine__impl_8cpp_source.xhtml">gui_engine_impl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

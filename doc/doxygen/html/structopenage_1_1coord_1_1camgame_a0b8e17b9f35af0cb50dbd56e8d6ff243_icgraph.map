@@ -1,0 +1,14 @@
+<map id="openage::coord::camgame::to_phys3" name="openage::coord::camgame::to_phys3">
+<area shape="rect" id="node1" title=" " alt="" coords="848,100,1024,141"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="634,8,790,49"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1viewport.xhtml#ae8aa028a39351652937d97680ff11afd" title=" " alt="" coords="629,129,795,171"/>
+<area shape="rect" id="node8" href="$structopenage_1_1coord_1_1input.xhtml#a9eba1358725d529a26f871308794ab36" title=" " alt="" coords="420,71,567,112"/>
+<area shape="rect" id="node9" href="$structopenage_1_1coord_1_1camgame.xhtml#a323da0da625f2160938843dc8a248e6c" title=" " alt="" coords="624,195,800,236"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="415,5,571,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="208,35,363,76"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_editor_mode.xhtml#a1430647b024d4c9e7021756a6fa9700d" title=" " alt="" coords="213,129,358,171"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="5,163,160,204"/>
+<area shape="rect" id="node10" href="$structopenage_1_1coord_1_1viewport.xhtml#ad78ba1b1f9b64caa7b6eda78aaf7513a" title=" " alt="" coords="411,195,576,236"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_editor_mode.xhtml#a1f47d053e9c09aaf9bc6ec3a85f4a49e" title=" " alt="" coords="213,195,358,236"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" title=" " alt="" coords="209,261,362,287"/>
+</map>

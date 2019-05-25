@@ -172,7 +172,7 @@
         </childnode>
       </node>
       <node id="23227">
-        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp</label>
         <link refid="texture__info_8cpp"/>
         <childnode refid="23228" relation="include">
         </childnode>
@@ -422,7 +422,7 @@
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" kindref="member">subtextures</ref>[subid];</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>subtexture<sp/>requested:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>subid);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>subtexture<sp/>requested:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>subid);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" refkind="member"><highlight class="normal">std::pair&lt;int,<sp/>int&gt;<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" kindref="member">Texture2dInfo::get_subtexture_size</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>subid)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -442,6 +442,6 @@
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal">}}}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/resources/texture_info.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp"/>
   </compounddef>
 </doxygen>

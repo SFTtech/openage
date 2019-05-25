@@ -180,7 +180,7 @@
         <label>memory</label>
       </node>
       <node id="18320">
-        <label>libopenage/log/test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp</label>
         <link refid="test_8cpp"/>
         <childnode refid="18321" relation="include">
         </childnode>
@@ -264,18 +264,18 @@
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1tests_1_1_test_log_source" kindref="compound">TestLogSource</ref><sp/>logger;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1tests_1_1_test_log_sink" kindref="compound">TestLogSink</ref><sp/>sink{std::cout};</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/>1337<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;lol...&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(crit)<sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" kindref="member">util::sformat</ref>(</highlight><highlight class="stringliteral">&quot;wtf<sp/>%s<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">,<sp/>1337));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/>1337<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;lol...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" kindref="member">crit</ref>)<sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" kindref="member">util::sformat</ref>(</highlight><highlight class="stringliteral">&quot;wtf<sp/>%s<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">,<sp/>1337));</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::thread<sp/>t0([&amp;]()<sp/>{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>msg<sp/>comes<sp/>from<sp/>a<sp/>thread&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>msg<sp/>comes<sp/>from<sp/>a<sp/>thread&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::thread<sp/>t1([&amp;]()<sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>one,<sp/>too!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger.<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;this<sp/>one,<sp/>too!&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>m<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>m<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>);</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)<sp/>{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -288,6 +288,6 @@
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::log::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp"/>
   </compounddef>
 </doxygen>

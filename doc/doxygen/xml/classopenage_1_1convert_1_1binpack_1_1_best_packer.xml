@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1binpack_1_1_best_packer" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::binpack::BestPacker</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1aafd6bfbbbcbb262326c530a6a6fcc8ab" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BestPacker::packers</definition>
+        <argsstring></argsstring>
+        <name>packers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="107" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a94a5247cf3049d7b95b2937858d0db31" compoundref="binpack_8py" startline="116" endline="118">openage.convert.binpack.BestPacker.best_packer</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1abcdd32b9d135c030c8ce5042e4071cc2" compoundref="binpack_8py" startline="110" endline="115">openage.convert.binpack.BestPacker.pack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.BestPacker::current_best</definition>
+        <argsstring></argsstring>
+        <name>current_best</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a8d22836ef3fc3a4cd2175f2ec2d1ac5b" compoundref="binpack_8py" startline="125" endline="128">openage.convert.binpack.BestPacker.height</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1abcdd32b9d135c030c8ce5042e4071cc2" compoundref="binpack_8py" startline="110" endline="115">openage.convert.binpack.BestPacker.pack</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ade031f2ad3bb8386ffb000f44323ad19" compoundref="binpack_8py" startline="119" endline="121">openage.convert.binpack.BestPacker.pos</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a194969df56d5b8df837c4aae21ab9060" compoundref="binpack_8py" startline="122" endline="124">openage.convert.binpack.BestPacker.width</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a93752fad4fddfa93122c3ab659702a21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.__init__</definition>
+        <argsstring>(self, packers)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1aafd6bfbbbcbb262326c530a6a6fcc8ab" kindref="member">packers</ref></type>
+          <defname>packers</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1abcdd32b9d135c030c8ce5042e4071cc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.pack</definition>
+        <argsstring>(self, blocks)</argsstring>
+        <name>pack</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>blocks</type>
+          <defname>blocks</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="110" bodyend="115"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a94a5247cf3049d7b95b2937858d0db31" compoundref="binpack_8py" startline="116" endline="118">openage.convert.binpack.BestPacker.best_packer</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" compoundref="binpack_8py" startline="108">openage.convert.binpack.BestPacker.current_best</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1aafd6bfbbbcbb262326c530a6a6fcc8ab" compoundref="binpack_8py" startline="107">openage.convert.binpack.BestPacker.packers</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a94a5247cf3049d7b95b2937858d0db31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.best_packer</definition>
+        <argsstring>(self)</argsstring>
+        <name>best_packer</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="116" bodyend="118"/>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1aafd6bfbbbcbb262326c530a6a6fcc8ab" compoundref="binpack_8py" startline="107">openage.convert.binpack.BestPacker.packers</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1abcdd32b9d135c030c8ce5042e4071cc2" compoundref="binpack_8py" startline="110" endline="115">openage.convert.binpack.BestPacker.pack</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ade031f2ad3bb8386ffb000f44323ad19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.pos</definition>
+        <argsstring>(self, block)</argsstring>
+        <name>pos</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="119" bodyend="121"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" compoundref="binpack_8py" startline="108">openage.convert.binpack.BestPacker.current_best</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a194969df56d5b8df837c4aae21ab9060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.width</definition>
+        <argsstring>(self)</argsstring>
+        <name>width</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="122" bodyend="124"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" compoundref="binpack_8py" startline="108">openage.convert.binpack.BestPacker.current_best</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a8d22836ef3fc3a4cd2175f2ec2d1ac5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.BestPacker.height</definition>
+        <argsstring>(self)</argsstring>
+        <name>height</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="125" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="125" bodyend="128"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" compoundref="binpack_8py" startline="108">openage.convert.binpack.BestPacker.current_best</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Chooses the best result from all the given packers. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="900">
+        <label>openage.convert.binpack.BestPacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_best_packer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="104" bodyend="129"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a93752fad4fddfa93122c3ab659702a21" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a94a5247cf3049d7b95b2937858d0db31" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>best_packer</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ab80ec5d4b974f580f10a5d9eddb5d3f2" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>current_best</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a8d22836ef3fc3a4cd2175f2ec2d1ac5b" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1abcdd32b9d135c030c8ce5042e4071cc2" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>pack</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1aafd6bfbbbcbb262326c530a6a6fcc8ab" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>packers</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1ade031f2ad3bb8386ffb000f44323ad19" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>pos</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a194969df56d5b8df837c4aae21ab9060" prot="public" virt="non-virtual"><scope>openage::convert::binpack::BestPacker</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

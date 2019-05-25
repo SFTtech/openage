@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="27" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="27" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/renderer.h" line="30" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="30" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -40,24 +40,24 @@
 <para>The abstract base for uniform input. Besides the uniform values, it stores information about which shader program the input was created for. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4685">
+      <node id="4802">
         <label>openage::renderer::opengl::GlUniformInput</label>
         <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input"/>
-        <childnode refid="4684" relation="public-inheritance">
+        <childnode refid="4801" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4684">
+      <node id="4801">
         <label>openage::renderer::UniformInput</label>
         <link refid="classopenage_1_1renderer_1_1_uniform_input"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4686">
+      <node id="4803">
         <label>openage::renderer::UniformInput</label>
         <link refid="classopenage_1_1renderer_1_1_uniform_input"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/renderer.h" line="25" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="25" bodyend="31"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" bodystart="25" bodyend="31"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_uniform_input_1a3c7e477dbf6cd9b9b9fbab45b74b2c09" prot="protected" virt="non-virtual"><scope>openage::renderer::UniformInput</scope><name>UniformInput</name></member>
       <member refid="classopenage_1_1renderer_1_1_uniform_input_1a1bdfe9c4ec49986945d723af728c1b7f" prot="public" virt="virtual"><scope>openage::renderer::UniformInput</scope><name>~UniformInput</name></member>

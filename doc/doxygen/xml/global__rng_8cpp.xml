@@ -7,7 +7,7 @@
     <includes local="no">mutex</includes>
     <incdepgraph>
       <node id="23797">
-        <label>libopenage/rng/global_rng.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp</label>
         <link refid="global__rng_8cpp"/>
         <childnode refid="23798" relation="include">
         </childnode>
@@ -84,6 +84,6 @@
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>rng::openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/rng/global_rng.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/global_rng.cpp"/>
   </compounddef>
 </doxygen>

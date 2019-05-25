@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::interface::cutter::InterfaceCutter</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a6342769433332464f148da5f845bfda6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.interface.cutter.InterfaceCutter::idx</definition>
+        <argsstring></argsstring>
+        <name>idx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1ad9a6e6566a8ce6f24c07f113cd0a25d4" compoundref="cutter_8py" startline="29" endline="50">openage.convert.interface.cutter.InterfaceCutter.cut</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a79befec37ca6091cd38590c99ecc61fd" compoundref="cutter_8py" startline="61" endline="81">openage.convert.interface.cutter.InterfaceCutter.cut_strip</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a88d38f00c278bfe3dfed3d7a041d93ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.cutter.InterfaceCutter.__init__</definition>
+        <argsstring>(self, idx)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a6342769433332464f148da5f845bfda6" kindref="member">idx</ref></type>
+          <defname>idx</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1ad9a6e6566a8ce6f24c07f113cd0a25d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.cutter.InterfaceCutter.cut</definition>
+        <argsstring>(self, image)</argsstring>
+        <name>cut</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>image</type>
+          <defname>image</defname>
+        </param>
+        <briefdescription>
+<para>Create subtextures by searching for patterns at hardcoded positions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" bodystart="29" bodyend="50"/>
+        <references refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a79befec37ca6091cd38590c99ecc61fd" compoundref="cutter_8py" startline="61" endline="81">openage.convert.interface.cutter.InterfaceCutter.cut_strip</references>
+        <references refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a6342769433332464f148da5f845bfda6" compoundref="cutter_8py" startline="24">openage.convert.interface.cutter.InterfaceCutter.idx</references>
+        <references refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1a49ae0770cb58dbbc88f900581e13444d" compoundref="event_2tests_8cpp" startline="76">openage::event::tests::TestEventClass::idx</references>
+        <references refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a14220af93f607567195b1ad3617d64cc" compoundref="hardcoded_8py" startline="62" endline="64">openage.convert.interface.hardcoded.is_ingame_hud_background</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a79befec37ca6091cd38590c99ecc61fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.cutter.InterfaceCutter.cut_strip</definition>
+        <argsstring>(self, img_array, pattern_corners, search_area_corners)</argsstring>
+        <name>cut_strip</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>img_array</type>
+          <defname>img_array</defname>
+        </param>
+        <param>
+          <type>pattern_corners</type>
+          <defname>pattern_corners</defname>
+        </param>
+        <param>
+          <type>search_area_corners</type>
+          <defname>search_area_corners</defname>
+        </param>
+        <briefdescription>
+<para>Finds a horizontally tilable piece of the strip (ex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>the top of the HUD). <verbatim>   ||----///////////-------------///////////-------------///////////-------------///////////||
+             ^      pattern_corners     ^                    ^  where it is found last  ^
+             ^           this piece is tileable              ^
+
+   so, cut out a subtexture:
+             ///////-------------///////////-------------////
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" bodystart="61" bodyend="81"/>
+        <references refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a6342769433332464f148da5f845bfda6" compoundref="cutter_8py" startline="24">openage.convert.interface.cutter.InterfaceCutter.idx</references>
+        <references refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1a49ae0770cb58dbbc88f900581e13444d" compoundref="event_2tests_8cpp" startline="76">openage::event::tests::TestEventClass::idx</references>
+        <referencedby refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1ad9a6e6566a8ce6f24c07f113cd0a25d4" compoundref="cutter_8py" startline="29" endline="50">openage.convert.interface.cutter.InterfaceCutter.cut</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Cuts interface textures into repeatable parts. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1509">
+        <label>openage.convert.interface.cutter.InterfaceCutter</label>
+        <link refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" bodystart="21" bodyend="81"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a88d38f00c278bfe3dfed3d7a041d93ba" prot="public" virt="non-virtual"><scope>openage::convert::interface::cutter::InterfaceCutter</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1ad9a6e6566a8ce6f24c07f113cd0a25d4" prot="public" virt="non-virtual"><scope>openage::convert::interface::cutter::InterfaceCutter</scope><name>cut</name></member>
+      <member refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a79befec37ca6091cd38590c99ecc61fd" prot="public" virt="non-virtual"><scope>openage::convert::interface::cutter::InterfaceCutter</scope><name>cut_strip</name></member>
+      <member refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1a6342769433332464f148da5f845bfda6" prot="public" virt="non-virtual"><scope>openage::convert::interface::cutter::InterfaceCutter</scope><name>idx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

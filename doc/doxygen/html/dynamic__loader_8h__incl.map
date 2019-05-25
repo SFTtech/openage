@@ -1,45 +1,45 @@
-<map id="libopenage/audio/dynamic_loader.h" name="libopenage/audio/dynamic_loader.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1343,5,1515,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="849,767,919,793"/>
-<area shape="rect" id="node3" title=" " alt="" coords="866,916,921,943"/>
-<area shape="rect" id="node4" href="$format_8h.xhtml" title=" " alt="" coords="1729,95,1799,121"/>
-<area shape="rect" id="node6" href="$audio_2types_8h.xhtml" title=" " alt="" coords="519,692,585,719"/>
-<area shape="rect" id="node9" href="$util_2path_8h.xhtml" title=" " alt="" coords="1384,95,1475,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1729,169,1799,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="423,767,500,793"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1116,767,1172,793"/>
-<area shape="rect" id="node10" href="$pyobject_8h.xhtml" title=" " alt="" coords="1138,244,1299,271"/>
-<area shape="rect" id="node41" href="$file_8h.xhtml" title=" " alt="" coords="1405,169,1454,196"/>
-<area shape="rect" id="node43" href="$fslike_2native_8h.xhtml" title=" " alt="" coords="1281,169,1381,196"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1188,617,1249,644"/>
-<area shape="rect" id="node12" href="$defs_8h.xhtml" title=" " alt="" coords="1123,319,1181,345"/>
-<area shape="rect" id="node13" href="$functional_8h.xhtml" title=" " alt="" coords="511,319,599,345"/>
-<area shape="rect" id="node14" title=" " alt="" coords="937,692,996,719"/>
-<area shape="rect" id="node15" href="$compiler_8h.xhtml" title=" " alt="" coords="39,841,153,868"/>
-<area shape="rect" id="node18" href="$language_8h.xhtml" title=" " alt="" coords="495,393,614,420"/>
-<area shape="rect" id="node19" href="$exctranslate_8h.xhtml" title=" " alt="" coords="900,393,1004,420"/>
-<area shape="rect" id="node40" href="$setup_8h.xhtml" title=" " alt="" coords="79,692,145,719"/>
-<area shape="rect" id="node16" title=" " alt="" coords="120,916,187,943"/>
-<area shape="rect" id="node17" href="$signal_8h.xhtml" title=" " alt="" coords="5,916,72,943"/>
-<area shape="rect" id="node20" href="$error_2error_8h.xhtml" title=" " alt="" coords="953,468,1055,495"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1043,841,1115,868"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1042,543,1121,569"/>
-<area shape="rect" id="node23" href="$message_8h.xhtml" title=" " alt="" coords="847,543,966,569"/>
-<area shape="rect" id="node24" title=" " alt="" coords="847,617,913,644"/>
-<area shape="rect" id="node25" href="$constexpr_8h.xhtml" title=" " alt="" coords="649,617,772,644"/>
-<area shape="rect" id="node27" href="$stringformatter_8h.xhtml" title=" " alt="" coords="476,617,625,644"/>
-<area shape="rect" id="node35" href="$logsink_8h.xhtml" title=" " alt="" coords="937,617,1012,644"/>
-<area shape="rect" id="node37" href="$level_8h.xhtml" title=" " alt="" coords="1084,692,1143,719"/>
-<area shape="rect" id="node26" title=" " alt="" coords="853,692,913,719"/>
-<area shape="rect" id="node28" title=" " alt="" coords="660,692,721,719"/>
-<area shape="rect" id="node29" title=" " alt="" coords="745,692,828,719"/>
-<area shape="rect" id="node30" href="$externalsstream_8h.xhtml" title=" " alt="" coords="271,767,398,793"/>
-<area shape="rect" id="node31" href="$strings_8h.xhtml" title=" " alt="" coords="372,692,444,719"/>
-<area shape="rect" id="node32" title=" " alt="" coords="669,767,734,793"/>
-<area shape="rect" id="node33" title=" " alt="" coords="759,767,825,793"/>
-<area shape="rect" id="node34" title=" " alt="" coords="575,767,644,793"/>
-<area shape="rect" id="node36" title=" " alt="" coords="1021,692,1059,719"/>
-<area shape="rect" id="node38" href="$enum_8h.xhtml" title=" " alt="" coords="943,767,1041,793"/>
-<area shape="rect" id="node39" title=" " alt="" coords="952,841,1019,868"/>
-<area shape="rect" id="node42" href="$filelike_8h.xhtml" title=" " alt="" coords="1196,767,1305,793"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/dynamic_loader.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/dynamic_loader.h">
+<area shape="rect" id="node1" title=" " alt="" coords="1325,5,1534,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="849,781,919,808"/>
+<area shape="rect" id="node3" title=" " alt="" coords="866,931,921,957"/>
+<area shape="rect" id="node4" href="$format_8h.xhtml" title=" " alt="" coords="1729,109,1799,136"/>
+<area shape="rect" id="node6" href="$audio_2types_8h.xhtml" title=" " alt="" coords="519,707,585,733"/>
+<area shape="rect" id="node9" href="$util_2path_8h.xhtml" title=" " alt="" coords="1384,109,1475,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1729,184,1799,211"/>
+<area shape="rect" id="node7" title=" " alt="" coords="423,781,500,808"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1116,781,1172,808"/>
+<area shape="rect" id="node10" href="$pyobject_8h.xhtml" title=" " alt="" coords="1138,259,1299,285"/>
+<area shape="rect" id="node41" href="$file_8h.xhtml" title=" " alt="" coords="1405,184,1454,211"/>
+<area shape="rect" id="node43" href="$fslike_2native_8h.xhtml" title=" " alt="" coords="1281,184,1381,211"/>
+<area shape="rect" id="node11" title=" " alt="" coords="1188,632,1249,659"/>
+<area shape="rect" id="node12" href="$defs_8h.xhtml" title=" " alt="" coords="1123,333,1181,360"/>
+<area shape="rect" id="node13" href="$functional_8h.xhtml" title=" " alt="" coords="511,333,599,360"/>
+<area shape="rect" id="node14" title=" " alt="" coords="937,707,996,733"/>
+<area shape="rect" id="node15" href="$compiler_8h.xhtml" title=" " alt="" coords="39,856,153,883"/>
+<area shape="rect" id="node18" href="$language_8h.xhtml" title=" " alt="" coords="495,408,614,435"/>
+<area shape="rect" id="node19" href="$exctranslate_8h.xhtml" title=" " alt="" coords="900,408,1004,435"/>
+<area shape="rect" id="node40" href="$setup_8h.xhtml" title=" " alt="" coords="79,707,145,733"/>
+<area shape="rect" id="node16" title=" " alt="" coords="120,931,187,957"/>
+<area shape="rect" id="node17" href="$signal_8h.xhtml" title=" " alt="" coords="5,931,72,957"/>
+<area shape="rect" id="node20" href="$error_2error_8h.xhtml" title=" " alt="" coords="953,483,1055,509"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1043,856,1115,883"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1042,557,1121,584"/>
+<area shape="rect" id="node23" href="$message_8h.xhtml" title=" " alt="" coords="847,557,966,584"/>
+<area shape="rect" id="node24" title=" " alt="" coords="847,632,913,659"/>
+<area shape="rect" id="node25" href="$constexpr_8h.xhtml" title=" " alt="" coords="649,632,772,659"/>
+<area shape="rect" id="node27" href="$stringformatter_8h.xhtml" title=" " alt="" coords="476,632,625,659"/>
+<area shape="rect" id="node35" href="$logsink_8h.xhtml" title=" " alt="" coords="937,632,1012,659"/>
+<area shape="rect" id="node37" href="$level_8h.xhtml" title=" " alt="" coords="1084,707,1143,733"/>
+<area shape="rect" id="node26" title=" " alt="" coords="853,707,913,733"/>
+<area shape="rect" id="node28" title=" " alt="" coords="660,707,721,733"/>
+<area shape="rect" id="node29" title=" " alt="" coords="745,707,828,733"/>
+<area shape="rect" id="node30" href="$externalsstream_8h.xhtml" title=" " alt="" coords="271,781,398,808"/>
+<area shape="rect" id="node31" href="$strings_8h.xhtml" title=" " alt="" coords="372,707,444,733"/>
+<area shape="rect" id="node32" title=" " alt="" coords="669,781,734,808"/>
+<area shape="rect" id="node33" title=" " alt="" coords="759,781,825,808"/>
+<area shape="rect" id="node34" title=" " alt="" coords="575,781,644,808"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1021,707,1059,733"/>
+<area shape="rect" id="node38" href="$enum_8h.xhtml" title=" " alt="" coords="943,781,1041,808"/>
+<area shape="rect" id="node39" title=" " alt="" coords="952,856,1019,883"/>
+<area shape="rect" id="node42" href="$filelike_8h.xhtml" title=" " alt="" coords="1196,781,1305,808"/>
 </map>

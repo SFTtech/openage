@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.fslike.filecollection.FileCollection Class Reference</title>
+<title>openage: openage.util.fslike.filecollection.FileCollection Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1fslike_1_1file
 
 <p>FSLikeObject that holds several individual files.  
  <a href="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.util.fslike.filecollection.FileCollection:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.fslike.filecollection.FileCollection:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.fslike.filecollection.FileCollection:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.fslike.filecollection.FileCollection:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -217,7 +220,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00023">23</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment"># stores lambdas to access the files</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment"># {name: open_r, open_w, size, mtime}, {name: subdir}</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        self.rootentries = OrderedDict(), OrderedDict()</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    @property</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">def </span>root(self):</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -260,6 +263,16 @@ Public Attributes</h2></td></tr>
    fileentry must be open_r, open_w, size, mtime.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00070">70</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(<span class="stringliteral">&quot;FileCollection.root is a directory&quot;</span>)</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        entries = self.get_direntries(parts[:-1], create=<span class="keyword">True</span>)</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        name = parts[-1]</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">in</span> entries[1]:</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(b<span class="stringliteral">&quot;/&quot;</span>.join(parts))</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        entries[0][name] = fileentry</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">def </span>get_fileentry(self, parts):</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a28fd0619554d60027e2e2bf0568e2d4c_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -292,6 +305,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a4d5b4fb1a16c90393da7eda7525c8789">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00128">128</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span> filesize <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">return</span> filesize()</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">def </span>mtime(self, parts):</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        _, _, _, mtime = self.get_fileentry(parts)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_abb7acc5e29787c2826c467ce0111eaca_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -334,6 +357,18 @@ Public Attributes</h2></td></tr>
    Helper method for internal use.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00042">42</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            parts = []</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        entries = self.rootentries</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> idx, subdir <span class="keywordflow">in</span> enumerate(parts):</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> subdir <span class="keywordflow">not</span> <span class="keywordflow">in</span> entries[1]:</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> create:</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <span class="keywordflow">if</span> subdir <span class="keywordflow">in</span> entries[0]:</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <span class="keywordflow">raise</span> FileExistsError(b<span class="stringliteral">&quot;/&quot;</span>.join(parts[:idx + 1]))</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    entries[1][subdir] = OrderedDict(), OrderedDict()</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">else</span>:</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <span class="keywordflow">raise</span> FileNotFoundError(</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <span class="stringliteral">&quot;No such directory: &quot;</span> +</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        b<span class="stringliteral">&quot;/&quot;</span>.join(parts[:idx + 1]).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            entries = entries[1][subdir]</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> entries</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">def </span>add_fileentry(self, parts, fileentry):</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00028">openage.util.fslike.filecollection.FileCollection.rootentries</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="filecollection_8py_source.xhtml#l00070">openage.util.fslike.filecollection.FileCollection.add_fileentry()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00196">openage.util.fslike.filecollection.FileCollection.is_dir()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00122">openage.util.fslike.filecollection.FileCollection.list()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00144">openage.util.fslike.filecollection.FileCollection.mkdirs()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00147">openage.util.fslike.filecollection.FileCollection.rmdir()</a>, and <a class="el" href="filecollection_8py_source.xhtml#l00168">openage.util.fslike.filecollection.FileCollection.unlink()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a236b83a25d5f87c98604b37597c2baf9_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -367,6 +402,26 @@ Public Attributes</h2></td></tr>
 <p>Helper method for internal use. </p><pre class="fragment">   Returns open_r, open_w, size, mtime
 </pre> 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00087">87</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="stringliteral">&quot;FileCollection.root is a directory&quot;</span>)</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        entries = self.get_direntries(parts[:-1])</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        name = parts[-1]</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">in</span> entries[1]:</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(b<span class="stringliteral">&quot;/&quot;</span>.join(parts))</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">not</span> <span class="keywordflow">in</span> entries[0]:</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&quot;/&quot;</span>.join(parts))</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> entries[0][name]</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">def </span>open_r(self, parts):</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        open_r, _, _, _ = self.get_fileentry(parts)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="filecollection_8py_source.xhtml#l00128">openage.util.fslike.filecollection.FileCollection.filesize()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00189">openage.util.fslike.filecollection.FileCollection.is_file()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00136">openage.util.fslike.filecollection.FileCollection.mtime()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00104">openage.util.fslike.filecollection.FileCollection.open_r()</a>, <a class="el" href="filecollection_8py_source.xhtml#l00114">openage.util.fslike.filecollection.FileCollection.open_w()</a>, and <a class="el" href="filecollection_8py_source.xhtml#l00203">openage.util.fslike.filecollection.FileCollection.writable()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_ab46de614c539e3beed2affa49fd09779_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_ab46de614c539e3beed2affa49fd09779_icgraph.svg" width="470" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -399,6 +454,26 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a336d8d1597189253f24703641c7fd436">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00196">196</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            self.get_direntries(parts)</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">except</span> IOError:</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">def </span>writable(self, parts):</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">try</span>:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00229">openage.util.fslike.path.Path.removerecursive()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_aa840106df09c378f09ce7fcc83ef9192_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_aa840106df09c378f09ce7fcc83ef9192_icgraph.svg" width="423" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -431,6 +506,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#af973fe09db18f1f04474fab94da350c5">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00189">189</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            self.get_fileentry(parts)</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">except</span> IOError:</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">def </span>is_dir(self, parts):</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">try</span>:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_aa67dc8d355a1c053942b3a375fc1985c_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -465,6 +550,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a81c203eb78e5823ce410f845c1c17aee">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00122">122</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">yield</span> <span class="keyword">from</span> subdirs</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">yield</span> <span class="keyword">from</span> fileentries</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">def </span>filesize(self, parts):</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        _, _, filesize, _ = self.get_fileentry(parts)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a72c5cfc08a9a21cfdea7170e575b67c9_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -499,6 +594,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a18afc9774e36ec8e17d67eaad2f7aa69">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00144">144</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">def </span>rmdir(self, parts):</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> parts:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a52f309a6859078d8e0abe44327476e31_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -531,6 +636,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a230d244732d46d5fabcec7638f3757c9">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00136">136</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">if</span> mtime <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span> mtime()</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">def </span>mkdirs(self, parts):</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        self.get_direntries(parts, create=<span class="keyword">True</span>)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a732ece4991737e5dd9ea2a4961a899ca_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -565,6 +680,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a7eb9f9c28532ad799503acfd424dee7c">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00104">104</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> open_r <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">raise</span> UnsupportedOperation(</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="stringliteral">&quot;not readable: &quot;</span> +</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                b<span class="stringliteral">&quot;/&quot;</span>.join(parts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> open_r()</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">def </span>open_w(self, parts):</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        _, open_w, _, _ = self.get_fileentry(parts)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_aa7aa810fd31b2ab2290b57b3c8c3c123_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -599,6 +724,17 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a446d488c2bf95097706a467c93c4f973">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00114">114</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> open_w <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">raise</span> UnsupportedOperation(</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="stringliteral">&quot;not writable: &quot;</span> +</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                b<span class="stringliteral">&quot;/&quot;</span>.join(parts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(self, parts):</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        fileentries, subdirs = self.get_direntries(parts)</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a4e32318feb8203a576433ef955b3883d_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -621,7 +757,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a19ace3ca4d2ef770c421e5790968f60a">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00216">216</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">class </span>FileCollectionPath(Path):</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="a717813dafeb60e3ba8c92c70c36b6985"></a>
@@ -661,7 +797,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a66554d4fda1edd835b6fa692ef16cc5b">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00186">186</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">def </span>is_file(self, parts):</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">try</span>:</div></div><!-- fragment -->
 </div>
 </div>
 <a id="afd7d5108b06dfc0b5f52d50fc58b9671"></a>
@@ -695,6 +831,26 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a6358bbae487c06aaccc7cbede61a2954">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00147">147</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">raise</span> UnsupportedOperation(<span class="stringliteral">&quot;can&#39;t rmdir FileCollection.root&quot;</span>)</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        parent_files, parent_dirs = self.get_direntries(parts[:-1])</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        name = parts[-1]</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">in</span> parent_files:</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">raise</span> NotADirectoryError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">try</span>:</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            files, subdirs = parent_dirs[name]</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">except</span> KeyError:</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts)) <span class="keyword">from</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> files <span class="keywordflow">or</span> subdirs:</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">raise</span> IOError(<span class="stringliteral">&quot;Directory not empty: &quot;</span> +</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                          b<span class="stringliteral">&#39;/&#39;</span>.join(parts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        del parent_dirs[name]</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">def </span>unlink(self, parts):</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> parts:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00229">openage.util.fslike.path.Path.removerecursive()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_afd7d5108b06dfc0b5f52d50fc58b9671_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_afd7d5108b06dfc0b5f52d50fc58b9671_icgraph.svg" width="423" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -720,7 +876,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a04bffeae7754d2f18fc374b4c656633e">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00031">31</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">def </span>get_direntries(self, parts=None, create=False):</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="a76a84ca7fe498a12a5cb8c2dd5caadb4"></a>
@@ -754,7 +910,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a7010b622bd45a905fa68a8fc8942ced3">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00183">183</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keyword">def </span>rename(self, srcparts, tgtparts):</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">raise</span> UnsupportedOperation(<span class="stringliteral">&quot;FileCollection.rename&quot;</span>)</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a289137f3b7c3813e05d87e89bad9e893"></a>
@@ -788,6 +944,26 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a50009b666fb9e32369df9cadc3fc2de5">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00168">168</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(<span class="stringliteral">&quot;FileCollection.root&quot;</span>)</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        parent_files, parent_dirs = self.get_direntries(parts[:-1])</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        name = parts[-1]</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">in</span> parent_dirs:</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">raise</span> IsADirectoryError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">try</span>:</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            del parent_files[name]</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">except</span> KeyError:</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts)) <span class="keyword">from</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">def </span>touch(self, parts):</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">raise</span> UnsupportedOperation(<span class="stringliteral">&quot;FileCollection.touch&quot;</span>)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="path_8py_source.xhtml#l00229">openage.util.fslike.path.Path.removerecursive()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a289137f3b7c3813e05d87e89bad9e893_cgraph.svg" width="470" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_a289137f3b7c3813e05d87e89bad9e893_icgraph.svg" width="423" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -826,7 +1002,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a531d4b17f9b239772a6de4d315cd9ddf">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00212">212</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keyword">def </span>poll_watches(self):</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        del self  <span class="comment"># unused</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="ab6065913c8c25261d0f71cc222483fb1"></a>
@@ -858,6 +1034,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#aba8782dfa670c2368980eccca0b8c8dc">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00203">203</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            _, open_w, _, _ = self.get_fileentry(parts)</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> open_w <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">except</span> IOError:</div><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="comment"># generally, directories are not writable,</span></div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="comment"># though some of the existing files inside might be.</span></div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keyword">def </span>watch(self, parts, callback):</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        del self, parts, callback  <span class="comment"># unused</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="filecollection_8py_source.xhtml#l00087">openage.util.fslike.filecollection.FileCollection.get_fileentry()</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_ab6065913c8c25261d0f71cc222483fb1_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -876,10 +1062,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="filecollection_8py_source.xhtml#l00028">28</a> of file <a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="filecollection_8py_source.xhtml#l00042">openage.util.fslike.filecollection.FileCollection.get_direntries()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/fslike/<a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/<a class="el" href="filecollection_8py_source.xhtml">filecollection.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

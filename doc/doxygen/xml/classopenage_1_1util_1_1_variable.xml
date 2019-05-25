@@ -25,7 +25,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/variable.h" line="49" column="1" bodyfile="libopenage/util/variable.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" compoundref="profiler_8cpp" startline="194" endline="200">openage::util::Profiler::engine_in_debug_mode</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_variable_1aa25af78b5870a920fb9a2ea04173881b" compoundref="variable_8h" startline="38" endline="40">openage::util::Variable&lt; bool &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_variable_1a572624d736175eba6d85c461fe2a430f" compoundref="variable_8h" startline="42" endline="44">openage::util::Variable&lt; bool &gt;::set</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -44,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/variable.h" line="33" column="1" bodyfile="libopenage/util/variable.h" bodystart="33" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_variable_1aa25af78b5870a920fb9a2ea04173881b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const T &amp;</type>
@@ -57,7 +63,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/variable.h" line="38" column="1" bodyfile="libopenage/util/variable.h" bodystart="38" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" bodystart="38" bodyend="40"/>
+        <referencedby refid="classopenage_1_1util_1_1_variable_base_1a2fc1503a41c5e241e6c2af106115bf82" compoundref="variable_8h" startline="54" endline="56">openage::util::VariableBase::get</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_variable_1a572624d736175eba6d85c461fe2a430f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -74,7 +81,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/variable.h" line="42" column="1" bodyfile="libopenage/util/variable.h" bodystart="42" bodyend="44"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" bodystart="42" bodyend="44"/>
+        <referencedby refid="classopenage_1_1util_1_1_variable_base_1a1acb662ac94f35aed9b2ecd6d3f1ddfe" compoundref="variable_8h" startline="59" endline="61">openage::util::VariableBase::set</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -82,42 +90,58 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4918">
+      <node id="6124">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4919">
-        <label>openage::options::Var&lt; T &gt;</label>
-        <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="4917" relation="public-inheritance">
+      <node id="6127">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="6123" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4917">
+      <node id="6125">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="6123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6126">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="6125" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6123">
         <label>openage::util::Variable&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4918" relation="public-inheritance">
+        <childnode refid="6124" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4921">
+      <node id="6129">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4922">
+      <node id="6130">
         <label>T</label>
       </node>
-      <node id="4920">
+      <node id="6128">
         <label>openage::util::Variable&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4921" relation="public-inheritance">
+        <childnode refid="6129" relation="public-inheritance">
         </childnode>
-        <childnode refid="4922" relation="usage">
+        <childnode refid="6130" relation="usage">
           <edgelabel>+value</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/variable.h" line="31" column="1" bodyfile="libopenage/util/variable.h" bodystart="31" bodyend="50"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/variable.h" bodystart="31" bodyend="50"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_variable_1aa25af78b5870a920fb9a2ea04173881b" prot="public" virt="non-virtual"><scope>openage::util::Variable</scope><name>get</name></member>
       <member refid="classopenage_1_1util_1_1_variable_1a572624d736175eba6d85c461fe2a430f" prot="public" virt="non-virtual"><scope>openage::util::Variable</scope><name>set</name></member>

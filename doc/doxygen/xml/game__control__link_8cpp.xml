@@ -1179,7 +1179,7 @@
         <label>climits</label>
       </node>
       <node id="11506">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
         <childnode refid="11507" relation="include">
         </childnode>
@@ -1612,9 +1612,9 @@
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" kindref="member">buttons_type_changed</ref>(buttons_type);</highlight></codeline>
 <codeline lineno="133"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135" refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" kindref="member">ActionModeLink::on_population_changed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>warn)<sp/>{</highlight></codeline>
+<codeline lineno="135" refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" kindref="member">ActionModeLink::on_population_changed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>demand,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" kindref="member">population</ref><sp/>=<sp/>QString::number(demand)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/>QString::number(capacity);</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" kindref="member">population_warn</ref><sp/>=<sp/>warn;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" kindref="member">population_warn</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1a6ea3f5513ed884b7b1f16bf9cf08dff6" kindref="member">population_changed</ref>();</highlight></codeline>
 <codeline lineno="139"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
@@ -1844,6 +1844,6 @@
 <codeline lineno="364"><highlight class="normal"></highlight></codeline>
 <codeline lineno="365"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_control_link.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp"/>
   </compounddef>
 </doxygen>

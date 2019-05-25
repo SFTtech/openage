@@ -1082,7 +1082,7 @@
         <label>chrono</label>
       </node>
       <node id="9150">
-        <label>libopenage/gamestate/game_main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp</label>
         <link refid="game__main_8cpp"/>
         <childnode refid="9151" relation="include">
         </childnode>
@@ -1457,6 +1457,6 @@
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/game_main.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp"/>
   </compounddef>
 </doxygen>

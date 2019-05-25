@@ -1,0 +1,9 @@
+<map id="openage::ResearchAction::update" name="openage::ResearchAction::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,122,176,163"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_research.xhtml#a51f059ce7313e37d3848481309b1dbd4" title=" " alt="" coords="228,57,371,98"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_research.xhtml#a856a40cfbef178effe2753a2348280d9" title=" " alt="" coords="228,122,371,163"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_interval_timer.xhtml#acb51f379d7d73ad7fff1197f9fa2335b" title=" " alt="" coords="224,187,375,229"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_player.xhtml#ab5854d681fef5b4a8327097c8ea19bbe" title=" " alt="" coords="423,5,621,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_research_type.xhtml#af58948dd42b8d8a97233d2fdd9885e83" title=" " alt="" coords="441,57,603,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_research_type.xhtml#a76a5bd220674135f0bf93eed3f1bce92" title=" " alt="" coords="441,122,603,163"/>
+</map>

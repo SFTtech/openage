@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/test.cpp" line="33" column="1" bodyfile="libopenage/log/test.cpp" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1adaecb1ed2e32bd8d55abbff37e256e4d" compoundref="test_8cpp" startline="29" endline="31">TestLogSink</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +35,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/test.cpp" line="29" column="1" bodyfile="libopenage/log/test.cpp" bodystart="29" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="29" bodyend="31"/>
+        <references refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a3374ed52f02a321dad15e50fd5cf8342" compoundref="test_8cpp" startline="33">os</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -56,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/test.cpp" line="35" column="1" bodyfile="libopenage/log/test.cpp" bodystart="35" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="35" bodyend="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,59 +66,85 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4418">
+      <node id="4085">
         <label>openage::log::LogSink</label>
         <link refid="classopenage_1_1log_1_1_log_sink"/>
       </node>
-      <node id="4417">
+      <node id="4084">
         <label>openage::log::tests::TestLogSink</label>
         <link refid="classopenage_1_1log_1_1tests_1_1_test_log_sink"/>
-        <childnode refid="4418" relation="public-inheritance">
+        <childnode refid="4085" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4420">
+      <node id="4092">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4093" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="4093">
+        <label>NumericType</label>
+      </node>
+      <node id="4087">
         <label>openage::log::LogSink</label>
         <link refid="classopenage_1_1log_1_1_log_sink"/>
-        <childnode refid="4421" relation="usage">
+        <childnode refid="4088" relation="usage">
           <edgelabel>-loglevel</edgelabel>
         </childnode>
       </node>
-      <node id="4424">
+      <node id="4091">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4092" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="4422">
+      <node id="4089">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="4423" relation="usage">
+        <childnode refid="4090" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="4094" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="4419">
+      <node id="4086">
         <label>openage::log::tests::TestLogSink</label>
         <link refid="classopenage_1_1log_1_1tests_1_1_test_log_sink"/>
-        <childnode refid="4420" relation="public-inheritance">
+        <childnode refid="4087" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4421">
+      <node id="4088">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="4422" relation="public-inheritance">
+        <childnode refid="4089" relation="public-inheritance">
         </childnode>
-        <childnode refid="4423" relation="usage">
+        <childnode refid="4090" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="4423">
+      <node id="4094">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4095" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4095">
+        <label>DerivedType</label>
+      </node>
+      <node id="4090">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="4424" relation="public-inheritance">
+        <childnode refid="4091" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/test.cpp" line="27" column="1" bodyfile="libopenage/log/test.cpp" bodystart="27" bodyend="38"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="27" bodyend="38"/>
     <listofallmembers>
       <member refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>LogSink</name></member>
       <member refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a3374ed52f02a321dad15e50fd5cf8342" prot="private" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>os</name></member>

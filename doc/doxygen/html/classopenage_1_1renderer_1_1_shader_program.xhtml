@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::ShaderProgram Class Reference</title>
+<title>openage: openage::renderer::ShaderProgram Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_shader_pr
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::renderer::ShaderProgram:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::renderer::ShaderProgram:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::ShaderProgram:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program__coll__graph.svg" width="176" height="396"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::ShaderProgram:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program__coll__graph.svg" width="176" height="396"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -259,6 +262,16 @@ Protected Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#aa5b47b1078193b018446825b5bee10a6">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00083">new_uniform_input()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_af13b539d6a4bc6b66152bdcd53a50815_icgraph.svg" width="472" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="ab6dd8cc82461a8dd2e08087264f658bd"></a>
@@ -291,6 +304,18 @@ template&lt;typename... Ts&gt; </div>
 </ul>
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00083">83</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                                              {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">auto</span> input = this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#af13b539d6a4bc6b66152bdcd53a50815">new_unif_in</a>();</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">update_uniform_input</a>(input.get(), vals...);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> input;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div><div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_af13b539d6a4bc6b66152bdcd53a50815"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#af13b539d6a4bc6b66152bdcd53a50815">openage::renderer::ShaderProgram::new_unif_in</a></div><div class="ttdeci">virtual std::unique_ptr&lt; UniformInput &gt; new_unif_in()=0</div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a52b69e9c86264d23b4af619137e30f04"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">openage::renderer::ShaderProgram::update_uniform_input</a></div><div class="ttdeci">void update_uniform_input(UniformInput *)</div><div class="ttdef"><b>Definition:</b> <a href="shader__program_8h_source.xhtml#l00026">shader_program.h:26</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#af13b539d6a4bc6b66152bdcd53a50815">new_unif_in()</a>, and <a class="el" href="shader__program_8h_source.xhtml#l00026">update_uniform_input()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ab6dd8cc82461a8dd2e08087264f658bd_cgraph.svg" width="472" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -336,6 +361,16 @@ template&lt;typename... Ts&gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#ac4f75b2618cef42e6c899fb6a07e0962">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00036">update_uniform_input()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a38e446978eda3822674dd5c00e2004c6_icgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a02a78a00855ac5db139ef1430408660e"></a>
@@ -379,6 +414,16 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#afb9b54743349d81a09d78c7737d34cf8">openage::renderer::opengl::GlShaderProgram</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00040">update_uniform_input()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a02a78a00855ac5db139ef1430408660e_icgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -424,6 +469,16 @@ template&lt;typename... Ts&gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a06cac47db0c579b51be9ac4649dc1c53">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00028">update_uniform_input()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a83b741d600d5487dae1678b20901bf1b_icgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="ae05f6d0029d2c7f2cb796647d5bc988e"></a>
@@ -467,6 +522,16 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a4849d33ea8bf0da94f320e1f6bc4a0d7">openage::renderer::opengl::GlShaderProgram</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00064">update_uniform_input()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ae05f6d0029d2c7f2cb796647d5bc988e_icgraph.svg" width="398" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -512,6 +577,16 @@ template&lt;typename... Ts&gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#ac57749f4580137a2dea2c7ffa38ce4d6">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00056">update_uniform_input()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a6b84ff62ba2ea6dbf8890536fb7c876d_icgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="ab8c73f6f9a7309f03b6af9fa50fb5a3f"></a>
@@ -555,6 +630,16 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a0a1f0bc1b71441622f0def25f9f9da75">openage::renderer::opengl::GlShaderProgram</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00032">update_uniform_input()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ab8c73f6f9a7309f03b6af9fa50fb5a3f_icgraph.svg" width="384" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -600,6 +685,16 @@ template&lt;typename... Ts&gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a9359707c420fd0a161a5896e77a6e550">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00044">update_uniform_input()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a003661a1e233c8352a6a21f02df46f47_icgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a11f73da7683311faf4689d02e05e684e"></a>
@@ -643,6 +738,16 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a17b135a0127d7a818e166b9affa66bb1">openage::renderer::opengl::GlShaderProgram</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00048">update_uniform_input()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a11f73da7683311faf4689d02e05e684e_icgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -688,6 +793,16 @@ template&lt;typename... Ts&gt; </div>
 
 <p>Implemented in <a class="el" href="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program.xhtml#a506af6aebdc55843bc6f2b60c24276c9">openage::renderer::opengl::GlShaderProgram</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00052">update_uniform_input()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a169361a2c5857643e5c8b8890b5e7592_icgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a52b69e9c86264d23b4af619137e30f04"></a>
@@ -715,6 +830,16 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00026">26</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="shader__program_8h_source.xhtml#l00083">new_uniform_input()</a>, and <a class="el" href="shader__program_8h_source.xhtml#l00093">update_uniform_input()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a52b69e9c86264d23b4af619137e30f04_icgraph.svg" width="444" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -759,6 +884,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00028">28</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                                                  {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a83b741d600d5487dae1678b20901bf1b">set_i32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a83b741d600d5487dae1678b20901bf1b"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a83b741d600d5487dae1678b20901bf1b">openage::renderer::ShaderProgram::set_i32</a></div><div class="ttdeci">virtual void set_i32(UniformInput *, const char *, int32_t)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a83b741d600d5487dae1678b20901bf1b">set_i32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a22b85381e5d375532a5a16113f10ad59_cgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -803,6 +940,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00032">32</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                                                   {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab8c73f6f9a7309f03b6af9fa50fb5a3f">set_u32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div><div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_ab8c73f6f9a7309f03b6af9fa50fb5a3f"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab8c73f6f9a7309f03b6af9fa50fb5a3f">openage::renderer::ShaderProgram::set_u32</a></div><div class="ttdeci">virtual void set_u32(UniformInput *, const char *, uint32_t)=0</div></div>
+<div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ab8c73f6f9a7309f03b6af9fa50fb5a3f">set_u32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ace920cff0ddac348df64589d5dd65e15_cgraph.svg" width="384" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -847,6 +996,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00036">36</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                                                {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a38e446978eda3822674dd5c00e2004c6">set_f32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a38e446978eda3822674dd5c00e2004c6"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a38e446978eda3822674dd5c00e2004c6">openage::renderer::ShaderProgram::set_f32</a></div><div class="ttdeci">virtual void set_f32(UniformInput *, const char *, float)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a38e446978eda3822674dd5c00e2004c6">set_f32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ac6549848a570989183b4b4aad8e28760_cgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -891,6 +1052,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00040">40</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                                                 {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a02a78a00855ac5db139ef1430408660e">set_f64</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a02a78a00855ac5db139ef1430408660e"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a02a78a00855ac5db139ef1430408660e">openage::renderer::ShaderProgram::set_f64</a></div><div class="ttdeci">virtual void set_f64(UniformInput *, const char *, double)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a02a78a00855ac5db139ef1430408660e">set_f64()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ac6f09354128bf60fbc6496e068c0e1f9_cgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -935,6 +1108,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00044">44</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                                                               {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a003661a1e233c8352a6a21f02df46f47">set_v2f32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a003661a1e233c8352a6a21f02df46f47"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a003661a1e233c8352a6a21f02df46f47">openage::renderer::ShaderProgram::set_v2f32</a></div><div class="ttdeci">virtual void set_v2f32(UniformInput *, const char *, Eigen::Vector2f const &amp;)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a003661a1e233c8352a6a21f02df46f47">set_v2f32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a54f4f8c5b183cee951ba8907a813bcd0_cgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -979,6 +1164,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00048">48</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                                                                               {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a11f73da7683311faf4689d02e05e684e">set_v3f32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div><div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a11f73da7683311faf4689d02e05e684e"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a11f73da7683311faf4689d02e05e684e">openage::renderer::ShaderProgram::set_v3f32</a></div><div class="ttdeci">virtual void set_v3f32(UniformInput *, const char *, Eigen::Vector3f const &amp;)=0</div></div>
+<div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a11f73da7683311faf4689d02e05e684e">set_v3f32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ab9738e5488390ab104453de449ba7444_cgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1023,6 +1220,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00052">52</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                                                               {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a169361a2c5857643e5c8b8890b5e7592">set_v4f32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div><div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a169361a2c5857643e5c8b8890b5e7592"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a169361a2c5857643e5c8b8890b5e7592">openage::renderer::ShaderProgram::set_v4f32</a></div><div class="ttdeci">virtual void set_v4f32(UniformInput *, const char *, Eigen::Vector4f const &amp;)=0</div></div>
+<div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a169361a2c5857643e5c8b8890b5e7592">set_v4f32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_acf5fbb3328c63da7b645fa08f818c467_cgraph.svg" width="392" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1067,6 +1276,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00056">56</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                                           {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a6b84ff62ba2ea6dbf8890536fb7c876d"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">openage::renderer::ShaderProgram::set_tex</a></div><div class="ttdeci">virtual void set_tex(UniformInput *, const char *, Texture2d const *)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a87ccfe4e0351057379871371ed0e928a_cgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1111,6 +1332,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00060">60</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                                                     {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a6b84ff62ba2ea6dbf8890536fb7c876d"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">openage::renderer::ShaderProgram::set_tex</a></div><div class="ttdeci">virtual void set_tex(UniformInput *, const char *, Texture2d const *)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a1de758ad1a110cd48a774d88a11582bf_cgraph.svg" width="380" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1155,6 +1388,18 @@ template&lt;typename... Ts&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00064">64</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                                                               {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ae05f6d0029d2c7f2cb796647d5bc988e">set_m4f32</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_ae05f6d0029d2c7f2cb796647d5bc988e"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#ae05f6d0029d2c7f2cb796647d5bc988e">openage::renderer::ShaderProgram::set_m4f32</a></div><div class="ttdeci">virtual void set_m4f32(UniformInput *, const char *, Eigen::Matrix4f const &amp;)=0</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1renderer_1_1_shader_program.xhtml#ae05f6d0029d2c7f2cb796647d5bc988e">set_m4f32()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a083cfce2ba6018afe512911c55457fde_cgraph.svg" width="398" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1201,6 +1446,18 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00069">69</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                                  {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Tried to set uniform &quot;</span> &lt;&lt; unif &lt;&lt; <span class="stringliteral">&quot; using unknown type.&quot;</span>);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
+<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-24-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_ad7648faf2a3e82a63a95076d3ed98d33_cgraph.svg" width="328" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1254,6 +1511,18 @@ template&lt;typename T , typename... Ts&gt; </div>
 <p>Updates the given uniform input with new uniform values similarly to new_uniform_input. For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform in addition to whatever values were in the uniform input before. </p>
 
 <p class="definition">Definition at line <a class="el" href="shader__program_8h_source.xhtml#l00093">93</a> of file <a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                                                        {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">update_uniform_input</a>(input, unif, <a class="code" href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a>);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">update_uniform_input</a>(input, vals...);</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div><div class="ttc" id="constinit__vector_8cpp_xhtml_aa0ccb5ee6d882ee3605ff47745c6467b"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aa0ccb5ee6d882ee3605ff47745c6467b">val</a></div><div class="ttdeci">int val</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00017">constinit_vector.cpp:17</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_shader_program_xhtml_a52b69e9c86264d23b4af619137e30f04"><div class="ttname"><a href="classopenage_1_1renderer_1_1_shader_program.xhtml#a52b69e9c86264d23b4af619137e30f04">openage::renderer::ShaderProgram::update_uniform_input</a></div><div class="ttdeci">void update_uniform_input(UniformInput *)</div><div class="ttdef"><b>Definition:</b> <a href="shader__program_8h_source.xhtml#l00026">shader_program.h:26</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="shader__program_8h_source.xhtml#l00026">update_uniform_input()</a>, and <a class="el" href="constinit__vector_8cpp_source.xhtml#l00017">val</a>.</p>
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_shader_program_a40d140c46c04de019b5081c5276bf201_cgraph.svg" width="376" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -1286,7 +1555,7 @@ template&lt;typename T , typename... Ts&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/renderer/<a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/<a class="el" href="shader__program_8h_source.xhtml">shader_program.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

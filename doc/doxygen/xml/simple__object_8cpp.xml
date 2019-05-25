@@ -9,7 +9,7 @@
         <label>functional</label>
       </node>
       <node id="21980">
-        <label>libopenage/renderer/opengl/simple_object.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/simple_object.cpp</label>
         <link refid="simple__object_8cpp"/>
         <childnode refid="21981" relation="include">
         </childnode>
@@ -88,6 +88,6 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/simple_object.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/simple_object.cpp"/>
   </compounddef>
 </doxygen>

@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/hash_functions.h" line="13" column="1" bodyfile="libopenage/audio/hash_functions.h" bodystart="13" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/hash_functions.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/hash_functions.h" bodystart="13" bodyend="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,12 +29,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2843">
+      <node id="6649">
         <label>std::hash&lt;::openage::audio::category_t &gt;</label>
         <link refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/audio/hash_functions.h" line="12" column="1" bodyfile="libopenage/audio/hash_functions.h" bodystart="12" bodyend="16"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/hash_functions.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/hash_functions.h" bodystart="12" bodyend="16"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4_1a8b7cf7bb4c4e4a280a90996d8c8cdd60" prot="public" virt="non-virtual"><scope>std::hash&lt;::openage::audio::category_t &gt;</scope><name>operator()</name></member>
     </listofallmembers>

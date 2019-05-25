@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 100)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-100 260,-100 260,4 -4,4"/>
-<!-- Node670 -->
-<g id="node1" class="node"><title>Node670</title>
+<!-- Node739 -->
+<g id="node1" class="node"><title>Node739</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="0,-38.5 0,-57.5 104,-57.5 104,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="52" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordNeSeAbsolute</text>
@@ -25,34 +25,34 @@
 </a>
 </g>
 </g>
-<!-- Node670&#45;&gt;Node0 -->
-<g id="edge1" class="edge"><title>Node670&#45;&gt;Node0</title>
+<!-- Node739&#45;&gt;Node0 -->
+<g id="edge1" class="edge"><title>Node739&#45;&gt;Node0</title>
 <path fill="none" stroke="midnightblue" d="M99.1722,-60.1843C119.164,-65.46 142.219,-71.5438 160.924,-76.4799"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="99.8994,-56.7565 89.3373,-57.589 98.1132,-63.5248 99.8994,-56.7565"/>
 </g>
-<!-- Node672 -->
-<g id="node3" class="node"><title>Node672</title>
+<!-- Node741 -->
+<g id="node3" class="node"><title>Node741</title>
 <g id="a_node3"><a xlink:href="structopenage_1_1coord_1_1phys2.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="140,-38.5 140,-57.5 256,-57.5 256,-38.5 140,-38.5"/>
 <text text-anchor="middle" x="198" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::phys2</text>
 </a>
 </g>
 </g>
-<!-- Node670&#45;&gt;Node672 -->
-<g id="edge2" class="edge"><title>Node670&#45;&gt;Node672</title>
+<!-- Node739&#45;&gt;Node741 -->
+<g id="edge2" class="edge"><title>Node739&#45;&gt;Node741</title>
 <path fill="none" stroke="midnightblue" d="M114.291,-48C122.692,-48 131.291,-48 139.619,-48"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="114.175,-44.5001 104.174,-48 114.174,-51.5001 114.175,-44.5001"/>
 </g>
-<!-- Node673 -->
-<g id="node4" class="node"><title>Node673</title>
+<!-- Node742 -->
+<g id="node4" class="node"><title>Node742</title>
 <g id="a_node4"><a xlink:href="structopenage_1_1coord_1_1tile.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="147,-0.5 147,-19.5 249,-19.5 249,-0.5 147,-0.5"/>
 <text text-anchor="middle" x="198" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::tile</text>
 </a>
 </g>
 </g>
-<!-- Node670&#45;&gt;Node673 -->
-<g id="edge3" class="edge"><title>Node670&#45;&gt;Node673</title>
+<!-- Node739&#45;&gt;Node742 -->
+<g id="edge3" class="edge"><title>Node739&#45;&gt;Node742</title>
 <path fill="none" stroke="midnightblue" d="M99.1722,-35.8157C119.164,-30.54 142.219,-24.4562 160.924,-19.5201"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="98.1132,-32.4752 89.3373,-38.411 99.8994,-39.2435 98.1132,-32.4752"/>
 </g>

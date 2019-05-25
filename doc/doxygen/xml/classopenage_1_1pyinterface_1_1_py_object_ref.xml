@@ -16,7 +16,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="239" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="239" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="239" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="239" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" compoundref="pyobject_8cpp" startline="132" endline="134">bytes</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" compoundref="pyobject_8cpp" startline="147" endline="158">call_impl</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" compoundref="pyobject_8cpp" startline="142" endline="144">callable</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" compoundref="pyobject_8cpp" startline="256" endline="258">classname</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9a0172d320ad1f5f696dfe04d35570d5" compoundref="pyobject_8cpp" startline="193" endline="195">dir</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" compoundref="pyobject_8cpp" startline="203" endline="205">equals</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" compoundref="pyobject_8cpp" startline="208" endline="212">eval</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" compoundref="pyobject_8cpp" startline="215" endline="217">exec</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">get</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" compoundref="pyobject_8cpp" startline="166" endline="170">getattr</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" compoundref="pyobject_8cpp" startline="161" endline="163">hasattr</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aae0a4f1161486c40b41b7f47e5b9fb96" compoundref="pyobject_8cpp" startline="239" endline="241">in</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" compoundref="pyobject_8cpp" startline="198" endline="200">is</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" compoundref="pyobject_8cpp" startline="188" endline="190">isinstance</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a09ea43fdc78d2458748887fa72ae1a9d" compoundref="pyobject_8cpp" startline="137" endline="139">len</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" compoundref="pyobject_8cpp" startline="251" endline="253">modulename</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" compoundref="pyobject_8cpp" startline="43" endline="52">operator=</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" compoundref="pyobject_8cpp" startline="18" endline="23">PyObjectRef</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" compoundref="pyobject_8cpp" startline="127" endline="129">repr</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0e0024ba18b74f15b0aa56986a911d95" compoundref="pyobject_8cpp" startline="103" endline="110">set_ref</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a626ecb36c29963065f287ac3529641dc" compoundref="pyobject_8cpp" startline="113" endline="119">set_ref_without_incrementing</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" compoundref="pyobject_8cpp" startline="173" endline="175">setattr</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" compoundref="pyobject_8cpp" startline="122" endline="124">str</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" compoundref="pyobject_8cpp" startline="178" endline="180">to_bool</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab33e45c3e5b581e5c1dbc74282f6f168" compoundref="pyobject_8cpp" startline="183" endline="185">to_int</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" compoundref="pyobject_8cpp" startline="244" endline="248">type</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad9e8f1a9f289eb345ec3565f888ae23a" compoundref="pyobject_8cpp" startline="96" endline="100">~PyObjectRef</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="54" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="13" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="13" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -50,7 +77,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="59" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="18" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="18" bodyend="23"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2a19b9d28f9745e7225678d18d905733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -68,7 +96,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="64" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="26" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="26" bodyend="31"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a5f19d6f1fda831508e171d79373c2903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -86,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="69" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="34" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="34" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
@@ -104,7 +133,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="75" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="43" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="43" bodyend="52"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" compoundref="pyobject_8cpp" startline="273">openage::pyinterface::py_xdecref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a7866f2cf6f90156274ac6b83776e73d9" compoundref="pyobject_8cpp" startline="272">openage::pyinterface::py_xincref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab39e1ac132d7e685d0f818039db849c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
@@ -122,7 +154,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="81" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="55" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="55" bodyend="66"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" compoundref="pyobject_8cpp" startline="273">openage::pyinterface::py_xdecref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ad9e8f1a9f289eb345ec3565f888ae23a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -136,7 +170,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="86" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="96" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="96" bodyend="100"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" compoundref="pyobject_8cpp" startline="273">openage::pyinterface::py_xdecref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -150,7 +186,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="94" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="122" bodyend="124"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="122" bodyend="124"/>
+        <references refid="namespaceopenage_1_1pyinterface_1aee648d1c95091e0207f3bf9d4f69dd01" compoundref="pyobject_8cpp" startline="275">openage::pyinterface::py_str</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -164,7 +204,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="99" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="127" bodyend="129"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="127" bodyend="129"/>
+        <references refid="namespaceopenage_1_1pyinterface_1afc5196e488904c84cd675b55494f3695" compoundref="pyobject_8cpp" startline="276">openage::pyinterface::py_repr</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -178,7 +221,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="104" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="132" bodyend="134"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="132" bodyend="134"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a1da67fe4551652e4267a218123e27309" compoundref="pyobject_8cpp" startline="277">openage::pyinterface::py_bytes</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" compoundref="fslike_2python_8cpp" startline="67" endline="75">openage::util::fslike::Python::get_native_path</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a09ea43fdc78d2458748887fa72ae1a9d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -192,7 +239,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="109" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="137" bodyend="139"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="137" bodyend="139"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ad0be0c0750d33fff88a405db89a1dbe7" compoundref="pyobject_8cpp" startline="278">openage::pyinterface::py_len</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -206,7 +256,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="114" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="142" bodyend="144"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="142" bodyend="144"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a2ff686c130c1870c58243e9f9530685a" compoundref="pyobject_8cpp" startline="279">openage::pyinterface::py_callable</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -231,7 +284,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="120" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="120" bodyend="127"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="120" bodyend="127"/>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -249,7 +304,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="146" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="166" bodyend="170"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="166" bodyend="170"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a3cf5d417d7e8b932bd437163d1aa86d5" compoundref="pyobject_8cpp" startline="283">openage::pyinterface::py_getattr</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -267,7 +326,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="151" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="161" bodyend="163"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="151" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="161" bodyend="163"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a72f6244131021857b5da82ec1a2b60b4" compoundref="pyobject_8cpp" startline="282">openage::pyinterface::py_hasattr</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -289,7 +351,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="156" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="173" bodyend="175"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="173" bodyend="175"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a3316eef7fb6fbfced2f80c600bad8908" compoundref="pyobject_8cpp" startline="284">openage::pyinterface::py_setattr</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -307,7 +373,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="161" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="188" bodyend="190"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="161" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="188" bodyend="190"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1afea8e32a161fe2e4644bda2196185215" compoundref="pyobject_8cpp" startline="285">openage::pyinterface::py_isinstance</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -321,7 +391,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="166" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="178" bodyend="180"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="178" bodyend="180"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ad6ddd0e21b23d1b521586e0694a80a04" compoundref="pyobject_8cpp" startline="286">openage::pyinterface::py_to_bool</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab33e45c3e5b581e5c1dbc74282f6f168" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int64_t</type>
@@ -335,7 +408,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="171" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="183" bodyend="185"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="171" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="183" bodyend="185"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a4c514ea8f04bb945cd0d0086c89e8aa3" compoundref="pyobject_8cpp" startline="287">openage::pyinterface::py_to_int</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a9a0172d320ad1f5f696dfe04d35570d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -353,7 +429,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="177" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="193" bodyend="195"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="177" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="193" bodyend="195"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a7dd7680eb550d5db3c7f902316a748c1" compoundref="pyobject_8cpp" startline="288">openage::pyinterface::py_dir</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -371,7 +449,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="182" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="198" bodyend="200"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="198" bodyend="200"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" compoundref="fslike_2python_8cpp" startline="67" endline="75">openage::util::fslike::Python::get_native_path</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -389,7 +471,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="187" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="203" bodyend="205"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="187" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="203" bodyend="205"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1acf53a5711df9e4c084c8db8a0da7c742" compoundref="pyobject_8cpp" startline="289">openage::pyinterface::py_equals</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -407,7 +493,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="192" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="208" bodyend="212"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="192" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="208" bodyend="212"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a63919a2347c856579a992996c9c26d8a" compoundref="pyobject_8cpp" startline="291">openage::pyinterface::py_eval</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -425,7 +516,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="197" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="215" bodyend="217"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="197" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="215" bodyend="217"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a22d3d2911cba5872786856d0cd41bf53" compoundref="pyobject_8cpp" startline="290">openage::pyinterface::py_exec</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" compoundref="pyobject__tests_8cpp" startline="133" endline="159">openage::pyinterface::tests::pyobject_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -443,7 +538,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="202" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="220" bodyend="224"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="202" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="220" bodyend="224"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a26ef6836021b3dc7fe2215b7fab97e9d" compoundref="pyobject_8cpp" startline="292">openage::pyinterface::py_get</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaff2674b9d1b7ffcf0a67f8ecba9f1b6" compoundref="pyobject_8cpp" startline="227" endline="230">get</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aaff2674b9d1b7ffcf0a67f8ecba9f1b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -461,7 +562,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="207" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="227" bodyend="230"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="227" bodyend="230"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">get</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a6ff52951c29472ef3fd427f8c627f33c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -479,7 +582,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="212" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="233" bodyend="236"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="233" bodyend="236"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">get</references>
+        <references refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" compoundref="pyobject_8cpp" startline="345" endline="349">openage::py::integer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aae0a4f1161486c40b41b7f47e5b9fb96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -497,7 +602,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="217" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="239" bodyend="241"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="217" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="239" bodyend="241"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a963c22d15551b5aa2e567e9603ef79e1" compoundref="pyobject_8cpp" startline="293">openage::pyinterface::py_in</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
@@ -511,7 +619,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="222" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="244" bodyend="248"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="222" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="244" bodyend="248"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ad33eb5ce8235933127b3d7ed2f519ce7" compoundref="pyobject_8cpp" startline="294">openage::pyinterface::py_type</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -525,7 +637,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="227" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="251" bodyend="253"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="227" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="251" bodyend="253"/>
+        <references refid="namespaceopenage_1_1pyinterface_1aec589471ebd2cf0deea9cb901fa5b120" compoundref="pyobject_8cpp" startline="295">openage::pyinterface::py_modulename</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" compoundref="pyexception_8cpp" startline="35" endline="43">openage::pyinterface::PyException::type_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -539,7 +655,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="232" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="256" bodyend="258"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="232" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="256" bodyend="258"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a4912d8bb9e44d51c84e6363694941f42" compoundref="pyobject_8cpp" startline="296">openage::pyinterface::py_classname</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" compoundref="pyexception_8cpp" startline="35" endline="43">openage::pyinterface::PyException::type_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
@@ -553,7 +673,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="246" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="246" bodyend="248"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="246" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="246" bodyend="248"/>
+        <references refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" compoundref="constinit__vector_8cpp" startline="47">ref</references>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" compoundref="pyobject_8cpp" startline="147" endline="158">call_impl</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" compoundref="pyobject_8cpp" startline="203" endline="205">equals</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">get</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aae0a4f1161486c40b41b7f47e5b9fb96" compoundref="pyobject_8cpp" startline="239" endline="241">in</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" compoundref="pyexception_8cpp" startline="30" endline="32">openage::pyinterface::PyException::init_backtrace</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" compoundref="pyobject_8cpp" startline="198" endline="200">is</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" compoundref="pyobject_8cpp" startline="188" endline="190">isinstance</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" compoundref="pyobject_8cpp" startline="173" endline="175">setattr</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab037499ba421c3232ae2a09a1d7282ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
@@ -567,7 +696,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="254" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="254" bodyend="256"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="254" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="254" bodyend="256"/>
+        <references refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" compoundref="constinit__vector_8cpp" startline="47">ref</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0e0024ba18b74f15b0aa56986a911d95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -585,7 +715,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="261" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="103" bodyend="110"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="261" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="103" bodyend="110"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" compoundref="pyobject_8cpp" startline="273">openage::pyinterface::py_xdecref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a7866f2cf6f90156274ac6b83776e73d9" compoundref="pyobject_8cpp" startline="272">openage::pyinterface::py_xincref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a626ecb36c29963065f287ac3529641dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -603,7 +737,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="267" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="113" bodyend="119"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="267" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="113" bodyend="119"/>
+        <references refid="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" compoundref="pyobject_8cpp" startline="273">openage::pyinterface::py_xdecref</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a6266a9e1764626579712f42d3074a609" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -617,7 +754,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="273" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="273" bodyend="275"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="273" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="273" bodyend="275"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aa9fbbec1a69f4d747749d1c664aec737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -637,7 +774,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="73" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="73" bodyend="75"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a4bb8cbf285476e6ef7cd7a4bf5961a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -657,7 +794,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="82" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="82" bodyend="84"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a1dc37921549165a63be1eecf48c31859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -677,7 +814,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.cpp" line="91" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="91" bodyend="93"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="91" bodyend="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -697,7 +834,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="133" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="147" bodyend="158"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp" bodystart="147" bodyend="158"/>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">get_ref</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a63957aa9bf0c9835493a16ff6b543418" compoundref="pyobject_8cpp" startline="280">openage::pyinterface::py_call0</references>
+        <references refid="namespaceopenage_1_1pyinterface_1a8aa560a3c62f746b36bb98e84bf1934c" compoundref="pyobject_8cpp" startline="281">openage::pyinterface::py_calln</references>
+        <references refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" compoundref="pyobject_8h" startline="239">ref</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a46f47ca8a955e16a3f20abb0c6a20950" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -720,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/pyobject.h" line="139" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="139" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -735,12 +877,12 @@
 <para>ctypedef <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *PyObjectRefPtr ctypedef PyObject *PyObjectPtr </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3800">
+      <node id="4568">
         <label>openage::pyinterface::PyObjectRef</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_object_ref"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pyinterface/pyobject.h" line="49" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="49" bodyend="276"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h" bodystart="49" bodyend="276"/>
     <listofallmembers>
       <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>bytes</name></member>
       <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>call</name></member>

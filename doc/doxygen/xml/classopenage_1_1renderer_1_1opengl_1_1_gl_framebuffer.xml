@@ -21,7 +21,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/framebuffer.h" line="23" column="1" bodyfile="libopenage/renderer/opengl/framebuffer.cpp" bodystart="12" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp" bodystart="12" bodyend="40"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" compoundref="simple__object_8h" startline="41">openage::renderer::opengl::GlSimpleObject::handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad56acbd6cd31f4dde51dd895b9be4891" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -35,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/framebuffer.h" line="26" column="1" bodyfile="libopenage/renderer/opengl/framebuffer.cpp" bodystart="42" bodyend="44"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp" bodystart="42" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad3b4817ba31ee0d433c48d6c7f8aae89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -49,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/framebuffer.h" line="29" column="1" bodyfile="libopenage/renderer/opengl/framebuffer.cpp" bodystart="46" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp" bodystart="46" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,30 +59,30 @@
 <para>Represents an OpenGL Framebuffer Object. It is a collection of bitmap targets that can be drawn into and read from. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2384">
+      <node id="4662">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2383">
+      <node id="4661">
         <label>openage::renderer::opengl::GlFramebuffer</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer"/>
-        <childnode refid="2384" relation="public-inheritance">
+        <childnode refid="4662" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2386">
+      <node id="4664">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2385">
+      <node id="4663">
         <label>openage::renderer::opengl::GlFramebuffer</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer"/>
-        <childnode refid="2386" relation="public-inheritance">
+        <childnode refid="4664" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/framebuffer.h" line="18" column="1" bodyfile="libopenage/renderer/opengl/framebuffer.h" bodystart="18" bodyend="30"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h" bodystart="18" bodyend="30"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad56acbd6cd31f4dde51dd895b9be4891" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlFramebuffer</scope><name>bind_read</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad3b4817ba31ee0d433c48d6c7f8aae89" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlFramebuffer</scope><name>bind_write</name></member>

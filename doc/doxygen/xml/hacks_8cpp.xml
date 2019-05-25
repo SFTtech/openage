@@ -131,7 +131,7 @@
         <label>vector</label>
       </node>
       <node id="19764">
-        <label>libopenage/pyinterface/hacks.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.cpp</label>
         <link refid="hacks_8cpp"/>
         <childnode refid="19765" relation="include">
         </childnode>
@@ -217,6 +217,6 @@
 <codeline lineno="9"><highlight class="comment"><sp/>*<sp/>Otherwise,<sp/>Cython<sp/>might<sp/>incorrectly<sp/>receive<sp/>the<sp/>blame<sp/>for<sp/>C++<sp/>errors.</highlight></codeline>
 <codeline lineno="10"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/hacks.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.cpp"/>
   </compounddef>
 </doxygen>

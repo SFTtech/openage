@@ -28,7 +28,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.h" line="29" column="1" bodyfile="libopenage/util/strings.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,12 +38,12 @@
 <para>Quick-formatter for floats when working with string streams. Usage: cout &lt;&lt; FormatFloat{1.0, 10}; </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1501">
+      <node id="5802">
         <label>openage::util::FloatFixed&lt; decimals, w &gt;</label>
         <link refid="structopenage_1_1util_1_1_float_fixed"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/strings.h" line="28" column="1" bodyfile="libopenage/util/strings.h" bodystart="28" bodyend="30"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" bodystart="28" bodyend="30"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1_float_fixed_1a866af455be6117ec8d254e36a6c40c36" prot="public" virt="non-virtual"><scope>openage::util::FloatFixed</scope><name>value</name></member>
     </listofallmembers>

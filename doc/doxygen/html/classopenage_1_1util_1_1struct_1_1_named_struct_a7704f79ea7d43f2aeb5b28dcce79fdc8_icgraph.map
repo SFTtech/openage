@@ -1,0 +1,7 @@
+<map id="openage.util.struct.NamedStruct.unpack" name="openage.util.struct.NamedStruct.unpack">
+<area shape="rect" id="node1" title="Unpacks data and returns a NamedStruct object that holds the fields." alt="" coords="464,71,639,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#a73bebaa3ad9fc8839af4f542b842e61c" title=" " alt="" coords="241,5,416,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#a39ddc44b3cc3611acd3ec7e4ee49abf9" title="Decodes nullbytes (sort of a &#39;default&#39; value)." alt="" coords="241,71,416,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1struct_1_1_named_struct.xhtml#a10cfd96f5d25886cfe84b8fe739f1deb" title="Reads the appropriate amount of data from fileobj, and unpacks it." alt="" coords="241,136,416,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,136,193,177"/>
+</map>

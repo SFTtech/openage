@@ -14,7 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="27" column="1" bodyfile="libopenage/texture.cpp" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a83040812fefc420ba1b9c55bcd29b52c" compoundref="game__renderer_8cpp" startline="188" endline="196">openage::GameRenderer::~GameRenderer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1teamcolor__shader_1a82581c01972dbc5864d834a7106b5802" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -27,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="28" column="1" bodyfile="libopenage/texture.cpp" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1teamcolor__shader_1a0d006aeb703278468eb6e97c4fca9abe" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -40,7 +42,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="28" column="1" bodyfile="libopenage/texture.cpp" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1teamcolor__shader_1a34ad1a040b992e6be28c954460c611f8" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -53,7 +56,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="29" column="1" bodyfile="libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1teamcolor__shader_1a250c796f16cfb2e4ae0a31d812e500c4" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -66,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="29" column="1" bodyfile="libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1teamcolor__shader_1ae06f7518406e08c1c00ae0f281ecb4ef" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -79,13 +83,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="29" column="1" bodyfile="libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/texture.cpp" line="26" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="26" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="threading_8py" kind="file" language="Python">
+    <compoundname>threading.py</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1threading_1_1_closable_queue" prot="public">openage::util::threading::ClosableQueue</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1threading_1_1_generator_event" prot="public">openage::util::threading::GeneratorEvent</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1threading">openage::util::threading</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1util_1_1threading" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Threading<sp/>utilities.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>concurrent.futures<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ThreadPoolExecutor</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>itertools</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>queue<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Queue</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" kindref="member">concurrent_chain</ref>(generators,<sp/>jobs=None):</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Similar<sp/>to<sp/>itertools.chain(),<sp/>but<sp/>runs<sp/>the<sp/>individual<sp/>generators<sp/>in<sp/>a</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>thread<sp/>pool.<sp/>The<sp/>resulting<sp/>items<sp/>may<sp/>be<sp/>out<sp/>of<sp/>order<sp/>accordingly.</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>When<sp/>one<sp/>generator<sp/>raises<sp/>an<sp/>exception,<sp/>all<sp/>other<sp/>currently-running</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>generators<sp/>are<sp/>stopped<sp/>(they<sp/>may<sp/>run<sp/>until<sp/>their<sp/>next<sp/>&apos;yield&apos;<sp/>statement).</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>The<sp/>exception<sp/>is<sp/>then<sp/>raised.</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>jobs<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24" refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs<sp/>=<sp/>os.cpu_count()</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>jobs<sp/>==<sp/>1:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>we<sp/>don&apos;t<sp/>need<sp/>to<sp/>do<sp/>all<sp/>that<sp/>threading<sp/>stuff;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>let&apos;s<sp/>just<sp/>behave<sp/>_precisely_<sp/>like<sp/>itertools.chain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>generator<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>generators:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>generator</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>queue<sp/>=<sp/><ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue" kindref="compound">ClosableQueue</ref>()</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>running_generator_count<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>ThreadPoolExecutor(jobs)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>pool:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>generator<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>generators:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pool.submit(generator_to_queue,<sp/>generator,<sp/>queue)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>running_generator_count<sp/>+=<sp/>1</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>running_generator_count<sp/>&gt;<sp/>0:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>event_type,<sp/>value<sp/>=<sp/>queue.get()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>event_type<sp/>==<sp/>GeneratorEvent.VALUE:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/>value</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>event_type<sp/>==<sp/>GeneratorEvent.EXCEPTION:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.close(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>different<sp/>generator&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>value</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>event_type<sp/>==<sp/>GeneratorEvent.STOP_ITERATION:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>running_generator_count<sp/>-=<sp/>1</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue" kindref="compound">ClosableQueue</ref>(Queue):</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="55"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>For<sp/>use<sp/>in<sp/>concurrent_chain.</highlight></codeline>
+<codeline lineno="56"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="57"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Behaves<sp/>like<sp/>Queue<sp/>until<sp/>close()<sp/>has<sp/>been<sp/>called.</highlight></codeline>
+<codeline lineno="58"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>After<sp/>that,<sp/>any<sp/>call<sp/>to<sp/>put()<sp/>raises<sp/>RuntimeError.</highlight></codeline>
+<codeline lineno="59"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">__init__(self):</highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1util_1_1threading_1_1_closable_queue" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a6eb3656c2e710770dd12433d36598384" kindref="member">__init__</ref>()</highlight></codeline>
+<codeline lineno="62" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a6eb3656c2e710770dd12433d36598384" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" kindref="member">closed</ref><sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" kindref="member">close_reason</ref><sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" kindref="member">put</ref>(self,<sp/>item,<sp/>block=True,<sp/>timeout=None):</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" kindref="member">raise_if_closed</ref>()</highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>super().<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" kindref="member">put</ref>(item,<sp/>block,<sp/>timeout)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" kindref="member">close</ref>(self,<sp/>reason=None):</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Any<sp/>subsequent<sp/>calls<sp/>to<sp/>put()<sp/>or<sp/>raise_if_closed()</highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>will<sp/>raise<sp/>RuntimeError(reason).</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>self.mutex:<sp/><sp/></highlight><highlight class="comment">#<sp/>pylint:<sp/>disable=not-context-manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" kindref="member">closed</ref><sp/>=<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" kindref="member">close_reason</ref><sp/>=<sp/>reason</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" kindref="member">raise_if_closed</ref>(self):</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="80"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Raises<sp/>RuntimeError(reason)<sp/>if<sp/>the<sp/>queue<sp/>has<sp/>been<sp/>closed.</highlight></codeline>
+<codeline lineno="81"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>None<sp/>elsewise.</highlight></codeline>
+<codeline lineno="82"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>self.mutex:<sp/><sp/></highlight><highlight class="comment">#<sp/>pylint:<sp/>disable=not-context-manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" kindref="member">closed</ref>:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>RuntimeError(self.<ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" kindref="member">close_reason</ref>)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1threading_1_1_generator_event" kindref="compound">GeneratorEvent</ref>(Enum):</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="90"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>For<sp/>use<sp/>by<sp/>concurrent_chain.</highlight></codeline>
+<codeline lineno="91"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Represents<sp/>any<sp/>event<sp/>that<sp/>a<sp/>generator<sp/>may<sp/>cause.</highlight></codeline>
+<codeline lineno="92"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>VALUE<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="94" refid="classopenage_1_1util_1_1threading_1_1_generator_event" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/>EXCEPTION<sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="95" refid="classopenage_1_1util_1_1threading_1_1_generator_event_1a8cf93dc8b020874389f18dbd55caaa1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>STOP_ITERATION<sp/>=<sp/>2</highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1util_1_1threading_1_1_generator_event_1aa2d089fed1e35f14bbf77161defb161d" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1util_1_1threading_1_1_generator_event_1ae9e5eeac715ca25471f9f3266d7a4257" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1threading_1a1f8d251956234d35535fbdc382d49571" kindref="member">generator_to_queue</ref>(generator,<sp/>queue):</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="100"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>For<sp/>use<sp/>by<sp/>concurrent_chain.</highlight></codeline>
+<codeline lineno="101"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Appends<sp/>all<sp/>of<sp/>the<sp/>generator&apos;s<sp/>events<sp/>to<sp/>the<sp/>queue,</highlight></codeline>
+<codeline lineno="102"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>as<sp/>tuples<sp/>of<sp/>(event<sp/>type,<sp/>value).</highlight></codeline>
+<codeline lineno="103"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105" refid="namespaceopenage_1_1util_1_1threading_1a1f8d251956234d35535fbdc382d49571" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.raise_if_closed()</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>item<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>generator:</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.put((GeneratorEvent.VALUE,<sp/>item))</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.put((GeneratorEvent.STOP_ITERATION,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>BaseException<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>exc:</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue.put((GeneratorEvent.EXCEPTION,<sp/>exc))</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" kindref="member">test_concurrent_chain</ref>():</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Tests<sp/>concurrent_chain<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..testing.testing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>assert_value,<sp/>assert_raises,<sp/>result</highlight></codeline>
+<codeline lineno="117" refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">errorgen():</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Test<sp/>generator<sp/>that<sp/>raises<sp/>an<sp/>exception<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;errorgen&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError()</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(<ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(<ref refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" kindref="member">concurrent_chain</ref>([],<sp/>2)),<sp/>[])</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(<ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(<ref refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" kindref="member">concurrent_chain</ref>([range(10)],<sp/>2)),<sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(range(10)))</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sorted(<ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(<ref refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" kindref="member">concurrent_chain</ref>([range(10),<sp/>range(20)],<sp/>2))),</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sorted(<ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(itertools.chain(range(10),<sp/>range(20))))</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>chain<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" kindref="member">concurrent_chain</ref>([range(10),<sp/>range(20),<sp/>errorgen(),<sp/>range(30)],<sp/>2)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" kindref="member">assert_raises</ref>(ValueError):</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>(<ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(chain))</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py"/>
+  </compounddef>
+</doxygen>

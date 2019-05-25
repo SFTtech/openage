@@ -9,9 +9,9 @@
     <includes refid="tile_8h" local="yes">coord/tile.h</includes>
     <includes refid="handlers_8h" local="yes">handlers.h</includes>
     <includes refid="options_8h" local="yes">options.h</includes>
-    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
-    <includedby refid="main_8cpp" local="yes">libopenage/main.cpp</includedby>
-    <includedby refid="terrain_8cpp" local="yes">libopenage/terrain/terrain.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp</includedby>
     <incdepgraph>
       <node id="8798">
         <label>list</label>
@@ -81,7 +81,7 @@
         </childnode>
       </node>
       <node id="8759">
-        <label>libopenage/game_renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h</label>
         <link refid="game__renderer_8h"/>
         <childnode refid="8760" relation="include">
         </childnode>
@@ -349,11 +349,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="8813">
-        <label>libopenage/terrain/terrain.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp</label>
         <link refid="terrain_8cpp"/>
       </node>
       <node id="8810">
-        <label>libopenage/game_renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h</label>
         <link refid="game__renderer_8h"/>
         <childnode refid="8811" relation="include">
         </childnode>
@@ -363,11 +363,11 @@
         </childnode>
       </node>
       <node id="8811">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="8812">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
     </invincdepgraph>
@@ -427,6 +427,6 @@
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/game_renderer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h"/>
   </compounddef>
 </doxygen>

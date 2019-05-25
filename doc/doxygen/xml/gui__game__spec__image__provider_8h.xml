@@ -3,14 +3,14 @@
   <compounddef id="gui__game__spec__image__provider_8h" kind="file" language="C++">
     <compoundname>gui_game_spec_image_provider.h</compoundname>
     <includes refid="gui__image__provider_8h" local="yes">../../guisys/public/gui_image_provider.h</includes>
-    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
-    <includedby refid="gui__game__spec__image__provider_8cpp" local="yes">libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</includedby>
+    <includedby refid="gui_2gui_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__game__spec__image__provider_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</includedby>
     <incdepgraph>
       <node id="14808">
         <label>functional</label>
       </node>
       <node id="14805">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
         <link refid="gui__game__spec__image__provider_8h"/>
         <childnode refid="14806" relation="include">
         </childnode>
@@ -29,7 +29,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14809">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
         <link refid="gui__game__spec__image__provider_8h"/>
         <childnode refid="14810" relation="include">
         </childnode>
@@ -37,19 +37,19 @@
         </childnode>
       </node>
       <node id="14813">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="14812">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="14811">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="14810">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="14811" relation="include">
         </childnode>
@@ -93,6 +93,6 @@
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/public/gui_game_spec_image_provider.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.h"/>
   </compounddef>
 </doxygen>

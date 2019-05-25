@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.changelog Namespace Reference</title>
+<title>openage: openage.convert.changelog Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -147,6 +148,29 @@ Variables</h2></td></tr>
 <p>return all changed components since the passed version number. </p>
 
 <p class="definition">Definition at line <a class="el" href="changelog_8py_source.xhtml#l00052">52</a> of file <a class="el" href="changelog_8py_source.xhtml">changelog.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> asset_version &gt;= len(CHANGES):</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">warn</a>(<span class="stringliteral">&quot;asset version from the future: %d&quot;</span>, asset_version)</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">warn</a>(<span class="stringliteral">&quot;current version is: %d&quot;</span>, ASSET_VERSION)</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">warn</a>(<span class="stringliteral">&quot;leaving assets as they are.&quot;</span>)</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> set()</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    changed_components = set()</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    first_new_version = asset_version + 1</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment"># fetch all changes since the detected version</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> version_changes <span class="keywordflow">in</span> CHANGES[first_new_version:]:</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        changed_components |= version_changes</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> <span class="stringliteral">&quot;metadata&quot;</span> <span class="keywordflow">not</span> <span class="keywordflow">in</span> changed_components:</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> EmpiresDat.get_hash() != spec_version:</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>(<span class="stringliteral">&quot;game metadata hash changed, need to reconvert it&quot;</span>)</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            changed_components.add(<span class="stringliteral">&quot;metadata&quot;</span>)</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> changed_components</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">def </span><a class="code" href="namespaceopenage_1_1convert_1_1changelog.xhtml#acb36077c51fecae45689096576d2be9a">test</a>():</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1convert_1_1changelog_xhtml_acb36077c51fecae45689096576d2be9a"><div class="ttname"><a href="namespaceopenage_1_1convert_1_1changelog.xhtml#acb36077c51fecae45689096576d2be9a">openage.convert.changelog.test</a></div><div class="ttdeci">def test()</div><div class="ttdoc">verify only allowed versions are stored in the changes</div><div class="ttdef"><b>Definition:</b> <a href="changelog_8py_source.xhtml#l00079">changelog.py:79</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a3f1815b698faf5786fc5e20bcac7704b"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">openage::log.info</a></div><div class="ttdeci">def info(msg, *args, **kwargs)</div><div class="ttdoc">info message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00114">__init__.py:114</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a7ca418e1b1fcf210ff91cd25dc8e6a36"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">openage::log.warn</a></div><div class="ttdeci">def warn(msg, *args, **kwargs)</div><div class="ttdoc">warning message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00119">__init__.py:119</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00114">openage::log.info()</a>, and <a class="el" href="log_2____init_____8py_source.xhtml#l00119">openage::log.warn()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gamestate_8h_source.xhtml#l00081">openage::event::demo::PongPlayer.child_changes()</a>, <a class="el" href="gamestate_8h_source.xhtml#l00109">openage::event::demo::PongBall.child_changes()</a>, <a class="el" href="value__container_8h_source.xhtml#l00084">openage::curve::ValueContainer&lt; T &gt;.set_insert()</a>, and <a class="el" href="value__container_8h_source.xhtml#l00063">openage::curve::ValueContainer&lt; T &gt;.set_last()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1convert_1_1changelog_aacfbef73c68f07a70b75e8a01b4d0f99_cgraph.svg" width="414" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1convert_1_1changelog_aacfbef73c68f07a70b75e8a01b4d0f99_icgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -168,7 +192,7 @@ Variables</h2></td></tr>
 <p>verify only allowed versions are stored in the changes </p>
 
 <p class="definition">Definition at line <a class="el" href="changelog_8py_source.xhtml#l00079">79</a> of file <a class="el" href="changelog_8py_source.xhtml">changelog.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> entry <span class="keywordflow">in</span> CHANGES:</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> entry &gt; COMPONENTS:</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            invalid = entry - COMPONENTS</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">raise</span> TestError(<span class="stringliteral">&quot;&#39;{}&#39;: invalid changelog entry&quot;</span>.format(invalid))</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>

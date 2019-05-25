@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1peresource_1_1_string_literal" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::peresource::StringLiteral</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_string_literal_1aa433803d8e70757505d4e5357d988852" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.StringLiteral::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_string_literal_1af74d4a2c2c7df6e4e88401f005b93697" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.peresource.StringLiteral::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="129" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1peresource_1_1_string_literal_1aa1ebb6a1a24b14bebf2ec7544f047743" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.peresource.StringLiteral::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="132" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" compoundref="members_8py" startline="340" endline="347">openage.convert.dataformat.members.ContinueReadMemberResult.__str__</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.peresource.StringLiteral.readall</definition>
+        <argsstring>(cls, fileobj)</argsstring>
+        <name>readall</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+<para>In addition to the static data, reads the string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="138" bodyend="143"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" compoundref="filelike_2native_8cpp" startline="55" endline="82">openage::util::filelike::Native::read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" compoundref="filelike_2abstract_8py" startline="33" endline="34">openage.util.filelike.abstract.FileLikeObject.read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" compoundref="filelike_2python_8cpp" startline="17" endline="19">openage::util::filelike::Python::read</references>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" compoundref="codegen_8py" startline="51" endline="57">openage.codegen.codegen.WriteCatcher.read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</references>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a383153d8dbaf96c6e8ad44a200b2cfce" compoundref="lzxdstream_8py" startline="69" endline="82">openage.cabextract.lzxdstream.LZXDStream.read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb">openage::util::filelike::FileLike::read</references>
+        <references refid="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" compoundref="file_8cpp" startline="46" endline="48">openage::util::File::read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a77dba0458d85fcf0bec2fd7d11b3737a" compoundref="fifo_8py" startline="99" endline="108">openage.util.filelike.fifo.FIFO.read</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</references>
+        <references refid="structopenage_1_1util_1_1csv__subdata_1a24b1327a670ab69e55c089234bdcbfec" compoundref="csv_8h" startline="157" endline="166">openage::util::csv_subdata&lt; lineformat &gt;::read</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" compoundref="wrapper_8py" startline="162" endline="165">openage.util.fslike.wrapper.GuardedFile.read</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" compoundref="struct_8py" startline="170" endline="173">openage.util.struct.NamedStruct.read</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa01e2f0b6657c5c629188cbc3a0e0a57" compoundref="cab_8py" startline="543" endline="545">openage.cabextract.cab.CABFolderStream.read</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A simple length-prefixed little-endian utf-16 string. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1598">
+        <label>type</label>
+      </node>
+      <node id="1594">
+        <label>openage.convert.peresource.StringLiteral</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_string_literal"/>
+        <childnode refid="1595" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1597">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1598" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1595">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1596" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1597" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1596">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1603">
+        <label>type</label>
+      </node>
+      <node id="1599">
+        <label>openage.convert.peresource.StringLiteral</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_string_literal"/>
+        <childnode refid="1600" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1602">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1603" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1600">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1601" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1602" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1601">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/peresource.py" bodystart="123" bodyend="144"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1aa433803d8e70757505d4e5357d988852" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1af74d4a2c2c7df6e4e88401f005b93697" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>length</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>readall</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>unpack</name></member>
+      <member refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1aa1ebb6a1a24b14bebf2ec7544f047743" prot="public" virt="non-virtual"><scope>openage::convert::peresource::StringLiteral</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -203,7 +203,7 @@
         <label>stddef.h</label>
       </node>
       <node id="4185">
-        <label>libopenage/coord/tile.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp</label>
         <link refid="tile_8cpp"/>
         <childnode refid="4186" relation="include">
         </childnode>
@@ -603,6 +603,6 @@
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/tile.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp"/>
   </compounddef>
 </doxygen>

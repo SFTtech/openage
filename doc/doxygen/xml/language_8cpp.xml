@@ -9,7 +9,7 @@
         <link refid="language_8h"/>
       </node>
       <node id="30674">
-        <label>libopenage/util/language.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/language.cpp</label>
         <link refid="language_8cpp"/>
         <childnode refid="30675" relation="include">
         </childnode>
@@ -24,6 +24,6 @@
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="language_8h" kindref="compound">language.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/language.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/language.cpp"/>
   </compounddef>
 </doxygen>

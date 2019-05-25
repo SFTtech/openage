@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1interface_1_1cutter" kind="namespace" language="Python">
+    <compoundname>openage::convert::interface::cutter</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter" prot="public">openage::convert::interface::cutter::InterfaceCutter</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/cutter.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

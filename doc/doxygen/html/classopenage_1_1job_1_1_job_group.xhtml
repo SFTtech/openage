@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::job::JobGroup Class Reference</title>
+<title>openage: openage::job::JobGroup Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,11 +100,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1job_1_1_job_group.xhtm
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="job__group_8h_source.xhtml">job_group.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::job::JobGroup:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::job::JobGroup:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -154,7 +156,8 @@ Friends</h2></td></tr>
 <p>Creates a new empty job group with no parent worker. Should only be used as dummy object. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8cpp_source.xhtml#l00008">8</a> of file <a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    :</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">JobGroup</a>{<span class="keyword">nullptr</span>} {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_aa837e1d54351d5250163e288afd605bf"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#aa837e1d54351d5250163e288afd605bf">openage::job::JobGroup::JobGroup</a></div><div class="ttdeci">JobGroup()</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8cpp_source.xhtml#l00008">job_group.cpp:8</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2c8b676ea02ea4cbe16121a393c1903a"></a>
@@ -183,6 +186,9 @@ Friends</h2></td></tr>
 <p>Creates a new job group with the given parent worker. </p>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8cpp_source.xhtml#l00013">13</a> of file <a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    :</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>{<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>} {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="job__group_8h_source.xhtml#l00027">parent_worker</a>.</p>
 
 </div>
 </div>
@@ -232,6 +238,19 @@ template&lt;class T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00046">46</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                   {}) {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;JobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+<div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="dynamic__resource_8cpp_source.xhtml#l00173">openage::audio::DynamicResource::load_chunk_async()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_job_group_a793449eefa0dcc327cd2dc8bdd4144bc_icgraph.svg" width="100%" height="361"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -280,7 +299,10 @@ template&lt;class T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00067">67</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                   {}) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>, <span class="stringliteral">&quot;job group has no worker thread associated&quot;</span>);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">auto</span> state = std::make_shared&lt;AbortableJobState&lt;T&gt;&gt;(<span class="keyword">function</span>, callback);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">parent_worker</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">enqueue</a>(state);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> Job&lt;T&gt;{state};</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="ttc" id="classopenage_1_1job_1_1_job_group_xhtml_af6a7632ccf4dbd8da7fc9360ead870ef"><div class="ttname"><a href="classopenage_1_1job_1_1_job_group.xhtml#af6a7632ccf4dbd8da7fc9360ead870ef">openage::job::JobGroup::parent_worker</a></div><div class="ttdeci">Worker * parent_worker</div><div class="ttdef"><b>Definition:</b> <a href="job__group_8h_source.xhtml#l00027">job_group.h:27</a></div></div>
+<div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ace257fda681faf0b5c87e9296da18b7c"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ace257fda681faf0b5c87e9296da18b7c">openage::job::Worker::enqueue</a></div><div class="ttdeci">void enqueue(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00033">worker.cpp:33</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -333,11 +355,13 @@ template&lt;class T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="job__group_8h_source.xhtml#l00027">27</a> of file <a class="el" href="job__group_8h_source.xhtml">job_group.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="job__group_8cpp_source.xhtml#l00013">JobGroup()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/job/<a class="el" href="job__group_8h_source.xhtml">job_group.h</a></li>
-<li>libopenage/job/<a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/<a class="el" href="job__group_8h_source.xhtml">job_group.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/<a class="el" href="job__group_8cpp_source.xhtml">job_group.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

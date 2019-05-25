@@ -102,7 +102,7 @@
         <label>fstream</label>
       </node>
       <node id="29629">
-        <label>libopenage/util/filelike/native.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp</label>
         <link refid="filelike_2native_8cpp"/>
         <childnode refid="29630" relation="include">
         </childnode>
@@ -400,6 +400,6 @@
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/filelike/native.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp"/>
   </compounddef>
 </doxygen>

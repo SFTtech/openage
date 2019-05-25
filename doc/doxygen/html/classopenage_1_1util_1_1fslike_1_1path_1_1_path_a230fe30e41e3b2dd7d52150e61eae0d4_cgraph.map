@@ -1,0 +1,5 @@
+<map id="openage.util.fslike.path.Path.open" name="openage.util.fslike.path.Path.open">
+<area shape="rect" id="node1" title="Opens the file at this path; returns a file&#45;like object." alt="" coords="5,39,164,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a34706428ed6a37c8b4e2c1c51b6a0f7c" title="open with mode=&#39;rb&#39;" alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#af98927e10cee2c17109712106a06a4ea" title="open with mode=&#39;wb&#39;" alt="" coords="212,71,371,112"/>
+</map>

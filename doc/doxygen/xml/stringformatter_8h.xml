@@ -8,11 +8,11 @@
     <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
     <includes refid="externalsstream_8h" local="yes">externalsstream.h</includes>
     <includes refid="strings_8h" local="yes">strings.h</includes>
-    <includedby refid="message_8h" local="yes">libopenage/log/message.h</includedby>
-    <includedby refid="coord__test_8cpp" local="yes">libopenage/coord/coord_test.cpp</includedby>
-    <includedby refid="physics_8cpp" local="yes">libopenage/event/demo/physics.cpp</includedby>
-    <includedby refid="fixed__point__test_8cpp" local="yes">libopenage/util/fixed_point_test.cpp</includedby>
-    <includedby refid="stringformatter_8cpp" local="yes">libopenage/util/stringformatter.cpp</includedby>
+    <includedby refid="message_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h</includedby>
+    <includedby refid="coord__test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coord_test.cpp</includedby>
+    <includedby refid="physics_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</includedby>
+    <includedby refid="fixed__point__test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp</includedby>
+    <includedby refid="stringformatter_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.cpp</includedby>
     <incdepgraph>
       <node id="32039">
         <label>atomic</label>
@@ -48,7 +48,7 @@
         <label>string</label>
       </node>
       <node id="32038">
-        <label>libopenage/util/stringformatter.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h</label>
         <link refid="stringformatter_8h"/>
         <childnode refid="32039" relation="include">
         </childnode>
@@ -108,7 +108,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="32315">
-        <label>libopenage/event/eventclass.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h</label>
         <link refid="eventclass_8h"/>
         <childnode refid="32316" relation="include">
         </childnode>
@@ -126,7 +126,7 @@
         </childnode>
       </node>
       <node id="32184">
-        <label>libopenage/renderer/opengl/lookup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/lookup.h</label>
         <link refid="lookup_8h"/>
         <childnode refid="32185" relation="include">
         </childnode>
@@ -140,15 +140,15 @@
         </childnode>
       </node>
       <node id="32107">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="32145">
-        <label>libopenage/audio/resource_def.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource_def.cpp</label>
         <link refid="resource__def_8cpp"/>
       </node>
       <node id="32236">
-        <label>libopenage/coord/coordmanager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h</label>
         <link refid="coordmanager_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -162,7 +162,7 @@
         </childnode>
       </node>
       <node id="32169">
-        <label>libopenage/renderer/opengl/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</label>
         <link refid="opengl_2render__target_8h"/>
         <childnode refid="32170" relation="include">
         </childnode>
@@ -174,15 +174,15 @@
         </childnode>
       </node>
       <node id="32134">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="32376">
-        <label>libopenage/error/gl_debug.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/gl_debug.cpp</label>
         <link refid="gl__debug_8cpp"/>
       </node>
       <node id="32233">
-        <label>libopenage/util/fixed_point.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h</label>
         <link refid="fixed__point_8h"/>
         <childnode refid="32234" relation="include">
         </childnode>
@@ -194,11 +194,11 @@
         </childnode>
       </node>
       <node id="32112">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__impl_8cpp"/>
       </node>
       <node id="32161">
-        <label>libopenage/audio/opus_in_memory_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.h</label>
         <link refid="opus__in__memory__loader_8h"/>
         <childnode refid="32160" relation="include">
         </childnode>
@@ -206,7 +206,7 @@
         </childnode>
       </node>
       <node id="32105">
-        <label>libopenage/gui/game_spec_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.h</label>
         <link refid="game__spec__link_8h"/>
         <childnode refid="32085" relation="include">
         </childnode>
@@ -216,7 +216,7 @@
         </childnode>
       </node>
       <node id="32353">
-        <label>libopenage/renderer/font/font.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h</label>
         <link refid="font_8h"/>
         <childnode refid="32241" relation="include">
         </childnode>
@@ -234,11 +234,11 @@
         </childnode>
       </node>
       <node id="32321">
-        <label>libopenage/curve/iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.cpp</label>
         <link refid="iterator_8cpp"/>
       </node>
       <node id="32141">
-        <label>libopenage/audio/resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.h</label>
         <link refid="audio_2resource_8h"/>
         <childnode refid="32131" relation="include">
         </childnode>
@@ -252,11 +252,11 @@
         </childnode>
       </node>
       <node id="32350">
-        <label>libopenage/audio/format.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp</label>
         <link refid="format_8cpp"/>
       </node>
       <node id="32268">
-        <label>libopenage/pathfinding/path.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h</label>
         <link refid="pathfinding_2path_8h"/>
         <childnode refid="32252" relation="include">
         </childnode>
@@ -272,19 +272,19 @@
         </childnode>
       </node>
       <node id="32313">
-        <label>libopenage/event/eventclass.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp</label>
         <link refid="eventclass_8cpp"/>
       </node>
       <node id="32412">
-        <label>libopenage/log/named_logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp</label>
         <link refid="named__logsource_8cpp"/>
       </node>
       <node id="32160">
-        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.cpp</label>
         <link refid="in__memory__loader_8cpp"/>
       </node>
       <node id="32234">
-        <label>libopenage/coord/declarations.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h</label>
         <link refid="declarations_8h"/>
         <childnode refid="32235" relation="include">
         </childnode>
@@ -300,19 +300,19 @@
         </childnode>
       </node>
       <node id="32367">
-        <label>libopenage/util/enum_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp</label>
         <link refid="enum__test_8cpp"/>
       </node>
       <node id="32140">
-        <label>libopenage/audio/sound.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/sound.cpp</label>
         <link refid="sound_8cpp"/>
       </node>
       <node id="32375">
-        <label>libopenage/error/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp</label>
         <link refid="error_2error_8cpp"/>
       </node>
       <node id="32316">
-        <label>libopenage/event/eventqueue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h</label>
         <link refid="eventqueue_8h"/>
         <childnode refid="32305" relation="include">
         </childnode>
@@ -322,19 +322,19 @@
         </childnode>
       </node>
       <node id="32298">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="32147">
-        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</label>
         <link refid="dynamic__loader_8cpp"/>
       </node>
       <node id="32308">
-        <label>libopenage/event/eventtarget.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp</label>
         <link refid="eventtarget_8cpp"/>
       </node>
       <node id="32066">
-        <label>libopenage/gamestate/game_spec.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h</label>
         <link refid="game__spec_8h"/>
         <childnode refid="32067" relation="include">
         </childnode>
@@ -370,7 +370,7 @@
         </childnode>
       </node>
       <node id="32305">
-        <label>libopenage/event/loop.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.h</label>
         <link refid="event_2loop_8h"/>
         <childnode refid="32306" relation="include">
         </childnode>
@@ -386,11 +386,11 @@
         </childnode>
       </node>
       <node id="32178">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="32122">
-        <label>libopenage/texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h</label>
         <link refid="texture_8h"/>
         <childnode refid="32062" relation="include">
         </childnode>
@@ -418,19 +418,19 @@
         </childnode>
       </node>
       <node id="32345">
-        <label>libopenage/job/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/tests.cpp</label>
         <link refid="job_2tests_8cpp"/>
       </node>
       <node id="32116">
-        <label>libopenage/terrain/terrain.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp</label>
         <link refid="terrain_8cpp"/>
       </node>
       <node id="32319">
-        <label>libopenage/curve/curve.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/curve.cpp</label>
         <link refid="curve_8cpp"/>
       </node>
       <node id="32240">
-        <label>libopenage/input/input_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.h</label>
         <link refid="input__manager_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -446,15 +446,15 @@
         </childnode>
       </node>
       <node id="32368">
-        <label>libopenage/util/init.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp</label>
         <link refid="init_8cpp"/>
       </node>
       <node id="32293">
-        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</label>
         <link refid="curve__types_8cpp"/>
       </node>
       <node id="32067">
-        <label>libopenage/gamestate/civilisation.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/civilisation.h</label>
         <link refid="civilisation_8h"/>
         <childnode refid="32068" relation="include">
         </childnode>
@@ -464,15 +464,15 @@
         </childnode>
       </node>
       <node id="32271">
-        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp</label>
         <link refid="heuristics_8cpp"/>
       </node>
       <node id="32093">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="32320">
-        <label>libopenage/curve/iterator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/iterator.h</label>
         <link refid="iterator_8h"/>
         <childnode refid="32321" relation="include">
         </childnode>
@@ -482,11 +482,11 @@
         </childnode>
       </node>
       <node id="32309">
-        <label>libopenage/event/loop.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/loop.cpp</label>
         <link refid="loop_8cpp"/>
       </node>
       <node id="32379">
-        <label>libopenage/util/matrix.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h</label>
         <link refid="matrix_8h"/>
         <childnode refid="32380" relation="include">
         </childnode>
@@ -496,15 +496,15 @@
         </childnode>
       </node>
       <node id="32410">
-        <label>libopenage/log/file_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp</label>
         <link refid="file__logsink_8cpp"/>
       </node>
       <node id="32238">
-        <label>libopenage/coord/pixel.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp</label>
         <link refid="pixel_8cpp"/>
       </node>
       <node id="32165">
-        <label>libopenage/renderer/resources/texture_data.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.h</label>
         <link refid="texture__data_8h"/>
         <childnode refid="32166" relation="include">
         </childnode>
@@ -524,15 +524,15 @@
         </childnode>
       </node>
       <node id="32211">
-        <label>libopenage/util/fslike/directory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.cpp</label>
         <link refid="directory_8cpp"/>
       </node>
       <node id="32383">
-        <label>libopenage/util/vector.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.cpp</label>
         <link refid="vector_8cpp"/>
       </node>
       <node id="32073">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="32074" relation="include">
         </childnode>
@@ -546,7 +546,7 @@
         </childnode>
       </node>
       <node id="32409">
-        <label>libopenage/log/logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h</label>
         <link refid="logsource_8h"/>
         <childnode refid="32251" relation="include">
         </childnode>
@@ -560,27 +560,27 @@
         </childnode>
       </node>
       <node id="32300">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="32296">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="32224">
-        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</label>
         <link refid="pyobject__tests_8cpp"/>
       </node>
       <node id="32302">
-        <label>libopenage/curve/discrete.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.cpp</label>
         <link refid="discrete_8cpp"/>
       </node>
       <node id="32237">
-        <label>libopenage/coord/coordmanager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.cpp</label>
         <link refid="coordmanager_8cpp"/>
       </node>
       <node id="32327">
-        <label>libopenage/curve/queue.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h</label>
         <link refid="queue_8h"/>
         <childnode refid="32328" relation="include">
         </childnode>
@@ -588,7 +588,7 @@
         </childnode>
       </node>
       <node id="32195">
-        <label>libopenage/renderer/resources/mesh_data.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h</label>
         <link refid="mesh__data_8h"/>
         <childnode refid="32196" relation="include">
         </childnode>
@@ -604,7 +604,7 @@
         </childnode>
       </node>
       <node id="32197">
-        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</label>
         <link refid="opengl_2shader__program_8h"/>
         <childnode refid="32171" relation="include">
         </childnode>
@@ -614,23 +614,23 @@
         </childnode>
       </node>
       <node id="32325">
-        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map_filter_iterator.cpp</label>
         <link refid="map__filter__iterator_8cpp"/>
       </node>
       <node id="32206">
-        <label>libopenage/renderer/resources/shader_source.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.cpp</label>
         <link refid="shader__source_8cpp"/>
       </node>
       <node id="32100">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="32095">
-        <label>libopenage/gamestate/cost.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/cost.cpp</label>
         <link refid="cost_8cpp"/>
       </node>
       <node id="32259">
-        <label>libopenage/screenshot.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h</label>
         <link refid="screenshot_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -638,25 +638,25 @@
         </childnode>
       </node>
       <node id="32074">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="32075" relation="include">
         </childnode>
       </node>
       <node id="32358">
-        <label>libopenage/renderer/font/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp</label>
         <link refid="renderer_2font_2tests_8cpp"/>
       </node>
       <node id="32253">
-        <label>libopenage/unit/attributes.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.cpp</label>
         <link refid="attributes_8cpp"/>
       </node>
       <node id="32339">
-        <label>libopenage/audio/category.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/category.cpp</label>
         <link refid="category_8cpp"/>
       </node>
       <node id="32241">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="32135" relation="include">
         </childnode>
@@ -670,7 +670,7 @@
         </childnode>
       </node>
       <node id="32323">
-        <label>libopenage/curve/map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.h</label>
         <link refid="map_8h"/>
         <childnode refid="32324" relation="include">
         </childnode>
@@ -678,21 +678,21 @@
         </childnode>
       </node>
       <node id="32151">
-        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</label>
         <link refid="opus__in__memory__loader_8cpp"/>
       </node>
       <node id="32228">
-        <label>libopenage/pyinterface/exctranslate_tests.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate_tests.h</label>
         <link refid="exctranslate__tests_8h"/>
         <childnode refid="32222" relation="include">
         </childnode>
       </node>
       <node id="32091">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="32348">
-        <label>libopenage/job/abortable_job_state.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h</label>
         <link refid="abortable__job__state_8h"/>
         <childnode refid="32342" relation="include">
         </childnode>
@@ -700,7 +700,7 @@
         </childnode>
       </node>
       <node id="32280">
-        <label>libopenage/coord/term.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h</label>
         <link refid="term_8h"/>
         <childnode refid="32281" relation="include">
         </childnode>
@@ -708,7 +708,7 @@
         </childnode>
       </node>
       <node id="32057">
-        <label>libopenage/pyinterface/exctranslate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.h</label>
         <link refid="exctranslate_8h"/>
         <childnode refid="32058" relation="include">
         </childnode>
@@ -718,7 +718,7 @@
         </childnode>
       </node>
       <node id="32255">
-        <label>libopenage/game_renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.h</label>
         <link refid="game__renderer_8h"/>
         <childnode refid="32080" relation="include">
         </childnode>
@@ -728,11 +728,11 @@
         </childnode>
       </node>
       <node id="32312">
-        <label>libopenage/event/event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.cpp</label>
         <link refid="event_2event_8cpp"/>
       </node>
       <node id="32381">
-        <label>libopenage/util/quaternion.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="32382" relation="include">
         </childnode>
@@ -740,15 +740,15 @@
         </childnode>
       </node>
       <node id="32393">
-        <label>libopenage/rng/rng.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng.cpp</label>
         <link refid="rng_8cpp"/>
       </node>
       <node id="32212">
-        <label>libopenage/util/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp</label>
         <link refid="util_2path_8cpp"/>
       </node>
       <node id="32411">
-        <label>libopenage/log/named_logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h</label>
         <link refid="named__logsource_8h"/>
         <childnode refid="32404" relation="include">
         </childnode>
@@ -758,7 +758,7 @@
         </childnode>
       </node>
       <node id="32304">
-        <label>libopenage/event/eventfilter.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventfilter.h</label>
         <link refid="eventfilter_8h"/>
         <childnode refid="32305" relation="include">
         </childnode>
@@ -766,15 +766,15 @@
         </childnode>
       </node>
       <node id="32172">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="32080">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="32287">
-        <label>libopenage/curve/curve.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/curve.h</label>
         <link refid="curve_8h"/>
         <childnode refid="32288" relation="include">
         </childnode>
@@ -808,11 +808,11 @@
         </childnode>
       </node>
       <node id="32346">
-        <label>libopenage/job/worker.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp</label>
         <link refid="worker_8cpp"/>
       </node>
       <node id="32248">
-        <label>libopenage/unit/attributes.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attributes.h</label>
         <link refid="attributes_8h"/>
         <childnode refid="32249" relation="include">
         </childnode>
@@ -822,7 +822,7 @@
         </childnode>
       </node>
       <node id="32061">
-        <label>libopenage/assetmanager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/assetmanager.h</label>
         <link refid="assetmanager_8h"/>
         <childnode refid="32062" relation="include">
         </childnode>
@@ -834,19 +834,19 @@
         </childnode>
       </node>
       <node id="32144">
-        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp</label>
         <link refid="in__memory__resource_8cpp"/>
       </node>
       <node id="32366">
-        <label>libopenage/util/constinit_vector.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp</label>
         <link refid="constinit__vector_8cpp"/>
       </node>
       <node id="32155">
-        <label>libopenage/input/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.cpp</label>
         <link refid="input_2action_8cpp"/>
       </node>
       <node id="32276">
-        <label>libopenage/unit/ability.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h</label>
         <link refid="ability_8h"/>
         <childnode refid="32245" relation="include">
         </childnode>
@@ -862,7 +862,7 @@
         </childnode>
       </node>
       <node id="32273">
-        <label>libopenage/terrain/terrain_outline.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.h</label>
         <link refid="terrain__outline_8h"/>
         <childnode refid="32118" relation="include">
         </childnode>
@@ -872,7 +872,7 @@
         </childnode>
       </node>
       <node id="32289">
-        <label>libopenage/curve/value_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.h</label>
         <link refid="value__container_8h"/>
         <childnode refid="32290" relation="include">
         </childnode>
@@ -882,15 +882,15 @@
         </childnode>
       </node>
       <node id="32370">
-        <label>libopenage/util/quaternion_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp</label>
         <link refid="quaternion__test_8cpp"/>
       </node>
       <node id="32189">
-        <label>libopenage/util/csv.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.cpp</label>
         <link refid="csv_8cpp"/>
       </node>
       <node id="32326">
-        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.h</label>
         <link refid="queue__filter__iterator_8h"/>
         <childnode refid="32327" relation="include">
         </childnode>
@@ -898,7 +898,7 @@
         </childnode>
       </node>
       <node id="32210">
-        <label>libopenage/util/fslike/directory.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.h</label>
         <link refid="directory_8h"/>
         <childnode refid="32201" relation="include">
         </childnode>
@@ -908,7 +908,7 @@
         </childnode>
       </node>
       <node id="32226">
-        <label>libopenage/util/filelike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h</label>
         <link refid="filelike_2python_8h"/>
         <childnode refid="32216" relation="include">
         </childnode>
@@ -916,7 +916,7 @@
         </childnode>
       </node>
       <node id="32055">
-        <label>libopenage/log/message.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.h</label>
         <link refid="message_8h"/>
         <childnode refid="32056" relation="include">
         </childnode>
@@ -936,7 +936,7 @@
         </childnode>
       </node>
       <node id="32378">
-        <label>libopenage/util/vector.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h</label>
         <link refid="vector_8h"/>
         <childnode refid="32294" relation="include">
         </childnode>
@@ -952,15 +952,15 @@
         </childnode>
       </node>
       <node id="32328">
-        <label>libopenage/curve/queue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp</label>
         <link refid="queue_8cpp"/>
       </node>
       <node id="32227">
-        <label>libopenage/util/filelike/python.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp</label>
         <link refid="filelike_2python_8cpp"/>
       </node>
       <node id="32199">
-        <label>libopenage/renderer/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h</label>
         <link refid="shader__program_8h"/>
         <childnode refid="32197" relation="include">
         </childnode>
@@ -970,17 +970,17 @@
         </childnode>
       </node>
       <node id="32173">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="32181">
-        <label>libopenage/renderer/opengl/texture_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.h</label>
         <link refid="opengl_2texture__array_8h"/>
         <childnode refid="32175" relation="include">
         </childnode>
       </node>
       <node id="32054">
-        <label>libopenage/util/stringformatter.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h</label>
         <link refid="stringformatter_8h"/>
         <childnode refid="32055" relation="include">
         </childnode>
@@ -994,87 +994,87 @@
         </childnode>
       </node>
       <node id="32282">
-        <label>libopenage/console/buf.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp</label>
         <link refid="buf_8cpp"/>
       </node>
       <node id="32119">
-        <label>libopenage/terrain/terrain_search.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp</label>
         <link refid="terrain__search_8cpp"/>
       </node>
       <node id="32200">
-        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h</label>
         <link refid="vulkan_2shader__program_8h"/>
         <childnode refid="32201" relation="include">
         </childnode>
       </node>
       <node id="32089">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="32097">
-        <label>libopenage/gamestate/player.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/player.cpp</label>
         <link refid="player_8cpp"/>
       </node>
       <node id="32079">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="32076">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="32250">
-        <label>libopenage/unit/attribute.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.cpp</label>
         <link refid="attribute_8cpp"/>
       </node>
       <node id="32127">
-        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp</label>
         <link refid="terrain__outline_8cpp"/>
       </node>
       <node id="32111">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
       </node>
       <node id="32278">
-        <label>libopenage/unit/command.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.cpp</label>
         <link refid="command_8cpp"/>
       </node>
       <node id="32062">
-        <label>libopenage/assetmanager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/assetmanager.cpp</label>
         <link refid="assetmanager_8cpp"/>
       </node>
       <node id="32114">
-        <label>libopenage/pathfinding/a_star.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</label>
         <link refid="a__star_8cpp"/>
       </node>
       <node id="32384">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="32191">
-        <label>libopenage/gui/main_args_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h</label>
         <link refid="main__args__link_8h"/>
         <childnode refid="32158" relation="include">
         </childnode>
       </node>
       <node id="32218">
-        <label>libopenage/shader/program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/program.cpp</label>
         <link refid="program_8cpp"/>
       </node>
       <node id="32115">
-        <label>libopenage/pathfinding/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp</label>
         <link refid="pathfinding_2path_8cpp"/>
       </node>
       <node id="32075">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
       <node id="32347">
-        <label>libopenage/job/job_group.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_group.cpp</label>
         <link refid="job__group_8cpp"/>
       </node>
       <node id="32153">
-        <label>libopenage/cvar/cvar.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h</label>
         <link refid="cvar_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -1084,7 +1084,7 @@
         </childnode>
       </node>
       <node id="32299">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="32297" relation="include">
         </childnode>
@@ -1092,7 +1092,7 @@
         </childnode>
       </node>
       <node id="32239">
-        <label>libopenage/handlers.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h</label>
         <link refid="handlers_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -1116,45 +1116,45 @@
         </childnode>
       </node>
       <node id="32205">
-        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp</label>
         <link refid="renderer_2opengl_2shader_8cpp"/>
       </node>
       <node id="32371">
-        <label>libopenage/util/vector_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp</label>
         <link refid="vector__test_8cpp"/>
       </node>
       <node id="32168">
-        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp</label>
         <link refid="framebuffer_8cpp"/>
       </node>
       <node id="32102">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="32324">
-        <label>libopenage/curve/map.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map.cpp</label>
         <link refid="map_8cpp"/>
       </node>
       <node id="32314">
-        <label>libopenage/event/eventqueue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp</label>
         <link refid="eventqueue_8cpp"/>
       </node>
       <node id="32065">
-        <label>libopenage/coord/tile.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp</label>
         <link refid="tile_8cpp"/>
       </node>
       <node id="32307">
-        <label>libopenage/curve/keyframe_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.cpp</label>
         <link refid="keyframe__container_8cpp"/>
       </node>
       <node id="32230">
-        <label>libopenage/pyinterface/hacks.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.h</label>
         <link refid="hacks_8h"/>
         <childnode refid="32231" relation="include">
         </childnode>
       </node>
       <node id="32148">
-        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h</label>
         <link refid="opus__dynamic__loader_8h"/>
         <childnode refid="32147" relation="include">
         </childnode>
@@ -1162,7 +1162,7 @@
         </childnode>
       </node>
       <node id="32156">
-        <label>libopenage/gui/engine_info.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_info.h</label>
         <link refid="engine__info_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -1174,11 +1174,11 @@
         </childnode>
       </node>
       <node id="32125">
-        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</label>
         <link refid="gui__texture__factory_8cpp"/>
       </node>
       <node id="32290">
-        <label>libopenage/curve/continuous.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h</label>
         <link refid="continuous_8h"/>
         <childnode refid="32291" relation="include">
         </childnode>
@@ -1190,11 +1190,11 @@
         </childnode>
       </node>
       <node id="32138">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="32209">
-        <label>libopenage/util/fslike/fslike.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h</label>
         <link refid="fslike_8h"/>
         <childnode refid="32210" relation="include">
         </childnode>
@@ -1204,7 +1204,7 @@
         </childnode>
       </node>
       <node id="32267">
-        <label>libopenage/terrain/terrain_object.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h</label>
         <link refid="terrain__object_8h"/>
         <childnode refid="32247" relation="include">
         </childnode>
@@ -1230,7 +1230,7 @@
         </childnode>
       </node>
       <node id="32343">
-        <label>libopenage/job/job_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_manager.h</label>
         <link refid="job__manager_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -1246,7 +1246,7 @@
         </childnode>
       </node>
       <node id="32264">
-        <label>libopenage/gamestate/generator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h</label>
         <link refid="generator_8h"/>
         <childnode refid="32070" relation="include">
         </childnode>
@@ -1264,11 +1264,11 @@
         </childnode>
       </node>
       <node id="32179">
-        <label>libopenage/renderer/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture.cpp</label>
         <link refid="renderer_2texture_8cpp"/>
       </node>
       <node id="32068">
-        <label>libopenage/gamestate/player.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/player.h</label>
         <link refid="player_8h"/>
         <childnode refid="32069" relation="include">
         </childnode>
@@ -1292,19 +1292,19 @@
         </childnode>
       </node>
       <node id="32170">
-        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp</label>
         <link refid="render__target_8cpp"/>
       </node>
       <node id="32407">
-        <label>libopenage/util/os.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</label>
         <link refid="os_8cpp"/>
       </node>
       <node id="32397">
-        <label>libopenage/util/filelike/native.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp</label>
         <link refid="filelike_2native_8cpp"/>
       </node>
       <node id="32059">
-        <label>libopenage/pyinterface/pyobject.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.h</label>
         <link refid="pyobject_8h"/>
         <childnode refid="32060" relation="include">
         </childnode>
@@ -1322,15 +1322,15 @@
         </childnode>
       </node>
       <node id="32109">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
       </node>
       <node id="32221">
-        <label>libopenage/pyinterface/exctranslate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp</label>
         <link refid="exctranslate_8cpp"/>
       </node>
       <node id="32146">
-        <label>libopenage/audio/dynamic_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.h</label>
         <link refid="dynamic__loader_8h"/>
         <childnode refid="32147" relation="include">
         </childnode>
@@ -1340,7 +1340,7 @@
         </childnode>
       </node>
       <node id="32129">
-        <label>libopenage/audio/resource_def.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource_def.h</label>
         <link refid="resource__def_8h"/>
         <childnode refid="32130" relation="include">
         </childnode>
@@ -1352,7 +1352,7 @@
         </childnode>
       </node>
       <node id="32088">
-        <label>libopenage/unit/producer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h</label>
         <link refid="producer_8h"/>
         <childnode refid="32080" relation="include">
         </childnode>
@@ -1372,7 +1372,7 @@
         </childnode>
       </node>
       <node id="32071">
-        <label>libopenage/game_control.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h</label>
         <link refid="game__control_8h"/>
         <childnode refid="32072" relation="include">
         </childnode>
@@ -1384,7 +1384,7 @@
         </childnode>
       </node>
       <node id="32056">
-        <label>libopenage/error/error.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h</label>
         <link refid="error_2error_8h"/>
         <childnode refid="32057" relation="include">
         </childnode>
@@ -1554,19 +1554,19 @@
         </childnode>
       </node>
       <node id="32400">
-        <label>libopenage/util/timing.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp</label>
         <link refid="timing_8cpp"/>
       </node>
       <node id="32152">
-        <label>libopenage/audio/opus_loading.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp</label>
         <link refid="opus__loading_8cpp"/>
       </node>
       <node id="32113">
-        <label>libopenage/unit/unit_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp</label>
         <link refid="unit__texture_8cpp"/>
       </node>
       <node id="32232">
-        <label>libopenage/util/misc.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h</label>
         <link refid="misc_8h"/>
         <childnode refid="32233" relation="include">
         </childnode>
@@ -1602,7 +1602,7 @@
         </childnode>
       </node>
       <node id="32177">
-        <label>libopenage/renderer/texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture.h</label>
         <link refid="renderer_2texture_8h"/>
         <childnode refid="32166" relation="include">
         </childnode>
@@ -1612,11 +1612,11 @@
         </childnode>
       </node>
       <node id="32331">
-        <label>libopenage/util/fixed_point_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp</label>
         <link refid="fixed__point__test_8cpp"/>
       </node>
       <node id="32162">
-        <label>libopenage/util/csv.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h</label>
         <link refid="csv_8h"/>
         <childnode refid="32066" relation="include">
         </childnode>
@@ -1630,19 +1630,19 @@
         </childnode>
       </node>
       <node id="32132">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="32202">
-        <label>libopenage/renderer/resources/mesh_data.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp</label>
         <link refid="mesh__data_8cpp"/>
       </node>
       <node id="32404">
-        <label>libopenage/log/log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</label>
         <link refid="log_8cpp"/>
       </node>
       <node id="32258">
-        <label>libopenage/input/input_context.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_context.h</label>
         <link refid="input__context_8h"/>
         <childnode refid="32240" relation="include">
         </childnode>
@@ -1652,19 +1652,19 @@
         </childnode>
       </node>
       <node id="32256">
-        <label>libopenage/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.cpp</label>
         <link refid="handlers_8cpp"/>
       </node>
       <node id="32365">
-        <label>libopenage/testing/testlist.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testlist.h</label>
         <link refid="testlist_8h"/>
       </node>
       <node id="32266">
-        <label>libopenage/gui/generator_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</label>
         <link refid="generator__link_8cpp"/>
       </node>
       <node id="32261">
-        <label>libopenage/renderer/text.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</label>
         <link refid="text_8h"/>
         <childnode refid="32136" relation="include">
         </childnode>
@@ -1676,7 +1676,7 @@
         </childnode>
       </node>
       <node id="32180">
-        <label>libopenage/renderer/texture_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h</label>
         <link refid="texture__array_8h"/>
         <childnode refid="32181" relation="include">
         </childnode>
@@ -1684,7 +1684,7 @@
         </childnode>
       </node>
       <node id="32167">
-        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h</label>
         <link refid="framebuffer_8h"/>
         <childnode refid="32168" relation="include">
         </childnode>
@@ -1692,7 +1692,7 @@
         </childnode>
       </node>
       <node id="32166">
-        <label>libopenage/renderer/opengl/texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.h</label>
         <link refid="renderer_2opengl_2texture_8h"/>
         <childnode refid="32167" relation="include">
         </childnode>
@@ -1706,23 +1706,23 @@
         </childnode>
       </node>
       <node id="32187">
-        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.cpp</label>
         <link refid="texture__info_8cpp"/>
       </node>
       <node id="32124">
-        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</label>
         <link refid="gui__texture_8cpp"/>
       </node>
       <node id="32392">
-        <label>libopenage/renderer/vulkan/loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp</label>
         <link refid="loader_8cpp"/>
       </node>
       <node id="32414">
-        <label>libopenage/log/logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp</label>
         <link refid="logsource_8cpp"/>
       </node>
       <node id="32277">
-        <label>libopenage/unit/command.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h</label>
         <link refid="command_8h"/>
         <childnode refid="32071" relation="include">
         </childnode>
@@ -1742,19 +1742,19 @@
         </childnode>
       </node>
       <node id="32297">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="32382">
-        <label>libopenage/util/quaternion.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</label>
         <link refid="quaternion_8cpp"/>
       </node>
       <node id="32135">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="32373">
-        <label>libopenage/datastructure/constexpr_map.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h</label>
         <link refid="constexpr__map_8h"/>
         <childnode refid="32361" relation="include">
         </childnode>
@@ -1776,11 +1776,11 @@
         </childnode>
       </node>
       <node id="32225">
-        <label>libopenage/pyinterface/pyobject.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp</label>
         <link refid="pyobject_8cpp"/>
       </node>
       <node id="32279">
-        <label>libopenage/unit/unit_texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h</label>
         <link refid="unit__texture_8h"/>
         <childnode refid="32066" relation="include">
         </childnode>
@@ -1796,19 +1796,19 @@
         </childnode>
       </node>
       <node id="32085">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="32090">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="32098">
-        <label>libopenage/gamestate/score.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp</label>
         <link refid="score_8cpp"/>
       </node>
       <node id="32270">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="32114" relation="include">
         </childnode>
@@ -1816,7 +1816,7 @@
         </childnode>
       </node>
       <node id="32130">
-        <label>libopenage/audio/audio_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.h</label>
         <link refid="audio__manager_8h"/>
         <childnode refid="32131" relation="include">
         </childnode>
@@ -1828,7 +1828,7 @@
         </childnode>
       </node>
       <node id="32332">
-        <label>libopenage/event/eventstore.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.h</label>
         <link refid="eventstore_8h"/>
         <childnode refid="32316" relation="include">
         </childnode>
@@ -1836,23 +1836,23 @@
         </childnode>
       </node>
       <node id="32137">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="32092">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="32416">
-        <label>libopenage/log/message.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/message.cpp</label>
         <link refid="message_8cpp"/>
       </node>
       <node id="32311">
-        <label>libopenage/event/eventfilter.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventfilter.cpp</label>
         <link refid="eventfilter_8cpp"/>
       </node>
       <node id="32306">
-        <label>libopenage/curve/keyframe_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.h</label>
         <link refid="keyframe__container_8h"/>
         <childnode refid="32289" relation="include">
         </childnode>
@@ -1862,11 +1862,11 @@
         </childnode>
       </node>
       <node id="32216">
-        <label>libopenage/util/file.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp</label>
         <link refid="file_8cpp"/>
       </node>
       <node id="32342">
-        <label>libopenage/job/job_group.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_group.h</label>
         <link refid="job__group_8h"/>
         <childnode refid="32142" relation="include">
         </childnode>
@@ -1876,11 +1876,11 @@
         </childnode>
       </node>
       <node id="32386">
-        <label>libopenage/renderer/opengl/buffer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp</label>
         <link refid="buffer_8cpp"/>
       </node>
       <node id="32084">
-        <label>libopenage/gui/game_main_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h</label>
         <link refid="game__main__link_8h"/>
         <childnode refid="32077" relation="include">
         </childnode>
@@ -1892,11 +1892,11 @@
         </childnode>
       </node>
       <node id="32070">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="32133">
-        <label>libopenage/engine.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h</label>
         <link refid="engine_8h"/>
         <childnode refid="32132" relation="include">
         </childnode>
@@ -1944,11 +1944,11 @@
         </childnode>
       </node>
       <node id="32094">
-        <label>libopenage/unit/unit_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp</label>
         <link refid="unit__container_8cpp"/>
       </node>
       <node id="32288">
-        <label>libopenage/event/eventtarget.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h</label>
         <link refid="eventtarget_8h"/>
         <childnode refid="32289" relation="include">
         </childnode>
@@ -1970,7 +1970,7 @@
         </childnode>
       </node>
       <node id="32123">
-        <label>libopenage/terrain/terrain_chunk.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h</label>
         <link refid="terrain__chunk_8h"/>
         <childnode refid="32072" relation="include">
         </childnode>
@@ -1986,7 +1986,7 @@
         </childnode>
       </node>
       <node id="32069">
-        <label>libopenage/gamestate/game_main.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h</label>
         <link refid="game__main_8h"/>
         <childnode refid="32070" relation="include">
         </childnode>
@@ -2008,7 +2008,7 @@
         </childnode>
       </node>
       <node id="32142">
-        <label>libopenage/audio/dynamic_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</label>
         <link refid="dynamic__resource_8h"/>
         <childnode refid="32132" relation="include">
         </childnode>
@@ -2016,11 +2016,11 @@
         </childnode>
       </node>
       <node id="32380">
-        <label>libopenage/util/matrix.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.cpp</label>
         <link refid="matrix_8cpp"/>
       </node>
       <node id="32246">
-        <label>libopenage/unit/unit_container.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.h</label>
         <link refid="unit__container_8h"/>
         <childnode refid="32245" relation="include">
         </childnode>
@@ -2038,11 +2038,11 @@
         </childnode>
       </node>
       <node id="32158">
-        <label>libopenage/gui/main_args_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp</label>
         <link refid="main__args__link_8cpp"/>
       </node>
       <node id="32390">
-        <label>libopenage/renderer/vulkan/util.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h</label>
         <link refid="util_8h"/>
         <childnode refid="32389" relation="include">
         </childnode>
@@ -2052,7 +2052,7 @@
         </childnode>
       </node>
       <node id="32394">
-        <label>libopenage/util/compress/bitstream.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/bitstream.h</label>
         <link refid="bitstream_8h"/>
         <childnode refid="32395" relation="include">
         </childnode>
@@ -2060,11 +2060,11 @@
         </childnode>
       </node>
       <node id="32110">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
       </node>
       <node id="32401">
-        <label>libopenage/log/log.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.h</label>
         <link refid="log_8h"/>
         <childnode refid="32062" relation="include">
         </childnode>
@@ -2226,7 +2226,7 @@
         </childnode>
       </node>
       <node id="32295">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="32296" relation="include">
         </childnode>
@@ -2234,35 +2234,35 @@
         </childnode>
       </node>
       <node id="32118">
-        <label>libopenage/terrain/terrain_object.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp</label>
         <link refid="terrain__object_8cpp"/>
       </node>
       <node id="32186">
-        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</label>
         <link refid="vertex__array_8cpp"/>
       </node>
       <node id="32231">
-        <label>libopenage/pyinterface/hacks.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.cpp</label>
         <link refid="hacks_8cpp"/>
       </node>
       <node id="32139">
-        <label>libopenage/util/profiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.cpp</label>
         <link refid="profiler_8cpp"/>
       </node>
       <node id="32219">
-        <label>libopenage/shader/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp</label>
         <link refid="shader_2shader_8cpp"/>
       </node>
       <node id="32121">
-        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</label>
         <link refid="assetmanager__link_8cpp"/>
       </node>
       <node id="32310">
-        <label>libopenage/event/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp</label>
         <link refid="event_2tests_8cpp"/>
       </node>
       <node id="32257">
-        <label>libopenage/input/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h</label>
         <link refid="input_2action_8h"/>
         <childnode refid="32240" relation="include">
         </childnode>
@@ -2276,31 +2276,31 @@
         </childnode>
       </node>
       <node id="32083">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
       </node>
       <node id="32117">
-        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.cpp</label>
         <link refid="terrain__chunk_8cpp"/>
       </node>
       <node id="32193">
-        <label>libopenage/gui/registrations.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.cpp</label>
         <link refid="registrations_8cpp"/>
       </node>
       <node id="32154">
-        <label>libopenage/cvar/cvar.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp</label>
         <link refid="cvar_8cpp"/>
       </node>
       <node id="32364">
-        <label>libopenage/testing/testing.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testing.cpp</label>
         <link refid="testing_8cpp"/>
       </node>
       <node id="32222">
-        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate_tests.cpp</label>
         <link refid="exctranslate__tests_8cpp"/>
       </node>
       <node id="32340">
-        <label>libopenage/job/typed_job_state_base.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/typed_job_state_base.h</label>
         <link refid="typed__job__state__base_8h"/>
         <childnode refid="32341" relation="include">
         </childnode>
@@ -2310,23 +2310,23 @@
         </childnode>
       </node>
       <node id="32363">
-        <label>libopenage/rng/rng_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng_tests.cpp</label>
         <link refid="rng__tests_8cpp"/>
       </node>
       <node id="32101">
-        <label>libopenage/unit/research.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp</label>
         <link refid="research_8cpp"/>
       </node>
       <node id="32272">
-        <label>libopenage/pathfinding/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</label>
         <link refid="pathfinding_2tests_8cpp"/>
       </node>
       <node id="32213">
-        <label>libopenage/util/fslike/fslike.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp</label>
         <link refid="fslike_8cpp"/>
       </node>
       <node id="32159">
-        <label>libopenage/audio/in_memory_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.h</label>
         <link refid="in__memory__loader_8h"/>
         <childnode refid="32160" relation="include">
         </childnode>
@@ -2336,7 +2336,7 @@
         </childnode>
       </node>
       <node id="32120">
-        <label>libopenage/gui/assetmanager_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.h</label>
         <link refid="assetmanager__link_8h"/>
         <childnode refid="32121" relation="include">
         </childnode>
@@ -2344,11 +2344,11 @@
         </childnode>
       </node>
       <node id="32355">
-        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp</label>
         <link refid="glyph__atlas_8cpp"/>
       </node>
       <node id="32265">
-        <label>libopenage/gui/generator_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h</label>
         <link refid="generator__link_8h"/>
         <childnode refid="32085" relation="include">
         </childnode>
@@ -2358,11 +2358,11 @@
         </childnode>
       </node>
       <node id="32082">
-        <label>libopenage/gamestate/game_save.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp</label>
         <link refid="game__save_8cpp"/>
       </node>
       <node id="32217">
-        <label>libopenage/util/file.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.h</label>
         <link refid="file_8h"/>
         <childnode refid="32060" relation="include">
         </childnode>
@@ -2390,35 +2390,35 @@
         </childnode>
       </node>
       <node id="32243">
-        <label>libopenage/input/input_context.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_context.cpp</label>
         <link refid="input__context_8cpp"/>
       </node>
       <node id="32333">
-        <label>libopenage/util/hash.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp</label>
         <link refid="hash_8cpp"/>
       </node>
       <node id="32369">
-        <label>libopenage/util/matrix_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp</label>
         <link refid="matrix__test_8cpp"/>
       </node>
       <node id="32126">
-        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp</label>
         <link refid="gui__texture__handle_8cpp"/>
       </node>
       <node id="32334">
-        <label>libopenage/util/hash_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash_test.cpp</label>
         <link refid="hash__test_8cpp"/>
       </node>
       <node id="32402">
-        <label>libopenage/error/stackanalyzer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</label>
         <link refid="stackanalyzer_8cpp"/>
       </node>
       <node id="32388">
-        <label>libopenage/renderer/sdl_global.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp</label>
         <link refid="sdl__global_8cpp"/>
       </node>
       <node id="32235">
-        <label>libopenage/coord/pixel.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h</label>
         <link refid="pixel_8h"/>
         <childnode refid="32122" relation="include">
         </childnode>
@@ -2460,11 +2460,11 @@
         </childnode>
       </node>
       <node id="32157">
-        <label>libopenage/gui/engine_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_info.cpp</label>
         <link refid="engine__info_8cpp"/>
       </node>
       <node id="32190">
-        <label>libopenage/gui/engine_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h</label>
         <link refid="engine__link_8h"/>
         <childnode refid="32121" relation="include">
         </childnode>
@@ -2476,13 +2476,13 @@
         </childnode>
       </node>
       <node id="32208">
-        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h</label>
         <link refid="vulkan_2renderer_8h"/>
         <childnode refid="32201" relation="include">
         </childnode>
       </node>
       <node id="32198">
-        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.h</label>
         <link refid="vertex__array_8h"/>
         <childnode refid="32196" relation="include">
         </childnode>
@@ -2490,7 +2490,7 @@
         </childnode>
       </node>
       <node id="32196">
-        <label>libopenage/renderer/opengl/geometry.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h</label>
         <link refid="opengl_2geometry_8h"/>
         <childnode refid="32185" relation="include">
         </childnode>
@@ -2502,21 +2502,21 @@
         </childnode>
       </node>
       <node id="32104">
-        <label>libopenage/gui/category_contents_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h</label>
         <link refid="category__contents__list__model_8h"/>
         <childnode refid="32076" relation="include">
         </childnode>
       </node>
       <node id="32260">
-        <label>libopenage/screenshot.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp</label>
         <link refid="screenshot_8cpp"/>
       </node>
       <node id="32131">
-        <label>libopenage/audio/audio_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</label>
         <link refid="audio__manager_8cpp"/>
       </node>
       <node id="32203">
-        <label>libopenage/renderer/resources/shader_source.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h</label>
         <link refid="shader__source_8h"/>
         <childnode refid="32197" relation="include">
         </childnode>
@@ -2532,15 +2532,15 @@
         </childnode>
       </node>
       <node id="32329">
-        <label>libopenage/curve/queue_filter_iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue_filter_iterator.cpp</label>
         <link refid="queue__filter__iterator_8cpp"/>
       </node>
       <node id="32096">
-        <label>libopenage/gamestate/market.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.cpp</label>
         <link refid="market_8cpp"/>
       </node>
       <node id="32317">
-        <label>libopenage/event/event.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/event.h</label>
         <link refid="event_2event_8h"/>
         <childnode refid="32305" relation="include">
         </childnode>
@@ -2562,11 +2562,11 @@
         </childnode>
       </node>
       <node id="32149">
-        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</label>
         <link refid="opus__dynamic__loader_8cpp"/>
       </node>
       <node id="32214">
-        <label>libopenage/util/fslike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.h</label>
         <link refid="fslike_2python_8h"/>
         <childnode refid="32215" relation="include">
         </childnode>
@@ -2574,15 +2574,15 @@
         </childnode>
       </node>
       <node id="32188">
-        <label>libopenage/renderer/resources/texture_subinfo.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_subinfo.cpp</label>
         <link refid="texture__subinfo_8cpp"/>
       </node>
       <node id="32176">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="32281">
-        <label>libopenage/console/buf.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h</label>
         <link refid="buf_8h"/>
         <childnode refid="32282" relation="include">
         </childnode>
@@ -2594,7 +2594,7 @@
         </childnode>
       </node>
       <node id="32245">
-        <label>libopenage/unit/selection.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.h</label>
         <link refid="selection_8h"/>
         <childnode refid="32133" relation="include">
         </childnode>
@@ -2604,11 +2604,11 @@
         </childnode>
       </node>
       <node id="32201">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
       <node id="32204">
-        <label>libopenage/renderer/opengl/shader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h</label>
         <link refid="renderer_2opengl_2shader_8h"/>
         <childnode refid="32205" relation="include">
         </childnode>
@@ -2616,7 +2616,7 @@
         </childnode>
       </node>
       <node id="32301">
-        <label>libopenage/curve/discrete.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h</label>
         <link refid="discrete_8h"/>
         <childnode refid="32302" relation="include">
         </childnode>
@@ -2628,7 +2628,7 @@
         </childnode>
       </node>
       <node id="32341">
-        <label>libopenage/job/job.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h</label>
         <link refid="job_8h"/>
         <childnode refid="32142" relation="include">
         </childnode>
@@ -2640,11 +2640,11 @@
         </childnode>
       </node>
       <node id="32286">
-        <label>libopenage/coord/declarations.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.cpp</label>
         <link refid="declarations_8cpp"/>
       </node>
       <node id="32372">
-        <label>libopenage/datastructure/pairing_heap.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/pairing_heap.h</label>
         <link refid="pairing__heap_8h"/>
         <childnode refid="32332" relation="include">
         </childnode>
@@ -2656,13 +2656,13 @@
         </childnode>
       </node>
       <node id="32395">
-        <label>libopenage/util/compress/lzxd.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.h</label>
         <link refid="lzxd_8h"/>
         <childnode refid="32396" relation="include">
         </childnode>
       </node>
       <node id="32349">
-        <label>libopenage/job/job_state.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_state.h</label>
         <link refid="job__state_8h"/>
         <childnode refid="32342" relation="include">
         </childnode>
@@ -2670,7 +2670,7 @@
         </childnode>
       </node>
       <node id="32251">
-        <label>libopenage/unit/unit.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.h</label>
         <link refid="unit_8h"/>
         <childnode refid="32252" relation="include">
         </childnode>
@@ -2702,11 +2702,11 @@
         </childnode>
       </node>
       <node id="32408">
-        <label>libopenage/util/subprocess.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp</label>
         <link refid="subprocess_8cpp"/>
       </node>
       <node id="32058">
-        <label>libopenage/pyinterface/functional.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h</label>
         <link refid="functional_8h"/>
         <childnode refid="32059" relation="include">
         </childnode>
@@ -2724,15 +2724,15 @@
         </childnode>
       </node>
       <node id="32077">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="32403">
-        <label>libopenage/gui/integration/private/gui_log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_log.cpp</label>
         <link refid="gui__log_8cpp"/>
       </node>
       <node id="32247">
-        <label>libopenage/unit/attribute.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h</label>
         <link refid="attribute_8h"/>
         <childnode refid="32248" relation="include">
         </childnode>
@@ -2744,19 +2744,19 @@
         </childnode>
       </node>
       <node id="32185">
-        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</label>
         <link refid="opengl_2geometry_8cpp"/>
       </node>
       <node id="32398">
-        <label>libopenage/util/opengl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.cpp</label>
         <link refid="opengl_8cpp"/>
       </node>
       <node id="32413">
-        <label>libopenage/log/stdout_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</label>
         <link refid="stdout__logsink_8cpp"/>
       </node>
       <node id="32163">
-        <label>libopenage/renderer/resources/texture_subinfo.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_subinfo.h</label>
         <link refid="texture__subinfo_8h"/>
         <childnode refid="32164" relation="include">
         </childnode>
@@ -2764,15 +2764,15 @@
         </childnode>
       </node>
       <node id="32344">
-        <label>libopenage/job/job_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_manager.cpp</label>
         <link refid="job__manager_8cpp"/>
       </node>
       <node id="32303">
-        <label>libopenage/curve/value_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/value_container.cpp</label>
         <link refid="value__container_8cpp"/>
       </node>
       <node id="32359">
-        <label>libopenage/testing/testing.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testing.h</label>
         <link refid="testing_8h"/>
         <childnode refid="32360" relation="include">
         </childnode>
@@ -2822,7 +2822,7 @@
         </childnode>
       </node>
       <node id="32254">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="32070" relation="include">
         </childnode>
@@ -2830,15 +2830,15 @@
         </childnode>
       </node>
       <node id="32391">
-        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</label>
         <link refid="windowvk_8cpp"/>
       </node>
       <node id="32361">
-        <label>libopenage/datastructure/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/tests.cpp</label>
         <link refid="datastructure_2tests_8cpp"/>
       </node>
       <node id="32220">
-        <label>libopenage/pyinterface/pyexception.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h</label>
         <link refid="pyexception_8h"/>
         <childnode refid="32221" relation="include">
         </childnode>
@@ -2850,11 +2850,11 @@
         </childnode>
       </node>
       <node id="32389">
-        <label>libopenage/renderer/vulkan/graphics_device.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.cpp</label>
         <link refid="graphics__device_8cpp"/>
       </node>
       <node id="32143">
-        <label>libopenage/audio/in_memory_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h</label>
         <link refid="in__memory__resource_8h"/>
         <childnode refid="32144" relation="include">
         </childnode>
@@ -2862,15 +2862,15 @@
         </childnode>
       </node>
       <node id="32081">
-        <label>libopenage/gamestate/game_main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp</label>
         <link refid="game__main_8cpp"/>
       </node>
       <node id="32215">
-        <label>libopenage/util/fslike/python.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.cpp</label>
         <link refid="fslike_2python_8cpp"/>
       </node>
       <node id="32284">
-        <label>libopenage/coord/chunk.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/chunk.h</label>
         <link refid="chunk_8h"/>
         <childnode refid="32285" relation="include">
         </childnode>
@@ -2880,23 +2880,23 @@
         </childnode>
       </node>
       <node id="32183">
-        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp</label>
         <link refid="texture__data_8cpp"/>
       </node>
       <node id="32362">
-        <label>libopenage/input/text_to_event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp</label>
         <link refid="text__to__event_8cpp"/>
       </node>
       <node id="32285">
-        <label>libopenage/coord/chunk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/chunk.cpp</label>
         <link refid="chunk_8cpp"/>
       </node>
       <node id="32108">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
       </node>
       <node id="32060">
-        <label>libopenage/util/path.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h</label>
         <link refid="util_2path_8h"/>
         <childnode refid="32061" relation="include">
         </childnode>
@@ -2962,7 +2962,7 @@
         </childnode>
       </node>
       <node id="32249">
-        <label>libopenage/unit/unit_type.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h</label>
         <link refid="unit__type_8h"/>
         <childnode refid="32071" relation="include">
         </childnode>
@@ -2982,33 +2982,33 @@
         </childnode>
       </node>
       <node id="32356">
-        <label>libopenage/renderer/font/font.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp</label>
         <link refid="font_8cpp"/>
       </node>
       <node id="32194">
-        <label>libopenage/main.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.h</label>
         <link refid="main_8h"/>
         <childnode refid="32079" relation="include">
         </childnode>
       </node>
       <node id="32182">
-        <label>libopenage/renderer/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.cpp</label>
         <link refid="texture__array_8cpp"/>
       </node>
       <node id="32262">
-        <label>libopenage/renderer/text.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp</label>
         <link refid="text_8cpp"/>
       </node>
       <node id="32136">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="32374">
-        <label>libopenage/error/demo.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/demo.cpp</label>
         <link refid="demo_8cpp"/>
       </node>
       <node id="32263">
-        <label>libopenage/coord/tile.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h</label>
         <link refid="tile_8h"/>
         <childnode refid="32122" relation="include">
         </childnode>
@@ -3050,7 +3050,7 @@
         </childnode>
       </node>
       <node id="32337">
-        <label>libopenage/audio/error.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.h</label>
         <link refid="audio_2error_8h"/>
         <childnode refid="32131" relation="include">
         </childnode>
@@ -3070,11 +3070,11 @@
         </childnode>
       </node>
       <node id="32099">
-        <label>libopenage/gamestate/team.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/team.cpp</label>
         <link refid="team_8cpp"/>
       </node>
       <node id="32164">
-        <label>libopenage/renderer/resources/texture_info.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h</label>
         <link refid="texture__info_8h"/>
         <childnode refid="32165" relation="include">
         </childnode>
@@ -3084,19 +3084,19 @@
         </childnode>
       </node>
       <node id="32335">
-        <label>libopenage/util/misc.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.cpp</label>
         <link refid="misc_8cpp"/>
       </node>
       <node id="32175">
-        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</label>
         <link refid="opengl_2texture__array_8cpp"/>
       </node>
       <node id="32330">
-        <label>libopenage/util/fixed_point.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.cpp</label>
         <link refid="fixed__point_8cpp"/>
       </node>
       <node id="32354">
-        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h</label>
         <link refid="glyph__atlas_8h"/>
         <childnode refid="32261" relation="include">
         </childnode>
@@ -3104,19 +3104,19 @@
         </childnode>
       </node>
       <node id="32283">
-        <label>libopenage/coord/term.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.cpp</label>
         <link refid="term_8cpp"/>
       </node>
       <node id="32396">
-        <label>libopenage/util/compress/lzxd.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress/lzxd.cpp</label>
         <link refid="lzxd_8cpp"/>
       </node>
       <node id="32385">
-        <label>libopenage/pyinterface/setup.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/setup.cpp</label>
         <link refid="setup_8cpp"/>
       </node>
       <node id="32352">
-        <label>libopenage/renderer/font/font_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h</label>
         <link refid="font__manager_8h"/>
         <childnode refid="32353" relation="include">
         </childnode>
@@ -3128,23 +3128,23 @@
         </childnode>
       </node>
       <node id="32064">
-        <label>libopenage/coord/phys.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp</label>
         <link refid="phys_8cpp"/>
       </node>
       <node id="32357">
-        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp</label>
         <link refid="font__manager_8cpp"/>
       </node>
       <node id="32244">
-        <label>libopenage/input/input_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp</label>
         <link refid="input__manager_8cpp"/>
       </node>
       <node id="32417">
-        <label>libopenage/util/stringformatter.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.cpp</label>
         <link refid="stringformatter_8cpp"/>
       </node>
       <node id="32294">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="32295" relation="include">
         </childnode>
@@ -3156,7 +3156,7 @@
         </childnode>
       </node>
       <node id="32269">
-        <label>libopenage/pathfinding/heuristics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</label>
         <link refid="heuristics_8h"/>
         <childnode refid="32270" relation="include">
         </childnode>
@@ -3170,53 +3170,53 @@
         </childnode>
       </node>
       <node id="32242">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
       <node id="32351">
-        <label>libopenage/audio/loader_policy.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/loader_policy.cpp</label>
         <link refid="loader__policy_8cpp"/>
       </node>
       <node id="32318">
-        <label>libopenage/event/eventstore.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp</label>
         <link refid="eventstore_8cpp"/>
       </node>
       <node id="32192">
-        <label>libopenage/gui/registrations.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/registrations.h</label>
         <link refid="registrations_8h"/>
         <childnode refid="32193" relation="include">
         </childnode>
       </node>
       <node id="32360">
-        <label>libopenage/coord/coord_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coord_test.cpp</label>
         <link refid="coord__test_8cpp"/>
       </node>
       <node id="32229">
-        <label>libopenage/pyinterface/functional.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.cpp</label>
         <link refid="functional_8cpp"/>
       </node>
       <node id="32336">
-        <label>libopenage/util/misc_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc_test.cpp</label>
         <link refid="misc__test_8cpp"/>
       </node>
       <node id="32086">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="32377">
-        <label>libopenage/error/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</label>
         <link refid="error_2handlers_8cpp"/>
       </node>
       <node id="32292">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
       <node id="32103">
-        <label>libopenage/gamestate/civilisation.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/civilisation.cpp</label>
         <link refid="civilisation_8cpp"/>
       </node>
       <node id="32275">
-        <label>libopenage/coord/phys.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h</label>
         <link refid="phys_8h"/>
         <childnode refid="32236" relation="include">
         </childnode>
@@ -3252,27 +3252,27 @@
         </childnode>
       </node>
       <node id="32072">
-        <label>libopenage/game_control.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</label>
         <link refid="game__control_8cpp"/>
       </node>
       <node id="32387">
-        <label>libopenage/renderer/opengl/context.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp</label>
         <link refid="context_8cpp"/>
       </node>
       <node id="32087">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
       <node id="32338">
-        <label>libopenage/audio/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.cpp</label>
         <link refid="audio_2error_8cpp"/>
       </node>
       <node id="32078">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
       <node id="32274">
-        <label>libopenage/terrain/terrain_search.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.h</label>
         <link refid="terrain__search_8h"/>
         <childnode refid="32119" relation="include">
         </childnode>
@@ -3280,7 +3280,7 @@
         </childnode>
       </node>
       <node id="32150">
-        <label>libopenage/audio/opus_loading.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.h</label>
         <link refid="opus__loading_8h"/>
         <childnode refid="32148" relation="include">
         </childnode>
@@ -3290,11 +3290,11 @@
         </childnode>
       </node>
       <node id="32106">
-        <label>libopenage/gui/game_spec_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</label>
         <link refid="game__spec__link_8cpp"/>
       </node>
       <node id="32063">
-        <label>libopenage/terrain/terrain.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h</label>
         <link refid="terrain_8h"/>
         <childnode refid="32064" relation="include">
         </childnode>
@@ -3330,11 +3330,11 @@
         </childnode>
       </node>
       <node id="32223">
-        <label>libopenage/pyinterface/pyexception.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp</label>
         <link refid="pyexception_8cpp"/>
       </node>
       <node id="32252">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="32080" relation="include">
         </childnode>
@@ -3352,7 +3352,7 @@
         </childnode>
       </node>
       <node id="32171">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="32172" relation="include">
         </childnode>
@@ -3360,41 +3360,41 @@
         </childnode>
       </node>
       <node id="32405">
-        <label>libopenage/log/test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp</label>
         <link refid="test_8cpp"/>
       </node>
       <node id="32406">
-        <label>libopenage/util/externalprofiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp</label>
         <link refid="externalprofiler_8cpp"/>
       </node>
       <node id="32207">
-        <label>libopenage/renderer/tests.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.h</label>
         <link refid="renderer_2tests_8h"/>
         <childnode refid="32178" relation="include">
         </childnode>
       </node>
       <node id="32399">
-        <label>libopenage/util/strings.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp</label>
         <link refid="strings_8cpp"/>
       </node>
       <node id="32415">
-        <label>libopenage/log/logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsink.cpp</label>
         <link refid="logsink_8cpp"/>
       </node>
       <node id="32128">
-        <label>libopenage/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp</label>
         <link refid="texture_8cpp"/>
       </node>
       <node id="32174">
-        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</label>
         <link refid="renderer_2opengl_2texture_8cpp"/>
       </node>
       <node id="32291">
-        <label>libopenage/curve/continuous.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp</label>
         <link refid="continuous_8cpp"/>
       </node>
       <node id="32322">
-        <label>libopenage/curve/map_filter_iterator.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map_filter_iterator.h</label>
         <link refid="map__filter__iterator_8h"/>
         <childnode refid="32323" relation="include">
         </childnode>
@@ -3644,6 +3644,6 @@
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/stringformatter.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h"/>
   </compounddef>
 </doxygen>

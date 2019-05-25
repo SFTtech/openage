@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="30" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1_unit_type_meta_1a60cf4cba9b119119de034fc3edc785b1" prot="public" static="no">
         <type>std::function&lt; <ref refid="classopenage_1_1_unit_type_meta_1a6148f55c3ed5f3af968745ec93c53ad5" kindref="member">type_ptr</ref>(const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>)&gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="31" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="41" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="41" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -59,7 +59,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="44" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a15f292c4683ba4337a33bd52c0581f70" compoundref="members_8py" startline="481" endline="484">openage.convert.dataformat.members.EnumMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae0a3a0241b823f90f1bcb74e1619df1f" compoundref="members_8py" startline="805" endline="812">openage.convert.dataformat.members.MultisubtypeMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member_1a4d654b6ba05da6a0aba27b9008fa38cb" compoundref="members_8py" startline="502" endline="513">openage.convert.dataformat.members.EnumLookupMember.entry_hook</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1ab1259c0fbb6ecce62302f086c5167396" compoundref="members_8py" startline="246" endline="257">openage.convert.dataformat.members.RefMember.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0252612eeda42f3c7553ea1b1e1212f9" compoundref="members_8py" startline="434" endline="436">openage.convert.dataformat.members.EnumMember.get_effective_type</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a27571ee3aea8f88f36ae23140c9e77c0" compoundref="members_8py" startline="625" endline="627">openage.convert.dataformat.members.MultisubtypeMember.get_effective_type</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" compoundref="members_8py" startline="394" endline="427">openage.convert.dataformat.members.EnumMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" compoundref="members_8py" startline="446" endline="472">openage.convert.dataformat.members.EnumMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a567e8cd4638f6d804bb7a4da292b076f" compoundref="members_8py" startline="657" endline="659">openage.convert.dataformat.members.MultisubtypeMember.get_typerefs</referencedby>
+        <referencedby refid="classopenage_1_1_unit_type_meta_1a8799c223c298b6f9ae0016f9bb5913a8" compoundref="unit__type_8cpp" startline="20" endline="22">name</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_type_meta_1a4b12edb0fa3c9e31fc969bd8e4a35bf2" prot="private" static="no" mutable="no">
         <type>const int</type>
@@ -72,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="45" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_type_meta_1acbceb8177feee1b14c63db50a24b1530" compoundref="unit__type_8cpp" startline="24" endline="26">id</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -99,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="32" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="13" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp" bodystart="13" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_type_meta_1a8799c223c298b6f9ae0016f9bb5913a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -112,7 +124,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="34" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="20" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp" bodystart="20" bodyend="22"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">type_name</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_type_meta_1acbceb8177feee1b14c63db50a24b1530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -125,7 +141,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_type.h" line="36" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="24" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp" bodystart="24" bodyend="26"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a4b12edb0fa3c9e31fc969bd8e4a35bf2" compoundref="unit__type_8h" startline="45">type_id</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -134,12 +151,12 @@
 <para>an abstract unit type which is not yet owned by any player </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4866">
+      <node id="5613">
         <label>openage::UnitTypeMeta</label>
         <link refid="classopenage_1_1_unit_type_meta"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/unit_type.h" line="28" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="28" bodyend="47"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.h" bodystart="28" bodyend="47"/>
     <listofallmembers>
       <member refid="classopenage_1_1_unit_type_meta_1acbceb8177feee1b14c63db50a24b1530" prot="public" virt="non-virtual"><scope>openage::UnitTypeMeta</scope><name>id</name></member>
       <member refid="classopenage_1_1_unit_type_meta_1ae575d326f49ccc2ecfcfa3148dcf87ae" prot="public" virt="non-virtual"><scope>openage::UnitTypeMeta</scope><name>init</name></member>

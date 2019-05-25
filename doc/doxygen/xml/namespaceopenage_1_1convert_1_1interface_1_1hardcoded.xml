@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded" kind="namespace" language="Python">
+    <compoundname>openage::convert::interface::hardcoded</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a3022641fbad107bed61aca7e921ffc32" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>list openage::convert::interface::hardcoded.INGAME_HUD_BACKGROUNDS</definition>
+        <argsstring></argsstring>
+        <name>INGAME_HUD_BACKGROUNDS</name>
+        <initializer>=  [
+    51141,
+    51142,
+    51143,
+    51144,
+    51145,
+    51146,
+    51147,
+    51148,
+    51149,
+    51150,
+    51151,
+    51152,
+    51153,
+    51154,
+    51157,
+    51158,
+    51159,
+    51160,
+]</initializer>
+        <briefdescription>
+<para>Additional hardcoded information about user interface assets. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="8" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a73a94894832812c6ddfe78903a8ae9e2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::interface::hardcoded.INGAME_HUD_BACKGROUNDS_SET</definition>
+        <argsstring></argsstring>
+        <name>INGAME_HUD_BACKGROUNDS_SET</name>
+        <initializer>=  set(<ref refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a3022641fbad107bed61aca7e921ffc32" kindref="member">INGAME_HUD_BACKGROUNDS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1af31374d0767b4a243e8df8f028b20419" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::convert::interface::hardcoded.ASSETS</definition>
+        <argsstring></argsstring>
+        <name>ASSETS</name>
+        <initializer>=  {
+    &apos;50721&apos;: &apos;hudactions&apos;
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a6b6558c51e72696b7feed6fa91d87738" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage::convert::interface::hardcoded.TOP_STRIP_PATTERN_CORNERS</definition>
+        <argsstring></argsstring>
+        <name>TOP_STRIP_PATTERN_CORNERS</name>
+        <initializer>=  (400, 0, 464, 32)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a90308c5f6f3f3c3213c6238f1b0962b3" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage::convert::interface::hardcoded.TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS</definition>
+        <argsstring></argsstring>
+        <name>TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS</name>
+        <initializer>=  (400, 0, 1024, 32)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a770ababfe4dcf7b61bcfba8e83ed69ce" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage::convert::interface::hardcoded.MID_STRIP_PATTERN_CORNERS</definition>
+        <argsstring></argsstring>
+        <name>MID_STRIP_PATTERN_CORNERS</name>
+        <initializer>=  (339, 806, 403, 818)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a6cb62dc5d8f54fb79005545b9d7f82a8" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage::convert::interface::hardcoded.MID_STRIP_PATTERN_SEARCH_AREA_CORNERS</definition>
+        <argsstring></argsstring>
+        <name>MID_STRIP_PATTERN_SEARCH_AREA_CORNERS</name>
+        <initializer>=  (339, 806, 850, 818)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1adcc8fca8e363e186326eef65af5760de" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>list openage::convert::interface::hardcoded.KNOWN_SUBTEX_CORNER_COORDS</definition>
+        <argsstring></argsstring>
+        <name>KNOWN_SUBTEX_CORNER_COORDS</name>
+        <initializer>=  [
+    (0, 806, 339, 1024),
+    (850, 806, 1280, 1024),
+    (8, 10, 34, 27),
+    (85, 10, 111, 27),
+    (162, 10, 188, 27),
+    (239, 10, 265, 27),
+    (316, 10, 342, 27),
+]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a5269bff8c865ba582e87918dd9e28d0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.hardcoded.ingame_hud_background_index</definition>
+        <argsstring>(idx)</argsstring>
+        <name>ingame_hud_background_index</name>
+        <param>
+          <type>idx</type>
+          <defname>idx</defname>
+        </param>
+        <briefdescription>
+<para>Index in the hardcoded list of the known ingame hud backgrounds to match the civ. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="55" bodyend="58"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1interface_1_1rename_1a045e4e1a64322c77bfee10f24e8613e7" compoundref="rename_8py" startline="14" endline="24">openage.convert.interface.rename.hud_rename</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a14220af93f607567195b1ad3617d64cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.hardcoded.is_ingame_hud_background</definition>
+        <argsstring>(idx)</argsstring>
+        <name>is_ingame_hud_background</name>
+        <param>
+          <type>idx</type>
+          <defname>idx</defname>
+        </param>
+        <briefdescription>
+<para>True if in the hardcoded list of the known ingame hud backgrounds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" bodystart="62" bodyend="64"/>
+        <referencedby refid="classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter_1ad9a6e6566a8ce6f24c07f113cd0a25d4" compoundref="cutter_8py" startline="29" endline="50">openage.convert.interface.cutter.InterfaceCutter.cut</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/hardcoded.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

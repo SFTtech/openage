@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_ee52762a54ed24851c9ca23cf72f1a00" kind="dir">
-    <compoundname>libopenage/gui/guisys/public</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public</compoundname>
     <innerfile refid="gui__application_8cpp">gui_application.cpp</innerfile>
     <innerfile refid="gui__application_8h">gui_application.h</innerfile>
     <innerfile refid="gui__engine_8cpp">gui_engine.cpp</innerfile>
@@ -23,6 +23,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/guisys/public/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/"/>
   </compounddef>
 </doxygen>

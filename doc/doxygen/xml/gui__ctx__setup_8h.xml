@@ -7,8 +7,8 @@
     <includes local="no">functional</includes>
     <includes local="no">QOpenGLContext</includes>
     <includes local="no">QOffscreenSurface</includes>
-    <includedby refid="gui__ctx__setup_8cpp" local="yes">libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
-    <includedby refid="gui__rendering__setup__routines_8cpp" local="yes">libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</includedby>
+    <includedby refid="gui__ctx__setup_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
+    <includedby refid="gui__rendering__setup__routines_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</includedby>
     <incdepgraph>
       <node id="13010">
         <label>functional</label>
@@ -20,7 +20,7 @@
         <label>stdexcept</label>
       </node>
       <node id="13007">
-        <label>libopenage/gui/guisys/private/gui_ctx_setup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h</label>
         <link refid="gui__ctx__setup_8h"/>
         <childnode refid="13008" relation="include">
         </childnode>
@@ -42,11 +42,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13014">
-        <label>libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
         <link refid="gui__ctx__setup_8cpp"/>
       </node>
       <node id="13013">
-        <label>libopenage/gui/guisys/private/gui_ctx_setup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h</label>
         <link refid="gui__ctx__setup_8h"/>
         <childnode refid="13014" relation="include">
         </childnode>
@@ -54,7 +54,7 @@
         </childnode>
       </node>
       <node id="13015">
-        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
         <link refid="gui__rendering__setup__routines_8cpp"/>
       </node>
     </invincdepgraph>
@@ -133,6 +133,6 @@
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_ctx_setup.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h"/>
   </compounddef>
 </doxygen>

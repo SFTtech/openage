@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="19" column="1" bodyfile="libopenage/util/fps.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">openage::Engine::draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -30,7 +32,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="22" column="1" bodyfile="libopenage/util/fps.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -44,7 +47,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="25" column="1" bodyfile="libopenage/util/fps.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" compoundref="engine_8cpp" startline="529" endline="531">openage::Engine::lastframe_duration_nsec</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -59,7 +64,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="28" column="1" bodyfile="libopenage/util/fps.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -72,7 +78,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="29" column="1" bodyfile="libopenage/util/fps.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_timer" kindref="compound">Timer</ref></type>
@@ -85,7 +92,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="31" column="1" bodyfile="libopenage/util/fps.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">frame</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -100,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="12" column="1" bodyfile="libopenage/util/fps.cpp" bodystart="12" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp" bodystart="12" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_frame_counter_1a1fe36cffea5d8120ac1606d1a2cf380b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -113,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="13" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="13" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +135,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fps.h" line="16" column="1" bodyfile="libopenage/util/fps.cpp" bodystart="23" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp" bodystart="23" bodyend="46"/>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" compoundref="fps_8h" startline="22">count</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" compoundref="fps_8h" startline="19">fps</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" compoundref="fps_8h" startline="28">frame_count_weighted</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" compoundref="fps_8h" startline="29">frame_length_sum_weighted</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" compoundref="fps_8h" startline="31">frame_timer</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">openage::util::Timer::getandresetval</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" compoundref="fps_8h" startline="25">nsec_lastframe</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -135,19 +151,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1540">
+      <node id="5815">
         <label>openage::util::FrameCounter</label>
         <link refid="classopenage_1_1util_1_1_frame_counter"/>
-        <childnode refid="1541" relation="usage">
+        <childnode refid="5816" relation="usage">
           <edgelabel>-frame_timer</edgelabel>
         </childnode>
       </node>
-      <node id="1541">
+      <node id="5816">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fps.h" line="10" column="1" bodyfile="libopenage/util/fps.h" bodystart="10" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.h" bodystart="10" bodyend="32"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>count</name></member>
       <member refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>fps</name></member>

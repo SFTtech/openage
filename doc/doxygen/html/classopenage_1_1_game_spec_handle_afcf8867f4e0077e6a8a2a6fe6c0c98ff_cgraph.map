@@ -1,0 +1,8 @@
+<map id="openage::GameSpecHandle::start_load_job" name="openage::GameSpecHandle::start_load_job">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,189,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2" title=" " alt="" coords="247,5,421,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" title=" " alt="" coords="253,71,415,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_engine.xhtml#a65102655ef3f9fb0fc8617deb7e80c02" title=" " alt="" coords="261,136,407,177"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="237,202,431,229"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="479,202,605,229"/>
+</map>

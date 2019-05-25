@@ -18,13 +18,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="228" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="228" bodyend="554"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="228" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="228" bodyend="554"/>
+        <references refid="classopenage_1_1event_1_1_event_class_1_1param__map_1aeaf58d316c8416ac8d8597b6f635973d" compoundref="eventclass_8h" startline="105" endline="111">openage::event::EventClass::param_map::check_type</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a4c7f73fe4acc0ed28e06ef69f07ef26e" compoundref="eventclass_8h" startline="97" endline="99">openage::event::EventClass::param_map::contains</references>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188">openage::event::EventClass::DEPENDENCY</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09">openage::event::EventClass::DEPENDENCY_IMMEDIATELY</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a01b87e6f9de36ce10f991c0cbddcd384" compoundref="eventclass_8h" startline="85" endline="92">openage::event::EventClass::param_map::get</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24">openage::event::EventClass::ONCE</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555">openage::event::EventClass::REPEAT</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <references refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" compoundref="testing_8h" startline="42">TESTFAILMSG</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620">openage::event::EventClass::TRIGGER</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/event/tests.cpp" line="15" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="15" column="1"/>
   </compounddef>
 </doxygen>

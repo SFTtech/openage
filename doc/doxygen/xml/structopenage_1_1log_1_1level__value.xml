@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/level.h" line="21" column="1" bodyfile="libopenage/log/level.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -27,30 +27,50 @@
 <para>cppclass level_value(EnumValue[level_value, int]): const char *colorcode </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3057">
-        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+      <node id="4005">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
       </node>
-      <node id="3056">
+      <node id="4004">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4005" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="4003">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="3057" relation="public-inheritance">
+        <childnode refid="4004" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3059">
+      <node id="4008">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4009" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="4009">
+        <label>NumericType</label>
+      </node>
+      <node id="4007">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="4008" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3058">
+      <node id="4006">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="3059" relation="public-inheritance">
+        <childnode refid="4007" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/level.h" line="20" column="1" bodyfile="libopenage/log/level.h" bodystart="20" bodyend="22"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/level.h" bodystart="20" bodyend="22"/>
     <listofallmembers>
       <member refid="structopenage_1_1log_1_1level__value_1ae527ab57e5bd77e5bbf77f89ecbbd02c" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>colorcode</name></member>
       <member refid="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>EnumValue</name></member>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.colortable.PlayerColorTable Class Reference</title>
+<title>openage: openage.convert.colortable.PlayerColorTable Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1colortable_
 
 <p>this class represents stock player color values.  
  <a href="classopenage_1_1convert_1_1colortable_1_1_player_color_table.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.colortable.PlayerColorTable:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1colortable_1_1_player_color_table__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.colortable.PlayerColorTable:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1colortable_1_1_player_color_table__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.colortable.PlayerColorTable:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1colortable_1_1_player_color_table__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.colortable.PlayerColorTable:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1colortable_1_1_player_color_table__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -228,7 +231,8 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#a5223d2c9c8019307e1c81e31b9b5124e">openage.convert.colortable.ColorTable</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="colortable_8py_source.xhtml#l00176">176</a> of file <a class="el" href="colortable_8py_source.xhtml">colortable.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(base_table, ColorTable):</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;no ColorTable supplied, &quot;</span></div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                            <span class="stringliteral">&quot;instead: %s&quot;</span> % (type(base_table)))</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        self.header = base_table.header</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        self.version = base_table.version</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        self.palette = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>()</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment"># now, strip the base table entries to the player colors.</span></div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment"># entry id = ((playernum-1) * 8) + subcolor</span></div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        players = range(1, 9)</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        psubcolors = range(8)</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> players:</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">for</span> subcol <span class="keywordflow">in</span> psubcolors:</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                r, g, b = base_table[16 * i + subcol]</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                self.palette.append((r, g, b))</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;ColorTable&lt;%d entries&gt;&quot;</span> % len(self.palette)</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -251,6 +255,8 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#a78cbe87b9e25fbd014bc48adbd392aa8">openage.convert.colortable.ColorTable</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="colortable_8py_source.xhtml#l00196">196</a> of file <a class="el" href="colortable_8py_source.xhtml">colortable.py</a>.</p>
+<div class="fragment"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="colortable_8py_source.xhtml#l00037">openage.convert.colortable.ColorTable.palette</a>.</p>
 
 </div>
 </div>
@@ -285,6 +291,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="colortable_8py_source.xhtml#l00184">184</a> of file <a class="el" href="colortable_8py_source.xhtml">colortable.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="slp__converter__pool_8py_source.xhtml#l00092">openage.convert.slp_converter_pool.SLPConverterPool.convert()</a>.</p>
+
 </div>
 </div>
 <a id="a28b6919f8a0f54908b7b89ce4fe1b799"></a>
@@ -304,7 +312,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="colortable_8py_source.xhtml">colortable.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="colortable_8py_source.xhtml">colortable.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

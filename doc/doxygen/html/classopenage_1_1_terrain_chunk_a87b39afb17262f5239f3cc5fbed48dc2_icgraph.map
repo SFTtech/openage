@@ -1,0 +1,4 @@
+<map id="openage::TerrainChunk::tile_position_neigh" name="openage::TerrainChunk::tile_position_neigh">
+<area shape="rect" id="node1" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#aa27071b50ca9d928ef1a9ce1af5b8328" title=" " alt="" coords="5,5,160,47"/>
+</map>

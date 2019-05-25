@@ -1,0 +1,3 @@
+<map id="openage.convert.peresource.PEResources.read_directory" name="openage.convert.peresource.PEResources.read_directory">
+<area shape="rect" id="node1" title="reads the directory that&#39;s currently pointed at by self.data." alt="" coords="5,29,193,71"/>
+</map>

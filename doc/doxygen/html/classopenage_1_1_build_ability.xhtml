@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::BuildAbility Class Reference</title>
+<title>openage: openage::BuildAbility Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,18 @@ $(document).ready(function(){initNavTree('classopenage_1_1_build_ability.xhtml',
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="ability_8h_source.xhtml">ability.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::BuildAbility:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_build_ability__inherit__graph.svg" width="155" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::BuildAbility:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_build_ability__inherit__graph.svg" width="155" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::BuildAbility:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::BuildAbility:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_build_ability__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -169,7 +173,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00214">214</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    :</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="classopenage_1_1_build_ability.xhtml#a4b1fdf46e313207a08e951c1ef6ca57d">sound</a>{s} {</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div><div class="ttc" id="classopenage_1_1_build_ability_xhtml_a4b1fdf46e313207a08e951c1ef6ca57d"><div class="ttname"><a href="classopenage_1_1_build_ability.xhtml#a4b1fdf46e313207a08e951c1ef6ca57d">openage::BuildAbility::sound</a></div><div class="ttdeci">const Sound * sound</div><div class="ttdef"><b>Definition:</b> <a href="ability_8h_source.xhtml#l00246">ability.h:246</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -211,6 +216,18 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a68b5f695172d6ebb6ce4381b3b94eb34">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00219">219</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                                                 {</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">if</span> (cmd.has_unit()) {</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        Unit *target = cmd.unit();</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">return</span> to_modify.location &amp;&amp;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;               <a class="code" href="classopenage_1_1_unit_ability.xhtml#a8dbb71469fe87a551cdb512f5ccdf98c">is_same_player</a>(to_modify, *target) &amp;&amp;</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;               target-&gt;has_attribute(<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">attr_type::building</a>) &amp;&amp;</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;               target-&gt;get_attribute&lt;<a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">attr_type::building</a>&gt;().completed &lt; 1.0f;</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_ability_xhtml_a8dbb71469fe87a551cdb512f5ccdf98c"><div class="ttname"><a href="classopenage_1_1_unit_ability.xhtml#a8dbb71469fe87a551cdb512f5ccdf98c">openage::UnitAbility::is_same_player</a></div><div class="ttdeci">bool is_same_player(Unit &amp;to_modify, Unit &amp;target)</div><div class="ttdef"><b>Definition:</b> <a href="ability_8cpp_source.xhtml#l00031">ability.cpp:31</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::attr_type::building</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::building</a>, <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, <a class="el" href="command_8cpp_source.xhtml#l00050">openage::Command::has_unit()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00031">openage::UnitAbility::is_same_player()</a>, <a class="el" href="unit_8h_source.xhtml#l00068">openage::Unit::location</a>, and <a class="el" href="command_8cpp_source.xhtml#l00066">openage::Command::unit()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_build_ability_abe9ac45166f48d9a53467f17d0c4efdc_cgraph.svg" width="100%" height="477"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -258,6 +275,20 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#a63afa7eff4171d24a312b0c05be4aa41">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8cpp_source.xhtml#l00230">230</a> of file <a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                                                              {</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    to_modify.log(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;invoke build action&quot;</span>);</div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">if</span> (play_sound &amp;&amp; this-&gt;<a class="code" href="classopenage_1_1_build_ability.xhtml#a4b1fdf46e313207a08e951c1ef6ca57d">sound</a>) {</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_build_ability.xhtml#a4b1fdf46e313207a08e951c1ef6ca57d">sound</a>-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">play</a>();</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">if</span> (cmd.has_unit()) {</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        to_modify.push_action(std::make_unique&lt;BuildAction&gt;(&amp;to_modify, cmd.unit()-&gt;get_ref()));</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
+<div class="ttc" id="classopenage_1_1_sound_xhtml_a526acd600cd69f6f421a253fc169398b"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#a526acd600cd69f6f421a253fc169398b">openage::Sound::play</a></div><div class="ttdeci">void play() const</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8cpp_source.xhtml#l00431">game_spec.cpp:431</a></div></div>
+<div class="ttc" id="classopenage_1_1_build_ability_xhtml_a4b1fdf46e313207a08e951c1ef6ca57d"><div class="ttname"><a href="classopenage_1_1_build_ability.xhtml#a4b1fdf46e313207a08e951c1ef6ca57d">openage::BuildAbility::sound</a></div><div class="ttdeci">const Sound * sound</div><div class="ttdef"><b>Definition:</b> <a href="ability_8h_source.xhtml#l00246">ability.h:246</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00109">openage::log::dbg()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00303">openage::Unit::get_ref()</a>, <a class="el" href="command_8cpp_source.xhtml#l00050">openage::Command::has_unit()</a>, <a class="el" href="logsource_8cpp_source.xhtml#l00019">openage::log::LogSource::log()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="game__spec_8cpp_source.xhtml#l00431">openage::Sound::play()</a>, <a class="el" href="unit_8cpp_source.xhtml#l00235">openage::Unit::push_action()</a>, <a class="el" href="ability_8h_source.xhtml#l00246">sound</a>, and <a class="el" href="command_8cpp_source.xhtml#l00066">openage::Command::unit()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_build_ability_acf4dba9dcd9ed37efcbec8f14da3c3a2_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -287,6 +318,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1_unit_ability.xhtml#ab14c09721b496b167d0bd48ac201c885">openage::UnitAbility</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ability_8h_source.xhtml#l00237">237</a> of file <a class="el" href="ability_8h_source.xhtml">ability.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                 {</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">ability_type::build</a>;</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">openage::ability_type::build</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">openage::build</a>.</p>
 
 </div>
 </div>
@@ -313,11 +347,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ability_8h_source.xhtml#l00246">246</a> of file <a class="el" href="ability_8h_source.xhtml">ability.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ability_8cpp_source.xhtml#l00230">invoke()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="ability_8h_source.xhtml">ability.h</a></li>
-<li>libopenage/unit/<a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="ability_8h_source.xhtml">ability.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="ability_8cpp_source.xhtml">ability.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

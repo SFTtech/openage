@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1profiler_1_1_profiler" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::profiler::Profiler</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.profiler.Profiler::profile</definition>
+        <argsstring></argsstring>
+        <name>profile</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" compoundref="profiler_8py" startline="31" endline="35">openage.util.profiler.Profiler.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" compoundref="profiler_8py" startline="74" endline="76">openage.util.profiler.Profiler.disable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" compoundref="profiler_8py" startline="68" endline="70">openage.util.profiler.Profiler.enable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" compoundref="profiler_8py" startline="59" endline="64">openage.util.profiler.Profiler.report</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" compoundref="profiler_8py" startline="51" endline="55">openage.util.profiler.Profiler.write_report</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.profiler.Profiler::profile_stats</definition>
+        <argsstring></argsstring>
+        <name>profile_stats</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" compoundref="profiler_8py" startline="59" endline="64">openage.util.profiler.Profiler.report</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" compoundref="profiler_8py" startline="51" endline="55">openage.util.profiler.Profiler.write_report</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.profiler.Profiler::profile_stream</definition>
+        <argsstring></argsstring>
+        <name>profile_stream</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" compoundref="profiler_8py" startline="31" endline="35">openage.util.profiler.Profiler.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" compoundref="profiler_8py" startline="51" endline="55">openage.util.profiler.Profiler.write_report</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.__init__</definition>
+        <argsstring>(self, oStream=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>oStream</type>
+          <defname>oStream</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="31" bodyend="35"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" compoundref="profiler_8py" startline="27">openage.util.profiler.Profiler.profile</references>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" compoundref="profiler_8py" startline="29">openage.util.profiler.Profiler.profile_stream</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a7eeca5c6b15dc84f570c2fa2282e13c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.__enter__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__enter__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Activate data collection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="39" bodyend="41"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" compoundref="profiler_8py" startline="68" endline="70">openage.util.profiler.Profiler.enable</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1ac5656144b9dbd4708f61b37ea28abb32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.__exit__</definition>
+        <argsstring>(self, exc_type, exc_value, traceback)</argsstring>
+        <name>__exit__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>exc_type</type>
+          <defname>exc_type</defname>
+        </param>
+        <param>
+          <type>exc_value</type>
+          <defname>exc_value</defname>
+        </param>
+        <param>
+          <type>traceback</type>
+          <defname>traceback</defname>
+        </param>
+        <briefdescription>
+<para>Stop profiling. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="45" bodyend="47"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" compoundref="profiler_8py" startline="74" endline="76">openage.util.profiler.Profiler.disable</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.write_report</definition>
+        <argsstring>(self, sortby=&apos;calls&apos;)</argsstring>
+        <name>write_report</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>sortby</type>
+          <defname>sortby</defname>
+          <defval>&apos;calls&apos;</defval>
+        </param>
+        <briefdescription>
+<para>Write the profile stats to profile_stream&apos;s file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="51" bodyend="55"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" compoundref="profiler_8py" startline="27">openage.util.profiler.Profiler.profile</references>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" compoundref="profiler_8py" startline="28">openage.util.profiler.Profiler.profile_stats</references>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" compoundref="profiler_8py" startline="29">openage.util.profiler.Profiler.profile_stream</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.report</definition>
+        <argsstring>(self, sortby=&apos;calls&apos;)</argsstring>
+        <name>report</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>sortby</type>
+          <defname>sortby</defname>
+          <defval>&apos;calls&apos;</defval>
+        </param>
+        <briefdescription>
+<para>Return the profile_stats to the console. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="59" bodyend="64"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" compoundref="profiler_8py" startline="27">openage.util.profiler.Profiler.profile</references>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" compoundref="profiler_8py" startline="28">openage.util.profiler.Profiler.profile_stats</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.enable</definition>
+        <argsstring>(self)</argsstring>
+        <name>enable</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Begins profiling calls. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="68" bodyend="70"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" compoundref="profiler_8py" startline="27">openage.util.profiler.Profiler.profile</references>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a7eeca5c6b15dc84f570c2fa2282e13c3" compoundref="profiler_8py" startline="39" endline="41">openage.util.profiler.Profiler.__enter__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.profiler.Profiler.disable</definition>
+        <argsstring>(self)</argsstring>
+        <name>disable</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Stop profiling calls. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="74" bodyend="76"/>
+        <references refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" compoundref="profiler_8py" startline="27">openage.util.profiler.Profiler.profile</references>
+        <referencedby refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ac5656144b9dbd4708f61b37ea28abb32" compoundref="profiler_8py" startline="45" endline="47">openage.util.profiler.Profiler.__exit__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class for quick and easy profiling. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="par"><title>Usage</title><para>p = Profiler() with p: <heading level="1">call methods that need to be profiled here</heading>
+</para>
+</simplesect>
+print(p.report())</para>
+<para>The &apos;with&apos; statement can be replaced with calls to p.enable() and p.disable(). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="6007">
+        <label>openage.util.profiler.Profiler</label>
+        <link refid="classopenage_1_1util_1_1profiler_1_1_profiler"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/profiler.py" bodystart="25" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a7eeca5c6b15dc84f570c2fa2282e13c3" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ac5656144b9dbd4708f61b37ea28abb32" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a6b3457bd6c6d116d2437baf7673933bc" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a088f6572280b95451dd31a44fa3c6054" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>disable</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a802094b28d25809d506108649766c472" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>enable</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a36a52825d2bc40e8995a133d71f1ac12" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>profile</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a82debe2e57c3cc781bc3e369aef6f9c4" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>profile_stats</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a5888640864499800481116a6732f1731" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>profile_stream</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1a9d6495d886eea4971e170231c2699a0f" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>report</name></member>
+      <member refid="classopenage_1_1util_1_1profiler_1_1_profiler_1ae6395ce32642422c48d0a6b2631bd580" prot="public" virt="non-virtual"><scope>openage::util::profiler::Profiler</scope><name>write_report</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,4 @@
+<map id="openage.util.fslike.filecollection.FileCollectionPath.add_file_from_path" name="openage.util.fslike.filecollection.FileCollectionPath.add_file_from_path">
+<area shape="rect" id="node1" title="Like add_file, but uses a Path object instead of callables." alt="" coords="5,5,211,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path.xhtml#a919281129e859f1793cda2a0cc68c498" title="All parent directories are &#39;created&#39;, if needed." alt="" coords="259,13,464,54"/>
+</map>

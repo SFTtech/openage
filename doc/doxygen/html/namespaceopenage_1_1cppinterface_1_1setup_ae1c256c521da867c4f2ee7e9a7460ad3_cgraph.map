@@ -1,0 +1,13 @@
+<map id="openage.cppinterface.setup.setup" name="openage.cppinterface.setup.setup">
+<area shape="rect" id="node1" title="After a call to setup(), the C++ interface is in a usable state." alt="" coords="5,75,223,102"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17" title=" " alt="" coords="271,39,413,80"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="283,105,401,131"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="499,21,609,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c" title=" " alt="" coords="461,71,647,98"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#abe26c67b0463cb53c33b0659ebb89370" title=" " alt="" coords="710,5,839,47"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="926,42,1073,69"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="695,122,855,149"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="1144,42,1296,69"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="903,122,1096,149"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1157,122,1283,149"/>
+</map>

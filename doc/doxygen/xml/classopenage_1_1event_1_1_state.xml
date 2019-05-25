@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/state.h" line="15" column="1" bodyfile="libopenage/event/state.h" bodystart="15" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h" bodystart="15" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_state_1a9dd924ee0bebc52e5356b6d05aaa6e0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/state.h" line="16" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h" line="16" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -41,30 +41,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4269">
+      <node id="2291">
         <label>openage::event::tests::TestState</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_state"/>
-        <childnode refid="4267" relation="public-inheritance">
+        <childnode refid="2289" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4267">
+      <node id="2289">
         <label>openage::event::State</label>
         <link refid="classopenage_1_1event_1_1_state"/>
       </node>
-      <node id="4268">
+      <node id="2290">
         <label>openage::event::demo::PongState</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_pong_state"/>
-        <childnode refid="4267" relation="public-inheritance">
+        <childnode refid="2289" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4270">
+      <node id="2292">
         <label>openage::event::State</label>
         <link refid="classopenage_1_1event_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/state.h" line="13" column="1" bodyfile="libopenage/event/state.h" bodystart="13" bodyend="17"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h" bodystart="13" bodyend="17"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_state_1a83f7eab17997e052ac5b1919ddf59798" prot="public" virt="non-virtual"><scope>openage::event::State</scope><name>State</name></member>
       <member refid="classopenage_1_1event_1_1_state_1a9dd924ee0bebc52e5356b6d05aaa6e0c" prot="public" virt="virtual"><scope>openage::event::State</scope><name>~State</name></member>

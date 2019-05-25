@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="assets_8py" kind="file" language="Python">
+    <compoundname>assets.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1assets">openage::assets</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1assets" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Code<sp/>for<sp/>locating<sp/>the<sp/>game<sp/>assets.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pathlib<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Path</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.util.fslike.directory<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Directory</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.util.fslike.union<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Union</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.util.fslike.wrapper<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>WriteBlocker</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>config</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>default_dirs</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" kindref="member">get_asset_path</ref>(custom_asset_dir=None):</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Returns<sp/>a<sp/>Path<sp/>object<sp/>for<sp/>the<sp/>game<sp/>assets.</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>`custom_asset_dir`<sp/>can<sp/>a<sp/>custom<sp/>asset<sp/>directory,<sp/>which<sp/>is<sp/>mounted<sp/>at<sp/>the</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>top<sp/>of<sp/>the<sp/>union<sp/>filesystem<sp/>(i.e.<sp/>has<sp/>highest<sp/>priority).</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>This<sp/>function<sp/>is<sp/>used<sp/>by<sp/>the<sp/>both<sp/>the<sp/>conversion<sp/>process</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>and<sp/>the<sp/>game<sp/>startup.<sp/>The<sp/>conversion<sp/>uses<sp/>it<sp/>for<sp/>its<sp/>output,</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>the<sp/>game<sp/>as<sp/>its<sp/>data<sp/>source(s).</highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>if<sp/>we&apos;re<sp/>in<sp/>devmode,<sp/>use<sp/>only<sp/>the<sp/>in-repo<sp/>asset<sp/>folder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>custom_asset_dir<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>config.DEVMODE:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(os.path.join(config.BUILD_SRC_DIR,<sp/></highlight><highlight class="stringliteral">&quot;assets&quot;</highlight><highlight class="normal">)).root</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>else,<sp/>mount<sp/>the<sp/>possible<sp/>locations<sp/>in<sp/>an<sp/>union:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>overlay<sp/>the<sp/>global<sp/>dir<sp/>and<sp/>the<sp/>user<sp/>dir.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union" kindref="compound">Union</ref>().root</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>cmake-determined<sp/>folder<sp/>for<sp/>storing<sp/>assets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>global_data<sp/>=<sp/>Path(config.GLOBAL_ASSET_DIR)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>global_data.is_dir():</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.mount(<ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker" kindref="compound">WriteBlocker</ref>(<ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(global_data).root).root)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>user-data<sp/>directory<sp/>as<sp/>provided<sp/>by<sp/>environment<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>and<sp/>platform<sp/>standards</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>we<sp/>always<sp/>create<sp/>this!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>home_data<sp/>=<sp/>default_dirs.get_dir(</highlight><highlight class="stringliteral">&quot;data_home&quot;</highlight><highlight class="normal">)<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;openage&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>result.mount(</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>home_data,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_if_missing=</highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>).root<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;assets&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>program<sp/>argument<sp/>overrides<sp/>it<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>custom_asset_dir:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.mount(<ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(custom_asset_dir).root)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1assets_1a362b18ac5b307e65b5ee2a0e2bc69b77" kindref="member">test</ref>():</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Tests<sp/>whether<sp/>a<sp/>specific<sp/>asset<sp/>exists.</highlight></codeline>
+<codeline lineno="64"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.testing.testing<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>assert_value</highlight></codeline>
+<codeline lineno="66" refid="namespaceopenage_1_1assets_1a362b18ac5b307e65b5ee2a0e2bc69b77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>argparse</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>fakecli<sp/>=<sp/>argparse.ArgumentParser()</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>fakecli.add_argument(</highlight><highlight class="stringliteral">&quot;--asset-dir&quot;</highlight><highlight class="normal">,<sp/>default=</highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>=<sp/>fakecli.parse_args([])</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" kindref="member">assert_value</ref>(<ref refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" kindref="member">get_asset_path</ref>(args.asset_dir)[</highlight><highlight class="stringliteral">&apos;missing.png&apos;</highlight><highlight class="normal">].filesize,<sp/>580)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/assets.py"/>
+  </compounddef>
+</doxygen>

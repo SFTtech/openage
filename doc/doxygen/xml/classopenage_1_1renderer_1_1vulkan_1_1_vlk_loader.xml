@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="15" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" compoundref="loader_8cpp" startline="15" endline="22">init</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" compoundref="loader_8cpp" startline="25" endline="40">vkCreateDebugReportCallbackEXT</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" prot="private" static="no" mutable="no">
         <type>PFN_vkDestroyDebugReportCallbackEXT</type>
@@ -28,7 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="16" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" compoundref="loader_8cpp" startline="15" endline="22">init</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" compoundref="loader_8cpp" startline="42" endline="54">vkDestroyDebugReportCallbackEXT</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -41,7 +45,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="19" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" compoundref="loader_8cpp" startline="15" endline="22">init</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" compoundref="loader_8cpp" startline="25" endline="40">vkCreateDebugReportCallbackEXT</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" compoundref="loader_8cpp" startline="42" endline="54">vkDestroyDebugReportCallbackEXT</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -56,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="12" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp" bodystart="12" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -74,7 +81,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="15" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp" bodystart="15" bodyend="22"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" compoundref="loader_8h" startline="19">inited</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" compoundref="loader_8h" startline="15">pCreateDebugReportCallbackEXT</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" compoundref="loader_8h" startline="16">pDestroyDebugReportCallbackEXT</references>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>VkResult</type>
@@ -104,7 +115,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="25" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp" bodystart="25" bodyend="40"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" compoundref="loader_8h" startline="19">inited</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" compoundref="loader_8h" startline="15">pCreateDebugReportCallbackEXT</references>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -130,7 +146,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/loader.h" line="38" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="42" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp" bodystart="42" bodyend="54"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" compoundref="loader_8h" startline="19">inited</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" compoundref="loader_8h" startline="16">pDestroyDebugReportCallbackEXT</references>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" compoundref="windowvk_8cpp" startline="173" endline="179">openage::renderer::vulkan::VlkWindow::~VlkWindow</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -139,12 +160,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4954">
+      <node id="4817">
         <label>openage::renderer::vulkan::VlkLoader</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/loader.h" line="13" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="13" bodyend="44"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.h" bodystart="13" bodyend="44"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>init</name></member>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>inited</name></member>

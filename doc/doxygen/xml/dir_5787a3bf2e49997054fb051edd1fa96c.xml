@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_5787a3bf2e49997054fb051edd1fa96c" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract</compoundname>
+    <innerfile refid="cabextract_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="cab_8py">cab.py</innerfile>
+    <innerfile refid="lzxdstream_8py">lzxdstream.py</innerfile>
+    <innerfile refid="cabextract_2test_8py">test.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/"/>
+  </compounddef>
+</doxygen>

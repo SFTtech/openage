@@ -4,12 +4,12 @@
     <compoundname>subprocess.h</compoundname>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
-    <includedby refid="externalprofiler_8cpp" local="yes">libopenage/util/externalprofiler.cpp</includedby>
-    <includedby refid="os_8cpp" local="yes">libopenage/util/os.cpp</includedby>
-    <includedby refid="subprocess_8cpp" local="yes">libopenage/util/subprocess.cpp</includedby>
+    <includedby refid="externalprofiler_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp</includedby>
+    <includedby refid="os_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</includedby>
+    <includedby refid="subprocess_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp</includedby>
     <incdepgraph>
       <node id="32863">
-        <label>libopenage/util/subprocess.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.h</label>
         <link refid="subprocess_8h"/>
         <childnode refid="32864" relation="include">
         </childnode>
@@ -25,7 +25,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="32866">
-        <label>libopenage/util/subprocess.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.h</label>
         <link refid="subprocess_8h"/>
         <childnode refid="32867" relation="include">
         </childnode>
@@ -35,15 +35,15 @@
         </childnode>
       </node>
       <node id="32868">
-        <label>libopenage/util/os.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</label>
         <link refid="os_8cpp"/>
       </node>
       <node id="32869">
-        <label>libopenage/util/subprocess.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.cpp</label>
         <link refid="subprocess_8cpp"/>
       </node>
       <node id="32867">
-        <label>libopenage/util/externalprofiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp</label>
         <link refid="externalprofiler_8cpp"/>
       </node>
     </invincdepgraph>
@@ -76,6 +76,6 @@
 <codeline lineno="46"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>subprocess</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/subprocess.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/subprocess.h"/>
   </compounddef>
 </doxygen>

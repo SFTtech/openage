@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="104" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="104" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1influence__group_1a207f831f9570564df1e122906e289c92" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
@@ -28,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="105" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="105" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structopenage_1_1influence" kindref="compound">influence</ref></type>
@@ -41,7 +44,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="105" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="106" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="106" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,19 +68,18 @@
 <para>influences for one tile. as a tile has 8 adjacent and diagonal neighbors, the maximum number of influences is 8. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2955">
+      <node id="3804">
         <label>openage::influence_group</label>
         <link refid="structopenage_1_1influence__group"/>
-        <childnode refid="2956" relation="usage">
+        <childnode refid="3805" relation="usage">
           <edgelabel>+data</edgelabel>
         </childnode>
       </node>
-      <node id="2956">
-        <label>openage::influence</label>
-        <link refid="structopenage_1_1influence"/>
+      <node id="3805">
+        <label>struct</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain.h" line="103" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="103" bodyend="107"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="103" bodyend="107"/>
     <listofallmembers>
       <member refid="structopenage_1_1influence__group_1a45caedf1c1dd3ff9b8a74d0284e6e45e" prot="public" virt="non-virtual"><scope>openage::influence_group</scope><name>count</name></member>
       <member refid="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" prot="public" virt="non-virtual"><scope>openage::influence_group</scope><name>data</name></member>

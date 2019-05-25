@@ -3,6 +3,8 @@
   <compounddef id="namespaceopenage_1_1cvar" kind="namespace" language="C++">
     <compoundname>openage::cvar</compoundname>
     <innerclass refid="classopenage_1_1cvar_1_1_c_var_manager" prot="public">openage::cvar::CVarManager</innerclass>
+    <innernamespace refid="namespaceopenage_1_1cvar_1_1config__file">openage::cvar::config_file</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1cvar_1_1location">openage::cvar::location</innernamespace>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespaceopenage_1_1cvar_1aebb2850e226c43da630c2dc95802f4ee" prot="public" static="no">
         <type>std::function&lt; std::string()&gt;</type>
@@ -16,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/cvar/cvar.h" line="22" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1cvar_1a9da0b79349923d4b334b76da9ea8828f" prot="public" static="no">
         <type>std::function&lt; void(std::string)&gt;</type>
@@ -30,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/cvar/cvar.h" line="25" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -47,13 +49,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/cvar/cvar.cpp" line="54" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="54" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp" bodystart="54" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" compoundref="cvar_8cpp" startline="44" endline="46">openage::cvar::CVarManager::load_config</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/cvar/cvar.cpp" line="9" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/cvar/cvar.cpp" line="9" column="1"/>
   </compounddef>
 </doxygen>

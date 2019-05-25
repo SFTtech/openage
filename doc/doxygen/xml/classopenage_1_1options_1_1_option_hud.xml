@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="286" column="1" bodyfile="libopenage/options.cpp" bodystart="340" bodyend="342"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="286" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" bodystart="340" bodyend="342"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,12 +25,12 @@
 <para>generates required gui elements for each variable on a panel </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3476">
+      <node id="4341">
         <label>openage::options::OptionHud</label>
         <link refid="classopenage_1_1options_1_1_option_hud"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/options.h" line="284" column="1" bodyfile="libopenage/options.h" bodystart="284" bodyend="287"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="284" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="284" bodyend="287"/>
     <listofallmembers>
       <member refid="classopenage_1_1options_1_1_option_hud_1a256236aa1b443d974352f8a3a8a5fd09" prot="public" virt="non-virtual"><scope>openage::options::OptionHud</scope><name>OptionHud</name></member>
     </listofallmembers>

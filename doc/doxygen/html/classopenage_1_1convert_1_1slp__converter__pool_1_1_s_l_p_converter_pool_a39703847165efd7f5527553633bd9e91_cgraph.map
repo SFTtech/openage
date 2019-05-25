@@ -1,0 +1,11 @@
+<map id="openage.convert.slp_converter_pool.SLPConverterPool.__exit__" name="openage.convert.slp_converter_pool.SLPConverterPool.__exit__">
+<area shape="rect" id="node1" title=" " alt="" coords="5,239,200,295"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml#a46b22ff5117cbd09b2b1dc4fdf754019" title=" " alt="" coords="292,5,432,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml#a92a48e36d073209320e82a95c938b87d" title=" " alt="" coords="292,71,432,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1codegen_1_1codegen_1_1_write_catcher.xhtml#a81a39d07ebb17dfc512f9c4f904fb692" title=" " alt="" coords="271,136,453,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool.xhtml#a157e465a75a721fa7b2f805ff57c4d5f" title="Closes the converter pool, quitting all the processes." alt="" coords="265,202,459,258"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a7ad98df2b552e013bce31d81a5e36d23" title=" " alt="" coords="292,283,432,324"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_file.xhtml#a529bcc6a1c3b4b68db36e6524340cc11" title=" " alt="" coords="299,348,425,389"/>
+<area shape="rect" id="node8" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#a0a78e07f80c2a50875e3d689df488e34" title=" " alt="" coords="258,413,466,455"/>
+<area shape="rect" id="node9" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#ae5a7fefaa419877c7b44e69e7451c6f8" title=" " alt="" coords="248,479,476,520"/>
+</map>

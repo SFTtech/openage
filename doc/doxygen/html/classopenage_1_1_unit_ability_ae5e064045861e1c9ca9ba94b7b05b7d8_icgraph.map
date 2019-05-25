@@ -1,0 +1,5 @@
+<map id="openage::UnitAbility::has_resource" name="openage::UnitAbility::has_resource">
+<area shape="rect" id="node1" title=" " alt="" coords="208,39,347,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_gather_ability.xhtml#a1cd4ba56c06ddf86a3c07c9da73b831d" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" title=" " alt="" coords="6,71,159,112"/>
+</map>

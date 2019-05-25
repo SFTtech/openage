@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/generator_link.h" line="36" column="1" bodyfile="libopenage/gui/generator_link.cpp" bodystart="17" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp" bodystart="17" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_generator_link_1ab449400db5f69284b5de28ceb7bfb4d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/generator_link.h" line="37" column="1" bodyfile="libopenage/gui/generator_link.cpp" bodystart="24" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp" bodystart="24" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -43,161 +43,268 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2350">
+      <node id="3488">
         <label>qtsdl::GuiItemCoreInstantiator&lt; GeneratorLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="2351" relation="public-inheritance">
+        <childnode refid="3489" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3491" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2346">
+      <node id="3483">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="2345">
+      <node id="3482">
         <label>qtsdl::DeferredInitialConstantPropertyValues</label>
         <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
       </node>
-      <node id="2348">
+      <node id="3485">
         <label>qtsdl::GuiItem&lt; GeneratorLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item"/>
-        <childnode refid="2349" relation="public-inheritance">
+        <childnode refid="3486" relation="public-inheritance">
         </childnode>
-        <childnode refid="2350" relation="public-inheritance">
+        <childnode refid="3488" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3492" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2351">
-        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+      <node id="3490">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
-      <node id="2344">
-        <label>qtsdl::GuiItemBase</label>
-        <link refid="classqtsdl_1_1_gui_item_base"/>
-        <childnode refid="2345" relation="public-inheritance">
+      <node id="3489">
+        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="3490" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2342">
-        <label>qtsdl::GuiListModel</label>
-        <link refid="classqtsdl_1_1_gui_list_model"/>
-        <childnode refid="2343" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2344" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2346" relation="public-inheritance">
+      <node id="3491">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="3490" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2347">
-        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
-        <link refid="classqtsdl_1_1_gui_item_list_model"/>
-        <childnode refid="2348" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2343">
-        <label>QAbstractListModel</label>
-      </node>
-      <node id="2349">
-        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+      <node id="3487">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_origin"/>
       </node>
-      <node id="2341">
+      <node id="3492">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="3487" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3491" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3481">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="3482" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3479">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="3480" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3481" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3483" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3484">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="3485" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3493" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3480">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="3486">
+        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="3487" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3493">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="3492" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3478">
         <label>openage::gui::GeneratorLink</label>
         <link refid="classopenage_1_1gui_1_1_generator_link"/>
-        <childnode refid="2342" relation="public-inheritance">
+        <childnode refid="3479" relation="public-inheritance">
         </childnode>
-        <childnode refid="2347" relation="public-inheritance">
+        <childnode refid="3484" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2365">
+      <node id="3510">
         <label>qtsdl::GuiItemCoreInstantiator&lt; GeneratorLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="2366" relation="public-inheritance">
+        <childnode refid="3511" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3513" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2359">
+      <node id="3509">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3506" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3507" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3501">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="2363">
+      <node id="3505">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="2364" relation="public-inheritance">
+        <childnode refid="3506" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3507" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2358">
+      <node id="3500">
         <label>QObject</label>
       </node>
-      <node id="2356">
+      <node id="3498">
         <label>qtsdl::DeferredInitialConstantPropertyValues</label>
         <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
       </node>
-      <node id="2364">
+      <node id="3506">
         <label>qtsdl::PersistentCoreHolderBase</label>
         <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
       </node>
-      <node id="2361">
+      <node id="3503">
         <label>qtsdl::GuiItem&lt; GeneratorLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item"/>
-        <childnode refid="2362" relation="public-inheritance">
+        <childnode refid="3504" relation="public-inheritance">
         </childnode>
-        <childnode refid="2365" relation="public-inheritance">
+        <childnode refid="3510" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3514" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2366">
-        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+      <node id="3512">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
-      <node id="2355">
-        <label>qtsdl::GuiItemBase</label>
-        <link refid="classqtsdl_1_1_gui_item_base"/>
-        <childnode refid="2356" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2357" relation="usage">
-          <edgelabel>#game_logic_caller</edgelabel>
+      <node id="3511">
+        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="3512" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="2353">
-        <label>qtsdl::GuiListModel</label>
-        <link refid="classqtsdl_1_1_gui_list_model"/>
-        <childnode refid="2354" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2355" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2359" relation="public-inheritance">
+      <node id="3513">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="3512" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2360">
-        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
-        <link refid="classqtsdl_1_1_gui_item_list_model"/>
-        <childnode refid="2361" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2354">
-        <label>QAbstractListModel</label>
-      </node>
-      <node id="2362">
-        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+      <node id="3508">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_origin"/>
-        <childnode refid="2363" relation="usage">
+        <childnode refid="3509" relation="usage">
           <edgelabel>-holder</edgelabel>
         </childnode>
       </node>
-      <node id="2357">
-        <label>qtsdl::GameLogicCaller</label>
-        <link refid="classqtsdl_1_1_game_logic_caller"/>
-        <childnode refid="2358" relation="public-inheritance">
+      <node id="3514">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="3508" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3513" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2352">
+      <node id="3497">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="3498" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3499" relation="usage">
+          <edgelabel>#game_logic_caller</edgelabel>
+        </childnode>
+      </node>
+      <node id="3495">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="3496" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3497" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3501" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3502">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="3503" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3515" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3496">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="3504">
+        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="3505" relation="usage">
+          <edgelabel>-holder</edgelabel>
+        </childnode>
+        <childnode refid="3508" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="3515">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="3514" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3507">
+        <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3506" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3499">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="3500" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3494">
         <label>openage::gui::GeneratorLink</label>
         <link refid="classopenage_1_1gui_1_1_generator_link"/>
-        <childnode refid="2353" relation="public-inheritance">
+        <childnode refid="3495" relation="public-inheritance">
         </childnode>
-        <childnode refid="2360" relation="public-inheritance">
+        <childnode refid="3502" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/generator_link.h" line="32" column="1" bodyfile="libopenage/gui/generator_link.h" bodystart="32" bodyend="38"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h" bodystart="32" bodyend="38"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>apply_static_properties</name></member>
       <member refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>changed_from_gui</name></member>

@@ -1,0 +1,7 @@
+<map id="openage.log.get_loglevel" name="openage.log.get_loglevel">
+<area shape="rect" id="node1" title="gets the log level" alt="" coords="432,71,595,97"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a78bab1bc2016bebde4ef3cde06936702" title="sets the log level" alt="" coords="221,71,384,97"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1____main____.xhtml#a2cf9c123d48ac683e5cf594b0114e5e3" title="Top&#45;level argparsing; invokes subparser for all submodules." alt="" coords="8,5,171,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1slp__converter__pool.xhtml#a1f2e2c95486ce8b8bc86342dd862afc2" title="This is the function that runs inside each individual process." alt="" coords="5,56,173,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log_1_1tests.xhtml#a9ca6bf494467589807a56e954b8b3bb3" title="Demonstrates the Python logging facility." alt="" coords="9,136,170,163"/>
+</map>

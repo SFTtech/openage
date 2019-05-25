@@ -1,0 +1,21 @@
+<map id="openage.util.fslike.directory.Directory.resolve" name="openage.util.fslike.directory.Directory.resolve">
+<area shape="rect" id="node1" title="resolves parts to an actual path name." alt="" coords="469,515,653,556"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a4ac25f156e1e61aaf181aeac4a8ed536" title=" " alt="" coords="237,5,421,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a4b6007750c576514ea97305cd10299b1" title=" " alt="" coords="237,71,421,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a2cd6e092ef3d99243d60ba7d05ff10c5" title=" " alt="" coords="237,319,421,360"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#aaf5c2b924c92a941b7a0bb5044bad272" title=" " alt="" coords="237,188,421,229"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a25898fdc286da3d08b1a8010c96fca6b" title="Shall yield the entry names of the given directory." alt="" coords="237,253,421,295"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a593147786283242dd86370ad6f97e068" title=" " alt="" coords="5,192,189,233"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#afcf06147cea96c5b86d105ec9c02af92" title="Shall ensure that the directory exists." alt="" coords="237,384,421,425"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#ad8d226499167ea30f6e47638ea498987" title=" " alt="" coords="237,449,421,491"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#adc68385f8c0a0bb2e2bef0f10436574d" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;a&#39;&quot;)." alt="" coords="237,515,421,556"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#ad6e7f48b2d5c8f010c9c1088e6341559" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;a+&#39;&quot;)." alt="" coords="237,580,421,621"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a3dfe1315b1f3db58f58c0bcd5febe499" title="Shall return a BufferedReader for the given file (&quot;mode &#39;rb&#39;&quot;)." alt="" coords="237,645,421,687"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a250151bde89bbed4e41d7d203bc10fc4" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;r+&#39;&quot;)." alt="" coords="237,711,421,752"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a99e770abe2bcbff7b472b348de2bf67c" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="237,776,421,817"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a3d1559d9fd9d3b3d7b8802b35865b734" title="Shall rename a file or directory to the target name." alt="" coords="237,841,421,883"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a26b80b14c729ade6d012864fc94423d7" title="Shall remove an empty directory." alt="" coords="237,907,421,948"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#aad6df15589e4b45b0b4ff322c5ae49a2" title="Shall create the file or update its timestamp." alt="" coords="237,972,421,1013"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a31bd13c783048d9480ee5c3cb1e7687b" title="Shall remove a single file." alt="" coords="237,1037,421,1079"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a54ddfaca7c17c046c0a7472bb6af3d76" title="Recursively deletes this file or directory." alt="" coords="18,907,177,948"/>
+</map>

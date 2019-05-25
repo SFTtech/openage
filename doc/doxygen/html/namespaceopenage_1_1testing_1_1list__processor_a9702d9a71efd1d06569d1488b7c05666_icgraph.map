@@ -1,0 +1,5 @@
+<map id="openage.testing.list_processor.get_all_targets" name="openage.testing.list_processor.get_all_targets">
+<area shape="rect" id="node1" title="Reads the Python and C++ testspec." alt="" coords="508,5,683,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1main.xhtml#a346b6762051aaadb5cc302e1adbf5f1e" title="Processes the given args, detecting errors." alt="" coords="232,13,460,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="5,13,184,39"/>
+</map>

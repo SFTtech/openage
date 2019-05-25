@@ -4,11 +4,11 @@
     <compoundname>gui_input.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">SDL2/SDL_events.h</includes>
-    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
-    <includedby refid="gui__input_8cpp" local="yes">libopenage/gui/guisys/public/gui_input.cpp</includedby>
+    <includedby refid="gui_2gui_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__input_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp</includedby>
     <incdepgraph>
       <node id="13544">
-        <label>libopenage/gui/guisys/public/gui_input.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h</label>
         <link refid="gui__input_8h"/>
         <childnode refid="13545" relation="include">
         </childnode>
@@ -24,11 +24,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13550">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="13547">
-        <label>libopenage/gui/guisys/public/gui_input.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h</label>
         <link refid="gui__input_8h"/>
         <childnode refid="13548" relation="include">
         </childnode>
@@ -36,15 +36,15 @@
         </childnode>
       </node>
       <node id="13549">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="13551">
-        <label>libopenage/gui/guisys/public/gui_input.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp</label>
         <link refid="gui__input_8cpp"/>
       </node>
       <node id="13548">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="13549" relation="include">
         </childnode>
@@ -87,6 +87,6 @@
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_input.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.h"/>
   </compounddef>
 </doxygen>

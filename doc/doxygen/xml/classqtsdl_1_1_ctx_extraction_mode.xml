@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="47" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_ctx_extraction_mode_1ab032d2eb6589f543aa1ebce385ce2d17" compoundref="gui__ctx__setup_8cpp" startline="19" endline="21">get_ctx</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_separate_rendering_context_1a47ae13e05fbce6703f7b3329512b5a5f" compoundref="gui__ctx__setup_8cpp" startline="94" endline="99">qtsdl::GuiSeparateRenderingContext::pre_render</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="28" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="28" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1ab032d2eb6589f543aa1ebce385ce2d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QOpenGLContext *</type>
@@ -48,7 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="34" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.cpp" bodystart="19" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp" bodystart="19" bodyend="21"/>
+        <references refid="classqtsdl_1_1_ctx_extraction_mode_1aed1505f12fb50b3792b36213210a6c74" compoundref="gui__ctx__setup_8h" startline="47">ctx</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1a5a078af4f1b11cf1091496bfc8559b0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -64,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="39" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="39" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1a314f77f4b5e33b76316e4184b4c4f505" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -80,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="44" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="44" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -89,30 +92,30 @@
 <para>Abstract base for the method of getting a Qt-usable context. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1038">
+      <node id="6152">
         <label>qtsdl::GuiSeparateRenderingContext</label>
         <link refid="classqtsdl_1_1_gui_separate_rendering_context"/>
-        <childnode refid="1037" relation="public-inheritance">
+        <childnode refid="6151" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1037">
+      <node id="6151">
         <label>qtsdl::CtxExtractionMode</label>
         <link refid="classqtsdl_1_1_ctx_extraction_mode"/>
       </node>
-      <node id="1039">
+      <node id="6153">
         <label>qtsdl::GuiUniqueRenderingContext</label>
         <link refid="classqtsdl_1_1_gui_unique_rendering_context"/>
-        <childnode refid="1037" relation="public-inheritance">
+        <childnode refid="6151" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1040">
+      <node id="6154">
         <label>qtsdl::CtxExtractionMode</label>
         <link refid="classqtsdl_1_1_ctx_extraction_mode"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="26" bodyend="48"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="26" bodyend="48"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_ctx_extraction_mode_1aed1505f12fb50b3792b36213210a6c74" prot="protected" virt="non-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>ctx</name></member>
       <member refid="classqtsdl_1_1_ctx_extraction_mode_1ab032d2eb6589f543aa1ebce385ce2d17" prot="public" virt="non-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>get_ctx</name></member>

@@ -6,14 +6,14 @@
     <includes local="no">QFileSystemWatcher</includes>
     <includes local="no">QStringList</includes>
     <includes local="no">QTimer</includes>
-    <includedby refid="recursive__directory__watcher_8cpp" local="yes">libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</includedby>
-    <includedby refid="recursive__directory__watcher__worker_8cpp" local="yes">libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</includedby>
+    <includedby refid="recursive__directory__watcher_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</includedby>
+    <includedby refid="recursive__directory__watcher__worker_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</includedby>
     <incdepgraph>
       <node id="13403">
         <label>QTimer</label>
       </node>
       <node id="13399">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h</label>
         <link refid="recursive__directory__watcher__worker_8h"/>
         <childnode refid="13400" relation="include">
         </childnode>
@@ -36,7 +36,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13404">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h</label>
         <link refid="recursive__directory__watcher__worker_8h"/>
         <childnode refid="13405" relation="include">
         </childnode>
@@ -44,11 +44,11 @@
         </childnode>
       </node>
       <node id="13406">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</label>
         <link refid="recursive__directory__watcher__worker_8cpp"/>
       </node>
       <node id="13405">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
         <link refid="recursive__directory__watcher_8cpp"/>
       </node>
     </invincdepgraph>
@@ -99,6 +99,6 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.h"/>
   </compounddef>
 </doxygen>

@@ -10,10 +10,10 @@
     <includes refid="continuous_8h" local="yes">../../curve/continuous.h</includes>
     <includes refid="discrete_8h" local="yes">../../curve/discrete.h</includes>
     <includes refid="vector_8h" local="yes">../../util/vector.h</includes>
-    <includedby refid="aicontroller_8h" local="yes">libopenage/event/demo/aicontroller.h</includedby>
-    <includedby refid="gamestate_8cpp" local="yes">libopenage/event/demo/gamestate.cpp</includedby>
-    <includedby refid="event_2demo_2main_8cpp" local="yes">libopenage/event/demo/main.cpp</includedby>
-    <includedby refid="physics_8h" local="yes">libopenage/event/demo/physics.h</includedby>
+    <includedby refid="aicontroller_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</includedby>
+    <includedby refid="gamestate_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</includedby>
+    <includedby refid="event_2demo_2main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</includedby>
+    <includedby refid="physics_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</includedby>
     <incdepgraph>
       <node id="6742">
         <label>list</label>
@@ -452,7 +452,7 @@
         <label>config.h</label>
       </node>
       <node id="6736">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="6737" relation="include">
         </childnode>
@@ -493,19 +493,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="6801">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="6803">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="6799">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="6802">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="6800" relation="include">
         </childnode>
@@ -513,11 +513,11 @@
         </childnode>
       </node>
       <node id="6800">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="6798">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="6799" relation="include">
         </childnode>
@@ -525,7 +525,7 @@
         </childnode>
       </node>
       <node id="6797">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="6798" relation="include">
         </childnode>
@@ -631,7 +631,7 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="81" refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a296f31cfd846d1dd543c6905c2bb61ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1demo_1_1_pong_player_1a296f31cfd846d1dd543c6905c2bb61ac" kindref="member">child_changes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">curve::time_t</ref><sp/>&amp;time)<sp/>{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;changes(time);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" kindref="member">changes</ref>(time);</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
@@ -659,7 +659,7 @@
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="109" refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a0b94d49da0d7c82cc56be793228045d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a0b94d49da0d7c82cc56be793228045d2" kindref="member">child_changes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">curve::time_t</ref><sp/>&amp;time)<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;changes(time);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" kindref="member">changes</ref>(time);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="112" refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a79dfeb3d8e9d0cf7d2c63635b39e6e83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a79dfeb3d8e9d0cf7d2c63635b39e6e83" kindref="member">_id</ref>;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">};</highlight></codeline>
@@ -697,6 +697,6 @@
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event::demo</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/gamestate.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h"/>
   </compounddef>
 </doxygen>

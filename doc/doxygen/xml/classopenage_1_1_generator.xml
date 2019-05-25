@@ -17,7 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="168" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="168" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="168" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="168" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" compoundref="generator_8cpp" startline="303" endline="320">create</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1aa50cc4505ac7fe56706a47495bd5bedc" compoundref="generator_8cpp" startline="140" endline="142">get_spec</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" compoundref="generator_8cpp" startline="237" endline="250">terrain</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_region" kindref="compound">Region</ref> &gt;</type>
@@ -31,7 +34,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="173" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="173" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="173" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="173" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">add_units</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" compoundref="generator_8cpp" startline="303" endline="320">create</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">create_regions</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" compoundref="generator_8cpp" startline="237" endline="250">terrain</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -46,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="176" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="176" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="176" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="176" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1a59c5142b05948f3a9e146229d2b11648" compoundref="generator_8cpp" startline="126" endline="138">Generator</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +73,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="135" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="126" bodyend="138"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="126" bodyend="138"/>
+        <references refid="classopenage_1_1_generator_1a6e4a27bed5a78acb4c27c817b2ff92a1" compoundref="generator_8h" startline="176">gui_link</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_generator_1aa50cc4505ac7fe56706a47495bd5bedc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
@@ -79,7 +88,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="140" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="140" bodyend="142"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="140" bodyend="142"/>
+        <references refid="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" compoundref="generator_8h" startline="168">spec</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -93,7 +103,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="145" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="144" bodyend="151"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="144" bodyend="151"/>
+        <references refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" compoundref="gui__property__map_8cpp" startline="160" endline="162">qtsdl::GuiPropertyMap::get_csv</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">create_regions</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
@@ -107,7 +120,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="150" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="237" bodyend="250"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="237" bodyend="250"/>
+        <references refid="classopenage_1_1_terrain_chunk_1af163db3fba4ae99206de76666f8424df" compoundref="terrain__chunk_8cpp" startline="46" endline="48">openage::TerrainChunk::get_data</references>
+        <references refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" compoundref="generator_8h" startline="173">regions</references>
+        <references refid="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" compoundref="generator_8h" startline="168">spec</references>
+        <references refid="classopenage_1_1_tile_content_1ac370821023f0c2e78ef4ab0c27c7bf09" compoundref="terrain_8h" startline="58">openage::TileContent::terrain_id</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -125,7 +142,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="155" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="252" bodyend="301"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="155" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="252" bodyend="301"/>
+        <references refid="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" compoundref="terrain__object_8cpp" startline="486" endline="500">openage::complete_building</references>
+        <references refid="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" compoundref="game__main_8cpp" startline="47" endline="49">openage::GameMain::get_player</references>
+        <references refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" compoundref="player_8cpp" startline="119" endline="127">openage::Player::get_type</references>
+        <references refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" compoundref="unit__container_8cpp" startline="88" endline="94">openage::UnitContainer::new_unit</references>
+        <references refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" compoundref="game__main_8h" startline="87">openage::GameMain::placed_units</references>
+        <references refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" compoundref="constinit__vector_8cpp" startline="47">ref</references>
+        <references refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" compoundref="generator_8h" startline="173">regions</references>
+        <references refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" compoundref="game__main_8h" startline="72">openage::GameMain::terrain</references>
+        <references refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="26" endline="28">openage::coord::tile::to_phys3</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &gt;</type>
@@ -143,7 +169,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="160" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="303" bodyend="320"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="160" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="303" bodyend="320"/>
+        <references refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">create_regions</references>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" compoundref="game__save_8cpp" startline="102" endline="146">openage::gameio::load</references>
+        <references refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" compoundref="generator_8h" startline="173">regions</references>
+        <references refid="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" compoundref="generator_8h" startline="168">spec</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -158,7 +189,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="163" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="153" bodyend="234"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="163" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="153" bodyend="234"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="classopenage_1_1_region_1a049c7aba99df7ba3c2e6c1412eb37281" compoundref="generator_8cpp" startline="55" endline="57">openage::Region::get_center</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328dae07e81c20cf5935f5225765f0af81755">openage::gold</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1_region_1a9cc7b2090dc80b378d3d4dfddeb4f5b3" compoundref="generator_8h" startline="103">openage::Region::object_id</references>
+        <references refid="classopenage_1_1_region_1a70375042f98dd6521e0d929a7ce71873" compoundref="generator_8h" startline="97">openage::Region::owner</references>
+        <references refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" compoundref="generator_8cpp" startline="144" endline="151">player_names</references>
+        <references refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" compoundref="generator_8h" startline="173">regions</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0a840ef45467fb3932dbf2c2896c5cbf">openage::stone</references>
+        <references refid="classopenage_1_1_region_1a365efd8b6f0199a7cb270af90291a662" compoundref="generator_8cpp" startline="122" endline="124">openage::Region::take_random</references>
+        <references refid="classopenage_1_1_region_1a268c678dfa97caf1cd17b632ca74de40" compoundref="generator_8cpp" startline="108" endline="120">openage::Region::take_tiles</references>
+        <references refid="namespaceopenage_1_1math_1a2ed907ecfe2bd347184b6100e767ae8d" compoundref="math__constants_8h" startline="21">openage::math::TAU</references>
+        <references refid="classopenage_1_1_region_1ab7bdac93f609a1c1cba381b92fa8420b" compoundref="generator_8h" startline="108">openage::Region::terrain_id</references>
+        <referencedby refid="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" compoundref="generator_8cpp" startline="303" endline="320">create</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -169,37 +216,37 @@
 <para>this will be identical for each networked player in a game </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2336">
+      <node id="2790">
         <label>openage::Generator</label>
         <link refid="classopenage_1_1_generator"/>
-        <childnode refid="2337" relation="public-inheritance">
+        <childnode refid="2791" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2337">
+      <node id="2791">
         <label>qtsdl::GuiPropertyMap</label>
         <link refid="structqtsdl_1_1_gui_property_map"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2338">
+      <node id="2792">
         <label>openage::Generator</label>
         <link refid="classopenage_1_1_generator"/>
-        <childnode refid="2339" relation="public-inheritance">
+        <childnode refid="2793" relation="public-inheritance">
         </childnode>
-        <childnode refid="2340" relation="usage">
+        <childnode refid="2794" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
       </node>
-      <node id="2340">
+      <node id="2794">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="2339">
+      <node id="2793">
         <label>qtsdl::GuiPropertyMap</label>
         <link refid="structqtsdl_1_1_gui_property_map"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/generator.h" line="133" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="133" bodyend="177"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="133" bodyend="177"/>
     <listofallmembers>
       <member refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>add_units</name></member>
       <member refid="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>create</name></member>

@@ -25,7 +25,7 @@
         </childnode>
       </node>
       <node id="1810">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
         <childnode refid="1811" relation="include">
         </childnode>
@@ -1145,6 +1145,6 @@
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/resource.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp"/>
   </compounddef>
 </doxygen>

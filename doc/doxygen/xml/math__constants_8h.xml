@@ -3,17 +3,17 @@
   <compounddef id="math__constants_8h" kind="file" language="C++">
     <compoundname>math_constants.h</compoundname>
     <includes local="no">limits</includes>
-    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
-    <includedby refid="player_8cpp" local="yes">libopenage/gamestate/player.cpp</includedby>
-    <includedby refid="unit__texture_8cpp" local="yes">libopenage/unit/unit_texture.cpp</includedby>
-    <includedby refid="unit__type_8cpp" local="yes">libopenage/unit/unit_type.cpp</includedby>
-    <includedby refid="quaternion_8h" local="yes">libopenage/util/quaternion.h</includedby>
+    <includedby refid="generator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="player_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/player.cpp</includedby>
+    <includedby refid="unit__texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp</includedby>
+    <includedby refid="unit__type_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</includedby>
+    <includedby refid="quaternion_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</includedby>
     <incdepgraph>
       <node id="30864">
         <label>limits</label>
       </node>
       <node id="30863">
-        <label>libopenage/util/math_constants.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h</label>
         <link refid="math__constants_8h"/>
         <childnode refid="30864" relation="include">
         </childnode>
@@ -21,7 +21,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="30870">
-        <label>libopenage/util/quaternion.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="30871" relation="include">
         </childnode>
@@ -29,31 +29,31 @@
         </childnode>
       </node>
       <node id="30872">
-        <label>libopenage/util/quaternion_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp</label>
         <link refid="quaternion__test_8cpp"/>
       </node>
       <node id="30867">
-        <label>libopenage/gamestate/player.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/player.cpp</label>
         <link refid="player_8cpp"/>
       </node>
       <node id="30869">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="30868">
-        <label>libopenage/unit/unit_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp</label>
         <link refid="unit__texture_8cpp"/>
       </node>
       <node id="30871">
-        <label>libopenage/util/quaternion.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</label>
         <link refid="quaternion_8cpp"/>
       </node>
       <node id="30866">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
       </node>
       <node id="30865">
-        <label>libopenage/util/math_constants.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h</label>
         <link refid="math__constants_8h"/>
         <childnode refid="30866" relation="include">
         </childnode>
@@ -106,6 +106,6 @@
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::math</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/math_constants.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h"/>
   </compounddef>
 </doxygen>

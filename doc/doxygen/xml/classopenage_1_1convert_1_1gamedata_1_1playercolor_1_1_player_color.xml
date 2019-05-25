@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::playercolor::PlayerColor</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1ada65c51e3a85fd3b7de0688db82672ca" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.playercolor.PlayerColor::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;player_color&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a60b6287bd9ec7942e6cb3f59aa5ee4f0" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.playercolor.PlayerColor::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  <ref refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1ada65c51e3a85fd3b7de0688db82672ca" kindref="member">name_struct</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a10ca22257ec547bf86f5f2d267fd5b15" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.playercolor.PlayerColor::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;describes player color settings.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a7f626718ca1d7dffd6ca827245a4fbcd" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.playercolor.PlayerColor::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        (READ_EXPORT, &quot;id&quot;, &quot;int32_t&quot;),
+        (READ_EXPORT, &quot;player_color_base&quot;, &quot;int32_t&quot;),       # palette index offset, where the 8 player colors start
+        (READ_EXPORT, &quot;outline_color&quot;, &quot;int32_t&quot;),           # palette index
+        (READ, &quot;unit_selection_color1&quot;, &quot;int32_t&quot;),
+        (READ, &quot;unit_selection_color2&quot;, &quot;int32_t&quot;),
+        (READ_EXPORT, &quot;minimap_color1&quot;, &quot;int32_t&quot;),          # palette index
+        (READ, &quot;minimap_color2&quot;, &quot;int32_t&quot;),
+        (READ, &quot;minimap_color3&quot;, &quot;int32_t&quot;),
+        (READ_EXPORT, &quot;statistics_text_color&quot;, &quot;int32_t&quot;),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1256">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1255">
+        <label>openage.convert.gamedata.playercolor.PlayerColor</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color"/>
+        <childnode refid="1256" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1258">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1257">
+        <label>openage.convert.gamedata.playercolor.PlayerColor</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color"/>
+        <childnode refid="1258" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/playercolor.py" bodystart="11" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a7f626718ca1d7dffd6ca827245a4fbcd" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1ada65c51e3a85fd3b7de0688db82672ca" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a60b6287bd9ec7942e6cb3f59aa5ee4f0" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1playercolor_1_1_player_color_1a10ca22257ec547bf86f5f2d267fd5b15" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::playercolor::PlayerColor</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

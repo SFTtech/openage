@@ -1,12 +1,16 @@
 <map id="openage::gui::AssetManagerLink" name="openage::gui::AssetManagerLink">
-<area shape="rect" id="node1" title=" " alt="" coords="332,631,544,825"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_q_object.xhtml" title=" " alt="" coords="191,498,341,575"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,307,76,384"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="101,248,285,443"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="86,5,299,200"/>
-<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="309,307,436,384"/>
-<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="439,491,637,583"/>
-<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="461,299,615,391"/>
-<area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="639,270,834,421"/>
-<area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="647,5,826,200"/>
+<area shape="rect" id="node1" title=" " alt="" coords="413,904,625,1099"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_q_object.xhtml" title=" " alt="" coords="231,770,381,847"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,564,76,641"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_base.xhtml" title=" " alt="" coords="101,505,285,700"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_deferred_initial_constant_property_values.xhtml" title=" " alt="" coords="86,248,299,443"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_link.xhtml" title=" " alt="" coords="309,564,436,641"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="516,763,715,855"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="461,557,615,649"/>
+<area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="454,307,622,384"/>
+<area shape="rect" id="node14" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="640,564,775,641"/>
+<area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="799,527,994,678"/>
+<area shape="rect" id="node11" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="897,248,1075,443"/>
+<area shape="rect" id="node12" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="802,5,986,185"/>
+<area shape="rect" id="node13" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="647,277,872,413"/>
 </map>

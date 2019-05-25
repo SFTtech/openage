@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1colortable" kind="namespace" language="Python">
+    <compoundname>openage::convert::colortable</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1colortable_1_1_color_table" prot="public">openage::convert::colortable::ColorTable</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table" prot="public">openage::convert::colortable::PlayerColorTable</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

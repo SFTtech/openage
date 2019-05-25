@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1default__dirs" kind="namespace" language="Python">
+    <compoundname>openage::default_dirs</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1default__dirs_1a1c4ae102b3ee423e04198b68e978f239" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::default_dirs.LINUX_DIRS</definition>
+        <argsstring></argsstring>
+        <name>LINUX_DIRS</name>
+        <initializer>=  {
+    &quot;config_home&quot;: (&quot;XDG_CONFIG_HOME&quot;, (&quot;{HOME}/.config&quot;, {&quot;HOME&quot;})),
+    &quot;data_home&quot;: (&quot;XDG_DATA_HOME&quot;, (&quot;{HOME}/.local/share&quot;, {&quot;HOME&quot;})),
+    &quot;data_dirs&quot;: (&quot;XDG_DATA_DIRS&quot;, (&quot;/usr/local/share/:/usr/share/&quot;, {})),
+    &quot;config_dirs&quot;: (&quot;XDG_CONFIG_DIRS&quot;, (&quot;/etc/xdg&quot;, {})),
+    &quot;cache_home&quot;: (&quot;XDG_CACHE_HOME&quot;, (&quot;{HOME}/.cache&quot;, {&quot;HOME&quot;})),
+    &quot;runtime_dir&quot;: (&quot;XDG_RUNTIME_DIR&quot;, (&quot;/run/user/$UID&quot;)),
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1default__dirs_1a92d81c832edfd6119553108bab2d9650" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::default_dirs.WINDOWS_DIRS</definition>
+        <argsstring></argsstring>
+        <name>WINDOWS_DIRS</name>
+        <initializer>=  {
+    &quot;config_home&quot;: (&quot;APPDATA&quot;, (False, None)),
+    &quot;data_home&quot;: (&quot;APPDATA&quot;, (False, None)),
+    &quot;config_dirs&quot;: (&quot;ALLUSERSPROFILE&quot;, (False, None)),
+    # TODO: other windows paths
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1default__dirs_1a34f22148784ad0f2ac5630ede94f7567" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.default_dirs.get_dir</definition>
+        <argsstring>(which)</argsstring>
+        <name>get_dir</name>
+        <param>
+          <type>which</type>
+          <defname>which</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" bodystart="52" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

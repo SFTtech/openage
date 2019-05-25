@@ -1,0 +1,7 @@
+<map id="openage.convert.driver.convert_wav" name="openage.convert.driver.convert_wav">
+<area shape="rect" id="node1" title="Convert a wav audio file to an opus file." alt="" coords="5,5,228,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a6dce2cf04f6cf53afeba4c3dc859a3f0" title=" " alt="" coords="276,5,493,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="541,5,660,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="708,5,901,32"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="949,5,1076,32"/>
+</map>

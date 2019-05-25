@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1hdlanguagefile" kind="namespace" language="Python">
+    <compoundname>openage::convert::hdlanguagefile</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1hdlanguagefile_1a352b2dbd5b398f49f4f46dcca838cebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.hdlanguagefile.read_age2_hd_fe_stringresources</definition>
+        <argsstring>(stringres, path)</argsstring>
+        <name>read_age2_hd_fe_stringresources</name>
+        <param>
+          <type>stringres</type>
+          <defname>stringres</defname>
+        </param>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" bodystart="22" bodyend="58"/>
+        <references refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" compoundref="hdlanguagefile_8py" startline="101" endline="126">openage.convert.hdlanguagefile.read_hd_language_file</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1adbdd640ef25ad8535078cc706f314686" compoundref="driver_8py" startline="33" endline="66">openage.convert.driver.get_string_resources</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1hdlanguagefile_1a189674ed7c17e3398bf7e39919e3b641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.hdlanguagefile.read_age2_hd_3x_stringresources</definition>
+        <argsstring>(stringres, srcdir)</argsstring>
+        <name>read_age2_hd_3x_stringresources</name>
+        <param>
+          <type>stringres</type>
+          <defname>stringres</defname>
+        </param>
+        <param>
+          <type>srcdir</type>
+          <defname>srcdir</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" bodystart="59" bodyend="97"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" compoundref="hdlanguagefile_8py" startline="101" endline="126">openage.convert.hdlanguagefile.read_hd_language_file</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1adbdd640ef25ad8535078cc706f314686" compoundref="driver_8py" startline="33" endline="66">openage.convert.driver.get_string_resources</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.hdlanguagefile.read_hd_language_file</definition>
+        <argsstring>(fileobj, langcode, enc=&apos;utf-8&apos;)</argsstring>
+        <name>read_hd_language_file</name>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <param>
+          <type>langcode</type>
+          <defname>langcode</defname>
+        </param>
+        <param>
+          <type>enc</type>
+          <defname>enc</defname>
+          <defval>&apos;utf-8&apos;</defval>
+        </param>
+        <briefdescription>
+<para>Takes a file object, and the file&apos;s language code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" bodystart="101" bodyend="126"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1a189674ed7c17e3398bf7e39919e3b641" compoundref="hdlanguagefile_8py" startline="59" endline="97">openage.convert.hdlanguagefile.read_age2_hd_3x_stringresources</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1a352b2dbd5b398f49f4f46dcca838cebd" compoundref="hdlanguagefile_8py" startline="22" endline="58">openage.convert.hdlanguagefile.read_age2_hd_fe_stringresources</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hdlanguagefile.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

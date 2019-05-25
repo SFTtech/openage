@@ -148,7 +148,7 @@
         </childnode>
       </node>
       <node id="5166">
-        <label>libopenage/curve/queue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp</label>
         <link refid="queue_8cpp"/>
         <childnode refid="5167" relation="include">
         </childnode>
@@ -311,6 +311,6 @@
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/queue.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.cpp"/>
   </compounddef>
 </doxygen>

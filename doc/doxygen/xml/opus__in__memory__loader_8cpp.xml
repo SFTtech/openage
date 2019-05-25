@@ -63,7 +63,7 @@
         </childnode>
       </node>
       <node id="1618">
-        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</label>
         <link refid="opus__in__memory__loader_8cpp"/>
         <childnode refid="1619" relation="include">
         </childnode>
@@ -462,6 +462,6 @@
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/opus_in_memory_loader.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp"/>
   </compounddef>
 </doxygen>

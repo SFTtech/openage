@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="199" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="28" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="199" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp" bodystart="28" bodyend="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,30 +28,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1107">
+      <node id="2211">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="1106">
+      <node id="2210">
         <label>openage::event::DependencyImmediatelyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_immediately_event_class"/>
-        <childnode refid="1107" relation="public-inheritance">
+        <childnode refid="2211" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1109">
+      <node id="2213">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="1108">
+      <node id="2212">
         <label>openage::event::DependencyImmediatelyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_immediately_event_class"/>
-        <childnode refid="1109" relation="public-inheritance">
+        <childnode refid="2213" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventclass.h" line="197" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="197" bodyend="200"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="197" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="197" bodyend="200"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_dependency_immediately_event_class_1a86d6e8b89d11bb739ab50836dc081466" prot="public" virt="non-virtual"><scope>openage::event::DependencyImmediatelyEventClass</scope><name>DependencyImmediatelyEventClass</name></member>
       <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::DependencyImmediatelyEventClass</scope><name>EventClass</name></member>

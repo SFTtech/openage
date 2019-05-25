@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fsprinting" kind="namespace" language="Python">
+    <compoundname>openage::util::fsprinting</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fsprinting_1a07b43c9c8f5a0442e94526f8472fbc86" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fsprinting.RULE_CACHE</definition>
+        <argsstring></argsstring>
+        <name>RULE_CACHE</name>
+        <initializer>=  OrderedDict()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fsprinting.get_color_rules</definition>
+        <argsstring>()</argsstring>
+        <name>get_color_rules</name>
+        <briefdescription>
+<para>Returns a dict of pattern : colorcode, retrieved from LS_COLORS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" bodystart="20" bodyend="47"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" compoundref="fsprinting_8py" startline="66" endline="69">openage.util.fsprinting.colorize_dirname</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" compoundref="fsprinting_8py" startline="51" endline="62">openage.util.fsprinting.colorize_filename</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fsprinting.colorize_filename</definition>
+        <argsstring>(filename)</argsstring>
+        <name>colorize_filename</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref></type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+<para>Colorizes the filename, using the globbing rules from LS_COLORS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" bodystart="51" bodyend="62"/>
+        <references refid="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" compoundref="strings_8py" startline="66" endline="75">openage.util.strings.colorize</references>
+        <references refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" compoundref="fsprinting_8py" startline="20" endline="47">openage.util.fsprinting.get_color_rules</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" compoundref="fsprinting_8py" startline="78" endline="111">openage.util.fsprinting.print_tree</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fsprinting.colorize_dirname</definition>
+        <argsstring>(dirname)</argsstring>
+        <name>colorize_dirname</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" kindref="member">dirname</ref></type>
+          <defname>dirname</defname>
+        </param>
+        <briefdescription>
+<para>Colorizes the dirname, using the &apos;di&apos; rule from LS_COLORS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" bodystart="66" bodyend="69"/>
+        <references refid="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" compoundref="strings_8py" startline="66" endline="75">openage.util.strings.colorize</references>
+        <references refid="namespaceopenage_1_1util_1_1fsprinting_1a362ed67b3bcb25c3f351eee931e3ae19" compoundref="fsprinting_8py" startline="20" endline="47">openage.util.fsprinting.get_color_rules</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" compoundref="fsprinting_8py" startline="78" endline="111">openage.util.fsprinting.print_tree</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fsprinting_1a94b28a2c2da0663878f90575e4ef3ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fsprinting.print_tree</definition>
+        <argsstring>(obj, path=&quot;&quot;, prefix=&quot;&quot;, max_entries=INF)</argsstring>
+        <name>print_tree</name>
+        <param>
+          <type>obj</type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>prefix</type>
+          <defname>prefix</defname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>max_entries</type>
+          <defname>max_entries</defname>
+          <defval>INF</defval>
+        </param>
+        <briefdescription>
+<para>Obj is a filesystem-like object; path must be a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Recursively descends into subdirectories using prefix.</para>
+<para>If max_entries is given, only that number of entries per directory is printed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" bodystart="78" bodyend="111"/>
+        <references refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" compoundref="fsprinting_8py" startline="66" endline="69">openage.util.fsprinting.colorize_dirname</references>
+        <references refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" compoundref="fsprinting_8py" startline="51" endline="62">openage.util.fsprinting.colorize_filename</references>
+        <references refid="namespaceopenage_1_1util_1_1iterators_1a843780725ecd55c667e672085026f3be" compoundref="iterators_8py" startline="14" endline="24">openage.util.iterators.denote_last</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fsprinting.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

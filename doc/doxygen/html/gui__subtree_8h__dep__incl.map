@@ -1,8 +1,8 @@
-<map id="libopenage/gui/guisys/public/gui_subtree.h" name="libopenage/gui/guisys/public/gui_subtree.h">
-<area shape="rect" id="node1" title=" " alt="" coords="261,5,407,47"/>
-<area shape="rect" id="node2" href="$gui_2gui_8h.xhtml" title=" " alt="" coords="99,109,236,136"/>
-<area shape="rect" id="node5" href="$gui__subtree__impl_8cpp.xhtml" title=" " alt="" coords="261,95,407,151"/>
-<area shape="rect" id="node6" href="$gui__subtree_8cpp.xhtml" title=" " alt="" coords="432,102,588,143"/>
-<area shape="rect" id="node3" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,199,156,225"/>
-<area shape="rect" id="node4" href="$gui_2gui_8cpp.xhtml" title=" " alt="" coords="180,199,331,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_subtree.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_subtree.h">
+<area shape="rect" id="node1" title=" " alt="" coords="377,5,587,61"/>
+<area shape="rect" id="node2" href="$gui_2gui_8h.xhtml" title=" " alt="" coords="121,109,331,165"/>
+<area shape="rect" id="node5" href="$gui__subtree__impl_8cpp.xhtml" title=" " alt="" coords="355,109,609,165"/>
+<area shape="rect" id="node6" href="$gui__subtree_8cpp.xhtml" title=" " alt="" coords="633,109,851,165"/>
+<area shape="rect" id="node3" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$gui_2gui_8cpp.xhtml" title=" " alt="" coords="239,213,448,269"/>
 </map>

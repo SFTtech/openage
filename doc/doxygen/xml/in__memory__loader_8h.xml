@@ -8,9 +8,9 @@
     <includes refid="format_8h" local="yes">format.h</includes>
     <includes refid="audio_2types_8h" local="yes">types.h</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="in__memory__loader_8cpp" local="yes">libopenage/audio/in_memory_loader.cpp</includedby>
-    <includedby refid="opus__in__memory__loader_8h" local="yes">libopenage/audio/opus_in_memory_loader.h</includedby>
-    <includedby refid="in__memory__resource_8cpp" local="yes">libopenage/audio/in_memory_resource.cpp</includedby>
+    <includedby refid="in__memory__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.cpp</includedby>
+    <includedby refid="opus__in__memory__loader_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.h</includedby>
+    <includedby refid="in__memory__resource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp</includedby>
     <incdepgraph>
       <node id="1335">
         <label>list</label>
@@ -184,7 +184,7 @@
         <label>ciso646</label>
       </node>
       <node id="1299">
-        <label>libopenage/audio/in_memory_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.h</label>
         <link refid="in__memory__loader_8h"/>
         <childnode refid="1300" relation="include">
         </childnode>
@@ -325,7 +325,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1345">
-        <label>libopenage/audio/opus_in_memory_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.h</label>
         <link refid="opus__in__memory__loader_8h"/>
         <childnode refid="1344" relation="include">
         </childnode>
@@ -333,19 +333,19 @@
         </childnode>
       </node>
       <node id="1344">
-        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.cpp</label>
         <link refid="in__memory__loader_8cpp"/>
       </node>
       <node id="1346">
-        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</label>
         <link refid="opus__in__memory__loader_8cpp"/>
       </node>
       <node id="1347">
-        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp</label>
         <link refid="in__memory__resource_8cpp"/>
       </node>
       <node id="1343">
-        <label>libopenage/audio/in_memory_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.h</label>
         <link refid="in__memory__loader_8h"/>
         <childnode refid="1344" relation="include">
         </childnode>
@@ -398,6 +398,6 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/in_memory_loader.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.h"/>
   </compounddef>
 </doxygen>

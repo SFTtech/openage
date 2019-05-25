@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="51" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="53" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -32,7 +32,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="128" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="128" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="128" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" compoundref="eventqueue_8cpp" startline="82" endline="126">add_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" compoundref="eventqueue_8cpp" startline="183" endline="185">clear_changes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" compoundref="eventqueue_8cpp" startline="178" endline="180">get_changes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" compoundref="eventqueue_8cpp" startline="188" endline="190">swap_changesets</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a92c22f62ef3fc1e3ce03051fc2c6c964" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref> *</type>
@@ -45,7 +49,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="129" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="129" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="129" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="129" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" compoundref="eventqueue_8cpp" startline="82" endline="126">add_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" compoundref="eventqueue_8cpp" startline="188" endline="190">swap_changesets</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a14b1f5a54b6a3c3898bf534b50fee7f9" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref></type>
@@ -58,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="132" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="132" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1ae4954774fca16c32b81530415a3b5d76" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref></type>
@@ -71,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="133" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="133" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a59e482122fd26c9e261f4eaff00ebcc8" prot="private" static="no" mutable="no">
         <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
@@ -85,7 +91,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="138" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="138" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="138" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">create_event</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1accc0e126e8a8b9560d229fabdd23f17d" prot="private" static="no" mutable="no">
         <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
@@ -99,7 +106,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="144" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="144" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">create_event</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a2453f2e8a018a7b4bdbbc95618bc85f9" prot="private" static="no" mutable="no">
         <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
@@ -113,7 +121,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="149" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="149" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="149" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">create_event</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref></type>
@@ -127,7 +136,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="155" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="155" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="155" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="155" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">create_event</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" compoundref="eventqueue_8cpp" startline="137" endline="144">enqueue_change</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" compoundref="eventqueue_8cpp" startline="152" endline="154">get_event_queue</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" compoundref="eventqueue_8cpp" startline="147" endline="149">reenqueue</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" compoundref="eventqueue_8cpp" startline="129" endline="134">remove</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" compoundref="eventqueue_8cpp" startline="157" endline="175">take_event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -142,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="56" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="76" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="76" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
@@ -178,7 +193,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="67" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="16" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="16" bodyend="73"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188">openage::event::EventClass::DEPENDENCY</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a59e482122fd26c9e261f4eaff00ebcc8" compoundref="eventqueue_8h" startline="138">dependency_events</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09">openage::event::EventClass::DEPENDENCY_IMMEDIATELY</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1accc0e126e8a8b9560d229fabdd23f17d" compoundref="eventqueue_8h" startline="144">dependency_immediately_events</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24">openage::event::EventClass::ONCE</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" compoundref="eventstore_8cpp" startline="15" endline="25">openage::event::EventStore::push</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555">openage::event::EventClass::REPEAT</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620">openage::event::EventClass::TRIGGER</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a2453f2e8a018a7b4bdbbc95618bc85f9" compoundref="eventqueue_8h" startline="149">trigger_events</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a345332e87684e73eeef16da46255882f" compoundref="loop_8cpp" startline="21" endline="33">openage::event::Loop::create_event</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -196,7 +225,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="76" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="129" bodyend="134"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="129" bodyend="134"/>
+        <references refid="classopenage_1_1event_1_1_event_store_1acf182eb2f89c80bb6c790a24d192398f" compoundref="eventstore_8cpp" startline="54" endline="64">openage::event::EventStore::erase</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -214,7 +246,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="84" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="137" bodyend="144"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="137" bodyend="144"/>
+        <references refid="classopenage_1_1event_1_1_event_store_1a4be75c01219e59abd20b9f906c8b7154" compoundref="eventstore_8cpp" startline="78" endline="80">openage::event::EventStore::contains</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" compoundref="eventstore_8cpp" startline="15" endline="25">openage::event::EventStore::push</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1ae8a67463b44b369d9402186cf332e247" compoundref="eventstore_8cpp" startline="67" endline="75">openage::event::EventStore::update</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -232,7 +269,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="90" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="147" bodyend="149"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="147" bodyend="149"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" compoundref="eventstore_8cpp" startline="15" endline="25">openage::event::EventStore::push</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -254,7 +294,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="95" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="82" bodyend="126"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="82" bodyend="126"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" compoundref="eventqueue_8h" startline="128">changes</references>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a92c22f62ef3fc1e3ce03051fc2c6c964" compoundref="eventqueue_8h" startline="129">future_changes</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a3983cb8a1cc4722919ee551aff1d9499" compoundref="eventqueue_8h" startline="30">openage::event::EventQueue::OnChangeElement::time</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1adde017808ad3b24a4a95c6cad4fcd2db" compoundref="event_2loop_8h" startline="137" endline="144">openage::event::Loop::create_change</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref> &amp;</type>
@@ -268,7 +314,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="101" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="152" bodyend="154"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="152" bodyend="154"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
@@ -286,7 +334,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="106" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="157" bodyend="175"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="157" bodyend="175"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" compoundref="eventqueue_8h" startline="155">event_queue</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" compoundref="eventstore_8cpp" startline="28" endline="46">openage::event::EventStore::pop</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1a895a291c20860520abba447e1cd48fd0" compoundref="eventstore_8cpp" startline="89" endline="91">openage::event::EventStore::size</references>
+        <references refid="classopenage_1_1event_1_1_event_store_1abbad60ac960f4020d813237260867dcb" compoundref="eventstore_8cpp" startline="49" endline="51">openage::event::EventStore::top</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref> &amp;</type>
@@ -300,7 +353,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="111" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="178" bodyend="180"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="178" bodyend="180"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" compoundref="eventqueue_8h" startline="128">changes</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -314,7 +369,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="117" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="183" bodyend="185"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="183" bodyend="185"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" compoundref="eventqueue_8h" startline="128">changes</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -328,7 +385,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="122" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="188" bodyend="190"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp" bodystart="188" bodyend="190"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" compoundref="eventqueue_8h" startline="128">changes</references>
+        <references refid="classopenage_1_1event_1_1_event_queue_1a92c22f62ef3fc1e3ce03051fc2c6c964" compoundref="eventqueue_8h" startline="129">future_changes</references>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" compoundref="loop_8cpp" startline="56" endline="87">openage::event::Loop::reach_time</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -337,33 +397,53 @@
 <para>The core event class for execution and execution dependencies. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1452">
-        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
-        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
-      </node>
-      <node id="1450">
-        <label>openage::event::EventStore</label>
-        <link refid="classopenage_1_1event_1_1_event_store"/>
-        <childnode refid="1451" relation="usage">
-          <edgelabel>+heap</edgelabel>
-        </childnode>
-      </node>
-      <node id="1449">
-        <label>openage::event::EventQueue</label>
-        <link refid="classopenage_1_1event_1_1_event_queue"/>
-        <childnode refid="1450" relation="usage">
-          <edgelabel>-event_queue</edgelabel>
-        </childnode>
-      </node>
-      <node id="1451">
-        <label>openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</label>
+      <node id="2245">
+        <label>openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;</label>
         <link refid="classopenage_1_1datastructure_1_1_pairing_heap"/>
-        <childnode refid="1452" relation="usage">
+        <childnode refid="2246" relation="usage">
           <edgelabel>#cmp</edgelabel>
         </childnode>
       </node>
+      <node id="2243">
+        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+        <childnode refid="2244" relation="template-instance">
+          <edgelabel>&lt; Event &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2241">
+        <label>openage::event::EventStore</label>
+        <link refid="classopenage_1_1event_1_1_event_store"/>
+        <childnode refid="2242" relation="usage">
+          <edgelabel>+heap</edgelabel>
+        </childnode>
+      </node>
+      <node id="2244">
+        <label>openage::util::SharedPtrLess&lt; T &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+      <node id="2246">
+        <label>compare</label>
+      </node>
+      <node id="2240">
+        <label>openage::event::EventQueue</label>
+        <link refid="classopenage_1_1event_1_1_event_queue"/>
+        <childnode refid="2241" relation="usage">
+          <edgelabel>-event_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="2242">
+        <label>openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap"/>
+        <childnode refid="2243" relation="usage">
+          <edgelabel>#cmp</edgelabel>
+        </childnode>
+        <childnode refid="2245" relation="template-instance">
+          <edgelabel>&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</edgelabel>
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventqueue.h" line="22" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="22" bodyend="156"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="22" bodyend="156"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>add_change</name></member>
       <member refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>change_set</name></member>

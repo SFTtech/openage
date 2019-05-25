@@ -300,7 +300,7 @@
         <label>config.h</label>
       </node>
       <node id="7939">
-        <label>libopenage/event/eventstore.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp</label>
         <link refid="eventstore_8cpp"/>
         <childnode refid="7940" relation="include">
         </childnode>
@@ -465,6 +465,6 @@
 <codeline lineno="123"><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/eventstore.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventstore.cpp"/>
   </compounddef>
 </doxygen>

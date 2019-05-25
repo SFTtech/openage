@@ -4,19 +4,19 @@
     <compoundname>renderer.h</compoundname>
     <includes local="no">vector</includes>
     <includes local="no">memory</includes>
-    <includedby refid="opengl_2render__target_8h" local="yes">libopenage/renderer/opengl/render_target.h</includedby>
-    <includedby refid="opengl_2renderer_8h" local="yes">libopenage/renderer/opengl/renderer.h</includedby>
-    <includedby refid="opengl_2shader__program_8h" local="yes">libopenage/renderer/opengl/shader_program.h</includedby>
-    <includedby refid="uniform__input_8h" local="yes">libopenage/renderer/opengl/uniform_input.h</includedby>
-    <includedby refid="window_8h" local="yes">libopenage/renderer/window.h</includedby>
-    <includedby refid="vulkan_2render__target_8h" local="yes">libopenage/renderer/vulkan/render_target.h</includedby>
-    <includedby refid="vulkan_2renderer_8h" local="yes">libopenage/renderer/vulkan/renderer.h</includedby>
+    <includedby refid="opengl_2render__target_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</includedby>
+    <includedby refid="opengl_2renderer_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</includedby>
+    <includedby refid="opengl_2shader__program_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</includedby>
+    <includedby refid="uniform__input_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/uniform_input.h</includedby>
+    <includedby refid="window_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/window.h</includedby>
+    <includedby refid="vulkan_2render__target_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h</includedby>
+    <includedby refid="vulkan_2renderer_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h</includedby>
     <incdepgraph>
       <node id="21458">
         <label>vector</label>
       </node>
       <node id="21457">
-        <label>libopenage/renderer/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h</label>
         <link refid="renderer_8h"/>
         <childnode refid="21458" relation="include">
         </childnode>
@@ -29,7 +29,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21461">
-        <label>libopenage/renderer/opengl/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</label>
         <link refid="opengl_2render__target_8h"/>
         <childnode refid="21462" relation="include">
         </childnode>
@@ -41,11 +41,11 @@
         </childnode>
       </node>
       <node id="21473">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="21468">
-        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</label>
         <link refid="opengl_2shader__program_8h"/>
         <childnode refid="21463" relation="include">
         </childnode>
@@ -55,7 +55,7 @@
         </childnode>
       </node>
       <node id="21471">
-        <label>libopenage/renderer/window.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/window.h</label>
         <link refid="window_8h"/>
         <childnode refid="21472" relation="include">
         </childnode>
@@ -65,23 +65,23 @@
         </childnode>
       </node>
       <node id="21464">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="21465">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="21462">
-        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp</label>
         <link refid="render__target_8cpp"/>
       </node>
       <node id="21476">
-        <label>libopenage/renderer/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/window.cpp</label>
         <link refid="window_8cpp"/>
       </node>
       <node id="21470">
-        <label>libopenage/renderer/opengl/uniform_input.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/uniform_input.h</label>
         <link refid="uniform__input_8h"/>
         <childnode refid="21468" relation="include">
         </childnode>
@@ -89,21 +89,21 @@
         </childnode>
       </node>
       <node id="21479">
-        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h</label>
         <link refid="vulkan_2renderer_8h"/>
         <childnode refid="21478" relation="include">
         </childnode>
       </node>
       <node id="21469">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="21478">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
       <node id="21460">
-        <label>libopenage/renderer/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h</label>
         <link refid="renderer_8h"/>
         <childnode refid="21461" relation="include">
         </childnode>
@@ -121,11 +121,11 @@
         </childnode>
       </node>
       <node id="21475">
-        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</label>
         <link refid="windowvk_8cpp"/>
       </node>
       <node id="21472">
-        <label>libopenage/renderer/opengl/window.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h</label>
         <link refid="opengl_2window_8h"/>
         <childnode refid="21465" relation="include">
         </childnode>
@@ -133,23 +133,23 @@
         </childnode>
       </node>
       <node id="21467">
-        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</label>
         <link refid="opengl_2texture__array_8cpp"/>
       </node>
       <node id="21474">
-        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h</label>
         <link refid="windowvk_8h"/>
         <childnode refid="21475" relation="include">
         </childnode>
       </node>
       <node id="21477">
-        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h</label>
         <link refid="vulkan_2render__target_8h"/>
         <childnode refid="21478" relation="include">
         </childnode>
       </node>
       <node id="21463">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="21464" relation="include">
         </childnode>
@@ -157,7 +157,7 @@
         </childnode>
       </node>
       <node id="21466">
-        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</label>
         <link refid="renderer_2opengl_2texture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -249,6 +249,6 @@
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal">}}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/renderer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h"/>
   </compounddef>
 </doxygen>

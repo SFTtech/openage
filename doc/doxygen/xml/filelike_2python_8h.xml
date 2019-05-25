@@ -8,8 +8,8 @@
     <includes refid="filelike_8h" local="yes">filelike.h</includes>
     <includes refid="functional_8h" local="yes">../../pyinterface/functional.h</includes>
     <includes refid="pyobject_8h" local="yes">../../pyinterface/pyobject.h</includes>
-    <includedby refid="file_8cpp" local="yes">libopenage/util/file.cpp</includedby>
-    <includedby refid="filelike_2python_8cpp" local="yes">libopenage/util/filelike/python.cpp</includedby>
+    <includedby refid="file_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp</includedby>
+    <includedby refid="filelike_2python_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp</includedby>
     <incdepgraph>
       <node id="29953">
         <label>list</label>
@@ -100,7 +100,7 @@
         </childnode>
       </node>
       <node id="29923">
-        <label>libopenage/util/filelike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h</label>
         <link refid="filelike_2python_8h"/>
         <childnode refid="29924" relation="include">
         </childnode>
@@ -270,7 +270,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="29960">
-        <label>libopenage/util/filelike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h</label>
         <link refid="filelike_2python_8h"/>
         <childnode refid="29961" relation="include">
         </childnode>
@@ -278,11 +278,11 @@
         </childnode>
       </node>
       <node id="29962">
-        <label>libopenage/util/filelike/python.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp</label>
         <link refid="filelike_2python_8cpp"/>
       </node>
       <node id="29961">
-        <label>libopenage/util/file.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp</label>
         <link refid="file_8cpp"/>
       </node>
     </invincdepgraph>
@@ -387,6 +387,6 @@
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/filelike/python.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h"/>
   </compounddef>
 </doxygen>

@@ -15,7 +15,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="116" column="1" bodyfile="libopenage/console/buf.h" bodystart="116" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="116" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" compoundref="buf_8cpp" startline="191" endline="210">openage::console::NewBuf::new_chr</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -24,12 +27,12 @@
 <para>metadata for a single line in the buffer </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="580">
+      <node id="835">
         <label>openage::console::buf_line</label>
         <link refid="structopenage_1_1console_1_1buf__line"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/console/buf.h" line="115" column="1" bodyfile="libopenage/console/buf.h" bodystart="115" bodyend="117"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="115" bodyend="117"/>
     <listofallmembers>
       <member refid="structopenage_1_1console_1_1buf__line_1af481a8ea9bc97ab5fe57e0f0d2102a6c" prot="public" virt="non-virtual"><scope>openage::console::buf_line</scope><name>type</name></member>
     </listofallmembers>

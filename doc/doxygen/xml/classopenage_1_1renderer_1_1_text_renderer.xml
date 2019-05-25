@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="109" column="1" bodyfile="libopenage/renderer/text.h" bodystart="109" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" compoundref="text_8cpp" startline="101" endline="108">draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" compoundref="text_8cpp" startline="69" endline="76">set_font</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
@@ -30,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="110" column="1" bodyfile="libopenage/renderer/text.h" bodystart="110" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" compoundref="text_8cpp" startline="101" endline="108">draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" compoundref="text_8cpp" startline="78" endline="85">set_color</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -43,7 +47,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="111" column="1" bodyfile="libopenage/renderer/text.h" bodystart="111" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" compoundref="text_8cpp" startline="101" endline="108">draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" compoundref="text_8cpp" startline="78" endline="85">set_color</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" compoundref="text_8cpp" startline="69" endline="76">set_font</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kindref="compound">text_render_batch</ref> &gt;</type>
@@ -56,7 +63,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="112" column="1" bodyfile="libopenage/renderer/text.h" bodystart="112" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="112" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" compoundref="text_8cpp" startline="101" endline="108">draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1_glyph_atlas" kindref="compound">GlyphAtlas</ref></type>
@@ -69,7 +78,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="114" column="1" bodyfile="libopenage/renderer/text.h" bodystart="114" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="114" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" prot="private" static="no" mutable="no">
         <type>GLuint</type>
@@ -82,7 +92,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="116" column="1" bodyfile="libopenage/renderer/text.h" bodystart="116" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="116" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" compoundref="text_8cpp" startline="60" endline="67">~TextRenderer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" prot="private" static="no" mutable="no">
         <type>GLuint</type>
@@ -95,7 +107,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="117" column="1" bodyfile="libopenage/renderer/text.h" bodystart="117" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="117" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">render</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" compoundref="text_8cpp" startline="60" endline="67">~TextRenderer</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -111,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="29" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="48" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="48" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -124,7 +138,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="31" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="60" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="60" bodyend="67"/>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" compoundref="text_8h" startline="117">ibo</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" compoundref="text_8h" startline="116">vbo</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -152,7 +168,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="38" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="69" bodyend="76"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="69" bodyend="76"/>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" compoundref="text_8h" startline="109">current_font</references>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" compoundref="renderer_2font_2tests_8cpp" startline="59" endline="61">openage::renderer::tests::font</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" compoundref="text_8h" startline="111">is_dirty</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -180,7 +200,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="45" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="78" bodyend="85"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="78" bodyend="85"/>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" compoundref="text_8h" startline="110">current_color</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" compoundref="text_8h" startline="111">is_dirty</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -223,7 +246,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="53" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="87" bodyend="95"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="87" bodyend="95"/>
+        <references refid="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" compoundref="strings_8cpp" startline="32" endline="61">openage::util::vsformat</references>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1a021938d1c8fb338a055a3a01d7f06214" compoundref="text_8cpp" startline="97" endline="99">draw</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1a021938d1c8fb338a055a3a01d7f06214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -263,7 +288,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="61" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="97" bodyend="99"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="97" bodyend="99"/>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" compoundref="text_8cpp" startline="87" endline="95">draw</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -315,7 +341,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="70" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="101" bodyend="108"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="101" bodyend="108"/>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" compoundref="text_8h" startline="110">current_color</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" compoundref="text_8h" startline="109">current_font</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" compoundref="text_8h" startline="111">is_dirty</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" compoundref="text_8h" startline="112">render_batches</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -329,7 +359,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="75" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="110" bodyend="234"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="110" bodyend="234"/>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" compoundref="glyph__atlas_8cpp" startline="66" endline="79">openage::renderer::GlyphAtlas::bind</references>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
+        <references refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" compoundref="text_8cpp" startline="43">openage::renderer::text_render_task::color</references>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" compoundref="renderer_2font_2tests_8cpp" startline="59" endline="61">openage::renderer::tests::font</references>
+        <references refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" compoundref="text_8h" startline="98">openage::renderer::TextRenderer::text_render_batch::font</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" compoundref="glyph__atlas_8cpp" startline="81" endline="91">openage::renderer::GlyphAtlas::get</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" compoundref="glyph__atlas_8h" startline="34">openage::renderer::GlyphAtlas::Entry::glyph</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" compoundref="text_8h" startline="114">glyph_atlas</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" compoundref="font_8h" startline="32">openage::renderer::Glyph::height</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" compoundref="text_8h" startline="117">ibo</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" compoundref="text_8cpp" startline="15">openage::texturefont_shader::program</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" compoundref="text_8h" startline="112">render_batches</references>
+        <references refid="classopenage_1_1shader_1_1_program_1abfd70a48ce216cf044f558328f8dfa4e" compoundref="program_8cpp" startline="110" endline="112">openage::shader::Program::stopusing</references>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" compoundref="text_8cpp" startline="16">openage::texturefont_shader::tex_coord</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" compoundref="glyph__atlas_8h" startline="35">openage::renderer::GlyphAtlas::Entry::u0</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" compoundref="glyph__atlas_8h" startline="37">openage::renderer::GlyphAtlas::Entry::u1</references>
+        <references refid="classopenage_1_1shader_1_1_program_1ab36b7c92db2a3e3ce76b79e0451b6978" compoundref="program_8cpp" startline="106" endline="108">openage::shader::Program::use</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" compoundref="glyph__atlas_8h" startline="36">openage::renderer::GlyphAtlas::Entry::v0</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" compoundref="glyph__atlas_8h" startline="38">openage::renderer::GlyphAtlas::Entry::v1</references>
+        <references refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" compoundref="text_8h" startline="116">vbo</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" compoundref="font_8h" startline="31">openage::renderer::Glyph::width</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" compoundref="font_8h" startline="33">openage::renderer::Glyph::x_advance</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" compoundref="font_8h" startline="29">openage::renderer::Glyph::x_offset</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" compoundref="font_8h" startline="34">openage::renderer::Glyph::y_advance</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" compoundref="font_8h" startline="30">openage::renderer::Glyph::y_offset</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -337,47 +393,47 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4450">
+      <node id="4780">
         <label>openage::renderer::TextRenderer</label>
         <link refid="classopenage_1_1renderer_1_1_text_renderer"/>
-        <childnode refid="4451" relation="usage">
+        <childnode refid="4781" relation="usage">
           <edgelabel>-current_font</edgelabel>
         </childnode>
-        <childnode refid="4453" relation="usage">
+        <childnode refid="4783" relation="usage">
           <edgelabel>-current_color</edgelabel>
         </childnode>
-        <childnode refid="4454" relation="usage">
+        <childnode refid="4784" relation="usage">
           <edgelabel>-glyph_atlas</edgelabel>
         </childnode>
       </node>
-      <node id="4453">
+      <node id="4783">
         <label>openage::renderer::Color</label>
         <link refid="classopenage_1_1renderer_1_1_color"/>
       </node>
-      <node id="4455">
+      <node id="4785">
         <label>openage::renderer::GlyphAtlas::dirty_rect</label>
         <link refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect"/>
       </node>
-      <node id="4451">
+      <node id="4781">
         <label>openage::renderer::Font</label>
         <link refid="classopenage_1_1renderer_1_1_font"/>
-        <childnode refid="4452" relation="usage">
+        <childnode refid="4782" relation="usage">
           <edgelabel>+description</edgelabel>
         </childnode>
       </node>
-      <node id="4452">
+      <node id="4782">
         <label>openage::renderer::font_description</label>
         <link refid="structopenage_1_1renderer_1_1font__description"/>
       </node>
-      <node id="4454">
+      <node id="4784">
         <label>openage::renderer::GlyphAtlas</label>
         <link refid="classopenage_1_1renderer_1_1_glyph_atlas"/>
-        <childnode refid="4455" relation="usage">
+        <childnode refid="4785" relation="usage">
           <edgelabel>-dirty_area</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/text.h" line="23" column="1" bodyfile="libopenage/renderer/text.h" bodystart="23" bodyend="118"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="23" bodyend="118"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>current_color</name></member>
       <member refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>current_font</name></member>

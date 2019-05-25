@@ -1,0 +1,7 @@
+<map id="openage::UnitAction::adjacent_range" name="openage::UnitAction::adjacent_range">
+<area shape="rect" id="node1" title=" " alt="" coords="395,71,533,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" title=" " alt="" coords="208,37,347,79"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_action.xhtml#a40320d4e1be2a48373f5b9b0f6bef2ef" title=" " alt="" coords="208,103,347,144"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attack_action.xhtml#ab41b0edfc4a7e4927144b9caa87d7f46" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_heal_action.xhtml#ae6c7160317b9b913429a0afd51a368c2" title=" " alt="" coords="11,71,154,112"/>
+</map>

@@ -23,8 +23,8 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "Openage", "index.xhtml", [
-    [ "Vulkan renderer", "md_libopenage_renderer_vulkan__r_e_a_d_m_e.xhtml", null ],
+  [ "openage", "index.xhtml", [
+    [ "Vulkan renderer", "md__c_1__users__jameson__documents_git-projects_openage_libopenage_renderer_vulkan__r_e_a_d_m_e.xhtml", null ],
     [ "Namespaces", "namespaces.xhtml", [
       [ "Namespace List", "namespaces.xhtml", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.xhtml", [

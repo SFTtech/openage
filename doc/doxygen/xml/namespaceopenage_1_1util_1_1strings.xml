@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1strings" kind="namespace" language="Python">
+    <compoundname>openage::util::strings</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1ac1fba27a561107c1b6134c7552093594" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.decode_until_null</definition>
+        <argsstring>(data, encoding=&apos;utf-8&apos;)</argsstring>
+        <name>decode_until_null</name>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <param>
+          <type>encoding</type>
+          <defname>encoding</defname>
+          <defval>&apos;utf-8&apos;</defval>
+        </param>
+        <briefdescription>
+<para>decodes a bytes object, aborting at the first \0 character. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>decode_until_null(b&quot;foo\\0bar&quot;) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>&apos;foo&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="17" bodyend="24"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1a2326b323f70b3a792727afcf330b38fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.try_decode</definition>
+        <argsstring>(data)</argsstring>
+        <name>try_decode</name>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>does its best to attempt decoding the given string of unknown encoding. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="28" bodyend="44"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a17b11fd7e416e7e4bac798af10470d54" compoundref="cab_8py" startline="229" endline="288">openage.cabextract.cab.CABFile.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1a590c070189baee98012e6ea365b9e677" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.binstr</definition>
+        <argsstring>(num, bits=None, group=8)</argsstring>
+        <name>binstr</name>
+        <param>
+          <type>num</type>
+          <defname>num</defname>
+        </param>
+        <param>
+          <type>bits</type>
+          <defname>bits</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>group</type>
+          <defname>group</defname>
+          <defval>8</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="45" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1a8f24773995264adf47e500b704fa7d42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.colorize</definition>
+        <argsstring>(string, colorcode)</argsstring>
+        <name>colorize</name>
+        <param>
+          <type>string</type>
+          <defname>string</defname>
+        </param>
+        <param>
+          <type>colorcode</type>
+          <defname>colorcode</defname>
+        </param>
+        <briefdescription>
+<para>Colorizes string with the given EMCA-48 SGR code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>colorize(&apos;foo&apos;, &apos;31;1&apos;) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>&apos;\x1b[31;1mfoo\x1b[m&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="66" bodyend="75"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a9ea772d63d59830dc4d401a1aeefccd7" compoundref="fsprinting_8py" startline="66" endline="69">openage.util.fsprinting.colorize_dirname</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fsprinting_1a0eb0d6448fcaae850a400f03bab4575a" compoundref="fsprinting_8py" startline="51" endline="62">openage.util.fsprinting.colorize_filename</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1a7ae648d1a835e5ee33b60c06d1f3f612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.lstrip_once</definition>
+        <argsstring>(string, substr)</argsstring>
+        <name>lstrip_once</name>
+        <param>
+          <type>string</type>
+          <defname>string</defname>
+        </param>
+        <param>
+          <type>substr</type>
+          <defname>substr</defname>
+        </param>
+        <briefdescription>
+<para>Removes substr at the start of string, and raises ValueError on failure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>lstrip_once(&quot;openage.test&quot;, &quot;openage.&quot;) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>&apos;test&apos; <blockquote><para><blockquote><para><blockquote><para>lstrip_once(&quot;libopenage.test&quot;, &quot;openage.&quot;) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>Traceback (most recent call last): ValueError &apos;libopenage.test&apos; doesn&apos;t start with &apos;openage.&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="85" bodyend="92"/>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <referencedby refid="namespaceopenage_1_1testing_1_1list__processor_1a9702d9a71efd1d06569d1488b7c05666" compoundref="list__processor_8py" startline="83" endline="128">openage.testing.list_processor.get_all_targets</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1af1d14da687cbcc0bdf4ab1afbd5bc867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.rstrip_once</definition>
+        <argsstring>(string, substr)</argsstring>
+        <name>rstrip_once</name>
+        <param>
+          <type>string</type>
+          <defname>string</defname>
+        </param>
+        <param>
+          <type>substr</type>
+          <defname>substr</defname>
+        </param>
+        <briefdescription>
+<para>Removes substr at the end of string, and raises ValueError on failure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>rstrip_once(&quot;test.cpp&quot;, &quot;.cpp&quot;) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>&apos;test&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="99" bodyend="107"/>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1strings_1a16e727f3dbbdb651bec86f64231a2d54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.strings.format_progress</definition>
+        <argsstring>(progress, total)</argsstring>
+        <name>format_progress</name>
+        <param>
+          <type>progress</type>
+          <defname>progress</defname>
+        </param>
+        <param>
+          <type>total</type>
+          <defname>total</defname>
+        </param>
+        <briefdescription>
+<para>Formats an &quot;x out of y&quot; string with fixed width. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>format_progress(5, 20) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>&apos; 5/20&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" bodystart="114" bodyend="118"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" compoundref="convert_2main_8py" startline="162" endline="216">openage.convert.main.convert_assets</referencedby>
+        <referencedby refid="namespaceopenage_1_1testing_1_1main_1a22daa2dd4990bc8d016d850a9d9fc5fb" compoundref="testing_2main_8py" startline="114" endline="155">openage.testing.main.main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/strings.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

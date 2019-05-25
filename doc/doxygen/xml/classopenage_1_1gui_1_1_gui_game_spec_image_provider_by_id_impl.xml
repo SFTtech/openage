@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="17" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="13" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="13" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1af0d587f7988bf0b1131c9fe436b56f16" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="18" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="18" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="18" bodyend="19"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -55,7 +55,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="21" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp" bodystart="21" bodyend="49"/>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e">qtsdl::GuiImageProviderImpl::get_id</references>
+        <references refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a99c5f3aa01010aafd71bec94f1fd017d" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="91" endline="93">openage::gui::GuiGameSpecImageProviderImpl::get_missing_texture</references>
+        <references refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a315e6d68cfa58f643450b3eae0fbd74e">get_texture</references>
+        <references refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" compoundref="gui__game__spec__image__provider__impl_8h" startline="69">openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a315e6d68cfa58f643450b3eae0fbd74e" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1_texture" kindref="compound">openage::Texture</ref> *</type>
@@ -74,7 +79,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="22" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="22" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a42715118777dc5a4228e3bed2bb9d5cd" compoundref="gui__game__spec__image__provider__by__id__impl_8cpp" startline="21" endline="49">get_texture_handle</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -84,76 +90,76 @@
 <para>Numeric id has a form of &lt;texture-id&gt;.&lt;subid&gt;. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2568">
+      <node id="3575">
         <label>openage::gui::GuiGameSpecImageProviderByGraphicIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl"/>
-        <childnode refid="2564" relation="public-inheritance">
+        <childnode refid="3571" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2569">
+      <node id="3576">
         <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
-        <childnode refid="2564" relation="public-inheritance">
+        <childnode refid="3571" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2564">
+      <node id="3571">
         <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
-        <childnode refid="2565" relation="public-inheritance">
+        <childnode refid="3572" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2565">
+      <node id="3572">
         <label>openage::gui::GuiGameSpecImageProviderImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
-        <childnode refid="2566" relation="public-inheritance">
+        <childnode refid="3573" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2566">
+      <node id="3573">
         <label>qtsdl::GuiImageProviderImpl</label>
         <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
-        <childnode refid="2567" relation="public-inheritance">
+        <childnode refid="3574" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2567">
+      <node id="3574">
         <label>QQuickImageProvider</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2575">
+      <node id="3582">
         <label>QObject</label>
       </node>
-      <node id="2570">
+      <node id="3577">
         <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
-        <childnode refid="2571" relation="public-inheritance">
+        <childnode refid="3578" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2574">
+      <node id="3581">
         <label>qtsdl::GuiCallback</label>
         <link refid="classqtsdl_1_1_gui_callback"/>
-        <childnode refid="2575" relation="public-inheritance">
+        <childnode refid="3582" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2571">
+      <node id="3578">
         <label>openage::gui::GuiGameSpecImageProviderImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
-        <childnode refid="2572" relation="public-inheritance">
+        <childnode refid="3579" relation="public-inheritance">
         </childnode>
-        <childnode refid="2574" relation="usage">
+        <childnode refid="3581" relation="usage">
           <edgelabel>-render_thread_callback</edgelabel>
         </childnode>
       </node>
-      <node id="2572">
+      <node id="3579">
         <label>qtsdl::GuiImageProviderImpl</label>
         <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
-        <childnode refid="2573" relation="public-inheritance">
+        <childnode refid="3580" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2573">
+      <node id="3580">
         <label>QQuickImageProvider</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" bodystart="15" bodyend="23"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h" bodystart="15" bodyend="23"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByIdImpl</scope><name>fill_texture_handle</name></member>
       <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" virt="pure-virtual"><scope>openage::gui::GuiGameSpecImageProviderByIdImpl</scope><name>get_id</name></member>

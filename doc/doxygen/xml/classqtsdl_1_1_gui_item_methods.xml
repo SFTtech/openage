@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="148" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="148" bodyend="149"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="148" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="148" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="156" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="156" bodyend="163"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="156" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="169" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="169" bodyend="176"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="169" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="169" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="182" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="182" bodyend="189"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="182" bodyend="189"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="196" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="196" bodyend="201"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="196" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="196" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="207" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="207" bodyend="210"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="207" bodyend="210"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -202,7 +202,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="217" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="217" bodyend="228"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="217" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="217" bodyend="228"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" compoundref="gui__item_8h" startline="196" endline="201">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::s</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" compoundref="gui__item_8h" startline="207" endline="210">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::sf</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -211,42 +213,343 @@
 <para>Member function of the GuiPersistentItem </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2690">
+      <node id="6359">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6378" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6357">
+        <label>openage::gui::GameSpecLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_spec_link"/>
+        <childnode refid="6356" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6377">
+        <label>qtsdl::GuiItemMethods&lt; GameMainLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; GameMainLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6353">
+        <label>openage::gui::GameControlLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_control_link"/>
+        <childnode refid="6352" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6355">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="6354" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6383">
+        <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6381">
+        <label>qtsdl::GuiItemMethods&lt; GameControlLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; GameControlLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6373">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GameSpecLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; GameSpecLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6386" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6376">
+        <label>openage::gui::OutputModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_output_mode_link"/>
+        <childnode refid="6375" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6366">
+        <label>openage::gui::CreateModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_create_mode_link"/>
+        <childnode refid="6365" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6382">
+        <label>qtsdl::GuiItemMethods&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; AssetManagerLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6360">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; EditorModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6379" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6364">
+        <label>qtsdl::Inherits&lt; T, P &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6363" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6384">
+        <label>qtsdl::GuiItemMethods&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6385">
+        <label>qtsdl::GuiItemMethods&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; CreateModeLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6372">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; CreateModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6385" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6356">
+        <label>qtsdl::GuiItem&lt; GameSpecLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="6345" relation="template-instance">
+          <edgelabel>&lt; GameSpecLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6373" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6386">
+        <label>qtsdl::GuiItemMethods&lt; GameSpecLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; GameSpecLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6361">
+        <label>qtsdl::Inherits&lt; OutputModeLink, EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6360" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6364" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, EditorModeLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6351">
+        <label>qtsdl::GuiItem&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="6345" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6359" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6370">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; AssetManagerLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6382" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6343">
         <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
-      <node id="2691">
+      <node id="6380">
+        <label>qtsdl::GuiItemMethods&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6365">
+        <label>qtsdl::Inherits&lt; OutputModeLink, CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6364" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, CreateModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6369">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GameControlLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; GameControlLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6381" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6378">
+        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6344">
         <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="2690" relation="public-inheritance">
+        <childnode refid="6343" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2692">
+      <node id="6363">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6362">
+        <label>openage::gui::EditorModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_editor_mode_link"/>
+        <childnode refid="6361" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6345">
         <label>qtsdl::GuiItem&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item"/>
-        <childnode refid="2691" relation="public-inheritance">
+        <childnode refid="6344" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2693">
+      <node id="6368">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="6367" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6379">
+        <label>qtsdl::GuiItemMethods&lt; EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="6343" relation="template-instance">
+          <edgelabel>&lt; EditorModeLink &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6347">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="6346" relation="template-instance">
+          <edgelabel>&lt; GeneratorLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6351" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6352">
+        <label>qtsdl::GuiItem&lt; GameControlLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="6345" relation="template-instance">
+          <edgelabel>&lt; GameControlLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6369" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6358">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GameMainLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; GameMainLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6377" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6375">
+        <label>qtsdl::GuiItemInterface&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_interface"/>
+        <childnode refid="6374" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6384" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6350">
+        <label>openage::gui::GameMainLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_main_link"/>
+        <childnode refid="6349" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6371">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="6344" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6383" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6349">
+        <label>qtsdl::GuiItem&lt; GameMainLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="6345" relation="template-instance">
+          <edgelabel>&lt; GameMainLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6358" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6346">
         <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_list_model"/>
-        <childnode refid="2692" relation="public-inheritance">
+        <childnode refid="6345" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2694">
+      <node id="6354">
+        <label>qtsdl::GuiItem&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="6345" relation="template-instance">
+          <edgelabel>&lt; AssetManagerLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6370" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6348">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="6347" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6374">
         <label>qtsdl::GuiItemInterface&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_interface"/>
-        <childnode refid="2690" relation="public-inheritance">
+        <childnode refid="6343" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6367">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6364" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, ActionModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6371" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2695">
+      <node id="6387">
         <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item.h" line="144" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="144" bodyend="229"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="144" bodyend="229"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>assign_while_catching_constant_properies_inits</name></member>
       <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>get</name></member>

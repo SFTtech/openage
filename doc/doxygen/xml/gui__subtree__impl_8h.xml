@@ -9,8 +9,8 @@
     <includes local="no">QQmlComponent</includes>
     <includes refid="gui__callback_8h" local="yes">gui_callback.h</includes>
     <includes refid="gui__live__reloader_8h" local="yes">livereload/gui_live_reloader.h</includes>
-    <includedby refid="gui__subtree__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
-    <includedby refid="gui__subtree_8cpp" local="yes">libopenage/gui/guisys/public/gui_subtree.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
+    <includedby refid="gui__subtree_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.cpp</includedby>
     <incdepgraph>
       <node id="13281">
         <label>functional</label>
@@ -52,7 +52,7 @@
         <label>QtQml</label>
       </node>
       <node id="13274">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h</label>
         <link refid="gui__subtree__impl_8h"/>
         <childnode refid="13275" relation="include">
         </childnode>
@@ -100,11 +100,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13292">
-        <label>libopenage/gui/guisys/public/gui_subtree.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.cpp</label>
         <link refid="gui__subtree_8cpp"/>
       </node>
       <node id="13290">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h</label>
         <link refid="gui__subtree__impl_8h"/>
         <childnode refid="13291" relation="include">
         </childnode>
@@ -112,7 +112,7 @@
         </childnode>
       </node>
       <node id="13291">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -222,6 +222,6 @@
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_subtree_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h"/>
   </compounddef>
 </doxygen>

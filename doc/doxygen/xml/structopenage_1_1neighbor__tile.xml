@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="113" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="113" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="113" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1neighbor__tile_1a6c74f19755e46a112a175c4b604bdbc6" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" kindref="member">tile_state</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="114" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="114" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1neighbor__tile_1af6e073419bfbb510a3fdeb4d51aa8b98" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="115" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="115" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,12 +50,12 @@
 <para>one influence on another tile. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3355">
+      <node id="4247">
         <label>openage::neighbor_tile</label>
         <link refid="structopenage_1_1neighbor__tile"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain.h" line="112" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="112" bodyend="116"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="112" bodyend="116"/>
     <listofallmembers>
       <member refid="structopenage_1_1neighbor__tile_1af6e073419bfbb510a3fdeb4d51aa8b98" prot="public" virt="non-virtual"><scope>openage::neighbor_tile</scope><name>priority</name></member>
       <member refid="structopenage_1_1neighbor__tile_1a6c74f19755e46a112a175c4b604bdbc6" prot="public" virt="non-virtual"><scope>openage::neighbor_tile</scope><name>state</name></member>

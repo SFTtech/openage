@@ -5,8 +5,8 @@
     <includes local="no">memory</includes>
     <includes local="no">QSGTexture</includes>
     <includes refid="gui__texture__handle_8h" local="yes">gui_texture_handle.h</includes>
-    <includedby refid="gui__texture_8cpp" local="yes">libopenage/gui/integration/private/gui_texture.cpp</includedby>
-    <includedby refid="gui__texture__factory_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
+    <includedby refid="gui__texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</includedby>
+    <includedby refid="gui__texture__factory_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
     <incdepgraph>
       <node id="14555">
         <label>gui_texture_handle.h</label>
@@ -21,7 +21,7 @@
         <label>QSize</label>
       </node>
       <node id="14552">
-        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.h</label>
         <link refid="gui__texture_8h"/>
         <childnode refid="14553" relation="include">
         </childnode>
@@ -36,15 +36,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14559">
-        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</label>
         <link refid="gui__texture__factory_8cpp"/>
       </node>
       <node id="14558">
-        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</label>
         <link refid="gui__texture_8cpp"/>
       </node>
       <node id="14557">
-        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.h</label>
         <link refid="gui__texture_8h"/>
         <childnode refid="14558" relation="include">
         </childnode>
@@ -96,6 +96,6 @@
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_texture.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.h"/>
   </compounddef>
 </doxygen>

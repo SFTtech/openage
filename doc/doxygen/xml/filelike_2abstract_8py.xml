@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="filelike_2abstract_8py" kind="file" language="Python">
+    <compoundname>abstract.py</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object" prot="public">openage::util::filelike::abstract::FileLikeObject</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike_1_1abstract">openage::util::filelike::abstract</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1util_1_1filelike_1_1abstract" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Provides<sp/>the<sp/>FileLikeObject<sp/>abstract<sp/>base<sp/>class,<sp/>which<sp/>specifies<sp/>a<sp/>file-like</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">interface,<sp/>and<sp/>various<sp/>classes<sp/>that<sp/>implement<sp/>the<sp/>interface.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>abc<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ABC,<sp/>abstractmethod</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>io<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>UnsupportedOperation</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object" kindref="compound">FileLikeObject</ref>(ABC):</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Abstract<sp/>base<sp/>class<sp/>for<sp/>file-like<sp/>objects.</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Note<sp/>that<sp/>checking<sp/>isinstance(obj,<sp/>FileLikeObject)<sp/>is<sp/>a<sp/>bad<sp/>idea,<sp/>because</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>that<sp/>would<sp/>exclude<sp/>actual<sp/>files,<sp/>and<sp/>Python&apos;s<sp/>built-in<sp/>file-like<sp/>objects.</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Does<sp/>not<sp/>implement/force<sp/>implementation<sp/>of<sp/>line-reading<sp/>functionality.</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">__init__(self):</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" kindref="member">closed</ref><sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad1e8617a5d0fedd8596e6bb8ad5a6bb2" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" kindref="member">read</ref>(self,<sp/>size=-1):</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Read<sp/>at<sp/>most<sp/>size<sp/>bytes<sp/>(less<sp/>if<sp/>EOF<sp/>has<sp/>been<sp/>reached).</highlight></codeline>
+<codeline lineno="29"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="30"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Shall<sp/>raise<sp/>UnsupportedOperation<sp/>for<sp/>write-only<sp/>objects.</highlight></codeline>
+<codeline lineno="31"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a921de3bfb2d8bcaae526bd93347d4764" kindref="member">readable</ref>(self):</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>True<sp/>if<sp/>read()<sp/>is<sp/>allowed.</highlight></codeline>
+<codeline lineno="37"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a921de3bfb2d8bcaae526bd93347d4764" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a118b6ae6f4476f578a6cee666adc02cb" kindref="member">write</ref>(self,<sp/>data):</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="42"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Writes<sp/>all<sp/>of<sp/>data<sp/>to<sp/>the<sp/>file.</highlight></codeline>
+<codeline lineno="43"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="44"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Shall<sp/>raise<sp/>UnsupportedOperation<sp/>for<sp/>read-only<sp/>object.</highlight></codeline>
+<codeline lineno="45"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="46"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>There<sp/>is<sp/>no<sp/>return<sp/>value.</highlight></codeline>
+<codeline lineno="47"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a118b6ae6f4476f578a6cee666adc02cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a08761f78387658db85dc2f1137cb3db6" kindref="member">writable</ref>(self):</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="52"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>True<sp/>if<sp/>write()<sp/>is<sp/>allowed.</highlight></codeline>
+<codeline lineno="53"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a08761f78387658db85dc2f1137cb3db6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad255ffd40c48e6610e464d5c3c43b2fb" kindref="member">seek</ref>(self,<sp/>offset,<sp/>whence=os.SEEK_SET):</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="58"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Seeks<sp/>to<sp/>a<sp/>given<sp/>position.</highlight></codeline>
+<codeline lineno="59"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="60"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>May<sp/>raise<sp/>UnsupportedOperation<sp/>for<sp/>any<sp/>or<sp/>all<sp/>arguments,<sp/>in<sp/>case<sp/>of</highlight></codeline>
+<codeline lineno="61"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unseekable<sp/>streams.</highlight></codeline>
+<codeline lineno="62"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>For<sp/>testing<sp/>seek<sp/>capabilities,<sp/>it&apos;s<sp/>recommended<sp/>to<sp/>call<sp/>seek(0)</highlight></codeline>
+<codeline lineno="64"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>immediately<sp/>after<sp/>object<sp/>creation.</highlight></codeline>
+<codeline lineno="65"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="66"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>There<sp/>is<sp/>no<sp/>return<sp/>value.</highlight></codeline>
+<codeline lineno="67"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad255ffd40c48e6610e464d5c3c43b2fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a72fc53b76ba8da3a41cd61647dbaae6e" kindref="member">seekable</ref>(self):</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>True<sp/>if<sp/>seek()<sp/>is<sp/>allowed.</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a72fc53b76ba8da3a41cd61647dbaae6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b" kindref="member">tell</ref>(self):</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="78"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>the<sp/>current<sp/>position<sp/>in<sp/>the<sp/>file.</highlight></codeline>
+<codeline lineno="79"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="80"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Must<sp/>work<sp/>properly<sp/>for<sp/>all<sp/>file-like<sp/>objects.</highlight></codeline>
+<codeline lineno="81"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" kindref="member">close</ref>(self):</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="86"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Frees<sp/>internal<sp/>resources,<sp/>making<sp/>the<sp/>object<sp/>unusable.</highlight></codeline>
+<codeline lineno="87"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>May<sp/>be<sp/>a<sp/>no-op.</highlight></codeline>
+<codeline lineno="88"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1af0f454daf7adab7c0dbbe38f3ec8dedb" kindref="member">flush</ref>(self):</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="93"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Syncs<sp/>data<sp/>with<sp/>the<sp/>disk,<sp/>or<sp/>something</highlight></codeline>
+<codeline lineno="94"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>May<sp/>be<sp/>a<sp/>no-op.</highlight></codeline>
+<codeline lineno="95"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1af0f454daf7adab7c0dbbe38f3ec8dedb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>@abstractmethod</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7" kindref="member">get_size</ref>(self):</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="100"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>the<sp/>size<sp/>of<sp/>the<sp/>object,<sp/>if<sp/>known.</highlight></codeline>
+<codeline lineno="101"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns<sp/>-1<sp/>otherwise.</highlight></codeline>
+<codeline lineno="102"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="103"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Note:<sp/>Actual<sp/>file<sp/>objects<sp/>don&apos;t<sp/>have<sp/>this<sp/>method;</highlight></codeline>
+<codeline lineno="104"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>exists<sp/>mostly<sp/>for<sp/>internal<sp/>usage.</highlight></codeline>
+<codeline lineno="105"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>allow<sp/>usage<sp/>with<sp/>&apos;with&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" kindref="member">__enter__</ref>(self):</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>self</highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" kindref="member">__exit__</ref>(self,<sp/>exc_type,<sp/>exc_val,<sp/>exc_tb):</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>del<sp/>exc_type,<sp/>exc_val,<sp/>exc_tb<sp/><sp/></highlight><highlight class="comment">#<sp/>unused</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" kindref="member">seek_helper</ref>(self,<sp/>offset,<sp/>whence):</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Helper<sp/>function<sp/>for<sp/>use<sp/>by<sp/>implementations<sp/>of<sp/>seek().</highlight></codeline>
+<codeline lineno="119"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="120"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Calculates<sp/>the<sp/>new<sp/>cursor<sp/>position<sp/>relative<sp/>to<sp/>file<sp/>start</highlight></codeline>
+<codeline lineno="121"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>offset,<sp/>whence<sp/>and<sp/>self.tell().</highlight></codeline>
+<codeline lineno="122"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="123"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>If<sp/>size<sp/>is<sp/>given,<sp/>it<sp/>works<sp/>for<sp/>whence=os.SEEK_END;</highlight></codeline>
+<codeline lineno="124"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>otherwise,<sp/>UnsupportedOperation<sp/>is<sp/>raised.</highlight></codeline>
+<codeline lineno="125"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>whence<sp/>==<sp/>os.SEEK_SET:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/>offset</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>whence<sp/>==<sp/>os.SEEK_CUR:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/>offset<sp/>+<sp/>self.<ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b" kindref="member">tell</ref>()</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>whence<sp/>==<sp/>os.SEEK_END:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size<sp/>=<sp/>self.<ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7" kindref="member">get_size</ref>()</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>size<sp/>&lt;<sp/>0:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>UnsupportedOperation(</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;can<sp/>only<sp/>seek<sp/>relative<sp/>to<sp/>file<sp/>start<sp/>or<sp/>cursor&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>=<sp/>offset<sp/>+<sp/>size</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>UnsupportedOperation(</highlight><highlight class="stringliteral">&quot;unsupported<sp/>seek<sp/>mode&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>target<sp/>&lt;<sp/>0:</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(</highlight><highlight class="stringliteral">&quot;can<sp/>not<sp/>seek<sp/>to<sp/>a<sp/>negative<sp/>file<sp/>position&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>target</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/abstract.py"/>
+  </compounddef>
+</doxygen>

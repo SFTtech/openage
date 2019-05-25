@@ -169,7 +169,7 @@
         </childnode>
       </node>
       <node id="20621">
-        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp</label>
         <link refid="glyph__atlas_8cpp"/>
         <childnode refid="20622" relation="include">
         </childnode>
@@ -431,7 +431,7 @@
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>figure<sp/>out<sp/>a<sp/>clean<sp/>way<sp/>to<sp/>resize<sp/>the<sp/>atlas</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>enough<sp/>space<sp/>in<sp/>the<sp/>atlas&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>enough<sp/>space<sp/>in<sp/>the<sp/>atlas&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147" refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" kindref="member">GlyphAtlas::update_dirty_area</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height)<sp/>{</highlight></codeline>
@@ -445,6 +445,6 @@
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/font/glyph_atlas.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp"/>
   </compounddef>
 </doxygen>

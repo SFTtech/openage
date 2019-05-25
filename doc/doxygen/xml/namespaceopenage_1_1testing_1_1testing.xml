@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1testing_1_1testing" kind="namespace" language="Python">
+    <compoundname>openage::testing::testing</compoundname>
+    <innerclass refid="classopenage_1_1testing_1_1testing_1_1_test_error" prot="public">openage::testing::testing::TestError</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testing.assert_value</definition>
+        <argsstring>(value, expected=None, validator=None)</argsstring>
+        <name>assert_value</name>
+        <param>
+          <type>value</type>
+          <defname>value</defname>
+        </param>
+        <param>
+          <type>expected</type>
+          <defname>expected</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>validator</type>
+          <defname>validator</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" bodystart="25" bodyend="43"/>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" compoundref="cabextract_2test_8py" startline="64" endline="137">openage.cabextract.test.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1assets_1a362b18ac5b307e65b5ee2a0e2bc69b77" compoundref="assets_8py" startline="66" endline="75">openage.assets.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" compoundref="util_2fslike_2test_8py" startline="227" endline="250">openage.util.fslike.test.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a42f102b9063e2b2d0938d8ccf1d03e59" compoundref="util_2fslike_2test_8py" startline="194" endline="223">openage.util.fslike.test.test_append</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a2cb9e1c2163a7d9dcb6be195cdf17065" compoundref="util_2fslike_2test_8py" startline="149" endline="190">openage.util.fslike.test.test_case_ignoring</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" compoundref="threading_8py" startline="117" endline="137">openage.util.threading.test_concurrent_chain</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1abdc25f4997b11676ec4700a8cb2b100b" compoundref="util_2fslike_2test_8py" startline="23" endline="44">openage.util.fslike.test.test_path</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" compoundref="util_2fslike_2test_8py" startline="57" endline="133">openage.util.fslike.test.test_union</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testing.result</definition>
+        <argsstring>(value)</argsstring>
+        <name>result</name>
+        <param>
+          <type>value</type>
+          <defname>value</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" bodystart="44" bodyend="47"/>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" compoundref="input__manager_8cpp" startline="384" endline="409">openage::input::InputManager::active_binds</referencedby>
+        <referencedby refid="classopenage_1_1_unit_container_1a38b39ded603419425f1b5a38f188cc17" compoundref="unit__container_8cpp" startline="164" endline="170">openage::UnitContainer::all_units</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" compoundref="misc_8h" startline="222" endline="232">openage::util::array64_to_array8</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">openage::util::array8_to_array64</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">openage::util::array8_to_uint64</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" compoundref="functional_8h" startline="180" endline="186">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::bind_catchexcept_impl</referencedby>
+        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" compoundref="pyobject_8cpp" startline="317" endline="321">openage::py::builtin</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" compoundref="pyobject_8cpp" startline="338" endline="342">openage::py::bytes</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" compoundref="pyobject_8cpp" startline="147" endline="158">openage::pyinterface::PyObjectRef::call_impl</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" compoundref="buf_8cpp" startline="1140" endline="1148">openage::console::Buf::chrdataptr</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1afee91926bb4d9b763527a7aa28ec95d4" compoundref="assetmanager_8cpp" startline="185" endline="197">openage::AssetManager::clear</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">openage::util::demangle</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" compoundref="directory_8cpp" startline="69" endline="75">openage::util::fslike::Directory::do_stat</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" compoundref="quaternion_8h" startline="251" endline="258">openage::util::Quaternion&lt; T &gt;::equals_number</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" compoundref="pyobject_8cpp" startline="208" endline="212">openage::pyinterface::PyObjectRef::eval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">openage::util::utf8_decoder::feed</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_raw_value</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" compoundref="pyobject_8cpp" startline="220" endline="224">openage::pyinterface::PyObjectRef::get</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a601a0aaa58d28c66540b8463662fab85" compoundref="terrain__object_8cpp" startline="216" endline="227">openage::TerrainObject::get_children</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" compoundref="input_2event_8cpp" startline="17" endline="28">openage::input::ClassCode::get_classes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" compoundref="file_8cpp" startline="101" endline="114">openage::util::File::get_lines</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="398" endline="413">openage::RadialObject::get_range</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a88ec2ee796cfe5d6c97570ad73db43cc" compoundref="terrain_8cpp" startline="202" endline="210">openage::Terrain::get_subtexture_id</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">openage::util::Timer::getandresetval</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" compoundref="pyobject_8cpp" startline="166" endline="170">openage::pyinterface::PyObjectRef::getattr</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" compoundref="pyobject_8cpp" startline="324" endline="328">openage::py::import</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">openage::input::Event::info</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" compoundref="pyobject_8cpp" startline="345" endline="349">openage::py::integer</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" compoundref="buf_8cpp" startline="1150" endline="1159">openage::console::Buf::linedataptr</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" compoundref="options_8cpp" startline="274" endline="280">openage::options::OptionNode::list_functions</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" compoundref="options_8cpp" startline="245" endline="262">openage::options::OptionNode::list_options</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" compoundref="options_8cpp" startline="265" endline="271">openage::options::OptionNode::list_variables</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" compoundref="terrain__search_8cpp" startline="81" endline="102">openage::TerrainSearch::next_tile</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" compoundref="generator_8cpp" startline="144" endline="151">openage::Generator::player_names</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1adbd7a81351040e264df9f0b82bc8e494" compoundref="fixed__point_8h" startline="96" endline="102">openage::util::FixedPoint&lt; int64_t, 16 &gt;::power_of_two</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" compoundref="fds_8cpp" startline="75" endline="110">openage::util::FD::printf</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" compoundref="bitstream_8h" startline="368" endline="377">openage::util::compress::BitStream&lt; 4096 &gt;::read_4bytes_le</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" compoundref="input_2event_8cpp" startline="110" endline="124">openage::input::sdl_mod</referencedby>
+        <referencedby refid="classopenage_1_1_unit_ability_1a282f5d02a2a6912670b27aedb7f4f337" compoundref="ability_8cpp" startline="403" endline="409">openage::UnitAbility::set_from_list</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_handle_1afcf8867f4e0077e6a8a2a6fe6c0c98ff" compoundref="game__spec_8cpp" startline="510" endline="546">openage::GameSpecHandle::start_load_job</referencedby>
+        <referencedby refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" compoundref="options_8cpp" startline="171" endline="197">openage::options::OptionValue::str_value</referencedby>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" compoundref="cabextract_2test_8py" startline="64" endline="137">openage.cabextract.test.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" compoundref="threading_8py" startline="117" endline="137">openage.util.threading.test_concurrent_chain</referencedby>
+        <referencedby refid="namespaceopenage_1_1job_1_1tests_1abca5d5e032e3cdbbe7176fde710f7abd" compoundref="job_2tests_8cpp" startline="15" endline="46">openage::job::tests::test_simple_job</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" compoundref="util_2fslike_2test_8py" startline="57" endline="133">openage.util.fslike.test.test_union</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" compoundref="pixel_8cpp" startline="12" endline="37">openage::coord::camgame_delta::to_phys3</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" compoundref="pixel_8cpp" startline="103" endline="110">openage::coord::input_delta::to_viewport</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5d2482157fe89058a2a763141c4d9e9" compoundref="directory_8cpp" startline="243" endline="269">openage::util::fslike::Directory::touch</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" compoundref="pyobject_8cpp" startline="244" endline="248">openage::pyinterface::PyObjectRef::type</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" compoundref="pyexception_8cpp" startline="35" endline="43">openage::pyinterface::PyException::type_name</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">openage::util::uint64_to_array8</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a143090daace4caa26b8f0e9af5b4b69c" compoundref="terrain_8cpp" startline="56" endline="62">openage::Terrain::used_chunks</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" compoundref="unicode_8cpp" startline="72" endline="118">openage::util::utf8_decode</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.testing.assert_raises</definition>
+        <argsstring>(expectedexception)</argsstring>
+        <name>assert_raises</name>
+        <param>
+          <type>expectedexception</type>
+          <defname>expectedexception</defname>
+        </param>
+        <briefdescription>
+<para>Context guard that asserts that a certain exception is raised inside. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>On successful execution (if the error failed to show up), <ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result()</ref> shall be called.</para>
+<para>Example usage:</para>
+<para><heading level="1">we expect fibonacci to raise ValueError for negative values.</heading>
+</para>
+<para>with assert_raises(ValueError): result(fibonacci(-3)) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" bodystart="61" bodyend="73"/>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" compoundref="cabextract_2test_8py" startline="64" endline="137">openage.cabextract.test.test</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" compoundref="threading_8py" startline="117" endline="137">openage.util.threading.test_concurrent_chain</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" compoundref="util_2fslike_2test_8py" startline="57" endline="133">openage.util.fslike.test.test_union</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/testing.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

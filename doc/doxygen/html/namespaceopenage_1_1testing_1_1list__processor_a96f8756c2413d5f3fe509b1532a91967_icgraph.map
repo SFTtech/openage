@@ -1,0 +1,12 @@
+<map id="openage.testing.list_processor.list_targets" name="openage.testing.list_processor.list_targets">
+<area shape="rect" id="node1" title=" " alt="" coords="1257,39,1412,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a598be9bf16c59330d7350e0024b2f363" title="Invokes list_targets() with the C++&#45;specific listers." alt="" coords="1027,5,1209,47"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#aa7fa94692d5000c384c9820a0a4edddc" title="Invokes list_targets() with the py&#45;specific listers." alt="" coords="1031,71,1205,112"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1codegen_1_1cpp__testlist.xhtml#af4860c4340a60e6e18ff81453fe1b416" title="Generates the test/demo method symbol lookup file from tests_cpp." alt="" coords="807,5,975,47"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a9702d9a71efd1d06569d1488b7c05666" title="Reads the Python and C++ testspec." alt="" coords="804,71,979,112"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1codegen_1_1listing.xhtml#a8178b40ca254e32043552b4b3f13aeeb" title="Contains the listing of all code generator invocations." alt="" coords="520,13,756,39"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02" title=" " alt="" coords="241,13,472,39"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1codegen_1_1main.xhtml#a02b4f54f6bbc4cef5a3872eb60d639a6" title="Codegen CLI entry point." alt="" coords="5,13,193,39"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1testing_1_1main.xhtml#a346b6762051aaadb5cc302e1adbf5f1e" title="Processes the given args, detecting errors." alt="" coords="524,78,752,105"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="267,78,446,105"/>
+</map>

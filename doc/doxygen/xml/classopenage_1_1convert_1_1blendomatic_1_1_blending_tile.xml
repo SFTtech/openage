@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::blendomatic::BlendingTile</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1aa85a8bbd7df281c1a9c3613335bf1d18" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.BlendingTile::row_data</definition>
+        <argsstring></argsstring>
+        <name>row_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a15c617e71bf0ced91bf11ef18c134c6c" compoundref="blendomatic_8py" startline="37" endline="72">openage.convert.blendomatic.BlendingTile.get_picture_data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a190a2f0d5558608a6bf52e3b2248f013" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.BlendingTile::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a73fc5b1eadf9233faa6c4f28afddd611" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.blendomatic.BlendingTile::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1af673b9d293418bea75625d929800a37d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.BlendingTile.__init__</definition>
+        <argsstring>(self, row_data, width, height)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1aa85a8bbd7df281c1a9c3613335bf1d18" kindref="member">row_data</ref></type>
+          <defname>row_data</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a190a2f0d5558608a6bf52e3b2248f013" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a73fc5b1eadf9233faa6c4f28afddd611" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a15c617e71bf0ced91bf11ef18c134c6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.blendomatic.BlendingTile.get_picture_data</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_picture_data</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Return a numpy array of image data for a blending tile. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="37" bodyend="72"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1aa85a8bbd7df281c1a9c3613335bf1d18" compoundref="blendomatic_8py" startline="30">openage.convert.blendomatic.BlendingTile.row_data</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="923">
+        <label>openage.convert.blendomatic.BlendingTile</label>
+        <link refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/blendomatic.py" bodystart="25" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1af673b9d293418bea75625d929800a37d" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::BlendingTile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a15c617e71bf0ced91bf11ef18c134c6c" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::BlendingTile</scope><name>get_picture_data</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a73fc5b1eadf9233faa6c4f28afddd611" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::BlendingTile</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1aa85a8bbd7df281c1a9c3613335bf1d18" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::BlendingTile</scope><name>row_data</name></member>
+      <member refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a190a2f0d5558608a6bf52e3b2248f013" prot="public" virt="non-virtual"><scope>openage::convert::blendomatic::BlendingTile</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

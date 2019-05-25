@@ -188,7 +188,7 @@
         <label>memory</label>
       </node>
       <node id="32418">
-        <label>libopenage/util/strings.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp</label>
         <link refid="strings_8cpp"/>
         <childnode refid="32419" relation="include">
         </childnode>
@@ -444,6 +444,6 @@
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/strings.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp"/>
   </compounddef>
 </doxygen>

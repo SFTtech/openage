@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="118" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="118" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1ab23bd1e10f623a3d67d12f10926b4209" compoundref="game__control__link_8cpp" startline="110" endline="112">get_ability</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a4eed7841550a933434148daef3a162fe" compoundref="game__control__link_8cpp" startline="126" endline="129">on_ability_changed</referencedby>
       </memberdef>
       <memberdef kind="property" id="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
         <type>QString</type>
@@ -31,7 +33,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="119" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a52d11c3f9905a8ead41efd359f851c85" compoundref="game__control__link_8cpp" startline="114" endline="116">get_population</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" compoundref="game__control__link_8cpp" startline="135" endline="139">on_population_changed</referencedby>
       </memberdef>
       <memberdef kind="property" id="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
         <type>bool</type>
@@ -45,7 +49,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="120" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="120" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a06a0537e099e72de7ca0413a5f553a84" compoundref="game__control__link_8cpp" startline="118" endline="120">get_population_warn</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" compoundref="game__control__link_8cpp" startline="135" endline="139">on_population_changed</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="123" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="101" bodyend="105"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="101" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a8e258d53755efda2f9f893bcc57747e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -78,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="124" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="107" bodyend="108"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="124" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="107" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1ab23bd1e10f623a3d67d12f10926b4209" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QString</type>
@@ -91,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="126" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="110" bodyend="112"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="110" bodyend="112"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" compoundref="game__control__link_8h" startline="118">ability</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a52d11c3f9905a8ead41efd359f851c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QString</type>
@@ -104,7 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="127" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="114" bodyend="116"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="114" bodyend="116"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" compoundref="game__control__link_8h" startline="119">population</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a06a0537e099e72de7ca0413a5f553a84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -117,7 +125,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="128" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="118" bodyend="120"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="128" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="118" bodyend="120"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" compoundref="game__control__link_8h" startline="120">population_warn</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1abb719548ca39225996f9c61fb3434754" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Q_INVOKABLE void</type>
@@ -134,7 +143,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="130" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="122" bodyend="124"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="122" bodyend="124"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a840419e327078204b1a57ba5249ad644">action_triggered</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -149,7 +159,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="133" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="133" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a4eed7841550a933434148daef3a162fe" compoundref="game__control__link_8cpp" startline="126" endline="129">on_ability_changed</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a840419e327078204b1a57ba5249ad644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -166,7 +177,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="134" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="134" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1abb719548ca39225996f9c61fb3434754" compoundref="game__control__link_8cpp" startline="122" endline="124">act</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" compoundref="game__control__link_8cpp" startline="141" endline="159">on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -183,7 +196,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="135" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="135" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a5b47b6c506c74c341fbbac395b910b7a" compoundref="game__control__link_8cpp" startline="131" endline="133">on_buttons_type_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" compoundref="actions__list__model_8cpp" startline="124" endline="140">openage::gui::ActionsListModel::set_action_mode</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a6ea3f5513ed884b7b1f16bf9cf08dff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -196,7 +211,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="136" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="136" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" compoundref="game__control__link_8cpp" startline="135" endline="139">on_population_changed</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-slot">
@@ -215,7 +231,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="139" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="126" bodyend="129"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="126" bodyend="129"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" compoundref="game__control__link_8h" startline="118">ability</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a75908804b2a081f7e055e60fe05bf211">ability_changed</references>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" compoundref="game__control__link_8cpp" startline="141" endline="159">on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="slot" id="classopenage_1_1gui_1_1_action_mode_link_1a5b47b6c506c74c341fbbac395b910b7a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -232,7 +251,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="140" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="131" bodyend="133"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="131" bodyend="133"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517">buttons_type_changed</references>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" compoundref="game__control__link_8cpp" startline="141" endline="159">on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="slot" id="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -257,7 +278,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="141" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="135" bodyend="139"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="141" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="135" bodyend="139"/>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" compoundref="game__control__link_8h" startline="119">population</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a6ea3f5513ed884b7b1f16bf9cf08dff6">population_changed</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" compoundref="game__control__link_8h" startline="120">population_warn</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" compoundref="game__control__link_8cpp" startline="141" endline="159">on_core_adopted</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -272,7 +298,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_control_link.h" line="144" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="141" bodyend="159"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp" bodystart="141" bodyend="159"/>
+        <references refid="classopenage_1_1_action_mode_signals_1a01cb90fdc3c3530ffa273437d9f03048">openage::ActionModeSignals::ability_changed</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a840419e327078204b1a57ba5249ad644">action_triggered</references>
+        <references refid="classopenage_1_1_action_mode_signals_1ad7a3ad25de355b8fea260dca15f56323">openage::ActionModeSignals::buttons_type_changed</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a4eed7841550a933434148daef3a162fe" compoundref="game__control__link_8cpp" startline="126" endline="129">on_ability_changed</references>
+        <references refid="classopenage_1_1_action_mode_signals_1a400a4674187d1ce007a206c5074390da" compoundref="game__control_8cpp" startline="69" endline="89">openage::ActionModeSignals::on_action</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a5b47b6c506c74c341fbbac395b910b7a" compoundref="game__control__link_8cpp" startline="131" endline="133">on_buttons_type_changed</references>
+        <references refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" compoundref="game__control__link_8cpp" startline="135" endline="139">on_population_changed</references>
+        <references refid="classopenage_1_1_action_mode_signals_1af13facb512270e9d9c134aeabf4bd1a7">openage::ActionModeSignals::population_changed</references>
+        <references refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" compoundref="gui__item__link_8h" startline="37" endline="39">qtsdl::unwrap</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -280,76 +315,186 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="98">
+      <node id="2802">
+        <label>T</label>
+      </node>
+      <node id="2799">
         <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="99" relation="public-inheritance">
+        <childnode refid="2800" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2801" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="101">
+      <node id="2804">
         <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2805" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="96">
+      <node id="2801">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="2802" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2807">
+        <label>qtsdl::Inherits&lt; T, P &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="2801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2808" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2805">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2809">
+        <label>qtsdl::GuiItemMethods&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2805" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2806">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2808">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2809" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2806" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2797">
         <label>openage::gui::ActionModeLink</label>
         <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
-        <childnode refid="97" relation="public-inheritance">
+        <childnode refid="2798" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="100">
+      <node id="2803">
         <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="101" relation="public-inheritance">
+        <childnode refid="2804" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2806" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="97">
+      <node id="2798">
         <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_inherits"/>
-        <childnode refid="98" relation="public-inheritance">
+        <childnode refid="2799" relation="public-inheritance">
         </childnode>
-        <childnode refid="100" relation="public-inheritance">
+        <childnode refid="2803" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2807" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="99">
+      <node id="2800">
         <label>OutputModeLink</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="104">
+      <node id="2815">
+        <label>T</label>
+      </node>
+      <node id="2812">
         <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="105" relation="public-inheritance">
+        <childnode refid="2813" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2814" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="107">
+      <node id="2817">
         <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2818" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="102">
+      <node id="2814">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="2815" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2820">
+        <label>qtsdl::Inherits&lt; T, P &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="2814" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2821" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2818">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2822">
+        <label>qtsdl::GuiItemMethods&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2818" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2819">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2818" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2821">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2822" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2819" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2810">
         <label>openage::gui::ActionModeLink</label>
         <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
-        <childnode refid="103" relation="public-inheritance">
+        <childnode refid="2811" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="106">
+      <node id="2816">
         <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="107" relation="public-inheritance">
+        <childnode refid="2817" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2819" relation="template-instance">
+          <edgelabel>&lt; ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="103">
+      <node id="2811">
         <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
         <link refid="classqtsdl_1_1_inherits"/>
-        <childnode refid="104" relation="public-inheritance">
+        <childnode refid="2812" relation="public-inheritance">
         </childnode>
-        <childnode refid="106" relation="public-inheritance">
+        <childnode refid="2816" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2820" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, ActionModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="105">
+      <node id="2813">
         <label>OutputModeLink</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/game_control_link.h" line="115" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="115" bodyend="149"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h" bodystart="115" bodyend="149"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>ability</name></member>
       <member refid="classopenage_1_1gui_1_1_action_mode_link_1a75908804b2a081f7e055e60fe05bf211" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>ability_changed</name></member>

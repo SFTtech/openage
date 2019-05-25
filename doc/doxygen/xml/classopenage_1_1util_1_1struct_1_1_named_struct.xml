@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1struct_1_1_named_struct" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::struct::NamedStruct</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">metaclass</basecompoundref>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta" prot="public" virt="non-virtual">openage.util.struct.NamedStructMeta</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_data" prot="public" virt="non-virtual">openage.cabextract.cab.CFData</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file" prot="public" virt="non-virtual">openage.cabextract.cab.CFFile</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_folder" prot="public" virt="non-virtual">openage.cabextract.cab.CFFolder</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header" prot="public" virt="non-virtual">openage.cabextract.cab.CFHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_reserved_fields" prot="public" virt="non-virtual">openage.cabextract.cab.CFHeaderReservedFields</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info" prot="public" virt="non-virtual">openage.convert.drs.DRSFileInfo</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_header" prot="public" virt="non-virtual">openage.convert.drs.DRSHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_table_info" prot="public" virt="non-virtual">openage.convert.drs.DRSTableInfo</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_c_o_f_f_header" prot="public" virt="non-virtual">openage.convert.pefile.PECOFFHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory" prot="public" virt="non-virtual">openage.convert.pefile.PEDataDirectory</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header" prot="public" virt="non-virtual">openage.convert.pefile.PEDOSHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_optional_header" prot="public" virt="non-virtual">openage.convert.pefile.PEOptionalHeader</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section" prot="public" virt="non-virtual">openage.convert.pefile.PESection</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory" prot="public" virt="non-virtual">openage.convert.peresource.ResourceDirectory</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_entry" prot="public" virt="non-virtual">openage.convert.peresource.ResourceDirectoryEntry</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf" prot="public" virt="non-virtual">openage.convert.peresource.ResourceLeaf</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1peresource_1_1_string_literal" prot="public" virt="non-virtual">openage.convert.peresource.StringLiteral</derivedcompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1struct_1_1_named_struct_1af5ebda227aca97bf6653323c954f74c5" prot="private" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.struct.NamedStruct::_postprocessors</definition>
+        <argsstring></argsstring>
+        <name>_postprocessors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="122" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" compoundref="struct_8py" startline="132" endline="151">openage.util.struct.NamedStruct.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" prot="private" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.struct.NamedStruct::_struct</definition>
+        <argsstring></argsstring>
+        <name>_struct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="126" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" compoundref="struct_8py" startline="132" endline="151">openage.util.struct.NamedStruct.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" compoundref="struct_8py" startline="178" endline="181">openage.util.struct.NamedStruct.from_nullbytes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" compoundref="struct_8py" startline="170" endline="173">openage.util.struct.NamedStruct.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" compoundref="struct_8py" startline="163" endline="165">openage.util.struct.NamedStruct.size</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" prot="private" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.struct.NamedStruct::_attributes</definition>
+        <argsstring></argsstring>
+        <name>_attributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" compoundref="struct_8py" startline="194" endline="197">openage.util.struct.NamedStruct.__getitem__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" compoundref="struct_8py" startline="132" endline="151">openage.util.struct.NamedStruct.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" compoundref="struct_8py" startline="188" endline="190">openage.util.struct.NamedStruct.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" compoundref="struct_8py" startline="201" endline="204">openage.util.struct.NamedStruct.as_dict</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__init__</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="132" bodyend="151"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" compoundref="struct_8py" startline="130">openage.util.struct.NamedStruct._attributes</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1af5ebda227aca97bf6653323c954f74c5" compoundref="struct_8py" startline="122">openage.util.struct.NamedStruct._postprocessors</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" compoundref="struct_8py" startline="126">openage.util.struct.NamedStruct._struct</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" compoundref="struct_8py" startline="156" endline="158">openage.util.struct.NamedStruct.unpack</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.unpack</definition>
+        <argsstring>(cls, data)</argsstring>
+        <name>unpack</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Unpacks data and returns a <ref refid="classopenage_1_1util_1_1struct_1_1_named_struct" kindref="compound">NamedStruct</ref> object that holds the fields. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="156" bodyend="158"/>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" compoundref="struct_8py" startline="132" endline="151">openage.util.struct.NamedStruct.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" compoundref="struct_8py" startline="178" endline="181">openage.util.struct.NamedStruct.from_nullbytes</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" compoundref="struct_8py" startline="170" endline="173">openage.util.struct.NamedStruct.read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.size</definition>
+        <argsstring>(cls)</argsstring>
+        <name>size</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>Returns the size of the struct, in bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="163" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="163" bodyend="165"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" compoundref="struct_8py" startline="126">openage.util.struct.NamedStruct._struct</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.read</definition>
+        <argsstring>(cls, fileobj)</argsstring>
+        <name>read</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+<para>Reads the appropriate amount of data from fileobj, and unpacks it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="170" bodyend="173"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" compoundref="struct_8py" startline="126">openage.util.struct.NamedStruct._struct</references>
+        <references refid="namespaceopenage_1_1util_1_1files_1aa2ba5a14f2468fd0745e07dc84ff2188" compoundref="files_8py" startline="15" endline="29">openage.util.files.read_guaranteed</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" compoundref="struct_8py" startline="156" endline="158">openage.util.struct.NamedStruct.unpack</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.from_nullbytes</definition>
+        <argsstring>(cls)</argsstring>
+        <name>from_nullbytes</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>Decodes nullbytes (sort of a &apos;default&apos; value). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="178" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="178" bodyend="181"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" compoundref="struct_8py" startline="126">openage.util.struct.NamedStruct._struct</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" compoundref="struct_8py" startline="156" endline="158">openage.util.struct.NamedStruct.unpack</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__len__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__len__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns the number of fields. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="188" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="188" bodyend="190"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" compoundref="struct_8py" startline="130">openage.util.struct.NamedStruct._attributes</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__getitem__</definition>
+        <argsstring>(self, index)</argsstring>
+        <name>__getitem__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>index</type>
+          <defname>index</defname>
+        </param>
+        <briefdescription>
+<para>Returns the n-th field, or raises IndexError. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="194" bodyend="197"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" compoundref="struct_8py" startline="130">openage.util.struct.NamedStruct._attributes</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.as_dict</definition>
+        <argsstring>(self)</argsstring>
+        <name>as_dict</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns a key-value dict for all attributes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="201" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="201" bodyend="204"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" compoundref="struct_8py" startline="130">openage.util.struct.NamedStruct._attributes</references>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" compoundref="struct_8py" startline="208" endline="210">openage.util.struct.NamedStruct.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a9f6a718342072c143f8d66ebf9f5ff53" compoundref="struct_8py" startline="317" endline="319">openage.util.struct.Flags.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" compoundref="struct_8py" startline="211" endline="217">openage.util.struct.NamedStruct.__str__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" compoundref="struct_8py" startline="305" endline="309">openage.util.struct.Flags.unknown</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__iter__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__iter__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="205" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="205" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="208" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="208" bodyend="210"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" compoundref="struct_8py" startline="201" endline="204">openage.util.struct.NamedStruct.as_dict</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.NamedStruct.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="211" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="211" bodyend="217"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" compoundref="struct_8py" startline="201" endline="204">openage.util.struct.NamedStruct.as_dict</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Designed to be inherited from, similar to <ref refid="classopenage_1_1util_1_1_enum" kindref="compound">Enum</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Specify all fields of the struct, as &apos;membername = specstr&apos;, where specstr is a string describing the field, as in struct.Struct. <ref refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta" kindref="compound">NamedStructMeta</ref> translates those individual specstr fragments to a complete specstr.</para>
+<para>Alternatively to a specstr, a callable object with a specstr member may be passed; the specstr is used as usual, but afterwards the callable is invoked to post-process the extracted data. One example for such a callable is the <ref refid="classopenage_1_1util_1_1struct_1_1_flags" kindref="compound">Flags</ref> class.</para>
+<para>Alternatively, attributes may be set to None; those are ignored, and may be set manually at some later point.</para>
+<para>The first member must be &apos;endianess&apos;.</para>
+<para><bold>Examples</bold> <programlisting><codeline><highlight class="normal">class<sp/>MyStruct(NamedStruct):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>endianness<sp/>=<sp/>&quot;&lt;&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mgck<sp/>=<sp/>&quot;4s&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>test<sp/>=<sp/>&quot;I&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rofl<sp/>=<sp/>&quot;H&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>flag<sp/>=<sp/>MyFlagType</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>constructor<sp/>takes<sp/>a<sp/>bytes<sp/>object<sp/>of<sp/>the<sp/>appropriate<sp/>length,<sp/>and<sp/>fills</highlight></codeline>
+<codeline><highlight class="normal">in<sp/>all<sp/>the<sp/>members<sp/>with<sp/>the<sp/>struct&apos;s<sp/>actual<sp/>values.</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6059">
+        <label>openage.convert.pefile.PEDataDirectory</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6063">
+        <label>openage.convert.peresource.ResourceDirectory</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6060">
+        <label>openage.convert.pefile.PEDOSHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6057">
+        <label>openage.convert.drs.DRSTableInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_table_info"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6055">
+        <label>openage.convert.drs.DRSFileInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6056">
+        <label>openage.convert.drs.DRSHeader</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_header"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6064">
+        <label>openage.convert.peresource.ResourceDirectoryEntry</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_directory_entry"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6050">
+        <label>openage.cabextract.cab.CFData</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_data"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6051">
+        <label>openage.cabextract.cab.CFFile</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6052">
+        <label>openage.cabextract.cab.CFFolder</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_folder"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6049">
+        <label>type</label>
+      </node>
+      <node id="6066">
+        <label>openage.convert.peresource.StringLiteral</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_string_literal"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6048">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="6049" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6061">
+        <label>openage.convert.pefile.PEOptionalHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_optional_header"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6053">
+        <label>openage.cabextract.cab.CFHeader</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6058">
+        <label>openage.convert.pefile.PECOFFHeader</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_c_o_f_f_header"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6062">
+        <label>openage.convert.pefile.PESection</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6046">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="6047" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6048" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6047">
+        <label>metaclass</label>
+      </node>
+      <node id="6065">
+        <label>openage.convert.peresource.ResourceLeaf</label>
+        <link refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6054">
+        <label>openage.cabextract.cab.CFHeaderReservedFields</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_reserved_fields"/>
+        <childnode refid="6046" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6070">
+        <label>type</label>
+      </node>
+      <node id="6069">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="6070" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6067">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="6068" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6069" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6068">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="116" bodyend="218"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a1a2ff8b8ec3b01db2e620a7ab7da9bd3" prot="private" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>_attributes</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1af5ebda227aca97bf6653323c954f74c5" prot="private" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>_postprocessors</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a4b593f281fd86c63a2cc7a3d68f9cecb" prot="private" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>_struct</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::util::struct::NamedStruct</scope><name>unpack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

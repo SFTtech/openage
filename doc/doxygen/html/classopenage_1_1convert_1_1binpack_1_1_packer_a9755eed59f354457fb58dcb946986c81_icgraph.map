@@ -1,0 +1,6 @@
+<map id="openage.convert.binpack.Packer.pos" name="openage.convert.binpack.Packer.pos">
+<area shape="rect" id="node1" title=" " alt="" coords="435,39,604,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a8916e3ed3816885ba27b052d461ac59e" title="Gets the total height of the packing." alt="" coords="217,5,387,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a2975fbf546612145bd425fad338adf24" title="Gets the total width of the packing." alt="" coords="217,71,387,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1texture_1_1_texture.xhtml#ad67d62c0af627d1b83389ed9dc09b213" title=" " alt="" coords="5,39,169,80"/>
+</map>

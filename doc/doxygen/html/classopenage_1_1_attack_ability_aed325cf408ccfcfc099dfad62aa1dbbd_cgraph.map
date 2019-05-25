@@ -1,0 +1,13 @@
+<map id="openage::AttackAbility::can_invoke" name="openage::AttackAbility::can_invoke">
+<area shape="rect" id="node1" title=" " alt="" coords="5,170,159,211"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="449,39,580,81"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_command.xhtml#acbb97472983c470bf9ba48fa9297c970" title=" " alt="" coords="207,236,401,263"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_ability.xhtml#a462d1ece390e2508e943f2d1a1f8d64e" title=" " alt="" coords="235,39,373,81"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_unit_ability.xhtml#ae5e064045861e1c9ca9ba94b7b05b7d8" title=" " alt="" coords="235,105,373,146"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_command.xhtml#a89702d889840a84d4f1cadd017b4e8c2" title=" " alt="" coords="207,287,401,313"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_unit_ability.xhtml#abec7dd778de809e475630a0ec2204ef0" title=" " alt="" coords="235,170,373,211"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_command.xhtml#aac8f87a8abd4c2ed97832d42c4954514" title=" " alt="" coords="221,337,387,364"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="628,47,792,73"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="451,105,579,146"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="629,112,791,139"/>
+</map>

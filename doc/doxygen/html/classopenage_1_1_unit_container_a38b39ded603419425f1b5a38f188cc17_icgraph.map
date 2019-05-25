@@ -1,0 +1,8 @@
+<map id="openage::UnitContainer::all_units" name="openage::UnitContainer::all_units">
+<area shape="rect" id="node1" title=" " alt="" coords="695,71,852,112"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1gameio.xhtml#a2c4db428aa6da2185b33a86508fb49a8" title=" " alt="" coords="492,78,647,105"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_game_saver.xhtml#a8d88b6621b60cfc359cbeaae88475686" title=" " alt="" coords="253,5,424,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1main.xhtml#a4973f96b5a25450372f6d09c153284bf" title=" " alt="" coords="233,71,444,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#aeea5aabc465e55e3b8a519049bbcb623" title=" " alt="" coords="243,136,434,177"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="5,78,185,105"/>
+</map>

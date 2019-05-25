@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.binpack.BestPacker Class Reference</title>
+<title>openage: openage.convert.binpack.BestPacker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1binpack_1_1
 
 <p>Chooses the best result from all the given packers.  
  <a href="classopenage_1_1convert_1_1binpack_1_1_best_packer.xhtml#details">More...</a></p>
-<div class="dynheader">
-Collaboration diagram for openage.convert.binpack.BestPacker:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer__coll__graph.svg" width="180" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.binpack.BestPacker:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer__coll__graph.svg" width="180" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -159,7 +161,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00106">106</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        self.current_best = <span class="keywordtype">None</span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">def </span>pack(self, blocks):</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">for</span> packer <span class="keywordflow">in</span> self.packers:</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -180,6 +182,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00116">116</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">def </span>pos(self, block):</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> self.current_best.pos(block)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fixed__point_8h_source.xhtml#l00475">std.min()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00107">openage.convert.binpack.BestPacker.packers</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00110">openage.convert.binpack.BestPacker.pack()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer_a94a5247cf3049d7b95b2937858d0db31_cgraph.svg" width="512" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer_a94a5247cf3049d7b95b2937858d0db31_icgraph.svg" width="398" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -200,6 +222,18 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00125">125</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">class </span>PackerNode:</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;A node in a binary packing tree.&quot;&quot;&quot;</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00108">openage.convert.binpack.BestPacker.current_best</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00106">openage.convert.texture.Texture.__init__()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer_a8d22836ef3fc3a4cd2175f2ec2d1ac5b_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -230,6 +264,17 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00110">110</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            packer.pack(blocks)</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        self.current_best = self.best_packer()</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">def </span>best_packer(self):</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">min</a>(self.packers, key=<span class="keyword">lambda</span> p: p.width() * p.height())</div><div class="ttc" id="namespacestd_xhtml_a34591a1d8ee5da3f16f56554590d5e16"><div class="ttname"><a href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">std::min</a></div><div class="ttdeci">constexpr openage::util::FixedPoint&lt; I, F &gt; min(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00475">fixed_point.h:475</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00116">openage.convert.binpack.BestPacker.best_packer()</a>, <a class="el" href="binpack_8py_source.xhtml#l00108">openage.convert.binpack.BestPacker.current_best</a>, and <a class="el" href="binpack_8py_source.xhtml#l00107">openage.convert.binpack.BestPacker.packers</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer_abcdd32b9d135c030c8ce5042e4071cc2_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -260,6 +305,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00119">119</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">def </span>width(self):</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> self.current_best.width()</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00108">openage.convert.binpack.BestPacker.current_best</a>.</p>
 
 </div>
 </div>
@@ -280,6 +327,18 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00122">122</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">def </span>height(self):</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> self.current_best.height()</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00108">openage.convert.binpack.BestPacker.current_best</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00106">openage.convert.texture.Texture.__init__()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_best_packer_a194969df56d5b8df837c4aae21ab9060_icgraph.svg" width="392" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -298,6 +357,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00108">108</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00125">openage.convert.binpack.BestPacker.height()</a>, <a class="el" href="binpack_8py_source.xhtml#l00110">openage.convert.binpack.BestPacker.pack()</a>, <a class="el" href="binpack_8py_source.xhtml#l00119">openage.convert.binpack.BestPacker.pos()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00122">openage.convert.binpack.BestPacker.width()</a>.</p>
+
 </div>
 </div>
 <a id="aafd6bfbbbcbb262326c530a6a6fcc8ab"></a>
@@ -314,10 +375,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00107">107</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00116">openage.convert.binpack.BestPacker.best_packer()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00110">openage.convert.binpack.BestPacker.pack()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

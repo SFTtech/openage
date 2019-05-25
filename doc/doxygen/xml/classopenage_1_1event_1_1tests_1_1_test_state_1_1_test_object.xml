@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="21" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a6cd1784f8b74787701fa9813a4068e1c" compoundref="event_2tests_8cpp" startline="34" endline="36">id</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -30,7 +31,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="42" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1aa34202033ff483893bb1f253acea5cb5" compoundref="event_2tests_8cpp" startline="29" endline="32">set_number</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="23" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="23" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="23" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1aa34202033ff483893bb1f253acea5cb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -74,7 +76,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="29" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="29" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="29" bodyend="32"/>
+        <references refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" compoundref="eventtarget_8cpp" startline="14" endline="61">openage::event::EventTarget::changes</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</references>
+        <references refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a02fdf8df0c2dfef1f518a478af18da41" compoundref="event_2tests_8cpp" startline="42">number</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a6cd1784f8b74787701fa9813a4068e1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>size_t</type>
@@ -89,7 +94,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="34" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="34" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="34" bodyend="36"/>
+        <references refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab15e85629de1bfa3aa13eb3efa962c56" compoundref="event_2tests_8cpp" startline="21">_id</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a84664c0a3a47e8029ce2c705229e385b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -106,7 +112,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/tests.cpp" line="38" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="38" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="38" bodyend="40"/>
+        <references refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" compoundref="eventtarget_8cpp" startline="64" endline="87">openage::event::EventTarget::trigger</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -114,30 +121,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4429">
+      <node id="2309">
         <label>openage::event::tests::TestState::TestObject</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object"/>
-        <childnode refid="4430" relation="public-inheritance">
+        <childnode refid="2310" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4430">
+      <node id="2310">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4431">
+      <node id="2311">
         <label>openage::event::tests::TestState::TestObject</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object"/>
-        <childnode refid="4432" relation="public-inheritance">
+        <childnode refid="2312" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4432">
+      <node id="2312">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/tests.cpp" line="20" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="20" bodyend="43"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp" bodystart="20" bodyend="43"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab15e85629de1bfa3aa13eb3efa962c56" prot="private" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>add_dependent</name></member>

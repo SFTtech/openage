@@ -1,9 +1,13 @@
 <map id="openage::error::Error" name="openage::error::Error">
-<area shape="rect" id="node1" title=" " alt="" coords="17,1104,197,1299"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,920,104,997"/>
-<area shape="rect" id="node3" href="$structopenage_1_1log_1_1message.xhtml" title=" " alt="" coords="129,876,314,1041"/>
-<area shape="rect" id="node4" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="157,736,286,813"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="281,419,428,687"/>
-<area shape="rect" id="node6" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="123,264,253,356"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="103,5,273,215"/>
+<area shape="rect" id="node1" title=" " alt="" coords="17,1676,197,1871"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,1492,104,1569"/>
+<area shape="rect" id="node3" href="$structopenage_1_1log_1_1message.xhtml" title=" " alt="" coords="129,1448,314,1613"/>
+<area shape="rect" id="node4" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="157,1308,286,1385"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="281,991,428,1259"/>
+<area shape="rect" id="node6" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="102,755,231,847"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="81,403,252,612"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="67,145,267,340"/>
+<area shape="rect" id="node9" title=" " alt="" coords="117,5,216,83"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="255,675,467,928"/>
+<area shape="rect" id="node11" title=" " alt="" coords="315,469,407,546"/>
 </map>

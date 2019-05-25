@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::audio::Sound Class Reference</title>
+<title>openage: openage::audio::Sound Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,11 +100,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1audio_1_1_sound.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="sound_8h_source.xhtml">sound.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::audio::Sound:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::Sound:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -188,6 +190,10 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    :</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>{<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>},</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>{<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>} {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>.</p>
 
 </div>
 </div>
@@ -209,6 +215,9 @@ Friends</h2></td></tr>
 <p>Returns this sound's category. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00021">21</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                     {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;get_category();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -229,6 +238,9 @@ Friends</h2></td></tr>
 <p>Returns this sound's id. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;get_id();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -249,6 +261,9 @@ Friends</h2></td></tr>
 <p>Returns this sound's volume. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;volume;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -269,6 +284,9 @@ Friends</h2></td></tr>
 <p>Returns whether this sound is looping. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;looping;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -289,6 +307,19 @@ Friends</h2></td></tr>
 <p>Returns whether this sound is currently playing. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00097">97</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                             {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a6df7195e7f02f6959a9a241037e48657">is_available</a>() and <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a6df7195e7f02f6959a9a241037e48657"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a6df7195e7f02f6959a9a241037e48657">openage::audio::AudioManager::is_available</a></div><div class="ttdeci">bool is_available() const</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00225">audio_manager.cpp:225</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>, <a class="el" href="audio__manager_8cpp_source.xhtml#l00225">openage::audio::AudioManager::is_available()</a>, and <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_afc94edcbbee8f78f7c3b25c759f6ee62_cgraph.svg" width="415" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -309,6 +340,19 @@ Friends</h2></td></tr>
 <p>Pauses the sound at it's current playing offset. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00064">64</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                  {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing) {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a30af6b961d77d0b564e4813560666b2c">remove_sound</a>(<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing = <span class="keyword">false</span>;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a30af6b961d77d0b564e4813560666b2c"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a30af6b961d77d0b564e4813560666b2c">openage::audio::AudioManager::remove_sound</a></div><div class="ttdeci">void remove_sound(std::shared_ptr&lt; SoundImpl &gt; sound)</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00203">audio_manager.cpp:203</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>, <a class="el" href="audio__manager_8cpp_source.xhtml#l00203">openage::audio::AudioManager::remove_sound()</a>, and <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_a2974dc942136bfead20c8f7b988cb1ac_cgraph.svg" width="602" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -329,6 +373,29 @@ Friends</h2></td></tr>
 <p>Resets the sound to it's beginning and starts playing it. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                 {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use) {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;resource-&gt;use();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use = <span class="keyword">true</span>;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;offset = 0;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing) {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a558810ebb9233d8f80da70d48b0bf282">add_sound</a>(<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing = <span class="keyword">true</span>;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a558810ebb9233d8f80da70d48b0bf282"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a558810ebb9233d8f80da70d48b0bf282">openage::audio::AudioManager::add_sound</a></div><div class="ttdeci">void add_sound(std::shared_ptr&lt; SoundImpl &gt; sound)</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00194">audio_manager.cpp:194</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="audio__manager_8cpp_source.xhtml#l00194">openage::audio::AudioManager::add_sound()</a>, <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>, and <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__spec_8cpp_source.xhtml#l00431">openage::Sound::play()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_a7e4854e55386f2498a332eed36e374d4_cgraph.svg" width="415" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_a7e4854e55386f2498a332eed36e374d4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -349,6 +416,19 @@ Friends</h2></td></tr>
 <p>Resumes the sound at it's current playing offset. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00072">72</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                   {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use) {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;resource-&gt;use();</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use = <span class="keyword">true</span>;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing) {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a558810ebb9233d8f80da70d48b0bf282">add_sound</a>(<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing = <span class="keyword">true</span>;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a558810ebb9233d8f80da70d48b0bf282"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a558810ebb9233d8f80da70d48b0bf282">openage::audio::AudioManager::add_sound</a></div><div class="ttdeci">void add_sound(std::shared_ptr&lt; SoundImpl &gt; sound)</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00194">audio_manager.cpp:194</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="audio__manager_8cpp_source.xhtml#l00194">openage::audio::AudioManager::add_sound()</a>, <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>, and <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_a976abde72ad8a2328ef5d723d0fd7e75_cgraph.svg" width="415" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -375,6 +455,9 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                    {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;looping = looping;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -401,6 +484,9 @@ Friends</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                     {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;volume = volume;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
 
 </div>
 </div>
@@ -421,6 +507,19 @@ Friends</h2></td></tr>
 <p>Resets the sound to it's beginning and stops playing it. </p>
 
 <p class="definition">Definition at line <a class="el" href="sound_8cpp_source.xhtml#l00084">84</a> of file <a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                 {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;offset = 0;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing) {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">audio_manager</a>-&gt;<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a30af6b961d77d0b564e4813560666b2c">remove_sound</a>(<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;playing = <span class="keyword">false</span>;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;resource-&gt;stop_using();</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">sound_impl</a>-&gt;in_use = <span class="keyword">false</span>;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a3951ae62cfa73cf574e9bf32109ebc30"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a3951ae62cfa73cf574e9bf32109ebc30">openage::audio::Sound::sound_impl</a></div><div class="ttdeci">std::shared_ptr&lt; SoundImpl &gt; sound_impl</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00166">sound.h:166</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a30af6b961d77d0b564e4813560666b2c"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a30af6b961d77d0b564e4813560666b2c">openage::audio::AudioManager::remove_sound</a></div><div class="ttdeci">void remove_sound(std::shared_ptr&lt; SoundImpl &gt; sound)</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00203">audio_manager.cpp:203</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a716f739aa7b1bfe5dc759f82662411ba"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a716f739aa7b1bfe5dc759f82662411ba">openage::audio::Sound::audio_manager</a></div><div class="ttdeci">AudioManager * audio_manager</div><div class="ttdef"><b>Definition:</b> <a href="sound_8h_source.xhtml#l00160">sound.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="sound_8h_source.xhtml#l00160">audio_manager</a>, <a class="el" href="audio__manager_8cpp_source.xhtml#l00203">openage::audio::AudioManager::remove_sound()</a>, and <a class="el" href="sound_8h_source.xhtml#l00166">sound_impl</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_sound_af11cd36b7a1dd5475d811e30580298fe_cgraph.svg" width="602" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -473,6 +572,8 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="sound_8h_source.xhtml#l00160">160</a> of file <a class="el" href="sound_8h_source.xhtml">sound.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="sound_8cpp_source.xhtml#l00097">is_playing()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00064">pause()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00051">play()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00072">resume()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00014">Sound()</a>, and <a class="el" href="sound_8cpp_source.xhtml#l00084">stop()</a>.</p>
+
 </div>
 </div>
 <a id="a3951ae62cfa73cf574e9bf32109ebc30"></a>
@@ -498,11 +599,13 @@ Friends</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="sound_8h_source.xhtml#l00166">166</a> of file <a class="el" href="sound_8h_source.xhtml">sound.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="sound_8cpp_source.xhtml#l00021">get_category()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00026">get_id()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00036">get_volume()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00046">is_looping()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00097">is_playing()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00064">pause()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00051">play()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00072">resume()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00041">set_looping()</a>, <a class="el" href="sound_8cpp_source.xhtml#l00031">set_volume()</a>, and <a class="el" href="sound_8cpp_source.xhtml#l00084">stop()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/audio/<a class="el" href="sound_8h_source.xhtml">sound.h</a></li>
-<li>libopenage/audio/<a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="sound_8h_source.xhtml">sound.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="sound_8cpp_source.xhtml">sound.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

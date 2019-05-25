@@ -6,16 +6,16 @@
     <includes local="no">string</includes>
     <includes local="no">iostream</includes>
     <includes local="no">functional</includes>
-    <includedby refid="backtrace_8cpp" local="yes">libopenage/error/backtrace.cpp</includedby>
-    <includedby refid="demo_8cpp" local="yes">libopenage/error/demo.cpp</includedby>
-    <includedby refid="stackanalyzer_8h" local="yes">libopenage/error/stackanalyzer.h</includedby>
-    <includedby refid="pyexception_8h" local="yes">libopenage/pyinterface/pyexception.h</includedby>
+    <includedby refid="backtrace_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp</includedby>
+    <includedby refid="demo_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/demo.cpp</includedby>
+    <includedby refid="stackanalyzer_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h</includedby>
+    <includedby refid="pyexception_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h</includedby>
     <incdepgraph>
       <node id="6221">
         <label>functional</label>
       </node>
       <node id="6217">
-        <label>libopenage/error/backtrace.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h</label>
         <link refid="backtrace_8h"/>
         <childnode refid="6218" relation="include">
         </childnode>
@@ -38,7 +38,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="6225">
-        <label>libopenage/error/stackanalyzer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h</label>
         <link refid="stackanalyzer_8h"/>
         <childnode refid="6226" relation="include">
         </childnode>
@@ -48,11 +48,11 @@
         </childnode>
       </node>
       <node id="6226">
-        <label>libopenage/error/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp</label>
         <link refid="error_2error_8cpp"/>
       </node>
       <node id="6222">
-        <label>libopenage/error/backtrace.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h</label>
         <link refid="backtrace_8h"/>
         <childnode refid="6223" relation="include">
         </childnode>
@@ -64,27 +64,27 @@
         </childnode>
       </node>
       <node id="6223">
-        <label>libopenage/error/backtrace.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp</label>
         <link refid="backtrace_8cpp"/>
       </node>
       <node id="6233">
-        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</label>
         <link refid="pyobject__tests_8cpp"/>
       </node>
       <node id="6230">
-        <label>libopenage/pyinterface/exctranslate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate.cpp</label>
         <link refid="exctranslate_8cpp"/>
       </node>
       <node id="6231">
-        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/exctranslate_tests.cpp</label>
         <link refid="exctranslate__tests_8cpp"/>
       </node>
       <node id="6228">
-        <label>libopenage/error/stackanalyzer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</label>
         <link refid="stackanalyzer_8cpp"/>
       </node>
       <node id="6229">
-        <label>libopenage/pyinterface/pyexception.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.h</label>
         <link refid="pyexception_8h"/>
         <childnode refid="6230" relation="include">
         </childnode>
@@ -96,15 +96,15 @@
         </childnode>
       </node>
       <node id="6224">
-        <label>libopenage/error/demo.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/demo.cpp</label>
         <link refid="demo_8cpp"/>
       </node>
       <node id="6227">
-        <label>libopenage/error/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</label>
         <link refid="error_2handlers_8cpp"/>
       </node>
       <node id="6232">
-        <label>libopenage/pyinterface/pyexception.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyexception.cpp</label>
         <link refid="pyexception_8cpp"/>
       </node>
     </invincdepgraph>
@@ -164,6 +164,6 @@
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/error/backtrace.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h"/>
   </compounddef>
 </doxygen>

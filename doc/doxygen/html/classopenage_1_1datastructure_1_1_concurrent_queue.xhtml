@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::datastructure::ConcurrentQueue&lt; T &gt; Class Template Reference</title>
+<title>openage: openage::datastructure::ConcurrentQueue&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,9 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1datastructure_1_1_conc
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::datastructure::ConcurrentQueue&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::datastructure::ConcurrentQueue&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_concurrent_queue__inherit__graph.svg" width="228" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::datastructure::ConcurrentQueue&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_concurrent_queue__coll__graph.svg" width="174" height="206"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -198,7 +209,10 @@ template&lt;typename T&gt; </div>
 <p>Removes all elements from the queue. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00028">28</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                 {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        std::lock_guard&lt;mutex_t&gt; <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">while</span> (!this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.empty()) {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.pop();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a2beddd3e8f45546f8925c256b5d524dc"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">openage::datastructure::ConcurrentQueue::queue</a></div><div class="ttdeci">std::queue&lt; T &gt; queue</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00079">concurrent_queue.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a245e3f0f06675868d5854f135cc6ed48"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">openage::datastructure::ConcurrentQueue::lock</a></div><div class="ttdeci">std::unique_lock&lt; mutex_t &gt; lock()</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00073">concurrent_queue.h:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa78ec939e767d66a811046c3165e63c5"></a>
@@ -228,7 +242,10 @@ template&lt;typename T&gt; </div>
 <p>Returns whether the queue is empty. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00036">36</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                 {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::lock_guard&lt;mutex_t&gt; <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.empty();</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a2beddd3e8f45546f8925c256b5d524dc"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">openage::datastructure::ConcurrentQueue::queue</a></div><div class="ttdeci">std::queue&lt; T &gt; queue</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00079">concurrent_queue.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a245e3f0f06675868d5854f135cc6ed48"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">openage::datastructure::ConcurrentQueue::lock</a></div><div class="ttdeci">std::unique_lock&lt; mutex_t &gt; lock()</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00073">concurrent_queue.h:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac425a78bff1d289707da09d6a14922dc"></a>
@@ -258,7 +275,11 @@ template&lt;typename T&gt; </div>
 <p>Returns the front item of the queue without removing it. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00042">42</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;               {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::unique_lock&lt;mutex_t&gt; <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">while</span> (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.empty()) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">elements_available</a>.wait(<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.front();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a2beddd3e8f45546f8925c256b5d524dc"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">openage::datastructure::ConcurrentQueue::queue</a></div><div class="ttdeci">std::queue&lt; T &gt; queue</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00079">concurrent_queue.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_ad671d49bbf03d0412a5f0ec4e1b539d5"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">openage::datastructure::ConcurrentQueue::elements_available</a></div><div class="ttdeci">std::condition_variable_any elements_available</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00088">concurrent_queue.h:88</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a245e3f0f06675868d5854f135cc6ed48"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">openage::datastructure::ConcurrentQueue::lock</a></div><div class="ttdeci">std::unique_lock&lt; mutex_t &gt; lock()</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00073">concurrent_queue.h:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a245e3f0f06675868d5854f135cc6ed48"></a>
@@ -288,6 +309,17 @@ template&lt;typename T&gt; </div>
 <p>Return a lock to the queue so multiple of the above operations can be done sequentially </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00073">73</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                   {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> std::unique_lock&lt;mutex_t&gt;{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="concurrent__queue_8h_source.xhtml#l00028">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::clear()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00036">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::empty()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00042">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::front()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00051">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::pop()</a>, and <a class="el" href="concurrent__queue_8h_source.xhtml#l00062">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::push()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1datastructure_1_1_concurrent_queue_a245e3f0f06675868d5854f135cc6ed48_icgraph.svg" width="424" height="460"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -318,7 +350,11 @@ template&lt;typename T&gt; </div>
 <p>Removes the front item of the queue and returns it. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00051">51</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;             {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::unique_lock&lt;mutex_t&gt; <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">while</span> (this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.empty()) {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">elements_available</a>.wait(<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">auto</span> &amp;item = this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.front();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.pop();</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> item;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a2beddd3e8f45546f8925c256b5d524dc"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">openage::datastructure::ConcurrentQueue::queue</a></div><div class="ttdeci">std::queue&lt; T &gt; queue</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00079">concurrent_queue.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_ad671d49bbf03d0412a5f0ec4e1b539d5"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">openage::datastructure::ConcurrentQueue::elements_available</a></div><div class="ttdeci">std::condition_variable_any elements_available</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00088">concurrent_queue.h:88</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a245e3f0f06675868d5854f135cc6ed48"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">openage::datastructure::ConcurrentQueue::lock</a></div><div class="ttdeci">std::unique_lock&lt; mutex_t &gt; lock()</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00073">concurrent_queue.h:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1c71a5b5a99e60590130d2afe866137c"></a>
@@ -349,7 +385,11 @@ template&lt;typename T&gt; </div>
 <p>Appends the given item to the queue. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00062">62</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                             {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::unique_lock&lt;mutex_t&gt; <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>{this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">mutex</a>};</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">queue</a>.push(item);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">lock</a>.unlock();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">elements_available</a>.notify_one();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div><div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a78c18ef183f2c0a1b4fdbd07f1523f20"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a78c18ef183f2c0a1b4fdbd07f1523f20">openage::datastructure::ConcurrentQueue::mutex</a></div><div class="ttdeci">mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00082">concurrent_queue.h:82</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a2beddd3e8f45546f8925c256b5d524dc"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a2beddd3e8f45546f8925c256b5d524dc">openage::datastructure::ConcurrentQueue::queue</a></div><div class="ttdeci">std::queue&lt; T &gt; queue</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00079">concurrent_queue.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_ad671d49bbf03d0412a5f0ec4e1b539d5"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#ad671d49bbf03d0412a5f0ec4e1b539d5">openage::datastructure::ConcurrentQueue::elements_available</a></div><div class="ttdeci">std::condition_variable_any elements_available</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00088">concurrent_queue.h:88</a></div></div>
+<div class="ttc" id="classopenage_1_1datastructure_1_1_concurrent_queue_xhtml_a245e3f0f06675868d5854f135cc6ed48"><div class="ttname"><a href="classopenage_1_1datastructure_1_1_concurrent_queue.xhtml#a245e3f0f06675868d5854f135cc6ed48">openage::datastructure::ConcurrentQueue::lock</a></div><div class="ttdeci">std::unique_lock&lt; mutex_t &gt; lock()</div><div class="ttdef"><b>Definition:</b> <a href="concurrent__queue_8h_source.xhtml#l00073">concurrent_queue.h:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -378,6 +418,8 @@ template&lt;typename T&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00088">88</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="concurrent__queue_8h_source.xhtml#l00042">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::front()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00051">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::pop()</a>, and <a class="el" href="concurrent__queue_8h_source.xhtml#l00062">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::push()</a>.</p>
+
 </div>
 </div>
 <a id="a78c18ef183f2c0a1b4fdbd07f1523f20"></a>
@@ -404,6 +446,8 @@ template&lt;typename T&gt; </div>
 <p>The mutex to synchronize the queue. </p>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">82</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="concurrent__queue_8h_source.xhtml#l00028">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::clear()</a>, <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue::close()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00036">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::empty()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00042">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::front()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00073">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::lock()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00051">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::pop()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00062">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::push()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue::raise_if_closed()</a>.</p>
 
 </div>
 </div>
@@ -432,10 +476,12 @@ template&lt;typename T&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="concurrent__queue_8h_source.xhtml#l00079">79</a> of file <a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="fifo_8py_source.xhtml#l00067">openage.util.filelike.fifo.FIFO::__len__()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00028">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::clear()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00036">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::empty()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00042">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::front()</a>, <a class="el" href="fifo_8py_source.xhtml#l00112">openage.util.filelike.fifo.FIFO::get_size()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00051">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::pop()</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00062">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::push()</a>, <a class="el" href="fifo_8py_source.xhtml#l00099">openage.util.filelike.fifo.FIFO::read()</a>, <a class="el" href="fifo_8py_source.xhtml#l00050">openage.util.filelike.fifo.FIFO::tellw()</a>, and <a class="el" href="fifo_8py_source.xhtml#l00082">openage.util.filelike.fifo.FIFO::write()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/datastructure/<a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/<a class="el" href="concurrent__queue_8h_source.xhtml">concurrent_queue.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

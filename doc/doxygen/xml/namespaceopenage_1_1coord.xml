@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="22" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a89337255daa472cb4631091a38bac268" prot="public" static="no">
         <type>int64_t</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="30" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" prot="public" static="no">
         <type>int32_t</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="40" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a7ef0c2cf43638acb541a4c9d37bf9e24" prot="public" static="no">
         <type>int32_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="52" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" prot="public" static="no">
         <type>int</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="60" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="60" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="20" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1coord_1a056453272e2aabdf7fcf4ecc3b5fe7f7" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1coord_1a89337255daa472cb4631091a38bac268" kindref="member">tile_t</ref></type>
@@ -120,13 +120,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/declarations.h" line="32" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/declarations.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="68" endline="73">openage::coord::tile::get_pos_on_chunk</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a47c3fa2d9edf30712ddbc3b8ae217eb0" compoundref="tile_8cpp" startline="60" endline="65">openage::coord::tile::to_chunk</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/coord/chunk.cpp" line="6" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/chunk.cpp" line="6" column="1"/>
   </compounddef>
 </doxygen>

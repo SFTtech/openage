@@ -64,7 +64,7 @@
         <label>stdexcept</label>
       </node>
       <node id="16579">
-        <label>libopenage/job/worker.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp</label>
         <link refid="worker_8cpp"/>
         <childnode refid="16580" relation="include">
         </childnode>
@@ -481,6 +481,6 @@
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::job</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/job/worker.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/worker.cpp"/>
   </compounddef>
 </doxygen>

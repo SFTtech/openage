@@ -7,8 +7,8 @@
     <includes local="no">unordered_map</includes>
     <includes local="no">vector</includes>
     <includes local="no">string</includes>
-    <includedby refid="engine_8h" local="yes">libopenage/engine.h</includedby>
-    <includedby refid="profiler_8cpp" local="yes">libopenage/util/profiler.cpp</includedby>
+    <includedby refid="engine_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h</includedby>
+    <includedby refid="profiler_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.cpp</includedby>
     <incdepgraph>
       <node id="31476">
         <label>string</label>
@@ -26,7 +26,7 @@
         <label>chrono</label>
       </node>
       <node id="31471">
-        <label>libopenage/util/profiler.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h</label>
         <link refid="profiler_8h"/>
         <childnode refid="31472" relation="include">
         </childnode>
@@ -42,63 +42,63 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="31480">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="31493">
-        <label>libopenage/terrain/terrain.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp</label>
         <link refid="terrain_8cpp"/>
       </node>
       <node id="31499">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="31497">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="31485">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="31487">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="31492">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="31491">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="31479">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="31481">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="31496">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="31498">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="31488">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="31483">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="31478">
-        <label>libopenage/engine.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h</label>
         <link refid="engine_8h"/>
         <childnode refid="31479" relation="include">
         </childnode>
@@ -146,31 +146,31 @@
         </childnode>
       </node>
       <node id="31495">
-        <label>libopenage/terrain/terrain_object.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp</label>
         <link refid="terrain__object_8cpp"/>
       </node>
       <node id="31500">
-        <label>libopenage/util/profiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.cpp</label>
         <link refid="profiler_8cpp"/>
       </node>
       <node id="31494">
-        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.cpp</label>
         <link refid="terrain__chunk_8cpp"/>
       </node>
       <node id="31489">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="31486">
-        <label>libopenage/gamestate/game_main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.cpp</label>
         <link refid="game__main_8cpp"/>
       </node>
       <node id="31482">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="31477">
-        <label>libopenage/util/profiler.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h</label>
         <link refid="profiler_8h"/>
         <childnode refid="31478" relation="include">
         </childnode>
@@ -178,11 +178,11 @@
         </childnode>
       </node>
       <node id="31490">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="31484">
-        <label>libopenage/game_control.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp</label>
         <link refid="game__control_8cpp"/>
       </node>
     </invincdepgraph>
@@ -204,7 +204,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="11" column="1" bodyfile="libopenage/util/profiler.h" bodystart="11" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a3f1ff9c750b0d66d99528e043effa51d" compoundref="profiler_8cpp" startline="187" endline="192">openage::util::Profiler::append_to_history</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -218,7 +220,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="12" column="1" bodyfile="libopenage/util/profiler.h" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" compoundref="profiler_8cpp" startline="156" endline="162">openage::util::Profiler::draw_canvas</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1aad748908ce3390c721a67a4982ce4582" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -232,7 +236,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="13" column="1" bodyfile="libopenage/util/profiler.h" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" compoundref="profiler_8cpp" startline="156" endline="162">openage::util::Profiler::draw_canvas</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -246,7 +252,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="14" column="1" bodyfile="libopenage/util/profiler.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" compoundref="profiler_8cpp" startline="156" endline="162">openage::util::Profiler::draw_canvas</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" compoundref="profiler_8cpp" startline="164" endline="178">openage::util::Profiler::draw_legend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1a71195ff55854fa48e547fb54881bd502" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -260,7 +269,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="15" column="1" bodyfile="libopenage/util/profiler.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" compoundref="profiler_8cpp" startline="156" endline="162">openage::util::Profiler::draw_canvas</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" compoundref="profiler_8cpp" startline="164" endline="178">openage::util::Profiler::draw_legend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1a7f1b8c6294cc28eecd7ceb67589bc96d" prot="public" static="no" mutable="no">
         <type>constexpr float</type>
@@ -274,7 +286,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="16" column="1" bodyfile="libopenage/util/profiler.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" compoundref="profiler_8cpp" startline="156" endline="162">openage::util::Profiler::draw_canvas</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -288,7 +301,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="17" column="1" bodyfile="libopenage/util/profiler.h" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" compoundref="profiler_8cpp" startline="164" endline="178">openage::util::Profiler::draw_legend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -302,7 +316,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="18" column="1" bodyfile="libopenage/util/profiler.h" bodystart="18" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" compoundref="profiler_8cpp" startline="164" endline="178">openage::util::Profiler::draw_legend</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -416,6 +431,6 @@
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/profiler.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h"/>
   </compounddef>
 </doxygen>

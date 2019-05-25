@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::filelike::stream::StreamSeekBuffer</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a5e1e2e4338260aa6a1e76ec019690c19" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamSeekBuffer::wrapped</definition>
+        <argsstring></argsstring>
+        <name>wrapped</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a00bc3bad63eccff9e3094d87d8499d3e" compoundref="stream_8py" startline="90" endline="92">openage.util.filelike.stream.StreamSeekBuffer.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ac3ea3ea3ade1644ef5d17d0231375d4b" compoundref="stream_8py" startline="51" endline="54">openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a9b964d449aebdbda71e7b4e490ed5e89" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamSeekBuffer::keepbuffered</definition>
+        <argsstring></argsstring>
+        <name>keepbuffered</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a0b65d2d40a8c0ef48a461b183893aa13" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamSeekBuffer::minread</definition>
+        <argsstring></argsstring>
+        <name>minread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ab43f3b5ae28b8c7cda9e966ff35a40f7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamSeekBuffer::buf</definition>
+        <argsstring></argsstring>
+        <name>buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ac3ea3ea3ade1644ef5d17d0231375d4b" compoundref="stream_8py" startline="51" endline="54">openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a2b67f0ce500799215ac4bbd03bf2d14b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.stream.StreamSeekBuffer::closed</definition>
+        <argsstring></argsstring>
+        <name>closed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" compoundref="threading_8py" startline="75" endline="79">openage.util.threading.ClosableQueue.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a61231d559965511302f7bfd9f1fd2215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamSeekBuffer.__init__</definition>
+        <argsstring>(self, wrappee, keepbuffered=INF, minread=1048576)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>wrappee</type>
+          <defname>wrappee</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a9b964d449aebdbda71e7b4e490ed5e89" kindref="member">keepbuffered</ref></type>
+          <defname>keepbuffered</defname>
+          <defval>INF</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a0b65d2d40a8c0ef48a461b183893aa13" kindref="member">minread</ref></type>
+          <defname>minread</defname>
+          <defval>1048576</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="38" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ac3ea3ea3ade1644ef5d17d0231375d4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed</definition>
+        <argsstring>(self)</argsstring>
+        <name>resetwrappeed</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>resets the wrappeed object, and clears self.buf. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="51" bodyend="54"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ab43f3b5ae28b8c7cda9e966ff35a40f7" compoundref="stream_8py" startline="46">openage.util.filelike.stream.StreamSeekBuffer.buf</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1afa09ca6d8f7b98a3d04692b86509205b" compoundref="lzxdstream_8py" startline="52">openage.cabextract.lzxdstream.LZXDStream.buf</references>
+        <references refid="classopenage_1_1util_1_1_external_o_string_stream_1af185ce8ba6b25166cceaca7a2e55bacc" compoundref="externalsstream_8h" startline="59">openage::util::ExternalOStringStream::buf</references>
+        <references refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" compoundref="console_8h" startline="71">openage::console::Console::buf</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a5e1e2e4338260aa6a1e76ec019690c19" compoundref="stream_8py" startline="41">openage.util.filelike.stream.StreamSeekBuffer.wrapped</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamSeekBuffer.read</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902">read</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Read at most size bytes (less if EOF has been reached). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for write-only objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="55" bodyend="89"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ab43f3b5ae28b8c7cda9e966ff35a40f7" compoundref="stream_8py" startline="46">openage.util.filelike.stream.StreamSeekBuffer.buf</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1afa09ca6d8f7b98a3d04692b86509205b" compoundref="lzxdstream_8py" startline="52">openage.cabextract.lzxdstream.LZXDStream.buf</references>
+        <references refid="classopenage_1_1util_1_1_external_o_string_stream_1af185ce8ba6b25166cceaca7a2e55bacc" compoundref="externalsstream_8h" startline="59">openage::util::ExternalOStringStream::buf</references>
+        <references refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" compoundref="console_8h" startline="71">openage::console::Console::buf</references>
+        <references refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" compoundref="math_8py" startline="29" endline="31">openage.util.math.clamp</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a9b964d449aebdbda71e7b4e490ed5e89" compoundref="stream_8py" startline="42">openage.util.filelike.stream.StreamSeekBuffer.keepbuffered</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a0b65d2d40a8c0ef48a461b183893aa13" compoundref="stream_8py" startline="43">openage.util.filelike.stream.StreamSeekBuffer.minread</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a5e1e2e4338260aa6a1e76ec019690c19" compoundref="stream_8py" startline="41">openage.util.filelike.stream.StreamSeekBuffer.wrapped</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a00bc3bad63eccff9e3094d87d8499d3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamSeekBuffer.get_size</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7">get_size</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="90" bodyend="92"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a5e1e2e4338260aa6a1e76ec019690c19" compoundref="stream_8py" startline="41">openage.util.filelike.stream.StreamSeekBuffer.wrapped</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a6e7dae2443797e192e3c80d3c04cfc4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.stream.StreamSeekBuffer.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75">close</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="93" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5787">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5788" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5786">
+        <label>openage.util.filelike.stream.StreamSeekBuffer</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer"/>
+        <childnode refid="5787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5790">
+        <label>ABC</label>
+      </node>
+      <node id="5788">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5789" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5789">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5790" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5792">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5793" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5791">
+        <label>openage.util.filelike.stream.StreamSeekBuffer</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer"/>
+        <childnode refid="5792" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5795">
+        <label>ABC</label>
+      </node>
+      <node id="5793">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5794" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5794">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5795" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/stream.py" bodystart="37" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a61231d559965511302f7bfd9f1fd2215" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a1d17d3141151809fc8ae179baf150ac7" prot="public" virt="non-virtual" ambiguityscope="openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject."><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ab43f3b5ae28b8c7cda9e966ff35a40f7" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>buf</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a6e7dae2443797e192e3c80d3c04cfc4d" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a2b67f0ce500799215ac4bbd03bf2d14b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a00bc3bad63eccff9e3094d87d8499d3e" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a9b964d449aebdbda71e7b4e490ed5e89" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>keepbuffered</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a0b65d2d40a8c0ef48a461b183893aa13" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>minread</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>pos</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1ac3ea3ea3ade1644ef5d17d0231375d4b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>resetwrappeed</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a4bf4ea1cc9983a0de92608d672d8d93b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a5e1e2e4338260aa6a1e76ec019690c19" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>wrapped</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" virt="non-virtual"><scope>openage::util::filelike::stream::StreamSeekBuffer</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

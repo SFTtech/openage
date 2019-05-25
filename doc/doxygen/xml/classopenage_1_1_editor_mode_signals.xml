@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="271" column="1" bodyfile="libopenage/game_control.h" bodystart="271" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="271" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="271" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_editor_mode_signals_1a34eb344028991d6c4f40a0c968776cf5" compoundref="game__control_8cpp" startline="529" endline="532">EditorModeSignals</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_signals_1a99bfe9ca55710da4414986c20c41a05e" compoundref="game__control_8cpp" startline="534" endline="536">on_current_player_name_changed</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="259" column="1" bodyfile="libopenage/game_control.cpp" bodystart="529" bodyend="532"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="259" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="529" bodyend="532"/>
+        <references refid="classopenage_1_1_editor_mode_signals_1a4ec65d52b16303dc20c6caa2db2734ed" compoundref="game__control_8h" startline="271">editor_mode</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-slot">
@@ -50,7 +53,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="262" column="1" bodyfile="libopenage/game_control.cpp" bodystart="534" bodyend="536"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="262" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.cpp" bodystart="534" bodyend="536"/>
+        <references refid="classopenage_1_1_editor_mode_1a360404d7810def66e59134ee6ea4d0d2" compoundref="game__control_8cpp" startline="651" endline="657">openage::EditorMode::announce_categories</references>
+        <references refid="classopenage_1_1_editor_mode_signals_1a4ec65d52b16303dc20c6caa2db2734ed" compoundref="game__control_8h" startline="271">editor_mode</references>
+        <referencedby refid="classopenage_1_1_editor_mode_1a4c17017408bec2740f3653123bd17660" compoundref="game__control_8cpp" startline="680" endline="707">openage::EditorMode::set_game_control</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -65,7 +71,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="265" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="265" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_editor_mode_link_1ac1c41942ee1dda4e2774eddebc6e1104" compoundref="game__control__link_8cpp" startline="223" endline="229">openage::gui::EditorModeLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1_editor_mode_signals_1a30b7b704e3b67509ebe3b10cea2349ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -82,7 +90,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="266" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="266" column="1"/>
+        <referencedby refid="classopenage_1_1_editor_mode_1a360404d7810def66e59134ee6ea4d0d2" compoundref="game__control_8cpp" startline="651" endline="657">openage::EditorMode::announce_categories</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_editor_mode_link_1ac1c41942ee1dda4e2774eddebc6e1104" compoundref="game__control__link_8cpp" startline="223" endline="229">openage::gui::EditorModeLink::on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1_editor_mode_signals_1ac3f8204249d826965a77675f177fc7b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -95,7 +105,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="267" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="267" column="1"/>
+        <referencedby refid="classopenage_1_1_editor_mode_1a360404d7810def66e59134ee6ea4d0d2" compoundref="game__control_8cpp" startline="651" endline="657">openage::EditorMode::announce_categories</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_editor_mode_link_1ac1c41942ee1dda4e2774eddebc6e1104" compoundref="game__control__link_8cpp" startline="223" endline="229">openage::gui::EditorModeLink::on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1_editor_mode_signals_1a110b7291745184bbd3b4363d92167985" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -116,7 +128,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="268" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="268" column="1"/>
+        <referencedby refid="classopenage_1_1_editor_mode_1a8bc3906c89a7ecceff2c24512c5be24b" compoundref="game__control_8cpp" startline="659" endline="673">openage::EditorMode::announce_category_content</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_editor_mode_link_1ac1c41942ee1dda4e2774eddebc6e1104" compoundref="game__control__link_8cpp" startline="223" endline="229">openage::gui::EditorModeLink::on_core_adopted</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -124,412 +138,436 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1207">
+      <node id="2042">
         <label>QObject</label>
       </node>
-      <node id="1206">
+      <node id="2041">
         <label>openage::EditorModeSignals</label>
         <link refid="classopenage_1_1_editor_mode_signals"/>
-        <childnode refid="1207" relation="public-inheritance">
+        <childnode refid="2042" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1246">
+      <node id="2084">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="1253">
+      <node id="2091">
         <label>openage::GameMain</label>
         <link refid="classopenage_1_1_game_main"/>
-        <childnode refid="1227" relation="public-inheritance">
+        <childnode refid="2062" relation="public-inheritance">
         </childnode>
-        <childnode refid="1254" relation="usage">
+        <childnode refid="2092" relation="usage">
           <edgelabel>+market</edgelabel>
         </childnode>
-        <childnode refid="1256" relation="usage">
+        <childnode refid="2094" relation="usage">
           <edgelabel>+placed_units</edgelabel>
         </childnode>
       </node>
-      <node id="1221">
+      <node id="2056">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="1222">
+      <node id="2057">
         <label>openage::GameControl</label>
         <link refid="classopenage_1_1_game_control"/>
-        <childnode refid="1223" relation="public-inheritance">
+        <childnode refid="2058" relation="public-inheritance">
         </childnode>
-        <childnode refid="1211" relation="usage">
+        <childnode refid="2046" relation="usage">
           <edgelabel>-active_mode</edgelabel>
         </childnode>
-        <childnode refid="1224" relation="usage">
+        <childnode refid="2059" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="1225" relation="usage">
+        <childnode refid="2060" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="1250" relation="usage">
+        <childnode refid="2088" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
-        <childnode refid="1251" relation="usage">
+        <childnode refid="2089" relation="usage">
           <edgelabel>-game</edgelabel>
         </childnode>
       </node>
-      <node id="1232">
+      <node id="2070">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="1209" relation="public-inheritance">
+        <childnode refid="2044" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1247">
+      <node id="2085">
         <label>openage::coord::camgame_delta</label>
         <link refid="structopenage_1_1coord_1_1camgame__delta"/>
-        <childnode refid="1248" relation="public-inheritance">
+        <childnode refid="2086" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1230">
+      <node id="2065">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="1210">
+      <node id="2045">
         <label>openage::EditorMode</label>
         <link refid="classopenage_1_1_editor_mode"/>
-        <childnode refid="1211" relation="public-inheritance">
+        <childnode refid="2046" relation="public-inheritance">
         </childnode>
-        <childnode refid="1208" relation="usage">
+        <childnode refid="2043" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
       </node>
-      <node id="1233">
+      <node id="2071">
         <label>openage::ScreenshotManager</label>
         <link refid="classopenage_1_1_screenshot_manager"/>
-        <childnode refid="1234" relation="usage">
+        <childnode refid="2072" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="1235" relation="usage">
+        <childnode refid="2073" relation="usage">
           <edgelabel>+window_size</edgelabel>
         </childnode>
       </node>
-      <node id="1250">
+      <node id="2067">
+        <label>T</label>
+      </node>
+      <node id="2088">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="1236">
+      <node id="2074">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="1229">
+      <node id="2064">
         <label>openage::util::Variable&lt; bool &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="1230" relation="public-inheritance">
+        <childnode refid="2065" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2066" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="1209">
+      <node id="2044">
         <label>QObject</label>
       </node>
-      <node id="1220">
+      <node id="2055">
         <label>openage::cvar::CVarManager</label>
         <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
-        <childnode refid="1221" relation="usage">
+        <childnode refid="2056" relation="usage">
           <edgelabel>-path</edgelabel>
         </childnode>
       </node>
-      <node id="1245">
+      <node id="2083">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="2084" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1239">
+      <node id="2077">
         <label>openage::util::ExternalProfiler</label>
         <link refid="classopenage_1_1util_1_1_external_profiler"/>
       </node>
-      <node id="1251">
+      <node id="2089">
         <label>openage::GameMainHandle</label>
         <link refid="classopenage_1_1_game_main_handle"/>
-        <childnode refid="1252" relation="usage">
+        <childnode refid="2090" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="1253" relation="usage">
+        <childnode refid="2091" relation="usage">
           <edgelabel>-game</edgelabel>
         </childnode>
-        <childnode refid="1225" relation="usage">
+        <childnode refid="2060" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="1250" relation="usage">
+        <childnode refid="2088" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
       </node>
-      <node id="1227">
+      <node id="2062">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="1227" relation="usage">
+        <childnode refid="2062" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="1243">
+      <node id="2081">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="1244" relation="public-inheritance">
+        <childnode refid="2082" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1219">
+      <node id="2054">
         <label>openage::input::ActionManager</label>
         <link refid="classopenage_1_1input_1_1_action_manager"/>
-        <childnode refid="1220" relation="usage">
+        <childnode refid="2055" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="1213" relation="usage">
+        <childnode refid="2048" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1241">
+      <node id="2079">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="1235">
+      <node id="2073">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="1236" relation="public-inheritance">
+        <childnode refid="2074" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1224">
+      <node id="2059">
         <label>openage::GameControlSignals</label>
         <link refid="classopenage_1_1_game_control_signals"/>
-        <childnode refid="1209" relation="public-inheritance">
+        <childnode refid="2044" relation="public-inheritance">
         </childnode>
-        <childnode refid="1222" relation="usage">
+        <childnode refid="2057" relation="usage">
           <edgelabel>-game_control</edgelabel>
         </childnode>
       </node>
-      <node id="1223">
+      <node id="2058">
         <label>openage::HudHandler</label>
         <link refid="classopenage_1_1_hud_handler"/>
       </node>
-      <node id="1218">
+      <node id="2053">
         <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="1215">
-        <label>openage::coord::input</label>
-        <link refid="structopenage_1_1coord_1_1input"/>
-        <childnode refid="1216" relation="public-inheritance">
+      <node id="2068">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="2066" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1248">
+      <node id="2050">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="2051" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2086">
         <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
       </node>
-      <node id="1234">
+      <node id="2072">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
-      <node id="1208">
+      <node id="2043">
         <label>openage::EditorModeSignals</label>
         <link refid="classopenage_1_1_editor_mode_signals"/>
-        <childnode refid="1209" relation="public-inheritance">
+        <childnode refid="2044" relation="public-inheritance">
         </childnode>
-        <childnode refid="1210" relation="usage">
+        <childnode refid="2045" relation="usage">
           <edgelabel>-editor_mode</edgelabel>
         </childnode>
       </node>
-      <node id="1216">
+      <node id="2051">
         <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="1252">
+      <node id="2090">
         <label>openage::GameMainSignals</label>
         <link refid="classopenage_1_1_game_main_signals"/>
-        <childnode refid="1209" relation="public-inheritance">
+        <childnode refid="2044" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1254">
+      <node id="2092">
         <label>openage::Market</label>
         <link refid="classopenage_1_1_market"/>
-        <childnode refid="1255" relation="usage">
+        <childnode refid="2093" relation="usage">
           <edgelabel>-base_prices</edgelabel>
         </childnode>
       </node>
-      <node id="1237">
+      <node id="2075">
         <label>openage::util::FrameCounter</label>
         <link refid="classopenage_1_1util_1_1_frame_counter"/>
-        <childnode refid="1238" relation="usage">
+        <childnode refid="2076" relation="usage">
           <edgelabel>-frame_timer</edgelabel>
         </childnode>
       </node>
-      <node id="1212">
+      <node id="2047">
         <label>openage::input::InputContext</label>
         <link refid="classopenage_1_1input_1_1_input_context"/>
-        <childnode refid="1213" relation="usage">
+        <childnode refid="2048" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1255">
+      <node id="2093">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="1240">
+      <node id="2078">
         <label>openage::gui::EngineQMLInfo</label>
         <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
-        <childnode refid="1241" relation="public-inheritance">
+        <childnode refid="2079" relation="public-inheritance">
         </childnode>
-        <childnode refid="1221" relation="usage">
+        <childnode refid="2056" relation="usage">
           <edgelabel>+asset_dir</edgelabel>
         </childnode>
-        <childnode refid="1225" relation="usage">
+        <childnode refid="2060" relation="usage">
           <edgelabel>+engine</edgelabel>
         </childnode>
       </node>
-      <node id="1249">
+      <node id="2087">
         <label>openage::audio::AudioManager</label>
         <link refid="classopenage_1_1audio_1_1_audio_manager"/>
-        <childnode refid="1234" relation="usage">
+        <childnode refid="2072" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1231">
+      <node id="2069">
         <label>openage::util::Profiler</label>
         <link refid="classopenage_1_1util_1_1_profiler"/>
-        <childnode refid="1225" relation="usage">
+        <childnode refid="2060" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
       </node>
-      <node id="1225">
+      <node id="2060">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="1226" relation="public-inheritance">
+        <childnode refid="2061" relation="public-inheritance">
         </childnode>
-        <childnode refid="1227" relation="public-inheritance">
+        <childnode refid="2062" relation="public-inheritance">
         </childnode>
-        <childnode refid="1228" relation="usage">
+        <childnode refid="2063" relation="usage">
           <edgelabel>+drawing_huds</edgelabel>
           <edgelabel>+drawing_debug_overlay</edgelabel>
         </childnode>
-        <childnode refid="1231" relation="usage">
+        <childnode refid="2069" relation="usage">
           <edgelabel>-profiler</edgelabel>
         </childnode>
-        <childnode refid="1221" relation="usage">
+        <childnode refid="2056" relation="usage">
           <edgelabel>-root_dir</edgelabel>
         </childnode>
-        <childnode refid="1232" relation="usage">
+        <childnode refid="2070" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="1220" relation="usage">
+        <childnode refid="2055" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="1233" relation="usage">
+        <childnode refid="2071" relation="usage">
           <edgelabel>-screenshot_manager</edgelabel>
         </childnode>
-        <childnode refid="1237" relation="usage">
+        <childnode refid="2075" relation="usage">
           <edgelabel>-fps_counter</edgelabel>
         </childnode>
-        <childnode refid="1239" relation="usage">
+        <childnode refid="2077" relation="usage">
           <edgelabel>+external_profiler</edgelabel>
         </childnode>
-        <childnode refid="1213" relation="usage">
+        <childnode refid="2048" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
-        <childnode refid="1240" relation="usage">
+        <childnode refid="2078" relation="usage">
           <edgelabel>-qml_info</edgelabel>
         </childnode>
-        <childnode refid="1242" relation="usage">
+        <childnode refid="2080" relation="usage">
           <edgelabel>+coord</edgelabel>
         </childnode>
-        <childnode refid="1234" relation="usage">
+        <childnode refid="2072" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="1219" relation="usage">
+        <childnode refid="2054" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
-        <childnode refid="1249" relation="usage">
+        <childnode refid="2087" relation="usage">
           <edgelabel>-audio_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1244">
+      <node id="2082">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="1257">
+      <node id="2095">
         <label>openage::OutputModeSignals</label>
         <link refid="classopenage_1_1_output_mode_signals"/>
-        <childnode refid="1209" relation="public-inheritance">
+        <childnode refid="2044" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1226">
+      <node id="2061">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
-      <node id="1228">
+      <node id="2063">
         <label>openage::options::Var&lt; bool &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="1229" relation="public-inheritance">
+        <childnode refid="2064" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2068" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="1217">
+      <node id="2052">
         <label>openage::coord::input_delta</label>
         <link refid="structopenage_1_1coord_1_1input__delta"/>
-        <childnode refid="1218" relation="public-inheritance">
+        <childnode refid="2053" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1238">
+      <node id="2076">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
-      <node id="1214">
+      <node id="2049">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
-      <node id="1256">
+      <node id="2094">
         <label>openage::UnitContainer</label>
         <link refid="classopenage_1_1_unit_container"/>
       </node>
-      <node id="1211">
+      <node id="2046">
         <label>openage::OutputMode</label>
         <link refid="classopenage_1_1_output_mode"/>
-        <childnode refid="1212" relation="public-inheritance">
+        <childnode refid="2047" relation="public-inheritance">
         </childnode>
-        <childnode refid="1222" relation="usage">
+        <childnode refid="2057" relation="usage">
           <edgelabel>#game_control</edgelabel>
         </childnode>
-        <childnode refid="1250" relation="usage">
+        <childnode refid="2088" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
-        <childnode refid="1257" relation="usage">
+        <childnode refid="2095" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
       </node>
-      <node id="1213">
+      <node id="2066">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="2065" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2067" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2048">
         <label>openage::input::InputManager</label>
         <link refid="classopenage_1_1input_1_1_input_manager"/>
-        <childnode refid="1214" relation="public-inheritance">
+        <childnode refid="2049" relation="public-inheritance">
         </childnode>
-        <childnode refid="1215" relation="usage">
+        <childnode refid="2050" relation="usage">
           <edgelabel>-mouse_position</edgelabel>
         </childnode>
-        <childnode refid="1212" relation="usage">
+        <childnode refid="2047" relation="usage">
           <edgelabel>-global_context</edgelabel>
         </childnode>
-        <childnode refid="1217" relation="usage">
+        <childnode refid="2052" relation="usage">
           <edgelabel>-mouse_motion</edgelabel>
         </childnode>
-        <childnode refid="1219" relation="usage">
+        <childnode refid="2054" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1242">
+      <node id="2080">
         <label>openage::coord::CoordManager</label>
         <link refid="classopenage_1_1coord_1_1_coord_manager"/>
-        <childnode refid="1243" relation="usage">
+        <childnode refid="2081" relation="usage">
           <edgelabel>+camgame_viewport</edgelabel>
           <edgelabel>+camhud_viewport</edgelabel>
         </childnode>
-        <childnode refid="1245" relation="usage">
+        <childnode refid="2083" relation="usage">
           <edgelabel>+camgame_phys</edgelabel>
         </childnode>
-        <childnode refid="1247" relation="usage">
+        <childnode refid="2085" relation="usage">
           <edgelabel>+tile_size</edgelabel>
         </childnode>
-        <childnode refid="1235" relation="usage">
+        <childnode refid="2073" relation="usage">
           <edgelabel>+viewport_size</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/game_control.h" line="255" column="1" bodyfile="libopenage/game_control.h" bodystart="255" bodyend="272"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="255" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="255" bodyend="272"/>
     <listofallmembers>
       <member refid="classopenage_1_1_editor_mode_signals_1a30b7b704e3b67509ebe3b10cea2349ce" prot="public" virt="non-virtual"><scope>openage::EditorModeSignals</scope><name>categories_changed</name></member>
       <member refid="classopenage_1_1_editor_mode_signals_1ac3f8204249d826965a77675f177fc7b3" prot="public" virt="non-virtual"><scope>openage::EditorModeSignals</scope><name>categories_content_changed</name></member>

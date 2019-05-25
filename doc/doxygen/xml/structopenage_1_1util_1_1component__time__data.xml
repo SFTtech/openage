@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="32" column="1" bodyfile="libopenage/util/profiler.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" compoundref="profiler_8cpp" startline="23" endline="37">openage::util::Profiler::register_component</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref></type>
@@ -28,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="33" column="1" bodyfile="libopenage/util/profiler.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" compoundref="profiler_8cpp" startline="23" endline="37">openage::util::Profiler::register_component</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" prot="public" static="no" mutable="no">
         <type>std::chrono::high_resolution_clock::time_point</type>
@@ -41,7 +43,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="34" column="1" bodyfile="libopenage/util/profiler.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1aa402b4fc03b0e127153d43750ef848ea" prot="public" static="no" mutable="no">
         <type>std::chrono::high_resolution_clock::duration</type>
@@ -54,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="35" column="1" bodyfile="libopenage/util/profiler.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" prot="public" static="no" mutable="no">
         <type>std::array&lt; double, <ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref> &gt;</type>
@@ -67,7 +70,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/profiler.h" line="36" column="1" bodyfile="libopenage/util/profiler.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" compoundref="profiler_8cpp" startline="23" endline="37">openage::util::Profiler::register_component</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,19 +79,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="812">
+      <node id="5644">
         <label>openage::util::component_time_data</label>
         <link refid="structopenage_1_1util_1_1component__time__data"/>
-        <childnode refid="813" relation="usage">
+        <childnode refid="5645" relation="usage">
           <edgelabel>+drawing_color</edgelabel>
         </childnode>
       </node>
-      <node id="813">
+      <node id="5645">
         <label>openage::util::color</label>
         <link refid="structopenage_1_1util_1_1color"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/profiler.h" line="31" column="1" bodyfile="libopenage/util/profiler.h" bodystart="31" bodyend="37"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/profiler.h" bodystart="31" bodyend="37"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>display_name</name></member>
       <member refid="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>drawing_color</name></member>

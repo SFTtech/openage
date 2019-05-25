@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="575" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="575" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="575" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="575" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4_1a329748c5deb03352ac9e0cf437d09a83" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="581" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="581" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="581" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="581" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,7 +48,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="564" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="564" bodyend="566"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="564" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="564" bodyend="566"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134">openage::worker</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4_1ac5fb8c0ef3bb392f05cb6365e940fd51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="568" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="568" bodyend="570"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="568" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="568" bodyend="570"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -72,49 +73,49 @@
 <para>The worker&apos;s capacity and gather rates. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="514">
+      <node id="429">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="515" relation="public-inheritance">
+        <childnode refid="430" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="515">
+      <node id="430">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="513">
+      <node id="428">
         <label>openage::Attribute&lt; attr_type::worker &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4"/>
-        <childnode refid="514" relation="public-inheritance">
+        <childnode refid="429" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="517">
+      <node id="432">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="518" relation="public-inheritance">
+        <childnode refid="433" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="519">
+      <node id="434">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="518">
+      <node id="433">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="516">
+      <node id="431">
         <label>openage::Attribute&lt; attr_type::worker &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4"/>
-        <childnode refid="517" relation="public-inheritance">
+        <childnode refid="432" relation="public-inheritance">
         </childnode>
-        <childnode refid="519" relation="usage">
+        <childnode refid="434" relation="usage">
           <edgelabel>+gather_rate</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="562" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="562" bodyend="582"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="562" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="562" bodyend="582"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4_1a8b254e2fe8dc9a312e7ae7f89ec5a2d4" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::worker &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::worker &gt;</scope><name>AttributeContainer</name></member>

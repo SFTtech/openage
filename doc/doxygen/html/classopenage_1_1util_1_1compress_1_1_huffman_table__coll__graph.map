@@ -1,9 +1,10 @@
 <map id="openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;" name="openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,1011,204,1250"/>
-<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml" title=" " alt="" coords="651,483,862,941"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="228,1011,533,1250"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="557,1004,844,1257"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="868,1004,1091,1257"/>
-<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="1115,1011,1415,1250"/>
-<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="653,5,861,420"/>
+<area shape="rect" id="node1" title=" " alt="" coords="577,93,775,332"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="322,585,627,824"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="107,1525,394,1779"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="418,1525,641,1779"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml" title=" " alt="" coords="665,1533,965,1771"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream.xhtml" title=" " alt="" coords="381,1004,592,1463"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="5,497,213,912"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml" title=" " alt="" coords="5,5,213,420"/>
 </map>

@@ -5,8 +5,8 @@
     <includes refid="window_8h" local="yes">../window.h</includes>
     <includes local="no">optional</includes>
     <includes refid="context_8h" local="yes">context.h</includes>
-    <includedby refid="opengl_2window_8cpp" local="yes">libopenage/renderer/opengl/window.cpp</includedby>
-    <includedby refid="renderer_2tests_8cpp" local="yes">libopenage/renderer/tests.cpp</includedby>
+    <includedby refid="opengl_2window_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</includedby>
+    <includedby refid="renderer_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</includedby>
     <incdepgraph>
       <node id="22882">
         <label>functional</label>
@@ -49,7 +49,7 @@
         </childnode>
       </node>
       <node id="22880">
-        <label>libopenage/renderer/opengl/window.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h</label>
         <link refid="opengl_2window_8h"/>
         <childnode refid="22881" relation="include">
         </childnode>
@@ -64,15 +64,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="22891">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="22890">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="22889">
-        <label>libopenage/renderer/opengl/window.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h</label>
         <link refid="opengl_2window_8h"/>
         <childnode refid="22890" relation="include">
         </childnode>
@@ -127,6 +127,6 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/window.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h"/>
   </compounddef>
 </doxygen>

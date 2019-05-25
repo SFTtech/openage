@@ -1,0 +1,4 @@
+<map id="openage::gui::ActionsListModel::data" name="openage::gui::ActionsListModel::data">
+<area shape="rect" id="node1" title=" " alt="" coords="241,29,411,71"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1peresource_1_1_p_e_resources.xhtml#a4bd0e2f364021fe2b7645f380723bca0" title="reads the directory that&#39;s currently pointed at by self.data." alt="" coords="5,29,193,71"/>
+</map>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_callback.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="13" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.cpp" bodystart="13" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_callback_1a001c8164e036b5b3567f3f32098a53ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_callback.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="19" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.cpp" bodystart="19" bodyend="20"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -48,7 +48,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_callback.h" line="20" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" line="20" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab296b31a83e17fbd14f7106ce4c2a54a" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="49" endline="65">openage::gui::GuiGameSpecImageProviderImpl::migrate_to_new_game_spec</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a42ec51b02960edb6ef405251a640bd5f" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="72" endline="84">openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_invalidated</referencedby>
+        <referencedby refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" compoundref="game__logic__caller_8cpp" startline="14" endline="19">qtsdl::GameLogicCaller::set_game_logic_callback</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-slot">
@@ -67,7 +70,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_callback.h" line="23" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="22" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.cpp" bodystart="22" bodyend="24"/>
+        <referencedby refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" compoundref="game__logic__caller_8cpp" startline="14" endline="19">qtsdl::GameLogicCaller::set_game_logic_callback</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,28 +79,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2496">
+      <node id="6182">
         <label>QObject</label>
       </node>
-      <node id="2495">
+      <node id="6181">
         <label>qtsdl::GuiCallback</label>
         <link refid="classqtsdl_1_1_gui_callback"/>
-        <childnode refid="2496" relation="public-inheritance">
+        <childnode refid="6182" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2498">
+      <node id="6184">
         <label>QObject</label>
       </node>
-      <node id="2497">
+      <node id="6183">
         <label>qtsdl::GuiCallback</label>
         <link refid="classqtsdl_1_1_gui_callback"/>
-        <childnode refid="2498" relation="public-inheritance">
+        <childnode refid="6184" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_callback.h" line="12" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.h" bodystart="12" bodyend="24"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_callback.h" bodystart="12" bodyend="24"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_callback_1a1069c0650f91b910170a3ece87b61a6f" prot="public" virt="non-virtual"><scope>qtsdl::GuiCallback</scope><name>GuiCallback</name></member>
       <member refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" prot="public" virt="non-virtual"><scope>qtsdl::GuiCallback</scope><name>process</name></member>

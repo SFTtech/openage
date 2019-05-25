@@ -32,12 +32,11 @@ var searchData=
   ['events',['events',['../classopenage_1_1event_1_1_event_store.xhtml#abc046823b545ca825388800a22302ccd',1,'openage::event::EventStore']]],
   ['evnt',['evnt',['../classopenage_1_1event_1_1_event_queue_1_1_on_change_element.xhtml#ab2fdebca64d5b385157895e96aad229b',1,'openage::event::EventQueue::OnChangeElement']]],
   ['exception',['exception',['../classopenage_1_1job_1_1_typed_job_state_base.xhtml#a6f32f7f56cacd11e8efbd695997f1bdc',1,'openage::job::TypedJobStateBase::exception()'],['../classopenage_1_1util_1_1threading_1_1_generator_event.xhtml#aa2d089fed1e35f14bbf77161defb161d',1,'openage::util.threading.GeneratorEvent.EXCEPTION()']]],
-  ['exclude_5fpatterns',['exclude_patterns',['../namespaceopenage_1_1conf.xhtml#aa8b0ea5ad3ced292f405164416e0abc1',1,'openage::conf']]],
   ['exec',['exec',['../classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes.xhtml#a88d87fd0fca62b59ef30664e7a744eee',1,'openage::cabextract::cab::CFFileAttributes']]],
   ['executor',['executor',['../classopenage_1_1job_1_1_worker.xhtml#a7248896af6a7ddd2492c3027660c5877',1,'openage::job::Worker']]],
   ['existence_5fguard',['existence_guard',['../classqtsdl_1_1_gui_dedicated_thread.xhtml#a23c98485b115500bc1f4cef767c15ec4',1,'qtsdl::GuiDedicatedThread']]],
   ['exists',['exists',['../classqtsdl_1_1_gui_dedicated_thread.xhtml#acb18aaa9962e0f94f007e81c792d071f',1,'qtsdl::GuiDedicatedThread']]],
-  ['extensions',['extensions',['../structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities.xhtml#a9d640873c88ca19b45dc9eddea954a89',1,'openage::renderer::vulkan::vlk_capabilities::extensions()'],['../namespaceopenage_1_1conf.xhtml#a05d2e8c3ee86744ead1ca4195ef67ffd',1,'openage.conf.extensions()']]],
+  ['extensions',['extensions',['../structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities.xhtml#a9d640873c88ca19b45dc9eddea954a89',1,'openage::renderer::vulkan::vlk_capabilities']]],
   ['extent',['extent',['../classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display.xhtml#a0be5b64a0795218b3629e72cdc22b864',1,'openage::renderer::vulkan::VlkDrawableDisplay']]],
   ['external_5fprofiler',['external_profiler',['../classopenage_1_1_engine.xhtml#afb29bb815dbf7880a10e86554e54df1c',1,'openage::Engine']]],
   ['extra_5fbits',['extra_bits',['../namespaceopenage_1_1util_1_1compress.xhtml#a4124e3ae9c8211d05e8457cb16182896',1,'openage::util::compress']]]

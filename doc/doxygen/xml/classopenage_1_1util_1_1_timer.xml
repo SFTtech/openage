@@ -15,7 +15,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="17" column="1" bodyfile="libopenage/util/timer.h" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">getandresetval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">getval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" compoundref="timer_8cpp" startline="61" endline="63">isstopped</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">reset</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" compoundref="timer_8cpp" startline="30" endline="35">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" compoundref="timer_8cpp" startline="23" endline="28">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1a6760907a1df87074b0586a28fc295b8d" prot="private" static="no" mutable="no">
         <type>union openage::util::Timer::@0</type>
@@ -28,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="28" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="28" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -44,7 +50,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="22" column="1" bodyfile="libopenage/util/timer.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">getandresetval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">getval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">reset</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" compoundref="timer_8cpp" startline="30" endline="35">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" compoundref="timer_8cpp" startline="23" endline="28">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -58,7 +69,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="27" column="1" bodyfile="libopenage/util/timer.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" compoundref="timer_8cpp" startline="45" endline="59">getandresetval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">getval</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">reset</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" compoundref="timer_8cpp" startline="30" endline="35">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" compoundref="timer_8cpp" startline="23" endline="28">stop</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -79,7 +95,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="34" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="10" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="10" bodyend="12"/>
+        <references refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">reset</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -98,7 +115,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="39" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="14" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="14" bodyend="21"/>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" compoundref="timer_8h" startline="27">starttime</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" compoundref="timer_8h" startline="22">stoppedat</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_timer_1a1b3d27ae06020bc54ea6cb6f0d7bc72d" compoundref="timer_8cpp" startline="10" endline="12">Timer</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -112,7 +135,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="44" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="23" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="23" bodyend="28"/>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" compoundref="timer_8h" startline="27">starttime</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" compoundref="timer_8h" startline="22">stoppedat</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -126,7 +153,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="49" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="30" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="30" bodyend="35"/>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" compoundref="timer_8h" startline="27">starttime</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" compoundref="timer_8h" startline="22">stoppedat</references>
+        <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -140,7 +173,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="54" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="37" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="37" bodyend="43"/>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" compoundref="timer_8h" startline="27">starttime</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" compoundref="timer_8h" startline="22">stoppedat</references>
+        <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
+        <referencedby refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -154,7 +194,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="60" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="45" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="45" bodyend="59"/>
+        <references refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" compoundref="timing_8cpp" startline="20" endline="25">openage::timing::get_monotonic_time</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" compoundref="timer_8h" startline="27">starttime</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" compoundref="timer_8h" startline="22">stoppedat</references>
+        <referencedby refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">openage::util::FrameCounter::frame</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -168,7 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timer.h" line="65" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="61" bodyend="63"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.cpp" bodystart="61" bodyend="63"/>
+        <references refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" compoundref="timer_8h" startline="17">stopped</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -177,12 +224,12 @@
 <para>Time measurement class. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4520">
+      <node id="6120">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/timer.h" line="16" column="1" bodyfile="libopenage/util/timer.h" bodystart="16" bodyend="66"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timer.h" bodystart="16" bodyend="66"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>getandresetval</name></member>
       <member refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>getval</name></member>

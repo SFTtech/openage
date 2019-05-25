@@ -8,7 +8,7 @@
         <label>list</label>
       </node>
       <node id="2061">
-        <label>libopenage/audio/resource_def.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource_def.cpp</label>
         <link refid="resource__def_8cpp"/>
         <childnode refid="2062" relation="include">
         </childnode>
@@ -336,6 +336,6 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/resource_def.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource_def.cpp"/>
   </compounddef>
 </doxygen>

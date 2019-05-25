@@ -1,8 +1,8 @@
-<map id="libopenage/audio/opus_loading.h" name="libopenage/audio/opus_loading.h">
-<area shape="rect" id="node1" title=" " alt="" coords="288,5,439,47"/>
-<area shape="rect" id="node2" href="$opus__dynamic__loader_8h.xhtml" title=" " alt="" coords="108,95,259,136"/>
-<area shape="rect" id="node5" href="$opus__in__memory__loader_8cpp.xhtml" title=" " alt="" coords="283,95,443,136"/>
-<area shape="rect" id="node6" href="$opus__loading_8cpp.xhtml" title=" " alt="" coords="468,95,619,136"/>
-<area shape="rect" id="node3" href="$dynamic__loader_8cpp.xhtml" title=" " alt="" coords="5,184,177,225"/>
-<area shape="rect" id="node4" href="$opus__dynamic__loader_8cpp.xhtml" title=" " alt="" coords="201,184,352,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/opus_loading.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/opus_loading.h">
+<area shape="rect" id="node1" title=" " alt="" coords="365,5,575,61"/>
+<area shape="rect" id="node2" href="$opus__dynamic__loader_8h.xhtml" title=" " alt="" coords="123,109,332,165"/>
+<area shape="rect" id="node5" href="$opus__in__memory__loader_8cpp.xhtml" title=" " alt="" coords="357,109,583,165"/>
+<area shape="rect" id="node6" href="$opus__loading_8cpp.xhtml" title=" " alt="" coords="608,109,817,165"/>
+<area shape="rect" id="node3" href="$dynamic__loader_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$opus__dynamic__loader_8cpp.xhtml" title=" " alt="" coords="239,213,451,269"/>
 </map>

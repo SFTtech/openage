@@ -1,0 +1,5 @@
+<map id="openage.convert.slp_converter_pool.converter_process" name="openage.convert.slp_converter_pool.converter_process">
+<area shape="rect" id="node1" title="This is the function that runs inside each individual process." alt="" coords="5,5,173,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a78bab1bc2016bebde4ef3cde06936702" title="sets the log level" alt="" coords="221,20,384,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a2b8905069877587c7f8624a11d524bbc" title="gets the log level" alt="" coords="432,20,595,47"/>
+</map>

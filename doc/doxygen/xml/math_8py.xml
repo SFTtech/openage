@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="math_8py" kind="file" language="Python">
+    <compoundname>math.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1util_1_1math">openage::util::math</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1util_1_1math" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Holds<sp/>some<sp/>math<sp/>constants<sp/>and<sp/>helpers</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>math</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">#<sp/>I<sp/>tend<sp/>to<sp/>use<sp/>this<sp/>all<sp/>the<sp/>time.<sp/>I<sp/>don&apos;t<sp/>get<sp/>why<sp/>it&apos;s<sp/>not<sp/>in<sp/>math.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">INF<sp/>=<sp/>float(</highlight><highlight class="stringliteral">&quot;+inf&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1util_1_1math_1a9dda60a6d8361890d63fbed29ab9402b" refkind="member"><highlight class="normal"></highlight><highlight class="comment">#<sp/>TAU<sp/>for<sp/>life!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">TAU<sp/>=<sp/>2<sp/>*<sp/>math.pi</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">DEGSPERRAD<sp/>=<sp/>TAU<sp/>/<sp/>360</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1_1math_1a6cdfadca34e6d6f8629fc354c78719d6" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1util_1_1math_1a790f58dbcc1c954e8eb01698a858bf16" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" kindref="member">clamp</ref>(val,<sp/>minval,<sp/>maxval):</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>clamps<sp/>val<sp/>to<sp/>be<sp/>at<sp/>least<sp/>minval,<sp/>and<sp/>at<sp/>most<sp/>maxval.</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&gt;&gt;&gt;<sp/>clamp(9,<sp/>3,<sp/>7)</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>7</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&gt;&gt;&gt;<sp/>clamp(1,<sp/>3,<sp/>7)</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>3</highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&gt;&gt;&gt;<sp/>clamp(5,<sp/>3,<sp/>7)</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>5</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min</ref>(maxval,<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>(minval,<sp/>val))</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py"/>
+  </compounddef>
+</doxygen>

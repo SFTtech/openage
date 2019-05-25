@@ -689,7 +689,7 @@
         </childnode>
       </node>
       <node id="8814">
-        <label>libopenage/gamestate/civilisation.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/civilisation.cpp</label>
         <link refid="civilisation_8cpp"/>
         <childnode refid="8815" relation="include">
         </childnode>
@@ -814,7 +814,7 @@
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38" refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::building_unit<sp/>*<ref refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" kindref="member">Civilisation::get_building_data</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>unit_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_civilisation_1adc0e6636a587343c1e728e4a374eaed8" kindref="member">buildings</ref>.count(unit_id)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>ignoring<sp/>unit_id:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>unit_id);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>ignoring<sp/>unit_id:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>unit_id);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1adc0e6636a587343c1e728e4a374eaed8" kindref="member">buildings</ref>.at(unit_id);</highlight></codeline>
@@ -822,7 +822,7 @@
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47" refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" kindref="member">Civilisation::initialise_unit_types</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>&amp;spec)<sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Init<sp/>units<sp/>of<sp/>civilisation<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1_civilisation_1abfe7c1fb0da5297fe076417bda22e711" kindref="member">civ_name</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Init<sp/>units<sp/>of<sp/>civilisation<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1_civilisation_1abfe7c1fb0da5297fe076417bda22e711" kindref="member">civ_name</ref>);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>spec.<ref refid="classopenage_1_1_game_spec_1ab009229f56624608b53820adf2895cbc" kindref="member">create_unit_types</ref>(this-&gt;<ref refid="classopenage_1_1_civilisation_1a12246fe137d4a5cccb044eb2f1c6932b" kindref="member">civ_objects</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a2f86a0247609bab4d68b2d918b96c49a" kindref="member">civ_id</ref>);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;type<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a12246fe137d4a5cccb044eb2f1c6932b" kindref="member">civ_objects</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a7ea9f34ae76ff29cbcce2ce4cb7da55f" kindref="member">add_to_category</ref>(type-&gt;name(),<sp/>type-&gt;id());</highlight></codeline>
@@ -841,6 +841,6 @@
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/civilisation.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/civilisation.cpp"/>
   </compounddef>
 </doxygen>

@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="93" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="93" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="93" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1adf4e2cfb2010657a5384efc6c37a9748" compoundref="terrain_8cpp" startline="467" endline="498">openage::Terrain::get_neighbors</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1influence_1a6e1779e4d13ae850ab47cd4d2f4262fb" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -30,7 +33,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="94" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1influence_1a73ce7fff36bf30903eb10c0d74415675" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
@@ -44,7 +48,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="95" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" compoundref="terrain_8cpp" startline="500" endline="592">openage::Terrain::calculate_influences</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -53,12 +59,12 @@
 <para>storage for influences by neighbor tiles. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2953">
+      <node id="3802">
         <label>openage::influence</label>
         <link refid="structopenage_1_1influence"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain.h" line="92" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="92" bodyend="96"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="92" bodyend="96"/>
     <listofallmembers>
       <member refid="structopenage_1_1influence_1ae2f8c30c2afb451327be4a424c1d34a0" prot="public" virt="non-virtual"><scope>openage::influence</scope><name>direction</name></member>
       <member refid="structopenage_1_1influence_1a6e1779e4d13ae850ab47cd4d2f4262fb" prot="public" virt="non-virtual"><scope>openage::influence</scope><name>priority</name></member>

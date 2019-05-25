@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1colortable_1_1_player_color_table" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::colortable::PlayerColorTable</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1colortable_1_1_color_table" prot="public" virt="non-virtual">openage.convert.colortable.ColorTable</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a292af6ffd73d912d958bf70519fa87a9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.PlayerColorTable::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a28b6919f8a0f54908b7b89ce4fe1b799" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.PlayerColorTable::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="183" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1aadb5020831d2d37268fc05aa7e98ec71" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.PlayerColorTable::palette</definition>
+        <argsstring></argsstring>
+        <name>palette</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="184" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="184" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a751c7014332d76798a342665bfb2ab54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.PlayerColorTable.__init__</definition>
+        <argsstring>(self, base_table)</argsstring>
+        <name>__init__</name>
+        <reimplements refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e">__init__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>base_table</type>
+          <defname>base_table</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="176" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="176" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1af69af2e6d8ea907648f84453f72b3164" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.PlayerColorTable.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a78cbe87b9e25fbd014bc48adbd392aa8">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="196" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="196" bodyend="198"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>this class represents stock player color values. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>each player has 8 subcolors, where 0 is the darkest and 7 is the lightest </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="934">
+        <label>openage.convert.colortable.ColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_color_table"/>
+        <childnode refid="935" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="935">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="933">
+        <label>openage.convert.colortable.PlayerColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table"/>
+        <childnode refid="934" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="937">
+        <label>openage.convert.colortable.ColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_color_table"/>
+        <childnode refid="938" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="938">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="936">
+        <label>openage.convert.colortable.PlayerColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table"/>
+        <childnode refid="937" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="175" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="175" bodyend="198"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ac83e6de3e8c5efa26a91c9355799e002" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a751c7014332d76798a342665bfb2ab54" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::exportable::Exportable."><scope>openage::convert::colortable::PlayerColorTable</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1adbe5ef034f3045f9325c8f1c817a94bb" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1af69af2e6d8ea907648f84453f72b3164" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a2d23de53da50584b86b6c27d956d4503" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a6261d704ebd64dd435f50b8e3e44dda0" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a041e669aa436085f5da150f2228f8788" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>fill</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a01d3ab46b2384adbf99a4ca231173e9d" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>fill_from_array</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>gen_image</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a292af6ffd73d912d958bf70519fa87a9" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>header</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1afc5f277541d4b9ea2a01e3c5cc671331" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae0cd434a08e48a1ca8e5010d1c5f43e9" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1aadb5020831d2d37268fc05aa7e98ec71" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>palette</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1aeea5aabc465e55e3b8a519049bbcb623" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>save_visualization</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8bce36e82e0d01a644ab260c0c41f29e" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a10b07bce8d65fa9165a529a96a3fa3b7" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>structs</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a28b6919f8a0f54908b7b89ce4fe1b799" prot="public" virt="non-virtual"><scope>openage::convert::colortable::PlayerColorTable</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

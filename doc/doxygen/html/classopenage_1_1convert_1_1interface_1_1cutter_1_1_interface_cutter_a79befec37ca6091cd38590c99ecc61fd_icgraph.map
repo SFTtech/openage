@@ -1,0 +1,4 @@
+<map id="openage.convert.interface.cutter.InterfaceCutter.cut_strip" name="openage.convert.interface.cutter.InterfaceCutter.cut_strip">
+<area shape="rect" id="node1" title="Finds a horizontally tilable piece of the strip (ex." alt="" coords="264,5,475,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter.xhtml#ad9a6e6566a8ce6f24c07f113cd0a25d4" title="Create subtextures by searching for patterns at hardcoded positions." alt="" coords="5,5,216,47"/>
+</map>

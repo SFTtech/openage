@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::coord::CoordManager Class Reference</title>
+<title>openage: openage::coord::CoordManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1coord_1_1_coord_manage
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::coord::CoordManager:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1coord_1_1_coord_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::coord::CoordManager:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1coord_1_1_coord_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -152,7 +154,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00020">20</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{};</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -171,6 +173,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00031">31</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="engine_8cpp_source.xhtml#l00551">openage::Engine::move_phys_camera()</a>, <a class="el" href="phys_8cpp_source.xhtml#l00091">openage::coord::phys3::to_camgame()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00040">openage::coord::camgame::to_phys3()</a>.</p>
+
 </div>
 </div>
 <a id="a366cc992363b8e417679d6a8f54574c6"></a>
@@ -187,6 +191,8 @@ Public Attributes</h2></td></tr>
 <p>Where in the viewport is the origin of the CamGame coordinate system? (this is usually the center of the viewport). </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00037">37</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="engine_8cpp_source.xhtml#l00242">openage::Engine::on_resize()</a>, <a class="el" href="pixel_8cpp_source.xhtml#l00071">openage::coord::viewport::to_camgame()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>.</p>
 
 </div>
 </div>
@@ -205,6 +211,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00043">43</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="engine_8cpp_source.xhtml#l00242">openage::Engine::on_resize()</a>, <a class="el" href="pixel_8cpp_source.xhtml#l00087">openage::coord::viewport::to_camhud()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00092">openage::coord::camhud::to_viewport()</a>.</p>
+
 </div>
 </div>
 <a id="abd45c3c2cf20f76ac980e18bba3128e3"></a>
@@ -221,6 +229,8 @@ Public Attributes</h2></td></tr>
 <p>The size of a terrain tile, in pixels. Rile diamonds are 96 pixels wide and 48 pixels high. The area of each tile is 96 * 48 * 0.5 square pixels. </p>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00051">51</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="phys_8cpp_source.xhtml#l00060">openage::coord::phys3_delta::to_camgame()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00012">openage::coord::camgame_delta::to_phys3()</a>.</p>
 
 </div>
 </div>
@@ -239,10 +249,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="coordmanager_8h_source.xhtml#l00026">26</a> of file <a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="terrain_8cpp_source.xhtml#l00278">openage::Terrain::draw()</a>, <a class="el" href="engine_8cpp_source.xhtml#l00274">openage::Engine::draw_debug_overlay()</a>, <a class="el" href="engine_8cpp_source.xhtml#l00315">openage::Engine::loop()</a>, <a class="el" href="engine_8cpp_source.xhtml#l00242">openage::Engine::on_resize()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00103">openage::coord::input_delta::to_viewport()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/coord/<a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/<a class="el" href="coordmanager_8h_source.xhtml">coordmanager.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

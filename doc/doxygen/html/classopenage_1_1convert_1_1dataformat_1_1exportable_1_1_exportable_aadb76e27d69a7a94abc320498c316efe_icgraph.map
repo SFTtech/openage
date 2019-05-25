@@ -1,0 +1,4 @@
+<map id="openage.convert.dataformat.exportable.Exportable.read" name="openage.convert.dataformat.exportable.Exportable.read">
+<area shape="rect" id="node1" title="recursively read defined binary data from raw at given offset." alt="" coords="241,29,491,71"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,29,193,71"/>
+</map>

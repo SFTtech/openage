@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 182)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-182 659,-182 659,4 -4,4"/>
-<!-- Node436 -->
-<g id="node1" class="node"><title>Node436</title>
+<!-- Node686 -->
+<g id="node1" class="node"><title>Node686</title>
 <g id="a_node1"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-147.5 0,-177.5 115,-177.5 115,-147.5 0,-147.5"/>
 <text text-anchor="start" x="8" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
@@ -18,8 +18,8 @@
 </a>
 </g>
 </g>
-<!-- Node437 -->
-<g id="node2" class="node"><title>Node437</title>
+<!-- Node687 -->
+<g id="node2" class="node"><title>Node687</title>
 <g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="151,-147.5 151,-177.5 297,-177.5 297,-147.5 151,-147.5"/>
 <text text-anchor="start" x="159" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator</text>
@@ -27,8 +27,8 @@
 </a>
 </g>
 </g>
-<!-- Node436&#45;&gt;Node437 -->
-<g id="edge1" class="edge"><title>Node436&#45;&gt;Node437</title>
+<!-- Node686&#45;&gt;Node687 -->
+<g id="edge1" class="edge"><title>Node686&#45;&gt;Node687</title>
 <path fill="none" stroke="midnightblue" d="M125.267,-162.5C133.705,-162.5 142.369,-162.5 150.885,-162.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="125.112,-159 115.112,-162.5 125.112,-166 125.112,-159"/>
 </g>
@@ -41,8 +41,8 @@
 </a>
 </g>
 </g>
-<!-- Node437&#45;&gt;Node1 -->
-<g id="edge2" class="edge"><title>Node437&#45;&gt;Node1</title>
+<!-- Node687&#45;&gt;Node1 -->
+<g id="edge2" class="edge"><title>Node687&#45;&gt;Node1</title>
 <path fill="none" stroke="midnightblue" d="M307.186,-156.412C315.787,-155.775 324.459,-155.133 332.871,-154.51"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="306.856,-152.927 297.142,-157.156 307.374,-159.908 306.856,-152.927"/>
 </g>
@@ -59,8 +59,8 @@
 <path fill="none" stroke="midnightblue" d="M480.242,-149.5C488.89,-149.5 497.677,-149.5 506.266,-149.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="480.174,-146 470.174,-149.5 480.174,-153 480.174,-146"/>
 </g>
-<!-- Node432 -->
-<g id="node5" class="node"><title>Node432</title>
+<!-- Node682 -->
+<g id="node5" class="node"><title>Node682</title>
 <g id="a_node5"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-49.5 0,-79.5 115,-79.5 115,-49.5 0,-49.5"/>
 <text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
@@ -68,8 +68,8 @@
 </a>
 </g>
 </g>
-<!-- Node433 -->
-<g id="node6" class="node"><title>Node433</title>
+<!-- Node683 -->
+<g id="node6" class="node"><title>Node683</title>
 <g id="a_node6"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="151,-49.5 151,-79.5 297,-79.5 297,-49.5 151,-49.5"/>
 <text text-anchor="start" x="159" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator</text>
@@ -77,8 +77,8 @@
 </a>
 </g>
 </g>
-<!-- Node432&#45;&gt;Node433 -->
-<g id="edge4" class="edge"><title>Node432&#45;&gt;Node433</title>
+<!-- Node682&#45;&gt;Node683 -->
+<g id="edge4" class="edge"><title>Node682&#45;&gt;Node683</title>
 <path fill="none" stroke="midnightblue" d="M125.267,-64.5C133.705,-64.5 142.369,-64.5 150.885,-64.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="125.112,-61.0001 115.112,-64.5 125.112,-68.0001 125.112,-61.0001"/>
 </g>
@@ -91,8 +91,8 @@
 </a>
 </g>
 </g>
-<!-- Node433&#45;&gt;Node3 -->
-<g id="edge5" class="edge"><title>Node433&#45;&gt;Node3</title>
+<!-- Node683&#45;&gt;Node3 -->
+<g id="edge5" class="edge"><title>Node683&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M307.186,-70.1196C315.787,-70.7077 324.459,-71.3006 332.871,-71.8758"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="307.358,-66.6232 297.142,-69.4328 306.88,-73.6069 307.358,-66.6232"/>
 </g>
@@ -109,8 +109,8 @@
 <path fill="none" stroke="midnightblue" d="M480.437,-76.5C488.923,-76.5 497.54,-76.5 505.97,-76.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="480.174,-73.0001 470.174,-76.5 480.174,-80.0001 480.174,-73.0001"/>
 </g>
-<!-- Node430 -->
-<g id="node9" class="node"><title>Node430</title>
+<!-- Node680 -->
+<g id="node9" class="node"><title>Node680</title>
 <g id="a_node9"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 115,-30.5 115,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods</text>
@@ -118,8 +118,8 @@
 </a>
 </g>
 </g>
-<!-- Node431 -->
-<g id="node10" class="node"><title>Node431</title>
+<!-- Node681 -->
+<g id="node10" class="node"><title>Node681</title>
 <g id="a_node10"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="151,-0.5 151,-30.5 297,-30.5 297,-0.5 151,-0.5"/>
 <text text-anchor="start" x="159" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator</text>
@@ -127,8 +127,8 @@
 </a>
 </g>
 </g>
-<!-- Node430&#45;&gt;Node431 -->
-<g id="edge7" class="edge"><title>Node430&#45;&gt;Node431</title>
+<!-- Node680&#45;&gt;Node681 -->
+<g id="edge7" class="edge"><title>Node680&#45;&gt;Node681</title>
 <path fill="none" stroke="midnightblue" d="M125.267,-15.5C133.705,-15.5 142.369,-15.5 150.885,-15.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="125.112,-12.0001 115.112,-15.5 125.112,-19.0001 125.112,-12.0001"/>
 </g>
@@ -141,8 +141,8 @@
 </a>
 </g>
 </g>
-<!-- Node431&#45;&gt;Node5 -->
-<g id="edge8" class="edge"><title>Node431&#45;&gt;Node5</title>
+<!-- Node681&#45;&gt;Node5 -->
+<g id="edge8" class="edge"><title>Node681&#45;&gt;Node5</title>
 <path fill="none" stroke="midnightblue" d="M307.186,-15.5C315.787,-15.5 324.459,-15.5 332.871,-15.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="307.142,-12.0001 297.142,-15.5 307.142,-19.0001 307.142,-12.0001"/>
 </g>
@@ -159,8 +159,8 @@
 <path fill="none" stroke="midnightblue" d="M480.286,-15.5C489.317,-15.5 498.5,-15.5 507.45,-15.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="480.174,-12.0001 470.174,-15.5 480.174,-19.0001 480.174,-12.0001"/>
 </g>
-<!-- Node301 -->
-<g id="node13" class="node"><title>Node301</title>
+<!-- Node195 -->
+<g id="node13" class="node"><title>Node195</title>
 <g id="a_node13"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="13.5,-104 13.5,-123 101.5,-123 101.5,-104 13.5,-104"/>
 <text text-anchor="middle" x="57.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">OutputModeLink</text>
@@ -176,8 +176,8 @@
 </a>
 </g>
 </g>
-<!-- Node301&#45;&gt;Node0 -->
-<g id="edge10" class="edge"><title>Node301&#45;&gt;Node0</title>
+<!-- Node195&#45;&gt;Node0 -->
+<g id="edge10" class="edge"><title>Node195&#45;&gt;Node0</title>
 <path fill="none" stroke="midnightblue" d="M111.754,-113.5C125.216,-113.5 139.866,-113.5 153.982,-113.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="111.72,-110 101.72,-113.5 111.72,-117 111.72,-110"/>
 </g>

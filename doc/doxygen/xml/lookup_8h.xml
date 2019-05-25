@@ -5,17 +5,17 @@
     <includes local="no">epoxy/gl.h</includes>
     <includes refid="texture__info_8h" local="yes">../resources/texture_info.h</includes>
     <includes refid="mesh__data_8h" local="yes">../resources/mesh_data.h</includes>
-    <includedby refid="opengl_2geometry_8cpp" local="yes">libopenage/renderer/opengl/geometry.cpp</includedby>
-    <includedby refid="shader__program_8cpp" local="yes">libopenage/renderer/opengl/shader_program.cpp</includedby>
-    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">libopenage/renderer/opengl/texture.cpp</includedby>
-    <includedby refid="opengl_2texture__array_8cpp" local="yes">libopenage/renderer/opengl/texture_array.cpp</includedby>
-    <includedby refid="vertex__array_8cpp" local="yes">libopenage/renderer/opengl/vertex_array.cpp</includedby>
+    <includedby refid="opengl_2geometry_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</includedby>
+    <includedby refid="shader__program_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</includedby>
+    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</includedby>
+    <includedby refid="opengl_2texture__array_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</includedby>
+    <includedby refid="vertex__array_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</includedby>
     <incdepgraph>
       <node id="21088">
         <label>list</label>
       </node>
       <node id="21059">
-        <label>libopenage/renderer/opengl/lookup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/lookup.h</label>
         <link refid="lookup_8h"/>
         <childnode refid="21060" relation="include">
         </childnode>
@@ -384,7 +384,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21110">
-        <label>libopenage/renderer/opengl/lookup.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/lookup.h</label>
         <link refid="lookup_8h"/>
         <childnode refid="21111" relation="include">
         </childnode>
@@ -398,23 +398,23 @@
         </childnode>
       </node>
       <node id="21115">
-        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</label>
         <link refid="vertex__array_8cpp"/>
       </node>
       <node id="21112">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="21111">
-        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</label>
         <link refid="opengl_2geometry_8cpp"/>
       </node>
       <node id="21114">
-        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</label>
         <link refid="opengl_2texture__array_8cpp"/>
       </node>
       <node id="21113">
-        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</label>
         <link refid="renderer_2opengl_2texture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -576,6 +576,6 @@
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="156"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/lookup.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/lookup.h"/>
   </compounddef>
 </doxygen>

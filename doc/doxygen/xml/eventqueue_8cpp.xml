@@ -168,7 +168,7 @@
         <label>unordered_set</label>
       </node>
       <node id="7819">
-        <label>libopenage/event/eventqueue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp</label>
         <link refid="eventqueue_8cpp"/>
         <childnode refid="7820" relation="include">
         </childnode>
@@ -457,7 +457,7 @@
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76" refid="classopenage_1_1event_1_1_event_queue_1a1b424b6e8cc92b0e597bd335d1b01967" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1event_1_1_event_queue_1a1b424b6e8cc92b0e597bd335d1b01967" kindref="member">EventQueue::EventQueue</ref>()</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>changes(&amp;changeset_A),</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1convert_1_1changelog_1aacfbef73c68f07a70b75e8a01b4d0f99" kindref="member">changes</ref>(&amp;changeset_A),</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>future_changes(&amp;changeset_B)<sp/>{}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
@@ -601,6 +601,6 @@
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/eventqueue.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.cpp"/>
   </compounddef>
 </doxygen>

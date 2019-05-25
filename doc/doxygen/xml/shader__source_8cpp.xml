@@ -29,7 +29,7 @@
         <label>cstdint</label>
       </node>
       <node id="23013">
-        <label>libopenage/renderer/resources/shader_source.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.cpp</label>
         <link refid="shader__source_8cpp"/>
         <childnode refid="23014" relation="include">
         </childnode>
@@ -337,6 +337,6 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::resources</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/resources/shader_source.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.cpp"/>
   </compounddef>
 </doxygen>

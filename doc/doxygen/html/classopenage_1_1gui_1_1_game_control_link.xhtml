@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::gui::GameControlLink Class Reference</title>
+<title>openage: openage::gui::GameControlLink Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -101,15 +102,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_game_control_l
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::gui::GameControlLink:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::GameControlLink:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::gui::GameControlLink:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::GameControlLink:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -298,7 +303,15 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00231">231</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    :</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_item_q_object.xhtml#a9381292e5dbb61f284d6a90d39e29912">GuiItemQObject</a>{parent},</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    QQmlParserStatus{},</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_item.xhtml#a3d22c3629a4de170f646540b319da3c3">GuiItem</a>{<span class="keyword">this</span>},</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>{},</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">effective_mode_index</a>{-1},</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>{-1},</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>{},</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>{},</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">current_civ_index</a>{} {</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    Q_UNUSED(registration_mode);</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    Q_UNUSED(registration);</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a33ea79efffcb4d7a831c4e0ae84525a6"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">openage::gui::GameControlLink::game</a></div><div class="ttdeci">openage::gui::GameMainLink game</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00245">game_control_link.h:245</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_xhtml_a3d22c3629a4de170f646540b319da3c3"><div class="ttname"><a href="classqtsdl_1_1_gui_item.xhtml#a3d22c3629a4de170f646540b319da3c3">qtsdl::GuiItem&lt; GameControlLink &gt;::GuiItem</a></div><div class="ttdeci">GuiItem(GuiItemBase *item_base)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00317">gui_item.h:317</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a04388cbbc34a309a81d068d923da3fff"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">openage::gui::GameControlLink::mode</a></div><div class="ttdeci">openage::gui::OutputModeLink mode</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00240">game_control_link.h:240</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a02ffce95a7ef8178d40ab187461b125c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">openage::gui::GameControlLink::mode_index</a></div><div class="ttdeci">int mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00290">game_control_link.h:290</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_q_object_xhtml_a9381292e5dbb61f284d6a90d39e29912"><div class="ttname"><a href="classqtsdl_1_1_gui_item_q_object.xhtml#a9381292e5dbb61f284d6a90d39e29912">qtsdl::GuiItemQObject::GuiItemQObject</a></div><div class="ttdeci">GuiItemQObject(QObject *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8cpp_source.xhtml#l00014">gui_item.cpp:14</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a497a16ce1a8f935d7717e12070b1cfc2"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">openage::gui::GameControlLink::current_civ_index</a></div><div class="ttdeci">int current_civ_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00296">game_control_link.h:296</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a5b7fa78ab5d69b8edb8fe7c74012b491"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">openage::gui::GameControlLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00244">game_control_link.h:244</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a90b26aa3eec1bd608bfecb9ef61d32af"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">openage::gui::GameControlLink::effective_mode_index</a></div><div class="ttdeci">int effective_mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00289">game_control_link.h:289</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a47c55d94bcd0a5a0debb9fa9123cda6f"></a>
@@ -325,7 +338,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00246">246</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                  {</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -353,7 +366,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00249">249</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                 {</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a88de288b3ab1ae08273d7039e1eaef74"></a>
@@ -380,6 +393,17 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00259">259</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                        {</div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this) {</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        _this-&gt;announce_mode();</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        _this-&gt;announce_current_player_name();</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    };</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">i</a>(f);</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ac54e8509493e71387cc423d3b594c774"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::i</a></div><div class="ttdeci">void i(F f, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00182">gui_item.h:182</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::i()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a88de288b3ab1ae08273d7039e1eaef74_cgraph.svg" width="396" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -406,6 +430,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00360">on_current_civ_index_changed()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a0b46ec7ad002ae406748996aa5ba4511_icgraph.svg" width="647" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="aab90e8d24e6f60b07cd9640c1c20dc7e"></a>
@@ -431,6 +465,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00355">on_current_player_name_changed()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_aab90e8d24e6f60b07cd9640c1c20dc7e_icgraph.svg" width="647" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="aacef5379ce499b7e4ef39847410c7065"></a>
@@ -449,6 +493,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00331">331</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                                                 {</div><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">current_civ_index</a>;</div><div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a497a16ce1a8f935d7717e12070b1cfc2"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">openage::gui::GameControlLink::current_civ_index</a></div><div class="ttdeci">int current_civ_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00296">game_control_link.h:296</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00296">current_civ_index</a>.</p>
 
 </div>
 </div>
@@ -468,6 +515,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00327">327</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                                                       {</div><div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a45ab40e9b57cb9ef84c280415fa6d226">current_player_name</a>;</div><div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a45ab40e9b57cb9ef84c280415fa6d226"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a45ab40e9b57cb9ef84c280415fa6d226">openage::gui::GameControlLink::current_player_name</a></div><div class="ttdeci">QString current_player_name</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00295">game_control_link.h:295</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00295">current_player_name</a>.</p>
 
 </div>
 </div>
@@ -487,6 +537,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00271">271</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                                    {</div><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">effective_mode_index</a>;</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a90b26aa3eec1bd608bfecb9ef61d32af"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">openage::gui::GameControlLink::effective_mode_index</a></div><div class="ttdeci">int effective_mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00289">game_control_link.h:289</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00289">effective_mode_index</a>.</p>
 
 </div>
 </div>
@@ -506,6 +559,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00305">305</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                              {</div><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>;</div><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a5b7fa78ab5d69b8edb8fe7c74012b491"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">openage::gui::GameControlLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00244">game_control_link.h:244</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00244">engine</a>.</p>
 
 </div>
 </div>
@@ -525,6 +581,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00316">316</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                              {</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>;</div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a33ea79efffcb4d7a831c4e0ae84525a6"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">openage::gui::GameControlLink::game</a></div><div class="ttdeci">openage::gui::GameMainLink game</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00245">game_control_link.h:245</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00245">game</a>.</p>
 
 </div>
 </div>
@@ -544,6 +603,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00267">267</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                                {</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>;</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a04388cbbc34a309a81d068d923da3fff"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">openage::gui::GameControlLink::mode</a></div><div class="ttdeci">openage::gui::OutputModeLink mode</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00240">game_control_link.h:240</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00240">mode</a>.</p>
 
 </div>
 </div>
@@ -563,6 +625,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00275">275</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                          {</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>;</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a02ffce95a7ef8178d40ab187461b125c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">openage::gui::GameControlLink::mode_index</a></div><div class="ttdeci">int mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00290">game_control_link.h:290</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00290">mode_index</a>.</p>
 
 </div>
 </div>
@@ -582,6 +647,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00287">287</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                              {</div><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">modes</a>;</div><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a86393d64c36b4540e22512cc347f3236"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">openage::gui::GameControlLink::modes</a></div><div class="ttdeci">QVariantList modes</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00243">game_control_link.h:243</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00243">modes</a>.</p>
 
 </div>
 </div>
@@ -608,6 +676,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_ac16e61fa59c4beb23f130d729e863443_icgraph.svg" width="100%" height="361"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <a id="aa32e63efc11c9d35ec212ffc20c848df"></a>
@@ -632,6 +710,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">on_modes_changed()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_aa32e63efc11c9d35ec212ffc20c848df_icgraph.svg" width="647" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -661,6 +749,25 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classqtsdl_1_1_gui_item_base.xhtml#aaa15e915bd7009ac4a332aa08d3e554f">qtsdl::GuiItemBase</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">252</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                      {</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    QObject::connect(&amp;<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(<span class="keyword">this</span>)-&gt;gui_signals, &amp;<a class="code" href="classopenage_1_1_game_control_signals.xhtml#a0455b47d2bf50224596f85e397a9c6ff">GameControlSignals::mode_changed</a>, <span class="keyword">this</span>, &amp;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a652b322aaebf092e2f0735aae8b54e1c">GameControlLink::on_mode_changed</a>);</div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    QObject::connect(&amp;<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(<span class="keyword">this</span>)-&gt;gui_signals, &amp;<a class="code" href="classopenage_1_1_game_control_signals.xhtml#a8a1d1930de8dacf259c1190f49e62b2b">GameControlSignals::modes_changed</a>, <span class="keyword">this</span>, &amp;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6">GameControlLink::on_modes_changed</a>);</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    QObject::connect(&amp;<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(<span class="keyword">this</span>)-&gt;gui_signals, &amp;<a class="code" href="classopenage_1_1_game_control_signals.xhtml#a95762160cc28da841b21e75c6706d70f">GameControlSignals::current_player_name_changed</a>, <span class="keyword">this</span>, &amp;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a283d1e14bf98cfb5f21713a99d4637e2">GameControlLink::on_current_player_name_changed</a>);</div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    QObject::connect(&amp;<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(<span class="keyword">this</span>)-&gt;gui_signals, &amp;<a class="code" href="classopenage_1_1_game_control_signals.xhtml#a17501d8252313b0da13baee552034f6e">GameControlSignals::current_civ_index_changed</a>, <span class="keyword">this</span>, &amp;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a91561fd3a9c25750c625de4333e2b3fe">GameControlLink::on_current_civ_index_changed</a>);</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_control_signals_xhtml_a8a1d1930de8dacf259c1190f49e62b2b"><div class="ttname"><a href="classopenage_1_1_game_control_signals.xhtml#a8a1d1930de8dacf259c1190f49e62b2b">openage::GameControlSignals::modes_changed</a></div><div class="ttdeci">void modes_changed(OutputMode *mode, int mode_index)</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a652b322aaebf092e2f0735aae8b54e1c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a652b322aaebf092e2f0735aae8b54e1c">openage::gui::GameControlLink::on_mode_changed</a></div><div class="ttdeci">void on_mode_changed(OutputMode *mode, int mode_index)</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8cpp_source.xhtml#l00335">game_control_link.cpp:335</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a283d1e14bf98cfb5f21713a99d4637e2"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a283d1e14bf98cfb5f21713a99d4637e2">openage::gui::GameControlLink::on_current_player_name_changed</a></div><div class="ttdeci">void on_current_player_name_changed(const std::string &amp;current_player_name)</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8cpp_source.xhtml#l00355">game_control_link.cpp:355</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a91561fd3a9c25750c625de4333e2b3fe"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a91561fd3a9c25750c625de4333e2b3fe">openage::gui::GameControlLink::on_current_civ_index_changed</a></div><div class="ttdeci">void on_current_civ_index_changed(int current_civ_index)</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8cpp_source.xhtml#l00360">game_control_link.cpp:360</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_control_signals_xhtml_a0455b47d2bf50224596f85e397a9c6ff"><div class="ttname"><a href="classopenage_1_1_game_control_signals.xhtml#a0455b47d2bf50224596f85e397a9c6ff">openage::GameControlSignals::mode_changed</a></div><div class="ttdeci">void mode_changed(OutputMode *mode, int mode_index)</div></div>
+<div class="ttc" id="classopenage_1_1_game_control_signals_xhtml_a17501d8252313b0da13baee552034f6e"><div class="ttname"><a href="classopenage_1_1_game_control_signals.xhtml#a17501d8252313b0da13baee552034f6e">openage::GameControlSignals::current_civ_index_changed</a></div><div class="ttdeci">void current_civ_index_changed(int current_civ_index)</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_aef267067b8bc03f0df3bfdecce515cd6"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6">openage::gui::GameControlLink::on_modes_changed</a></div><div class="ttdeci">void on_modes_changed(OutputMode *mode, int mode_index)</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8cpp_source.xhtml#l00345">game_control_link.cpp:345</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_control_signals_xhtml_a95762160cc28da841b21e75c6706d70f"><div class="ttname"><a href="classopenage_1_1_game_control_signals.xhtml#a95762160cc28da841b21e75c6706d70f">openage::GameControlSignals::current_player_name_changed</a></div><div class="ttdeci">void current_player_name_changed(const std::string &amp;current_player_name)</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1_game_control_signals.xhtml#a17501d8252313b0da13baee552034f6e">openage::GameControlSignals::current_civ_index_changed()</a>, <a class="el" href="classopenage_1_1_game_control_signals.xhtml#a95762160cc28da841b21e75c6706d70f">openage::GameControlSignals::current_player_name_changed()</a>, <a class="el" href="classopenage_1_1_game_control_signals.xhtml#a0455b47d2bf50224596f85e397a9c6ff">openage::GameControlSignals::mode_changed()</a>, <a class="el" href="classopenage_1_1_game_control_signals.xhtml#a8a1d1930de8dacf259c1190f49e62b2b">openage::GameControlSignals::modes_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00360">on_current_civ_index_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00355">on_current_player_name_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">on_modes_changed()</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00037">qtsdl::unwrap()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_ac65023c9d5f785efe775b1dd99111c42_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -689,6 +796,20 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00360">360</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                                                                        {</div><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">current_civ_index</a> = <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">current_civ_index</a>;</div><div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a0b46ec7ad002ae406748996aa5ba4511">current_civ_index_changed</a>();</div><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a0b46ec7ad002ae406748996aa5ba4511"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a0b46ec7ad002ae406748996aa5ba4511">openage::gui::GameControlLink::current_civ_index_changed</a></div><div class="ttdeci">void current_civ_index_changed()</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a497a16ce1a8f935d7717e12070b1cfc2"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a497a16ce1a8f935d7717e12070b1cfc2">openage::gui::GameControlLink::current_civ_index</a></div><div class="ttdeci">int current_civ_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00296">game_control_link.h:296</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00296">current_civ_index</a>, and <a class="el" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a0b46ec7ad002ae406748996aa5ba4511">current_civ_index_changed()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">on_core_adopted()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a91561fd3a9c25750c625de4333e2b3fe_icgraph.svg" width="419" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -717,6 +838,20 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00355">355</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                                                                         {</div><div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a45ab40e9b57cb9ef84c280415fa6d226">current_player_name</a> = QString::fromStdString(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a45ab40e9b57cb9ef84c280415fa6d226">current_player_name</a>);</div><div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#aab90e8d24e6f60b07cd9640c1c20dc7e">current_player_name_changed</a>();</div><div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a45ab40e9b57cb9ef84c280415fa6d226"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a45ab40e9b57cb9ef84c280415fa6d226">openage::gui::GameControlLink::current_player_name</a></div><div class="ttdeci">QString current_player_name</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00295">game_control_link.h:295</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_aab90e8d24e6f60b07cd9640c1c20dc7e"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#aab90e8d24e6f60b07cd9640c1c20dc7e">openage::gui::GameControlLink::current_player_name_changed</a></div><div class="ttdeci">void current_player_name_changed()</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00295">current_player_name</a>, and <a class="el" href="classopenage_1_1gui_1_1_game_control_link.xhtml#aab90e8d24e6f60b07cd9640c1c20dc7e">current_player_name_changed()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">on_core_adopted()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a283d1e14bf98cfb5f21713a99d4637e2_icgraph.svg" width="419" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -755,6 +890,31 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">335</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                                                      {</div><div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keyword">auto</span> new_mode = <a class="code" href="namespaceqtsdl.xhtml#a5a0a6c84da4886196d22ea5de4477e66">qtsdl::wrap</a>(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>);</div><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div><div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a> != new_mode || this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">effective_mode_index</a> != <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>) {</div><div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">effective_mode_index</a> = <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>;</div><div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a> = new_mode;</div><div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#ac16e61fa59c4beb23f130d729e863443">mode_changed</a>();</div><div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_ac16e61fa59c4beb23f130d729e863443"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#ac16e61fa59c4beb23f130d729e863443">openage::gui::GameControlLink::mode_changed</a></div><div class="ttdeci">void mode_changed()</div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_a5a0a6c84da4886196d22ea5de4477e66"><div class="ttname"><a href="namespaceqtsdl.xhtml#a5a0a6c84da4886196d22ea5de4477e66">qtsdl::wrap</a></div><div class="ttdeci">const Wrap&lt; U &gt;::Type * wrap(const U *u)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00047">gui_item_link.h:47</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a04388cbbc34a309a81d068d923da3fff"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">openage::gui::GameControlLink::mode</a></div><div class="ttdeci">openage::gui::OutputModeLink mode</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00240">game_control_link.h:240</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a02ffce95a7ef8178d40ab187461b125c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">openage::gui::GameControlLink::mode_index</a></div><div class="ttdeci">int mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00290">game_control_link.h:290</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a90b26aa3eec1bd608bfecb9ef61d32af"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a90b26aa3eec1bd608bfecb9ef61d32af">openage::gui::GameControlLink::effective_mode_index</a></div><div class="ttdeci">int effective_mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00289">game_control_link.h:289</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00289">effective_mode_index</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00240">mode</a>, <a class="el" href="classopenage_1_1gui_1_1_game_control_link.xhtml#ac16e61fa59c4beb23f130d729e863443">mode_changed()</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00290">mode_index</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00047">qtsdl::wrap()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">on_core_adopted()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">on_modes_changed()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a652b322aaebf092e2f0735aae8b54e1c_cgraph.svg" width="551" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a652b322aaebf092e2f0735aae8b54e1c_icgraph.svg" width="647" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -793,6 +953,31 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">345</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                                                                       {</div><div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this, <span class="keywordtype">int</span> <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>) {</div><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        _this-&gt;set_mode(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>);</div><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    };</div><div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">i</a>(f, this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>);</div><div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a652b322aaebf092e2f0735aae8b54e1c">on_mode_changed</a>(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>, <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>);</div><div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#aa32e63efc11c9d35ec212ffc20c848df">modes_changed</a>();</div><div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ac54e8509493e71387cc423d3b594c774"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::i</a></div><div class="ttdeci">void i(F f, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00182">gui_item.h:182</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a04388cbbc34a309a81d068d923da3fff"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">openage::gui::GameControlLink::mode</a></div><div class="ttdeci">openage::gui::OutputModeLink mode</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00240">game_control_link.h:240</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a02ffce95a7ef8178d40ab187461b125c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">openage::gui::GameControlLink::mode_index</a></div><div class="ttdeci">int mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00290">game_control_link.h:290</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a652b322aaebf092e2f0735aae8b54e1c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a652b322aaebf092e2f0735aae8b54e1c">openage::gui::GameControlLink::on_mode_changed</a></div><div class="ttdeci">void on_mode_changed(OutputMode *mode, int mode_index)</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8cpp_source.xhtml#l00335">game_control_link.cpp:335</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_aa32e63efc11c9d35ec212ffc20c848df"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#aa32e63efc11c9d35ec212ffc20c848df">openage::gui::GameControlLink::modes_changed</a></div><div class="ttdeci">void modes_changed()</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::i()</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00240">mode</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00290">mode_index</a>, <a class="el" href="classopenage_1_1gui_1_1_game_control_link.xhtml#aa32e63efc11c9d35ec212ffc20c848df">modes_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>, and <a class="el" href="game__control_8cpp_source.xhtml#l00856">openage::GameControl::set_mode()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00252">on_core_adopted()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_aef267067b8bc03f0df3bfdecce515cd6_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_aef267067b8bc03f0df3bfdecce515cd6_icgraph.svg" width="419" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -813,6 +998,18 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00309">309</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                   {</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this, Engine *<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>) {</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        _this-&gt;set_engine(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>);</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    };</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">s</a>(f, this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>, <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">engine</a>);</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ae1736d128156183ad9e760b8a49b3361"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s</a></div><div class="ttdeci">void s(F f, P &amp;p, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00196">gui_item.h:196</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a5b7fa78ab5d69b8edb8fe7c74012b491"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a5b7fa78ab5d69b8edb8fe7c74012b491">openage::gui::GameControlLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00244">game_control_link.h:244</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00244">engine</a>, <a class="el" href="gui__item_8h_source.xhtml#l00196">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s()</a>, and <a class="el" href="game__control_8cpp_source.xhtml#l00730">openage::GameControl::set_engine()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a0a4bb8a5d7b2e5637d317fe51f02ad5f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -833,6 +1030,18 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00320">320</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                                 {</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this, GameMainHandle *<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>) {</div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        _this-&gt;set_game(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>);</div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    };</div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">s</a>(f, this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>, <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">game</a>);</div><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a33ea79efffcb4d7a831c4e0ae84525a6"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a33ea79efffcb4d7a831c4e0ae84525a6">openage::gui::GameControlLink::game</a></div><div class="ttdeci">openage::gui::GameMainLink game</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00245">game_control_link.h:245</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ae1736d128156183ad9e760b8a49b3361"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s</a></div><div class="ttdeci">void s(F f, P &amp;p, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00196">gui_item.h:196</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00245">game</a>, <a class="el" href="gui__item_8h_source.xhtml#l00196">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s()</a>, and <a class="el" href="game__control_8cpp_source.xhtml#l00775">openage::GameControl::set_game()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_ae7ae95345cce7b97f5cbab741589808a_cgraph.svg" width="100%" height="405"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -853,6 +1062,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00279">279</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                             {</div><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this, <span class="keywordtype">int</span> <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>) {</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        _this-&gt;set_mode(<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>, <span class="keyword">true</span>);</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    };</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#adbc7a1a8ccb4aca1bdb9c4797bdd8700">sf</a>(f, this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">mode_index</a>, <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">mode</a>);</div><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_adbc7a1a8ccb4aca1bdb9c4797bdd8700"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#adbc7a1a8ccb4aca1bdb9c4797bdd8700">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::sf</a></div><div class="ttdeci">void sf(F f, P &amp;p, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00207">gui_item.h:207</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a04388cbbc34a309a81d068d923da3fff"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a04388cbbc34a309a81d068d923da3fff">openage::gui::GameControlLink::mode</a></div><div class="ttdeci">openage::gui::OutputModeLink mode</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00240">game_control_link.h:240</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a02ffce95a7ef8178d40ab187461b125c"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a02ffce95a7ef8178d40ab187461b125c">openage::gui::GameControlLink::mode_index</a></div><div class="ttdeci">int mode_index</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00290">game_control_link.h:290</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00240">mode</a>, <a class="el" href="game__control__link_8h_source.xhtml#l00290">mode_index</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00856">openage::GameControl::set_mode()</a>, and <a class="el" href="gui__item_8h_source.xhtml#l00207">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::sf()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_ab9397074dbc2c25f69e718e053572fab_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -873,6 +1095,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8cpp_source.xhtml#l00291">291</a> of file <a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                                         {</div><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameControl *_this, <span class="keyword">const</span> QVariantList &amp;<a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">modes</a>) {</div><div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        std::vector&lt;OutputMode*&gt; new_modes;</div><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div><div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> m : <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">modes</a>)</div><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">if</span> (m.canConvert&lt;OutputModeLink*&gt;())</div><div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                new_modes.push_back(<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(m.value&lt;OutputModeLink*&gt;()));</div><div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        _this-&gt;set_modes(new_modes);</div><div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    };</div><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div><div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">s</a>(f, this-&gt;modes, <a class="code" href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">modes</a>);</div><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ae1736d128156183ad9e760b8a49b3361"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s</a></div><div class="ttdeci">void s(F f, P &amp;p, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00196">gui_item.h:196</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_control_link_xhtml_a86393d64c36b4540e22512cc347f3236"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_control_link.xhtml#a86393d64c36b4540e22512cc347f3236">openage::gui::GameControlLink::modes</a></div><div class="ttdeci">QVariantList modes</div><div class="ttdef"><b>Definition:</b> <a href="game__control__link_8h_source.xhtml#l00243">game_control_link.h:243</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__control__link_8h_source.xhtml#l00243">modes</a>, <a class="el" href="gui__item_8h_source.xhtml#l00196">qtsdl::GuiItemMethods&lt; GameControlLink &gt;::s()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00793">openage::GameControl::set_modes()</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00037">qtsdl::unwrap()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_control_link_a54ebef9560dd3607b61083b0f8ecb9ba_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -899,6 +1134,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00296">296</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00331">get_current_civ_index()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00360">on_current_civ_index_changed()</a>.</p>
+
 </div>
 </div>
 <a id="a45ab40e9b57cb9ef84c280415fa6d226"></a>
@@ -923,6 +1160,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00295">295</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00327">get_current_player_name()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00355">on_current_player_name_changed()</a>.</p>
+
 </div>
 </div>
 <a id="a90b26aa3eec1bd608bfecb9ef61d32af"></a>
@@ -946,6 +1185,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00289">289</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00271">get_effective_mode_index()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>.</p>
 
 </div>
 </div>
@@ -1042,6 +1283,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00290">290</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00275">get_mode_index()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">on_modes_changed()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00279">set_mode_index()</a>.</p>
 
 </div>
 </div>
@@ -1140,6 +1383,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00244">244</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00305">get_engine()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00309">set_engine()</a>.</p>
+
 </div>
 </div>
 <a id="a33ea79efffcb4d7a831c4e0ae84525a6"></a>
@@ -1164,6 +1409,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00245">245</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00316">get_game()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00320">set_game()</a>.</p>
+
 </div>
 </div>
 <a id="a04388cbbc34a309a81d068d923da3fff"></a>
@@ -1187,6 +1434,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00240">240</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00267">get_mode()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00335">on_mode_changed()</a>, <a class="el" href="game__control__link_8cpp_source.xhtml#l00345">on_modes_changed()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00279">set_mode_index()</a>.</p>
 
 </div>
 </div>
@@ -1236,11 +1485,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__control__link_8h_source.xhtml#l00243">243</a> of file <a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__control__link_8cpp_source.xhtml#l00287">get_modes()</a>, and <a class="el" href="game__control__link_8cpp_source.xhtml#l00291">set_modes()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/<a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a></li>
-<li>libopenage/gui/<a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/<a class="el" href="game__control__link_8h_source.xhtml">game_control_link.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/<a class="el" href="game__control__link_8cpp_source.xhtml">game_control_link.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

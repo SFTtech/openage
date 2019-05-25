@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.assets Namespace Reference</title>
+<title>openage: openage.assets Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -125,6 +126,17 @@ Functions</h2></td></tr>
 <p>This function is used by the both the conversion process and the game startup. The conversion uses it for its output, the game as its data source(s). </p>
 
 <p class="definition">Definition at line <a class="el" href="assets_8py_source.xhtml#l00030">30</a> of file <a class="el" href="assets_8py_source.xhtml">assets.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment"># if we&#39;re in devmode, use only the in-repo asset folder</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> <span class="keywordflow">not</span> custom_asset_dir <span class="keywordflow">and</span> config.DEVMODE:</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> Directory(os.path.join(config.BUILD_SRC_DIR, <span class="stringliteral">&quot;assets&quot;</span>)).root</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment"># else, mount the possible locations in an union:</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment"># overlay the global dir and the user dir.</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    result = Union().root</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment"># the cmake-determined folder for storing assets</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    global_data = Path(config.GLOBAL_ASSET_DIR)</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> global_data.is_dir():</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        result.mount(WriteBlocker(Directory(global_data).root).root)</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment"># user-data directory as provided by environment variables</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment"># and platform standards</span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment"># we always create this!</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    home_data = default_dirs.get_dir(<span class="stringliteral">&quot;data_home&quot;</span>) / <span class="stringliteral">&quot;openage&quot;</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    result.mount(</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        Directory(</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            home_data,</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            create_if_missing=<span class="keyword">True</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        ).root / <span class="stringliteral">&quot;assets&quot;</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    )</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment"># the program argument overrides it all</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> custom_asset_dir:</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        result.mount(Directory(custom_asset_dir).root)</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> result</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">def </span><a class="code" href="namespaceopenage_1_1assets.xhtml#a362b18ac5b307e65b5ee2a0e2bc69b77">test</a>():</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1assets_xhtml_a362b18ac5b307e65b5ee2a0e2bc69b77"><div class="ttname"><a href="namespaceopenage_1_1assets.xhtml#a362b18ac5b307e65b5ee2a0e2bc69b77">openage.assets.test</a></div><div class="ttdeci">def test()</div><div class="ttdoc">Tests whether a specific asset exists.</div><div class="ttdef"><b>Definition:</b> <a href="assets_8py_source.xhtml#l00066">assets.py:66</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="game_2main_8py_source.xhtml#l00029">openage.game.main.main()</a>, <a class="el" href="convert_2main_8py_source.xhtml#l00624">openage.convert.main.main()</a>, and <a class="el" href="assets_8py_source.xhtml#l00066">openage.assets.test()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1assets_a3e1a981f1a6162a6e8205a0dcfc4e3b9_icgraph.svg" width="375" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -146,6 +158,18 @@ Functions</h2></td></tr>
 <p>Tests whether a specific asset exists. </p>
 
 <p class="definition">Definition at line <a class="el" href="assets_8py_source.xhtml#l00066">66</a> of file <a class="el" href="assets_8py_source.xhtml">assets.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">import</span> argparse</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    fakecli = argparse.ArgumentParser()</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    fakecli.add_argument(<span class="stringliteral">&quot;--asset-dir&quot;</span>, default=<span class="keywordtype">None</span>)</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    args = fakecli.parse_args([])</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072">assert_value</a>(<a class="code" href="namespaceopenage_1_1assets.xhtml#a3e1a981f1a6162a6e8205a0dcfc4e3b9">get_asset_path</a>(args.asset_dir)[<span class="stringliteral">&#39;missing.png&#39;</span>].filesize, 580)</div><div class="ttc" id="namespaceopenage_1_1assets_xhtml_a3e1a981f1a6162a6e8205a0dcfc4e3b9"><div class="ttname"><a href="namespaceopenage_1_1assets.xhtml#a3e1a981f1a6162a6e8205a0dcfc4e3b9">openage.assets.get_asset_path</a></div><div class="ttdeci">def get_asset_path(custom_asset_dir=None)</div><div class="ttdoc">Returns a Path object for the game assets.</div><div class="ttdef"><b>Definition:</b> <a href="assets_8py_source.xhtml#l00030">assets.py:30</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_a2800c6619c18337197b7ad519bbad072"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072">openage::testing.testing.assert_value</a></div><div class="ttdeci">def assert_value(value, expected=None, validator=None)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00025">testing.py:25</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="testing_8py_source.xhtml#l00025">openage.testing.testing.assert_value()</a>, and <a class="el" href="assets_8py_source.xhtml#l00030">openage.assets.get_asset_path()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1assets_a362b18ac5b307e65b5ee2a0e2bc69b77_cgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>

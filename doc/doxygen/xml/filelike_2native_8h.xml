@@ -7,9 +7,9 @@
     <includes local="no">memory</includes>
     <includes local="no">string</includes>
     <includes refid="filelike_8h" local="yes">filelike.h</includes>
-    <includedby refid="file_8cpp" local="yes">libopenage/util/file.cpp</includedby>
-    <includedby refid="filelike_2native_8cpp" local="yes">libopenage/util/filelike/native.cpp</includedby>
-    <includedby refid="directory_8cpp" local="yes">libopenage/util/fslike/directory.cpp</includedby>
+    <includedby refid="file_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp</includedby>
+    <includedby refid="filelike_2native_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp</includedby>
+    <includedby refid="directory_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.cpp</includedby>
     <incdepgraph>
       <node id="29670">
         <label>string</label>
@@ -18,7 +18,7 @@
         <label>fstream</label>
       </node>
       <node id="29666">
-        <label>libopenage/util/filelike/native.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h</label>
         <link refid="filelike_2native_8h"/>
         <childnode refid="29667" relation="include">
         </childnode>
@@ -69,15 +69,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="29678">
-        <label>libopenage/util/fslike/directory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/directory.cpp</label>
         <link refid="directory_8cpp"/>
       </node>
       <node id="29677">
-        <label>libopenage/util/filelike/native.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp</label>
         <link refid="filelike_2native_8cpp"/>
       </node>
       <node id="29675">
-        <label>libopenage/util/filelike/native.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h</label>
         <link refid="filelike_2native_8h"/>
         <childnode refid="29676" relation="include">
         </childnode>
@@ -87,7 +87,7 @@
         </childnode>
       </node>
       <node id="29676">
-        <label>libopenage/util/file.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp</label>
         <link refid="file_8cpp"/>
       </node>
     </invincdepgraph>
@@ -149,6 +149,6 @@
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/filelike/native.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h"/>
   </compounddef>
 </doxygen>

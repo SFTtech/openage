@@ -5,8 +5,8 @@
     <includes local="no">vector</includes>
     <includes refid="renderer_2opengl_2texture_8h" local="yes">texture.h</includes>
     <includes refid="simple__object_8h" local="yes">simple_object.h</includes>
-    <includedby refid="framebuffer_8cpp" local="yes">libopenage/renderer/opengl/framebuffer.cpp</includedby>
-    <includedby refid="opengl_2render__target_8h" local="yes">libopenage/renderer/opengl/render_target.h</includedby>
+    <includedby refid="framebuffer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp</includedby>
+    <includedby refid="opengl_2render__target_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</includedby>
     <incdepgraph>
       <node id="21026">
         <label>list</label>
@@ -196,7 +196,7 @@
         </childnode>
       </node>
       <node id="20996">
-        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h</label>
         <link refid="framebuffer_8h"/>
         <childnode refid="20997" relation="include">
         </childnode>
@@ -405,7 +405,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21052">
-        <label>libopenage/renderer/opengl/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h</label>
         <link refid="opengl_2render__target_8h"/>
         <childnode refid="21053" relation="include">
         </childnode>
@@ -417,23 +417,23 @@
         </childnode>
       </node>
       <node id="21055">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="21056">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="21051">
-        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.cpp</label>
         <link refid="framebuffer_8cpp"/>
       </node>
       <node id="21053">
-        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp</label>
         <link refid="render__target_8cpp"/>
       </node>
       <node id="21050">
-        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h</label>
         <link refid="framebuffer_8h"/>
         <childnode refid="21051" relation="include">
         </childnode>
@@ -441,11 +441,11 @@
         </childnode>
       </node>
       <node id="21058">
-        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture_array.cpp</label>
         <link refid="opengl_2texture__array_8cpp"/>
       </node>
       <node id="21054">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="21055" relation="include">
         </childnode>
@@ -453,7 +453,7 @@
         </childnode>
       </node>
       <node id="21057">
-        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/texture.cpp</label>
         <link refid="renderer_2opengl_2texture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -491,6 +491,6 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/framebuffer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/framebuffer.h"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_c2131c87632a366a6d52f07ca073ab90" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/testing</compoundname>
+    <innerfile refid="testing_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="benchmark_8py">benchmark.py</innerfile>
+    <innerfile refid="doctest_8py">doctest.py</innerfile>
+    <innerfile refid="list__processor_8py">list_processor.py</innerfile>
+    <innerfile refid="testing_2main_8py">main.py</innerfile>
+    <innerfile refid="testing_8py">testing.py</innerfile>
+    <innerfile refid="testlist_8py">testlist.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/"/>
+  </compounddef>
+</doxygen>

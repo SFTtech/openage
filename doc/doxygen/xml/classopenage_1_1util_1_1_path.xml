@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="53" column="1" bodyfile="libopenage/util/path.h" bodystart="53" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" prot="public" static="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &gt;</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="59" column="1" bodyfile="libopenage/util/path.h" bodystart="59" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -45,7 +45,61 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="166" column="1" bodyfile="libopenage/util/path.h" bodystart="166" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a6d3e5ff8c7cff14815681cfc274a54fa" compoundref="path_8py" startline="318" endline="320">openage.util.fslike.path.Path.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a250e49c6abb64b66594cad8e7adc8792" compoundref="path_8py" startline="73" endline="78">openage.util.fslike.path.Path.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74cfcb2ba7bb7d4e897ba831b9f7190a" compoundref="path_8py" startline="70" endline="72">openage.util.fslike.path.Path.__str__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a196b4624dd3cec2d0405c4ff6ed31531" compoundref="path_8py" startline="152" endline="154">openage.util.fslike.path.Path._get_native_path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a83f936c961315f95bc4366cd6a4fc4a6" compoundref="path_8py" startline="161" endline="163">openage.util.fslike.path.Path._resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a93d75129a9dd661125017028957b8ce5" compoundref="path_8py" startline="170" endline="172">openage.util.fslike.path.Path._resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a919281129e859f1793cda2a0cc68c498" compoundref="filecollection_8py" startline="230" endline="233">openage.util.fslike.filecollection.FileCollectionPath.add_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3f26683d6ae00c9621fbfdf718748773" compoundref="path_8py" startline="80" endline="82">openage.util.fslike.path.Path.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a348a0396369473be6eac75943f19273a" compoundref="path_8py" startline="244" endline="246">openage.util.fslike.path.Path.filesize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" compoundref="util_2path_8cpp" startline="240" endline="242">get_filesize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" compoundref="util_2path_8cpp" startline="339" endline="341">get_fsobj</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" compoundref="util_2path_8cpp" startline="236" endline="238">get_mtime</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" compoundref="util_2path_8cpp" startline="158" endline="160">get_native_path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a92def9ecadd3e44ce9308a04b98660c7" compoundref="path_8py" startline="84" endline="86">openage.util.fslike.path.Path.is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" compoundref="util_2path_8cpp" startline="84" endline="86">is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" compoundref="util_2path_8cpp" startline="80" endline="82">is_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7aa4c2db5a1b537edfac277335b4ee2c" compoundref="path_8py" startline="88" endline="90">openage.util.fslike.path.Path.is_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" compoundref="util_2path_8cpp" startline="96" endline="105">iterdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0793e491d4812db33fc0768e5f9c79cd" compoundref="path_8py" startline="100" endline="103">openage.util.fslike.path.Path.iterdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74ff93acd2b9f012f04c79b64438a632" compoundref="path_8py" startline="300" endline="308">openage.util.fslike.path.Path.joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" compoundref="util_2path_8cpp" startline="92" endline="94">list</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2c97a612473ab536fe4dc2be187a7e67" compoundref="path_8py" startline="96" endline="98">openage.util.fslike.path.Path.list</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" compoundref="util_2path_8cpp" startline="107" endline="109">mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a4cedf04c581121ee8b5504e7a46abcb1" compoundref="path_8py" startline="105" endline="107">openage.util.fslike.path.Path.mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_path_1ac594e2685f0f3a2062024f7d62c0791e" compoundref="union_8py" startline="292" endline="294">openage.util.fslike.union.UnionPath.mount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef6342cdad4e9aa57cb9c0b248042c7e" compoundref="path_8py" startline="239" endline="241">openage.util.fslike.path.Path.mtime</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" compoundref="path_8py" startline="109" endline="135">openage.util.fslike.path.Path.open</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" compoundref="util_2path_8cpp" startline="148" endline="150">open_a</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" compoundref="util_2path_8cpp" startline="153" endline="155">open_ar</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" compoundref="util_2path_8cpp" startline="133" endline="135">open_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" compoundref="path_8py" startline="137" endline="139">openage.util.fslike.path.Path.open_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" compoundref="util_2path_8cpp" startline="143" endline="145">open_rw</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" compoundref="util_2path_8cpp" startline="138" endline="140">open_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" compoundref="path_8py" startline="141" endline="143">openage.util.fslike.path.Path.open_w</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aae7cd67becf8e8e8e0be8e54a12624d3" compoundref="util_2path_8cpp" startline="349" endline="361">openage::util::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" compoundref="util_2path_8cpp" startline="327" endline="332">operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1afef5c9a94242cabc5c4d097ab636c1cb" compoundref="path_8py" startline="264" endline="266">openage.util.fslike.path.Path.parent</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a94d1c79106d647738cc12de1dfedf4b5" compoundref="util_2path_8cpp" startline="67" endline="73">Path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a55b9d625b2ad113a80ce6c88122c8912" compoundref="path_8py" startline="259" endline="261">openage.util.fslike.path.Path.poll_fs_watches</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" compoundref="util_2path_8cpp" startline="200" endline="209">rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2a88d48ea00e605c4d97d9a3cbcfed01" compoundref="path_8py" startline="211" endline="215">openage.util.fslike.path.Path.rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" compoundref="util_2path_8cpp" startline="176" endline="185">resolve_native_path_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" compoundref="util_2path_8cpp" startline="188" endline="197">resolve_native_path_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" compoundref="util_2path_8cpp" startline="211" endline="213">rmdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1abc9109efa3d242497fe929fdc3189519" compoundref="path_8py" startline="217" endline="219">openage.util.fslike.path.Path.rmdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" compoundref="util_2path_8cpp" startline="215" endline="217">touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef7a580dd6fe84570a18f5533a2bfb75" compoundref="path_8py" startline="221" endline="223">openage.util.fslike.path.Path.touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" compoundref="util_2path_8cpp" startline="219" endline="221">unlink</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a576b6588289279434c0b914a528d380c" compoundref="path_8py" startline="225" endline="227">openage.util.fslike.path.Path.unlink</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_path_1a91673ab1bf51e9236919ad0c5b1f0264" compoundref="union_8py" startline="302" endline="304">openage.util.fslike.union.UnionPath.unmount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a37d1f2685564c84f991482035133f885" compoundref="path_8py" startline="255" endline="257">openage.util.fslike.path.Path.watch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" compoundref="util_2path_8cpp" startline="88" endline="90">writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a327eac2a41d5787ad157d66a3274f489" compoundref="path_8py" startline="92" endline="94">openage.util.fslike.path.Path.writable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" prot="protected" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref></type>
@@ -58,7 +112,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="168" column="1" bodyfile="libopenage/util/path.h" bodystart="168" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="168" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" bodystart="168" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a6d3e5ff8c7cff14815681cfc274a54fa" compoundref="path_8py" startline="318" endline="320">openage.util.fslike.path.Path.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a250e49c6abb64b66594cad8e7adc8792" compoundref="path_8py" startline="73" endline="78">openage.util.fslike.path.Path.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74cfcb2ba7bb7d4e897ba831b9f7190a" compoundref="path_8py" startline="70" endline="72">openage.util.fslike.path.Path.__str__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a196b4624dd3cec2d0405c4ff6ed31531" compoundref="path_8py" startline="152" endline="154">openage.util.fslike.path.Path._get_native_path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a83f936c961315f95bc4366cd6a4fc4a6" compoundref="path_8py" startline="161" endline="163">openage.util.fslike.path.Path._resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a93d75129a9dd661125017028957b8ce5" compoundref="path_8py" startline="170" endline="172">openage.util.fslike.path.Path._resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a919281129e859f1793cda2a0cc68c498" compoundref="filecollection_8py" startline="230" endline="233">openage.util.fslike.filecollection.FileCollectionPath.add_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3f26683d6ae00c9621fbfdf718748773" compoundref="path_8py" startline="80" endline="82">openage.util.fslike.path.Path.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a348a0396369473be6eac75943f19273a" compoundref="path_8py" startline="244" endline="246">openage.util.fslike.path.Path.filesize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" compoundref="util_2path_8cpp" startline="344" endline="346">get_parts</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a92def9ecadd3e44ce9308a04b98660c7" compoundref="path_8py" startline="84" endline="86">openage.util.fslike.path.Path.is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7aa4c2db5a1b537edfac277335b4ee2c" compoundref="path_8py" startline="88" endline="90">openage.util.fslike.path.Path.is_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0793e491d4812db33fc0768e5f9c79cd" compoundref="path_8py" startline="100" endline="103">openage.util.fslike.path.Path.iterdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74ff93acd2b9f012f04c79b64438a632" compoundref="path_8py" startline="300" endline="308">openage.util.fslike.path.Path.joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2c97a612473ab536fe4dc2be187a7e67" compoundref="path_8py" startline="96" endline="98">openage.util.fslike.path.Path.list</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a4cedf04c581121ee8b5504e7a46abcb1" compoundref="path_8py" startline="105" endline="107">openage.util.fslike.path.Path.mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_path_1ac594e2685f0f3a2062024f7d62c0791e" compoundref="union_8py" startline="292" endline="294">openage.util.fslike.union.UnionPath.mount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef6342cdad4e9aa57cb9c0b248042c7e" compoundref="path_8py" startline="239" endline="241">openage.util.fslike.path.Path.mtime</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae3a270686d78c16980549c5ebd7e8839" compoundref="path_8py" startline="269" endline="271">openage.util.fslike.path.Path.name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" compoundref="path_8py" startline="109" endline="135">openage.util.fslike.path.Path.open</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" compoundref="path_8py" startline="137" endline="139">openage.util.fslike.path.Path.open_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" compoundref="path_8py" startline="141" endline="143">openage.util.fslike.path.Path.open_w</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aae7cd67becf8e8e8e0be8e54a12624d3" compoundref="util_2path_8cpp" startline="349" endline="361">openage::util::operator&lt;&lt;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" compoundref="util_2path_8cpp" startline="327" endline="332">operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1afef5c9a94242cabc5c4d097ab636c1cb" compoundref="path_8py" startline="264" endline="266">openage.util.fslike.path.Path.parent</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" compoundref="util_2path_8cpp" startline="200" endline="209">rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2a88d48ea00e605c4d97d9a3cbcfed01" compoundref="path_8py" startline="211" endline="215">openage.util.fslike.path.Path.rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1abc9109efa3d242497fe929fdc3189519" compoundref="path_8py" startline="217" endline="219">openage.util.fslike.path.Path.rmdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef7a580dd6fe84570a18f5533a2bfb75" compoundref="path_8py" startline="221" endline="223">openage.util.fslike.path.Path.touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a576b6588289279434c0b914a528d380c" compoundref="path_8py" startline="225" endline="227">openage.util.fslike.path.Path.unlink</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_path_1a91673ab1bf51e9236919ad0c5b1f0264" compoundref="union_8py" startline="302" endline="304">openage.util.fslike.union.UnionPath.unmount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a37d1f2685564c84f991482035133f885" compoundref="path_8py" startline="255" endline="257">openage.util.fslike.path.Path.watch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a327eac2a41d5787ad157d66a3274f489" compoundref="path_8py" startline="92" endline="94">openage.util.fslike.path.Path.writable</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="66" column="1" bodyfile="libopenage/util/path.cpp" bodystart="41" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a42f3bcd766fbdb0a4de3ccd36fa65b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="74" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="74" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a94d1c79106d647738cc12de1dfedf4b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -121,7 +209,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="80" column="1" bodyfile="libopenage/util/path.cpp" bodystart="67" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="67" bodyend="73"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1acfbb432696700abc731097771deb4f94" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -134,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="83" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="83" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -147,7 +236,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="87" column="1" bodyfile="libopenage/util/path.cpp" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="76" bodyend="78"/>
+        <references refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" compoundref="util_2path_8cpp" startline="84" endline="86">is_dir</references>
+        <references refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" compoundref="util_2path_8cpp" startline="80" endline="82">is_file</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" compoundref="wrapper_8py" startline="68" endline="70">openage.util.fslike.wrapper.Wrapper.resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5" compoundref="fslike_2abstract_8py" startline="87" endline="89">openage.util.fslike.abstract.FSLikeObject.resolve_r</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -160,7 +253,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="88" column="1" bodyfile="libopenage/util/path.cpp" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="80" bodyend="82"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" compoundref="audio_2resource_8cpp" startline="32" endline="53">openage::audio::Resource::create_resource</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" compoundref="fslike_2abstract_8py" startline="77" endline="79">openage.util.fslike.abstract.FSLikeObject.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" compoundref="util_2path_8cpp" startline="76" endline="78">exists</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1aae3415abc6b2ba91c70ba2f0c9343436" compoundref="assetmanager_8cpp" startline="58" endline="108">openage::AssetManager::load_texture</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" compoundref="game__spec_8cpp" startline="192" endline="270">openage::GameSpec::on_gamedata_loaded</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" compoundref="opus__loading_8cpp" startline="57" endline="125">openage::audio::open_opus_file</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -173,7 +273,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="89" column="1" bodyfile="libopenage/util/path.cpp" bodystart="84" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="84" bodyend="86"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" compoundref="fslike_2abstract_8py" startline="77" endline="79">openage.util.fslike.abstract.FSLikeObject.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" compoundref="util_2path_8cpp" startline="76" endline="78">exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" compoundref="util_2path_8cpp" startline="223" endline="233">removerecursive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -186,7 +291,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="90" column="1" bodyfile="libopenage/util/path.cpp" bodystart="88" bodyend="90"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="88" bodyend="90"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &gt;</type>
@@ -199,7 +307,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="91" column="1" bodyfile="libopenage/util/path.cpp" bodystart="92" bodyend="94"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="92" bodyend="94"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
@@ -212,7 +321,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="92" column="1" bodyfile="libopenage/util/path.cpp" bodystart="96" bodyend="105"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="96" bodyend="105"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" compoundref="util_2path_8cpp" startline="223" endline="233">removerecursive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -225,7 +338,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="93" column="1" bodyfile="libopenage/util/path.cpp" bodystart="107" bodyend="109"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="107" bodyend="109"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a28d7d207993972a0b61bf2abef7c8417" compoundref="wrapper_8py" startline="214" endline="217">openage.util.fslike.wrapper.DirectoryCreator.open_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -243,7 +358,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="94" column="1" bodyfile="libopenage/util/path.cpp" bodystart="111" bodyend="130"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="111" bodyend="130"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" compoundref="util_2path_8cpp" startline="148" endline="150">open_a</references>
+        <references refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" compoundref="util_2path_8cpp" startline="153" endline="155">open_ar</references>
+        <references refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" compoundref="util_2path_8cpp" startline="133" endline="135">open_r</references>
+        <references refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" compoundref="util_2path_8cpp" startline="138" endline="140">open_w</references>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" compoundref="csv_8cpp" startline="16" endline="67">openage::util::CSVCollection::CSVCollection</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a16ef0fe69558a29af4a8d568f2b5b518" compoundref="csv_8h" startline="182" endline="214">openage::util::read_csv_file</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -256,7 +378,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="95" column="1" bodyfile="libopenage/util/path.cpp" bodystart="133" bodyend="135"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="133" bodyend="135"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">open</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" compoundref="opus__loading_8cpp" startline="57" endline="125">openage::audio::open_opus_file</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -269,7 +394,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="96" column="1" bodyfile="libopenage/util/path.cpp" bodystart="138" bodyend="140"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="138" bodyend="140"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">open</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -282,7 +409,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="97" column="1" bodyfile="libopenage/util/path.cpp" bodystart="143" bodyend="145"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="143" bodyend="145"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -295,7 +423,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="98" column="1" bodyfile="libopenage/util/path.cpp" bodystart="148" bodyend="150"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="148" bodyend="150"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">open</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -308,7 +438,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="99" column="1" bodyfile="libopenage/util/path.cpp" bodystart="153" bodyend="155"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="153" bodyend="155"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">open</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -328,7 +460,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="109" column="1" bodyfile="libopenage/util/path.cpp" bodystart="163" bodyend="173"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="109" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="163" bodyend="173"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" compoundref="util_2path_8cpp" startline="176" endline="185">resolve_native_path_r</references>
+        <references refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" compoundref="util_2path_8cpp" startline="188" endline="197">resolve_native_path_w</references>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
+        <referencedby refid="classopenage_1_1_asset_manager_1aae3415abc6b2ba91c70ba2f0c9343436" compoundref="assetmanager_8cpp" startline="58" endline="108">openage::AssetManager::load_texture</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" compoundref="opus__loading_8cpp" startline="57" endline="125">openage::audio::open_opus_file</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -341,7 +480,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="111" column="1" bodyfile="libopenage/util/path.cpp" bodystart="176" bodyend="185"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="176" bodyend="185"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" compoundref="util_2path_8cpp" startline="163" endline="173">resolve_native_path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a90158226c7166eca01f78bc52da33774" compoundref="path_8py" startline="177" endline="185">openage.util.fslike.path.Path.resolve_native_path</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -354,7 +497,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="112" column="1" bodyfile="libopenage/util/path.cpp" bodystart="188" bodyend="197"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="188" bodyend="197"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" compoundref="util_2path_8cpp" startline="163" endline="173">resolve_native_path</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a90158226c7166eca01f78bc52da33774" compoundref="path_8py" startline="177" endline="185">openage.util.fslike.path.Path.resolve_native_path</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" compoundref="texture__data_8cpp" startline="150" endline="204">openage::renderer::resources::Texture2dData::store</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -371,7 +519,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="114" column="1" bodyfile="libopenage/util/path.cpp" bodystart="200" bodyend="209"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="200" bodyend="209"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -384,7 +535,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="115" column="1" bodyfile="libopenage/util/path.cpp" bodystart="211" bodyend="213"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="211" bodyend="213"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" compoundref="util_2path_8cpp" startline="223" endline="233">removerecursive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -397,7 +551,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="116" column="1" bodyfile="libopenage/util/path.cpp" bodystart="215" bodyend="217"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="215" bodyend="217"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -410,7 +565,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="117" column="1" bodyfile="libopenage/util/path.cpp" bodystart="219" bodyend="221"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="219" bodyend="221"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" compoundref="util_2path_8cpp" startline="223" endline="233">removerecursive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -423,7 +581,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="118" column="1" bodyfile="libopenage/util/path.cpp" bodystart="223" bodyend="233"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="223" bodyend="233"/>
+        <references refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" compoundref="util_2path_8cpp" startline="84" endline="86">is_dir</references>
+        <references refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" compoundref="util_2path_8cpp" startline="96" endline="105">iterdir</references>
+        <references refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" compoundref="util_2path_8cpp" startline="211" endline="213">rmdir</references>
+        <references refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" compoundref="util_2path_8cpp" startline="219" endline="221">unlink</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -436,7 +598,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="120" column="1" bodyfile="libopenage/util/path.cpp" bodystart="236" bodyend="238"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="236" bodyend="238"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -449,7 +612,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="121" column="1" bodyfile="libopenage/util/path.cpp" bodystart="240" bodyend="242"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="121" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="240" bodyend="242"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -462,7 +626,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="130" column="1" bodyfile="libopenage/util/path.cpp" bodystart="247" bodyend="249"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="247" bodyend="249"/>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" compoundref="util_2path_8cpp" startline="319" endline="321">with_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -475,7 +642,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="131" column="1" bodyfile="libopenage/util/path.cpp" bodystart="252" bodyend="259"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="252" bodyend="259"/>
+        <references refid="namespaceopenage_1_1util_1a5f6ab09d105c3dfecc8de7dfd7be7ca2" compoundref="misc_8cpp" startline="8">openage::util::empty_string</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" compoundref="util_2path_8cpp" startline="282" endline="290">get_stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" compoundref="util_2path_8cpp" startline="261" endline="269">get_suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" compoundref="util_2path_8cpp" startline="271" endline="280">get_suffixes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -488,7 +659,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="132" column="1" bodyfile="libopenage/util/path.cpp" bodystart="261" bodyend="269"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="261" bodyend="269"/>
+        <references refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" compoundref="util_2path_8cpp" startline="252" endline="259">get_name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -501,7 +673,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="133" column="1" bodyfile="libopenage/util/path.cpp" bodystart="271" bodyend="280"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="271" bodyend="280"/>
+        <references refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" compoundref="util_2path_8cpp" startline="252" endline="259">get_name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -514,7 +687,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="134" column="1" bodyfile="libopenage/util/path.cpp" bodystart="282" bodyend="290"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="282" bodyend="290"/>
+        <references refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" compoundref="util_2path_8cpp" startline="252" endline="259">get_name</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" compoundref="util_2path_8cpp" startline="323" endline="325">with_suffix</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -531,7 +707,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="136" column="1" bodyfile="libopenage/util/path.cpp" bodystart="293" bodyend="301"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="293" bodyend="301"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <references refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" compoundref="compiler_8h" startline="52">likely</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">parts</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af3d064f84b10f3baca839c4490ff6cd3" compoundref="path_8py" startline="310" endline="312">openage.util.fslike.path.Path.__getitem__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2fe104e5eec859814a5192501d7069d7" compoundref="path_8py" startline="314" endline="316">openage.util.fslike.path.Path.__truediv__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" compoundref="util_2path_8cpp" startline="247" endline="249">get_parent</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" compoundref="util_2path_8cpp" startline="96" endline="105">iterdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" compoundref="util_2path_8cpp" startline="303" endline="305">joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" compoundref="util_2path_8cpp" startline="307" endline="309">operator []</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" compoundref="util_2path_8cpp" startline="315" endline="317">operator/</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" compoundref="util_2path_8cpp" startline="319" endline="321">with_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -548,7 +735,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="137" column="1" bodyfile="libopenage/util/path.cpp" bodystart="303" bodyend="305"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="137" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="303" bodyend="305"/>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af3d064f84b10f3baca839c4490ff6cd3" compoundref="path_8py" startline="310" endline="312">openage.util.fslike.path.Path.__getitem__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2fe104e5eec859814a5192501d7069d7" compoundref="path_8py" startline="314" endline="316">openage.util.fslike.path.Path.__truediv__</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -565,7 +756,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="138" column="1" bodyfile="libopenage/util/path.cpp" bodystart="307" bodyend="309"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="307" bodyend="309"/>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1af8e0c0f255b7df0bfd44cd19df8a6325" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -582,7 +774,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="139" column="1" bodyfile="libopenage/util/path.cpp" bodystart="311" bodyend="313"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="311" bodyend="313"/>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -599,7 +792,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="140" column="1" bodyfile="libopenage/util/path.cpp" bodystart="315" bodyend="317"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="315" bodyend="317"/>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -616,7 +810,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="142" column="1" bodyfile="libopenage/util/path.cpp" bodystart="319" bodyend="321"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="319" bodyend="321"/>
+        <references refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" compoundref="util_2path_8cpp" startline="247" endline="249">get_parent</references>
+        <references refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" compoundref="util_2path_8cpp" startline="293" endline="301">joinpath</references>
+        <referencedby refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" compoundref="util_2path_8cpp" startline="323" endline="325">with_suffix</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -633,7 +830,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="143" column="1" bodyfile="libopenage/util/path.cpp" bodystart="323" bodyend="325"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="323" bodyend="325"/>
+        <references refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" compoundref="util_2path_8cpp" startline="282" endline="290">get_stem</references>
+        <references refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" compoundref="util_2path_8cpp" startline="319" endline="321">with_name</references>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">openage::Texture::load</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -650,7 +850,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="145" column="1" bodyfile="libopenage/util/path.cpp" bodystart="327" bodyend="332"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="327" bodyend="332"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">parts</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a72180e179456cb7a19935e969c9753e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -667,7 +869,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="146" column="1" bodyfile="libopenage/util/path.cpp" bodystart="334" bodyend="336"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="334" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">fslike::FSLike</ref> *</type>
@@ -680,7 +882,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="148" column="1" bodyfile="libopenage/util/path.cpp" bodystart="339" bodyend="341"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="148" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="339" bodyend="341"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
@@ -693,7 +896,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="149" column="1" bodyfile="libopenage/util/path.cpp" bodystart="344" bodyend="346"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="344" bodyend="346"/>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">parts</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -711,7 +915,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="162" column="1" bodyfile="libopenage/util/path.cpp" bodystart="158" bodyend="160"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="158" bodyend="160"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">fsobj</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -734,25 +939,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.h" line="170" column="1" bodyfile="libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>C++ pendant to the python util.fslike.path.Path</para>
+<para>C++ pendant to the python <ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path" kindref="compound">util.fslike.path.Path</ref></para>
 <para>Contains a filesystem-like object and path-parts.</para>
 <para>pxd: cppclass <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>: ctypedef string part_t ctypedef vector[string] parts_t</para>
 <para><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path()</ref> noexcept Path(PyObj, const vector[string]&amp;) except +</para>
 <para>FSLike *get_fsobj() except + const vector[string] &amp;<ref refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" kindref="member">get_parts()</ref> except + </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3590">
+      <node id="5965">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/path.h" line="46" column="1" bodyfile="libopenage/util/path.h" bodystart="46" bodyend="171"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.h" bodystart="46" bodyend="171"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>exists</name></member>
       <member refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" prot="protected" virt="non-virtual"><scope>openage::util::Path</scope><name>fsobj</name></member>

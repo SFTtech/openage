@@ -141,15 +141,24 @@
     <innerclass refid="classopenage_1_1_unit_type" prot="public">openage::UnitType</innerclass>
     <innerclass refid="classopenage_1_1_unit_type_meta" prot="public">openage::UnitTypeMeta</innerclass>
     <innerclass refid="classopenage_1_1_unshared_attribute_container" prot="public">openage::UnsharedAttributeContainer</innerclass>
+    <innernamespace refid="namespaceopenage_1_1____main____">openage::__main__</innernamespace>
     <innernamespace refid="namespaceopenage_1_1alphamask__shader">openage::alphamask_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1assets">openage::assets</innernamespace>
     <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1cabextract">openage::cabextract</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen">openage::codegen</innernamespace>
     <innernamespace refid="namespaceopenage_1_1console">openage::console</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1convert">openage::convert</innernamespace>
     <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1cppinterface">openage::cppinterface</innernamespace>
     <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
     <innernamespace refid="namespaceopenage_1_1cvar">openage::cvar</innernamespace>
     <innernamespace refid="namespaceopenage_1_1datastructure">openage::datastructure</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1default__dirs">openage::default_dirs</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1devmode">openage::devmode</innernamespace>
     <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
     <innernamespace refid="namespaceopenage_1_1event">openage::event</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1game">openage::game</innernamespace>
     <innernamespace refid="namespaceopenage_1_1gameio">openage::gameio</innernamespace>
     <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
     <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
@@ -218,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="130" column="1" bodyfile="libopenage/game_control.h" bodystart="130" bodyend="136"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="130" bodyend="136"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" prot="public" static="no" strong="yes">
         <type>int</type>
@@ -247,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/cost.h" line="18" column="1" bodyfile="libopenage/gamestate/cost.h" bodystart="18" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/cost.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/cost.h" bodystart="18" bodyend="23"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" prot="public" static="no" strong="yes">
         <type>int</type>
@@ -298,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="94" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="94" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="94" bodyend="100"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830" prot="public" static="no" strong="yes">
         <type>int</type>
@@ -349,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.h" line="18" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="18" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.h" bodystart="18" bodyend="28"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" prot="public" static="no" strong="yes">
         <type></type>
@@ -389,7 +398,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/team.h" line="20" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="20" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/team.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/team.h" bodystart="20" bodyend="25"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" prot="public" static="no" strong="yes">
         <type></type>
@@ -433,7 +442,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="81" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="81" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="81" bodyend="86"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465e" prot="public" static="no" strong="yes">
         <type></type>
@@ -473,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.h" line="22" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="22" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.h" bodystart="22" bodyend="27"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" prot="public" static="no" strong="yes">
         <type></type>
@@ -583,7 +592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="26" column="1" bodyfile="libopenage/unit/ability.h" bodystart="26" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="26" bodyend="41"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" prot="public" static="no" strong="yes">
         <type></type>
@@ -665,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="36" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="36" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="36" bodyend="47"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" prot="public" static="no" strong="yes">
         <type></type>
@@ -810,7 +819,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="59" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="59" bodyend="79"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="59" bodyend="79"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6ed" prot="public" static="no" strong="yes">
         <type></type>
@@ -850,7 +859,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="85" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="85" bodyend="90"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="85" bodyend="90"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20" prot="public" static="no" strong="yes">
         <type></type>
@@ -890,7 +899,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="96" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="96" bodyend="101"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="96" bodyend="101"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3a" prot="public" static="no" strong="yes">
         <type></type>
@@ -923,7 +932,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/command.h" line="15" column="1" bodyfile="libopenage/unit/command.h" bodystart="15" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082a" prot="public" static="no" strong="yes">
         <type>int</type>
@@ -965,7 +974,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="15" column="1" bodyfile="libopenage/unit/research.h" bodystart="15" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" bodystart="15" bodyend="31"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" prot="public" static="no" strong="yes">
         <type></type>
@@ -1013,7 +1022,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/selection.h" line="27" column="1" bodyfile="libopenage/unit/selection.h" bodystart="27" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.h" bodystart="27" bodyend="33"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -1029,7 +1038,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="29" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a80fe26a181494ba07762b46df300d016" prot="public" static="no">
         <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &gt; &gt;</type>
@@ -1043,7 +1052,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="35" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" prot="public" static="no">
         <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_type_meta" kindref="compound">UnitTypeMeta</ref> &gt; &gt;</type>
@@ -1056,7 +1065,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_spec.h" line="36" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1aec1b23983a95168bf5f310c0d5ea8e08" prot="public" static="no">
         <type>std::unordered_set&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
@@ -1070,7 +1079,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="27" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" prot="public" static="no">
         <type>int</type>
@@ -1084,7 +1093,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="32" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1ae960c566d0da147b055f619d8cca9300" prot="public" static="no">
         <type>std::bitset&lt; <ref refid="namespaceopenage_1a51dc47ef6d14c1e563c04bf7c07db9b3" kindref="member">ability_type_size</ref> &gt;</type>
@@ -1097,7 +1106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="47" column="1" bodyfile="libopenage/unit/ability.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1aabfde03d69894c7c23aa686c30ef8cc8" prot="public" static="no">
         <type>unsigned int</type>
@@ -1110,7 +1119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="48" column="1" bodyfile="libopenage/unit/ability.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a905fde9cff5779781eb779ca95d80cf1" prot="public" static="no">
         <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; <ref refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" kindref="member">graphic_type</ref>, std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt; &gt;</type>
@@ -1124,7 +1133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="54" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="54" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a9b5c147a16053038d4317df642a4723a" prot="public" static="no">
         <type>std::unordered_map&lt; int, unsigned int &gt;</type>
@@ -1138,7 +1147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="143" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="143" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" prot="public" static="no">
         <type>unsigned long int</type>
@@ -1152,7 +1161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_container.h" line="28" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" prot="public" static="no">
         <type>uint64_t</type>
@@ -1166,7 +1175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/timing.h" line="12" column="1" bodyfile="libopenage/util/timing.h" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -1188,7 +1197,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.h" line="37" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_region_1aab907d7f645bc78647dd204ba136b5d4" compoundref="generator_8cpp" startline="64" endline="106">openage::Region::subset</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1af11d6daf50156125c5094a3b3a9d30d5" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -1202,7 +1212,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="11" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="11" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="11" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" compoundref="market_8cpp" startline="35" endline="50">openage::Market::buy</referencedby>
+        <referencedby refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" compoundref="market_8cpp" startline="17" endline="33">openage::Market::sell</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a1b0364e945696f529260c90a44552f34" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -1216,7 +1228,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="12" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" compoundref="market_8cpp" startline="17" endline="33">openage::Market::sell</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1aefb228067111c56f781e3989fbc2d138" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -1230,7 +1243,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="13" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" compoundref="market_8cpp" startline="35" endline="50">openage::Market::buy</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1ae3c2dc1df011c09431f9eeb09d8d4bf7" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -1244,7 +1258,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/market.h" line="14" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/market.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" compoundref="market_8cpp" startline="35" endline="50">openage::Market::buy</referencedby>
+        <referencedby refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" compoundref="market_8cpp" startline="17" endline="33">openage::Market::sell</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a46e91d5e7a9e134b40bddec3742b1c1e" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> const</type>
@@ -1268,7 +1284,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="66" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="66" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a9ce94c372f7e86310506844b352fb20c" compoundref="terrain_8cpp" startline="212" endline="224">openage::Terrain::get_chunk_neighbors</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1adf4e2cfb2010657a5384efc6c37a9748" compoundref="terrain_8cpp" startline="467" endline="498">openage::Terrain::get_neighbors</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" prot="public" static="no" mutable="no">
         <type>constexpr size_t</type>
@@ -1283,7 +1301,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_chunk.h" line="24" column="1" bodyfile="libopenage/terrain/terrain_chunk.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_chunk.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1afd204c75d8f3ef28ad07f8ce1ba79894" compoundref="terrain__chunk_8cpp" startline="182" endline="184">openage::TerrainChunk::get_size</referencedby>
+        <referencedby refid="classopenage_1_1audio_1_1_opus_dynamic_loader_1a4e5604664bb038018600653c7b6300fc" compoundref="opus__dynamic__loader_8cpp" startline="33" endline="98">openage::audio::OpusDynamicLoader::load_chunk</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1a75e4bde3d50f5af6b946a08ba5e50dbb" compoundref="terrain__chunk_8cpp" startline="101" endline="138">openage::TerrainChunk::neighbor_id_by_pos</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1a3c24b782383d5e958a13572159e9218b" compoundref="terrain__chunk_8cpp" startline="160" endline="168">openage::TerrainChunk::tile_position</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_chunk_1a87b39afb17262f5239f3cc5fbed48dc2" compoundref="terrain__chunk_8cpp" startline="170" endline="176">openage::TerrainChunk::tile_position_neigh</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1ac27a19b7546e41750ef227ae0af62f9c" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> const</type>
@@ -1302,7 +1325,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_search.h" line="25" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" compoundref="terrain__search_8cpp" startline="81" endline="102">openage::TerrainSearch::next_tile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -1316,7 +1340,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="45" column="1" bodyfile="libopenage/texture.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">openage::UnitTexture::sample</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a8f58bd5706ab9adf5f5905a0966d188a" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -1330,7 +1357,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="46" column="1" bodyfile="libopenage/texture.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a51dc47ef6d14c1e563c04bf7c07db9b3" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -1345,7 +1374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="46" column="1" bodyfile="libopenage/unit/ability.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1aecacc31af434a432cdcbcd0fe21690c3" prot="public" static="no" mutable="no">
         <type>const <ref refid="namespaceopenage_1ae960c566d0da147b055f619d8cca9300" kindref="member">ability_set</ref></type>
@@ -1360,7 +1389,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="53" column="1" bodyfile="libopenage/unit/ability.h" bodystart="53" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1a435b29ad85fdfd9d975d8846daad6b2d" prot="public" static="yes" mutable="no">
         <type>std::vector&lt; <ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">ability_type</ref> &gt;</type>
@@ -1389,7 +1418,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="58" column="1" bodyfile="libopenage/unit/ability.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_1ac5dcdf3180dcd4bdce67b765d8ef2134" compoundref="unit_8cpp" startline="262" endline="276">openage::Unit::queue_cmd</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a0b3420ba08048a380ca47285ee4221a2" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::VERSION</definition>
+        <argsstring></argsstring>
+        <name>VERSION</name>
+        <initializer>=  &quot;&lt; unknown version; ./configure incomplete &gt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/__init__.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/__init__.py" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1aacd6fb08f74df69e79d11e2b2a35f91c" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>tuple openage::LONGVERSION</definition>
+        <argsstring></argsstring>
+        <name>LONGVERSION</name>
+        <initializer>=  <ref refid="namespaceopenage_1a0b3420ba08048a380ca47285ee4221a2" kindref="member">VERSION</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/__init__.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/__init__.py" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -1413,7 +1471,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/generator.cpp" line="17" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="17" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp" bodystart="17" bodyend="26"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" compoundref="rng_8cpp" startline="89" endline="92">openage::rng::RNG::random</references>
+        <referencedby refid="classopenage_1_1_region_1a01b77dd370f14a109a1691702244bb15" compoundref="generator_8cpp" startline="59" endline="61">openage::Region::get_tile</referencedby>
+        <referencedby refid="classopenage_1_1_region_1aab907d7f645bc78647dd204ba136b5d4" compoundref="generator_8cpp" startline="64" endline="106">openage::Region::subset</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -1432,7 +1496,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/main.cpp" line="24" column="1" bodyfile="libopenage/main.cpp" bodystart="24" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp" bodystart="24" bodyend="67"/>
+        <references refid="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" compoundref="main_8h" startline="29">openage::main_arguments::fps_limit</references>
+        <references refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">openage::util::Timer::getval</references>
+        <references refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" compoundref="main_8h" startline="30">openage::main_arguments::gl_debug</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" compoundref="console_8cpp" startline="50" endline="58">openage::console::Console::load_colors</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" compoundref="main_8h" startline="28">openage::main_arguments::root_path</references>
+        <references refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" compoundref="timer_8cpp" startline="30" endline="35">openage::util::Timer::start</references>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
@@ -1450,7 +1525,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.cpp" line="444" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="444" bodyend="467"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="444" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="444" bodyend="467"/>
+        <references refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" compoundref="terrain__object_8h" startline="37">openage::tile_range::end</references>
+        <references refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" compoundref="terrain__object_8h" startline="36">openage::tile_range::start</references>
+        <referencedby refid="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" compoundref="terrain__object_8cpp" startline="336" endline="345">openage::SquareObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" compoundref="terrain__object_8cpp" startline="71" endline="116">openage::TerrainObject::place</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" compoundref="producer_8cpp" startline="847" endline="903">openage::ProjectileProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" compoundref="unit__type_8cpp" startline="59" endline="84">openage::UnitType::place_beside</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" compoundref="terrain__object_8cpp" startline="257" endline="290">openage::TerrainObject::place_unchecked</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1af24e842fc429a5dbb73c12abcb9c3378" compoundref="terrain__object_8cpp" startline="155" endline="186">openage::TerrainObject::remove</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
@@ -1476,7 +1561,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.cpp" line="469" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="469" bodyend="484"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="469" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="469" bodyend="484"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" compoundref="phys_8cpp" startline="51" endline="57">openage::coord::phys2::to_phys3</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="106" endline="108">openage::coord::phys3::to_tile</references>
+        <referencedby refid="classopenage_1_1_square_object_1a4c05c7ac16bbdbb7b4d74be4e9e113be" compoundref="terrain__object_8cpp" startline="306" endline="308">openage::SquareObject::get_range</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1494,7 +1584,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_object.cpp" line="486" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="486" bodyend="500"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" line="486" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp" bodystart="486" bodyend="500"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">build</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">building</references>
+        <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
+        <references refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">openage::Unit::has_attribute</references>
+        <references refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" compoundref="unit_8h" startline="68">openage::Unit::location</references>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
@@ -1512,7 +1609,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_outline.cpp" line="12" column="1" bodyfile="libopenage/terrain/terrain_outline.cpp" bodystart="12" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp" bodystart="12" bodyend="31"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">line</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">move</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
@@ -1530,7 +1630,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_outline.cpp" line="33" column="1" bodyfile="libopenage/terrain/terrain_outline.cpp" bodystart="33" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_outline.cpp" bodystart="33" bodyend="59"/>
+        <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
+        <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">line</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">move</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1abf30260a65f6b06163a5dad881836523" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
@@ -1555,7 +1658,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_search.cpp" line="11" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="11" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp" bodystart="11" bodyend="31"/>
+        <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
+        <references refid="classopenage_1_1_terrain_object_1a170289794bdd31d673ffb3aca873bb1d" compoundref="terrain__object_8h" startline="201" endline="203">openage::TerrainObject::get_terrain</references>
+        <references refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" compoundref="terrain__search_8cpp" startline="81" endline="102">openage::TerrainSearch::next_tile</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" compoundref="tile_8h" startline="59" endline="61">openage::coord::tile3::to_tile</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1a8ed61fb85a083922af8fbbabd087ae31" compoundref="phys_8cpp" startline="16" endline="18">openage::coord::phys3::to_tile3</references>
+        <referencedby refid="classopenage_1_1_gather_action_1a578fcecec436b05efb5059bbb35837fe" compoundref="unit_2action_8cpp" startline="1155" endline="1179">openage::GatherAction::nearest_dropsite</referencedby>
+        <referencedby refid="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c" compoundref="unit_2action_8cpp" startline="1135" endline="1153">openage::GatherAction::on_completion_in_range</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a8d7d58d26d71e7447de628441782a751" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
@@ -1580,7 +1691,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain_search.cpp" line="33" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="33" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp" bodystart="33" bodyend="54"/>
+        <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
+        <references refid="classopenage_1_1_terrain_object_1a170289794bdd31d673ffb3aca873bb1d" compoundref="terrain__object_8h" startline="201" endline="203">openage::TerrainObject::get_terrain</references>
+        <references refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" compoundref="terrain__search_8cpp" startline="81" endline="102">openage::TerrainSearch::next_tile</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" compoundref="tile_8h" startline="59" endline="61">openage::coord::tile3::to_tile</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1a8ed61fb85a083922af8fbbabd087ae31" compoundref="phys_8cpp" startline="16" endline="18">openage::coord::phys3::to_tile3</references>
+        <referencedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e" compoundref="unit_2action_8cpp" startline="932" endline="956">openage::BuildAction::on_completion</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a012c2c0bdd9534a3d648ada6c608ebf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_set&lt; <ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref> &gt;</type>
@@ -1597,7 +1715,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.cpp" line="28" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="28" bodyend="81"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="28" bodyend="81"/>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a51da621433dabf064cd41efc49641d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
@@ -1618,7 +1741,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.cpp" line="83" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="83" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="83" bodyend="87"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204">resource</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
@@ -1643,7 +1767,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/selection.cpp" line="331" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="331" bodyend="362"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp" line="331" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp" bodystart="331" bodyend="362"/>
+        <references refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <referencedby refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" compoundref="selection_8cpp" startline="246" endline="270">openage::UnitSelection::select_space</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1a43b3cc127b88b97e81a2ce9160e5b5a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1662,7 +1791,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_container.cpp" line="139" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="139" bodyend="141"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -1713,7 +1842,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.cpp" line="162" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="162" bodyend="175"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="162" bodyend="175"/>
+        <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
+        <references refid="namespaceopenage_1_1math_1a3cf46ecc6a97a0260c993da19c30db86" compoundref="math__constants_8h" startline="18">openage::math::INV_PI</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">openage::UnitTexture::draw</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1725,6 +1857,6 @@
 <para>Game entity management, graphics drawing, gui stuff, input handling etc. So basically everything that makes the game work lies in here...</para>
 <para>This namespace contains constexpr functions, i.e. C++14 functions that are designed to run at compile-time. </para>
     </detaileddescription>
-    <location file="libopenage/assetmanager.cpp" line="18" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/assetmanager.cpp" line="18" column="1"/>
   </compounddef>
 </doxygen>

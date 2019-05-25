@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="58" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="58" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="63" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="63" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -48,36 +48,36 @@
 <para>superclass for handling any input event. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3002">
+      <node id="3867">
         <label>openage::gui::GUI</label>
         <link refid="classopenage_1_1gui_1_1_g_u_i"/>
-        <childnode refid="3000" relation="public-inheritance">
+        <childnode refid="3865" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3001">
+      <node id="3866">
         <label>openage::console::Console</label>
         <link refid="classopenage_1_1console_1_1_console"/>
-        <childnode refid="3000" relation="private-inheritance">
+        <childnode refid="3865" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="3000">
+      <node id="3865">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
-      <node id="3003">
+      <node id="3868">
         <label>openage::input::InputManager</label>
         <link refid="classopenage_1_1input_1_1_input_manager"/>
-        <childnode refid="3000" relation="public-inheritance">
+        <childnode refid="3865" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3004">
+      <node id="3869">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/handlers.h" line="56" column="1" bodyfile="libopenage/handlers.h" bodystart="56" bodyend="64"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" bodystart="56" bodyend="64"/>
     <listofallmembers>
       <member refid="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5" prot="public" virt="pure-virtual"><scope>openage::InputHandler</scope><name>on_input</name></member>
       <member refid="classopenage_1_1_input_handler_1abdb25a0f6baffa8c6bd4d69671565fc6" prot="public" virt="virtual"><scope>openage::InputHandler</scope><name>~InputHandler</name></member>

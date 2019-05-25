@@ -169,7 +169,7 @@
         </childnode>
       </node>
       <node id="31505">
-        <label>libopenage/util/quaternion.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</label>
         <link refid="quaternion_8cpp"/>
         <childnode refid="31506" relation="include">
         </childnode>
@@ -283,6 +283,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/quaternion.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp"/>
   </compounddef>
 </doxygen>

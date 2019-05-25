@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="39" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="39" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" compoundref="gui__renderer__impl_8cpp" startline="33" endline="70">on_input_event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="23" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="23" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_event_handling_quick_window_1a783308ed32fda3f8dd6bd0a6f1a6283e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -48,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="30" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="30" bodyend="31"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-slot">
@@ -75,7 +76,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="34" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="33" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="33" bodyend="70"/>
+        <references refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" compoundref="gui__renderer__impl_8h" startline="39">focused_item</references>
       </memberdef>
       <memberdef kind="slot" id="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -92,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="72" bodyend="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -100,28 +102,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1445">
+      <node id="6167">
         <label>QQuickWindow</label>
       </node>
-      <node id="1444">
+      <node id="6166">
         <label>qtsdl::EventHandlingQuickWindow</label>
         <link refid="classqtsdl_1_1_event_handling_quick_window"/>
-        <childnode refid="1445" relation="public-inheritance">
+        <childnode refid="6167" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1447">
+      <node id="6169">
         <label>QQuickWindow</label>
       </node>
-      <node id="1446">
+      <node id="6168">
         <label>qtsdl::EventHandlingQuickWindow</label>
         <link refid="classqtsdl_1_1_event_handling_quick_window"/>
-        <childnode refid="1447" relation="public-inheritance">
+        <childnode refid="6169" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="26" bodyend="40"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="26" bodyend="40"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_event_handling_quick_window_1ab85f41f16d79f1a3198a36a7d07e44fe" prot="public" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>EventHandlingQuickWindow</name></member>
       <member refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" prot="private" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>focused_item</name></member>

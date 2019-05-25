@@ -20,7 +20,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_saver.h" line="49" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h" line="49" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_game_saver_1a8d88b6621b60cfc359cbeaae88475686" compoundref="game__saver_8cpp" startline="37" endline="79">openage::gui::GameSaver::activate</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,28 +29,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2042">
+      <node id="3394">
         <label>QObject</label>
       </node>
-      <node id="2041">
+      <node id="3393">
         <label>openage::gui::GameSaverSignals</label>
         <link refid="classopenage_1_1gui_1_1_game_saver_signals"/>
-        <childnode refid="2042" relation="public-inheritance">
+        <childnode refid="3394" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2044">
+      <node id="3396">
         <label>QObject</label>
       </node>
-      <node id="2043">
+      <node id="3395">
         <label>openage::gui::GameSaverSignals</label>
         <link refid="classopenage_1_1gui_1_1_game_saver_signals"/>
-        <childnode refid="2044" relation="public-inheritance">
+        <childnode refid="3396" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/game_saver.h" line="44" column="1" bodyfile="libopenage/gui/game_saver.h" bodystart="44" bodyend="50"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h" bodystart="44" bodyend="50"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_game_saver_signals_1a827fc3ebe24390d59e6a18781318d184" prot="public" virt="non-virtual"><scope>openage::gui::GameSaverSignals</scope><name>error_message</name></member>
     </listofallmembers>

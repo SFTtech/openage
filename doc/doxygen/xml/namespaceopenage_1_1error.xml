@@ -19,7 +19,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.cpp" line="13" column="1" bodyfile="libopenage/error/error.cpp" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_error_1a755a7891dfe08412bc2312f29b0e618d" compoundref="error_2error_8cpp" startline="20" endline="38">openage::error::Error::Error</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1error_1a69283bf7d976b89c848b6b413190e15a" prot="public" static="yes" mutable="no">
         <type>bool</type>
@@ -33,7 +34,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.cpp" line="15" column="1" bodyfile="libopenage/error/error.cpp" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" compoundref="error_2error_8cpp" startline="16" endline="18">openage::error::Error::debug_break_on_create</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1error_1ae3d9c89190667cb25a58f4946755cd7c" prot="public" static="no" mutable="no">
         <type>constexpr uint64_t</type>
@@ -48,7 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.cpp" line="19" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" compoundref="stackanalyzer_8cpp" startline="222" endline="258">openage::error::StackAnalyzer::analyze</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1error_1af4d473d062c43372ff4db76ff90d212b" prot="public" static="no" mutable="no">
         <type>constexpr uint64_t</type>
@@ -63,7 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.cpp" line="25" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" compoundref="stackanalyzer_8cpp" startline="222" endline="258">openage::error::StackAnalyzer::analyze</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -87,7 +91,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/backtrace.cpp" line="16" column="1" bodyfile="libopenage/error/backtrace.cpp" bodystart="16" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp" bodystart="16" bodyend="43"/>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1ad78e77b48944f5a063d51ab4ef9558fc" compoundref="backtrace_8h" startline="35">openage::error::backtrace_symbol::filename</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a0c86f0d485e213632b187f92a41af855" compoundref="backtrace_8h" startline="37">openage::error::backtrace_symbol::functionname</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a4397241806d661bcc788a840b4e76492" compoundref="backtrace_8h" startline="36">openage::error::backtrace_symbol::lineno</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a5d15b8690b9644243452f21449e00fa2" compoundref="backtrace_8h" startline="38">openage::error::backtrace_symbol::pc</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1ab21567da92b6f9b758b2c16ca9c2186b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -109,7 +117,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/backtrace.cpp" line="49" column="1" bodyfile="libopenage/error/backtrace.cpp" bodystart="49" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp" bodystart="49" bodyend="58"/>
+        <references refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440">openage::error::Backtrace::get_symbols</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -122,7 +131,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/demo.cpp" line="45" column="1" bodyfile="libopenage/error/demo.cpp" bodystart="45" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/demo.cpp" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/demo.cpp" bodystart="45" bodyend="58"/>
+        <references refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" compoundref="error_2error_8h" startline="97">openage::error::Error::backtrace</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" compoundref="error_2error_8cpp" startline="60" endline="64">openage::error::Error::trim_backtrace</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -143,7 +157,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.cpp" line="89" column="1" bodyfile="libopenage/error/error.cpp" bodystart="89" bodyend="128"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp" bodystart="89" bodyend="128"/>
+        <references refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" compoundref="error_2error_8h" startline="97">openage::error::Error::backtrace</references>
+        <references refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">openage::util::demangle</references>
+        <references refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" compoundref="message_8h" startline="63">openage::log::message::filename</references>
+        <references refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" compoundref="message_8h" startline="73">openage::log::message::functionname</references>
+        <references refid="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" compoundref="message_8h" startline="68">openage::log::message::lineno</references>
+        <references refid="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" compoundref="error_2error_8h" startline="91">openage::error::Error::msg</references>
+        <references refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" compoundref="error_2error_8cpp" startline="82" endline="86">openage::error::Error::rethrow_cause</references>
+        <references refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" compoundref="message_8h" startline="58">openage::log::message::text</references>
+        <references refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" compoundref="error_2error_8cpp" startline="77" endline="79">openage::error::Error::type_name</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1ab2024deec6ddbb6949287eccd5be88a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -156,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/error.h" line="149" column="1" bodyfile="libopenage/error/error.h" bodystart="149" bodyend="152"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.h" bodystart="149" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>SDL_GLContext</type>
@@ -173,7 +196,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/gl_debug.cpp" line="45" column="1" bodyfile="libopenage/error/gl_debug.cpp" bodystart="45" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/gl_debug.cpp" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/gl_debug.cpp" bodystart="45" bodyend="67"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -186,7 +211,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/handlers.cpp" line="37" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="69" bodyend="104"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" bodystart="69" bodyend="104"/>
+        <references refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" compoundref="stackanalyzer_8cpp" startline="222" endline="258">openage::error::StackAnalyzer::analyze</references>
+        <references refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">openage::util::demangle</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -202,7 +229,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/handlers.cpp" line="38" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="107" bodyend="116"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" bodystart="107" bodyend="116"/>
+        <references refid="namespaceopenage_1_1util_1a8cb190d6ba8c160e1453ff4379dd2dcb" compoundref="language_8h" startline="38" endline="38">openage::util::ignore_result</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -215,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/handlers.cpp" line="39" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="119" bodyend="131"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" bodystart="119" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1error_1aa782a00ec80760003f986c063aef169d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -235,13 +264,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/handlers.cpp" line="134" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="134" bodyend="136"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp" bodystart="134" bodyend="136"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/error/backtrace.cpp" line="10" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.cpp" line="10" column="1"/>
   </compounddef>
 </doxygen>

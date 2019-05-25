@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="71" column="1" bodyfile="libopenage/input/event.cpp" bodystart="99" bodyend="101"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="99" bodyend="101"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -27,12 +27,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3213">
+      <node id="3864">
         <label>openage::input::modifier_hash</label>
         <link refid="structopenage_1_1input_1_1modifier__hash"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/input/event.h" line="70" column="1" bodyfile="libopenage/input/event.h" bodystart="70" bodyend="72"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" bodystart="70" bodyend="72"/>
     <listofallmembers>
       <member refid="structopenage_1_1input_1_1modifier__hash_1af2f7bd9a36006010603fa779a1af9173" prot="public" virt="non-virtual"><scope>openage::input::modifier_hash</scope><name>operator()</name></member>
     </listofallmembers>

@@ -8,7 +8,7 @@
     <includes local="no">vulkan/vulkan.h</includes>
     <includes refid="window_8h" local="yes">../window.h</includes>
     <includes refid="loader_8h" local="yes">loader.h</includes>
-    <includedby refid="windowvk_8cpp" local="yes">libopenage/renderer/vulkan/windowvk.cpp</includedby>
+    <includedby refid="windowvk_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</includedby>
     <incdepgraph>
       <node id="23789">
         <label>functional</label>
@@ -57,7 +57,7 @@
         <label>set</label>
       </node>
       <node id="23783">
-        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h</label>
         <link refid="windowvk_8h"/>
         <childnode refid="23784" relation="include">
         </childnode>
@@ -81,11 +81,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="23796">
-        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</label>
         <link refid="windowvk_8cpp"/>
       </node>
       <node id="23795">
-        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h</label>
         <link refid="windowvk_8h"/>
         <childnode refid="23796" relation="include">
         </childnode>
@@ -150,6 +150,6 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/windowvk.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h"/>
   </compounddef>
 </doxygen>

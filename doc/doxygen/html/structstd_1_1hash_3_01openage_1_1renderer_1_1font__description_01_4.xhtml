@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: std::hash&lt; openage::renderer::font_description &gt; Struct Template Reference</title>
+<title>openage: std::hash&lt; openage::renderer::font_description &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,11 +97,12 @@ $(document).ready(function(){initNavTree('structstd_1_1hash_3_01openage_1_1rende
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="font_8h_source.xhtml">font.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for std::hash&lt; openage::renderer::font_description &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4__coll__graph.svg" width="199" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for std::hash&lt; openage::renderer::font_description &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4__coll__graph.svg" width="199" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -140,11 +142,26 @@ struct std::hash&lt; openage::renderer::font_description &gt;</h3>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="font_8h_source.xhtml#l00201">201</a> of file <a class="el" href="font_8h_source.xhtml">font.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                                                       {</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = std::hash&lt;std::type_index&gt;()(std::type_index(<span class="keyword">typeid</span>(<a class="code" href="structopenage_1_1renderer_1_1font__description.xhtml">openage::renderer::font_description</a>)));</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;std::string&gt;()(fd.<a class="code" href="structopenage_1_1renderer_1_1font__description.xhtml#aa6931934792519df3f7801ce28db656b">font_file</a>));</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a> = <a class="code" href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a>(<a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>, std::hash&lt;unsigned int&gt;()(fd.<a class="code" href="structopenage_1_1renderer_1_1font__description.xhtml#a910544d7e87745be14c966fe2814c2e1">size</a>));</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>;</div><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5cfc0e84830b5945b5731d2148eea3b4"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4">openage::util::hash_combine</a></div><div class="ttdeci">size_t hash_combine(size_t hash1, size_t hash2)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00012">hash.cpp:12</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1font__description_xhtml"><div class="ttname"><a href="structopenage_1_1renderer_1_1font__description.xhtml">openage::renderer::font_description</a></div><div class="ttdef"><b>Definition:</b> <a href="font_8h_source.xhtml#l00052">font.h:52</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1font__description_xhtml_a910544d7e87745be14c966fe2814c2e1"><div class="ttname"><a href="structopenage_1_1renderer_1_1font__description.xhtml#a910544d7e87745be14c966fe2814c2e1">openage::renderer::font_description::size</a></div><div class="ttdeci">unsigned int size</div><div class="ttdoc">Points size of the font.</div><div class="ttdef"><b>Definition:</b> <a href="font_8h_source.xhtml#l00054">font.h:54</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1font__description_xhtml_aa6931934792519df3f7801ce28db656b"><div class="ttname"><a href="structopenage_1_1renderer_1_1font__description.xhtml#aa6931934792519df3f7801ce28db656b">openage::renderer::font_description::font_file</a></div><div class="ttdeci">std::string font_file</div><div class="ttdoc">Path to the font's file.</div><div class="ttdef"><b>Definition:</b> <a href="font_8h_source.xhtml#l00053">font.h:53</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="font_8h_source.xhtml#l00053">openage::renderer::font_description::font_file</a>, <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util::hash()</a>, <a class="el" href="hash_8cpp_source.xhtml#l00012">openage::util::hash_combine()</a>, and <a class="el" href="font_8h_source.xhtml#l00054">openage::renderer::font_description::size</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_a69356bbc9713e82eb3c678c45181c760_cgraph.svg" width="100%" height="397"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>libopenage/renderer/font/<a class="el" href="font_8h_source.xhtml">font.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/<a class="el" href="font_8h_source.xhtml">font.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -16,7 +16,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="44" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1abbb32dc478b13e8cae25d6d505eefcbd" compoundref="directory_8py" startline="43" endline="45">openage.util.fslike.directory.Directory.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1ab533e87449e37812327d9a771186ab71" compoundref="directory_8py" startline="137" endline="139">openage.util.fslike.directory.CaseIgnoringDirectory.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1af57fc26b68b337aa0a8a36fce91a1790" compoundref="directory_8py" startline="144" endline="164">openage.util.fslike.directory.CaseIgnoringDirectory.actual_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a0ec601f49efb22ab663fa3f9b0179636" compoundref="filelike_2native_8cpp" startline="14" endline="49">Native</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" compoundref="filelike_2native_8cpp" startline="164" endline="167">repr</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a64bdaf726aac07d4913107cc5ba9fe65" compoundref="directory_8py" startline="47" endline="49">openage.util.fslike.directory.Directory.resolve</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory_1a5e6cb3d9ce1feb5718b7a30158faa45e" compoundref="directory_8py" startline="165" endline="185">openage.util.fslike.directory.CaseIgnoringDirectory.resolve</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory_1a593147786283242dd86370ad6f97e068" compoundref="directory_8py" startline="102" endline="114">openage.util.fslike.directory.Directory.writable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" prot="protected" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">mode_t</ref></type>
@@ -29,7 +37,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="46" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" compoundref="filelike_2native_8cpp" startline="91" endline="94">readable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" compoundref="filelike_2native_8cpp" startline="102" endline="105">writable</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" prot="protected" static="no" mutable="no">
         <type>std::fstream</type>
@@ -42,7 +52,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="48" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" compoundref="filelike_2native_8cpp" startline="139" endline="141">close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" compoundref="filelike_2native_8cpp" startline="144" endline="146">flush</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" compoundref="filelike_2native_8cpp" startline="149" endline="161">get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" compoundref="filelike_2native_8cpp" startline="55" endline="82">read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" compoundref="filelike_2native_8cpp" startline="85" endline="88">read_to</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" compoundref="filelike_2native_8cpp" startline="108" endline="126">seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" compoundref="filelike_2native_8cpp" startline="134" endline="136">tell</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" compoundref="filelike_2native_8cpp" startline="97" endline="99">write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -66,7 +84,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="22" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="14" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="14" bodyend="49"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" compoundref="filelike_2native_8h" startline="44">path</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a26abd11b4f1a66317a2c4797d7216dbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -79,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="23" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="52" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -97,7 +116,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="25" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="55" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="55" bodyend="82"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -119,7 +142,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="26" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="85" bodyend="88"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="85" bodyend="88"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -133,7 +158,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="28" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="91" bodyend="94"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="91" bodyend="94"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" compoundref="filelike_2native_8h" startline="46">mode</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6">openage::util::filelike::FileLike::R</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee">openage::util::filelike::FileLike::RW</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -151,7 +179,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="30" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="97" bodyend="99"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="97" bodyend="99"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -165,7 +194,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="32" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="102" bodyend="105"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="102" bodyend="105"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" compoundref="filelike_2native_8h" startline="46">mode</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee">openage::util::filelike::FileLike::RW</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a61e9c06ea9a85a5088a499df6458d276">openage::util::filelike::FileLike::W</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -188,7 +222,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="34" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="108" bodyend="126"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="108" bodyend="126"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aaf32924c53f864144ab34d1f7c12a0d4a">openage::util::filelike::FileLike::CUR</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aab1a326c06d88bf042f73d70f50197905">openage::util::filelike::FileLike::END</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164">openage::util::filelike::FileLike::SET</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -202,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="35" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="129" bodyend="131"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -216,7 +255,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="36" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="134" bodyend="136"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="134" bodyend="136"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -230,7 +271,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="37" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="139" bodyend="141"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="139" bodyend="141"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -244,7 +288,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="38" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="144" bodyend="146"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="144" bodyend="146"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>ssize_t</type>
@@ -258,7 +303,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="39" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="149" bodyend="161"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="149" bodyend="161"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" compoundref="filelike_2native_8h" startline="48">file</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::ostream &amp;</type>
@@ -276,7 +323,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/native.h" line="41" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="164" bodyend="167"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.cpp" bodystart="164" bodyend="167"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" compoundref="filelike_2native_8h" startline="44">path</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -285,30 +333,30 @@
 <para>File-like class that uses native stdlib functions to access data. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3351">
+      <node id="5747">
         <label>openage::util::filelike::FileLike</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
       </node>
-      <node id="3350">
+      <node id="5746">
         <label>openage::util::filelike::Native</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_native"/>
-        <childnode refid="3351" relation="public-inheritance">
+        <childnode refid="5747" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3353">
+      <node id="5749">
         <label>openage::util::filelike::FileLike</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
       </node>
-      <node id="3352">
+      <node id="5748">
         <label>openage::util::filelike::Native</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_native"/>
-        <childnode refid="3353" relation="public-inheritance">
+        <childnode refid="5749" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/filelike/native.h" line="20" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="20" bodyend="49"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/native.h" bodystart="20" bodyend="49"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>close</name></member>
       <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" prot="protected" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>file</name></member>

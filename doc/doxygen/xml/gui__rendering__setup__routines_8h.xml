@@ -4,8 +4,8 @@
     <compoundname>gui_rendering_setup_routines.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">QtGlobal</includes>
-    <includedby refid="gui__renderer__impl_8h" local="yes">libopenage/gui/guisys/private/gui_renderer_impl.h</includedby>
-    <includedby refid="gui__rendering__setup__routines_8cpp" local="yes">libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</includedby>
+    <includedby refid="gui__renderer__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h</includedby>
+    <includedby refid="gui__rendering__setup__routines_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</includedby>
     <incdepgraph>
       <node id="13212">
         <label>QtGlobal</label>
@@ -14,7 +14,7 @@
         <label>memory</label>
       </node>
       <node id="13210">
-        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h</label>
         <link refid="gui__rendering__setup__routines_8h"/>
         <childnode refid="13211" relation="include">
         </childnode>
@@ -24,11 +24,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13217">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
         <link refid="gui__renderer__impl_8cpp"/>
       </node>
       <node id="13214">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h</label>
         <link refid="gui__renderer__impl_8h"/>
         <childnode refid="13215" relation="include">
         </childnode>
@@ -42,27 +42,27 @@
         </childnode>
       </node>
       <node id="13216">
-        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</label>
         <link refid="gui__input__impl_8cpp"/>
       </node>
       <node id="13220">
-        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
         <link refid="gui__rendering__setup__routines_8cpp"/>
       </node>
       <node id="13218">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="13215">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
       </node>
       <node id="13219">
-        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</label>
         <link refid="gui__renderer_8cpp"/>
       </node>
       <node id="13213">
-        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h</label>
         <link refid="gui__rendering__setup__routines_8h"/>
         <childnode refid="13214" relation="include">
         </childnode>
@@ -128,6 +128,6 @@
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h"/>
   </compounddef>
 </doxygen>

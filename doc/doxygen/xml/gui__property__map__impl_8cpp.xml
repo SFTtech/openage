@@ -11,7 +11,7 @@
         <label>QObject</label>
       </node>
       <node id="12809">
-        <label>libopenage/gui/guisys/link/gui_property_map_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp</label>
         <link refid="gui__property__map__impl_8cpp"/>
         <childnode refid="12810" relation="include">
         </childnode>
@@ -81,6 +81,6 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/gui_property_map_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp"/>
   </compounddef>
 </doxygen>

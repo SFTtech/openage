@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="10" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="10" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1ac7fae94a4debc0d647e37a511e4fc493" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="11" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="11" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1ab2a6b606dad173018bc2840898eae49e" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="12" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a1b139be1e6ba2be12c77002298c35e7f" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="13" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a97e56c32ae54799f19b45cd98934209f" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="14" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -91,7 +91,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="15" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a2109930a3334729232d166cdd372c3af" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -106,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="16" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a9ed0886c6314bc7ea7d850d0c52cbc47" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -121,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="17" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a3cf46ecc6a97a0260c993da19c30db86" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -136,7 +137,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="18" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="18" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a1d21a4f60c5de2ddc1f06d624c7718fd" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -151,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="19" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a21fca9f6f3db982f2e36ad184971142e" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -166,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="20" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a2ed907ecfe2bd347184b6100e767ae8d" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -181,7 +183,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="21" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">openage::Generator::create_regions</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a0df5751ac53fb97b63d8639da08b2639" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -196,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="22" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a053cbd823bc5508663aa2f4b3e47e1ef" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -211,7 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="23" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" compoundref="quaternion_8h" startline="275" endline="277">openage::util::Quaternion&lt; T &gt;::equals_deg</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1abecc765205f02e10a37559da609bd428" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -226,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="24" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1ae4eb5e824c70f742bad48bceda489c6f" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -241,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="25" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1ad47e40900e132034d0e626563de66a85" prot="public" static="no" mutable="no">
         <type>constexpr unsigned int</type>
@@ -255,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="27" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1a76c5523b3fe8aa5f19ea61ba9f0d3043" prot="public" static="no" mutable="no">
         <type>constexpr int</type>
@@ -269,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="28" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1math_1ad9eeb53dc7ad24b525923f7eeca9f37a" prot="public" static="no" mutable="no">
         <type>constexpr double</type>
@@ -283,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math_constants.h" line="29" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math_constants.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -307,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math.h" line="11" column="1" bodyfile="libopenage/util/math.h" bodystart="11" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" bodystart="11" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1math_1a29c55215e73408c49f2654261fd73d8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -337,13 +341,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/math.h" line="17" column="1" bodyfile="libopenage/util/math.h" bodystart="17" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" bodystart="17" bodyend="19"/>
+        <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1af63b7f5b841ffab9004b2ffd3550ab9e" compoundref="phys_8cpp" startline="81" endline="83">openage::coord::phys3_delta::length</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/math.h" line="8" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/math.h" line="8" column="1"/>
   </compounddef>
 </doxygen>

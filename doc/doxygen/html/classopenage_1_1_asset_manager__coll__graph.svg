@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 2421;
+var viewWidth = 2406;
 var viewHeight = 1823;
 var sectionId = 'dynsection-0';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-0';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>openage::AssetManager</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-1819 2416.5,-1819 2416.5,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-1819 2402,-1819 2402,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
@@ -80,943 +80,1009 @@ var sectionId = 'dynsection-0';
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
 <g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_path.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="725.5,-1625.5 725.5,-1814.5 823.5,-1814.5 823.5,-1625.5 725.5,-1625.5"/>
-<text text-anchor="middle" x="774.5" y="-1802.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
-<polyline fill="none" stroke="black" points="725.5,-1795.5 823.5,-1795.5 "/>
-<text text-anchor="start" x="733.5" y="-1783.5" font-family="Helvetica,sans-Serif" font-size="10.00"># fsobj</text>
-<text text-anchor="start" x="733.5" y="-1772.5" font-family="Helvetica,sans-Serif" font-size="10.00"># parts</text>
-<polyline fill="none" stroke="black" points="725.5,-1765.5 823.5,-1765.5 "/>
-<text text-anchor="start" x="733.5" y="-1753.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
-<text text-anchor="start" x="733.5" y="-1742.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
-<text text-anchor="start" x="733.5" y="-1731.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
-<text text-anchor="start" x="733.5" y="-1720.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Path()</text>
-<text text-anchor="start" x="733.5" y="-1709.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ exists()</text>
-<text text-anchor="start" x="733.5" y="-1698.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_file()</text>
-<text text-anchor="start" x="733.5" y="-1687.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_dir()</text>
-<text text-anchor="start" x="733.5" y="-1676.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ writable()</text>
-<text text-anchor="start" x="733.5" y="-1665.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ list()</text>
-<text text-anchor="start" x="733.5" y="-1654.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ iterdir()</text>
-<text text-anchor="start" x="733.5" y="-1643.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 33 more...</text>
-<text text-anchor="start" x="733.5" y="-1632.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; get_native_path()</text>
+<polygon fill="white" stroke="black" points="581.5,-1625.5 581.5,-1814.5 679.5,-1814.5 679.5,-1625.5 581.5,-1625.5"/>
+<text text-anchor="middle" x="630.5" y="-1802.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Path</text>
+<polyline fill="none" stroke="black" points="581.5,-1795.5 679.5,-1795.5 "/>
+<text text-anchor="start" x="589.5" y="-1783.5" font-family="Helvetica,sans-Serif" font-size="10.00"># fsobj</text>
+<text text-anchor="start" x="589.5" y="-1772.5" font-family="Helvetica,sans-Serif" font-size="10.00"># parts</text>
+<polyline fill="none" stroke="black" points="581.5,-1765.5 679.5,-1765.5 "/>
+<text text-anchor="start" x="589.5" y="-1753.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
+<text text-anchor="start" x="589.5" y="-1742.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
+<text text-anchor="start" x="589.5" y="-1731.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Path()</text>
+<text text-anchor="start" x="589.5" y="-1720.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Path()</text>
+<text text-anchor="start" x="589.5" y="-1709.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ exists()</text>
+<text text-anchor="start" x="589.5" y="-1698.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_file()</text>
+<text text-anchor="start" x="589.5" y="-1687.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_dir()</text>
+<text text-anchor="start" x="589.5" y="-1676.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ writable()</text>
+<text text-anchor="start" x="589.5" y="-1665.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ list()</text>
+<text text-anchor="start" x="589.5" y="-1654.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ iterdir()</text>
+<text text-anchor="start" x="589.5" y="-1643.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 33 more...</text>
+<text text-anchor="start" x="589.5" y="-1632.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; get_native_path()</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M725.302,-1714.85C573.643,-1700.71 123.5,-1648.16 123.5,-1522.5 123.5,-1522.5 123.5,-1522.5 123.5,-523.5 123.5,-429.16 123.5,-321.38 123.5,-246.111"/>
+<path fill="none" stroke="#404040" d="M581.426,-1710.82C454.188,-1688.21 123.5,-1620.09 123.5,-1522.5 123.5,-1522.5 123.5,-1522.5 123.5,-523.5 123.5,-429.16 123.5,-321.38 123.5,-246.111"/>
 <polygon fill="none" stroke="#404040" points="123.5,-245.851 119.5,-239.851 123.5,-233.851 127.5,-239.851 123.5,-245.851"/>
 <text text-anchor="middle" x="151" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;asset_path</text>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
 <g id="a_node3"><a xlink:href="classopenage_1_1_engine.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1206,-347.5 1206,-701.5 1307,-701.5 1307,-347.5 1206,-347.5"/>
-<text text-anchor="middle" x="1256.5" y="-689.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine</text>
-<polyline fill="none" stroke="black" points="1206,-682.5 1307,-682.5 "/>
-<text text-anchor="start" x="1214" y="-670.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ running</text>
-<text text-anchor="start" x="1214" y="-659.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ gui_link</text>
-<text text-anchor="start" x="1214" y="-648.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; ns_per_frame</text>
-<text text-anchor="start" x="1214" y="-637.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_input_event</text>
-<text text-anchor="start" x="1214" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_engine_tick</text>
-<text text-anchor="start" x="1214" y="-615.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_drawgame</text>
-<text text-anchor="start" x="1214" y="-604.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_drawhud</text>
-<text text-anchor="start" x="1214" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_resize_handler</text>
-<text text-anchor="start" x="1214" y="-582.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; game</text>
-<text text-anchor="start" x="1214" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; unit_selection</text>
-<text text-anchor="start" x="1214" y="-560.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; fonts</text>
-<text text-anchor="start" x="1214" y="-549.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; window</text>
-<text text-anchor="start" x="1214" y="-538.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; glcontext</text>
-<text text-anchor="start" x="1214" y="-527.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; gui</text>
-<text text-anchor="start" x="1214" y="-516.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; font_manager</text>
-<text text-anchor="start" x="1214" y="-505.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; text_renderer</text>
-<text text-anchor="start" x="1214" y="-494.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; logsink_file</text>
-<polyline fill="none" stroke="black" points="1206,-487.5 1307,-487.5 "/>
-<text text-anchor="start" x="1214" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
-<text text-anchor="start" x="1214" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
-<text text-anchor="start" x="1214" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1214" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
-<text text-anchor="start" x="1214" y="-431.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1214" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Engine()</text>
-<text text-anchor="start" x="1214" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ run()</text>
-<text text-anchor="start" x="1214" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
-<text text-anchor="start" x="1214" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_resize()</text>
-<text text-anchor="start" x="1214" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_game()</text>
-<text text-anchor="start" x="1214" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 23 more...</text>
-<text text-anchor="start" x="1214" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; loop()</text>
+<polygon fill="white" stroke="black" points="1019,-347.5 1019,-701.5 1120,-701.5 1120,-347.5 1019,-347.5"/>
+<text text-anchor="middle" x="1069.5" y="-689.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::Engine</text>
+<polyline fill="none" stroke="black" points="1019,-682.5 1120,-682.5 "/>
+<text text-anchor="start" x="1027" y="-670.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ running</text>
+<text text-anchor="start" x="1027" y="-659.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ gui_link</text>
+<text text-anchor="start" x="1027" y="-648.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; ns_per_frame</text>
+<text text-anchor="start" x="1027" y="-637.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_input_event</text>
+<text text-anchor="start" x="1027" y="-626.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_engine_tick</text>
+<text text-anchor="start" x="1027" y="-615.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_drawgame</text>
+<text text-anchor="start" x="1027" y="-604.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_drawhud</text>
+<text text-anchor="start" x="1027" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; on_resize_handler</text>
+<text text-anchor="start" x="1027" y="-582.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; game</text>
+<text text-anchor="start" x="1027" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; unit_selection</text>
+<text text-anchor="start" x="1027" y="-560.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; fonts</text>
+<text text-anchor="start" x="1027" y="-549.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; window</text>
+<text text-anchor="start" x="1027" y="-538.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; glcontext</text>
+<text text-anchor="start" x="1027" y="-527.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; gui</text>
+<text text-anchor="start" x="1027" y="-516.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; font_manager</text>
+<text text-anchor="start" x="1027" y="-505.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; text_renderer</text>
+<text text-anchor="start" x="1027" y="-494.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; logsink_file</text>
+<polyline fill="none" stroke="black" points="1019,-487.5 1120,-487.5 "/>
+<text text-anchor="start" x="1027" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
+<text text-anchor="start" x="1027" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
+<text text-anchor="start" x="1027" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="1027" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Engine()</text>
+<text text-anchor="start" x="1027" y="-431.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="1027" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Engine()</text>
+<text text-anchor="start" x="1027" y="-409.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ run()</text>
+<text text-anchor="start" x="1027" y="-398.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
+<text text-anchor="start" x="1027" y="-387.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_resize()</text>
+<text text-anchor="start" x="1027" y="-376.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_game()</text>
+<text text-anchor="start" x="1027" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 23 more...</text>
+<text text-anchor="start" x="1027" y="-354.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; loop()</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
-<g id="edge11" class="edge"><title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M823.694,-1715.72C1040.8,-1700.63 1902.5,-1633.69 1902.5,-1522.5 1902.5,-1522.5 1902.5,-1522.5 1902.5,-909 1902.5,-842.242 1926.54,-811.032 1883.5,-760 1844.25,-713.465 1812.51,-730.228 1752.5,-720 1704.7,-711.854 1355.33,-731.04 1316.5,-702 1316.4,-701.924 1316.3,-701.848 1316.2,-701.772"/>
-<polygon fill="none" stroke="#404040" points="1316.43,-701.974 1309.27,-701.136 1307.29,-694.202 1314.45,-695.041 1316.43,-701.974"/>
-<text text-anchor="middle" x="1922" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;root_dir</text>
+<g id="edge16" class="edge"><title>Node2&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M679.639,-1715.82C760.11,-1707.71 918.617,-1679.08 994.5,-1578 1056.1,-1495.94 1009.68,-1217.56 1034.5,-1118 1039.17,-1099.26 1036.4,-1090.05 1051.5,-1078 1086.8,-1049.83 1122.53,-1094.65 1151.5,-1060 1194.26,-1008.85 1162.66,-825.726 1151.5,-760 1145.69,-725.768 1135.42,-689.874 1124.08,-656.75"/>
+<polygon fill="none" stroke="#404040" points="1123.98,-656.485 1118.23,-652.14 1120.02,-645.157 1125.78,-649.501 1123.98,-656.485"/>
+<text text-anchor="middle" x="1054" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;root_dir</text>
 </g>
-<!-- Node12 -->
-<g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="639.5,-1465.5 639.5,-1577.5 781.5,-1577.5 781.5,-1465.5 639.5,-1465.5"/>
-<text text-anchor="middle" x="710.5" y="-1565.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::cvar::CVarManager</text>
-<polyline fill="none" stroke="black" points="639.5,-1558.5 781.5,-1558.5 "/>
-<text text-anchor="start" x="647.5" y="-1546.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; store</text>
-<polyline fill="none" stroke="black" points="639.5,-1539.5 781.5,-1539.5 "/>
-<text text-anchor="start" x="647.5" y="-1527.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ CVarManager()</text>
-<text text-anchor="start" x="647.5" y="-1516.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ create()</text>
-<text text-anchor="start" x="647.5" y="-1505.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
-<text text-anchor="start" x="647.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
-<text text-anchor="start" x="647.5" y="-1483.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_config()</text>
-<text text-anchor="start" x="647.5" y="-1472.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_all()</text>
+<!-- Node15 -->
+<g id="node15" class="node"><title>Node15</title>
+<g id="a_node15"><a xlink:href="classopenage_1_1cvar_1_1_c_var_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1510.5,-1465.5 1510.5,-1577.5 1652.5,-1577.5 1652.5,-1465.5 1510.5,-1465.5"/>
+<text text-anchor="middle" x="1581.5" y="-1565.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::cvar::CVarManager</text>
+<polyline fill="none" stroke="black" points="1510.5,-1558.5 1652.5,-1558.5 "/>
+<text text-anchor="start" x="1518.5" y="-1546.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; store</text>
+<polyline fill="none" stroke="black" points="1510.5,-1539.5 1652.5,-1539.5 "/>
+<text text-anchor="start" x="1518.5" y="-1527.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ CVarManager()</text>
+<text text-anchor="start" x="1518.5" y="-1516.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ create()</text>
+<text text-anchor="start" x="1518.5" y="-1505.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
+<text text-anchor="start" x="1518.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
+<text text-anchor="start" x="1518.5" y="-1483.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_config()</text>
+<text text-anchor="start" x="1518.5" y="-1472.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_all()</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node12 -->
-<g id="edge15" class="edge"><title>Node2&#45;&gt;Node12</title>
-<path fill="none" stroke="#404040" d="M744,-1625.35C740.015,-1613.12 736,-1600.79 732.202,-1589.13"/>
-<polygon fill="none" stroke="#404040" points="732.201,-1589.13 726.539,-1584.66 728.485,-1577.72 734.146,-1582.18 732.201,-1589.13"/>
-<text text-anchor="middle" x="750" y="-1599" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;path</text>
+<!-- Node2&#45;&gt;Node15 -->
+<g id="edge20" class="edge"><title>Node2&#45;&gt;Node15</title>
+<path fill="none" stroke="#404040" d="M679.624,-1718.46C813.702,-1715.47 1195.54,-1696.72 1499.23,-1578.02"/>
+<polygon fill="none" stroke="#404040" points="1499.29,-1578 1503.4,-1572.07 1510.45,-1573.58 1506.34,-1579.51 1499.29,-1578"/>
+<text text-anchor="middle" x="1447" y="-1599" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;path</text>
 </g>
-<!-- Node28 -->
-<g id="node28" class="node"><title>Node28</title>
-<g id="a_node28"><a xlink:href="classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1252.5,-121.5 1252.5,-178.5 1396.5,-178.5 1396.5,-121.5 1252.5,-121.5"/>
-<text text-anchor="middle" x="1324.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::EngineQMLInfo</text>
-<polyline fill="none" stroke="black" points="1252.5,-159.5 1396.5,-159.5 "/>
-<text text-anchor="middle" x="1324.5" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1252.5,-140.5 1396.5,-140.5 "/>
-<text text-anchor="start" x="1260.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ EngineQMLInfo()</text>
+<!-- Node31 -->
+<g id="node31" class="node"><title>Node31</title>
+<g id="a_node31"><a xlink:href="classopenage_1_1gui_1_1_engine_q_m_l_info.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="332.5,-121.5 332.5,-178.5 476.5,-178.5 476.5,-121.5 332.5,-121.5"/>
+<text text-anchor="middle" x="404.5" y="-166.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::gui::EngineQMLInfo</text>
+<polyline fill="none" stroke="black" points="332.5,-159.5 476.5,-159.5 "/>
+<text text-anchor="middle" x="404.5" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="332.5,-140.5 476.5,-140.5 "/>
+<text text-anchor="start" x="340.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ EngineQMLInfo()</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node28 -->
-<g id="edge36" class="edge"><title>Node2&#45;&gt;Node28</title>
-<path fill="none" stroke="#404040" d="M786.405,-1625.45C788.048,-1609.63 789.509,-1593.37 790.5,-1578 792.754,-1543.07 786.073,-343.072 810.5,-318 843.793,-283.828 1198.76,-324.821 1239.5,-300 1279.09,-275.884 1301.96,-226.013 1313.81,-190.62"/>
-<polygon fill="none" stroke="#404040" points="1313.93,-190.214 1311.92,-183.288 1317.55,-178.771 1319.55,-185.696 1313.93,-190.214"/>
-<text text-anchor="middle" x="817" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +asset_dir</text>
+<!-- Node2&#45;&gt;Node31 -->
+<g id="edge41" class="edge"><title>Node2&#45;&gt;Node31</title>
+<path fill="none" stroke="#404040" d="M581.147,-1716.88C474.992,-1709.42 234.5,-1675.61 234.5,-1522.5 234.5,-1522.5 234.5,-1522.5 234.5,-1088 234.5,-941.978 202.217,-896.72 253.5,-760 264.959,-729.452 285.049,-731.725 298.5,-702 379.434,-523.15 398.632,-284.439 403.138,-190.94"/>
+<polygon fill="none" stroke="#404040" points="403.147,-190.72 399.418,-184.548 403.681,-178.732 407.41,-184.904 403.147,-190.72"/>
+<text text-anchor="middle" x="259" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +asset_dir</text>
 </g>
 <!-- Node3&#45;&gt;Node1 -->
 <g id="edge2" class="edge"><title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M1205.99,-506.892C1025.07,-447.414 408.995,-244.863 196.364,-174.956"/>
-<polygon fill="none" stroke="#404040" points="196.143,-174.883 189.194,-176.809 184.743,-171.135 191.692,-169.209 196.143,-174.883"/>
-<text text-anchor="middle" x="674" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;engine</text>
+<path fill="none" stroke="#404040" d="M1018.81,-514.66C894.927,-491.735 569.034,-423.395 323.5,-300 277.331,-276.798 230.746,-242.849 194.165,-213.215"/>
+<polygon fill="none" stroke="#404040" points="193.889,-212.989 186.712,-212.281 184.605,-205.385 191.782,-206.093 193.889,-212.989"/>
+<text text-anchor="middle" x="398" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;engine</text>
 </g>
-<!-- Node9 -->
-<g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1070,-0.5 1070,-299.5 1231,-299.5 1231,-0.5 1070,-0.5"/>
-<text text-anchor="middle" x="1150.5" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
-<polyline fill="none" stroke="black" points="1070,-280.5 1231,-280.5 "/>
-<text text-anchor="start" x="1078" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_start</text>
-<text text-anchor="start" x="1078" y="-257.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_duration</text>
-<text text-anchor="start" x="1078" y="-246.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; components</text>
-<text text-anchor="start" x="1078" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; insert_pos</text>
-<polyline fill="none" stroke="black" points="1070,-228.5 1231,-228.5 "/>
-<text text-anchor="start" x="1078" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Profiler()</text>
-<text text-anchor="start" x="1078" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Profiler()</text>
-<text text-anchor="start" x="1078" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ register_component()</text>
-<text text-anchor="start" x="1078" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister_component()</text>
-<text text-anchor="start" x="1078" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister_all()</text>
-<text text-anchor="start" x="1078" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ registered_components()</text>
-<text text-anchor="start" x="1078" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_measure()</text>
-<text text-anchor="start" x="1078" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ end_measure()</text>
-<text text-anchor="start" x="1078" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show()</text>
-<text text-anchor="start" x="1078" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show()</text>
-<text text-anchor="start" x="1078" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ registered()</text>
-<text text-anchor="start" x="1078" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ size()</text>
-<text text-anchor="start" x="1078" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_frame_measure()</text>
-<text text-anchor="start" x="1078" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ end_frame_measure()</text>
-<text text-anchor="start" x="1078" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_canvas()</text>
-<text text-anchor="start" x="1078" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_legend()</text>
-<text text-anchor="start" x="1078" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_component_performance()</text>
-<text text-anchor="start" x="1078" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; duration_to_percentage()</text>
-<text text-anchor="start" x="1078" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; append_to_history()</text>
-<text text-anchor="start" x="1078" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; engine_in_debug_mode()</text>
+<!-- Node12 -->
+<g id="node12" class="node"><title>Node12</title>
+<g id="a_node12"><a xlink:href="classopenage_1_1util_1_1_profiler.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="989,-0.5 989,-299.5 1150,-299.5 1150,-0.5 989,-0.5"/>
+<text text-anchor="middle" x="1069.5" y="-287.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Profiler</text>
+<polyline fill="none" stroke="black" points="989,-280.5 1150,-280.5 "/>
+<text text-anchor="start" x="997" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_start</text>
+<text text-anchor="start" x="997" y="-257.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_duration</text>
+<text text-anchor="start" x="997" y="-246.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; components</text>
+<text text-anchor="start" x="997" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; insert_pos</text>
+<polyline fill="none" stroke="black" points="989,-228.5 1150,-228.5 "/>
+<text text-anchor="start" x="997" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Profiler()</text>
+<text text-anchor="start" x="997" y="-205.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~Profiler()</text>
+<text text-anchor="start" x="997" y="-194.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ register_component()</text>
+<text text-anchor="start" x="997" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister_component()</text>
+<text text-anchor="start" x="997" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister_all()</text>
+<text text-anchor="start" x="997" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ registered_components()</text>
+<text text-anchor="start" x="997" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_measure()</text>
+<text text-anchor="start" x="997" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ end_measure()</text>
+<text text-anchor="start" x="997" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show()</text>
+<text text-anchor="start" x="997" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show()</text>
+<text text-anchor="start" x="997" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ registered()</text>
+<text text-anchor="start" x="997" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ size()</text>
+<text text-anchor="start" x="997" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start_frame_measure()</text>
+<text text-anchor="start" x="997" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ end_frame_measure()</text>
+<text text-anchor="start" x="997" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_canvas()</text>
+<text text-anchor="start" x="997" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_legend()</text>
+<text text-anchor="start" x="997" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; draw_component_performance()</text>
+<text text-anchor="start" x="997" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; duration_to_percentage()</text>
+<text text-anchor="start" x="997" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; append_to_history()</text>
+<text text-anchor="start" x="997" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; engine_in_debug_mode()</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node9 -->
-<g id="edge10" class="edge"><title>Node3&#45;&gt;Node9</title>
-<path fill="none" stroke="#404040" d="M1205.85,-438.226C1188.69,-405.221 1171.38,-366.426 1161.5,-329 1160.02,-323.401 1158.7,-317.67 1157.52,-311.856"/>
-<polygon fill="none" stroke="#404040" points="1157.48,-311.622 1152.46,-306.449 1155.3,-299.822 1160.32,-304.995 1157.48,-311.622"/>
-<text text-anchor="middle" x="1179" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;engine</text>
+<!-- Node3&#45;&gt;Node12 -->
+<g id="edge15" class="edge"><title>Node3&#45;&gt;Node12</title>
+<path fill="none" stroke="#404040" d="M1076.77,-347.231C1076.78,-337.343 1076.7,-327.547 1076.5,-318 1076.46,-316.048 1076.42,-314.084 1076.37,-312.109"/>
+<polygon fill="none" stroke="#404040" points="1076.36,-311.856 1072.21,-305.96 1076.06,-299.86 1080.21,-305.755 1076.36,-311.856"/>
+<text text-anchor="middle" x="1095" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;engine</text>
 </g>
-<!-- Node3&#45;&gt;Node28 -->
-<g id="edge37" class="edge"><title>Node3&#45;&gt;Node28</title>
-<path fill="none" stroke="#404040" d="M1257.86,-347.357C1259.11,-337.39 1260.64,-327.547 1262.5,-318 1271.38,-272.38 1291.2,-222.771 1306.06,-189.578"/>
-<polygon fill="none" stroke="#404040" points="1306.1,-189.475 1304.95,-182.357 1311.08,-178.555 1312.23,-185.673 1306.1,-189.475"/>
-<text text-anchor="middle" x="1281.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> +engine</text>
+<!-- Node3&#45;&gt;Node31 -->
+<g id="edge42" class="edge"><title>Node3&#45;&gt;Node31</title>
+<path fill="none" stroke="#404040" d="M1018.72,-500.861C942.672,-466.418 795.332,-397.589 675.5,-329 595.412,-283.16 506.766,-223.036 453.365,-185.72"/>
+<polygon fill="none" stroke="#404040" points="453.317,-185.687 446.108,-185.518 443.491,-178.799 450.7,-178.967 453.317,-185.687"/>
+<text text-anchor="middle" x="694.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> +engine</text>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
 <g id="a_node4"><a xlink:href="classopenage_1_1_resize_handler.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1930.5,-876 1930.5,-944 2052.5,-944 2052.5,-876 1930.5,-876"/>
-<text text-anchor="middle" x="1991.5" y="-932" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
-<polyline fill="none" stroke="black" points="1930.5,-925 2052.5,-925 "/>
-<text text-anchor="middle" x="1991.5" y="-913" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1930.5,-906 2052.5,-906 "/>
-<text text-anchor="start" x="1938.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~ResizeHandler()</text>
-<text text-anchor="start" x="1938.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_resize()</text>
+<polygon fill="white" stroke="black" points="1368.5,-876 1368.5,-944 1490.5,-944 1490.5,-876 1368.5,-876"/>
+<text text-anchor="middle" x="1429.5" y="-932" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ResizeHandler</text>
+<polyline fill="none" stroke="black" points="1368.5,-925 1490.5,-925 "/>
+<text text-anchor="middle" x="1429.5" y="-913" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1368.5,-906 1490.5,-906 "/>
+<text text-anchor="start" x="1376.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~ResizeHandler()</text>
+<text text-anchor="start" x="1376.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_resize()</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node3 -->
 <g id="edge3" class="edge"><title>Node4&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M1987.74,-865.985C1981.3,-821.243 1963.83,-753.186 1916.5,-720 1861.89,-681.709 1370.13,-741.646 1316.5,-702 1313.25,-699.595 1310.17,-697.004 1307.25,-694.252"/>
-<polygon fill="none" stroke="midnightblue" points="1984.28,-866.53 1989.05,-875.989 1991.22,-865.618 1984.28,-866.53"/>
+<path fill="none" stroke="midnightblue" d="M1415.26,-866.051C1403.49,-834.628 1384.64,-792.065 1359.5,-760 1290.68,-672.237 1183.18,-596.412 1120.21,-556.193"/>
+<polygon fill="none" stroke="midnightblue" points="1412.11,-867.64 1418.83,-875.834 1418.69,-865.24 1412.11,-867.64"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
 <g id="a_node5"><a xlink:href="classopenage_1_1options_1_1_option_node.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="2070.5,-788 2070.5,-1032 2218.5,-1032 2218.5,-788 2070.5,-788"/>
-<text text-anchor="middle" x="2144.5" y="-1020" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
-<polyline fill="none" stroke="black" points="2070.5,-1013 2218.5,-1013 "/>
-<text text-anchor="start" x="2078.5" y="-1001" font-family="Helvetica,sans-Serif" font-size="10.00">+ name</text>
-<text text-anchor="start" x="2078.5" y="-990" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; varmap</text>
-<text text-anchor="start" x="2078.5" y="-979" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; actions</text>
-<text text-anchor="start" x="2078.5" y="-968" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; children</text>
-<polyline fill="none" stroke="black" points="2070.5,-961 2218.5,-961 "/>
-<text text-anchor="start" x="2078.5" y="-949" font-family="Helvetica,sans-Serif" font-size="10.00">+ OptionNode()</text>
-<text text-anchor="start" x="2078.5" y="-938" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~OptionNode()</text>
-<text text-anchor="start" x="2078.5" y="-927" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_options()</text>
-<text text-anchor="start" x="2078.5" y="-916" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_variables()</text>
-<text text-anchor="start" x="2078.5" y="-905" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_functions()</text>
-<text text-anchor="start" x="2078.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_variable_rw()</text>
-<text text-anchor="start" x="2078.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_variable()</text>
-<text text-anchor="start" x="2078.5" y="-872" font-family="Helvetica,sans-Serif" font-size="10.00">+ getv()</text>
-<text text-anchor="start" x="2078.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_child()</text>
-<text text-anchor="start" x="2078.5" y="-850" font-family="Helvetica,sans-Serif" font-size="10.00">+ set_parent()</text>
-<text text-anchor="start" x="2078.5" y="-839" font-family="Helvetica,sans-Serif" font-size="10.00">+ do_action()</text>
-<text text-anchor="start" x="2078.5" y="-828" font-family="Helvetica,sans-Serif" font-size="10.00"># add()</text>
-<text text-anchor="start" x="2078.5" y="-817" font-family="Helvetica,sans-Serif" font-size="10.00"># add_action()</text>
-<text text-anchor="start" x="2078.5" y="-806" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; add_panel()</text>
-<text text-anchor="start" x="2078.5" y="-795" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; remove_panel()</text>
+<polygon fill="white" stroke="black" points="1658.5,-788 1658.5,-1032 1806.5,-1032 1806.5,-788 1658.5,-788"/>
+<text text-anchor="middle" x="1732.5" y="-1020" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::OptionNode</text>
+<polyline fill="none" stroke="black" points="1658.5,-1013 1806.5,-1013 "/>
+<text text-anchor="start" x="1666.5" y="-1001" font-family="Helvetica,sans-Serif" font-size="10.00">+ name</text>
+<text text-anchor="start" x="1666.5" y="-990" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; varmap</text>
+<text text-anchor="start" x="1666.5" y="-979" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; actions</text>
+<text text-anchor="start" x="1666.5" y="-968" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; children</text>
+<polyline fill="none" stroke="black" points="1658.5,-961 1806.5,-961 "/>
+<text text-anchor="start" x="1666.5" y="-949" font-family="Helvetica,sans-Serif" font-size="10.00">+ OptionNode()</text>
+<text text-anchor="start" x="1666.5" y="-938" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~OptionNode()</text>
+<text text-anchor="start" x="1666.5" y="-927" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_options()</text>
+<text text-anchor="start" x="1666.5" y="-916" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_variables()</text>
+<text text-anchor="start" x="1666.5" y="-905" font-family="Helvetica,sans-Serif" font-size="10.00">+ list_functions()</text>
+<text text-anchor="start" x="1666.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_variable_rw()</text>
+<text text-anchor="start" x="1666.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_variable()</text>
+<text text-anchor="start" x="1666.5" y="-872" font-family="Helvetica,sans-Serif" font-size="10.00">+ getv()</text>
+<text text-anchor="start" x="1666.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_child()</text>
+<text text-anchor="start" x="1666.5" y="-850" font-family="Helvetica,sans-Serif" font-size="10.00">+ set_parent()</text>
+<text text-anchor="start" x="1666.5" y="-839" font-family="Helvetica,sans-Serif" font-size="10.00">+ do_action()</text>
+<text text-anchor="start" x="1666.5" y="-828" font-family="Helvetica,sans-Serif" font-size="10.00"># add()</text>
+<text text-anchor="start" x="1666.5" y="-817" font-family="Helvetica,sans-Serif" font-size="10.00"># add_action()</text>
+<text text-anchor="start" x="1666.5" y="-806" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; add_panel()</text>
+<text text-anchor="start" x="1666.5" y="-795" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; remove_panel()</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node3 -->
 <g id="edge4" class="edge"><title>Node5&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M2081.36,-779.747C2075.23,-772.573 2068.62,-765.898 2061.5,-760 2018.22,-724.122 1996.86,-729.803 1941.5,-720 1907.3,-713.943 1344.45,-722.632 1316.5,-702 1313.25,-699.597 1310.17,-697.008 1307.25,-694.257"/>
-<polygon fill="none" stroke="midnightblue" points="2078.8,-782.152 2087.82,-787.715 2084.24,-777.743 2078.8,-782.152"/>
+<path fill="none" stroke="midnightblue" d="M1661.73,-779.475C1656.25,-772.618 1650.5,-766.065 1644.5,-760 1493.85,-607.628 1230.54,-550.505 1120.31,-532.577"/>
+<polygon fill="none" stroke="midnightblue" points="1659.16,-781.876 1668.04,-787.654 1664.7,-777.599 1659.16,-781.876"/>
 </g>
 <!-- Node5&#45;&gt;Node5 -->
 <g id="edge5" class="edge"><title>Node5&#45;&gt;Node5</title>
-<path fill="none" stroke="#404040" d="M2218.86,-939.951C2229.42,-935.107 2236.5,-925.123 2236.5,-910 2236.5,-900.312 2233.59,-892.733 2228.73,-887.263"/>
-<polygon fill="none" stroke="#404040" points="2228.55,-887.131 2221.34,-886.819 2218.86,-880.049 2226.06,-880.361 2228.55,-887.131"/>
-<text text-anchor="middle" x="2253.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;parent</text>
+<path fill="none" stroke="#404040" d="M1806.86,-939.951C1817.42,-935.107 1824.5,-925.123 1824.5,-910 1824.5,-900.312 1821.59,-892.733 1816.73,-887.263"/>
+<polygon fill="none" stroke="#404040" points="1816.55,-887.131 1809.34,-886.819 1806.86,-880.049 1814.06,-880.361 1816.55,-887.131"/>
+<text text-anchor="middle" x="1841.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;parent</text>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
 <g id="a_node6"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="2288.5,-876 2288.5,-944 2400.5,-944 2400.5,-876 2288.5,-876"/>
-<text text-anchor="start" x="2296.5" y="-932" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var</text>
-<text text-anchor="middle" x="2344.5" y="-921" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; bool &gt;</text>
-<polyline fill="none" stroke="black" points="2288.5,-914 2400.5,-914 "/>
-<text text-anchor="middle" x="2344.5" y="-902" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="2288.5,-895 2400.5,-895 "/>
-<text text-anchor="start" x="2296.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ Var()</text>
+<polygon fill="white" stroke="black" points="1876.5,-876 1876.5,-944 1988.5,-944 1988.5,-876 1876.5,-876"/>
+<text text-anchor="start" x="1884.5" y="-932" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var</text>
+<text text-anchor="middle" x="1932.5" y="-921" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; bool &gt;</text>
+<polyline fill="none" stroke="black" points="1876.5,-914 1988.5,-914 "/>
+<text text-anchor="middle" x="1932.5" y="-902" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1876.5,-895 1988.5,-895 "/>
+<text text-anchor="start" x="1884.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ Var()</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node3 -->
 <g id="edge6" class="edge"><title>Node6&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M2339.61,-875.974C2332.63,-841.32 2316.31,-788.063 2279.5,-760 2180.58,-684.581 2126.44,-730.538 2002.5,-720 1964.51,-716.77 1347.2,-724.604 1316.5,-702 1316.4,-701.925 1316.3,-701.85 1316.2,-701.775"/>
-<polygon fill="none" stroke="#404040" points="1316.44,-701.978 1309.27,-701.188 1307.24,-694.268 1314.41,-695.058 1316.44,-701.978"/>
-<text text-anchor="middle" x="2303.5" y="-734" font-family="Helvetica,sans-Serif" font-size="10.00"> +drawing_huds</text>
-<text text-anchor="middle" x="2303.5" y="-723" font-family="Helvetica,sans-Serif" font-size="10.00">+drawing_debug_overlay</text>
+<path fill="none" stroke="#404040" d="M1926.73,-875.867C1919.07,-841.897 1902.25,-789.927 1867.5,-760 1844.14,-739.879 1830.17,-750.379 1800.5,-742 1552.16,-671.878 1258.11,-582.995 1132,-544.596"/>
+<polygon fill="none" stroke="#404040" points="1131.81,-544.537 1124.9,-546.615 1120.33,-541.04 1127.23,-538.962 1131.81,-544.537"/>
+<text text-anchor="middle" x="1853.5" y="-734" font-family="Helvetica,sans-Serif" font-size="10.00"> +drawing_huds</text>
+<text text-anchor="middle" x="1853.5" y="-723" font-family="Helvetica,sans-Serif" font-size="10.00">+drawing_debug_overlay</text>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
 <g id="a_node7"><a xlink:href="classopenage_1_1util_1_1_variable.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="2288,-1223 2288,-1313 2401,-1313 2401,-1223 2288,-1223"/>
-<text text-anchor="start" x="2296" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Variable</text>
-<text text-anchor="middle" x="2344.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; bool &gt;</text>
-<polyline fill="none" stroke="black" points="2288,-1283 2401,-1283 "/>
-<text text-anchor="start" x="2296" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00">+ value</text>
-<polyline fill="none" stroke="black" points="2288,-1264 2401,-1264 "/>
-<text text-anchor="start" x="2296" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ Variable()</text>
-<text text-anchor="start" x="2296" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
-<text text-anchor="start" x="2296" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
+<polygon fill="white" stroke="black" points="1569,-1223 1569,-1313 1682,-1313 1682,-1223 1569,-1223"/>
+<text text-anchor="start" x="1577" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Variable</text>
+<text text-anchor="middle" x="1625.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; bool &gt;</text>
+<polyline fill="none" stroke="black" points="1569,-1283 1682,-1283 "/>
+<text text-anchor="start" x="1577" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00">+ value</text>
+<polyline fill="none" stroke="black" points="1569,-1264 1682,-1264 "/>
+<text text-anchor="start" x="1577" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ Variable()</text>
+<text text-anchor="start" x="1577" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
+<text text-anchor="start" x="1577" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
 </a>
 </g>
 </g>
 <!-- Node7&#45;&gt;Node6 -->
 <g id="edge7" class="edge"><title>Node7&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M2344.5,-1212.85C2344.5,-1138.21 2344.5,-1005.96 2344.5,-944.334"/>
-<polygon fill="none" stroke="midnightblue" points="2341,-1212.99 2344.5,-1222.99 2348,-1212.99 2341,-1212.99"/>
+<path fill="none" stroke="midnightblue" d="M1639.04,-1212.87C1649.13,-1181.85 1665.72,-1144.03 1691.5,-1118 1721.73,-1087.48 1738.64,-1091.28 1779.5,-1078 1817.47,-1065.66 1836.47,-1085.12 1867.5,-1060 1903.25,-1031.05 1919.83,-978.562 1927.15,-944.244"/>
+<polygon fill="none" stroke="midnightblue" points="1635.61,-1212.09 1635.98,-1222.68 1642.3,-1214.17 1635.61,-1212.09"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
 <g id="a_node8"><a xlink:href="classopenage_1_1util_1_1_variable_base.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="2276.5,-1482 2276.5,-1561 2412.5,-1561 2412.5,-1482 2276.5,-1482"/>
-<text text-anchor="middle" x="2344.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
-<polyline fill="none" stroke="black" points="2276.5,-1542 2412.5,-1542 "/>
-<text text-anchor="middle" x="2344.5" y="-1530" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="2276.5,-1523 2412.5,-1523 "/>
-<text text-anchor="start" x="2284.5" y="-1511" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~VariableBase()</text>
-<text text-anchor="start" x="2284.5" y="-1500" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
-<text text-anchor="start" x="2284.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
+<polygon fill="white" stroke="black" points="1623.5,-1680.5 1623.5,-1759.5 1759.5,-1759.5 1759.5,-1680.5 1623.5,-1680.5"/>
+<text text-anchor="middle" x="1691.5" y="-1747.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::VariableBase</text>
+<polyline fill="none" stroke="black" points="1623.5,-1740.5 1759.5,-1740.5 "/>
+<text text-anchor="middle" x="1691.5" y="-1728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1623.5,-1721.5 1759.5,-1721.5 "/>
+<text text-anchor="start" x="1631.5" y="-1709.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~VariableBase()</text>
+<text text-anchor="start" x="1631.5" y="-1698.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
+<text text-anchor="start" x="1631.5" y="-1687.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node7 -->
 <g id="edge8" class="edge"><title>Node8&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M2344.5,-1471.74C2344.5,-1425.84 2344.5,-1357.69 2344.5,-1313.3"/>
-<polygon fill="none" stroke="midnightblue" points="2341,-1471.75 2344.5,-1481.75 2348,-1471.75 2341,-1471.75"/>
+<path fill="none" stroke="midnightblue" d="M1686.66,-1670.04C1681.37,-1618.8 1672.21,-1536.06 1661.5,-1465 1653.61,-1412.66 1642.29,-1352.87 1634.46,-1313.23"/>
+<polygon fill="none" stroke="midnightblue" points="1683.19,-1670.58 1687.69,-1680.17 1690.16,-1669.86 1683.19,-1670.58"/>
 </g>
-<!-- Node9&#45;&gt;Node3 -->
-<g id="edge9" class="edge"><title>Node9&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1192.76,-299.522C1196.15,-311.437 1199.61,-323.567 1203.06,-335.706"/>
-<polygon fill="none" stroke="#404040" points="1203.09,-335.798 1208.58,-340.474 1206.37,-347.34 1200.88,-342.664 1203.09,-335.798"/>
-<text text-anchor="middle" x="1218" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;profiler</text>
-</g>
-<!-- Node10 -->
-<g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="824.5,-881.5 824.5,-938.5 946.5,-938.5 946.5,-881.5 824.5,-881.5"/>
-<text text-anchor="middle" x="885.5" y="-926.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EngineSignals</text>
-<polyline fill="none" stroke="black" points="824.5,-919.5 946.5,-919.5 "/>
-<text text-anchor="middle" x="885.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="824.5,-900.5 946.5,-900.5 "/>
-<text text-anchor="middle" x="885.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<!-- Node9 -->
+<g id="node9" class="node"><title>Node9</title>
+<g id="a_node9"><a xlink:href="classopenage_1_1util_1_1_variable.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1735,-1482 1735,-1561 1872,-1561 1872,-1482 1735,-1482"/>
+<text text-anchor="middle" x="1803.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Variable&lt; T &gt;</text>
+<polyline fill="none" stroke="black" points="1735,-1542 1872,-1542 "/>
+<text text-anchor="middle" x="1803.5" y="-1530" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1735,-1523 1872,-1523 "/>
+<text text-anchor="start" x="1743" y="-1511" font-family="Helvetica,sans-Serif" font-size="10.00">+ Variable()</text>
+<text text-anchor="start" x="1743" y="-1500" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
+<text text-anchor="start" x="1743" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00">+ set()</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node3 -->
-<g id="edge12" class="edge"><title>Node10&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M881.91,-881.305C878.298,-841.917 877.287,-769.061 910.5,-720 977.833,-620.536 1113.88,-566.349 1193.85,-541.894"/>
-<polygon fill="none" stroke="#404040" points="1194.2,-541.788 1198.81,-536.241 1205.7,-538.36 1201.1,-543.907 1194.2,-541.788"/>
-<text text-anchor="middle" x="939.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +gui_signals</text>
+<!-- Node8&#45;&gt;Node9 -->
+<g id="edge10" class="edge"><title>Node8&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M1718.63,-1671.4C1737.88,-1637.62 1763.41,-1592.84 1781.42,-1561.24"/>
+<polygon fill="none" stroke="midnightblue" points="1715.54,-1669.76 1713.63,-1680.18 1721.62,-1673.22 1715.54,-1669.76"/>
+</g>
+<!-- Node9&#45;&gt;Node7 -->
+<g id="edge9" class="edge"><title>Node9&#45;&gt;Node7</title>
+<path fill="none" stroke="orange" d="M1800.26,-1471.82C1797.09,-1458.61 1791.42,-1445.37 1781.5,-1436 1751.84,-1407.99 1723.33,-1443.51 1691.5,-1418 1659.16,-1392.08 1642.22,-1347.03 1633.64,-1313.23"/>
+<polygon fill="orange" stroke="orange" points="1796.87,-1472.73 1802.23,-1481.87 1803.74,-1471.38 1796.87,-1472.73"/>
+<text text-anchor="middle" x="1809.5" y="-1439" font-family="Helvetica,sans-Serif" font-size="10.00"> &lt; bool &gt;</text>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="859,-1239.5 859,-1296.5 912,-1296.5 912,-1239.5 859,-1239.5"/>
-<text text-anchor="middle" x="885.5" y="-1284.5" font-family="Helvetica,sans-Serif" font-size="10.00">QObject</text>
-<polyline fill="none" stroke="#bfbfbf" points="859,-1277.5 912,-1277.5 "/>
-<text text-anchor="middle" x="885.5" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="859,-1258.5 912,-1258.5 "/>
-<text text-anchor="middle" x="885.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node11"><a xlink:href="classopenage_1_1options_1_1_var.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1871,-1239.5 1871,-1296.5 2006,-1296.5 2006,-1239.5 1871,-1239.5"/>
+<text text-anchor="middle" x="1938.5" y="-1284.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::options::Var&lt; T &gt;</text>
+<polyline fill="none" stroke="black" points="1871,-1277.5 2006,-1277.5 "/>
+<text text-anchor="middle" x="1938.5" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1871,-1258.5 2006,-1258.5 "/>
+<text text-anchor="start" x="1879" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ Var()</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node10 -->
-<g id="edge13" class="edge"><title>Node11&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M885.5,-1228.94C885.5,-1156.91 885.5,-1002.17 885.5,-938.866"/>
-<polygon fill="none" stroke="midnightblue" points="882,-1229.36 885.5,-1239.36 889,-1229.36 882,-1229.36"/>
+<!-- Node9&#45;&gt;Node11 -->
+<g id="edge13" class="edge"><title>Node9&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M1832.53,-1473.05C1837.62,-1464.44 1842.79,-1455.5 1847.5,-1447 1876.52,-1394.63 1907.75,-1332.02 1925.03,-1296.74"/>
+<polygon fill="none" stroke="midnightblue" points="1829.39,-1471.49 1827.28,-1481.87 1835.4,-1475.07 1829.39,-1471.49"/>
+</g>
+<!-- Node10 -->
+<g id="node10" class="node"><title>Node10</title>
+<g id="a_node10"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="1789,-1691.5 1789,-1748.5 1818,-1748.5 1818,-1691.5 1789,-1691.5"/>
+<text text-anchor="middle" x="1803.5" y="-1736.5" font-family="Helvetica,sans-Serif" font-size="10.00">T</text>
+<polyline fill="none" stroke="#bfbfbf" points="1789,-1729.5 1818,-1729.5 "/>
+<text text-anchor="middle" x="1803.5" y="-1717.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="1789,-1710.5 1818,-1710.5 "/>
+<text text-anchor="middle" x="1803.5" y="-1698.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node9 -->
+<g id="edge11" class="edge"><title>Node10&#45;&gt;Node9</title>
+<path fill="none" stroke="#404040" d="M1803.5,-1691.26C1803.5,-1660.75 1803.5,-1611.07 1803.5,-1573.49"/>
+<polygon fill="none" stroke="#404040" points="1803.5,-1573.26 1799.5,-1567.26 1803.5,-1561.26 1807.5,-1567.26 1803.5,-1573.26"/>
+<text text-anchor="middle" x="1819" y="-1599" font-family="Helvetica,sans-Serif" font-size="10.00"> +value</text>
+</g>
+<!-- Node11&#45;&gt;Node6 -->
+<g id="edge12" class="edge"><title>Node11&#45;&gt;Node6</title>
+<path fill="none" stroke="orange" d="M1935.86,-1228.88C1933.66,-1195.05 1930.69,-1144.26 1929.5,-1100 1928.03,-1045.38 1929.74,-981.86 1931.12,-944.122"/>
+<polygon fill="orange" stroke="orange" points="1932.39,-1229.5 1936.55,-1239.24 1939.38,-1229.03 1932.39,-1229.5"/>
+<text text-anchor="middle" x="1949.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &lt; bool &gt;</text>
 </g>
 <!-- Node12&#45;&gt;Node3 -->
 <g id="edge14" class="edge"><title>Node12&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M709.072,-1465.34C706.584,-1354.32 703.238,-1111.57 720.5,-1078 726.597,-1066.14 737.195,-1071.15 744.5,-1060 819.57,-945.379 731.793,-868.474 815.5,-760 912.887,-633.799 1097.81,-567.924 1194.34,-540.813"/>
-<polygon fill="none" stroke="#404040" points="1194.37,-540.803 1199.1,-535.355 1205.94,-537.621 1201.22,-543.069 1194.37,-540.803"/>
-<text text-anchor="middle" x="754" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;cvar_manager</text>
-</g>
-<!-- Node27 -->
-<g id="node27" class="node"><title>Node27</title>
-<g id="a_node27"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="539.5,-1206.5 539.5,-1329.5 691.5,-1329.5 691.5,-1206.5 539.5,-1206.5"/>
-<text text-anchor="middle" x="615.5" y="-1317.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
-<polyline fill="none" stroke="black" points="539.5,-1310.5 691.5,-1310.5 "/>
-<text text-anchor="start" x="547.5" y="-1298.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; actions</text>
-<text text-anchor="start" x="547.5" y="-1287.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; reverse_map</text>
-<text text-anchor="start" x="547.5" y="-1276.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; next_action_id</text>
-<polyline fill="none" stroke="black" points="539.5,-1269.5 691.5,-1269.5 "/>
-<text text-anchor="start" x="547.5" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ActionManager()</text>
-<text text-anchor="start" x="547.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
-<text text-anchor="start" x="547.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_name()</text>
-<text text-anchor="start" x="547.5" y="-1224.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is()</text>
-<text text-anchor="start" x="547.5" y="-1213.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; create()</text>
-</a>
-</g>
-</g>
-<!-- Node12&#45;&gt;Node27 -->
-<g id="edge32" class="edge"><title>Node12&#45;&gt;Node27</title>
-<path fill="none" stroke="#404040" d="M649.56,-1465.11C645.327,-1459.33 641.541,-1453.27 638.5,-1447 622.81,-1414.67 616.589,-1375.34 614.49,-1341.88"/>
-<polygon fill="none" stroke="#404040" points="614.487,-1341.83 610.195,-1336.03 613.893,-1329.84 618.185,-1335.64 614.487,-1341.83"/>
-<text text-anchor="middle" x="672" y="-1439" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;cvar_manager</text>
+<path fill="none" stroke="#404040" d="M1043.28,-299.712C1042.6,-305.879 1042,-311.994 1041.5,-318 1041.03,-323.699 1040.72,-329.482 1040.56,-335.317"/>
+<polygon fill="none" stroke="#404040" points="1040.56,-335.355 1044.49,-341.397 1040.43,-347.355 1036.49,-341.313 1040.56,-335.355"/>
+<text text-anchor="middle" x="1059" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;profiler</text>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1394.5,-854 1394.5,-966 1540.5,-966 1540.5,-854 1394.5,-854"/>
-<text text-anchor="middle" x="1467.5" y="-954" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
-<polyline fill="none" stroke="black" points="1394.5,-947 1540.5,-947 "/>
-<text text-anchor="start" x="1402.5" y="-935" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; count</text>
-<text text-anchor="start" x="1402.5" y="-924" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; last_time</text>
-<polyline fill="none" stroke="black" points="1394.5,-917 1540.5,-917 "/>
-<text text-anchor="start" x="1402.5" y="-905" font-family="Helvetica,sans-Serif" font-size="10.00">+ ScreenshotManager()</text>
-<text text-anchor="start" x="1402.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~ScreenshotManager()</text>
-<text text-anchor="start" x="1402.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ save_screenshot()</text>
-<text text-anchor="start" x="1402.5" y="-872" font-family="Helvetica,sans-Serif" font-size="10.00">+ encode_png()</text>
-<text text-anchor="start" x="1402.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; gen_next_filename()</text>
+<g id="a_node13"><a xlink:href="classopenage_1_1_engine_signals.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="262.5,-881.5 262.5,-938.5 384.5,-938.5 384.5,-881.5 262.5,-881.5"/>
+<text text-anchor="middle" x="323.5" y="-926.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::EngineSignals</text>
+<polyline fill="none" stroke="black" points="262.5,-919.5 384.5,-919.5 "/>
+<text text-anchor="middle" x="323.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="262.5,-900.5 384.5,-900.5 "/>
+<text text-anchor="middle" x="323.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node13&#45;&gt;Node3 -->
-<g id="edge16" class="edge"><title>Node13&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1449.81,-853.616C1433.84,-811.722 1406.5,-755.526 1365.5,-720 1347.97,-704.807 1332.7,-718.604 1316.5,-702 1316.09,-701.58 1315.68,-701.157 1315.28,-700.732"/>
-<polygon fill="none" stroke="#404040" points="1315.05,-700.469 1308.1,-698.553 1307.19,-691.399 1314.15,-693.315 1315.05,-700.469"/>
-<text text-anchor="middle" x="1435" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;screenshot_manager</text>
+<g id="edge17" class="edge"><title>Node13&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M329.976,-881.449C341.618,-838.71 370.476,-757.461 428.5,-720 617.226,-598.156 886.094,-549.449 1006.71,-532.88"/>
+<polygon fill="none" stroke="#404040" points="1007.06,-532.833 1012.47,-528.072 1018.95,-531.239 1013.54,-536.001 1007.06,-532.833"/>
+<text text-anchor="middle" x="457.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +gui_signals</text>
 </g>
 <!-- Node14 -->
 <g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1047,-1118.5 1047,-1417.5 1178,-1417.5 1178,-1118.5 1047,-1118.5"/>
-<text text-anchor="middle" x="1112.5" y="-1405.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
-<polyline fill="none" stroke="black" points="1047,-1398.5 1178,-1398.5 "/>
-<text text-anchor="start" x="1055" y="-1386.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; number_of_workers</text>
-<text text-anchor="start" x="1055" y="-1375.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; group_index</text>
-<text text-anchor="start" x="1055" y="-1364.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; workers</text>
-<text text-anchor="start" x="1055" y="-1353.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; pending_jobs_mutex</text>
-<text text-anchor="start" x="1055" y="-1342.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; pending_jobs</text>
-<text text-anchor="start" x="1055" y="-1331.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finished_jobs_mutex</text>
-<text text-anchor="start" x="1055" y="-1320.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finished_jobs</text>
-<text text-anchor="start" x="1055" y="-1309.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; is_running</text>
-<polyline fill="none" stroke="black" points="1047,-1302.5 1178,-1302.5 "/>
-<text text-anchor="start" x="1055" y="-1290.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
-<text text-anchor="start" x="1055" y="-1279.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~JobManager()</text>
-<text text-anchor="start" x="1055" y="-1268.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
-<text text-anchor="start" x="1055" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
-<text text-anchor="start" x="1055" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1055" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1055" y="-1224.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
-<text text-anchor="start" x="1055" y="-1213.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
-<text text-anchor="start" x="1055" y="-1202.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enqueue()</text>
-<text text-anchor="start" x="1055" y="-1191.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enqueue()</text>
-<text text-anchor="start" x="1055" y="-1180.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ create_job_group()</text>
-<text text-anchor="start" x="1055" y="-1169.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ execute_callbacks()</text>
-<text text-anchor="start" x="1055" y="-1158.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; enqueue_state()</text>
-<text text-anchor="start" x="1055" y="-1147.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; fetch_job()</text>
-<text text-anchor="start" x="1055" y="-1136.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; has_job()</text>
-<text text-anchor="start" x="1055" y="-1125.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finish_job()</text>
+<g id="a_node14"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="297,-1239.5 297,-1296.5 350,-1296.5 350,-1239.5 297,-1239.5"/>
+<text text-anchor="middle" x="323.5" y="-1284.5" font-family="Helvetica,sans-Serif" font-size="10.00">QObject</text>
+<polyline fill="none" stroke="#bfbfbf" points="297,-1277.5 350,-1277.5 "/>
+<text text-anchor="middle" x="323.5" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="297,-1258.5 350,-1258.5 "/>
+<text text-anchor="middle" x="323.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
-</g>
-<!-- Node14&#45;&gt;Node3 -->
-<g id="edge46" class="edge"><title>Node14&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1046.99,-1178.67C1024.8,-1143.58 1002.79,-1101.69 991.5,-1060 956.645,-931.303 936.744,-881.571 991.5,-760 1033.08,-667.675 1130.97,-597.027 1195.43,-558.415"/>
-<polygon fill="none" stroke="#404040" points="1195.52,-558.357 1198.66,-551.865 1205.86,-552.266 1202.72,-558.758 1195.52,-558.357"/>
-<text text-anchor="middle" x="1022.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
 </g>
 <!-- Node14&#45;&gt;Node13 -->
-<g id="edge17" class="edge"><title>Node14&#45;&gt;Node13</title>
-<path fill="none" stroke="#404040" d="M1178.1,-1132.4C1181.18,-1127.48 1184.31,-1122.66 1187.5,-1118 1201,-1098.25 1202.22,-1088.92 1223.5,-1078 1287.95,-1044.91 1325.27,-1100.25 1385.5,-1060 1414.45,-1040.65 1434.13,-1007.51 1446.94,-977.386"/>
-<polygon fill="none" stroke="#404040" points="1447.03,-977.155 1445.56,-970.095 1451.51,-966.024 1452.98,-973.084 1447.03,-977.155"/>
-<text text-anchor="middle" x="1254.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
+<g id="edge18" class="edge"><title>Node14&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M323.5,-1228.94C323.5,-1156.91 323.5,-1002.17 323.5,-938.866"/>
+<polygon fill="none" stroke="midnightblue" points="320,-1229.36 323.5,-1239.36 327,-1229.36 320,-1229.36"/>
 </g>
-<!-- Node37 -->
-<g id="node37" class="node"><title>Node37</title>
-<g id="a_node37"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1063,-760.5 1063,-1059.5 1214,-1059.5 1214,-760.5 1063,-760.5"/>
-<text text-anchor="middle" x="1138.5" y="-1047.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
-<polyline fill="none" stroke="black" points="1063,-1040.5 1214,-1040.5 "/>
-<text text-anchor="start" x="1071" y="-1028.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; available</text>
-<text text-anchor="start" x="1071" y="-1017.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_name</text>
-<text text-anchor="start" x="1071" y="-1006.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_spec</text>
-<text text-anchor="start" x="1071" y="-995.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_id</text>
-<text text-anchor="start" x="1071" y="-984.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; mix_buffer</text>
-<text text-anchor="start" x="1071" y="-973.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; resources</text>
-<text text-anchor="start" x="1071" y="-962.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; playing_sounds</text>
-<polyline fill="none" stroke="black" points="1063,-955.5 1214,-955.5 "/>
-<text text-anchor="start" x="1071" y="-943.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
-<text text-anchor="start" x="1071" y="-932.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~AudioManager()</text>
-<text text-anchor="start" x="1071" y="-921.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
-<text text-anchor="start" x="1071" y="-910.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
-<text text-anchor="start" x="1071" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1071" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
-<text text-anchor="start" x="1071" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_resources()</text>
-<text text-anchor="start" x="1071" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_sound()</text>
-<text text-anchor="start" x="1071" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ audio_callback()</text>
-<text text-anchor="start" x="1071" y="-844.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_device_spec()</text>
-<text text-anchor="start" x="1071" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_job_manager()</text>
-<text text-anchor="start" x="1071" y="-822.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_available()</text>
-<text text-anchor="start" x="1071" y="-811.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_devices()</text>
-<text text-anchor="start" x="1071" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_drivers()</text>
-<text text-anchor="start" x="1071" y="-789.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_current_driver()</text>
-<text text-anchor="start" x="1071" y="-778.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; add_sound()</text>
-<text text-anchor="start" x="1071" y="-767.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; remove_sound()</text>
-</a>
-</g>
-</g>
-<!-- Node14&#45;&gt;Node37 -->
-<g id="edge49" class="edge"><title>Node14&#45;&gt;Node37</title>
-<path fill="none" stroke="#404040" d="M1123.36,-1118.34C1124.48,-1103 1125.62,-1087.35 1126.75,-1071.88"/>
-<polygon fill="none" stroke="#404040" points="1126.78,-1071.49 1123.23,-1065.22 1127.65,-1059.52 1131.21,-1065.8 1126.78,-1071.49"/>
-<text text-anchor="middle" x="1157.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
-</g>
-<!-- Node15 -->
-<g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="structopenage_1_1coord_1_1viewport__delta.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1196.5,-1223 1196.5,-1313 1320.5,-1313 1320.5,-1223 1196.5,-1223"/>
-<text text-anchor="start" x="1204.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::viewport</text>
-<text text-anchor="middle" x="1258.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
-<polyline fill="none" stroke="black" points="1196.5,-1283 1320.5,-1283 "/>
-<text text-anchor="middle" x="1258.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1196.5,-1264 1320.5,-1264 "/>
-<text text-anchor="start" x="1204.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
-<text text-anchor="start" x="1204.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
-<text text-anchor="start" x="1204.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
-</a>
-</g>
-</g>
-<!-- Node15&#45;&gt;Node13 -->
-<g id="edge18" class="edge"><title>Node15&#45;&gt;Node13</title>
-<path fill="none" stroke="#404040" d="M1257.06,-1222.75C1258.19,-1179.79 1266.94,-1115.7 1305.5,-1078 1331.56,-1052.52 1356.37,-1081.9 1385.5,-1060 1412.92,-1039.39 1432.34,-1006.81 1445.37,-977.361"/>
-<polygon fill="none" stroke="#404040" points="1445.39,-977.315 1444.04,-970.232 1450.06,-966.26 1451.41,-973.343 1445.39,-977.315"/>
-<text text-anchor="middle" x="1337.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +window_size</text>
+<!-- Node15&#45;&gt;Node3 -->
+<g id="edge19" class="edge"><title>Node15&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M1568.75,-1465.35C1565.46,-1450.06 1562.12,-1433.43 1559.5,-1418 1535.64,-1277.57 1532.58,-1241.85 1519.5,-1100 1505.6,-949.267 1580.57,-887.836 1499.5,-760 1415.57,-627.644 1229.6,-564.318 1132.03,-539.231"/>
+<polygon fill="none" stroke="#404040" points="1131.93,-539.207 1125.14,-541.628 1120.29,-536.289 1127.09,-533.868 1131.93,-539.207"/>
+<text text-anchor="middle" x="1553" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;cvar_manager</text>
 </g>
 <!-- Node30 -->
 <g id="node30" class="node"><title>Node30</title>
-<g id="a_node30"><a xlink:href="classopenage_1_1coord_1_1_coord_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1558.5,-881.5 1558.5,-938.5 1710.5,-938.5 1710.5,-881.5 1558.5,-881.5"/>
-<text text-anchor="middle" x="1634.5" y="-926.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::CoordManager</text>
-<polyline fill="none" stroke="black" points="1558.5,-919.5 1710.5,-919.5 "/>
-<text text-anchor="middle" x="1634.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1558.5,-900.5 1710.5,-900.5 "/>
-<text text-anchor="start" x="1566.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ CoordManager()</text>
+<g id="a_node30"><a xlink:href="classopenage_1_1input_1_1_action_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1700.5,-1206.5 1700.5,-1329.5 1852.5,-1329.5 1852.5,-1206.5 1700.5,-1206.5"/>
+<text text-anchor="middle" x="1776.5" y="-1317.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::ActionManager</text>
+<polyline fill="none" stroke="black" points="1700.5,-1310.5 1852.5,-1310.5 "/>
+<text text-anchor="start" x="1708.5" y="-1298.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; actions</text>
+<text text-anchor="start" x="1708.5" y="-1287.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; reverse_map</text>
+<text text-anchor="start" x="1708.5" y="-1276.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; next_action_id</text>
+<polyline fill="none" stroke="black" points="1700.5,-1269.5 1852.5,-1269.5 "/>
+<text text-anchor="start" x="1708.5" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ActionManager()</text>
+<text text-anchor="start" x="1708.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get()</text>
+<text text-anchor="start" x="1708.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_name()</text>
+<text text-anchor="start" x="1708.5" y="-1224.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is()</text>
+<text text-anchor="start" x="1708.5" y="-1213.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; create()</text>
 </a>
 </g>
 </g>
 <!-- Node15&#45;&gt;Node30 -->
-<g id="edge45" class="edge"><title>Node15&#45;&gt;Node30</title>
-<path fill="none" stroke="#404040" d="M1270.44,-1222.97C1281.23,-1190.39 1300.01,-1146.86 1329.5,-1118 1343.43,-1104.37 1352.26,-1109.1 1369.5,-1100 1386.08,-1091.25 1387.8,-1084.19 1405.5,-1078 1466.38,-1056.71 1495.85,-1095.8 1549.5,-1060 1587.95,-1034.35 1611.02,-985.035 1623.23,-950.178"/>
-<polygon fill="none" stroke="#404040" points="1623.32,-949.904 1621.41,-942.949 1627.1,-938.515 1629,-945.469 1623.32,-949.904"/>
-<text text-anchor="middle" x="1439" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +viewport_size</text>
+<g id="edge37" class="edge"><title>Node15&#45;&gt;Node30</title>
+<path fill="none" stroke="#404040" d="M1647.32,-1465.26C1662.74,-1450.73 1678.46,-1434.48 1691.5,-1418 1710.26,-1394.3 1727.51,-1365.97 1741.49,-1340.41"/>
+<polygon fill="none" stroke="#404040" points="1741.59,-1340.21 1740.91,-1333.03 1747.28,-1329.64 1747.96,-1336.82 1741.59,-1340.21"/>
+<text text-anchor="middle" x="1709" y="-1439" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;cvar_manager</text>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node"><title>Node16</title>
-<g id="a_node16"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1194,-1482 1194,-1561 1311,-1561 1311,-1482 1194,-1482"/>
-<text text-anchor="start" x="1202" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
-<text text-anchor="start" x="1202" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">_t, viewport, viewport</text>
-<text text-anchor="middle" x="1252.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="1194,-1520 1311,-1520 "/>
-<text text-anchor="middle" x="1252.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="1194,-1501 1311,-1501 "/>
-<text text-anchor="middle" x="1252.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node16"><a xlink:href="classopenage_1_1_screenshot_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="670.5,-854 670.5,-966 816.5,-966 816.5,-854 670.5,-854"/>
+<text text-anchor="middle" x="743.5" y="-954" font-family="Helvetica,sans-Serif" font-size="10.00">openage::ScreenshotManager</text>
+<polyline fill="none" stroke="black" points="670.5,-947 816.5,-947 "/>
+<text text-anchor="start" x="678.5" y="-935" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; count</text>
+<text text-anchor="start" x="678.5" y="-924" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; last_time</text>
+<polyline fill="none" stroke="black" points="670.5,-917 816.5,-917 "/>
+<text text-anchor="start" x="678.5" y="-905" font-family="Helvetica,sans-Serif" font-size="10.00">+ ScreenshotManager()</text>
+<text text-anchor="start" x="678.5" y="-894" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~ScreenshotManager()</text>
+<text text-anchor="start" x="678.5" y="-883" font-family="Helvetica,sans-Serif" font-size="10.00">+ save_screenshot()</text>
+<text text-anchor="start" x="678.5" y="-872" font-family="Helvetica,sans-Serif" font-size="10.00">+ encode_png()</text>
+<text text-anchor="start" x="678.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; gen_next_filename()</text>
 </a>
 </g>
 </g>
-<!-- Node16&#45;&gt;Node15 -->
-<g id="edge19" class="edge"><title>Node16&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M1253.66,-1471.74C1254.76,-1425.84 1256.38,-1357.69 1257.44,-1313.3"/>
-<polygon fill="none" stroke="midnightblue" points="1250.16,-1471.67 1253.42,-1481.75 1257.16,-1471.84 1250.16,-1471.67"/>
+<!-- Node16&#45;&gt;Node3 -->
+<g id="edge21" class="edge"><title>Node16&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M768.828,-853.829C783.447,-824.631 803.311,-788.937 825.5,-760 880.306,-688.528 956.967,-618.567 1009.66,-573.935"/>
+<polygon fill="none" stroke="#404040" points="1009.7,-573.901 1011.71,-566.977 1018.88,-566.175 1016.86,-573.098 1009.7,-573.901"/>
+<text text-anchor="middle" x="904" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;screenshot_manager</text>
 </g>
 <!-- Node17 -->
 <g id="node17" class="node"><title>Node17</title>
-<g id="a_node17"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1728.5,-848.5 1728.5,-971.5 1874.5,-971.5 1874.5,-848.5 1728.5,-848.5"/>
-<text text-anchor="middle" x="1801.5" y="-959.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
-<polyline fill="none" stroke="black" points="1728.5,-952.5 1874.5,-952.5 "/>
-<text text-anchor="start" x="1736.5" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fps</text>
-<text text-anchor="start" x="1736.5" y="-929.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ count</text>
-<text text-anchor="start" x="1736.5" y="-918.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ nsec_lastframe</text>
-<text text-anchor="start" x="1736.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_count_weighted</text>
-<text text-anchor="start" x="1736.5" y="-896.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_length_sum_weighted</text>
-<polyline fill="none" stroke="black" points="1728.5,-889.5 1874.5,-889.5 "/>
-<text text-anchor="start" x="1736.5" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ FrameCounter()</text>
-<text text-anchor="start" x="1736.5" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~FrameCounter()</text>
-<text text-anchor="start" x="1736.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ frame()</text>
+<g id="a_node17"><a xlink:href="classopenage_1_1job_1_1_job_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="525,-1118.5 525,-1417.5 656,-1417.5 656,-1118.5 525,-1118.5"/>
+<text text-anchor="middle" x="590.5" y="-1405.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::job::JobManager</text>
+<polyline fill="none" stroke="black" points="525,-1398.5 656,-1398.5 "/>
+<text text-anchor="start" x="533" y="-1386.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; number_of_workers</text>
+<text text-anchor="start" x="533" y="-1375.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; group_index</text>
+<text text-anchor="start" x="533" y="-1364.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; workers</text>
+<text text-anchor="start" x="533" y="-1353.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; pending_jobs_mutex</text>
+<text text-anchor="start" x="533" y="-1342.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; pending_jobs</text>
+<text text-anchor="start" x="533" y="-1331.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finished_jobs_mutex</text>
+<text text-anchor="start" x="533" y="-1320.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finished_jobs</text>
+<text text-anchor="start" x="533" y="-1309.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; is_running</text>
+<polyline fill="none" stroke="black" points="525,-1302.5 656,-1302.5 "/>
+<text text-anchor="start" x="533" y="-1290.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
+<text text-anchor="start" x="533" y="-1279.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~JobManager()</text>
+<text text-anchor="start" x="533" y="-1268.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
+<text text-anchor="start" x="533" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ JobManager()</text>
+<text text-anchor="start" x="533" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="533" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="533" y="-1224.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
+<text text-anchor="start" x="533" y="-1213.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
+<text text-anchor="start" x="533" y="-1202.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enqueue()</text>
+<text text-anchor="start" x="533" y="-1191.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ enqueue()</text>
+<text text-anchor="start" x="533" y="-1180.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ create_job_group()</text>
+<text text-anchor="start" x="533" y="-1169.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ execute_callbacks()</text>
+<text text-anchor="start" x="533" y="-1158.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; enqueue_state()</text>
+<text text-anchor="start" x="533" y="-1147.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; fetch_job()</text>
+<text text-anchor="start" x="533" y="-1136.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; has_job()</text>
+<text text-anchor="start" x="533" y="-1125.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; finish_job()</text>
 </a>
 </g>
 </g>
 <!-- Node17&#45;&gt;Node3 -->
-<g id="edge20" class="edge"><title>Node17&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1781.27,-848.245C1768.16,-817.633 1748.12,-782.362 1719.5,-760 1664.8,-717.252 1636.98,-731.412 1568.5,-720 1540.81,-715.386 1338.72,-719.149 1316.5,-702 1316.4,-701.92 1316.29,-701.839 1316.19,-701.758"/>
-<polygon fill="none" stroke="#404040" points="1316.07,-701.65 1308.92,-700.698 1307.05,-693.733 1314.2,-694.686 1316.07,-701.65"/>
-<text text-anchor="middle" x="1720" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;fps_counter</text>
+<g id="edge51" class="edge"><title>Node17&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M585.404,-1118.5C581.888,-979.788 580.739,-789.735 599.5,-760 690.891,-615.156 901.157,-556.624 1006.68,-535.719"/>
+<polygon fill="none" stroke="#404040" points="1006.93,-535.673 1012.06,-530.613 1018.71,-533.41 1013.57,-538.47 1006.93,-535.673"/>
+<text text-anchor="middle" x="630.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
+</g>
+<!-- Node17&#45;&gt;Node16 -->
+<g id="edge22" class="edge"><title>Node17&#45;&gt;Node16</title>
+<path fill="none" stroke="#404040" d="M654.389,-1118.34C675.465,-1069.3 697.855,-1017.21 714.919,-977.502"/>
+<polygon fill="none" stroke="#404040" points="714.959,-977.408 713.654,-970.316 719.698,-966.383 721.004,-973.475 714.959,-977.408"/>
+<text text-anchor="middle" x="703.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
+</g>
+<!-- Node40 -->
+<g id="node40" class="node"><title>Node40</title>
+<g id="a_node40"><a xlink:href="classopenage_1_1audio_1_1_audio_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="403,-760.5 403,-1059.5 554,-1059.5 554,-760.5 403,-760.5"/>
+<text text-anchor="middle" x="478.5" y="-1047.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::audio::AudioManager</text>
+<polyline fill="none" stroke="black" points="403,-1040.5 554,-1040.5 "/>
+<text text-anchor="start" x="411" y="-1028.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; available</text>
+<text text-anchor="start" x="411" y="-1017.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_name</text>
+<text text-anchor="start" x="411" y="-1006.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_spec</text>
+<text text-anchor="start" x="411" y="-995.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; device_id</text>
+<text text-anchor="start" x="411" y="-984.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; mix_buffer</text>
+<text text-anchor="start" x="411" y="-973.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; resources</text>
+<text text-anchor="start" x="411" y="-962.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; playing_sounds</text>
+<polyline fill="none" stroke="black" points="403,-955.5 554,-955.5 "/>
+<text text-anchor="start" x="411" y="-943.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
+<text text-anchor="start" x="411" y="-932.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~AudioManager()</text>
+<text text-anchor="start" x="411" y="-921.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
+<text text-anchor="start" x="411" y="-910.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ AudioManager()</text>
+<text text-anchor="start" x="411" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="411" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ operator=()</text>
+<text text-anchor="start" x="411" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ load_resources()</text>
+<text text-anchor="start" x="411" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_sound()</text>
+<text text-anchor="start" x="411" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ audio_callback()</text>
+<text text-anchor="start" x="411" y="-844.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_device_spec()</text>
+<text text-anchor="start" x="411" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_job_manager()</text>
+<text text-anchor="start" x="411" y="-822.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ is_available()</text>
+<text text-anchor="start" x="411" y="-811.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_devices()</text>
+<text text-anchor="start" x="411" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_drivers()</text>
+<text text-anchor="start" x="411" y="-789.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_current_driver()</text>
+<text text-anchor="start" x="411" y="-778.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; add_sound()</text>
+<text text-anchor="start" x="411" y="-767.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; remove_sound()</text>
+</a>
+</g>
+</g>
+<!-- Node17&#45;&gt;Node40 -->
+<g id="edge54" class="edge"><title>Node17&#45;&gt;Node40</title>
+<path fill="none" stroke="#404040" d="M524.855,-1129.49C521.089,-1119.61 517.587,-1109.71 514.5,-1100 511.57,-1090.78 508.841,-1081.22 506.307,-1071.53"/>
+<polygon fill="none" stroke="#404040" points="506.245,-1071.28 500.9,-1066.44 503.312,-1059.64 508.657,-1064.48 506.245,-1071.28"/>
+<text text-anchor="middle" x="545.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;job_manager</text>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node"><title>Node18</title>
-<g id="a_node18"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1764.5,-1190 1764.5,-1346 1866.5,-1346 1866.5,-1190 1764.5,-1190"/>
-<text text-anchor="middle" x="1815.5" y="-1334" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
-<polyline fill="none" stroke="black" points="1764.5,-1327 1866.5,-1327 "/>
-<text text-anchor="start" x="1772.5" y="-1315" font-family="Helvetica,sans-Serif" font-size="10.00">+ stoppedat</text>
-<text text-anchor="start" x="1772.5" y="-1304" font-family="Helvetica,sans-Serif" font-size="10.00">+ starttime</text>
-<text text-anchor="start" x="1772.5" y="-1293" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; stopped</text>
-<text text-anchor="start" x="1772.5" y="-1282" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; @1</text>
-<polyline fill="none" stroke="black" points="1764.5,-1275 1866.5,-1275 "/>
-<text text-anchor="start" x="1772.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ Timer()</text>
-<text text-anchor="start" x="1772.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ reset()</text>
-<text text-anchor="start" x="1772.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
-<text text-anchor="start" x="1772.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
-<text text-anchor="start" x="1772.5" y="-1219" font-family="Helvetica,sans-Serif" font-size="10.00">+ getval()</text>
-<text text-anchor="start" x="1772.5" y="-1208" font-family="Helvetica,sans-Serif" font-size="10.00">+ getandresetval()</text>
-<text text-anchor="start" x="1772.5" y="-1197" font-family="Helvetica,sans-Serif" font-size="10.00">+ isstopped()</text>
+<g id="a_node18"><a xlink:href="structopenage_1_1coord_1_1viewport__delta.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="865.5,-1223 865.5,-1313 989.5,-1313 989.5,-1223 865.5,-1223"/>
+<text text-anchor="start" x="873.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::viewport</text>
+<text text-anchor="middle" x="927.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
+<polyline fill="none" stroke="black" points="865.5,-1283 989.5,-1283 "/>
+<text text-anchor="middle" x="927.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="865.5,-1264 989.5,-1264 "/>
+<text text-anchor="start" x="873.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
+<text text-anchor="start" x="873.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+<text text-anchor="start" x="873.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
 </a>
 </g>
 </g>
-<!-- Node18&#45;&gt;Node17 -->
-<g id="edge21" class="edge"><title>Node18&#45;&gt;Node17</title>
-<path fill="none" stroke="#404040" d="M1812.46,-1189.75C1810.05,-1128.53 1806.71,-1043.6 1804.36,-983.618"/>
-<polygon fill="none" stroke="#404040" points="1804.35,-983.583 1800.12,-977.745 1803.88,-971.592 1808.12,-977.43 1804.35,-983.583"/>
-<text text-anchor="middle" x="1837.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;frame_timer</text>
+<!-- Node18&#45;&gt;Node16 -->
+<g id="edge23" class="edge"><title>Node18&#45;&gt;Node16</title>
+<path fill="none" stroke="#404040" d="M920.576,-1222.71C912.124,-1181.23 894.279,-1119.56 858.5,-1078 847.601,-1065.34 837.336,-1071.79 825.5,-1060 802.048,-1036.64 783.409,-1005.16 769.867,-977.153"/>
+<polygon fill="none" stroke="#404040" points="769.833,-977.08 763.666,-973.342 764.744,-966.212 770.911,-969.95 769.833,-977.08"/>
+<text text-anchor="middle" x="907.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +window_size</text>
+</g>
+<!-- Node33 -->
+<g id="node33" class="node"><title>Node33</title>
+<g id="a_node33"><a xlink:href="classopenage_1_1coord_1_1_coord_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1198.5,-881.5 1198.5,-938.5 1350.5,-938.5 1350.5,-881.5 1198.5,-881.5"/>
+<text text-anchor="middle" x="1274.5" y="-926.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::CoordManager</text>
+<polyline fill="none" stroke="black" points="1198.5,-919.5 1350.5,-919.5 "/>
+<text text-anchor="middle" x="1274.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1198.5,-900.5 1350.5,-900.5 "/>
+<text text-anchor="start" x="1206.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ CoordManager()</text>
+</a>
+</g>
+</g>
+<!-- Node18&#45;&gt;Node33 -->
+<g id="edge50" class="edge"><title>Node18&#45;&gt;Node33</title>
+<path fill="none" stroke="#404040" d="M940.499,-1222.86C952.203,-1190.02 972.409,-1146.18 1003.5,-1118 1055.85,-1070.56 1094.29,-1101.46 1151.5,-1060 1193.29,-1029.72 1229.27,-982.019 1251.34,-948.774"/>
+<polygon fill="none" stroke="#404040" points="1251.46,-948.588 1251.38,-941.377 1258,-938.529 1258.08,-945.739 1251.46,-948.588"/>
+<text text-anchor="middle" x="1150" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +viewport_size</text>
 </g>
 <!-- Node19 -->
 <g id="node19" class="node"><title>Node19</title>
-<g id="a_node19"><a xlink:href="classopenage_1_1util_1_1_external_profiler.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1232.5,-848.5 1232.5,-971.5 1376.5,-971.5 1376.5,-848.5 1232.5,-848.5"/>
-<text text-anchor="middle" x="1304.5" y="-959.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalProfiler</text>
-<polyline fill="none" stroke="black" points="1232.5,-952.5 1376.5,-952.5 "/>
-<text text-anchor="start" x="1240.5" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ currently_profiling</text>
-<text text-anchor="start" x="1240.5" y="-929.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ can_profile</text>
-<text text-anchor="start" x="1240.5" y="-918.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ profiling_filename</text>
-<text text-anchor="start" x="1240.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ profiling_pdf_filename</text>
-<polyline fill="none" stroke="black" points="1232.5,-900.5 1376.5,-900.5 "/>
-<text text-anchor="start" x="1240.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ExternalProfiler()</text>
-<text text-anchor="start" x="1240.5" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
-<text text-anchor="start" x="1240.5" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
-<text text-anchor="start" x="1240.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show_results()</text>
+<g id="a_node19"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="869,-1482 869,-1561 986,-1561 986,-1482 869,-1482"/>
+<text text-anchor="start" x="877" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
+<text text-anchor="start" x="877" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">_t, viewport, viewport</text>
+<text text-anchor="middle" x="927.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="869,-1520 986,-1520 "/>
+<text text-anchor="middle" x="927.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="869,-1501 986,-1501 "/>
+<text text-anchor="middle" x="927.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
-<!-- Node19&#45;&gt;Node3 -->
-<g id="edge22" class="edge"><title>Node19&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1296.89,-848.233C1292.29,-811.454 1286.15,-762.359 1280.04,-713.581"/>
-<polygon fill="none" stroke="#404040" points="1280.02,-713.436 1275.31,-707.979 1278.53,-701.529 1283.25,-706.985 1280.02,-713.436"/>
-<text text-anchor="middle" x="1322.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +external_profiler</text>
+<!-- Node19&#45;&gt;Node18 -->
+<g id="edge24" class="edge"><title>Node19&#45;&gt;Node18</title>
+<path fill="none" stroke="midnightblue" d="M927.5,-1471.74C927.5,-1425.84 927.5,-1357.69 927.5,-1313.3"/>
+<polygon fill="none" stroke="midnightblue" points="924,-1471.75 927.5,-1481.75 931,-1471.75 924,-1471.75"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node"><title>Node20</title>
-<g id="a_node20"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="313,-793.5 313,-1026.5 458,-1026.5 458,-793.5 313,-793.5"/>
-<text text-anchor="middle" x="385.5" y="-1014.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
-<polyline fill="none" stroke="black" points="313,-1007.5 458,-1007.5 "/>
-<text text-anchor="start" x="321" y="-995.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; keys</text>
-<text text-anchor="start" x="321" y="-984.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; contexts</text>
-<text text-anchor="start" x="321" y="-973.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; states</text>
-<text text-anchor="start" x="321" y="-962.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; keymod</text>
-<text text-anchor="start" x="321" y="-951.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; relative_mode</text>
-<text text-anchor="start" x="321" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; InputContext</text>
-<polyline fill="none" stroke="black" points="313,-933.5 458,-933.5 "/>
-<text text-anchor="start" x="321" y="-921.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputManager()</text>
-<text text-anchor="start" x="321" y="-910.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_bind()</text>
-<text text-anchor="start" x="321" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ set_bind()</text>
-<text text-anchor="start" x="321" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ key_bind_to_string()</text>
-<text text-anchor="start" x="321" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ mouse_bind_to_string()</text>
-<text text-anchor="start" x="321" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ wheel_bind_to_string()</text>
-<text text-anchor="start" x="321" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_global_context()</text>
-<text text-anchor="start" x="321" y="-844.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_top_context()</text>
-<text text-anchor="start" x="321" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ push_context()</text>
-<text text-anchor="start" x="321" y="-822.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ remove_context()</text>
-<text text-anchor="start" x="321" y="-811.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 14 more...</text>
-<text text-anchor="start" x="321" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; get_mod()</text>
+<g id="a_node20"><a xlink:href="classopenage_1_1util_1_1_frame_counter.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="996.5,-848.5 996.5,-971.5 1142.5,-971.5 1142.5,-848.5 996.5,-848.5"/>
+<text text-anchor="middle" x="1069.5" y="-959.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::FrameCounter</text>
+<polyline fill="none" stroke="black" points="996.5,-952.5 1142.5,-952.5 "/>
+<text text-anchor="start" x="1004.5" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ fps</text>
+<text text-anchor="start" x="1004.5" y="-929.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ count</text>
+<text text-anchor="start" x="1004.5" y="-918.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ nsec_lastframe</text>
+<text text-anchor="start" x="1004.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_count_weighted</text>
+<text text-anchor="start" x="1004.5" y="-896.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; frame_length_sum_weighted</text>
+<polyline fill="none" stroke="black" points="996.5,-889.5 1142.5,-889.5 "/>
+<text text-anchor="start" x="1004.5" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ FrameCounter()</text>
+<text text-anchor="start" x="1004.5" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~FrameCounter()</text>
+<text text-anchor="start" x="1004.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ frame()</text>
 </a>
 </g>
 </g>
 <!-- Node20&#45;&gt;Node3 -->
-<g id="edge23" class="edge"><title>Node20&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M458.077,-816.473C489.384,-781.887 528.462,-744.981 570.5,-720 778.024,-596.678 1067.44,-548.376 1193.57,-532.36"/>
-<polygon fill="none" stroke="#404040" points="1193.71,-532.343 1199.17,-527.635 1205.62,-530.866 1200.16,-535.574 1193.71,-532.343"/>
-<text text-anchor="middle" x="605.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
-</g>
-<!-- Node24 -->
-<g id="node24" class="node"><title>Node24</title>
-<g id="a_node24"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="295,-430 295,-619 436,-619 436,-430 295,-430"/>
-<text text-anchor="middle" x="365.5" y="-607" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
-<polyline fill="none" stroke="black" points="295,-600 436,-600 "/>
-<text text-anchor="start" x="303" y="-588" font-family="Helvetica,sans-Serif" font-size="10.00">+ utf8_mode</text>
-<text text-anchor="start" x="303" y="-577" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_type</text>
-<text text-anchor="start" x="303" y="-566" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_event</text>
-<text text-anchor="start" x="303" y="-555" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_class</text>
-<polyline fill="none" stroke="black" points="295,-548 436,-548 "/>
-<text text-anchor="start" x="303" y="-536" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputContext()</text>
-<text text-anchor="start" x="303" y="-525" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputContext()</text>
-<text text-anchor="start" x="303" y="-514" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~InputContext()</text>
-<text text-anchor="start" x="303" y="-503" font-family="Helvetica,sans-Serif" font-size="10.00">+ active_binds()</text>
-<text text-anchor="start" x="303" y="-492" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
-<text text-anchor="start" x="303" y="-481" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
-<text text-anchor="start" x="303" y="-470" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
-<text text-anchor="start" x="303" y="-459" font-family="Helvetica,sans-Serif" font-size="10.00">+ execute_if_bound()</text>
-<text text-anchor="start" x="303" y="-448" font-family="Helvetica,sans-Serif" font-size="10.00">+ register_to()</text>
-<text text-anchor="start" x="303" y="-437" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister()</text>
-</a>
-</g>
-</g>
-<!-- Node20&#45;&gt;Node24 -->
-<g id="edge28" class="edge"><title>Node20&#45;&gt;Node24</title>
-<path fill="none" stroke="#404040" d="M388.635,-793.115C388.994,-775.978 389.302,-758.53 389.5,-742 389.617,-732.223 390.1,-729.759 389.5,-720 387.728,-691.177 384.493,-660.087 380.96,-631.4"/>
-<polygon fill="none" stroke="#404040" points="380.932,-631.173 376.213,-625.72 379.431,-619.267 384.15,-624.72 380.932,-631.173"/>
-<text text-anchor="middle" x="425.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
-</g>
-<!-- Node20&#45;&gt;Node27 -->
-<g id="edge33" class="edge"><title>Node20&#45;&gt;Node27</title>
-<path fill="none" stroke="#404040" d="M426.322,-1026.68C439.756,-1059.12 454.558,-1088.65 467.5,-1100 489.395,-1119.2 507.591,-1100.02 530.5,-1118 555.941,-1137.96 575.092,-1167.8 588.713,-1195.54"/>
-<polygon fill="none" stroke="#404040" points="588.736,-1195.59 594.91,-1199.32 593.846,-1206.45 587.672,-1202.72 588.736,-1195.59"/>
-<text text-anchor="middle" x="502.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
+<g id="edge25" class="edge"><title>Node20&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M1069.5,-848.233C1069.5,-811.454 1069.5,-762.359 1069.5,-713.581"/>
+<polygon fill="none" stroke="#404040" points="1069.5,-713.529 1065.5,-707.529 1069.5,-701.529 1073.5,-707.528 1069.5,-713.529"/>
+<text text-anchor="middle" x="1098" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;fps_counter</text>
 </g>
 <!-- Node21 -->
 <g id="node21" class="node"><title>Node21</title>
-<g id="a_node21"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="152,-1234 152,-1302 265,-1302 265,-1234 152,-1234"/>
-<text text-anchor="middle" x="208.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
-<polyline fill="none" stroke="black" points="152,-1283 265,-1283 "/>
-<text text-anchor="middle" x="208.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="152,-1264 265,-1264 "/>
-<text text-anchor="start" x="160" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~InputHandler()</text>
-<text text-anchor="start" x="160" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_input()</text>
+<g id="a_node21"><a xlink:href="classopenage_1_1util_1_1_timer.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="745.5,-1190 745.5,-1346 847.5,-1346 847.5,-1190 745.5,-1190"/>
+<text text-anchor="middle" x="796.5" y="-1334" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::Timer</text>
+<polyline fill="none" stroke="black" points="745.5,-1327 847.5,-1327 "/>
+<text text-anchor="start" x="753.5" y="-1315" font-family="Helvetica,sans-Serif" font-size="10.00">+ stoppedat</text>
+<text text-anchor="start" x="753.5" y="-1304" font-family="Helvetica,sans-Serif" font-size="10.00">+ starttime</text>
+<text text-anchor="start" x="753.5" y="-1293" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; stopped</text>
+<text text-anchor="start" x="753.5" y="-1282" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; @1</text>
+<polyline fill="none" stroke="black" points="745.5,-1275 847.5,-1275 "/>
+<text text-anchor="start" x="753.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ Timer()</text>
+<text text-anchor="start" x="753.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ reset()</text>
+<text text-anchor="start" x="753.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
+<text text-anchor="start" x="753.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
+<text text-anchor="start" x="753.5" y="-1219" font-family="Helvetica,sans-Serif" font-size="10.00">+ getval()</text>
+<text text-anchor="start" x="753.5" y="-1208" font-family="Helvetica,sans-Serif" font-size="10.00">+ getandresetval()</text>
+<text text-anchor="start" x="753.5" y="-1197" font-family="Helvetica,sans-Serif" font-size="10.00">+ isstopped()</text>
 </a>
 </g>
 </g>
 <!-- Node21&#45;&gt;Node20 -->
-<g id="edge24" class="edge"><title>Node21&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M219.795,-1224.11C230.903,-1184.95 249.645,-1126.03 273.5,-1078 284.759,-1055.33 298.623,-1032.11 312.715,-1010.46"/>
-<polygon fill="none" stroke="midnightblue" points="216.389,-1223.29 217.069,-1233.86 223.131,-1225.17 216.389,-1223.29"/>
+<g id="edge26" class="edge"><title>Node21&#45;&gt;Node20</title>
+<path fill="none" stroke="#404040" d="M774.278,-1189.72C768.302,-1151.55 769.665,-1107.48 796.5,-1078 825.197,-1046.47 951.859,-1083.39 987.5,-1060 1014.85,-1042.05 1033.88,-1011.73 1046.68,-983.106"/>
+<polygon fill="none" stroke="#404040" points="1046.77,-982.882 1045.43,-975.798 1051.45,-971.831 1052.8,-978.915 1046.77,-982.882"/>
+<text text-anchor="middle" x="825.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;frame_timer</text>
 </g>
 <!-- Node22 -->
 <g id="node22" class="node"><title>Node22</title>
-<g id="a_node22"><a xlink:href="structopenage_1_1coord_1_1input.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="411.5,-1228.5 411.5,-1307.5 521.5,-1307.5 521.5,-1228.5 411.5,-1228.5"/>
-<text text-anchor="middle" x="466.5" y="-1295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::input</text>
-<polyline fill="none" stroke="black" points="411.5,-1288.5 521.5,-1288.5 "/>
-<text text-anchor="middle" x="466.5" y="-1276.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="411.5,-1269.5 521.5,-1269.5 "/>
-<text text-anchor="start" x="419.5" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
-<text text-anchor="start" x="419.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
-<text text-anchor="start" x="419.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+<g id="a_node22"><a xlink:href="classopenage_1_1util_1_1_external_profiler.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="834.5,-848.5 834.5,-971.5 978.5,-971.5 978.5,-848.5 834.5,-848.5"/>
+<text text-anchor="middle" x="906.5" y="-959.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalProfiler</text>
+<polyline fill="none" stroke="black" points="834.5,-952.5 978.5,-952.5 "/>
+<text text-anchor="start" x="842.5" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ currently_profiling</text>
+<text text-anchor="start" x="842.5" y="-929.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ can_profile</text>
+<text text-anchor="start" x="842.5" y="-918.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ profiling_filename</text>
+<text text-anchor="start" x="842.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ profiling_pdf_filename</text>
+<polyline fill="none" stroke="black" points="834.5,-900.5 978.5,-900.5 "/>
+<text text-anchor="start" x="842.5" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ ExternalProfiler()</text>
+<text text-anchor="start" x="842.5" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ start()</text>
+<text text-anchor="start" x="842.5" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ stop()</text>
+<text text-anchor="start" x="842.5" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ show_results()</text>
 </a>
 </g>
 </g>
-<!-- Node22&#45;&gt;Node20 -->
-<g id="edge25" class="edge"><title>Node22&#45;&gt;Node20</title>
-<path fill="none" stroke="#404040" d="M456.931,-1228.31C447.397,-1195.97 430.135,-1150.12 402.5,-1118 392.606,-1106.5 380.874,-1113.26 373.5,-1100 363.164,-1081.42 358.816,-1060.17 358.09,-1038.78"/>
-<polygon fill="none" stroke="#404040" points="358.089,-1038.54 354.071,-1032.55 358.053,-1026.54 362.071,-1032.53 358.089,-1038.54"/>
-<text text-anchor="middle" x="411" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;mouse_position</text>
+<!-- Node22&#45;&gt;Node3 -->
+<g id="edge27" class="edge"><title>Node22&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M932.328,-848.233C954.264,-796.623 986.507,-720.762 1014.22,-655.555"/>
+<polygon fill="none" stroke="#404040" points="1014.29,-655.395 1012.96,-648.309 1018.98,-644.352 1020.32,-651.438 1014.29,-655.395"/>
+<text text-anchor="middle" x="1022.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +external_profiler</text>
 </g>
 <!-- Node23 -->
 <g id="node23" class="node"><title>Node23</title>
-<g id="a_node23"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="410.5,-1487.5 410.5,-1555.5 532.5,-1555.5 532.5,-1487.5 410.5,-1487.5"/>
-<text text-anchor="start" x="418.5" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYAbsolute&lt; pixel</text>
-<text text-anchor="middle" x="471.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, input, input_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="410.5,-1525.5 532.5,-1525.5 "/>
-<text text-anchor="middle" x="471.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="410.5,-1506.5 532.5,-1506.5 "/>
-<text text-anchor="middle" x="471.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node23"><a xlink:href="classopenage_1_1input_1_1_input_manager.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="2014,-793.5 2014,-1026.5 2159,-1026.5 2159,-793.5 2014,-793.5"/>
+<text text-anchor="middle" x="2086.5" y="-1014.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputManager</text>
+<polyline fill="none" stroke="black" points="2014,-1007.5 2159,-1007.5 "/>
+<text text-anchor="start" x="2022" y="-995.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; keys</text>
+<text text-anchor="start" x="2022" y="-984.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; contexts</text>
+<text text-anchor="start" x="2022" y="-973.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; states</text>
+<text text-anchor="start" x="2022" y="-962.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; keymod</text>
+<text text-anchor="start" x="2022" y="-951.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; relative_mode</text>
+<text text-anchor="start" x="2022" y="-940.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; InputContext</text>
+<polyline fill="none" stroke="black" points="2014,-933.5 2159,-933.5 "/>
+<text text-anchor="start" x="2022" y="-921.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputManager()</text>
+<text text-anchor="start" x="2022" y="-910.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_bind()</text>
+<text text-anchor="start" x="2022" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ set_bind()</text>
+<text text-anchor="start" x="2022" y="-888.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ key_bind_to_string()</text>
+<text text-anchor="start" x="2022" y="-877.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ mouse_bind_to_string()</text>
+<text text-anchor="start" x="2022" y="-866.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ wheel_bind_to_string()</text>
+<text text-anchor="start" x="2022" y="-855.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_global_context()</text>
+<text text-anchor="start" x="2022" y="-844.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ get_top_context()</text>
+<text text-anchor="start" x="2022" y="-833.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ push_context()</text>
+<text text-anchor="start" x="2022" y="-822.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ remove_context()</text>
+<text text-anchor="start" x="2022" y="-811.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 14 more...</text>
+<text text-anchor="start" x="2022" y="-800.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; get_mod()</text>
 </a>
 </g>
 </g>
-<!-- Node23&#45;&gt;Node22 -->
-<g id="edge26" class="edge"><title>Node23&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M470.642,-1477.34C469.693,-1429.6 468.178,-1353.39 467.267,-1307.57"/>
-<polygon fill="none" stroke="midnightblue" points="467.143,-1477.43 470.841,-1487.36 474.142,-1477.29 467.143,-1477.43"/>
+<!-- Node23&#45;&gt;Node3 -->
+<g id="edge28" class="edge"><title>Node23&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M2027.74,-793.453C2018.66,-781.261 2008.57,-769.771 1997.5,-760 1993.36,-756.345 1911.74,-721.744 1906.5,-720 1624.13,-626.04 1273.61,-560.414 1132.59,-536.016"/>
+<polygon fill="none" stroke="#404040" points="1132.23,-535.954 1125.64,-538.879 1120.4,-533.92 1126.99,-530.995 1132.23,-535.954"/>
+<text text-anchor="middle" x="1992.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
 </g>
-<!-- Node24&#45;&gt;Node20 -->
-<g id="edge27" class="edge"><title>Node24&#45;&gt;Node20</title>
-<path fill="none" stroke="#404040" d="M329.074,-619.103C318.582,-657.162 311.808,-701.61 319.5,-742 322.003,-755.146 325.523,-768.579 329.648,-781.832"/>
-<polygon fill="none" stroke="#404040" points="329.705,-782.01 335.365,-786.479 333.418,-793.422 327.758,-788.954 329.705,-782.01"/>
-<text text-anchor="middle" x="354.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;global_context</text>
+<!-- Node27 -->
+<g id="node27" class="node"><title>Node27</title>
+<g id="a_node27"><a xlink:href="classopenage_1_1input_1_1_input_context.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="2015,-430 2015,-619 2156,-619 2156,-430 2015,-430"/>
+<text text-anchor="middle" x="2085.5" y="-607" font-family="Helvetica,sans-Serif" font-size="10.00">openage::input::InputContext</text>
+<polyline fill="none" stroke="black" points="2015,-600 2156,-600 "/>
+<text text-anchor="start" x="2023" y="-588" font-family="Helvetica,sans-Serif" font-size="10.00">+ utf8_mode</text>
+<text text-anchor="start" x="2023" y="-577" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_type</text>
+<text text-anchor="start" x="2023" y="-566" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_event</text>
+<text text-anchor="start" x="2023" y="-555" font-family="Helvetica,sans-Serif" font-size="10.00">&#45; by_class</text>
+<polyline fill="none" stroke="black" points="2015,-548 2156,-548 "/>
+<text text-anchor="start" x="2023" y="-536" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputContext()</text>
+<text text-anchor="start" x="2023" y="-525" font-family="Helvetica,sans-Serif" font-size="10.00">+ InputContext()</text>
+<text text-anchor="start" x="2023" y="-514" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~InputContext()</text>
+<text text-anchor="start" x="2023" y="-503" font-family="Helvetica,sans-Serif" font-size="10.00">+ active_binds()</text>
+<text text-anchor="start" x="2023" y="-492" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
+<text text-anchor="start" x="2023" y="-481" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
+<text text-anchor="start" x="2023" y="-470" font-family="Helvetica,sans-Serif" font-size="10.00">+ bind()</text>
+<text text-anchor="start" x="2023" y="-459" font-family="Helvetica,sans-Serif" font-size="10.00">+ execute_if_bound()</text>
+<text text-anchor="start" x="2023" y="-448" font-family="Helvetica,sans-Serif" font-size="10.00">+ register_to()</text>
+<text text-anchor="start" x="2023" y="-437" font-family="Helvetica,sans-Serif" font-size="10.00">+ unregister()</text>
+</a>
+</g>
+</g>
+<!-- Node23&#45;&gt;Node27 -->
+<g id="edge33" class="edge"><title>Node23&#45;&gt;Node27</title>
+<path fill="none" stroke="#404040" d="M2047.13,-793.183C2042.73,-776.193 2038.96,-758.769 2036.5,-742 2031.16,-705.515 2036.65,-666.059 2045.63,-630.949"/>
+<polygon fill="none" stroke="#404040" points="2045.67,-630.805 2043.37,-623.969 2048.8,-619.22 2051.1,-626.055 2045.67,-630.805"/>
+<text text-anchor="middle" x="2071.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
+</g>
+<!-- Node23&#45;&gt;Node30 -->
+<g id="edge38" class="edge"><title>Node23&#45;&gt;Node30</title>
+<path fill="none" stroke="#404040" d="M2032.87,-1026.65C2022.74,-1039.54 2010.99,-1051.18 1997.5,-1060 1943.88,-1095.04 1905.41,-1039.12 1854.5,-1078 1818.04,-1105.85 1798.52,-1153.75 1788.12,-1194.36"/>
+<polygon fill="none" stroke="#404040" points="1788.09,-1194.47 1790.58,-1201.24 1785.3,-1206.14 1782.8,-1199.38 1788.09,-1194.47"/>
+<text text-anchor="middle" x="1889.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;input_manager</text>
+</g>
+<!-- Node24 -->
+<g id="node24" class="node"><title>Node24</title>
+<g id="a_node24"><a xlink:href="classopenage_1_1_input_handler.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="2153,-1234 2153,-1302 2266,-1302 2266,-1234 2153,-1234"/>
+<text text-anchor="middle" x="2209.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">openage::InputHandler</text>
+<polyline fill="none" stroke="black" points="2153,-1283 2266,-1283 "/>
+<text text-anchor="middle" x="2209.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="2153,-1264 2266,-1264 "/>
+<text text-anchor="start" x="2161" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ ~InputHandler()</text>
+<text text-anchor="start" x="2161" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ on_input()</text>
+</a>
+</g>
+</g>
+<!-- Node24&#45;&gt;Node23 -->
+<g id="edge29" class="edge"><title>Node24&#45;&gt;Node23</title>
+<path fill="none" stroke="midnightblue" d="M2200.77,-1223.81C2192.42,-1185.1 2178.58,-1127.01 2161.5,-1078 2155.64,-1061.19 2148.76,-1043.75 2141.58,-1026.75"/>
+<polygon fill="none" stroke="midnightblue" points="2197.37,-1224.66 2202.88,-1233.71 2204.22,-1223.2 2197.37,-1224.66"/>
 </g>
 <!-- Node25 -->
 <g id="node25" class="node"><title>Node25</title>
-<g id="a_node25"><a xlink:href="structopenage_1_1coord_1_1input__delta.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="283.5,-1223 283.5,-1313 393.5,-1313 393.5,-1223 283.5,-1223"/>
-<text text-anchor="start" x="291.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::input</text>
-<text text-anchor="middle" x="338.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
-<polyline fill="none" stroke="black" points="283.5,-1283 393.5,-1283 "/>
-<text text-anchor="middle" x="338.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="283.5,-1264 393.5,-1264 "/>
-<text text-anchor="start" x="291.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
-<text text-anchor="start" x="291.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
-<text text-anchor="start" x="291.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+<g id="a_node25"><a xlink:href="structopenage_1_1coord_1_1input.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="2024.5,-1228.5 2024.5,-1307.5 2134.5,-1307.5 2134.5,-1228.5 2024.5,-1228.5"/>
+<text text-anchor="middle" x="2079.5" y="-1295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::input</text>
+<polyline fill="none" stroke="black" points="2024.5,-1288.5 2134.5,-1288.5 "/>
+<text text-anchor="middle" x="2079.5" y="-1276.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="2024.5,-1269.5 2134.5,-1269.5 "/>
+<text text-anchor="start" x="2032.5" y="-1257.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
+<text text-anchor="start" x="2032.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
+<text text-anchor="start" x="2032.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node20 -->
-<g id="edge29" class="edge"><title>Node25&#45;&gt;Node20</title>
-<path fill="none" stroke="#404040" d="M309.988,-1222.83C288.904,-1184.61 266.145,-1127.8 280.5,-1078 286.503,-1057.18 295.954,-1036.44 306.781,-1017.03"/>
-<polygon fill="none" stroke="#404040" points="306.926,-1016.78 306.461,-1009.58 312.925,-1006.38 313.39,-1013.58 306.926,-1016.78"/>
-<text text-anchor="middle" x="315.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;mouse_motion</text>
+<!-- Node25&#45;&gt;Node23 -->
+<g id="edge30" class="edge"><title>Node25&#45;&gt;Node23</title>
+<path fill="none" stroke="#404040" d="M2080.26,-1228.22C2081.15,-1183.01 2082.67,-1105.94 2083.98,-1039.09"/>
+<polygon fill="none" stroke="#404040" points="2083.99,-1038.73 2080.11,-1032.65 2084.22,-1026.73 2088.11,-1032.81 2083.99,-1038.73"/>
+<text text-anchor="middle" x="2120" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;mouse_position</text>
 </g>
 <!-- Node26 -->
 <g id="node26" class="node"><title>Node26</title>
 <g id="a_node26"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="275,-1487.5 275,-1555.5 392,-1555.5 392,-1487.5 275,-1487.5"/>
-<text text-anchor="start" x="283" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
-<text text-anchor="middle" x="333.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, input, input_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="275,-1525.5 392,-1525.5 "/>
-<text text-anchor="middle" x="333.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="275,-1506.5 392,-1506.5 "/>
-<text text-anchor="middle" x="333.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="#bfbfbf" points="2018.5,-1487.5 2018.5,-1555.5 2140.5,-1555.5 2140.5,-1487.5 2018.5,-1487.5"/>
+<text text-anchor="start" x="2026.5" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYAbsolute&lt; pixel</text>
+<text text-anchor="middle" x="2079.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, input, input_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="2018.5,-1525.5 2140.5,-1525.5 "/>
+<text text-anchor="middle" x="2079.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="2018.5,-1506.5 2140.5,-1506.5 "/>
+<text text-anchor="middle" x="2079.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node26&#45;&gt;Node25 -->
-<g id="edge30" class="edge"><title>Node26&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M334.362,-1477.15C335.273,-1431.32 336.703,-1359.39 337.621,-1313.23"/>
-<polygon fill="none" stroke="midnightblue" points="330.858,-1477.29 334.159,-1487.36 337.857,-1477.43 330.858,-1477.29"/>
+<g id="edge31" class="edge"><title>Node26&#45;&gt;Node25</title>
+<path fill="none" stroke="midnightblue" d="M2079.5,-1477.34C2079.5,-1429.6 2079.5,-1353.39 2079.5,-1307.57"/>
+<polygon fill="none" stroke="midnightblue" points="2076,-1477.36 2079.5,-1487.36 2083,-1477.36 2076,-1477.36"/>
 </g>
-<!-- Node27&#45;&gt;Node3 -->
-<g id="edge47" class="edge"><title>Node27&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M622.111,-1206.32C625.544,-1174.64 629.788,-1135.24 633.5,-1100 649.417,-948.927 583.423,-885.851 668.5,-760 788.826,-582.008 1068.27,-539.112 1193.64,-528.778"/>
-<polygon fill="none" stroke="#404040" points="1193.68,-528.775 1199.35,-524.324 1205.65,-527.85 1199.97,-532.301 1193.68,-528.775"/>
-<text text-anchor="middle" x="706.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;action_manager</text>
+<!-- Node27&#45;&gt;Node23 -->
+<g id="edge32" class="edge"><title>Node27&#45;&gt;Node23</title>
+<path fill="none" stroke="#404040" d="M2103.98,-619.111C2109.49,-657.171 2113.39,-701.618 2110.5,-742 2109.59,-754.75 2108.29,-768.006 2106.76,-781.226"/>
+<polygon fill="none" stroke="#404040" points="2106.74,-781.426 2109.99,-787.862 2105.3,-793.34 2102.05,-786.904 2106.74,-781.426"/>
+<text text-anchor="middle" x="2145.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;global_context</text>
 </g>
-<!-- Node27&#45;&gt;Node20 -->
-<g id="edge31" class="edge"><title>Node27&#45;&gt;Node20</title>
-<path fill="none" stroke="#404040" d="M598.251,-1206.36C585.768,-1167.86 566.673,-1117.95 541.5,-1078 520.792,-1045.14 493.107,-1012.98 466.81,-985.806"/>
-<polygon fill="none" stroke="#404040" points="466.734,-985.729 459.677,-984.246 458.331,-977.162 465.388,-978.644 466.734,-985.729"/>
-<text text-anchor="middle" x="591.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;action_manager</text>
+<!-- Node28 -->
+<g id="node28" class="node"><title>Node28</title>
+<g id="a_node28"><a xlink:href="structopenage_1_1coord_1_1input__delta.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="2284.5,-1223 2284.5,-1313 2394.5,-1313 2394.5,-1223 2284.5,-1223"/>
+<text text-anchor="start" x="2292.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::input</text>
+<text text-anchor="middle" x="2339.5" y="-1290" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
+<polyline fill="none" stroke="black" points="2284.5,-1283 2394.5,-1283 "/>
+<text text-anchor="middle" x="2339.5" y="-1271" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="2284.5,-1264 2394.5,-1264 "/>
+<text text-anchor="start" x="2292.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
+<text text-anchor="start" x="2292.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
+<text text-anchor="start" x="2292.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+</a>
 </g>
-<!-- Node28&#45;&gt;Node3 -->
-<g id="edge34" class="edge"><title>Node28&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1322.52,-178.604C1319.74,-213.733 1313.94,-276.195 1304.5,-329 1304.11,-331.184 1303.71,-333.38 1303.3,-335.586"/>
-<polygon fill="none" stroke="#404040" points="1303.28,-335.682 1306.08,-342.329 1301.02,-347.466 1298.22,-340.82 1303.28,-335.682"/>
-<text text-anchor="middle" x="1328" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;qml_info</text>
+</g>
+<!-- Node28&#45;&gt;Node23 -->
+<g id="edge34" class="edge"><title>Node28&#45;&gt;Node23</title>
+<path fill="none" stroke="#404040" d="M2324.91,-1222.69C2313.76,-1191.99 2296.71,-1150.89 2275.5,-1118 2245.22,-1071.05 2204.09,-1024.59 2167.93,-987.609"/>
+<polygon fill="none" stroke="#404040" points="2167.77,-987.444 2160.71,-985.983 2159.34,-978.903 2166.4,-980.364 2167.77,-987.444"/>
+<text text-anchor="middle" x="2297.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;mouse_motion</text>
 </g>
 <!-- Node29 -->
 <g id="node29" class="node"><title>Node29</title>
-<g id="a_node29"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1325.5,-496 1325.5,-553 1463.5,-553 1463.5,-496 1325.5,-496"/>
-<text text-anchor="middle" x="1394.5" y="-541" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
-<polyline fill="none" stroke="black" points="1325.5,-534 1463.5,-534 "/>
-<text text-anchor="middle" x="1394.5" y="-522" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1325.5,-515 1463.5,-515 "/>
-<text text-anchor="middle" x="1394.5" y="-503" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node29"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="2281,-1487.5 2281,-1555.5 2398,-1555.5 2398,-1487.5 2281,-1487.5"/>
+<text text-anchor="start" x="2289" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
+<text text-anchor="middle" x="2339.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, input, input_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="2281,-1525.5 2398,-1525.5 "/>
+<text text-anchor="middle" x="2339.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="2281,-1506.5 2398,-1506.5 "/>
+<text text-anchor="middle" x="2339.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node29&#45;&gt;Node28 -->
 <g id="edge35" class="edge"><title>Node29&#45;&gt;Node28</title>
-<path fill="none" stroke="midnightblue" d="M1387.43,-485.855C1373.34,-410.886 1342.07,-244.495 1329.69,-178.623"/>
-<polygon fill="none" stroke="midnightblue" points="1384.01,-486.625 1389.3,-495.806 1390.89,-485.332 1384.01,-486.625"/>
+<path fill="none" stroke="midnightblue" d="M2339.5,-1477.15C2339.5,-1431.32 2339.5,-1359.39 2339.5,-1313.23"/>
+<polygon fill="none" stroke="midnightblue" points="2336,-1477.36 2339.5,-1487.36 2343,-1477.36 2336,-1477.36"/>
 </g>
 <!-- Node30&#45;&gt;Node3 -->
-<g id="edge38" class="edge"><title>Node30&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1623.59,-881.449C1609.91,-849.46 1584,-796.438 1549.5,-760 1526.95,-736.188 1518.43,-730.903 1487.5,-720 1451.46,-707.296 1346.35,-725.847 1316.5,-702 1316.4,-701.918 1316.29,-701.836 1316.19,-701.753"/>
-<polygon fill="none" stroke="#404040" points="1316.06,-701.636 1308.93,-700.575 1307.17,-693.583 1314.3,-694.644 1316.06,-701.636"/>
-<text text-anchor="middle" x="1547.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +coord</text>
+<g id="edge52" class="edge"><title>Node30&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M1752.07,-1206.25C1737.84,-1176.75 1717.54,-1142.48 1691.5,-1118 1648.93,-1077.97 1607.31,-1107.66 1573.5,-1060 1485.44,-935.856 1624.19,-841.486 1532.5,-720 1434.71,-590.437 1234.27,-546.454 1132.21,-532.099"/>
+<polygon fill="none" stroke="#404040" points="1132.16,-532.092 1125.68,-535.256 1120.26,-530.492 1126.74,-527.328 1132.16,-532.092"/>
+<text text-anchor="middle" x="1611.5" y="-907.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;action_manager</text>
 </g>
-<!-- Node31 -->
-<g id="node31" class="node"><title>Node31</title>
-<g id="a_node31"><a xlink:href="structopenage_1_1coord_1_1viewport.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1622.5,-1223 1622.5,-1313 1746.5,-1313 1746.5,-1223 1622.5,-1223"/>
-<text text-anchor="middle" x="1684.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::viewport</text>
-<polyline fill="none" stroke="black" points="1622.5,-1294 1746.5,-1294 "/>
-<text text-anchor="middle" x="1684.5" y="-1282" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1622.5,-1275 1746.5,-1275 "/>
-<text text-anchor="start" x="1630.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
-<text text-anchor="start" x="1630.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
-<text text-anchor="start" x="1630.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile()</text>
-<text text-anchor="start" x="1630.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
-</a>
+<!-- Node30&#45;&gt;Node23 -->
+<g id="edge36" class="edge"><title>Node30&#45;&gt;Node23</title>
+<path fill="none" stroke="#404040" d="M1797.09,-1206.23C1810.78,-1175.03 1831.96,-1139.21 1862.5,-1118 1902.11,-1090.49 1928.73,-1125.75 1969.5,-1100 1994.16,-1084.42 2014.46,-1061.57 2030.82,-1037.09"/>
+<polygon fill="none" stroke="#404040" points="2030.88,-1037 2030.75,-1029.79 2037.36,-1026.9 2037.49,-1034.11 2030.88,-1037"/>
+<text text-anchor="middle" x="2030.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;action_manager</text>
 </g>
-</g>
-<!-- Node31&#45;&gt;Node30 -->
-<g id="edge39" class="edge"><title>Node31&#45;&gt;Node30</title>
-<path fill="none" stroke="#404040" d="M1678.32,-1222.99C1668.5,-1153.08 1649.49,-1017.73 1640.07,-950.656"/>
-<polygon fill="none" stroke="#404040" points="1640.04,-950.457 1635.25,-945.072 1638.37,-938.574 1643.17,-943.959 1640.04,-950.457"/>
-<text text-anchor="middle" x="1706.5" y="-1092" font-family="Helvetica,sans-Serif" font-size="10.00"> +camgame_viewport</text>
-<text text-anchor="middle" x="1706.5" y="-1081" font-family="Helvetica,sans-Serif" font-size="10.00">+camhud_viewport</text>
+<!-- Node31&#45;&gt;Node3 -->
+<g id="edge39" class="edge"><title>Node31&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M453.597,-178.502C572.853,-245.303 877.572,-415.991 1008.36,-489.253"/>
+<polygon fill="none" stroke="#404040" points="1008.5,-489.332 1015.69,-488.774 1018.97,-495.196 1011.78,-495.754 1008.5,-489.332"/>
+<text text-anchor="middle" x="739" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;qml_info</text>
 </g>
 <!-- Node32 -->
 <g id="node32" class="node"><title>Node32</title>
-<g id="a_node32"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1642.5,-1482 1642.5,-1561 1764.5,-1561 1764.5,-1482 1642.5,-1482"/>
-<text text-anchor="start" x="1650.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYAbsolute&lt; pixel</text>
-<text text-anchor="start" x="1650.5" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">_t, viewport, viewport</text>
-<text text-anchor="middle" x="1703.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="1642.5,-1520 1764.5,-1520 "/>
-<text text-anchor="middle" x="1703.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="1642.5,-1501 1764.5,-1501 "/>
-<text text-anchor="middle" x="1703.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node32"><a xlink:href="classqtsdl_1_1_gui_singleton_items_info.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="151.5,-496 151.5,-553 289.5,-553 289.5,-496 151.5,-496"/>
+<text text-anchor="middle" x="220.5" y="-541" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiSingletonItemsInfo</text>
+<polyline fill="none" stroke="black" points="151.5,-534 289.5,-534 "/>
+<text text-anchor="middle" x="220.5" y="-522" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="151.5,-515 289.5,-515 "/>
+<text text-anchor="middle" x="220.5" y="-503" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node32&#45;&gt;Node31 -->
 <g id="edge40" class="edge"><title>Node32&#45;&gt;Node31</title>
-<path fill="none" stroke="midnightblue" d="M1699.82,-1471.74C1696.35,-1425.84 1691.2,-1357.69 1687.85,-1313.3"/>
-<polygon fill="none" stroke="midnightblue" points="1696.33,-1472.05 1700.57,-1481.75 1703.31,-1471.52 1696.33,-1472.05"/>
+<path fill="none" stroke="midnightblue" d="M216.364,-485.733C213.32,-442.955 213.34,-372.161 238.5,-318 266.143,-258.495 324.374,-207.961 363.973,-178.539"/>
+<polygon fill="none" stroke="midnightblue" points="212.876,-486.031 217.167,-495.718 219.854,-485.47 212.876,-486.031"/>
 </g>
-<!-- Node33 -->
-<g id="node33" class="node"><title>Node33</title>
-<g id="a_node33"><a xlink:href="structopenage_1_1coord_1_1phys3.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1338.5,-1212 1338.5,-1324 1454.5,-1324 1454.5,-1212 1338.5,-1212"/>
-<text text-anchor="middle" x="1396.5" y="-1312" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::phys3</text>
-<polyline fill="none" stroke="black" points="1338.5,-1305 1454.5,-1305 "/>
-<text text-anchor="middle" x="1396.5" y="-1293" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1338.5,-1286 1454.5,-1286 "/>
-<text text-anchor="start" x="1346.5" y="-1274" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile3()</text>
-<text text-anchor="start" x="1346.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile()</text>
-<text text-anchor="start" x="1346.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys2()</text>
-<text text-anchor="start" x="1346.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
-<text text-anchor="start" x="1346.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
-<text text-anchor="start" x="1346.5" y="-1219" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node30 -->
-<g id="edge41" class="edge"><title>Node33&#45;&gt;Node30</title>
-<path fill="none" stroke="#404040" d="M1416.37,-1211.7C1428.03,-1182.63 1444.25,-1147.09 1463.5,-1118 1476.86,-1097.8 1480.35,-1091.44 1500.5,-1078 1519.8,-1065.13 1531.79,-1074.99 1549.5,-1060 1584.02,-1030.79 1607.5,-983.807 1620.88,-950.414"/>
-<polygon fill="none" stroke="#404040" points="1621.05,-949.983 1619.47,-942.946 1625.36,-938.784 1626.94,-945.82 1621.05,-949.983"/>
-<text text-anchor="middle" x="1540" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +camgame_phys</text>
+<!-- Node33&#45;&gt;Node3 -->
+<g id="edge43" class="edge"><title>Node33&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M1262.29,-881.389C1245.65,-844.233 1214.47,-776.301 1184.5,-720 1166.53,-686.245 1145.57,-649.995 1126.51,-618.045"/>
+<polygon fill="none" stroke="#404040" points="1126.29,-617.678 1119.77,-614.587 1120.12,-607.384 1126.63,-610.475 1126.29,-617.678"/>
+<text text-anchor="middle" x="1212.5" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +coord</text>
 </g>
 <!-- Node34 -->
 <g id="node34" class="node"><title>Node34</title>
-<g id="a_node34"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1329,-1482 1329,-1561 1448,-1561 1448,-1482 1329,-1482"/>
-<text text-anchor="start" x="1337" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordNeSeUpAbsolute</text>
-<text text-anchor="start" x="1337" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; phys_t, phys3, phys3</text>
-<text text-anchor="middle" x="1388.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="1329,-1520 1448,-1520 "/>
-<text text-anchor="middle" x="1388.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="1329,-1501 1448,-1501 "/>
-<text text-anchor="middle" x="1388.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node34"><a xlink:href="structopenage_1_1coord_1_1viewport.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1232.5,-1223 1232.5,-1313 1356.5,-1313 1356.5,-1223 1232.5,-1223"/>
+<text text-anchor="middle" x="1294.5" y="-1301" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::viewport</text>
+<polyline fill="none" stroke="black" points="1232.5,-1294 1356.5,-1294 "/>
+<text text-anchor="middle" x="1294.5" y="-1282" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1232.5,-1275 1356.5,-1275 "/>
+<text text-anchor="start" x="1240.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
+<text text-anchor="start" x="1240.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+<text text-anchor="start" x="1240.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile()</text>
+<text text-anchor="start" x="1240.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
 </a>
 </g>
 </g>
 <!-- Node34&#45;&gt;Node33 -->
-<g id="edge42" class="edge"><title>Node34&#45;&gt;Node33</title>
-<path fill="none" stroke="midnightblue" d="M1390.05,-1471.69C1391.4,-1429.38 1393.34,-1368.2 1394.75,-1324.13"/>
-<polygon fill="none" stroke="midnightblue" points="1386.55,-1471.65 1389.73,-1481.75 1393.55,-1471.87 1386.55,-1471.65"/>
+<g id="edge44" class="edge"><title>Node34&#45;&gt;Node33</title>
+<path fill="none" stroke="#404040" d="M1292.03,-1222.99C1288.1,-1153.08 1280.5,-1017.73 1276.73,-950.656"/>
+<polygon fill="none" stroke="#404040" points="1276.72,-950.555 1272.39,-944.789 1276.05,-938.574 1280.38,-944.34 1276.72,-950.555"/>
+<text text-anchor="middle" x="1331.5" y="-1092" font-family="Helvetica,sans-Serif" font-size="10.00"> +camgame_viewport</text>
+<text text-anchor="middle" x="1331.5" y="-1081" font-family="Helvetica,sans-Serif" font-size="10.00">+camhud_viewport</text>
 </g>
 <!-- Node35 -->
 <g id="node35" class="node"><title>Node35</title>
-<g id="a_node35"><a xlink:href="structopenage_1_1coord_1_1camgame__delta.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1472.5,-1228.5 1472.5,-1307.5 1604.5,-1307.5 1604.5,-1228.5 1472.5,-1228.5"/>
-<text text-anchor="start" x="1480.5" y="-1295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
-<text text-anchor="middle" x="1538.5" y="-1284.5" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
-<polyline fill="none" stroke="black" points="1472.5,-1277.5 1604.5,-1277.5 "/>
-<text text-anchor="middle" x="1538.5" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1472.5,-1258.5 1604.5,-1258.5 "/>
-<text text-anchor="start" x="1480.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
-<text text-anchor="start" x="1480.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
+<g id="a_node35"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="1232.5,-1482 1232.5,-1561 1354.5,-1561 1354.5,-1482 1232.5,-1482"/>
+<text text-anchor="start" x="1240.5" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYAbsolute&lt; pixel</text>
+<text text-anchor="start" x="1240.5" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">_t, viewport, viewport</text>
+<text text-anchor="middle" x="1293.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="1232.5,-1520 1354.5,-1520 "/>
+<text text-anchor="middle" x="1293.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="1232.5,-1501 1354.5,-1501 "/>
+<text text-anchor="middle" x="1293.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
-<!-- Node35&#45;&gt;Node30 -->
-<g id="edge43" class="edge"><title>Node35&#45;&gt;Node30</title>
-<path fill="none" stroke="#404040" d="M1548.96,-1228.22C1567.35,-1160.02 1605.29,-1019.33 1623.83,-950.572"/>
-<polygon fill="none" stroke="#404040" points="1623.93,-950.19 1621.63,-943.355 1627.06,-938.604 1629.36,-945.438 1623.93,-950.19"/>
-<text text-anchor="middle" x="1611.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +tile_size</text>
+<!-- Node35&#45;&gt;Node34 -->
+<g id="edge45" class="edge"><title>Node35&#45;&gt;Node34</title>
+<path fill="none" stroke="midnightblue" d="M1293.69,-1471.74C1293.88,-1425.84 1294.15,-1357.69 1294.32,-1313.3"/>
+<polygon fill="none" stroke="midnightblue" points="1290.19,-1471.74 1293.65,-1481.75 1297.19,-1471.77 1290.19,-1471.74"/>
 </g>
 <!-- Node36 -->
 <g id="node36" class="node"><title>Node36</title>
-<g id="a_node36"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="1466.5,-1487.5 1466.5,-1555.5 1624.5,-1555.5 1624.5,-1487.5 1466.5,-1487.5"/>
-<text text-anchor="start" x="1474.5" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
-<text text-anchor="middle" x="1545.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, camgame, camgame_delta &gt;</text>
-<polyline fill="none" stroke="#bfbfbf" points="1466.5,-1525.5 1624.5,-1525.5 "/>
-<text text-anchor="middle" x="1545.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="1466.5,-1506.5 1624.5,-1506.5 "/>
-<text text-anchor="middle" x="1545.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<g id="a_node36"><a xlink:href="structopenage_1_1coord_1_1phys3.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1374.5,-1212 1374.5,-1324 1490.5,-1324 1490.5,-1212 1374.5,-1212"/>
+<text text-anchor="middle" x="1432.5" y="-1312" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::phys3</text>
+<polyline fill="none" stroke="black" points="1374.5,-1305 1490.5,-1305 "/>
+<text text-anchor="middle" x="1432.5" y="-1293" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1374.5,-1286 1490.5,-1286 "/>
+<text text-anchor="start" x="1382.5" y="-1274" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile3()</text>
+<text text-anchor="start" x="1382.5" y="-1263" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_tile()</text>
+<text text-anchor="start" x="1382.5" y="-1252" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys2()</text>
+<text text-anchor="start" x="1382.5" y="-1241" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camgame()</text>
+<text text-anchor="start" x="1382.5" y="-1230" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
+<text text-anchor="start" x="1382.5" y="-1219" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_camhud()</text>
 </a>
 </g>
 </g>
-<!-- Node36&#45;&gt;Node35 -->
-<g id="edge44" class="edge"><title>Node36&#45;&gt;Node35</title>
-<path fill="none" stroke="midnightblue" d="M1544.3,-1477.34C1542.97,-1429.6 1540.85,-1353.39 1539.57,-1307.57"/>
-<polygon fill="none" stroke="midnightblue" points="1540.8,-1477.46 1544.58,-1487.36 1547.8,-1477.27 1540.8,-1477.46"/>
+<!-- Node36&#45;&gt;Node33 -->
+<g id="edge46" class="edge"><title>Node36&#45;&gt;Node33</title>
+<path fill="none" stroke="#404040" d="M1426.7,-1211.63C1420.45,-1171.86 1407.63,-1118.37 1381.5,-1078 1374.64,-1067.39 1367.66,-1069.65 1359.5,-1060 1330.91,-1026.17 1306.85,-981.356 1291.7,-949.739"/>
+<polygon fill="none" stroke="#404040" points="1291.64,-949.595 1285.46,-945.863 1286.54,-938.732 1292.71,-942.464 1291.64,-949.595"/>
+<text text-anchor="middle" x="1432" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +camgame_phys</text>
 </g>
-<!-- Node37&#45;&gt;Node3 -->
-<g id="edge48" class="edge"><title>Node37&#45;&gt;Node3</title>
-<path fill="none" stroke="#404040" d="M1184.21,-760.454C1190.17,-741.084 1196.32,-721.092 1202.4,-701.328"/>
-<polygon fill="none" stroke="#404040" points="1202.44,-701.193 1200.38,-694.282 1205.97,-689.724 1208.03,-696.635 1202.44,-701.193"/>
-<text text-anchor="middle" x="1231" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;audio_manager</text>
+<!-- Node37 -->
+<g id="node37" class="node"><title>Node37</title>
+<g id="a_node37"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="1373,-1482 1373,-1561 1492,-1561 1492,-1482 1373,-1482"/>
+<text text-anchor="start" x="1381" y="-1549" font-family="Helvetica,sans-Serif" font-size="10.00">CoordNeSeUpAbsolute</text>
+<text text-anchor="start" x="1381" y="-1538" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; phys_t, phys3, phys3</text>
+<text text-anchor="middle" x="1432.5" y="-1527" font-family="Helvetica,sans-Serif" font-size="10.00">_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="1373,-1520 1492,-1520 "/>
+<text text-anchor="middle" x="1432.5" y="-1508" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="1373,-1501 1492,-1501 "/>
+<text text-anchor="middle" x="1432.5" y="-1489" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node37&#45;&gt;Node36 -->
+<g id="edge47" class="edge"><title>Node37&#45;&gt;Node36</title>
+<path fill="none" stroke="midnightblue" d="M1432.5,-1471.69C1432.5,-1429.38 1432.5,-1368.2 1432.5,-1324.13"/>
+<polygon fill="none" stroke="midnightblue" points="1429,-1471.75 1432.5,-1481.75 1436,-1471.75 1429,-1471.75"/>
 </g>
 <!-- Node38 -->
 <g id="node38" class="node"><title>Node38</title>
-<g id="a_node38"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
+<g id="a_node38"><a xlink:href="structopenage_1_1coord_1_1camgame__delta.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1082.5,-1228.5 1082.5,-1307.5 1214.5,-1307.5 1214.5,-1228.5 1082.5,-1228.5"/>
+<text text-anchor="start" x="1090.5" y="-1295.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::coord::camgame</text>
+<text text-anchor="middle" x="1148.5" y="-1284.5" font-family="Helvetica,sans-Serif" font-size="10.00">_delta</text>
+<polyline fill="none" stroke="black" points="1082.5,-1277.5 1214.5,-1277.5 "/>
+<text text-anchor="middle" x="1148.5" y="-1265.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1082.5,-1258.5 1214.5,-1258.5 "/>
+<text text-anchor="start" x="1090.5" y="-1246.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_phys3()</text>
+<text text-anchor="start" x="1090.5" y="-1235.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ to_viewport()</text>
+</a>
+</g>
+</g>
+<!-- Node38&#45;&gt;Node33 -->
+<g id="edge48" class="edge"><title>Node38&#45;&gt;Node33</title>
+<path fill="none" stroke="#404040" d="M1162.22,-1228.22C1186.41,-1159.88 1236.36,-1018.75 1260.65,-950.145"/>
+<polygon fill="none" stroke="#404040" points="1260.73,-949.916 1258.96,-942.925 1264.73,-938.604 1266.5,-945.595 1260.73,-949.916"/>
+<text text-anchor="middle" x="1238.5" y="-1086.5" font-family="Helvetica,sans-Serif" font-size="10.00"> +tile_size</text>
+</g>
+<!-- Node39 -->
+<g id="node39" class="node"><title>Node39</title>
+<g id="a_node39"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="1056.5,-1487.5 1056.5,-1555.5 1214.5,-1555.5 1214.5,-1487.5 1056.5,-1487.5"/>
+<text text-anchor="start" x="1064.5" y="-1543.5" font-family="Helvetica,sans-Serif" font-size="10.00">CoordXYRelative&lt; pixel</text>
+<text text-anchor="middle" x="1135.5" y="-1532.5" font-family="Helvetica,sans-Serif" font-size="10.00">_t, camgame, camgame_delta &gt;</text>
+<polyline fill="none" stroke="#bfbfbf" points="1056.5,-1525.5 1214.5,-1525.5 "/>
+<text text-anchor="middle" x="1135.5" y="-1513.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="1056.5,-1506.5 1214.5,-1506.5 "/>
+<text text-anchor="middle" x="1135.5" y="-1494.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node39&#45;&gt;Node38 -->
+<g id="edge49" class="edge"><title>Node39&#45;&gt;Node38</title>
+<path fill="none" stroke="midnightblue" d="M1137.73,-1477.34C1140.2,-1429.6 1144.14,-1353.39 1146.51,-1307.57"/>
+<polygon fill="none" stroke="midnightblue" points="1134.23,-1477.19 1137.21,-1487.36 1141.22,-1477.56 1134.23,-1477.19"/>
+</g>
+<!-- Node40&#45;&gt;Node3 -->
+<g id="edge53" class="edge"><title>Node40&#45;&gt;Node3</title>
+<path fill="none" stroke="#404040" d="M481.746,-760.376C486.725,-745.733 493.755,-731.912 503.5,-720 630.583,-564.653 888.133,-533.003 1006.91,-526.824"/>
+<polygon fill="none" stroke="#404040" points="1007,-526.82 1012.81,-522.544 1018.99,-526.26 1013.18,-530.535 1007,-526.82"/>
+<text text-anchor="middle" x="540" y="-728.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;audio_manager</text>
+</g>
+<!-- Node41 -->
+<g id="node41" class="node"><title>Node41</title>
+<g id="a_node41"><a xlink:href="classqtsdl_1_1_gui_item_link.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-496 0,-553 95,-553 95,-496 0,-496"/>
 <text text-anchor="middle" x="47.5" y="-541" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemLink</text>
 <polyline fill="none" stroke="black" points="0,-534 95,-534 "/>
@@ -1026,8 +1092,8 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node38&#45;&gt;Node1 -->
-<g id="edge50" class="edge"><title>Node38&#45;&gt;Node1</title>
+<!-- Node41&#45;&gt;Node1 -->
+<g id="edge55" class="edge"><title>Node41&#45;&gt;Node1</title>
 <path fill="none" stroke="#404040" d="M47.9847,-495.932C49.1472,-456.199 53.0956,-380.718 66.5,-318 71.6449,-293.928 79.1755,-268.514 87.0874,-244.974"/>
 <polygon fill="none" stroke="#404040" points="87.1012,-244.933 85.2634,-237.96 90.9932,-233.582 92.831,-240.555 87.1012,-244.933"/>
 <text text-anchor="middle" x="88" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00"> +gui_link</text>

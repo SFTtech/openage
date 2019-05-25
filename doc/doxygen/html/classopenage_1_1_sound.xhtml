@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::Sound Class Reference</title>
+<title>openage: openage::Sound Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,9 +98,11 @@ $(document).ready(function(){initNavTree('classopenage_1_1_sound.xhtml','');});
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::Sound:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::Sound:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_sound__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -158,6 +161,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__spec_8h_source.xhtml#l00045">45</a> of file <a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        :</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">sound_items</a>{<a class="code" href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">sound_items</a>},</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classopenage_1_1_sound.xhtml#ab5fb74b970363e956f0aaa2386d8c568">game_spec</a>{spec} {}</div><div class="ttc" id="classopenage_1_1_sound_xhtml_a13e53bc9f4210f9fc020661994a72f47"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">openage::Sound::sound_items</a></div><div class="ttdeci">std::vector&lt; int &gt; sound_items</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8h_source.xhtml#l00052">game_spec.h:52</a></div></div>
+<div class="ttc" id="classopenage_1_1_sound_xhtml_ab5fb74b970363e956f0aaa2386d8c568"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#ab5fb74b970363e956f0aaa2386d8c568">openage::Sound::game_spec</a></div><div class="ttdeci">GameSpec * game_spec</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8h_source.xhtml#l00054">game_spec.h:54</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__spec_8h_source.xhtml#l00052">sound_items</a>.</p>
 
 </div>
 </div>
@@ -178,6 +185,38 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__spec_8cpp_source.xhtml#l00431">431</a> of file <a class="el" href="game__spec_8cpp_source.xhtml">game_spec.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                       {</div><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">sound_items</a>.size() &lt;= 0) {</div><div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    }</div><div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;</div><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordtype">int</span> rand = <a class="code" href="namespaceopenage_1_1rng.xhtml#a398e36f7942536cd461ca212dfee6cb5">rng::random_range</a>(0, this-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">sound_items</a>.size());</div><div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordtype">int</span> sndid = this-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">sound_items</a>.at(rand);</div><div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div><div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="comment">// TODO: buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng</span></div><div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        audio::AudioManager &amp;am = this-&gt;<a class="code" href="classopenage_1_1_sound.xhtml#ab5fb74b970363e956f0aaa2386d8c568">game_spec</a>-&gt;<a class="code" href="classopenage_1_1_game_spec.xhtml#a3a21c92c49ec4d0add95e8aacd83ebe0">get_asset_manager</a>()-&gt;<a class="code" href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d">get_engine</a>()-&gt;<a class="code" href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd">get_audio_manager</a>();</div><div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;</div><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="keywordflow">if</span> (not am.is_available()) {</div><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <span class="keywordflow">return</span>;</div><div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        }</div><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div><div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        audio::Sound sound = am.<a class="code" href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4fcd0ea2e63f5035df72bdceb0ac22f2">get_sound</a>(<a class="code" href="namespaceopenage_1_1audio.xhtml#ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13">audio::category_t::GAME</a>, sndid);</div><div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        sound.<a class="code" href="classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4">play</a>();</div><div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    }</div><div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordflow">catch</span> (audio::Error &amp;e) {</div><div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">warn</a>) &lt;&lt; <span class="stringliteral">&quot;cannot play: &quot;</span> &lt;&lt; e);</div><div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    }</div><div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_audio_manager_xhtml_a4fcd0ea2e63f5035df72bdceb0ac22f2"><div class="ttname"><a href="classopenage_1_1audio_1_1_audio_manager.xhtml#a4fcd0ea2e63f5035df72bdceb0ac22f2">openage::audio::AudioManager::get_sound</a></div><div class="ttdeci">Sound get_sound(category_t category, int id)</div><div class="ttdef"><b>Definition:</b> <a href="audio__manager_8cpp_source.xhtml#l00142">audio_manager.cpp:142</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="classopenage_1_1_asset_manager_xhtml_a50069b4b3cd4b5fcf8fb5f4b480c721d"><div class="ttname"><a href="classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d">openage::AssetManager::get_engine</a></div><div class="ttdeci">Engine * get_engine() const</div><div class="ttdef"><b>Definition:</b> <a href="assetmanager_8cpp_source.xhtml#l00053">assetmanager.cpp:53</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_sound_xhtml_a7e4854e55386f2498a332eed36e374d4"><div class="ttname"><a href="classopenage_1_1audio_1_1_sound.xhtml#a7e4854e55386f2498a332eed36e374d4">openage::audio::Sound::play</a></div><div class="ttdeci">void play()</div><div class="ttdef"><b>Definition:</b> <a href="sound_8cpp_source.xhtml#l00051">sound.cpp:51</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1audio_xhtml_ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13"><div class="ttname"><a href="namespaceopenage_1_1audio.xhtml#ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13">openage::audio::category_t::GAME</a></div></div>
+<div class="ttc" id="classopenage_1_1_sound_xhtml_a13e53bc9f4210f9fc020661994a72f47"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#a13e53bc9f4210f9fc020661994a72f47">openage::Sound::sound_items</a></div><div class="ttdeci">std::vector&lt; int &gt; sound_items</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8h_source.xhtml#l00052">game_spec.h:52</a></div></div>
+<div class="ttc" id="classopenage_1_1_game_spec_xhtml_a3a21c92c49ec4d0add95e8aacd83ebe0"><div class="ttname"><a href="classopenage_1_1_game_spec.xhtml#a3a21c92c49ec4d0add95e8aacd83ebe0">openage::GameSpec::get_asset_manager</a></div><div class="ttdeci">AssetManager * get_asset_manager() const</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8cpp_source.xhtml#l00187">game_spec.cpp:187</a></div></div>
+<div class="ttc" id="classopenage_1_1_sound_xhtml_ab5fb74b970363e956f0aaa2386d8c568"><div class="ttname"><a href="classopenage_1_1_sound.xhtml#ab5fb74b970363e956f0aaa2386d8c568">openage::Sound::game_spec</a></div><div class="ttdeci">GameSpec * game_spec</div><div class="ttdef"><b>Definition:</b> <a href="game__spec_8h_source.xhtml#l00054">game_spec.h:54</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a7ca418e1b1fcf210ff91cd25dc8e6a36"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36">openage::log.warn</a></div><div class="ttdeci">def warn(msg, *args, **kwargs)</div><div class="ttdoc">warning message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00119">__init__.py:119</a></div></div>
+<div class="ttc" id="classopenage_1_1_engine_xhtml_ad925a7a6258d1382edd274ee4ceafdbd"><div class="ttname"><a href="classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd">openage::Engine::get_audio_manager</a></div><div class="ttdeci">audio::AudioManager &amp; get_audio_manager()</div><div class="ttdef"><b>Definition:</b> <a href="engine_8cpp_source.xhtml#l00495">engine.cpp:495</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1rng_xhtml_a398e36f7942536cd461ca212dfee6cb5"><div class="ttname"><a href="namespaceopenage_1_1rng.xhtml#a398e36f7942536cd461ca212dfee6cb5">openage::rng::random_range</a></div><div class="ttdeci">uint64_t random_range(uint64_t lower, uint64_t upper)</div><div class="ttdef"><b>Definition:</b> <a href="global__rng_8cpp_source.xhtml#l00023">global_rng.cpp:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1audio.xhtml#ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13">openage::audio::GAME</a>, <a class="el" href="game__spec_8h_source.xhtml#l00054">game_spec</a>, <a class="el" href="game__spec_8cpp_source.xhtml#l00187">openage::GameSpec::get_asset_manager()</a>, <a class="el" href="engine_8cpp_source.xhtml#l00495">openage::Engine::get_audio_manager()</a>, <a class="el" href="assetmanager_8cpp_source.xhtml#l00053">openage::AssetManager::get_engine()</a>, <a class="el" href="audio__manager_8cpp_source.xhtml#l00142">openage::audio::AudioManager::get_sound()</a>, <a class="el" href="audio__manager_8cpp_source.xhtml#l00225">openage::audio::AudioManager::is_available()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="sound_8cpp_source.xhtml#l00051">openage::audio::Sound::play()</a>, <a class="el" href="global__rng_8cpp_source.xhtml#l00023">openage::rng::random_range()</a>, <a class="el" href="game__spec_8h_source.xhtml#l00052">sound_items</a>, and <a class="el" href="log_2____init_____8py_source.xhtml#l00119">openage::log::warn()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit__texture_8cpp_source.xhtml#l00076">openage::UnitTexture::draw()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00079">openage::MoveAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00140">openage::GarrisonAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00161">openage::UngarrisonAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00184">openage::TrainAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00207">openage::ResearchAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00230">openage::BuildAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00257">openage::GatherAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00292">openage::AttackAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00320">openage::RepairAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00348">openage::HealAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00368">openage::PatrolAbility::invoke()</a>, <a class="el" href="ability_8cpp_source.xhtml#l00393">openage::ConvertAbility::invoke()</a>, <a class="el" href="producer_8cpp_source.xhtml#l00294">openage::ObjectProducer::place()</a>, and <a class="el" href="producer_8cpp_source.xhtml#l00682">openage::BuildingProducer::place()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_sound_a526acd600cd69f6f421a253fc169398b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_sound_a526acd600cd69f6f421a253fc169398b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -196,6 +235,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__spec_8h_source.xhtml#l00054">54</a> of file <a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__spec_8cpp_source.xhtml#l00431">play()</a>.</p>
+
 </div>
 </div>
 <a id="a13e53bc9f4210f9fc020661994a72f47"></a>
@@ -212,11 +253,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__spec_8h_source.xhtml#l00052">52</a> of file <a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__spec_8cpp_source.xhtml#l00431">play()</a>, and <a class="el" href="game__spec_8h_source.xhtml#l00045">Sound()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gamestate/<a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a></li>
-<li>libopenage/gamestate/<a class="el" href="game__spec_8cpp_source.xhtml">game_spec.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/<a class="el" href="game__spec_8h_source.xhtml">game_spec.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/<a class="el" href="game__spec_8cpp_source.xhtml">game_spec.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -4,14 +4,14 @@
     <compoundname>gui_item_link.h</compoundname>
     <includes local="no">type_traits</includes>
     <includes refid="qtsdl__checked__static__cast_8h" local="yes">qtsdl_checked_static_cast.h</includes>
-    <includedby refid="gui__item_8h" local="yes">libopenage/gui/guisys/link/gui_item.h</includedby>
-    <includedby refid="gui__singleton__item_8h" local="yes">libopenage/gui/guisys/link/gui_singleton_item.h</includedby>
+    <includedby refid="gui__item_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h</includedby>
+    <includedby refid="gui__singleton__item_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_singleton_item.h</includedby>
     <incdepgraph>
       <node id="12705">
         <label>cassert</label>
       </node>
       <node id="12702">
-        <label>libopenage/gui/guisys/link/gui_item_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h</label>
         <link refid="gui__item__link_8h"/>
         <childnode refid="12703" relation="include">
         </childnode>
@@ -30,11 +30,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12722">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="12721">
-        <label>libopenage/gui/game_spec_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.h</label>
         <link refid="game__spec__link_8h"/>
         <childnode refid="12718" relation="include">
         </childnode>
@@ -44,15 +44,15 @@
         </childnode>
       </node>
       <node id="12727">
-        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp</label>
         <link refid="gui__list__model_8cpp"/>
       </node>
       <node id="12730">
-        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
         <link refid="gui__live__reloader_8cpp"/>
       </node>
       <node id="12708">
-        <label>libopenage/gui/game_control_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.h</label>
         <link refid="game__control__link_8h"/>
         <childnode refid="12709" relation="include">
         </childnode>
@@ -66,17 +66,17 @@
         </childnode>
       </node>
       <node id="12734">
-        <label>libopenage/gui/guisys/link/gui_singleton_item.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_singleton_item.cpp</label>
         <link refid="gui__singleton__item_8cpp"/>
       </node>
       <node id="12709">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="12710" relation="include">
         </childnode>
       </node>
       <node id="12707">
-        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h</label>
         <link refid="gui__item_8h"/>
         <childnode refid="12708" relation="include">
         </childnode>
@@ -98,15 +98,15 @@
         </childnode>
       </node>
       <node id="12711">
-        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp</label>
         <link refid="category__contents__list__model_8cpp"/>
       </node>
       <node id="12710">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
       <node id="12706">
-        <label>libopenage/gui/guisys/link/gui_item_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h</label>
         <link refid="gui__item__link_8h"/>
         <childnode refid="12707" relation="include">
         </childnode>
@@ -114,23 +114,23 @@
         </childnode>
       </node>
       <node id="12728">
-        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.cpp</label>
         <link refid="gui__item_8cpp"/>
       </node>
       <node id="12725">
-        <label>libopenage/gui/generator_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</label>
         <link refid="generator__link_8cpp"/>
       </node>
       <node id="12718">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="12733">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="12717">
-        <label>libopenage/gui/game_main_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h</label>
         <link refid="game__main__link_8h"/>
         <childnode refid="12712" relation="include">
         </childnode>
@@ -142,11 +142,11 @@
         </childnode>
       </node>
       <node id="12715">
-        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.cpp</label>
         <link refid="assetmanager__link_8cpp"/>
       </node>
       <node id="12714">
-        <label>libopenage/gui/assetmanager_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/assetmanager_link.h</label>
         <link refid="assetmanager__link_8h"/>
         <childnode refid="12715" relation="include">
         </childnode>
@@ -154,7 +154,7 @@
         </childnode>
       </node>
       <node id="12724">
-        <label>libopenage/gui/generator_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h</label>
         <link refid="generator__link_8h"/>
         <childnode refid="12718" relation="include">
         </childnode>
@@ -164,13 +164,13 @@
         </childnode>
       </node>
       <node id="12726">
-        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h</label>
         <link refid="gui__item__list__model_8h"/>
         <childnode refid="12724" relation="include">
         </childnode>
       </node>
       <node id="12732">
-        <label>libopenage/gui/engine_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h</label>
         <link refid="engine__link_8h"/>
         <childnode refid="12715" relation="include">
         </childnode>
@@ -182,15 +182,15 @@
         </childnode>
       </node>
       <node id="12712">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="12729">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="12723">
-        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h</label>
         <link refid="gui__list__model_8h"/>
         <childnode refid="12724" relation="include">
         </childnode>
@@ -200,23 +200,23 @@
         </childnode>
       </node>
       <node id="12719">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="12720">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
       <node id="12713">
-        <label>libopenage/gui/resources_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/resources_list_model.cpp</label>
         <link refid="resources__list__model_8cpp"/>
       </node>
       <node id="12716">
-        <label>libopenage/gui/game_spec_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</label>
         <link refid="game__spec__link_8cpp"/>
       </node>
       <node id="12731">
-        <label>libopenage/gui/guisys/link/gui_singleton_item.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_singleton_item.h</label>
         <link refid="gui__singleton__item_8h"/>
         <childnode refid="12732" relation="include">
         </childnode>
@@ -327,6 +327,6 @@
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
 <codeline lineno="121"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/gui_item_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_link.h"/>
   </compounddef>
 </doxygen>

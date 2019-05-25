@@ -22,7 +22,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="94" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1a480596ddb84d5de0cf5efd05a8ada773" compoundref="constinit__vector_8h" startline="81" endline="83">openage::util::ConstInitVector&lt; T &gt;::operator[]</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" compoundref="constinit__vector_8h" startline="50" endline="74">openage::util::ConstInitVector&lt; T &gt;::push_back</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" compoundref="constinit__vector_8h" startline="29" endline="38">openage::util::ConstInitVector&lt; T &gt;::~ConstInitVector</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -35,7 +51,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="95" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" compoundref="constinit__vector_8h" startline="50" endline="74">openage::util::ConstInitVector&lt; T &gt;::push_back</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" compoundref="constinit__vector_8h" startline="29" endline="38">openage::util::ConstInitVector&lt; T &gt;::~ConstInitVector</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -48,7 +66,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="96" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" compoundref="constinit__vector_8h" startline="50" endline="74">openage::util::ConstInitVector&lt; T &gt;::push_back</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" compoundref="constinit__vector_8h" startline="89" endline="91">openage::util::ConstInitVector&lt; T &gt;::size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" compoundref="constinit__vector_8h" startline="29" endline="38">openage::util::ConstInitVector&lt; T &gt;::~ConstInitVector</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="26" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="26" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="26" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -76,7 +97,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="29" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="29" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="29" bodyend="38"/>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" compoundref="constinit__vector_8h" startline="95">openage::util::ConstInitVector&lt; T &gt;::capacity</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" compoundref="constinit__vector_8h" startline="96">openage::util::ConstInitVector&lt; T &gt;::count</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1a4a0d1bb5f02c9e63a0c8917853033d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -94,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="44" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="44" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1a967da963686387641fa058dc9e0c2794" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -111,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="45" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="45" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1a7932239e906a33dd0ec0c6368d988595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector</ref> &amp;</type>
@@ -128,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="46" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="46" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1ad3c5be8b9bdb320d1cdc65f675e46fa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector</ref> &amp;</type>
@@ -145,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="47" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="47" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -162,7 +186,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="50" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="50" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="50" bodyend="74"/>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" compoundref="constinit__vector_8h" startline="95">openage::util::ConstInitVector&lt; T &gt;::capacity</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" compoundref="constinit__vector_8h" startline="96">openage::util::ConstInitVector&lt; T &gt;::count</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a3359212608be8fda4cff896436a66165" compoundref="constinit__vector_8cpp" startline="55" endline="80">openage::util::tests::constinit_vector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1a480596ddb84d5de0cf5efd05a8ada773" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const T &amp;</type>
@@ -180,7 +209,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="81" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="81" bodyend="83"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="81" bodyend="83"/>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -194,7 +224,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.h" line="89" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="89" bodyend="91"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="89" bodyend="91"/>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" compoundref="constinit__vector_8h" startline="96">openage::util::ConstInitVector&lt; T &gt;::count</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a3359212608be8fda4cff896436a66165" compoundref="constinit__vector_8cpp" startline="55" endline="80">openage::util::tests::constinit_vector</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -204,12 +236,12 @@
 <para>Use this class if and only if you need that functionality (that should be pretty uncommon; there generally are better ways of guaranteeing dynamic initialization order, such as static function variables). </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="871">
+      <node id="5684">
         <label>openage::util::ConstInitVector&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_const_init_vector"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/constinit_vector.h" line="24" column="1" bodyfile="libopenage/util/constinit_vector.h" bodystart="24" bodyend="97"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.h" bodystart="24" bodyend="97"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" prot="private" virt="non-virtual"><scope>openage::util::ConstInitVector</scope><name>capacity</name></member>
       <member refid="classopenage_1_1util_1_1_const_init_vector_1aa937103ff0cf9cfcfdc40c5b588f520a" prot="public" virt="non-virtual"><scope>openage::util::ConstInitVector</scope><name>ConstInitVector</name></member>

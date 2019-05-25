@@ -315,7 +315,7 @@
         </childnode>
       </node>
       <node id="16204">
-        <label>libopenage/job/job_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_manager.cpp</label>
         <link refid="job__manager_8cpp"/>
         <childnode refid="16205" relation="include">
         </childnode>
@@ -505,6 +505,6 @@
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::job</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/job/job_manager.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_manager.cpp"/>
   </compounddef>
 </doxygen>

@@ -15,7 +15,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="71" column="1" bodyfile="libopenage/unit/action.h" bodystart="71" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_interval_timer_1a3b8556bdc5e8f4c6e00a1d614f6b949b" compoundref="unit_2action_8h" startline="65" endline="65">get_interval</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1adf00dc6610faafd2bd5ce329fcb71868" compoundref="unit_2action_8cpp" startline="53" endline="55">get_progress</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1a7dca00ce42fb959b4301bf181e52cce1" compoundref="unit_2action_8cpp" startline="19" endline="22">IntervalTimer</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1abaf69917928c58c16504879c285ee792" compoundref="unit_2action_8h" startline="67" endline="67">set_interval</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" compoundref="unit_2action_8cpp" startline="36" endline="47">update</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_interval_timer_1aa6bc2e84f7dd42a603beac62f2bcb26d" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -28,7 +33,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="73" column="1" bodyfile="libopenage/unit/action.h" bodystart="73" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" compoundref="unit_2action_8cpp" startline="61" endline="63">finished</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" compoundref="unit_2action_8cpp" startline="36" endline="47">update</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -41,7 +48,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="75" column="1" bodyfile="libopenage/unit/action.h" bodystart="75" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="75" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_interval_timer_1adf00dc6610faafd2bd5ce329fcb71868" compoundref="unit_2action_8cpp" startline="53" endline="55">get_progress</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1a14bce56d6b2492831cd28e6f327a641e" compoundref="unit_2action_8cpp" startline="49" endline="51">get_time_left</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1a0b8e2a356a40d6fcb2f3b2e0410a675b" compoundref="unit_2action_8cpp" startline="32" endline="34">skip_to_trigger</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" compoundref="unit_2action_8cpp" startline="36" endline="47">update</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -54,7 +65,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="77" column="1" bodyfile="libopenage/unit/action.h" bodystart="77" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" compoundref="unit_2action_8cpp" startline="61" endline="63">finished</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1ae1578e17277895943be475c83027af81" compoundref="unit_2action_8h" startline="63" endline="63">get_triggers</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1a4612f17977fc6e73da3f46c478568da8" compoundref="unit_2action_8cpp" startline="57" endline="59">has_triggers</referencedby>
+        <referencedby refid="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" compoundref="unit_2action_8cpp" startline="36" endline="47">update</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +89,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="31" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="19" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="19" bodyend="22"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a90b5060c84e4c8f25a389ec67b8470b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -96,7 +112,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="37" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="24" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="24" bodyend="30"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a0b8e2a356a40d6fcb2f3b2e0410a675b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -109,7 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="39" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" compoundref="unit_2action_8h" startline="75">time_left</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -126,7 +144,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="41" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="36" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="36" bodyend="47"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
+        <references refid="classopenage_1_1_interval_timer_1aa6bc2e84f7dd42a603beac62f2bcb26d" compoundref="unit_2action_8h" startline="73">max_triggers</references>
+        <references refid="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" compoundref="unit_2action_8h" startline="75">time_left</references>
+        <references refid="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" compoundref="unit_2action_8h" startline="77">triggers</references>
+        <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>
+        <referencedby refid="classopenage_1_1_research_action_1a79f88ea810c2112e5f79a4749c3ef872" compoundref="unit_2action_8cpp" startline="865" endline="871">openage::ResearchAction::update</referencedby>
+        <referencedby refid="classopenage_1_1_repair_action_1ae093970227ea03a75f1ee278770640f0" compoundref="unit_2action_8cpp" startline="991" endline="1018">openage::RepairAction::update_in_range</referencedby>
+        <referencedby refid="classopenage_1_1_attack_action_1af3e4ae03273bd3d6ea4b5a196ce6351c" compoundref="unit_2action_8cpp" startline="1201" endline="1208">openage::AttackAction::update_in_range</referencedby>
+        <referencedby refid="classopenage_1_1_heal_action_1a95b9324fe05d86e7528f3a5334b6fc7c" compoundref="unit_2action_8cpp" startline="1261" endline="1268">openage::HealAction::update_in_range</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a14bce56d6b2492831cd28e6f327a641e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned int</type>
@@ -140,7 +167,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="46" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="49" bodyend="51"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="49" bodyend="51"/>
+        <references refid="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" compoundref="unit_2action_8h" startline="75">time_left</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1adf00dc6610faafd2bd5ce329fcb71868" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -153,7 +181,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="48" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="53" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="53" bodyend="55"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
+        <references refid="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" compoundref="unit_2action_8h" startline="75">time_left</references>
+        <referencedby refid="classopenage_1_1_train_action_1ad9617d1b26b7956446fd9c2fe6ae9652" compoundref="unit_2action_8h" startline="457" endline="457">openage::TrainAction::get_progress</referencedby>
+        <referencedby refid="classopenage_1_1_research_action_1a862314be700562eb73c6346011fd7f9a" compoundref="unit_2action_8h" startline="482" endline="482">openage::ResearchAction::get_progress</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a4612f17977fc6e73da3f46c478568da8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -167,7 +199,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="53" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="57" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="57" bodyend="59"/>
+        <references refid="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" compoundref="unit_2action_8h" startline="77">triggers</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -181,7 +214,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="58" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="61" bodyend="63"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp" bodystart="61" bodyend="63"/>
+        <references refid="classopenage_1_1_interval_timer_1aa6bc2e84f7dd42a603beac62f2bcb26d" compoundref="unit_2action_8h" startline="73">max_triggers</references>
+        <references refid="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" compoundref="unit_2action_8h" startline="77">triggers</references>
+        <referencedby refid="classopenage_1_1_train_action_1af5515a9c445b00f4dd69348e7177c94c" compoundref="unit_2action_8cpp" startline="808" endline="848">openage::TrainAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1ae1578e17277895943be475c83027af81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -195,7 +231,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="63" column="1" bodyfile="libopenage/unit/action.h" bodystart="63" bodyend="63"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="63" bodyend="63"/>
+        <references refid="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" compoundref="unit_2action_8h" startline="77">triggers</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1a3b8556bdc5e8f4c6e00a1d614f6b949b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned int</type>
@@ -208,7 +245,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="65" column="1" bodyfile="libopenage/unit/action.h" bodystart="65" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="65" bodyend="65"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
+        <referencedby refid="classopenage_1_1_attack_action_1af3e4ae03273bd3d6ea4b5a196ce6351c" compoundref="unit_2action_8cpp" startline="1201" endline="1208">openage::AttackAction::update_in_range</referencedby>
+        <referencedby refid="classopenage_1_1_heal_action_1a95b9324fe05d86e7528f3a5334b6fc7c" compoundref="unit_2action_8cpp" startline="1261" endline="1268">openage::HealAction::update_in_range</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_interval_timer_1abaf69917928c58c16504879c285ee792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -225,7 +265,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/action.h" line="67" column="1" bodyfile="libopenage/unit/action.h" bodystart="67" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="67" bodyend="67"/>
+        <references refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" compoundref="unit_2action_8h" startline="71">interval</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -234,12 +275,12 @@
 <para>A interval triggering timer used in actions. TODO find a better name for triggers </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3018">
+      <node id="3871">
         <label>openage::IntervalTimer</label>
         <link refid="classopenage_1_1_interval_timer"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/action.h" line="25" column="1" bodyfile="libopenage/unit/action.h" bodystart="25" bodyend="79"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h" bodystart="25" bodyend="79"/>
     <listofallmembers>
       <member refid="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>finished</name></member>
       <member refid="classopenage_1_1_interval_timer_1a3b8556bdc5e8f4c6e00a1d614f6b949b" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>get_interval</name></member>

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_ccad08bb708da2762bd629c3fb99a53c" kind="dir">
-    <compoundname>libopenage/curve</compoundname>
-    <innerdir refid="dir_e278ddfe79368c60cdfafbb290b31a25">libopenage/curve/tests</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve</compoundname>
+    <innerdir refid="dir_e278ddfe79368c60cdfafbb290b31a25">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests</innerdir>
     <innerfile refid="continuous_8cpp">continuous.cpp</innerfile>
     <innerfile refid="continuous_8h">continuous.h</innerfile>
     <innerfile refid="curve_8cpp">curve.cpp</innerfile>
@@ -27,6 +27,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/curve/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/"/>
   </compounddef>
 </doxygen>

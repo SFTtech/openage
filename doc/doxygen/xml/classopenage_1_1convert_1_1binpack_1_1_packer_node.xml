@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1binpack_1_1_packer_node" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::binpack::PackerNode</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a78d885f56a2895f94d637f99dbb8ed51" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="133" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a7bd07d34739429f4763c0e5546a0bbf0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a2351e3691a81197bb2f4b80742810f77" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="135" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1af97af777b0d63dbf040b5cfc94581645" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="136" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a881c0aca0e458fcc6401e373f34ce81c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::used</definition>
+        <argsstring></argsstring>
+        <name>used</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1ae6bd0e145f2aef5a847c67f182526bd9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::down</definition>
+        <argsstring></argsstring>
+        <name>down</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a6c55bfd60db3b2651e3a9a30bf42944f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.PackerNode::right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_node_1ad9d0c357ad726b1a8b245dce7eb9c0a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.PackerNode.__init__</definition>
+        <argsstring>(self, x, y, width, height)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a78d885f56a2895f94d637f99dbb8ed51" kindref="member">x</ref></type>
+          <defname>x</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a7bd07d34739429f4763c0e5546a0bbf0" kindref="member">y</ref></type>
+          <defname>y</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a2351e3691a81197bb2f4b80742810f77" kindref="member">width</ref></type>
+          <defname>width</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1af97af777b0d63dbf040b5cfc94581645" kindref="member">height</ref></type>
+          <defname>height</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="132" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A node in a binary packing tree. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="915">
+        <label>openage.convert.binpack.PackerNode</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer_node"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="130" bodyend="143"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1ad9d0c357ad726b1a8b245dce7eb9c0a3" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1ae6bd0e145f2aef5a847c67f182526bd9" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>down</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1af97af777b0d63dbf040b5cfc94581645" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a6c55bfd60db3b2651e3a9a30bf42944f" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>right</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a881c0aca0e458fcc6401e373f34ce81c" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>used</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a2351e3691a81197bb2f4b80742810f77" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>width</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a78d885f56a2895f94d637f99dbb8ed51" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>x</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a7bd07d34739429f4763c0e5546a0bbf0" prot="public" virt="non-virtual"><scope>openage::convert::binpack::PackerNode</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

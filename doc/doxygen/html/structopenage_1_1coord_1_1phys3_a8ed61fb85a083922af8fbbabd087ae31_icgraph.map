@@ -1,0 +1,27 @@
+<map id="openage::coord::phys3::to_tile3" name="openage::coord::phys3::to_tile3">
+<area shape="rect" id="node1" title=" " alt="" coords="1071,165,1225,207"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_square_object.xhtml#a0deacb1dd962cd1729e6765e8dea01de" title=" " alt="" coords="858,27,1017,68"/>
+<area shape="rect" id="node3" href="$namespaceopenage.xhtml#a8d7d58d26d71e7447de628441782a751" title=" " alt="" coords="858,93,1017,119"/>
+<area shape="rect" id="node5" href="$namespaceopenage.xhtml#abf30260a65f6b06163a5dad881836523" title=" " alt="" coords="872,143,1003,170"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_radial_object.xhtml#a92c40d889a2877bc6b8aba7523ab7dfe" title=" " alt="" coords="861,195,1014,236"/>
+<area shape="rect" id="node10" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="860,260,1015,301"/>
+<area shape="rect" id="node25" href="$classopenage_1_1_projectile_action.xhtml#a5be4d6d237bbb52a036d368af97956b6" title=" " alt="" coords="852,325,1023,367"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_build_action.xhtml#a9f64ee829cfb671065dcfc7c876c346e" title=" " alt="" coords="643,5,789,47"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_gather_action.xhtml#a578fcecec436b05efb5059bbb35837fe" title=" " alt="" coords="639,71,793,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_gather_action.xhtml#ab76d756df9989badfa91e272f85dee9c" title=" " alt="" coords="631,136,801,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_gather_action.xhtml#ae49e08d7e107415297f6c58320570858" title=" " alt="" coords="420,64,575,105"/>
+<area shape="rect" id="node11" href="$namespaceopenage.xhtml#a231617a72c3e699877ee6eacb76850de" title=" " alt="" coords="633,202,799,229"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_terrain.xhtml#aa4d53dc392a6fd6da85ba49625d70478" title=" " alt="" coords="645,260,787,301"/>
+<area shape="rect" id="node18" href="$classopenage_1_1_action_mode.xhtml#a43f98279255b857ee8fa9943117271e8" title=" " alt="" coords="5,301,160,343"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_editor_mode.xhtml#a1430647b024d4c9e7021756a6fa9700d" title=" " alt="" coords="215,377,360,419"/>
+<area shape="rect" id="node21" href="$structopenage_1_1coord_1_1camgame.xhtml#a323da0da625f2160938843dc8a248e6c" title=" " alt="" coords="628,435,804,476"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_square_object.xhtml#a4c05c7ac16bbdbb7b4d74be4e9e113be" title=" " alt="" coords="418,129,577,171"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="423,195,571,236"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="208,129,367,171"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_unit_selection.xhtml#ae351437c3a9fafc071961486f7eef075" title=" " alt="" coords="419,260,575,301"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_unit_selection.xhtml#a6b4a0b9275c8ebf623d50a7509487623" title=" " alt="" coords="209,260,365,301"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_editor_mode.xhtml#a29b4d3a8c32153ccdc566f60fcdacf7f" title=" " alt="" coords="5,396,160,437"/>
+<area shape="rect" id="node22" href="$structopenage_1_1coord_1_1viewport.xhtml#ad78ba1b1f9b64caa7b6eda78aaf7513a" title=" " alt="" coords="415,443,580,484"/>
+<area shape="rect" id="node23" href="$classopenage_1_1_editor_mode.xhtml#a1f47d053e9c09aaf9bc6ec3a85f4a49e" title=" " alt="" coords="215,443,360,484"/>
+<area shape="rect" id="node24" href="$classopenage_1_1_terrain.xhtml#ae8e6bd38cdaa86dcff31251de1c6deec" title=" " alt="" coords="211,509,364,535"/>
+</map>

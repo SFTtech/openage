@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::wrapper::DirectoryCreator</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper" prot="public" virt="non-virtual">openage.util.fslike.wrapper.Wrapper</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a28d7d207993972a0b61bf2abef7c8417" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.DirectoryCreator.open_w</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a75141da804e0ac95bb70d574979f82e5">open_w</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedWriter for the given file (&quot;mode &apos;wb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="214" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="214" bodyend="217"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" compoundref="directory_8cpp" startline="148" endline="182">openage::util::fslike::Directory::mkdirs</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" compoundref="fslike_2python_8cpp" startline="33" endline="35">openage::util::fslike::Python::mkdirs</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a0b9f9850507320cc4d3dc4393a4e7195">openage::util::fslike::FSLike::mkdirs</references>
+        <references refid="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" compoundref="util_2path_8cpp" startline="107" endline="109">openage::util::Path::mkdirs</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a18afc9774e36ec8e17d67eaad2f7aa69" compoundref="fslike_2abstract_8py" startline="127" endline="128">openage.util.fslike.abstract.FSLikeObject.mkdirs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a8511f0b4b5b6c3f2ef28dcb8bfae48a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.DirectoryCreator.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a3227b756d3668ec163a3046b308de7cd">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="218" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="218" bodyend="220"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5901">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5902" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5899">
+        <label>openage.util.fslike.wrapper.DirectoryCreator</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator"/>
+        <childnode refid="5900" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5902">
+        <label>ABC</label>
+      </node>
+      <node id="5900">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="5901" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5905">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5906" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5903">
+        <label>openage.util.fslike.wrapper.DirectoryCreator</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator"/>
+        <childnode refid="5904" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5906">
+        <label>ABC</label>
+      </node>
+      <node id="5904">
+        <label>openage.util.fslike.wrapper.Wrapper</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper"/>
+        <childnode refid="5905" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="212" bodyend="220"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a95de6bb33e05e34b9a99a4cec095ecf2" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a8511f0b4b5b6c3f2ef28dcb8bfae48a1" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a33ac3283d4e712321c7064151e463dbe" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>contextguard</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a6cb541f9e3b16e1121023e1c8ba1fe70" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a5d5ad2caf60e7d0d1d4f004361b8b27a" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a4847df269f05999c19305c75f1b0cbbb" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a69626d7f9fdfa523e90f09ead94c6004" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1af4d52a12bfe44416e5a491f3158d6bcc" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ae1dd319535e8b540ca76b6cde0c8d494" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>obj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2facaf5a386ee358c3aed7fa8ed27ad3" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a28d7d207993972a0b61bf2abef7c8417" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ad2fbaf45c3f546ae53762f47e91d7963" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a7a07a464cb187d6d519b96c61ca80787" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac8d7bfaa5c37257fddef3bb6eb460934" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a895ed091db87da418bc712b490f8e0d7" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a62e9309bfb38c4db466bc5154aa73343" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a0293a14d06d046394c85f945d2f4b1f9" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac64adc508709d6b51552c65b09f6a9cb" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::DirectoryCreator</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

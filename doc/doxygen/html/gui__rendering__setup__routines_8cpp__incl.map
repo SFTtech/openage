@@ -1,13 +1,13 @@
-<map id="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" name="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="173,5,320,61"/>
-<area shape="rect" id="node2" href="$gui__rendering__setup__routines_8h.xhtml" title=" " alt="" coords="5,109,144,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="169,117,234,143"/>
-<area shape="rect" id="node6" title=" " alt="" coords="259,117,328,143"/>
-<area shape="rect" id="node7" href="$gui__ctx__setup_8h.xhtml" title=" " alt="" coords="352,117,467,143"/>
-<area shape="rect" id="node3" title=" " alt="" coords="155,199,224,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="38,199,111,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="258,199,337,225"/>
-<area shape="rect" id="node9" title=" " alt="" coords="361,199,439,225"/>
-<area shape="rect" id="node10" title=" " alt="" coords="463,199,588,225"/>
-<area shape="rect" id="node11" title=" " alt="" coords="612,199,743,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="142,5,351,76"/>
+<area shape="rect" id="node2" href="$gui__rendering__setup__routines_8h.xhtml" title=" " alt="" coords="5,124,144,165"/>
+<area shape="rect" id="node5" title=" " alt="" coords="169,131,234,158"/>
+<area shape="rect" id="node6" title=" " alt="" coords="259,131,328,158"/>
+<area shape="rect" id="node7" href="$gui__ctx__setup_8h.xhtml" title=" " alt="" coords="352,131,467,158"/>
+<area shape="rect" id="node3" title=" " alt="" coords="155,213,224,240"/>
+<area shape="rect" id="node4" title=" " alt="" coords="38,213,111,240"/>
+<area shape="rect" id="node8" title=" " alt="" coords="258,213,337,240"/>
+<area shape="rect" id="node9" title=" " alt="" coords="361,213,439,240"/>
+<area shape="rect" id="node10" title=" " alt="" coords="463,213,588,240"/>
+<area shape="rect" id="node11" title=" " alt="" coords="612,213,743,240"/>
 </map>

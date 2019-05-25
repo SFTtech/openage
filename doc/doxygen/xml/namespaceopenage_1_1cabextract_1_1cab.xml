@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cabextract_1_1cab" kind="namespace" language="Python">
+    <compoundname>openage::cabextract::cab</compoundname>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file" prot="public">openage::cabextract::cab::CABFile</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream" prot="public">openage::cabextract::cab::CABFolderStream</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_data" prot="public">openage::cabextract::cab::CFData</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file" prot="public">openage::cabextract::cab::CFFile</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes" prot="public">openage::cabextract::cab::CFFileAttributes</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_folder" prot="public">openage::cabextract::cab::CFFolder</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header" prot="public">openage::cabextract::cab::CFHeader</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags" prot="public">openage::cabextract::cab::CFHeaderFlags</innerclass>
+    <innerclass refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_reserved_fields" prot="public">openage::cabextract::cab::CFHeaderReservedFields</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

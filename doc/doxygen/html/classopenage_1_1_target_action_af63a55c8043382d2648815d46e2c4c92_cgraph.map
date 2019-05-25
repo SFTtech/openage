@@ -1,0 +1,16 @@
+<map id="openage::TargetAction::update" name="openage::TargetAction::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,160,157,201"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a3ab11130480adc3cfe156af7cfb7a58d" title=" " alt="" coords="212,61,351,103"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit_action.xhtml#a16660bd780984c6f11ba30e0c7f634ad" title=" " alt="" coords="212,127,351,168"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_target_action.xhtml#a2ad32343ebe475f1f3c1477f659314db" title=" " alt="" coords="205,192,357,233"/>
+<area shape="rect" id="node14" href="$classopenage_1_1_target_action.xhtml#a0689cb2d55ae8ad82e704c79b4596bca" title=" " alt="" coords="205,257,357,299"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="433,5,564,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="435,71,563,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="648,13,812,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="649,78,811,105"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_unit.xhtml#ac5dcdf3180dcd4bdce67b765d8ef2134" title=" " alt="" coords="410,137,587,163"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_command.xhtml#afbc0a60d82b9608e375c38c5e3fdf758" title=" " alt="" coords="640,137,820,163"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac" title=" " alt="" coords="650,189,810,231"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_unit_reference.xhtml#a6303ff3facc18acf10aa335ee9d318d8" title=" " alt="" coords="405,247,592,274"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="675,255,785,282"/>
+</map>

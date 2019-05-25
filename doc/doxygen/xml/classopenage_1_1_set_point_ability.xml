@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="142" column="1" bodyfile="libopenage/unit/ability.cpp" bodystart="104" bodyend="104"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_set_point_ability_1a8cf2b7e3efb74b99e1dd1b899301bc89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">ability_type</ref></type>
@@ -30,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="144" column="1" bodyfile="libopenage/unit/ability.h" bodystart="144" bodyend="146"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="144" bodyend="146"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a6babe83086924834de593c74b8cddc2f">openage::set_point</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_set_point_ability_1a859198e39e096b2a72b5be664166f29e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -53,7 +54,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="148" column="1" bodyfile="libopenage/unit/ability.cpp" bodystart="106" bodyend="109"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="148" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp" bodystart="106" bodyend="109"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::building</references>
+        <references refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" compoundref="unit_8cpp" startline="258" endline="260">openage::Unit::has_attribute</references>
+        <references refid="classopenage_1_1_command_1a26adf9105a1e53a39212e11914466353" compoundref="command_8cpp" startline="54" endline="56">openage::Command::has_position</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_set_point_ability_1ab72dac58be9e34d88bd517b3dbd864dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -81,7 +85,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.h" line="150" column="1" bodyfile="libopenage/unit/ability.cpp" bodystart="111" bodyend="114"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp" bodystart="111" bodyend="114"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6">openage::building</references>
+        <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
+        <references refid="classopenage_1_1_command_1add4c17e9b3367bccb83b83d09469cc86" compoundref="command_8cpp" startline="70" endline="72">openage::Command::position</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -90,30 +97,30 @@
 <para>sets the gather point on buildings </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4139">
+      <node id="5041">
         <label>openage::SetPointAbility</label>
         <link refid="classopenage_1_1_set_point_ability"/>
-        <childnode refid="4140" relation="public-inheritance">
+        <childnode refid="5042" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4140">
+      <node id="5042">
         <label>openage::UnitAbility</label>
         <link refid="classopenage_1_1_unit_ability"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4141">
+      <node id="5043">
         <label>openage::SetPointAbility</label>
         <link refid="classopenage_1_1_set_point_ability"/>
-        <childnode refid="4142" relation="public-inheritance">
+        <childnode refid="5044" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4142">
+      <node id="5044">
         <label>openage::UnitAbility</label>
         <link refid="classopenage_1_1_unit_ability"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/ability.h" line="140" column="1" bodyfile="libopenage/unit/ability.h" bodystart="140" bodyend="151"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.h" bodystart="140" bodyend="151"/>
     <listofallmembers>
       <member refid="classopenage_1_1_set_point_ability_1a859198e39e096b2a72b5be664166f29e" prot="public" virt="virtual"><scope>openage::SetPointAbility</scope><name>can_invoke</name></member>
       <member refid="classopenage_1_1_unit_ability_1a462d1ece390e2508e943f2d1a1f8d64e" prot="public" virt="non-virtual"><scope>openage::SetPointAbility</scope><name>has_hitpoints</name></member>

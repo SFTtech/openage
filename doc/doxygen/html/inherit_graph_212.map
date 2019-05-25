@@ -1,3 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1_texture.xhtml" title=" " alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node1" href="$classopenage_1_1_hud_handler.xhtml" title=" " alt="" coords="31,56,177,83"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_console.xhtml" title=" " alt="" coords="258,107,437,133"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_control.xhtml" title=" " alt="" coords="270,5,425,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_g_u_i.xhtml" title=" " alt="" coords="284,157,411,184"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit_selection.xhtml" title=" " alt="" coords="269,56,425,83"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_input_handler.xhtml" title=" " alt="" coords="29,157,179,184"/>
+<area shape="rect" id="node7" href="$classopenage_1_1input_1_1_input_manager.xhtml" title=" " alt="" coords="251,208,444,235"/>
+<area shape="rect" id="node8" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,309,203,336"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_engine.xhtml" title=" " alt="" coords="288,259,407,285"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_game_main.xhtml" title=" " alt="" coords="276,309,419,336"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_render_options.xhtml" title=" " alt="" coords="265,360,430,387"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_resize_handler.xhtml" title=" " alt="" coords="23,208,185,235"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_tick_handler.xhtml" title=" " alt="" coords="31,107,177,133"/>
 </map>

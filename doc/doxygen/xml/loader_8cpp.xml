@@ -120,7 +120,7 @@
         </childnode>
       </node>
       <node id="23662">
-        <label>libopenage/renderer/vulkan/loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp</label>
         <link refid="loader_8cpp"/>
         <childnode refid="23663" relation="include">
         </childnode>
@@ -240,7 +240,7 @@
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDebugReportCallbackEXT*<sp/>pCallback</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" kindref="member">inited</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>request<sp/>function<sp/>from<sp/>Vulkan<sp/>extension<sp/>loader<sp/>before<sp/>initializing<sp/>it.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>request<sp/>function<sp/>from<sp/>Vulkan<sp/>extension<sp/>loader<sp/>before<sp/>initializing<sp/>it.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" kindref="member">pCreateDebugReportCallbackEXT</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
@@ -256,7 +256,7 @@
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VkAllocationCallbacks*<sp/>pAllocator</highlight></codeline>
 <codeline lineno="46"><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" kindref="member">inited</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>request<sp/>function<sp/>from<sp/>Vulkan<sp/>extension<sp/>loader<sp/>before<sp/>initializing<sp/>it.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>request<sp/>function<sp/>from<sp/>Vulkan<sp/>extension<sp/>loader<sp/>before<sp/>initializing<sp/>it.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" kindref="member">pDestroyDebugReportCallbackEXT</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
@@ -267,6 +267,6 @@
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/loader.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/loader.cpp"/>
   </compounddef>
 </doxygen>

@@ -132,7 +132,7 @@
         </childnode>
       </node>
       <node id="21247">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
         <childnode refid="21248" relation="include">
         </childnode>
@@ -624,15 +624,15 @@
 <codeline lineno="17" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" kindref="member">GlRenderer::GlRenderer</ref>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref><sp/>*ctx)</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>gl_context(ctx)</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>OpenGL<sp/>renderer&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>OpenGL<sp/>renderer&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" refkind="member"><highlight class="normal">std::unique_ptr&lt;Texture2d&gt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" kindref="member">GlRenderer::add_texture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref>&amp;<sp/>data)<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;GlTexture2d&gt;(data);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad1f48c54d3dd40436e868607fb7283f7" refkind="member"><highlight class="normal">std::unique_ptr&lt;Texture2d&gt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" kindref="member">GlRenderer::add_texture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref>&amp;<sp/>info)<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;GlTexture2d&gt;(info);</highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad1f48c54d3dd40436e868607fb7283f7" refkind="member"><highlight class="normal">std::unique_ptr&lt;Texture2d&gt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" kindref="member">GlRenderer::add_texture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref>&amp;<sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;GlTexture2d&gt;(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a5b9cd6e0294a1f4ea8e309badff46167" refkind="member"><highlight class="normal">std::unique_ptr&lt;ShaderProgram&gt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a5b9cd6e0294a1f4ea8e309badff46167" kindref="member">GlRenderer::add_shader</ref>(std::vector&lt;resources::ShaderSource&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>srcs)<sp/>{</highlight></codeline>
@@ -709,6 +709,6 @@
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/renderer.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp"/>
   </compounddef>
 </doxygen>

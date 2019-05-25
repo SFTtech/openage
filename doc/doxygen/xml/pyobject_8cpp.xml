@@ -147,7 +147,7 @@
         </childnode>
       </node>
       <node id="19912">
-        <label>libopenage/pyinterface/pyobject.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp</label>
         <link refid="pyobject_8cpp"/>
         <childnode refid="19913" relation="include">
         </childnode>
@@ -396,16 +396,16 @@
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147" refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" kindref="member">PyObjectRef::call_impl</ref>(std::vector&lt;PyObjectRef&gt;<sp/>&amp;args)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>result;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args.empty())<sp/>{</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a63957aa9bf0c9835493a16ff6b543418" kindref="member">py_call0</ref>.call(&amp;result,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a63957aa9bf0c9835493a16ff6b543418" kindref="member">py_call0</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>);</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;PyObject<sp/>*&gt;<sp/>py_args{args.size()};</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(args.begin(),<sp/>args.end(),<sp/>py_args.begin(),</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::mem_fn(&amp;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">PyObjectRef::get_ref</ref>));</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a8aa560a3c62f746b36bb98e84bf1934c" kindref="member">py_calln</ref>.call(&amp;result,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>py_args);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a8aa560a3c62f746b36bb98e84bf1934c" kindref="member">py_calln</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>py_args);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="158"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
@@ -415,9 +415,9 @@
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="166" refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" kindref="member">PyObjectRef::getattr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>result;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3cf5d417d7e8b932bd437163d1aa86d5" kindref="member">py_getattr</ref>.call(&amp;result,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>name);</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3cf5d417d7e8b932bd437163d1aa86d5" kindref="member">py_getattr</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>name);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
@@ -457,9 +457,9 @@
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208" refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" kindref="member">PyObjectRef::eval</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;expression)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>result;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a63919a2347c856579a992996c9c26d8a" kindref="member">py_eval</ref>.call(this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>&amp;result,<sp/>expression);</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="212"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal"></highlight></codeline>
@@ -469,9 +469,9 @@
 <codeline lineno="218"><highlight class="normal"></highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
 <codeline lineno="220" refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">PyObjectRef::get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>result;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a26ef6836021b3dc7fe2215b7fab97e9d" kindref="member">py_get</ref>.call(this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>&amp;result,<sp/>key.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">get_ref</ref>());</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="224"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
@@ -493,9 +493,9 @@
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
 <codeline lineno="244" refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" kindref="member">PyObjectRef::type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/>result;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1ad33eb5ce8235933127b3d7ed2f519ce7" kindref="member">py_type</ref>.call(this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" kindref="member">ref</ref>,<sp/>&amp;result);</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="248"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"></highlight></codeline>
 <codeline lineno="250"><highlight class="normal"></highlight></codeline>
@@ -566,57 +566,57 @@
 <codeline lineno="315"><highlight class="normal"></highlight></codeline>
 <codeline lineno="316"><highlight class="normal"></highlight></codeline>
 <codeline lineno="317" refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">builtin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)<sp/>{</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a5e10f968ee5f44d64489eff5791a2b93" kindref="member">py_builtin</ref>.call(&amp;result,<sp/>name);</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a5e10f968ee5f44d64489eff5791a2b93" kindref="member">py_builtin</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>name);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="321"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"></highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight></codeline>
 <codeline lineno="324" refid="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)<sp/>{</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a019072ec9dc9b26854864b8d639545f6" kindref="member">py_import</ref>.call(&amp;result,<sp/>name);</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a019072ec9dc9b26854864b8d639545f6" kindref="member">py_import</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>name);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="328"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"></highlight></codeline>
 <codeline lineno="331" refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">str</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1acf94e2be78e15a835eef9c8346c16f14" kindref="member">py_createstr</ref>.call(&amp;result,<sp/>value);</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1acf94e2be78e15a835eef9c8346c16f14" kindref="member">py_createstr</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>value);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="335"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"></highlight></codeline>
 <codeline lineno="338" refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" kindref="member">bytes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1abc65c10c883e9b61d86316e6e0d71318" kindref="member">py_createbytes</ref>.call(&amp;result,<sp/>value);</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1abc65c10c883e9b61d86316e6e0d71318" kindref="member">py_createbytes</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>value);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="342"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"></highlight></codeline>
 <codeline lineno="344"><highlight class="normal"></highlight></codeline>
 <codeline lineno="345" refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" kindref="member">integer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1afdb5d7025dc1ed4583dfdf6d14ecbb2c" kindref="member">py_createint</ref>.call(&amp;result,<sp/>value);</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1afdb5d7025dc1ed4583dfdf6d14ecbb2c" kindref="member">py_createint</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>,<sp/>value);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="349"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"></highlight></codeline>
 <codeline lineno="351"><highlight class="normal"></highlight></codeline>
 <codeline lineno="352" refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1afd53890300da035a2fa6cf0366f3f755" kindref="member">py_createdict</ref>.call(&amp;result);</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1afd53890300da035a2fa6cf0366f3f755" kindref="member">py_createdict</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="356"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"></highlight></codeline>
 <codeline lineno="358"><highlight class="normal"></highlight></codeline>
 <codeline lineno="359" refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/>result;</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3b908fa94eb8b9a2209772fb111795a9" kindref="member">py_createlist</ref>.call(&amp;result);</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">Obj</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3b908fa94eb8b9a2209772fb111795a9" kindref="member">py_createlist</ref>.call(&amp;<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="363"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"></highlight></codeline>
 <codeline lineno="365"><highlight class="normal"></highlight></codeline>
 <codeline lineno="366"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>py</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="367"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/pyobject.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject.cpp"/>
   </compounddef>
 </doxygen>

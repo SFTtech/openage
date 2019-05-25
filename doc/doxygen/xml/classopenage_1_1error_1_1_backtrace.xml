@@ -47,7 +47,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/backtrace.h" line="69" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" line="69" column="1"/>
+        <referencedby refid="namespaceopenage_1_1error_1ab21567da92b6f9b758b2c16ca9c2186b" compoundref="backtrace_8cpp" startline="49" endline="58">openage::error::operator&lt;&lt;</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -64,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/backtrace.h" line="80" column="1" bodyfile="libopenage/error/backtrace.h" bodystart="80" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_backtrace_1abb0eb435370a245c3d5b73f083852d93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -77,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/backtrace.h" line="82" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" line="82" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -88,30 +89,30 @@
 <para>cppclass <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref>: void get_symbols(Func1[void, backtrace_symbol *] callback, cppbool reversed) except + </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="552">
+      <node id="2144">
         <label>openage::pyinterface::PyExceptionBacktrace</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace"/>
-        <childnode refid="550" relation="public-inheritance">
+        <childnode refid="2142" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="550">
+      <node id="2142">
         <label>openage::error::Backtrace</label>
         <link refid="classopenage_1_1error_1_1_backtrace"/>
       </node>
-      <node id="551">
+      <node id="2143">
         <label>openage::error::StackAnalyzer</label>
         <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
-        <childnode refid="550" relation="public-inheritance">
+        <childnode refid="2142" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="553">
+      <node id="2145">
         <label>openage::error::Backtrace</label>
         <link refid="classopenage_1_1error_1_1_backtrace"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/error/backtrace.h" line="55" column="1" bodyfile="libopenage/error/backtrace.h" bodystart="55" bodyend="83"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/backtrace.h" bodystart="55" bodyend="83"/>
     <listofallmembers>
       <member refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" prot="public" virt="pure-virtual"><scope>openage::error::Backtrace</scope><name>get_symbols</name></member>
       <member refid="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42" prot="public" virt="virtual"><scope>openage::error::Backtrace</scope><name>trim_to_current_stack_frame</name></member>

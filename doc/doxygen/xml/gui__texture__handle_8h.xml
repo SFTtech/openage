@@ -3,14 +3,14 @@
   <compounddef id="gui__texture__handle_8h" kind="file" language="C++">
     <compoundname>gui_texture_handle.h</compoundname>
     <includes local="no">QSize</includes>
-    <includedby refid="gui__filled__texture__handles_8cpp" local="yes">libopenage/gui/integration/private/gui_filled_texture_handles.cpp</includedby>
-    <includedby refid="gui__game__spec__image__provider__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</includedby>
-    <includedby refid="gui__texture__factory_8h" local="yes">libopenage/gui/integration/private/gui_texture_factory.h</includedby>
-    <includedby refid="gui__texture_8h" local="yes">libopenage/gui/integration/private/gui_texture.h</includedby>
-    <includedby refid="gui__texture__handle_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_handle.cpp</includedby>
+    <includedby refid="gui__filled__texture__handles_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</includedby>
+    <includedby refid="gui__texture__factory_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h</includedby>
+    <includedby refid="gui__texture_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.h</includedby>
+    <includedby refid="gui__texture__handle_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp</includedby>
     <incdepgraph>
       <node id="14717">
-        <label>libopenage/gui/integration/private/gui_texture_handle.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h</label>
         <link refid="gui__texture__handle_8h"/>
         <childnode refid="14718" relation="include">
         </childnode>
@@ -21,19 +21,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14724">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="14732">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__impl_8cpp"/>
       </node>
       <node id="14720">
-        <label>libopenage/gui/integration/private/gui_filled_texture_handles.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp</label>
         <link refid="gui__filled__texture__handles_8cpp"/>
       </node>
       <node id="14719">
-        <label>libopenage/gui/integration/private/gui_texture_handle.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h</label>
         <link refid="gui__texture__handle_8h"/>
         <childnode refid="14720" relation="include">
         </childnode>
@@ -47,23 +47,23 @@
         </childnode>
       </node>
       <node id="14731">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
       </node>
       <node id="14725">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="14733">
-        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</label>
         <link refid="gui__texture__factory_8cpp"/>
       </node>
       <node id="14728">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
       </node>
       <node id="14726">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8h"/>
         <childnode refid="14727" relation="include">
         </childnode>
@@ -73,19 +73,19 @@
         </childnode>
       </node>
       <node id="14736">
-        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.cpp</label>
         <link refid="gui__texture_8cpp"/>
       </node>
       <node id="14729">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
       </node>
       <node id="14737">
-        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp</label>
         <link refid="gui__texture__handle_8cpp"/>
       </node>
       <node id="14730">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8h"/>
         <childnode refid="14731" relation="include">
         </childnode>
@@ -95,7 +95,7 @@
         </childnode>
       </node>
       <node id="14735">
-        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture.h</label>
         <link refid="gui__texture_8h"/>
         <childnode refid="14736" relation="include">
         </childnode>
@@ -103,7 +103,7 @@
         </childnode>
       </node>
       <node id="14721">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</label>
         <link refid="gui__game__spec__image__provider__impl_8h"/>
         <childnode refid="14722" relation="include">
         </childnode>
@@ -117,7 +117,7 @@
         </childnode>
       </node>
       <node id="14722">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8h"/>
         <childnode refid="14723" relation="include">
         </childnode>
@@ -127,7 +127,7 @@
         </childnode>
       </node>
       <node id="14734">
-        <label>libopenage/gui/integration/private/gui_texture_factory.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h</label>
         <link refid="gui__texture__factory_8h"/>
         <childnode refid="14729" relation="include">
         </childnode>
@@ -137,7 +137,7 @@
         </childnode>
       </node>
       <node id="14727">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8h"/>
         <childnode refid="14728" relation="include">
         </childnode>
@@ -147,7 +147,7 @@
         </childnode>
       </node>
       <node id="14723">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -194,6 +194,6 @@
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_texture_handle.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h"/>
   </compounddef>
 </doxygen>

@@ -20,7 +20,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/game_creator.h" line="53" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.h" line="53" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_game_creator_1a53b9b1bf02d38220a2d8b40e84ec50f5" compoundref="game__creator_8cpp" startline="38" endline="86">openage::gui::GameCreator::activate</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,28 +29,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1812">
+      <node id="3242">
         <label>QObject</label>
       </node>
-      <node id="1811">
+      <node id="3241">
         <label>openage::gui::GameCreatorSignals</label>
         <link refid="classopenage_1_1gui_1_1_game_creator_signals"/>
-        <childnode refid="1812" relation="public-inheritance">
+        <childnode refid="3242" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1814">
+      <node id="3244">
         <label>QObject</label>
       </node>
-      <node id="1813">
+      <node id="3243">
         <label>openage::gui::GameCreatorSignals</label>
         <link refid="classopenage_1_1gui_1_1_game_creator_signals"/>
-        <childnode refid="1814" relation="public-inheritance">
+        <childnode refid="3244" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/game_creator.h" line="48" column="1" bodyfile="libopenage/gui/game_creator.h" bodystart="48" bodyend="54"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.h" bodystart="48" bodyend="54"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_game_creator_signals_1a7e7bae7a48ba179abb59ee099224e80f" prot="public" virt="non-virtual"><scope>openage::gui::GameCreatorSignals</scope><name>error_message</name></member>
     </listofallmembers>

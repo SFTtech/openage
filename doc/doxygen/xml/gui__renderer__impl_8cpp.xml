@@ -34,7 +34,7 @@
         <label>QtGlobal</label>
       </node>
       <node id="13160">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
         <link refid="gui__renderer__impl_8cpp"/>
         <childnode refid="13161" relation="include">
         </childnode>
@@ -389,6 +389,6 @@
 <codeline lineno="258"><highlight class="normal"></highlight></codeline>
 <codeline lineno="259"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_renderer_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp"/>
   </compounddef>
 </doxygen>

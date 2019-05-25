@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1texture_1_1_texture" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::texture::Texture</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1adf56e2cd42793343f132b0a61f9e4083" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.texture.Texture::image_format</definition>
+        <argsstring></argsstring>
+        <name>image_format</name>
+        <initializer>=  &quot;png&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1a021b8f95f6686610b466c2d6d62957c1" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.texture.Texture::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;subtexture&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1a95e981b97a1beadfb9a324e86154aae0" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.texture.Texture::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;texture&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1adf99e0c65d8a38600e7b399b56bf80f7" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.texture.Texture::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  (
+        &quot;one sprite, as part of a texture atlas.\n&quot;
+        &quot;\n&quot;
+        &quot;this struct stores information about positions and sizes\n&quot;
+        &quot;of sprites included in the &apos;big texture&apos;.&quot;
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1abf8056972fb044a7de52a7ae9b8af348" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.texture.Texture::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  (
+        (True, &quot;x&quot;, &quot;int32_t&quot;),
+        (True, &quot;y&quot;, &quot;int32_t&quot;),
+        (True, &quot;w&quot;, &quot;int32_t&quot;),
+        (True, &quot;h&quot;, &quot;int32_t&quot;),
+        (True, &quot;cx&quot;, &quot;int32_t&quot;),
+        (True, &quot;cy&quot;, &quot;int32_t&quot;),
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1texture_1_1_texture_1a7e11e21e83e79958c73b81760679ee28" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int openage.convert.texture.Texture::player_id</definition>
+        <argsstring></argsstring>
+        <name>player_id</name>
+        <initializer>=  1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="104" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1af19cc8a0f6ae7ae951086a2125419e5d" compoundref="texture_8py" startline="145" endline="160">openage.convert.texture.Texture._slp_to_subtextures</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.Texture.__init__</definition>
+        <argsstring>(self, input_data, palette=None, custom_cutter=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>input_data</type>
+          <defname>input_data</defname>
+        </param>
+        <param>
+          <type>palette</type>
+          <defname>palette</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>custom_cutter</type>
+          <defname>custom_cutter</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="106" bodyend="139"/>
+        <references refid="classopenage_1_1convert_1_1texture_1_1_texture_1af19cc8a0f6ae7ae951086a2125419e5d" compoundref="texture_8py" startline="145" endline="160">openage.convert.texture.Texture._slp_to_subtextures</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a73fc5b1eadf9233faa6c4f28afddd611" compoundref="blendomatic_8py" startline="32">openage.convert.blendomatic.BlendingTile.height</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" compoundref="font_8h" startline="32">openage::renderer::Glyph::height</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" compoundref="binpack_8py" startline="43" endline="46">openage.convert.binpack.Packer.height</references>
+        <references refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a6ab8f5bb89e0e62dced8b1a4643743db" compoundref="texture_8py" startline="64">openage.convert.texture.TextureImage.height</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" compoundref="glyph__atlas_8h" startline="96">openage::renderer::GlyphAtlas::Shelf::height</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" compoundref="glyph__atlas_8h" startline="111">openage::renderer::GlyphAtlas::height</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a8d22836ef3fc3a4cd2175f2ec2d1ac5b" compoundref="binpack_8py" startline="125" endline="128">openage.convert.binpack.BestPacker.height</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1af97af777b0d63dbf040b5cfc94581645" compoundref="binpack_8py" startline="136">openage.convert.binpack.PackerNode.height</references>
+        <references refid="namespaceopenage_1_1convert_1_1texture_1af986c2ec331f19840f4dc1eee51a5961" compoundref="texture_8py" startline="210" endline="260">openage.convert.texture.merge_frames</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+        <references refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" compoundref="log_2____init_____8py" startline="104" endline="107">openage::log.spam</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" compoundref="font_8h" startline="31">openage::renderer::Glyph::width</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_1a190a2f0d5558608a6bf52e3b2248f013" compoundref="blendomatic_8py" startline="31">openage.convert.blendomatic.BlendingTile.width</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" compoundref="binpack_8py" startline="39" endline="41">openage.convert.binpack.Packer.width</references>
+        <references refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1aebbd31c5d38e7183cfc4b73384f4b97e" compoundref="texture_8py" startline="63">openage.convert.texture.TextureImage.width</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab5df8c46bb90b4586a92b0e4e7286280" compoundref="glyph__atlas_8h" startline="95">openage::renderer::GlyphAtlas::Shelf::width</references>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" compoundref="glyph__atlas_8h" startline="108">openage::renderer::GlyphAtlas::width</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a194969df56d5b8df837c4aae21ab9060" compoundref="binpack_8py" startline="122" endline="124">openage.convert.binpack.BestPacker.width</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_node_1a2351e3691a81197bb2f4b80742810f77" compoundref="binpack_8py" startline="135">openage.convert.binpack.PackerNode.width</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.Texture.save</definition>
+        <argsstring>(self, targetdir, filename, meta_formats=None)</argsstring>
+        <name>save</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>targetdir</type>
+          <defname>targetdir</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <param>
+          <type>meta_formats</type>
+          <defname>meta_formats</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="166" bodyend="192"/>
+        <references refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a4534f9e425147656e2c2669608b29127" compoundref="stringresource_8py" startline="35" endline="49">openage.convert.stringresource.StringResource.dump</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" compoundref="exportable_8py" startline="57" endline="176">openage.convert.dataformat.exportable.Exportable.dump</references>
+        <references refid="classopenage_1_1curve_1_1_queue_1a87ae2b6fac07d94e9936b70d664cf35c" compoundref="queue_8h" startline="61" endline="65">openage::curve::Queue&lt; T &gt;::dump</references>
+        <references refid="classopenage_1_1curve_1_1_unordered_map_1a9089d0b0dc73dde810956090bb44d52f" compoundref="map_8h" startline="78" endline="82">openage::curve::UnorderedMap&lt; key_t, val_t &gt;::dump</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" compoundref="colortable_8py" startline="149" endline="164">openage.convert.colortable.ColorTable.dump</references>
+        <references refid="classopenage_1_1curve_1_1_keyframe_container_1ad503e55c30411387171677294858ff6b" compoundref="keyframe__container_8h" startline="156" endline="160">openage::curve::KeyframeContainer&lt; T &gt;::dump</references>
+        <references refid="classopenage_1_1convert_1_1texture_1_1_texture_1aca0b77a05226fce8d2728f29c827754b" compoundref="texture_8py" startline="193" endline="197">openage.convert.texture.Texture.dump</references>
+        <references refid="classopenage_1_1convert_1_1blendomatic_1_1_blendomatic_1a259476ed46a4076dcd1aa3d82914d2f1" compoundref="blendomatic_8py" startline="255" endline="261">openage.convert.blendomatic.Blendomatic.dump</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1texture_1_1_texture_1aca0b77a05226fce8d2728f29c827754b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.Texture.dump</definition>
+        <argsstring>(self, filename)</argsstring>
+        <name>dump</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="193" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="193" bodyend="197"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1texture_1_1_texture_1a4255b4b36fcc40867791d1165ac0c54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.Texture.structs</definition>
+        <argsstring>(cls)</argsstring>
+        <name>structs</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="199" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="199" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1texture_1_1_texture_1af19cc8a0f6ae7ae951086a2125419e5d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.Texture._slp_to_subtextures</definition>
+        <argsstring>(self, frame, palette=None, custom_cutter=None)</argsstring>
+        <name>_slp_to_subtextures</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>frame</type>
+          <defname>frame</defname>
+        </param>
+        <param>
+          <type>palette</type>
+          <defname>palette</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>custom_cutter</type>
+          <defname>custom_cutter</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>convert slp to subtexture or subtextures, use a palette. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="145" bodyend="160"/>
+        <references refid="classopenage_1_1convert_1_1texture_1_1_texture_1a7e11e21e83e79958c73b81760679ee28" compoundref="texture_8py" startline="104">openage.convert.texture.Texture.player_id</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1611">
+        <label>exportable::Exportable</label>
+      </node>
+      <node id="1610">
+        <label>openage.convert.texture.Texture</label>
+        <link refid="classopenage_1_1convert_1_1texture_1_1_texture"/>
+        <childnode refid="1611" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1613">
+        <label>exportable::Exportable</label>
+      </node>
+      <node id="1612">
+        <label>openage.convert.texture.Texture</label>
+        <link refid="classopenage_1_1convert_1_1texture_1_1_texture"/>
+        <childnode refid="1613" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="82" bodyend="203"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1af19cc8a0f6ae7ae951086a2125419e5d" prot="private" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>_slp_to_subtextures</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1abf8056972fb044a7de52a7ae9b8af348" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1aca0b77a05226fce8d2728f29c827754b" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1adf56e2cd42793343f132b0a61f9e4083" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>image_format</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1a021b8f95f6686610b466c2d6d62957c1" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1a95e981b97a1beadfb9a324e86154aae0" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1a7e11e21e83e79958c73b81760679ee28" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>player_id</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>save</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1adf99e0c65d8a38600e7b399b56bf80f7" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1texture_1_1_texture_1a4255b4b36fcc40867791d1165ac0c54f" prot="public" virt="non-virtual"><scope>openage::convert::texture::Texture</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

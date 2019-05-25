@@ -16,7 +16,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="140" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="140" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="140" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad378865d7ad463f3ae1474277318c2c4" compoundref="mesh__data_8cpp" startline="102" endline="104">get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a924f3e7f0ede4d7b5536ea7dd3a2b31d" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::vector&lt; uint8_t &gt; &gt;</type>
@@ -30,7 +44,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="144" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="144" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ac24d7bb9216c3c440f0070417d36c1e5" compoundref="mesh__data_8cpp" startline="106" endline="108">get_ids</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1aa089b9853c9c8c81f43c5ba050bd93f1" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref> &gt;</type>
@@ -44,7 +59,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="150" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="150" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="150" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a55dee70e28a6ea0e4d613fc00dca2bd0" compoundref="mesh__data_8cpp" startline="110" endline="112">get_info</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" compoundref="mesh__data_8cpp" startline="123" endline="131">make_quad</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +80,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="117" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="88" bodyend="91"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="88" bodyend="91"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" compoundref="mesh__data_8cpp" startline="123" endline="131">make_quad</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a72cc8859a8d458fc64d462ac13225ab6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -85,7 +103,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="120" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="93" bodyend="95"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="93" bodyend="95"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a2f2b8619ac800c3e00ca3f4018f1de1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -111,7 +130,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="123" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="97" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="97" bodyend="100"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad378865d7ad463f3ae1474277318c2c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt; const  &amp;</type>
@@ -125,7 +145,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="126" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="102" bodyend="104"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="102" bodyend="104"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" compoundref="mesh__data_8h" startline="140">data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ac24d7bb9216c3c440f0070417d36c1e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::vector&lt; uint8_t &gt; &gt; const  &amp;</type>
@@ -139,7 +160,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="129" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="106" bodyend="108"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="129" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="106" bodyend="108"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a924f3e7f0ede4d7b5536ea7dd3a2b31d" compoundref="mesh__data_8h" startline="144">ids</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a55dee70e28a6ea0e4d613fc00dca2bd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref></type>
@@ -153,7 +175,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="132" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="110" bodyend="112"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="110" bodyend="112"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1aa089b9853c9c8c81f43c5ba050bd93f1" compoundref="mesh__data_8h" startline="150">info</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -169,7 +192,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="136" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="123" bodyend="131"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="123" bodyend="131"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50ca4cc854cc056515cc2befbc91f30d07b0">openage::renderer::resources::AOS</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1aa089b9853c9c8c81f43c5ba050bd93f1" compoundref="mesh__data_8h" startline="150">info</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a8d18f2be596595fed8762920ca9bd7ec" compoundref="mesh__data_8cpp" startline="88" endline="91">MeshData</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a735d6d55173355397ad37c31956361ee" compoundref="mesh__data_8cpp" startline="116">openage::renderer::resources::QUAD_DATA</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a708de017e3b83ccba21dfc9f6367d46f">openage::renderer::resources::TRIANGLE_STRIP</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df">openage::renderer::resources::V2F32</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" compoundref="renderer_2tests_8cpp" startline="33" endline="278">openage::renderer::tests::renderer_demo_0</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -177,12 +208,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3191">
+      <node id="4757">
         <label>openage::renderer::resources::MeshData</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/resources/mesh_data.h" line="114" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="114" bodyend="151"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="114" bodyend="151"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" prot="private" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>data</name></member>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad378865d7ad463f3ae1474277318c2c4" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>get_data</name></member>

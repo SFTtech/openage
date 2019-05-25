@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::pefile::PEDataDirectory</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ae5b05f87af8ebdc7747206ea7a631b79" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDataDirectory::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1a859edc9aadbe45734f69dacda2926e9c" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDataDirectory::rva</definition>
+        <argsstring></argsstring>
+        <name>rva</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="129" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PEDataDirectory::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1520">
+        <label>openage.convert.pefile.PEDataDirectory</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory"/>
+        <childnode refid="1521" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1524">
+        <label>type</label>
+      </node>
+      <node id="1523">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1524" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1521">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1522" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1523" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1522">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1525">
+        <label>openage.convert.pefile.PEDataDirectory</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory"/>
+        <childnode refid="1526" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1529">
+        <label>type</label>
+      </node>
+      <node id="1528">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1529" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1526">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1527" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1528" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1527">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="123" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ae5b05f87af8ebdc7747206ea7a631b79" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1a859edc9aadbe45734f69dacda2926e9c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>rva</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory_1ac57319a4a89a9d35b4007c37344193c7" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual" ambiguityscope="openage::util::struct::NamedStruct."><scope>openage::convert::pefile::PEDataDirectory</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PEDataDirectory</scope><name>unpack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

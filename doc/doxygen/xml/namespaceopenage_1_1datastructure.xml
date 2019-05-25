@@ -40,13 +40,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/datastructure/constexpr_map.h" line="226" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="226" bodyend="228"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" line="226" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/constexpr_map.h" bodystart="226" bodyend="228"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/datastructure/concurrent_queue.h" line="11" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/datastructure/concurrent_queue.h" line="11" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_bc0e863516a08e2e925b164a3c40830e" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus</compoundname>
+    <innerfile refid="convert_2opus_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="demo_8py">demo.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus/"/>
+  </compounddef>
+</doxygen>

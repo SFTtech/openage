@@ -1,0 +1,7 @@
+<map id="openage::coord::camgame::to_tile" name="openage::coord::camgame::to_tile">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,181,80"/>
+<area shape="rect" id="node2" href="$structopenage_1_1coord_1_1camgame.xhtml#a0b8e17b9f35af0cb50dbd56e8d6ff243" title=" " alt="" coords="229,5,405,47"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="240,71,395,112"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="453,37,608,79"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="459,103,602,144"/>
+</map>

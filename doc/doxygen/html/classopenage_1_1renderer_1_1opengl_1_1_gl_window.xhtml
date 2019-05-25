@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::opengl::GlWindow Class Reference</title>
+<title>openage: openage::renderer::opengl::GlWindow Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1opengl_1_1
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="opengl_2window_8h_source.xhtml">window.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::renderer::opengl::GlWindow:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window__inherit__graph.svg" width="218" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::renderer::opengl::GlWindow:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window__inherit__graph.svg" width="218" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::opengl::GlWindow:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window__coll__graph.svg" width="218" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::opengl::GlWindow:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window__coll__graph.svg" width="218" height="566"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -223,6 +226,26 @@ Additional Inherited Members</h2></td></tr>
 <p>Create a shiny window with the given title. </p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00016">16</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a604ae9d1732215d4cd2617778f516ac7">Window</a>(width, height)</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="namespaceopenage_1_1renderer.xhtml#a791eb93b7b9b7d62f339a9d3190d61b1">make_sdl_available</a>();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// We need HIGHDPI for eventual support of GUI scaling.</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// TODO HIGHDPI fails (requires newer SDL2?)</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a> = SDL_CreateWindow(</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        title,</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        SDL_WINDOWPOS_CENTERED,</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        SDL_WINDOWPOS_CENTERED,</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a>.first,</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this-&gt;size.second,</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        window_flags</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    );</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a> == <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Failed to create SDL window: &quot;</span> &lt;&lt; SDL_GetError()};</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">context</a> = opengl::GlContext(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a>);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#ad63c0200f828c7134ddc81ce711c171b">add_resize_callback</a>([] (<span class="keywordtype">size_t</span> w, <span class="keywordtype">size_t</span> h) { glViewport(0, 0, w, h); } );</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>) &lt;&lt; <span class="stringliteral">&quot;Created SDL window with OpenGL context.&quot;</span>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_aab2e3f73a07d214294a7b876127e1ae1"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">openage::renderer::opengl::GlWindow::context</a></div><div class="ttdeci">std::optional&lt; opengl::GlContext &gt; context</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00041">window.h:41</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_xhtml_a791eb93b7b9b7d62f339a9d3190d61b1"><div class="ttname"><a href="namespaceopenage_1_1renderer.xhtml#a791eb93b7b9b7d62f339a9d3190d61b1">openage::renderer::make_sdl_available</a></div><div class="ttdeci">void make_sdl_available()</div><div class="ttdef"><b>Definition:</b> <a href="sdl__global_8cpp_source.xhtml#l00056">sdl_global.cpp:56</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_af5a66173372ae66504a59fd2b8448cdb"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">openage::renderer::Window::size</a></div><div class="ttdeci">std::pair&lt; size_t, size_t &gt; size</div><div class="ttdoc">The current size of the framebuffer.</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00054">window.h:54</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a9f49ab8b2a5777ffba4792f80ee2b637"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">openage::renderer::opengl::GlWindow::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdoc">The SDL struct representing this window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00037">window.h:37</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a3f1815b698faf5786fc5e20bcac7704b"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">openage::log.info</a></div><div class="ttdeci">def info(msg, *args, **kwargs)</div><div class="ttdoc">info message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00114">__init__.py:114</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_ad63c0200f828c7134ddc81ce711c171b"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#ad63c0200f828c7134ddc81ce711c171b">openage::renderer::Window::add_resize_callback</a></div><div class="ttdeci">void add_resize_callback(const resize_cb_t &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="window_8cpp_source.xhtml#l00032">window.cpp:32</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a604ae9d1732215d4cd2617778f516ac7"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a604ae9d1732215d4cd2617778f516ac7">openage::renderer::Window::Window</a></div><div class="ttdeci">Window(size_t width, size_t height)</div><div class="ttdef"><b>Definition:</b> <a href="window_8cpp_source.xhtml#l00009">window.cpp:9</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8cpp_source.xhtml#l00032">openage::renderer::Window::add_resize_callback()</a>, <a class="el" href="opengl_2window_8h_source.xhtml#l00041">context</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00114">openage::log::info()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, <a class="el" href="sdl__global_8cpp_source.xhtml#l00056">openage::renderer::make_sdl_available()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="window_8h_source.xhtml#l00054">openage::renderer::Window::size</a>, and <a class="el" href="opengl_2window_8h_source.xhtml#l00037">window</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_a9ac3a40d0f546cf8026715d0f5a0f637_cgraph.svg" width="100%" height="556"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -242,6 +265,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00043">43</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    SDL_DestroyWindow(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a>);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a9f49ab8b2a5777ffba4792f80ee2b637"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">openage::renderer::opengl::GlWindow::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdoc">The SDL struct representing this window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00037">window.h:37</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="opengl_2window_8h_source.xhtml#l00037">window</a>.</p>
 
 </div>
 </div>
@@ -264,6 +290,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Return a pointer to this window's GL context. </p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00101">101</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                       {</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">context</a>.value();</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_aab2e3f73a07d214294a7b876127e1ae1"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">openage::renderer::opengl::GlWindow::context</a></div><div class="ttdeci">std::optional&lt; opengl::GlContext &gt; context</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00041">window.h:41</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="opengl_2window_8h_source.xhtml#l00041">context</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="opengl_2window_8cpp_source.xhtml#l00093">make_renderer()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_a7f074d1fa0eeebde4e417ee8d1154dee_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -284,6 +323,10 @@ Additional Inherited Members</h2></td></tr>
 <p>Make this window's context the current rendering context of the current thread. Only use this and most other GL functions on a dedicated window thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00097">97</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                    {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    SDL_GL_MakeCurrent(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a>, this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">context</a>-&gt;get_raw_context());</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_aab2e3f73a07d214294a7b876127e1ae1"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#aab2e3f73a07d214294a7b876127e1ae1">openage::renderer::opengl::GlWindow::context</a></div><div class="ttdeci">std::optional&lt; opengl::GlContext &gt; context</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00041">window.h:41</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a9f49ab8b2a5777ffba4792f80ee2b637"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">openage::renderer::opengl::GlWindow::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdoc">The SDL struct representing this window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00037">window.h:37</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="opengl_2window_8h_source.xhtml#l00041">context</a>, and <a class="el" href="opengl_2window_8h_source.xhtml#l00037">window</a>.</p>
 
 </div>
 </div>
@@ -315,6 +358,27 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#ab5a85c89ebe4c6f9426ca989bc8aa305">openage::renderer::Window</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00093">93</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;GlRenderer&gt;(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a7f074d1fa0eeebde4e417ee8d1154dee">get_context</a>());</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a7f074d1fa0eeebde4e417ee8d1154dee"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a7f074d1fa0eeebde4e417ee8d1154dee">openage::renderer::opengl::GlWindow::get_context</a></div><div class="ttdeci">opengl::GlContext * get_context()</div><div class="ttdoc">Return a pointer to this window's GL context.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8cpp_source.xhtml#l00101">window.cpp:101</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="opengl_2window_8cpp_source.xhtml#l00101">get_context()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_a45268949d2510860b3643bb7779f521b_cgraph.svg" width="379" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_a45268949d2510860b3643bb7779f521b_icgraph.svg" width="578" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -356,6 +420,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#af9c94c1eb6ec43c5891c210e0eff2a6c">openage::renderer::Window</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                   {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a>.first != width || this-&gt;size.second != height) {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        SDL_SetWindowSize(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a>, width, height);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a> = std::make_pair(width, height);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; cb : this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">on_resize</a>) {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        cb(width, height);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_af5a66173372ae66504a59fd2b8448cdb"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">openage::renderer::Window::size</a></div><div class="ttdeci">std::pair&lt; size_t, size_t &gt; size</div><div class="ttdoc">The current size of the framebuffer.</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00054">window.h:54</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a9f49ab8b2a5777ffba4792f80ee2b637"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">openage::renderer::opengl::GlWindow::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdoc">The SDL struct representing this window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00037">window.h:37</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a562d2533dabf72a06426c3c9d7cef261"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">openage::renderer::Window::on_resize</a></div><div class="ttdeci">std::vector&lt; resize_cb_t &gt; on_resize</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00059">window.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00059">openage::renderer::Window::on_resize</a>, <a class="el" href="window_8h_source.xhtml#l00054">openage::renderer::Window::size</a>, and <a class="el" href="opengl_2window_8h_source.xhtml#l00037">window</a>.</p>
 
 </div>
 </div>
@@ -386,6 +455,35 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1renderer_1_1_window.xhtml#a2a6722e3c0459b2caa86e8f819ff5e3f">openage::renderer::Window</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                      {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    SDL_Event event;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">while</span> (SDL_PollEvent(&amp;event) != 0) {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (event.type == SDL_WINDOWEVENT) {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (event.window.event == SDL_WINDOWEVENT_RESIZED) {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordtype">size_t</span> width = <span class="keyword">event</span>.window.data1;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keywordtype">size_t</span> height = <span class="keyword">event</span>.window.data2;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">dbg</a>) &lt;&lt; <span class="stringliteral">&quot;Window resized to: &quot;</span> &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot;x&quot;</span> &lt;&lt; height);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a> = std::make_pair(width, height);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; cb : this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">on_resize</a>) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    cb(width, height);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                }</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event.type == SDL_QUIT) {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a7fdf5fbab00699344b8ce451cc73e688">should_be_closed</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// TODO call on_destroy</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event.type == SDL_KEYUP) {</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> ev = *reinterpret_cast&lt;SDL_KeyboardEvent const*&gt;(&amp;event);</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; cb : this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#adc14f04028ef5322055dc37569a173f5">on_key</a>) {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                cb(ev);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="comment">// TODO handle keydown</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event.type == SDL_MOUSEBUTTONUP) {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> ev = *reinterpret_cast&lt;SDL_MouseButtonEvent const*&gt;(&amp;event);</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; cb : this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a13488daef83f3f84d9275dfb2aac7cfd">on_mouse_button</a>) {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                cb(ev);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="comment">// TODO handle mousedown</span></div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    SDL_GL_SwapWindow(this-&gt;<a class="code" href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">window</a>);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a13488daef83f3f84d9275dfb2aac7cfd"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a13488daef83f3f84d9275dfb2aac7cfd">openage::renderer::Window::on_mouse_button</a></div><div class="ttdeci">std::vector&lt; mouse_button_cb_t &gt; on_mouse_button</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00057">window.h:57</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_adc14f04028ef5322055dc37569a173f5"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#adc14f04028ef5322055dc37569a173f5">openage::renderer::Window::on_key</a></div><div class="ttdeci">std::vector&lt; key_cb_t &gt; on_key</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00056">window.h:56</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_aad3d76b2466dbc4f81552935f2d84faa"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa">openage::log.dbg</a></div><div class="ttdeci">def dbg(msg, *args, **kwargs)</div><div class="ttdoc">debug message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00109">__init__.py:109</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a7fdf5fbab00699344b8ce451cc73e688"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a7fdf5fbab00699344b8ce451cc73e688">openage::renderer::Window::should_be_closed</a></div><div class="ttdeci">bool should_be_closed</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00051">window.h:51</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_af5a66173372ae66504a59fd2b8448cdb"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">openage::renderer::Window::size</a></div><div class="ttdeci">std::pair&lt; size_t, size_t &gt; size</div><div class="ttdoc">The current size of the framebuffer.</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00054">window.h:54</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_xhtml_a9f49ab8b2a5777ffba4792f80ee2b637"><div class="ttname"><a href="classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a9f49ab8b2a5777ffba4792f80ee2b637">openage::renderer::opengl::GlWindow::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdoc">The SDL struct representing this window.</div><div class="ttdef"><b>Definition:</b> <a href="opengl_2window_8h_source.xhtml#l00037">window.h:37</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a562d2533dabf72a06426c3c9d7cef261"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">openage::renderer::Window::on_resize</a></div><div class="ttdeci">std::vector&lt; resize_cb_t &gt; on_resize</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00059">window.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00109">openage::log::dbg()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="window_8h_source.xhtml#l00056">openage::renderer::Window::on_key</a>, <a class="el" href="window_8h_source.xhtml#l00057">openage::renderer::Window::on_mouse_button</a>, <a class="el" href="window_8h_source.xhtml#l00059">openage::renderer::Window::on_resize</a>, <a class="el" href="window_8h_source.xhtml#l00051">openage::renderer::Window::should_be_closed</a>, <a class="el" href="window_8h_source.xhtml#l00054">openage::renderer::Window::size</a>, and <a class="el" href="opengl_2window_8h_source.xhtml#l00037">window</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_aae47c67c2194f86ad609762a371eef87_cgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1opengl_1_1_gl_window_aae47c67c2194f86ad609762a371eef87_icgraph.svg" width="586" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -413,6 +511,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8h_source.xhtml#l00041">41</a> of file <a class="el" href="opengl_2window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="opengl_2window_8cpp_source.xhtml#l00101">get_context()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00016">GlWindow()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00097">make_context_current()</a>.</p>
+
 </div>
 </div>
 <a id="a9f49ab8b2a5777ffba4792f80ee2b637"></a>
@@ -439,11 +539,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="opengl_2window_8h_source.xhtml#l00037">37</a> of file <a class="el" href="opengl_2window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="opengl_2window_8cpp_source.xhtml#l00016">GlWindow()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00097">make_context_current()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00047">set_size()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">update()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00043">~GlWindow()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/renderer/opengl/<a class="el" href="opengl_2window_8h_source.xhtml">window.h</a></li>
-<li>libopenage/renderer/opengl/<a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/<a class="el" href="opengl_2window_8h_source.xhtml">window.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/<a class="el" href="opengl_2window_8cpp_source.xhtml">window.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

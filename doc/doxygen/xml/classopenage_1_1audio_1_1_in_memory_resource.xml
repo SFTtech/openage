@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="22" column="1" bodyfile="libopenage/audio/in_memory_resource.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1audio_1_1_in_memory_resource_1af6ae89eb2364351fbe4417724505cb19" compoundref="in__memory__resource_8cpp" startline="29" endline="43">get_data</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,7 +54,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="25" column="1" bodyfile="libopenage/audio/in_memory_resource.cpp" bodystart="10" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp" bodystart="10" bodyend="20"/>
+        <references refid="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" compoundref="audio_2resource_8h" startline="79">openage::audio::Resource::category</references>
+        <references refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" compoundref="audio_2resource_8h" startline="73">openage::audio::Resource::manager</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1audio_1_1_in_memory_resource_1a5e47daf77f428ed5e869364435f2d29d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -66,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="30" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="30" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1audio_1_1_in_memory_resource_1aadc80441d22bfd356c36d8dbacc45d64" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -81,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="32" column="1" bodyfile="libopenage/audio/in_memory_resource.cpp" bodystart="23" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp" bodystart="23" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1audio_1_1_in_memory_resource_1ae8f4953554d1e2d18d1bddadd4a024fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -96,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="33" column="1" bodyfile="libopenage/audio/in_memory_resource.cpp" bodystart="26" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp" bodystart="26" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1audio_1_1_in_memory_resource_1af6ae89eb2364351fbe4417724505cb19" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="structopenage_1_1audio_1_1audio__chunk__t" kindref="compound">audio_chunk_t</ref></type>
@@ -145,7 +148,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/audio/in_memory_resource.h" line="35" column="1" bodyfile="libopenage/audio/in_memory_resource.cpp" bodystart="29" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.cpp" bodystart="29" bodyend="43"/>
+        <references refid="classopenage_1_1audio_1_1_in_memory_resource_1a6527ff1643f7916ecdd7020ca2d628fb" compoundref="in__memory__resource_8h" startline="22">buffer</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -154,44 +158,44 @@
 <para>An <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> loads the whole pcm data into memory and keeps it there. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2971">
+      <node id="501">
         <label>openage::audio::InMemoryResource</label>
         <link refid="classopenage_1_1audio_1_1_in_memory_resource"/>
-        <childnode refid="2972" relation="public-inheritance">
+        <childnode refid="502" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2972">
+      <node id="502">
         <label>openage::audio::Resource</label>
         <link refid="classopenage_1_1audio_1_1_resource"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2973">
+      <node id="503">
         <label>openage::audio::InMemoryResource</label>
         <link refid="classopenage_1_1audio_1_1_in_memory_resource"/>
-        <childnode refid="2974" relation="public-inheritance">
+        <childnode refid="504" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2976">
+      <node id="506">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
-      <node id="2975">
+      <node id="505">
         <label>openage::audio::AudioManager</label>
         <link refid="classopenage_1_1audio_1_1_audio_manager"/>
-        <childnode refid="2976" relation="usage">
+        <childnode refid="506" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
       </node>
-      <node id="2974">
+      <node id="504">
         <label>openage::audio::Resource</label>
         <link refid="classopenage_1_1audio_1_1_resource"/>
-        <childnode refid="2975" relation="usage">
+        <childnode refid="505" relation="usage">
           <edgelabel>#manager</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/audio/in_memory_resource.h" line="19" column="1" bodyfile="libopenage/audio/in_memory_resource.h" bodystart="19" bodyend="36"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_resource.h" bodystart="19" bodyend="36"/>
     <listofallmembers>
       <member refid="classopenage_1_1audio_1_1_in_memory_resource_1a6527ff1643f7916ecdd7020ca2d628fb" prot="private" virt="non-virtual"><scope>openage::audio::InMemoryResource</scope><name>buffer</name></member>
       <member refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" prot="public" virt="non-virtual"><scope>openage::audio::InMemoryResource</scope><name>create_resource</name></member>

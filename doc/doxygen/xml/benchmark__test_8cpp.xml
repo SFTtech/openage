@@ -6,7 +6,7 @@
     <includes local="no">thread</includes>
     <incdepgraph>
       <node id="25063">
-        <label>libopenage/testing/benchmark_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/benchmark_test.cpp</label>
         <link refid="benchmark__test_8cpp"/>
         <childnode refid="25064" relation="include">
         </childnode>
@@ -42,6 +42,6 @@
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::test</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/testing/benchmark_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/benchmark_test.cpp"/>
   </compounddef>
 </doxygen>

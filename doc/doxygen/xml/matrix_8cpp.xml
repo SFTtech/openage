@@ -153,7 +153,7 @@
         <label>typeinfo</label>
       </node>
       <node id="30873">
-        <label>libopenage/util/matrix.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.cpp</label>
         <link refid="matrix_8cpp"/>
         <childnode refid="30874" relation="include">
         </childnode>
@@ -258,6 +258,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/matrix.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.cpp"/>
   </compounddef>
 </doxygen>

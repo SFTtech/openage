@@ -21,7 +21,6 @@ var searchData=
   ['compiler_2eh',['compiler.h',['../compiler_8h.xhtml',1,'']]],
   ['concat_2eh',['concat.h',['../concat_8h.xhtml',1,'']]],
   ['concurrent_5fqueue_2eh',['concurrent_queue.h',['../concurrent__queue_8h.xhtml',1,'']]],
-  ['conf_2epy',['conf.py',['../conf_8py.xhtml',1,'']]],
   ['config_5ffile_2epy',['config_file.py',['../config__file_8py.xhtml',1,'']]],
   ['console_2ecpp',['console.cpp',['../console_8cpp.xhtml',1,'']]],
   ['console_2eh',['console.h',['../console_8h.xhtml',1,'']]],

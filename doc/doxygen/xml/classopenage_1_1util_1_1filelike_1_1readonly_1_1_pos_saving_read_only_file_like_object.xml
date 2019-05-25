@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.readonly.ReadOnlyFileLikeObject</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream" prot="public" virt="non-virtual">openage.cabextract.cab.CABFolderStream</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment" prot="public" virt="non-virtual">openage.util.filelike.stream.StreamFragment</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer" prot="public" virt="non-virtual">openage.util.filelike.stream.StreamSeekBuffer</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::filelike.readonly.PosSavingReadOnlyFileLikeObject::pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="53" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" compoundref="binpack_8py" startline="43" endline="46">openage.convert.binpack.Packer.height</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" compoundref="cab_8py" startline="501" endline="542">openage.cabextract.cab.CABFolderStream.read_blocks</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" compoundref="readonly_8py" startline="55" endline="57">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" compoundref="readonly_8py" startline="61" endline="63">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.tell</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" compoundref="binpack_8py" startline="39" endline="41">openage.convert.binpack.Packer.width</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a1d17d3141151809fc8ae179baf150ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad1e8617a5d0fedd8596e6bb8ad5a6bb2">__init__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek</definition>
+        <argsstring>(self, offset, whence=os.SEEK_SET)</argsstring>
+        <name>seek</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad255ffd40c48e6610e464d5c3c43b2fb">seek</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>offset</type>
+          <defname>offset</defname>
+        </param>
+        <param>
+          <type>whence</type>
+          <defname>whence</defname>
+          <defval>os.SEEK_SET</defval>
+        </param>
+        <briefdescription>
+<para>Seeks to a given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   May raise UnsupportedOperation for any or all arguments, in case of
+   unseekable streams.
+
+   For testing seek capabilities, it&apos;s recommended to call seek(0)
+   immediately after object creation.
+
+   There is no return value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="55" bodyend="57"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a4bf4ea1cc9983a0de92608d672d8d93b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seekable</definition>
+        <argsstring>(self)</argsstring>
+        <name>seekable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a72fc53b76ba8da3a41cd61647dbaae6e">seekable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" kindref="member">seek()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.tell</definition>
+        <argsstring>(self)</argsstring>
+        <name>tell</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b">tell</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns the current position in the file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Must work properly for all file-like objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="61" bodyend="63"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores the current seek position in self.pos. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Avoids code duplication. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5754">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5755" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5759">
+        <label>openage.util.filelike.stream.StreamFragment</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment"/>
+        <childnode refid="5754" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5760">
+        <label>openage.util.filelike.stream.StreamSeekBuffer</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer"/>
+        <childnode refid="5754" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5758">
+        <label>openage.cabextract.cab.CABFolderStream</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream"/>
+        <childnode refid="5754" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5757">
+        <label>ABC</label>
+      </node>
+      <node id="5755">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5756" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5756">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5757" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5761">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5762" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5764">
+        <label>ABC</label>
+      </node>
+      <node id="5762">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5763" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5763">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5764" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="46" bodyend="63"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a1d17d3141151809fc8ae179baf150ac7" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>pos</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a4bf4ea1cc9983a0de92608d672d8d93b" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

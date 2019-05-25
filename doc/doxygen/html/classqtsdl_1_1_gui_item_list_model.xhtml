@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiItemListModel&lt; T &gt; Class Template Reference</title>
+<title>openage: qtsdl::GuiItemListModel&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,15 +98,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_item_list_model.xht
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiItemListModel&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiItemListModel&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_list_model__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiItemListModel&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiItemListModel&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_list_model__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -190,7 +195,9 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__list__model_8h_source.xhtml#l00021">21</a> of file <a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        :</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        GuiItem&lt;T&gt;{item_base} {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        item_base-&gt;on_core_adopted_func = <a class="code" href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">std::bind</a>(&amp;<a class="code" href="classqtsdl_1_1_gui_item_list_model.xhtml#a2bb2830338cd9848f3ba28659a68e2d1">GuiItemListModel::on_core_adopted</a>, <span class="keyword">this</span>);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div><div class="ttc" id="namespaceopenage_1_1renderer_xhtml_a00b1f2873c9bbd71a19b3a26bd11d03e"><div class="ttname"><a href="namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e">openage::renderer::bind</a></div><div class="ttdeci">void bind() const</div><div class="ttdoc">Make this vertex array object the current one.</div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_list_model_xhtml_a2bb2830338cd9848f3ba28659a68e2d1"><div class="ttname"><a href="classqtsdl_1_1_gui_item_list_model.xhtml#a2bb2830338cd9848f3ba28659a68e2d1">qtsdl::GuiItemListModel::on_core_adopted</a></div><div class="ttdeci">void on_core_adopted()</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__list__model_8h_source.xhtml#l00029">gui_item_list_model.h:29</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -220,6 +227,17 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__list__model_8h_source.xhtml#l00052">52</a> of file <a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                         {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">auto</span> _this = checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">auto</span> properties = <a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(_this)-&gt;impl.get();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">auto</span> property_names = properties-&gt;dynamicPropertyNames();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::vector&lt;std::tuple&lt;QByteArray, QVariant&gt;&gt; values;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        values.reserve(property_names.size());</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::transform(std::begin(property_names), std::end(property_names), std::back_inserter(values), [properties] (<span class="keyword">const</span> QByteArray &amp;name) {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> std::make_tuple(name, properties-&gt;property(name));</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        });</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        _this-&gt;set(values);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item__list__model_8h_source.xhtml#l00029">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_list_model_abe1b332e693caa36185c1cd7835c40de_icgraph.svg" width="415" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -249,6 +267,18 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__list__model_8h_source.xhtml#l00035">35</a> of file <a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                          {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">auto</span> _this = checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        QObject::connect(_this, &amp;<a class="code" href="classqtsdl_1_1_gui_list_model.xhtml#a8602a92a9ef7e6350a387ae7b229b10e">GuiListModel::changed_from_gui</a>, [_this] (<span class="keyword">const</span> QByteArray &amp;name, <span class="keyword">const</span> QVariant &amp;value) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            emit _this-&gt;game_logic_caller.in_game_logic_thread_blocking([&amp;] {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(_this)-&gt;impl-&gt;setProperty(name, value);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            });</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        });</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_list_model_xhtml_a8602a92a9ef7e6350a387ae7b229b10e"><div class="ttname"><a href="classqtsdl_1_1_gui_list_model.xhtml#a8602a92a9ef7e6350a387ae7b229b10e">qtsdl::GuiListModel::changed_from_gui</a></div><div class="ttdeci">void changed_from_gui(const char *name, const QVariant &amp;value)</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item__list__model_8h_source.xhtml#l00029">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_list_model_a2d423aeb58ef3a7faf28b153fe35cacc_icgraph.svg" width="430" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -278,6 +308,19 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__list__model_8h_source.xhtml#l00045">45</a> of file <a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                        {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">auto</span> _this = checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">auto</span> properties = <a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(_this)-&gt;impl.get();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        QObject::connect(properties, &amp;<a class="code" href="classqtsdl_1_1_gui_property_map_impl.xhtml#a2842145dde93db062bfcc6d8ba6e0d90">GuiPropertyMapImpl::property_changed</a>, _this, &amp;<a class="code" href="classqtsdl_1_1_gui_list_model.xhtml#af824d1dbf7e1cf3b5575c7259269d609">GuiListModel::on_property_changed</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div><div class="ttc" id="classqtsdl_1_1_gui_list_model_xhtml_af824d1dbf7e1cf3b5575c7259269d609"><div class="ttname"><a href="classqtsdl_1_1_gui_list_model.xhtml#af824d1dbf7e1cf3b5575c7259269d609">qtsdl::GuiListModel::on_property_changed</a></div><div class="ttdeci">void on_property_changed(const QByteArray &amp;name, const QVariant &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="gui__list__model_8cpp_source.xhtml#l00023">gui_list_model.cpp:23</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_property_map_impl_xhtml_a2842145dde93db062bfcc6d8ba6e0d90"><div class="ttname"><a href="classqtsdl_1_1_gui_property_map_impl.xhtml#a2842145dde93db062bfcc6d8ba6e0d90">qtsdl::GuiPropertyMapImpl::property_changed</a></div><div class="ttdeci">void property_changed(const QByteArray &amp;name, const QVariant &amp;value)</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item__list__model_8h_source.xhtml#l00029">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::on_core_adopted()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_list_model_a0e965b2d5161f95e8118b197ac2f0f42_icgraph.svg" width="416" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -307,11 +350,14 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item__list__model_8h_source.xhtml#l00029">29</a> of file <a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                           {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_list_model.xhtml#a2d423aeb58ef3a7faf28b153fe35cacc">establish_from_gui_propagation</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_list_model.xhtml#abe1b332e693caa36185c1cd7835c40de">do_initial_to_gui_propagation</a>();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_list_model.xhtml#a0e965b2d5161f95e8118b197ac2f0f42">establish_to_gui_propagation</a>();</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div><div class="ttc" id="classqtsdl_1_1_gui_item_list_model_xhtml_a0e965b2d5161f95e8118b197ac2f0f42"><div class="ttname"><a href="classqtsdl_1_1_gui_item_list_model.xhtml#a0e965b2d5161f95e8118b197ac2f0f42">qtsdl::GuiItemListModel::establish_to_gui_propagation</a></div><div class="ttdeci">void establish_to_gui_propagation()</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__list__model_8h_source.xhtml#l00045">gui_item_list_model.h:45</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_list_model_xhtml_abe1b332e693caa36185c1cd7835c40de"><div class="ttname"><a href="classqtsdl_1_1_gui_item_list_model.xhtml#abe1b332e693caa36185c1cd7835c40de">qtsdl::GuiItemListModel::do_initial_to_gui_propagation</a></div><div class="ttdeci">void do_initial_to_gui_propagation()</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__list__model_8h_source.xhtml#l00052">gui_item_list_model.h:52</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_list_model_xhtml_a2d423aeb58ef3a7faf28b153fe35cacc"><div class="ttname"><a href="classqtsdl_1_1_gui_item_list_model.xhtml#a2d423aeb58ef3a7faf28b153fe35cacc">qtsdl::GuiItemListModel::establish_from_gui_propagation</a></div><div class="ttdeci">void establish_from_gui_propagation()</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__list__model_8h_source.xhtml#l00035">gui_item_list_model.h:35</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/gui/guisys/link/<a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/<a class="el" href="gui__item__list__model_8h_source.xhtml">gui_item_list_model.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

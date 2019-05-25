@@ -1,0 +1,10 @@
+<map id="openage::ProjectileAction::update" name="openage::ProjectileAction::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,100,176,141"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a7beffb7ad454cf467d7a6b843df939c7" title=" " alt="" coords="232,12,371,53"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="428,71,556,112"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="230,129,373,171"/>
+<area shape="rect" id="node8" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="224,195,379,236"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="427,5,557,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="605,13,769,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="607,78,768,105"/>
+</map>

@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="pyobject__tests_8h" kind="file" language="C++">
     <compoundname>pyobject_tests.h</compoundname>
-    <includedby refid="pyobject__tests_8cpp" local="yes">libopenage/pyinterface/pyobject_tests.cpp</includedby>
+    <includedby refid="pyobject__tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</includedby>
     <invincdepgraph>
       <node id="20198">
-        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.cpp</label>
         <link refid="pyobject__tests_8cpp"/>
       </node>
       <node id="20197">
-        <label>libopenage/pyinterface/pyobject_tests.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.h</label>
         <link refid="pyobject__tests_8h"/>
         <childnode refid="20198" relation="include">
         </childnode>
@@ -36,6 +36,6 @@
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/pyobject_tests.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/pyobject_tests.h"/>
   </compounddef>
 </doxygen>

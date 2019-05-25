@@ -16,7 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="29" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a3e965b7d112047c4e8b983db71026c22" compoundref="gui__texture__factory_8cpp" startline="22" endline="25">createTexture</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1af51021a1b0298e9c467ae7b50f2a8180" compoundref="gui__texture__factory_8cpp" startline="13" endline="17">GuiTextureFactory</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" compoundref="gui__texture__factory_8cpp" startline="27" endline="30">textureByteCount</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a2af0c7e7d25985cd93743b6d08468d9d" compoundref="gui__texture__factory_8cpp" startline="32" endline="34">textureSize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_texture_factory_1a8e5a66fb4aaf658cff5aa08c9195f976" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1gui_1_1_gui_filled_texture_handle_user" kindref="compound">GuiFilledTextureHandleUser</ref></type>
@@ -29,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="30" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -56,7 +60,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="13" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="13" bodyend="17"/>
+        <references refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="86" endline="89">openage::gui::GuiGameSpecImageProviderImpl::fill_texture_handle</references>
+        <references refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" compoundref="gui__texture__factory_8h" startline="29">texture_handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_texture_factory_1ab199b5d7467dc2d846e93df35247d757" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -69,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="19" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="19" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_texture_factory_1a3e965b7d112047c4e8b983db71026c22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QSGTexture *</type>
@@ -86,7 +92,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="22" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="22" bodyend="25"/>
+        <references refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" compoundref="gui__texture__factory_8h" startline="29">texture_handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -99,7 +106,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="25" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="27" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="27" bodyend="30"/>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">openage::Texture::h</references>
+        <references refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" compoundref="gui__texture__handle_8h" startline="15">openage::gui::TextureHandle::texture</references>
+        <references refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" compoundref="gui__texture__factory_8h" startline="29">texture_handle</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">openage::Texture::w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_texture_factory_1a2af0c7e7d25985cd93743b6d08468d9d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QSize</type>
@@ -112,7 +123,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="26" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" compoundref="gui__texture__factory_8h" startline="29">texture_handle</references>
+        <references refid="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" compoundref="gui__texture__handle_8cpp" startline="28" endline="30">openage::gui::textureSize</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a8a2c7319a6690e41380689f6f3283eea" compoundref="gui__game__spec__image__provider__impl_8cpp" startline="95" endline="108">openage::gui::GuiGameSpecImageProviderImpl::requestTexture</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -120,65 +134,65 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2804">
+      <node id="3628">
         <label>QQuickTextureFactory</label>
       </node>
-      <node id="2803">
+      <node id="3627">
         <label>openage::gui::GuiTextureFactory</label>
         <link refid="classopenage_1_1gui_1_1_gui_texture_factory"/>
-        <childnode refid="2804" relation="public-inheritance">
+        <childnode refid="3628" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2811">
+      <node id="3635">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="2809">
+      <node id="3633">
         <label>openage::gui::TextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_texture_handle"/>
-        <childnode refid="2810" relation="usage">
+        <childnode refid="3634" relation="usage">
           <edgelabel>+texture</edgelabel>
         </childnode>
       </node>
-      <node id="2806">
+      <node id="3630">
         <label>QQuickTextureFactory</label>
       </node>
-      <node id="2810">
+      <node id="3634">
         <label>openage::Texture</label>
         <link refid="classopenage_1_1_texture"/>
-        <childnode refid="2811" relation="usage">
+        <childnode refid="3635" relation="usage">
           <edgelabel>-filename</edgelabel>
         </childnode>
       </node>
-      <node id="2805">
+      <node id="3629">
         <label>openage::gui::GuiTextureFactory</label>
         <link refid="classopenage_1_1gui_1_1_gui_texture_factory"/>
-        <childnode refid="2806" relation="public-inheritance">
+        <childnode refid="3630" relation="public-inheritance">
         </childnode>
-        <childnode refid="2807" relation="usage">
+        <childnode refid="3631" relation="usage">
           <edgelabel>-texture_handle_user</edgelabel>
         </childnode>
-        <childnode refid="2808" relation="usage">
+        <childnode refid="3632" relation="usage">
           <edgelabel>-texture_handle</edgelabel>
         </childnode>
       </node>
-      <node id="2807">
+      <node id="3631">
         <label>openage::gui::GuiFilledTextureHandleUser</label>
         <link refid="classopenage_1_1gui_1_1_gui_filled_texture_handle_user"/>
-        <childnode refid="2808" relation="usage">
+        <childnode refid="3632" relation="usage">
           <edgelabel>-filled_handle</edgelabel>
         </childnode>
       </node>
-      <node id="2808">
+      <node id="3632">
         <label>openage::gui::SizedTextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
-        <childnode refid="2809" relation="public-inheritance">
+        <childnode refid="3633" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_texture_factory.h" line="17" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_factory.h" bodystart="17" bodyend="31"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h" bodystart="17" bodyend="31"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_gui_texture_factory_1a3e965b7d112047c4e8b983db71026c22" prot="public" virt="virtual"><scope>openage::gui::GuiTextureFactory</scope><name>createTexture</name></member>
       <member refid="classopenage_1_1gui_1_1_gui_texture_factory_1af51021a1b0298e9c467ae7b50f2a8180" prot="public" virt="non-virtual"><scope>openage::gui::GuiTextureFactory</scope><name>GuiTextureFactory</name></member>

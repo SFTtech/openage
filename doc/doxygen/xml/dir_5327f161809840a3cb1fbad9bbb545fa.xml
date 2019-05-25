@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_5327f161809840a3cb1fbad9bbb545fa" kind="dir">
-    <compoundname>libopenage/util/macro</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro</compoundname>
     <innerfile refid="concat_8h">concat.h</innerfile>
     <innerfile refid="util_2macro_2loop_8h">loop.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/macro/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro/"/>
   </compounddef>
 </doxygen>

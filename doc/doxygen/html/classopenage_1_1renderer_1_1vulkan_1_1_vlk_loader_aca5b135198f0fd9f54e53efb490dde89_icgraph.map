@@ -1,0 +1,4 @@
+<map id="openage::renderer::vulkan::VlkLoader::init" name="openage::renderer::vulkan::VlkLoader::init">
+<area shape="rect" id="node1" title="Initialize this loader for the given Vulkan instance." alt="" coords="257,5,407,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_window.xhtml#a21953253160e4583181b0bbb21a56601" title=" " alt="" coords="5,5,209,47"/>
+</map>

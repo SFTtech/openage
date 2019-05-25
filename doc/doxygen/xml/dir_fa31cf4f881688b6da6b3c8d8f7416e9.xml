@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_fa31cf4f881688b6da6b3c8d8f7416e9" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface</compoundname>
+    <innerfile refid="convert_2interface_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="cutter_8py">cutter.py</innerfile>
+    <innerfile refid="hardcoded_8py">hardcoded.py</innerfile>
+    <innerfile refid="rename_8py">rename.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/"/>
+  </compounddef>
+</doxygen>

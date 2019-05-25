@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="26" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" compoundref="gui__standalone__subtexture_8cpp" startline="35" endline="37">textureId</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" prot="private" static="no" mutable="no">
         <type>const QSize</type>
@@ -29,7 +30,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="27" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" compoundref="gui__standalone__subtexture_8cpp" startline="39" endline="41">textureSize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="8" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="8" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1afbefb94ab19ce97d8f67bc4f5ef1f53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -65,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="16" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="14" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="14" bodyend="16"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -80,7 +87,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="19" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="18" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="18" bodyend="20"/>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" compoundref="gui__standalone__subtexture_8cpp" startline="35" endline="37">textureId</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a20f2863cf5efecc0f0c39c02044af36f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -93,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="20" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="22" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="22" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a4268bd7cbef14c5848fec65e998d2ca7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -106,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="27" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="27" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1aed33169bb7552361fad461740fa10bc8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -119,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="31" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -132,7 +140,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="23" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="35" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="35" bodyend="37"/>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a3b12ffcf36a51aea0969dadc31b62ddf" compoundref="gui__standalone__subtexture_8h" startline="26">id</references>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" compoundref="gui__standalone__subtexture_8cpp" startline="18" endline="20">bind</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QSize</type>
@@ -145,7 +155,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="39" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="39" bodyend="41"/>
+        <references refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" compoundref="gui__standalone__subtexture_8h" startline="27">size</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -153,28 +164,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2775">
+      <node id="3615">
         <label>openage::gui::GuiStandaloneSubtexture</label>
         <link refid="classopenage_1_1gui_1_1_gui_standalone_subtexture"/>
-        <childnode refid="2776" relation="public-inheritance">
+        <childnode refid="3616" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2776">
+      <node id="3616">
         <label>QSGTexture</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2777">
+      <node id="3617">
         <label>openage::gui::GuiStandaloneSubtexture</label>
         <link refid="classopenage_1_1gui_1_1_gui_standalone_subtexture"/>
-        <childnode refid="2778" relation="public-inheritance">
+        <childnode refid="3618" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2778">
+      <node id="3618">
         <label>QSGTexture</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="11" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="11" bodyend="28"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="11" bodyend="28"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>bind</name></member>
       <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a91d3991a935c02c6c206c6158cb0d200" prot="public" virt="non-virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>GuiStandaloneSubtexture</name></member>

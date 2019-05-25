@@ -176,7 +176,7 @@
         <label>config.h</label>
       </node>
       <node id="665">
-        <label>libopenage/audio/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.cpp</label>
         <link refid="audio_2error_8cpp"/>
         <childnode refid="666" relation="include">
         </childnode>
@@ -216,6 +216,6 @@
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/error.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.cpp"/>
   </compounddef>
 </doxygen>

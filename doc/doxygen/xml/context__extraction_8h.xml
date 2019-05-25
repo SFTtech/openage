@@ -6,13 +6,13 @@
     <includes local="no">functional</includes>
     <includes local="no">QWindow</includes>
     <includes local="no">QVariant</includes>
-    <includedby refid="gui__ctx__setup_8cpp" local="yes">libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
-    <includedby refid="context__extraction__cocoa_8mm" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</includedby>
-    <includedby refid="context__extraction__win32_8cpp" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</includedby>
-    <includedby refid="context__extraction__x11_8cpp" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</includedby>
+    <includedby refid="gui__ctx__setup_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
+    <includedby refid="context__extraction__cocoa_8mm" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</includedby>
+    <includedby refid="context__extraction__win32_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</includedby>
+    <includedby refid="context__extraction__x11_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</includedby>
     <incdepgraph>
       <node id="13418">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction.h</label>
         <link refid="context__extraction_8h"/>
         <childnode refid="13419" relation="include">
         </childnode>
@@ -38,7 +38,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13423">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction.h</label>
         <link refid="context__extraction_8h"/>
         <childnode refid="13424" relation="include">
         </childnode>
@@ -50,19 +50,19 @@
         </childnode>
       </node>
       <node id="13427">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</label>
         <link refid="context__extraction__x11_8cpp"/>
       </node>
       <node id="13426">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</label>
         <link refid="context__extraction__win32_8cpp"/>
       </node>
       <node id="13424">
-        <label>libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
         <link refid="gui__ctx__setup_8cpp"/>
       </node>
       <node id="13425">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
         <link refid="context__extraction__cocoa_8mm"/>
       </node>
     </invincdepgraph>
@@ -92,6 +92,6 @@
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/platforms/context_extraction.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction.h"/>
   </compounddef>
 </doxygen>

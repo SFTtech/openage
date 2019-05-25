@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::Attributes Class Reference</title>
+<title>openage: openage::Attributes Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_attributes.xhtml','')
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="attributes_8h_source.xhtml">attributes.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::Attributes:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes__coll__graph.svg" width="146" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::Attributes:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes__coll__graph.svg" width="146" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -158,7 +160,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="attributes_8h_source.xhtml#l00017">17</a> of file <a class="el" href="attributes_8h_source.xhtml">attributes.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -180,6 +182,19 @@ Private Attributes</h2></td></tr>
 <p>Add an attribute or replace any attribute of the same type. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00007">7</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                                                                 {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>[attr-&gt;type] = attr;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ac77f87ee91094ddb74f89dd7d7d61fee"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">openage::Attributes::attrs</a></div><div class="ttdeci">std::map&lt; attr_type, std::shared_ptr&lt; AttributeContainer &gt; &gt; attrs</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8h_source.xhtml#l00061">attributes.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_8cpp_source.xhtml#l00246">openage::Unit::add_attribute()</a>, <a class="el" href="attributes_8cpp_source.xhtml#l00015">add_copies()</a>, and <a class="el" href="unit__type_8cpp_source.xhtml#l00090">openage::UnitType::upgrade()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes_a9ffc8cfe4d75fbea84e7846cc6a8196f_icgraph.svg" width="100%" height="519"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -201,6 +216,17 @@ Private Attributes</h2></td></tr>
 <p>Add copies of all the attributes from the given <a class="el" href="classopenage_1_1_attributes.xhtml">Attributes</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00011">11</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                                   {</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb">add_copies</a>(other, <span class="keyword">true</span>, <span class="keyword">true</span>);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ae8924d1ae2fafd0c13418ab238848afb"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ae8924d1ae2fafd0c13418ab238848afb">openage::Attributes::add_copies</a></div><div class="ttdeci">void add_copies(const Attributes &amp;attrs)</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8cpp_source.xhtml#l00011">attributes.cpp:11</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="unit_8cpp_source.xhtml#l00250">openage::Unit::add_attributes()</a>, and <a class="el" href="unit__type_8cpp_source.xhtml#l00035">openage::UnitType::reinitialise()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes_ae8924d1ae2fafd0c13418ab238848afb_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -238,6 +264,17 @@ Private Attributes</h2></td></tr>
 <p>Add copies of all the attributes from the given <a class="el" href="classopenage_1_1_attributes.xhtml">Attributes</a>. If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00015">15</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                                               {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;i : other.attrs) {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">auto</span> &amp;attr = *i.second.get();</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (attr.shared()) {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">if</span> (shared) {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="comment">// pass self</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f">add</a>(i.second);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            }</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (unshared) {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="comment">// create copy</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f">add</a>(attr.copy());</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_a9ffc8cfe4d75fbea84e7846cc6a8196f"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#a9ffc8cfe4d75fbea84e7846cc6a8196f">openage::Attributes::add</a></div><div class="ttdeci">void add(const std::shared_ptr&lt; AttributeContainer &gt; attr)</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8cpp_source.xhtml#l00007">attributes.cpp:7</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8cpp_source.xhtml#l00007">add()</a>, and <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes_ae27a84788906e6fd8786f950e8177704_cgraph.svg" width="358" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -259,6 +296,19 @@ Private Attributes</h2></td></tr>
 <p>Get the attribute based on the type. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00040">40</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                                                            {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>.at(type);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ac77f87ee91094ddb74f89dd7d7d61fee"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">openage::Attributes::attrs</a></div><div class="ttdeci">std::map&lt; attr_type, std::shared_ptr&lt; AttributeContainer &gt; &gt; attrs</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8h_source.xhtml#l00061">attributes.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_8h_source.xhtml#l00199">openage::Unit::get_attribute()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00808">openage::TrainAction::update()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes_a08f927be3be6911e7cf77604f9ead10f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -289,6 +339,9 @@ template&lt;attr_type T&gt; </div>
 <p>Get the attribute </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8h_source.xhtml#l00055">55</a> of file <a class="el" href="attributes_8h_source.xhtml">attributes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                              {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">reinterpret_cast&lt;</span>Attribute&lt;T&gt; *<span class="keyword">&gt;</span>(this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>.at(T).get());</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ac77f87ee91094ddb74f89dd7d7d61fee"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">openage::Attributes::attrs</a></div><div class="ttdeci">std::map&lt; attr_type, std::shared_ptr&lt; AttributeContainer &gt; &gt; attrs</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8h_source.xhtml#l00061">attributes.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
 
 </div>
 </div>
@@ -310,6 +363,19 @@ template&lt;attr_type T&gt; </div>
 <p>Check if the attribute of the given type exists. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                               {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>.find(type) != this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>.end();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ac77f87ee91094ddb74f89dd7d7d61fee"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">openage::Attributes::attrs</a></div><div class="ttdeci">std::map&lt; attr_type, std::shared_ptr&lt; AttributeContainer &gt; &gt; attrs</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8h_source.xhtml#l00061">attributes.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_8cpp_source.xhtml#l00258">openage::Unit::has_attribute()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00808">openage::TrainAction::update()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_attributes_aee38f453ac85b68821958ad74cdd8df5_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -331,6 +397,9 @@ template&lt;attr_type T&gt; </div>
 <p>Remove an attribute based on the type. </p>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8cpp_source.xhtml#l00032">32</a> of file <a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                            {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">attrs</a>.erase(type) &gt; 0;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="classopenage_1_1_attributes_xhtml_ac77f87ee91094ddb74f89dd7d7d61fee"><div class="ttname"><a href="classopenage_1_1_attributes.xhtml#ac77f87ee91094ddb74f89dd7d7d61fee">openage::Attributes::attrs</a></div><div class="ttdeci">std::map&lt; attr_type, std::shared_ptr&lt; AttributeContainer &gt; &gt; attrs</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8h_source.xhtml#l00061">attributes.h:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="attributes_8h_source.xhtml#l00061">attrs</a>.</p>
 
 </div>
 </div>
@@ -357,11 +426,13 @@ template&lt;attr_type T&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="attributes_8h_source.xhtml#l00061">61</a> of file <a class="el" href="attributes_8h_source.xhtml">attributes.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="attributes_8cpp_source.xhtml#l00007">add()</a>, <a class="el" href="attributes_8cpp_source.xhtml#l00015">add_copies()</a>, <a class="el" href="attributes_8cpp_source.xhtml#l00040">get()</a>, <a class="el" href="attributes_8cpp_source.xhtml#l00036">has()</a>, and <a class="el" href="attributes_8cpp_source.xhtml#l00032">remove()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="attributes_8h_source.xhtml">attributes.h</a></li>
-<li>libopenage/unit/<a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="attributes_8h_source.xhtml">attributes.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="attributes_8cpp_source.xhtml">attributes.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

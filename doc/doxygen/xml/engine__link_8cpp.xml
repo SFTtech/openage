@@ -535,7 +535,7 @@
         </childnode>
       </node>
       <node id="11327">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
         <childnode refid="11328" relation="include">
         </childnode>
@@ -1121,15 +1121,15 @@
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info" kindref="compound">qtsdl::QmlEngineWithSingletonItemsInfo</ref><sp/>*engine_with_singleton_items_info<sp/>=<sp/>qtsdl::checked_static_cast&lt;qtsdl::QmlEngineWithSingletonItemsInfo*&gt;(engine);</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>the<sp/>singleton<sp/>container<sp/>out<sp/>of<sp/>the<sp/>custom<sp/>qml<sp/>engine</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>info<sp/>=<sp/>static_cast&lt;gui::EngineQMLInfo*&gt;(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref><sp/>=<sp/>static_cast&lt;gui::EngineQMLInfo*&gt;(</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>engine_with_singleton_items_info-&gt;<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" kindref="member">get_singleton_items_info</ref>()</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(info,<sp/></highlight><highlight class="stringliteral">&quot;qml-globals<sp/>were<sp/>lost<sp/>or<sp/>not<sp/>passed<sp/>to<sp/>the<sp/>gui<sp/>subsystem&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>,<sp/></highlight><highlight class="stringliteral">&quot;qml-globals<sp/>were<sp/>lost<sp/>or<sp/>not<sp/>passed<sp/>to<sp/>the<sp/>gui<sp/>subsystem&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>owned<sp/>by<sp/>the<sp/>QML<sp/>engine</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>handle<sp/>contains<sp/>the<sp/>pointer<sp/>to<sp/>the<sp/>openage<sp/>engine,</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>obtained<sp/>through<sp/>the<sp/>qmlengine</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>info-&gt;engine};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>-&gt;engine};</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71" refid="classopenage_1_1gui_1_1_engine_link_1ae1b69dc08e903d0c2084167f6b68e719" refkind="member"><highlight class="normal">QStringList<sp/><ref refid="classopenage_1_1gui_1_1_engine_link_1ae1b69dc08e903d0c2084167f6b68e719" kindref="member">EngineLink::get_global_binds</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -1162,6 +1162,6 @@
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/engine_link.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp"/>
   </compounddef>
 </doxygen>

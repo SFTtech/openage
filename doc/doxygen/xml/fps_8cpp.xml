@@ -25,7 +25,7 @@
         </childnode>
       </node>
       <node id="30300">
-        <label>libopenage/util/fps.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp</label>
         <link refid="fps_8cpp"/>
         <childnode refid="30301" relation="include">
         </childnode>
@@ -105,6 +105,6 @@
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fps.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fps.cpp"/>
   </compounddef>
 </doxygen>

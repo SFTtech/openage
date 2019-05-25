@@ -29,7 +29,7 @@
         </childnode>
       </node>
       <node id="13389">
-        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp</label>
         <link refid="recursive__directory__watcher__worker_8cpp"/>
         <childnode refid="13390" relation="include">
         </childnode>
@@ -133,6 +133,6 @@
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/recursive_directory_watcher_worker.cpp"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,9 @@
+<map id="openage::AttackAction::AttackAction" name="openage::AttackAction::AttackAction">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,160,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6e508baa62ec19cd81bea7fce1721e17" title=" " alt="" coords="208,71,347,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_unit_action.xhtml#a6a13e1e645b744982544ae65ef1addf3" title=" " alt="" coords="395,5,533,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="399,71,529,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="400,136,528,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="581,78,745,105"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="583,143,744,170"/>
+</map>

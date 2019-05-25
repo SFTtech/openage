@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::coord::tile Struct Reference</title>
+<title>openage: openage::coord::tile Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,19 @@ $(document).ready(function(){initNavTree('structopenage_1_1coord_1_1tile.xhtml',
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="tile_8h_source.xhtml">tile.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::coord::tile:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile__inherit__graph.svg" width="162" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::coord::tile:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile__inherit__graph.svg" width="162" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::coord::tile:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile__coll__graph.svg" width="162" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::coord::tile:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile__coll__graph.svg" width="162" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -146,6 +149,28 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00068">68</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                        {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> tile_delta{</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>),</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">util::mod</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7e483e123bf554b630319eb3dd012c02"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02">openage::util::mod</a></div><div class="ttdeci">constexpr T mod(T x, T m)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00032">misc.h:32</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_a056453272e2aabdf7fcf4ecc3b5fe7f7"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">openage::coord::tiles_per_chunk</a></div><div class="ttdeci">constexpr tile_t tiles_per_chunk</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00032">declarations.h:32</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="misc_8h_source.xhtml#l00032">openage::util::mod()</a>, and <a class="el" href="declarations_8h_source.xhtml#l00032">openage::coord::tiles_per_chunk</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain__chunk_8cpp_source.xhtml#l00046">openage::TerrainChunk::get_data()</a>, <a class="el" href="terrain_8cpp_source.xhtml#l00137">openage::Terrain::get_data()</a>, and <a class="el" href="terrain__object_8cpp_source.xhtml#l00188">openage::TerrainObject::set_ground()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_cgraph.svg" width="327" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ab4811e492cabe885d33e85df51ceff83_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -182,6 +207,28 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#ac306cc74c14e094567447277327b389a">to_phys3</a>(terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e">to_camgame</a>(mgr);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_ac306cc74c14e094567447277327b389a"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#ac306cc74c14e094567447277327b389a">openage::coord::tile::to_phys3</a></div><div class="ttdeci">phys3 to_phys3(const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00026">tile.cpp:26</a></div></div>
+<div class="ttc" id="structopenage_1_1coord_1_1phys3_xhtml_a03daba2a3e79650c251e3c08e0838a5e"><div class="ttname"><a href="structopenage_1_1coord_1_1phys3.xhtml#a03daba2a3e79650c251e3c08e0838a5e">openage::coord::phys3::to_camgame</a></div><div class="ttdeci">camgame to_camgame(const CoordManager &amp;mgr) const</div><div class="ttdef"><b>Definition:</b> <a href="phys_8cpp_source.xhtml#l00091">phys.cpp:91</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="phys_8cpp_source.xhtml#l00091">openage::coord::phys3::to_camgame()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00026">to_phys3()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="tile_8cpp_source.xhtml#l00053">to_viewport()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_cgraph.svg" width="540" height="150"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a81cb5eb0d3404e8433ffbc3a484160dc_icgraph.svg" width="536" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -201,6 +248,28 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                           {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> chunk{</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;ne, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>)),</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        static_cast&lt;chunk::elem_t&gt;(<a class="code" href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">util::div</a>(this-&gt;se, <a class="code" href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">tiles_per_chunk</a>))</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    };</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a34ba6f7abd32acb48dfc6ad6efdc1bc8"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a34ba6f7abd32acb48dfc6ad6efdc1bc8">openage::util::div</a></div><div class="ttdeci">constexpr T div(T x, T m)</div><div class="ttdef"><b>Definition:</b> <a href="misc_8h_source.xhtml#l00075">misc.h:75</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_a056453272e2aabdf7fcf4ecc3b5fe7f7"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a056453272e2aabdf7fcf4ecc3b5fe7f7">openage::coord::tiles_per_chunk</a></div><div class="ttdeci">constexpr tile_t tiles_per_chunk</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00032">declarations.h:32</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="misc_8h_source.xhtml#l00075">openage::util::div()</a>, and <a class="el" href="declarations_8h_source.xhtml#l00032">openage::coord::tiles_per_chunk</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="terrain_8cpp_source.xhtml#l00120">openage::Terrain::get_chunk()</a>, <a class="el" href="terrain_8cpp_source.xhtml#l00133">openage::Terrain::get_create_chunk()</a>, and <a class="el" href="terrain_8cpp_source.xhtml#l00137">openage::Terrain::get_data()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_cgraph.svg" width="314" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a47c3fa2d9edf30712ddbc3b8ae217eb0_icgraph.svg" width="100%" height="479"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -220,6 +289,16 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00021">21</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                           {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> phys2{phys3::elem_t::from_int(this-&gt;ne), phys3::elem_t::from_int(this-&gt;se)};</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="terrain__object_8cpp_source.xhtml#l00310">openage::SquareObject::from_edge()</a>, <a class="el" href="terrain__object_8cpp_source.xhtml#l00347">openage::SquareObject::intersects()</a>, <a class="el" href="terrain__object_8cpp_source.xhtml#l00324">openage::SquareObject::on_edge()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00031">openage::coord::tile3::to_phys2()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a26e7ddc05f99069e9df2f35f3338d037_icgraph.svg" width="354" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -250,6 +329,28 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                  {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">to_tile3</a>(terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65">to_phys3</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1tile3_xhtml_a4c8cdcd73dd2d7d1e6109c8b4a82ba65"><div class="ttname"><a href="structopenage_1_1coord_1_1tile3.xhtml#a4c8cdcd73dd2d7d1e6109c8b4a82ba65">openage::coord::tile3::to_phys3</a></div><div class="ttdeci">phys3 to_phys3() const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00036">tile.cpp:36</a></div></div>
+<div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_a3b1cc7af8687d57f014cf86e57476b2b"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#a3b1cc7af8687d57f014cf86e57476b2b">openage::coord::tile::to_tile3</a></div><div class="ttdeci">tile3 to_tile3(const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00012">tile.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="tile_8cpp_source.xhtml#l00036">openage::coord::tile3::to_phys3()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00012">to_tile3()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="generator_8cpp_source.xhtml#l00252">openage::Generator::add_units()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00033">openage::gameio::load_unit()</a>, and <a class="el" href="tile_8cpp_source.xhtml#l00045">to_camgame()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_cgraph.svg" width="338" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_ac306cc74c14e094567447277327b389a_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -281,6 +382,17 @@ Public Member Functions</h2></td></tr>
 <p>adds an UP component to the coordinate. the resulting UP component will be 'altitude' tiles above ground elevation. </p>
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                                             {</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">// TODO: once terrain elevations have been implemented,</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">//       query the terrain elevation at {ne, se}.</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#a89337255daa472cb4631091a38bac268">tile_t</a> elevation = 0;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> tile3{this-&gt;ne, this-&gt;se, elevation + altitude};</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1coord_xhtml_a89337255daa472cb4631091a38bac268"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#a89337255daa472cb4631091a38bac268">openage::coord::tile_t</a></div><div class="ttdeci">int64_t tile_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00030">declarations.h:30</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="tile_8cpp_source.xhtml#l00026">to_phys3()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3b1cc7af8687d57f014cf86e57476b2b_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -317,12 +429,34 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="tile_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                  {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc">to_camgame</a>(mgr, terrain, altitude).<a class="code" href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">to_viewport</a>(mgr);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="structopenage_1_1coord_1_1camgame_xhtml_a3fc238716b4f13031e53b8cb1d8c3a44"><div class="ttname"><a href="structopenage_1_1coord_1_1camgame.xhtml#a3fc238716b4f13031e53b8cb1d8c3a44">openage::coord::camgame::to_viewport</a></div><div class="ttdeci">viewport to_viewport(const CoordManager &amp;mgr) const</div><div class="ttdef"><b>Definition:</b> <a href="pixel_8cpp_source.xhtml#l00045">pixel.cpp:45</a></div></div>
+<div class="ttc" id="structopenage_1_1coord_1_1tile_xhtml_a81cb5eb0d3404e8433ffbc3a484160dc"><div class="ttname"><a href="structopenage_1_1coord_1_1tile.xhtml#a81cb5eb0d3404e8433ffbc3a484160dc">openage::coord::tile::to_camgame</a></div><div class="ttdeci">camgame to_camgame(const CoordManager &amp;mgr, const Terrain &amp;terrain, tile_t altitude=0) const</div><div class="ttdef"><b>Definition:</b> <a href="tile_8cpp_source.xhtml#l00045">tile.cpp:45</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="tile_8cpp_source.xhtml#l00045">to_camgame()</a>, and <a class="el" href="pixel_8cpp_source.xhtml#l00045">openage::coord::camgame::to_viewport()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8cpp_source.xhtml#l00219">openage::Texture::draw()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1coord_1_1tile_a3f2be2b38a339e563ea0fa96733250ec_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>libopenage/coord/<a class="el" href="tile_8h_source.xhtml">tile.h</a></li>
-<li>libopenage/coord/<a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/<a class="el" href="tile_8h_source.xhtml">tile.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/<a class="el" href="tile_8cpp_source.xhtml">tile.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

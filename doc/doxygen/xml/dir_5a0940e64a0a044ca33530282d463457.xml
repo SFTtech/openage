@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_5a0940e64a0a044ca33530282d463457" kind="dir">
-    <compoundname>libopenage/gui/integration/public</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public</compoundname>
     <innerfile refid="gui__application__with__logger_8cpp">gui_application_with_logger.cpp</innerfile>
     <innerfile refid="gui__application__with__logger_8h">gui_application_with_logger.h</innerfile>
     <innerfile refid="gui__game__spec__image__provider_8cpp">gui_game_spec_image_provider.cpp</innerfile>
@@ -10,6 +10,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/integration/public/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/"/>
   </compounddef>
 </doxygen>

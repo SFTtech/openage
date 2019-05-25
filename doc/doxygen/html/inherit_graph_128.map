@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1job_1_1_job_manager.xhtml" title=" " alt="" coords="5,5,180,32"/>
+<area shape="rect" id="node1" href="$classopenage_1_1job_1_1_job_state_base.xhtml" title=" " alt="" coords="5,42,191,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1job_1_1_typed_job_state_base.xhtml" title=" " alt="" coords="239,35,429,76"/>
+<area shape="rect" id="node3" href="$classopenage_1_1job_1_1_abortable_job_state.xhtml" title=" " alt="" coords="481,5,660,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1job_1_1_job_state.xhtml" title=" " alt="" coords="477,71,664,98"/>
 </map>

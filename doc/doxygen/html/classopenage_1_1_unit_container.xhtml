@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::UnitContainer Class Reference</title>
+<title>openage: openage::UnitContainer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_unit_container.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::UnitContainer:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container__coll__graph.svg" width="168" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::UnitContainer:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container__coll__graph.svg" width="168" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -163,7 +165,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    :</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a>{1} {}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_ae05873e8701230f38caf495397a27b44"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">openage::UnitContainer::next_new_id</a></div><div class="ttdeci">id_t next_new_id</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00135">unit_container.h:135</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4cfc8ea8fc06819a1942e03e3bd15ce7"></a>
@@ -182,7 +185,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -203,6 +206,28 @@ Private Attributes</h2></td></tr>
 <p>gets a list of all units in the container </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00164">164</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                           {</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    std::vector&lt;Unit *&gt; <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;u : this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>) {</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        result.push_back(u.second.get());</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">result</a>;</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1testing_1_1testing_xhtml_ac25bf81db406af62d08113ef7ae9fd6e"><div class="ttname"><a href="namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e">openage::testing.testing.result</a></div><div class="ttdeci">def result(value)</div><div class="ttdef"><b>Definition:</b> <a href="testing_8py_source.xhtml#l00044">testing.py:44</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>, and <a class="el" href="testing_8py_source.xhtml#l00044">openage.testing.testing::result()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__save_8cpp_source.xhtml#l00070">openage::gameio::save()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a38b39ded603419425f1b5a38f188cc17_cgraph.svg" width="584" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a38b39ded603419425f1b5a38f188cc17_icgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -252,6 +277,29 @@ Private Attributes</h2></td></tr>
 <p>returns the terrain which units are placed on </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00066">66</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                        {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a4f34b1ff549d7f0302c184a8e54a2407">terrain</a>.expired()) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Terrain has expired&quot;</span>};</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a4f34b1ff549d7f0302c184a8e54a2407">terrain</a>.lock();</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a4f34b1ff549d7f0302c184a8e54a2407"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a4f34b1ff549d7f0302c184a8e54a2407">openage::UnitContainer::terrain</a></div><div class="ttdeci">std::weak_ptr&lt; Terrain &gt; terrain</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00145">unit_container.h:145</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, and <a class="el" href="unit__container_8h_source.xhtml#l00145">terrain</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit__container_8cpp_source.xhtml#l00096">new_unit()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_ad2ac232d0592daa1ecb4749081f33582_cgraph.svg" width="327" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_ad2ac232d0592daa1ecb4749081f33582_icgraph.svg" width="374" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -273,6 +321,18 @@ Private Attributes</h2></td></tr>
 <p>returns a reference to a unit </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00079">79</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                             {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a0878ffc113dac158174963680f368e5c">valid_id</a>(<span class="keywordtype">id</span>)) {</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> UnitReference(<span class="keyword">this</span>, <span class="keywordtype">id</span>, this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>[<span class="keywordtype">id</span>].get());</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">else</span> {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> UnitReference(<span class="keyword">this</span>, <span class="keywordtype">id</span>, <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a0878ffc113dac158174963680f368e5c"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a0878ffc113dac158174963680f368e5c">openage::UnitContainer::valid_id</a></div><div class="ttdeci">bool valid_id(id_t id) const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00074">unit_container.cpp:74</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>, and <a class="el" href="unit__container_8cpp_source.xhtml#l00074">valid_id()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a8a26773c4b616cfde844ab945e1e613d_cgraph.svg" width="374" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -293,6 +353,20 @@ Private Attributes</h2></td></tr>
 <p>creates a new unit without initialising </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00088">88</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                      {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">auto</span> <span class="keywordtype">id</span> = <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a>;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a> += 1;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>.emplace(<span class="keywordtype">id</span>, std::make_unique&lt;Unit&gt;(<span class="keyword">this</span>, <span class="keywordtype">id</span>));</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>[id]-&gt;get_ref();</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_ae05873e8701230f38caf495397a27b44"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">openage::UnitContainer::next_new_id</a></div><div class="ttdeci">id_t next_new_id</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00135">unit_container.h:135</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>, and <a class="el" href="unit__container_8h_source.xhtml#l00135">next_new_id</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="generator_8cpp_source.xhtml#l00252">openage::Generator::add_units()</a>, <a class="el" href="game__save_8cpp_source.xhtml#l00033">openage::gameio::load_unit()</a>, and <a class="el" href="game__control_8cpp_source.xhtml#l00102">openage::ActionMode::on_game_control_set()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a39947500d16e9d67eb72458f3df7c796_icgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -330,6 +404,22 @@ Private Attributes</h2></td></tr>
 <p>adds a new unit to the container and initialises using a unit type </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00096">96</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                           {</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">auto</span> new_id = <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a>;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a> += 1;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">auto</span> newobj = std::make_unique&lt;Unit&gt;(<span class="keyword">this</span>, new_id);</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// try placing unit at this location</span></div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">auto</span> terrain_shared = this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#ad2ac232d0592daa1ecb4749081f33582">get_terrain</a>();</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">placed</a> = type.place(newobj.get(), terrain_shared, position);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">placed</a>) {</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        type.initialise(newobj.get(), <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a>);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a>.active_unit_added(newobj.get()); <span class="comment">// TODO change, move elsewhere</span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">auto</span> <span class="keywordtype">id</span> = newobj-&gt;id;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>.emplace(<span class="keywordtype">id</span>, <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(newobj));</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>[id]-&gt;get_ref();</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> UnitReference(); <span class="comment">// is not valid</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::attr_type::owner</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2"><div class="ttname"><a href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::object_state::placed</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_ad2ac232d0592daa1ecb4749081f33582"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#ad2ac232d0592daa1ecb4749081f33582">openage::UnitContainer::get_terrain</a></div><div class="ttdeci">std::shared_ptr&lt; Terrain &gt; get_terrain() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00066">unit_container.cpp:66</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_ae05873e8701230f38caf495397a27b44"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">openage::UnitContainer::next_new_id</a></div><div class="ttdeci">id_t next_new_id</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00135">unit_container.h:135</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8cpp_source.xhtml#l00066">get_terrain()</a>, <a class="el" href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140">openage::UnitType::initialise()</a>, <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>, <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>, <a class="el" href="unit__container_8h_source.xhtml#l00135">next_new_id</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</a>, <a class="el" href="classopenage_1_1_unit_type.xhtml#a51facc71929fe2d425bc6bec06e0dc48">openage::UnitType::place()</a>, and <a class="el" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::placed</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a9ef13f975890f222c360b8a5e3242939_cgraph.svg" width="532" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -367,6 +457,21 @@ Private Attributes</h2></td></tr>
 <p>adds a new unit to the container and initialises using a unit type places outside an existing object using the player of that object </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00118">118</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                            {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">auto</span> new_id = <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a>;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">next_new_id</a> += 1;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">auto</span> newobj = std::make_unique&lt;Unit&gt;(<span class="keyword">this</span>, new_id);</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// try placing unit</span></div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    TerrainObject *<a class="code" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">placed</a> = type.place_beside(newobj.get(), other);</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">placed</a>) {</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        type.initialise(newobj.get(), <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a>);</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">owner</a>.active_unit_added(newobj.get()); <span class="comment">// TODO change, move elsewhere</span></div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">auto</span> <span class="keywordtype">id</span> = newobj-&gt;id;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>.emplace(<span class="keywordtype">id</span>, <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(newobj));</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>[id]-&gt;get_ref();</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> UnitReference(); <span class="comment">// is not valid</span></div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::attr_type::owner</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2"><div class="ttname"><a href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::object_state::placed</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_container_xhtml_ae05873e8701230f38caf495397a27b44"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#ae05873e8701230f38caf495397a27b44">openage::UnitContainer::next_new_id</a></div><div class="ttdeci">id_t next_new_id</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00135">unit_container.h:135</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1_unit_type.xhtml#a810c763e421cd95a9c64ab4c3e351140">openage::UnitType::initialise()</a>, <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>, <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>, <a class="el" href="unit__container_8h_source.xhtml#l00135">next_new_id</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</a>, <a class="el" href="unit__type_8cpp_source.xhtml#l00059">openage::UnitType::place_beside()</a>, and <a class="el" href="namespaceopenage.xhtml#a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2">openage::placed</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a0730d85fce9d5bec6b2bc76450b7dfa9_cgraph.svg" width="559" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -386,6 +491,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                          {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>.clear();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__save_8cpp_source.xhtml#l00102">openage::gameio::load()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_ae475b34e7deb9bd70b01db1abc698779_icgraph.svg" width="554" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -407,6 +525,9 @@ Private Attributes</h2></td></tr>
 <p>sets terrain to initialise units on </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                         {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a4f34b1ff549d7f0302c184a8e54a2407">terrain</a> = t;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a4f34b1ff549d7f0302c184a8e54a2407"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a4f34b1ff549d7f0302c184a8e54a2407">openage::UnitContainer::terrain</a></div><div class="ttdeci">std::weak_ptr&lt; Terrain &gt; terrain</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00145">unit_container.h:145</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00145">terrain</a>.</p>
 
 </div>
 </div>
@@ -428,6 +549,19 @@ Private Attributes</h2></td></tr>
 <p>update dispatched by the game engine on each physics tick. this will update all game objects. </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00143">143</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                                             {</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// update everything and find objects with no actions</span></div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    std::vector&lt;id_t&gt; to_remove;</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;obj : this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>) {</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        obj.second-&gt;update(lastframe_duration);</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (not obj.second-&gt;has_action()) {</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            to_remove.push_back(obj.first);</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// cleanup and removal of objects</span></div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;obj : to_remove) {</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="comment">// unique pointer triggers cleanup</span></div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        this-&gt;live_units.erase(obj);</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__main_8cpp_source.xhtml#l00063">openage::GameMain::update()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a1db074862697abdf24998bdf978ce7d3_icgraph.svg" width="367" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -449,6 +583,19 @@ Private Attributes</h2></td></tr>
 <p>checks the id is valid </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00074">74</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                          {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> (this-&gt;<a class="code" href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">live_units</a>.count(<span class="keywordtype">id</span>) &gt; 0);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_container_xhtml_a124e91ee902b8ad8c4f59a239e0eacb2"><div class="ttname"><a href="classopenage_1_1_unit_container.xhtml#a124e91ee902b8ad8c4f59a239e0eacb2">openage::UnitContainer::live_units</a></div><div class="ttdeci">std::unordered_map&lt; id_t, std::unique_ptr&lt; Unit &gt; &gt; live_units</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00140">unit_container.h:140</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00140">live_units</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit__container_8cpp_source.xhtml#l00079">get_unit()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_container_a0878ffc113dac158174963680f368e5c_icgraph.svg" width="374" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -476,6 +623,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8h_source.xhtml#l00140">140</a> of file <a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit__container_8cpp_source.xhtml#l00164">all_units()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00079">get_unit()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00088">new_unit()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00058">reset()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00143">update_all()</a>, and <a class="el" href="unit__container_8cpp_source.xhtml#l00074">valid_id()</a>.</p>
+
 </div>
 </div>
 <a id="ae05873e8701230f38caf495397a27b44"></a>
@@ -499,6 +648,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8h_source.xhtml#l00135">135</a> of file <a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit__container_8cpp_source.xhtml#l00088">new_unit()</a>.</p>
 
 </div>
 </div>
@@ -525,11 +676,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8h_source.xhtml#l00145">145</a> of file <a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="unit__container_8cpp_source.xhtml#l00066">get_terrain()</a>, and <a class="el" href="unit__container_8cpp_source.xhtml#l00062">set_terrain()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: std::hash&lt; openage::coord::phys3 &gt; Struct Template Reference</title>
+<title>openage: std::hash&lt; openage::coord::phys3 &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,11 +97,12 @@ $(document).ready(function(){initNavTree('structstd_1_1hash_3_01openage_1_1coord
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="phys_8h_source.xhtml">phys.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for std::hash&lt; openage::coord::phys3 &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4__coll__graph.svg" width="148" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for std::hash&lt; openage::coord::phys3 &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4__coll__graph.svg" width="148" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -140,11 +142,11 @@ struct std::hash&lt; openage::coord::phys3 &gt;</h3>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="phys_8h_source.xhtml#l00076">76</a> of file <a class="el" href="phys_8h_source.xhtml">phys.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                                           {</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> (</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            openage::util::rol&lt;size_t, 2&gt;(hash&lt;openage::coord::phys_t&gt;{}(pos.ne)) ^</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            openage::util::rol&lt;size_t, 1&gt;(hash&lt;openage::coord::phys_t&gt;{}(pos.se)) ^</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                          hash&lt;openage::coord::phys_t&gt;{}(pos.up)</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        );</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>libopenage/coord/<a class="el" href="phys_8h_source.xhtml">phys.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/<a class="el" href="phys_8h_source.xhtml">phys.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -128,7 +128,7 @@
         <label>mutex</label>
       </node>
       <node id="13033">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
         <childnode refid="13034" relation="include">
         </childnode>
@@ -250,6 +250,6 @@
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_engine_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp"/>
   </compounddef>
 </doxygen>

@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="87" column="1" bodyfile="libopenage/util/misc.h" bodystart="87" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="87" bodyend="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,12 +38,12 @@
 <para>use for stdlib structures like std::set. the template parameter has to be a pointer type. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3049">
+      <node id="5955">
         <label>openage::util::less&lt; T &gt;</label>
         <link refid="structopenage_1_1util_1_1less"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/misc.h" line="86" column="1" bodyfile="libopenage/util/misc.h" bodystart="86" bodyend="90"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="86" bodyend="90"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1less_1a803609f289c6ff68259ae83ffceaa334" prot="public" virt="non-virtual"><scope>openage::util::less</scope><name>operator()</name></member>
     </listofallmembers>

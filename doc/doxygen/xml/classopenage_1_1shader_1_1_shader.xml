@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/shader/shader.h" line="19" column="1" bodyfile="libopenage/shader/shader.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1a1ce9b29209dd9627480208604b2af536" compoundref="program_8cpp" startline="33" endline="46">openage::shader::Program::attach_shader</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1aa1776f13c5e6a6de8b21ecabee9962dc" compoundref="program_8cpp" startline="48" endline="65">openage::shader::Program::link</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" prot="public" static="no" mutable="no">
         <type>GLenum</type>
@@ -28,7 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/shader/shader.h" line="20" column="1" bodyfile="libopenage/shader/shader.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1shader_1_1_program_1a1ce9b29209dd9627480208604b2af536" compoundref="program_8cpp" startline="33" endline="46">openage::shader::Program::attach_shader</referencedby>
+        <referencedby refid="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" compoundref="shader_2shader_8cpp" startline="29" endline="61">Shader</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +55,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/shader/shader.h" line="16" column="1" bodyfile="libopenage/shader/shader.cpp" bodystart="29" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp" bodystart="29" bodyend="61"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" compoundref="shader_2shader_8h" startline="20">type</references>
+        <references refid="namespaceopenage_1_1shader_1aba992c07352be620fb7a7060d0349781" compoundref="shader_2shader_8cpp" startline="16" endline="27">openage::shader::type_to_string</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1shader_1_1_shader_1a1cf8a9e587452d5df6e384c870ebf966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/shader/shader.h" line="17" column="1" bodyfile="libopenage/shader/shader.cpp" bodystart="63" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp" bodystart="63" bodyend="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -72,12 +80,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4144">
+      <node id="5049">
         <label>openage::shader::Shader</label>
         <link refid="classopenage_1_1shader_1_1_shader"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/shader/shader.h" line="14" column="1" bodyfile="libopenage/shader/shader.h" bodystart="14" bodyend="21"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.h" bodystart="14" bodyend="21"/>
     <listofallmembers>
       <member refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>id</name></member>
       <member refid="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>Shader</name></member>

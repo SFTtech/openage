@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.binpack.ColumnPacker Class Reference</title>
+<title>openage: openage.convert.binpack.ColumnPacker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1binpack_1_1
 
 <p>Packs blocks into columns, greedily trying to minimize the maximum height.  
  <a href="classopenage_1_1convert_1_1binpack_1_1_column_packer.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.binpack.ColumnPacker:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_column_packer__inherit__graph.svg" width="180" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.binpack.ColumnPacker:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_column_packer__inherit__graph.svg" width="180" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.binpack.ColumnPacker:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_column_packer__coll__graph.svg" width="180" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.binpack.ColumnPacker:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_column_packer__coll__graph.svg" width="180" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -175,7 +178,10 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#ac0edc354fd6c4e1d7396e66e877fc3f3">openage.convert.binpack.Packer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00080">80</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        num_columns, _ = <a class="code" href="namespaceopenage_1_1convert_1_1binpack.xhtml#a74908a15b1ee442e6e51755393774a13">factor</a>(len(blocks))</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        columns = [[] <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(num_columns)]</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment"># Put blocks into columns.</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">for</span> block <span class="keywordflow">in</span> blocks:</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            min_col = <a class="code" href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">min</a>(columns, key=<span class="keyword">lambda</span> col: sum(b.height <span class="keywordflow">for</span> b <span class="keywordflow">in</span> col))</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            min_col.append(block)</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment"># Calculate positions.</span></div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        x = 0</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">for</span> column <span class="keywordflow">in</span> columns:</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            y = 0</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">for</span> block <span class="keywordflow">in</span> column:</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                self.mapping[block] = (x, y)</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                y += block.height + self.margin</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            x += <a class="code" href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">max</a>(block.width <span class="keywordflow">for</span> block <span class="keywordflow">in</span> column) + self.margin</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">class </span>BestPacker:</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Chooses the best result from all the given packers.&quot;&quot;&quot;</span></div><div class="ttc" id="namespacestd_xhtml_a34591a1d8ee5da3f16f56554590d5e16"><div class="ttname"><a href="namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16">std::min</a></div><div class="ttdeci">constexpr openage::util::FixedPoint&lt; I, F &gt; min(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00475">fixed_point.h:475</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1convert_1_1binpack_xhtml_a74908a15b1ee442e6e51755393774a13"><div class="ttname"><a href="namespaceopenage_1_1convert_1_1binpack.xhtml#a74908a15b1ee442e6e51755393774a13">openage.convert.binpack.factor</a></div><div class="ttdeci">def factor(n)</div><div class="ttdoc">Return two (preferable close) factors of n.</div><div class="ttdef"><b>Definition:</b> <a href="binpack_8py_source.xhtml#l00014">binpack.py:14</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1console_1_1tests_xhtml_a46ebd3333dc9196558ac9aced828d117"><div class="ttname"><a href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">openage::console::tests::max</a></div><div class="ttdeci">int max(int a, int b)</div><div class="ttdef"><b>Definition:</b> <a href="console_2tests_8cpp_source.xhtml#l00031">tests.cpp:31</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -196,7 +202,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

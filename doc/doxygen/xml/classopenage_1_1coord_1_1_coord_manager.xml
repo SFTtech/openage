@@ -17,7 +17,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="26" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">openage::Engine::draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">openage::Engine::on_resize</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" compoundref="pixel_8cpp" startline="103" endline="110">openage::coord::input_delta::to_viewport</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1coord_1_1_coord_manager_1a7d3d2a6a960c82fa5dcec0e43e3e7c9a" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
@@ -32,7 +37,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="31" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" compoundref="engine_8cpp" startline="551" endline="560">openage::Engine::move_phys_camera</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1a03daba2a3e79650c251e3c08e0838a5e" compoundref="phys_8cpp" startline="91" endline="93">openage::coord::phys3::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" compoundref="pixel_8cpp" startline="40" endline="42">openage::coord::camgame::to_phys3</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref></type>
@@ -47,7 +55,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="37" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">openage::Engine::on_resize</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" compoundref="pixel_8cpp" startline="71" endline="74">openage::coord::viewport::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" compoundref="pixel_8cpp" startline="45" endline="48">openage::coord::camgame::to_viewport</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref></type>
@@ -62,7 +73,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="43" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">openage::Engine::on_resize</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" compoundref="pixel_8cpp" startline="87" endline="89">openage::coord::viewport::to_camhud</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" compoundref="pixel_8cpp" startline="92" endline="95">openage::coord::camhud::to_viewport</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">camgame_delta</ref></type>
@@ -77,7 +91,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="51" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1coord_1_1phys3__delta_1ace92b215378b122ce3fb17101986011f" compoundref="phys_8cpp" startline="60" endline="73">openage::coord::phys3_delta::to_camgame</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" compoundref="pixel_8cpp" startline="12" endline="37">openage::coord::camgame_delta::to_phys3</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -92,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/coordmanager.h" line="20" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="20" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="20" bodyend="20"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,61 +118,61 @@
 <para>Among other things, this stores the camera positions. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="960">
+      <node id="1727">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="961">
+      <node id="1728">
         <label>openage::coord::camgame_delta</label>
         <link refid="structopenage_1_1coord_1_1camgame__delta"/>
-        <childnode refid="962" relation="public-inheritance">
+        <childnode refid="1729" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="964">
+      <node id="1731">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="959">
+      <node id="1726">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="960" relation="public-inheritance">
+        <childnode refid="1727" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="957">
+      <node id="1724">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="958" relation="public-inheritance">
+        <childnode refid="1725" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="963">
+      <node id="1730">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="964" relation="public-inheritance">
+        <childnode refid="1731" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="962">
+      <node id="1729">
         <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
       </node>
-      <node id="958">
+      <node id="1725">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="956">
+      <node id="1723">
         <label>openage::coord::CoordManager</label>
         <link refid="classopenage_1_1coord_1_1_coord_manager"/>
-        <childnode refid="957" relation="usage">
+        <childnode refid="1724" relation="usage">
           <edgelabel>+camgame_viewport</edgelabel>
           <edgelabel>+camhud_viewport</edgelabel>
         </childnode>
-        <childnode refid="959" relation="usage">
+        <childnode refid="1726" relation="usage">
           <edgelabel>+camgame_phys</edgelabel>
         </childnode>
-        <childnode refid="961" relation="usage">
+        <childnode refid="1728" relation="usage">
           <edgelabel>+tile_size</edgelabel>
         </childnode>
-        <childnode refid="963" relation="usage">
+        <childnode refid="1730" relation="usage">
           <edgelabel>+viewport_size</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/coordmanager.h" line="18" column="1" bodyfile="libopenage/coord/coordmanager.h" bodystart="18" bodyend="52"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.h" bodystart="18" bodyend="52"/>
     <listofallmembers>
       <member refid="classopenage_1_1coord_1_1_coord_manager_1a7d3d2a6a960c82fa5dcec0e43e3e7c9a" prot="public" virt="non-virtual"><scope>openage::coord::CoordManager</scope><name>camgame_phys</name></member>
       <member refid="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" prot="public" virt="non-virtual"><scope>openage::coord::CoordManager</scope><name>camgame_viewport</name></member>

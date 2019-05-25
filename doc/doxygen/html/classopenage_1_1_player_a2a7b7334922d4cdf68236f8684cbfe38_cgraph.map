@@ -1,0 +1,10 @@
+<map id="openage::Player::on_resources_change" name="openage::Player::on_resources_change">
+<area shape="rect" id="node1" title=" " alt="" coords="5,97,144,139"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_resource_bundle.xhtml#aa3e1dfb21fe065f769a21a13f667984b" title=" " alt="" coords="192,64,367,105"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_score.xhtml#a692b0ccf6ec945e3cb5e8540b6b9abc6" title=" " alt="" coords="199,156,359,197"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_resource_bundle.xhtml#a7c6e69b4cd066ccceb01e89687057090" title=" " alt="" coords="431,5,605,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_resource_bundle.xhtml#a85c59861409e505a3c5fb020a73ef1c2" title=" " alt="" coords="669,130,869,157"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_score.xhtml#a7867975c457c1de476f8d5ecd1ae452f" title=" " alt="" coords="437,123,599,164"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_resource_bundle.xhtml#a76ff3bbdb074f255cd4b2a80d82e2a00" title=" " alt="" coords="415,189,621,215"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_score.xhtml#ab03c4138b0129edb062c498f4393b8ba" title=" " alt="" coords="447,240,589,281"/>
+</map>

@@ -15,7 +15,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/aicontroller.h" line="20" column="1" bodyfile="libopenage/event/demo/aicontroller.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1abebd72cf34d6cf5c8042782560241047" compoundref="aicontroller_8cpp" startline="7" endline="27">get_inputs</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +43,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/aicontroller.h" line="13" column="1" bodyfile="libopenage/event/demo/aicontroller.cpp" bodystart="7" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp" bodystart="7" bodyend="27"/>
+        <references refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1a069fd4bdb12c048f6c5e8a46c5cc19de" compoundref="aicontroller_8h" startline="20">commands</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaa4d80ef707f224cf7055ac1c7fc5ea403" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::DOWN</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_pong_event_1a9da408d681295db9e3f6632c4b673dcaab9eff9ad1c50ede6bf15f9dc46da201a" compoundref="gamestate_8h" startline="26">openage::event::demo::PongEvent::UP</references>
+        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="206">openage::event::demo::curvepong</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,12 +55,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="189">
+      <node id="2169">
         <label>openage::event::demo::AIInput</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_a_i_input"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/demo/aicontroller.h" line="11" column="1" bodyfile="libopenage/event/demo/aicontroller.h" bodystart="11" bodyend="21"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h" bodystart="11" bodyend="21"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1a069fd4bdb12c048f6c5e8a46c5cc19de" prot="private" virt="non-virtual"><scope>openage::event::demo::AIInput</scope><name>commands</name></member>
       <member refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1abebd72cf34d6cf5c8042782560241047" prot="public" virt="non-virtual"><scope>openage::event::demo::AIInput</scope><name>get_inputs</name></member>

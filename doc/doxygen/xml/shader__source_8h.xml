@@ -4,12 +4,12 @@
     <compoundname>shader_source.h</compoundname>
     <includes local="no">string</includes>
     <includes refid="util_2path_8h" local="yes">../../util/path.h</includes>
-    <includedby refid="opengl_2shader__program_8h" local="yes">libopenage/renderer/opengl/shader_program.h</includedby>
-    <includedby refid="renderer_2opengl_2shader_8h" local="yes">libopenage/renderer/opengl/shader.h</includedby>
-    <includedby refid="shader__source_8cpp" local="yes">libopenage/renderer/resources/shader_source.cpp</includedby>
-    <includedby refid="renderer_2tests_8cpp" local="yes">libopenage/renderer/tests.cpp</includedby>
-    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
-    <includedby refid="vulkan_2shader__program_8h" local="yes">libopenage/renderer/vulkan/shader_program.h</includedby>
+    <includedby refid="opengl_2shader__program_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</includedby>
+    <includedby refid="renderer_2opengl_2shader_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h</includedby>
+    <includedby refid="shader__source_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.cpp</includedby>
+    <includedby refid="renderer_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="vulkan_2shader__program_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h</includedby>
     <incdepgraph>
       <node id="23087">
         <label>list</label>
@@ -212,7 +212,7 @@
         <link refid="fslike_2native_8h"/>
       </node>
       <node id="23055">
-        <label>libopenage/renderer/resources/shader_source.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h</label>
         <link refid="shader__source_8h"/>
         <childnode refid="23056" relation="include">
         </childnode>
@@ -294,11 +294,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="23104">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="23096">
-        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</label>
         <link refid="opengl_2shader__program_8h"/>
         <childnode refid="23097" relation="include">
         </childnode>
@@ -308,29 +308,29 @@
         </childnode>
       </node>
       <node id="23103">
-        <label>libopenage/renderer/resources/shader_source.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.cpp</label>
         <link refid="shader__source_8cpp"/>
       </node>
       <node id="23098">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="23099">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="23106">
-        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h</label>
         <link refid="vulkan_2shader__program_8h"/>
         <childnode refid="23105" relation="include">
         </childnode>
       </node>
       <node id="23102">
-        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp</label>
         <link refid="renderer_2opengl_2shader_8cpp"/>
       </node>
       <node id="23095">
-        <label>libopenage/renderer/resources/shader_source.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h</label>
         <link refid="shader__source_8h"/>
         <childnode refid="23096" relation="include">
         </childnode>
@@ -346,15 +346,15 @@
         </childnode>
       </node>
       <node id="23100">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="23105">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
       <node id="23101">
-        <label>libopenage/renderer/opengl/shader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h</label>
         <link refid="renderer_2opengl_2shader_8h"/>
         <childnode refid="23102" relation="include">
         </childnode>
@@ -362,7 +362,7 @@
         </childnode>
       </node>
       <node id="23097">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="23098" relation="include">
         </childnode>
@@ -427,6 +427,6 @@
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::resources</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/resources/shader_source.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h"/>
   </compounddef>
 </doxygen>

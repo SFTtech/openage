@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="156" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="156" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="156" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a1c09bf6d7d98cdd77fe4b555f4936cd4" compoundref="gui__renderer__impl_8cpp" startline="248" endline="252">TemporaryDisableGuiRendererSync</referencedby>
+        <referencedby refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" compoundref="gui__renderer__impl_8cpp" startline="254" endline="257">~TemporaryDisableGuiRendererSync</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" prot="private" static="no" mutable="no">
         <type>const bool</type>
@@ -28,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="157" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="157" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="157" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" compoundref="gui__renderer__impl_8cpp" startline="254" endline="257">~TemporaryDisableGuiRendererSync</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="149" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="248" bodyend="252"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="248" bodyend="252"/>
+        <references refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" compoundref="gui__renderer__impl_8h" startline="156">renderer</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -60,7 +64,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="150" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="254" bodyend="257"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="254" bodyend="257"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" compoundref="gui__renderer__impl_8cpp" startline="215" endline="218">qtsdl::GuiRendererImpl::demand_sync</references>
+        <references refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" compoundref="gui__renderer__impl_8h" startline="157">need_sync</references>
+        <references refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" compoundref="gui__renderer__impl_8h" startline="156">renderer</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -78,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="153" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="153" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2e38cb892002811af384624e9031187c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync" kindref="compound">TemporaryDisableGuiRendererSync</ref> &amp;</type>
@@ -94,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="154" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="154" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,31 +109,31 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4330">
+      <node id="6577">
         <label>qtsdl::GuiRenderingSetupRoutines</label>
         <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
       </node>
-      <node id="4329">
+      <node id="6576">
         <label>QObject</label>
       </node>
-      <node id="4328">
+      <node id="6575">
         <label>qtsdl::GuiRendererImpl</label>
         <link refid="classqtsdl_1_1_gui_renderer_impl"/>
-        <childnode refid="4329" relation="public-inheritance">
+        <childnode refid="6576" relation="public-inheritance">
         </childnode>
-        <childnode refid="4330" relation="usage">
+        <childnode refid="6577" relation="usage">
           <edgelabel>-gui_rendering_setup_routines</edgelabel>
         </childnode>
       </node>
-      <node id="4327">
+      <node id="6574">
         <label>qtsdl::TemporaryDisableGuiRendererSync</label>
         <link refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync"/>
-        <childnode refid="4328" relation="usage">
+        <childnode refid="6575" relation="usage">
           <edgelabel>-renderer</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="147" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="147" bodyend="158"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="147" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="147" bodyend="158"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>need_sync</name></member>
       <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2e38cb892002811af384624e9031187c" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>operator=</name></member>

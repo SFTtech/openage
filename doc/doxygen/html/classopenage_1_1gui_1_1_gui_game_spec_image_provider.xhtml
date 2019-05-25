@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::gui::GuiGameSpecImageProvider Class Reference</title>
+<title>openage: openage::gui::GuiGameSpecImageProvider Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_gui_game_spec_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__game__spec__image__provider_8h_source.xhtml">gui_game_spec_image_provider.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::gui::GuiGameSpecImageProvider:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider__inherit__graph.svg" width="227" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::GuiGameSpecImageProvider:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider__inherit__graph.svg" width="227" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::gui::GuiGameSpecImageProvider:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider__coll__graph.svg" width="227" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::GuiGameSpecImageProvider:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_gui_game_spec_image_provider__coll__graph.svg" width="227" height="258"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -160,7 +163,7 @@ Public Member Functions</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider_8h_source.xhtml#l00016">16</a> of file <a class="el" href="gui__game__spec__image__provider_8h_source.xhtml">gui_game_spec_image_provider.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                    {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ByFilename,</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        ByGraphicId,</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ByTerrainId,</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    };</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -199,6 +202,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml">gui_game_spec_image_provider.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    :</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_image_provider.xhtml#a4e9879f5d4bec950192552f9161ee13f">GuiImageProvider</a>{[render_updater, type] () -&gt; std::unique_ptr&lt;qtsdl::GuiImageProviderImpl&gt; {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">switch</span>(type) {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934ea5590bd874d7736941fb679a0652e6c82">Type::ByFilename</a>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">return</span> std::make_unique&lt;GuiGameSpecImageProviderByFilenameImpl&gt;(render_updater);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eaca0498197aef64d3e0d08e96588d5fcf">Type::ByGraphicId</a>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">return</span> std::make_unique&lt;GuiGameSpecImageProviderByGraphicIdImpl&gt;(render_updater);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eae2d8bace90592e66272a6adc4aa19a93">Type::ByTerrainId</a>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> std::make_unique&lt;GuiGameSpecImageProviderByTerrainIdImpl&gt;(render_updater);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">break</span>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a>(<span class="keyword">false</span>, <span class="stringliteral">&quot;unhandled image provider type&quot;</span>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> std::unique_ptr&lt;qtsdl::GuiImageProviderImpl&gt;{};</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }()} {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_xhtml_a4a86c6b1bcf08a9f52d31955f7eb934eae2d8bace90592e66272a6adc4aa19a93"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eae2d8bace90592e66272a6adc4aa19a93">openage::gui::GuiGameSpecImageProvider::Type::ByTerrainId</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_xhtml_a4a86c6b1bcf08a9f52d31955f7eb934eaca0498197aef64d3e0d08e96588d5fcf"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eaca0498197aef64d3e0d08e96588d5fcf">openage::gui::GuiGameSpecImageProvider::Type::ByGraphicId</a></div></div>
+<div class="ttc" id="error_2error_8h_xhtml_ae20e8a0a86b80f8211fdf87477524f87"><div class="ttname"><a href="error_2error_8h.xhtml#ae20e8a0a86b80f8211fdf87477524f87">ENSURE</a></div><div class="ttdeci">#define ENSURE(...)</div><div class="ttdef"><b>Definition:</b> <a href="error_2error_8h_source.xhtml#l00155">error.h:155</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_xhtml_a4a86c6b1bcf08a9f52d31955f7eb934ea5590bd874d7736941fb679a0652e6c82"><div class="ttname"><a href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934ea5590bd874d7736941fb679a0652e6c82">openage::gui::GuiGameSpecImageProvider::Type::ByFilename</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_image_provider_xhtml_a4e9879f5d4bec950192552f9161ee13f"><div class="ttname"><a href="classqtsdl_1_1_gui_image_provider.xhtml#a4e9879f5d4bec950192552f9161ee13f">qtsdl::GuiImageProvider::GuiImageProvider</a></div><div class="ttdeci">GuiImageProvider(std::unique_ptr&lt; GuiImageProviderImpl &gt; impl)</div><div class="ttdef"><b>Definition:</b> <a href="gui__image__provider_8cpp_source.xhtml#l00009">gui_image_provider.cpp:9</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934ea5590bd874d7736941fb679a0652e6c82">ByFilename</a>, <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eaca0498197aef64d3e0d08e96588d5fcf">ByGraphicId</a>, <a class="el" href="classopenage_1_1gui_1_1_gui_game_spec_image_provider.xhtml#a4a86c6b1bcf08a9f52d31955f7eb934eae2d8bace90592e66272a6adc4aa19a93">ByTerrainId</a>, and <a class="el" href="error_2error_8h_source.xhtml#l00155">ENSURE</a>.</p>
 
 </div>
 </div>
@@ -218,12 +228,12 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml">gui_game_spec_image_provider.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                    {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/integration/public/<a class="el" href="gui__game__spec__image__provider_8h_source.xhtml">gui_game_spec_image_provider.h</a></li>
-<li>libopenage/gui/integration/public/<a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml">gui_game_spec_image_provider.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/<a class="el" href="gui__game__spec__image__provider_8h_source.xhtml">gui_game_spec_image_provider.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/<a class="el" href="gui__game__spec__image__provider_8cpp_source.xhtml">gui_game_spec_image_provider.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

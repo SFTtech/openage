@@ -3,7 +3,7 @@
   <compounddef id="hacks_8h" kind="file" language="C++">
     <compoundname>hacks.h</compoundname>
     <includes refid="exctranslate_8h" local="yes">exctranslate.h</includes>
-    <includedby refid="hacks_8cpp" local="yes">libopenage/pyinterface/hacks.cpp</includedby>
+    <includedby refid="hacks_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.cpp</includedby>
     <incdepgraph>
       <node id="19823">
         <label>list</label>
@@ -104,7 +104,7 @@
         </childnode>
       </node>
       <node id="19797">
-        <label>libopenage/pyinterface/hacks.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.h</label>
         <link refid="hacks_8h"/>
         <childnode refid="19798" relation="include">
         </childnode>
@@ -198,13 +198,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="19828">
-        <label>libopenage/pyinterface/hacks.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.h</label>
         <link refid="hacks_8h"/>
         <childnode refid="19829" relation="include">
         </childnode>
       </node>
       <node id="19829">
-        <label>libopenage/pyinterface/hacks.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.cpp</label>
         <link refid="hacks_8cpp"/>
       </node>
     </invincdepgraph>
@@ -231,6 +231,6 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pyinterface/hacks.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/hacks.h"/>
   </compounddef>
 </doxygen>

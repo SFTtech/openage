@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1game_1_1main" kind="namespace" language="Python">
+    <compoundname>openage::game::main</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1game_1_1main_1ae93e9146615208dbf7044af95e2398d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.game.main.init_subparser</definition>
+        <argsstring>(cli)</argsstring>
+        <name>init_subparser</name>
+        <param>
+          <type>cli</type>
+          <defname>cli</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the parser for game-specific args. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py" bodystart="13" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.game.main.main</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>main</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py" bodystart="29" bodyend="81"/>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a31f860d9262d979d980d859ced108126" compoundref="convert_2main_8py" startline="436" endline="502">openage.convert.main.conversion_required</references>
+        <references refid="namespaceopenage_1_1convert_1_1main_1a06157ab72dcb855b2e993bf128e9faf1" compoundref="convert_2main_8py" startline="162" endline="216">openage.convert.main.convert_assets</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1assets_1a3e1a981f1a6162a6e8205a0dcfc4e3b9" compoundref="assets_8py" startline="30" endline="62">openage.assets.get_asset_path</references>
+        <references refid="namespaceopenage_1_1cvar_1_1location_1a55d460c893fbe41db12a729492a8eea2" compoundref="location_8py" startline="22" endline="53">openage.cvar.location.get_config_path</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" compoundref="main_8cpp" startline="24" endline="67">openage::run_game</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/game/main.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

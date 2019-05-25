@@ -28,7 +28,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="89" column="1" bodyfile="libopenage/util/enum.h" bodystart="89" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="89" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" compoundref="header__snippet_8py" startline="26" endline="28">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_enum_value_1aac09469400ad13bdfba4926dd02d3164" prot="public" static="no" mutable="no">
         <type>NumericType</type>
@@ -41,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="90" column="1" bodyfile="libopenage/util/enum.h" bodystart="90" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="52" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="52" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a1dab353da4486a9c8c60bd8e14ee98d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_enum_value" kindref="compound">EnumValue</ref> &amp;</type>
@@ -77,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="53" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="53" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a0796e1f8a1fa21cc20f1ad2c7da69415" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -94,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="60" column="1" bodyfile="libopenage/util/enum.h" bodystart="60" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1ad3945ffef23580f7a64757b886c2e2ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -111,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="64" column="1" bodyfile="libopenage/util/enum.h" bodystart="64" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a9bb6a21bf004e58196e4bda16b7e849a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -128,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="68" column="1" bodyfile="libopenage/util/enum.h" bodystart="68" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1adbb6e103305a98ca4ffd7ede8f3a527c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -145,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="72" column="1" bodyfile="libopenage/util/enum.h" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1afcd1b51f6b424f2752c26122f426d49b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -162,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="76" column="1" bodyfile="libopenage/util/enum.h" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1ab3e1f8bcc46314730c71ae5af29dd306" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -179,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="80" column="1" bodyfile="libopenage/util/enum.h" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="80" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -202,26 +209,58 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum.h" line="84" column="1" bodyfile="libopenage/util/enum.h" bodystart="84" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="84" bodyend="87"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="1389">
+    <inheritancegraph>
+      <node id="5698">
         <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
-        <childnode refid="1390" relation="usage">
+      </node>
+      <node id="5701">
+        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="5698" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5699">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="5698" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5702">
+        <label>openage::util::tests::testenum_value</label>
+        <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
+        <childnode refid="5701" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5700">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="5699" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5703">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="5704" relation="usage">
           <edgelabel>+numeric</edgelabel>
         </childnode>
       </node>
-      <node id="1390">
+      <node id="5704">
         <label>NumericType</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/enum.h" line="47" column="1" bodyfile="libopenage/util/enum.h" bodystart="47" bodyend="91"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum.h" bodystart="47" bodyend="91"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>EnumValue</name></member>
       <member refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>name</name></member>

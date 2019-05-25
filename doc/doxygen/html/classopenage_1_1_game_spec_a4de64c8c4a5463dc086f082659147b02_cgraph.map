@@ -1,0 +1,35 @@
+<map id="openage::GameSpec::initialize" name="openage::GameSpec::initialize">
+<area shape="rect" id="node1" title=" " alt="" coords="5,643,157,684"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318" title=" " alt="" coords="661,7,821,34"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_asset_manager.xhtml#ab32bf393ec81c214585922c1a4cc9698" title=" " alt="" coords="425,421,587,463"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_timer.xhtml#ad764a82c4de3f85c379ccc39c068f229" title=" " alt="" coords="213,740,349,781"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="223,871,339,898"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title=" " alt="" coords="205,556,357,597"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="912,645,1033,671"/>
+<area shape="rect" id="node26" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title=" " alt="" coords="205,304,357,345"/>
+<area shape="rect" id="node33" href="$classopenage_1_1util_1_1_timer.xhtml#afe1b5aca34f4b4151c6b85bafcd5dfd2" title=" " alt="" coords="213,805,349,847"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="876,35,1069,62"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1149,35,1276,62"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title=" " alt="" coords="436,773,576,815"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="447,605,565,631"/>
+<area shape="rect" id="node17" href="$namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088" title=" " alt="" coords="433,487,579,514"/>
+<area shape="rect" id="node19" href="$classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" title=" " alt="" coords="425,539,587,580"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="1139,599,1286,640"/>
+<area shape="rect" id="node12" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="1117,665,1308,691"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="1385,592,1524,633"/>
+<area shape="rect" id="node14" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="1369,657,1541,699"/>
+<area shape="rect" id="node15" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="1356,723,1553,750"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1util.xhtml#a042594ac67e652c429fba1eeb1bec6fa" title=" " alt="" coords="665,487,817,514"/>
+<area shape="rect" id="node20" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title=" " alt="" coords="660,539,823,580"/>
+<area shape="rect" id="node21" href="$classopenage_1_1_asset_manager.xhtml#a20f0383ea39d88917bb5a02fbb239006" title=" " alt="" coords="891,564,1054,605"/>
+<area shape="rect" id="node22" href="$classopenage_1_1util_1_1_path.xhtml#aacfbbb9dd2e0ec286b5581690f9a83aa" title=" " alt="" coords="907,173,1038,215"/>
+<area shape="rect" id="node23" href="$classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" title=" " alt="" coords="901,499,1044,540"/>
+<area shape="rect" id="node24" href="$classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe" title=" " alt="" coords="1136,445,1289,487"/>
+<area shape="rect" id="node25" href="$classopenage_1_1util_1_1_path.xhtml#a1175be01a6df63d066ca6f2d3e2c4d3c" title=" " alt="" coords="1133,511,1292,552"/>
+<area shape="rect" id="node27" href="$classopenage_1_1_asset_manager.xhtml#a50069b4b3cd4b5fcf8fb5f4b480c721d" title=" " alt="" coords="425,304,587,345"/>
+<area shape="rect" id="node28" href="$classopenage_1_1_engine.xhtml#ad925a7a6258d1382edd274ee4ceafdbd" title=" " alt="" coords="433,239,579,280"/>
+<area shape="rect" id="node29" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" title=" " alt="" coords="405,173,607,215"/>
+<area shape="rect" id="node31" href="$classopenage_1_1_game_spec.xhtml#ad72bef762bb38fb93c944d490bf5c113" title=" " alt="" coords="430,56,582,97"/>
+<area shape="rect" id="node30" href="$classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" title=" " alt="" coords="655,173,828,215"/>
+<area shape="rect" id="node32" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="682,62,801,89"/>
+</map>

@@ -14,7 +14,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="83" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="83" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="83" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a8722db6380bb4a3ebdcd2d13ba93e2e6" compoundref="bytequeue_8py" startline="105" endline="107">openage.util.bytequeue.ByteBuffer.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" compoundref="bytequeue_8py" startline="111" endline="117">openage.util.bytequeue.ByteBuffer.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a697e1352f957ef84d84a67b33ee7a6c6" compoundref="bytequeue_8py" startline="122" endline="135">openage.util.bytequeue.ByteBuffer.discardleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1a13834a477d776577bb0cddd604879c86" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -28,7 +32,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="86" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="86" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="86" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf_1aab2f9c67bf2e32d12e6199053c0bf429" compoundref="peresource_8py" startline="115" endline="119">openage.convert.peresource.ResourceLeaf.open</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1a51996566c8167b919e9a5181e6476735" prot="public" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, <ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform" kindref="compound">GlInBlockUniform</ref> &gt;</type>
@@ -42,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="88" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="88" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1a7e088a60b5f756463b5320e6666fd75e" prot="public" static="no" mutable="no">
         <type>GLuint</type>
@@ -56,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="91" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="91" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -65,12 +70,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2446">
+      <node id="4701">
         <label>openage::renderer::opengl::GlShaderProgram::GlUniformBlock</label>
         <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/shader_program.h" line="82" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="82" bodyend="92"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="82" bodyend="92"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1a7e088a60b5f756463b5320e6666fd75e" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlUniformBlock</scope><name>binding_point</name></member>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block_1a13834a477d776577bb0cddd604879c86" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlUniformBlock</scope><name>data_size</name></member>

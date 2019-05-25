@@ -1,8 +1,8 @@
-<map id="libopenage/renderer/vulkan/graphics_device.h" name="libopenage/renderer/vulkan/graphics_device.h">
-<area shape="rect" id="node1" title=" " alt="" coords="319,5,488,47"/>
-<area shape="rect" id="node2" href="$graphics__device_8cpp.xhtml" title=" " alt="" coords="5,95,188,136"/>
-<area shape="rect" id="node3" href="$vulkan_2render__target_8h.xhtml" title=" " alt="" coords="212,95,365,136"/>
-<area shape="rect" id="node4" href="$vulkan_2renderer_8cpp.xhtml" title=" " alt="" coords="334,184,473,225"/>
-<area shape="rect" id="node5" href="$vulkan_2renderer_8h.xhtml" title=" " alt="" coords="441,95,576,136"/>
-<area shape="rect" id="node6" href="$windowvk_8cpp.xhtml" title=" " alt="" coords="600,95,745,136"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/vulkan/graphics_device.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/vulkan/graphics_device.h">
+<area shape="rect" id="node1" title=" " alt="" coords="402,5,622,61"/>
+<area shape="rect" id="node2" href="$graphics__device_8cpp.xhtml" title=" " alt="" coords="5,109,240,165"/>
+<area shape="rect" id="node3" href="$vulkan_2render__target_8h.xhtml" title=" " alt="" coords="265,109,474,165"/>
+<area shape="rect" id="node4" href="$vulkan_2renderer_8cpp.xhtml" title=" " alt="" coords="407,213,617,269"/>
+<area shape="rect" id="node5" href="$vulkan_2renderer_8h.xhtml" title=" " alt="" coords="550,109,759,165"/>
+<area shape="rect" id="node6" href="$windowvk_8cpp.xhtml" title=" " alt="" coords="783,109,993,165"/>
 </map>

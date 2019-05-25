@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cabextract_1_1test" kind="namespace" language="Python">
+    <compoundname>openage::cabextract::test</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1cabextract_1_1test_1a127bc2c654342908285a1e56a8b6937f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::cabextract::test.TEST_ARCHIVE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>TEST_ARCHIVE_SIZE</name>
+        <initializer>=  1057766</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1cabextract_1_1test_1aa07ad152d5e016a6f9d2b5c67b1cb055" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string openage::cabextract::test.TEST_ARCHIVE_URL</definition>
+        <argsstring></argsstring>
+        <name>TEST_ARCHIVE_URL</name>
+        <initializer>=  &quot;http://pub.sft.mx/openage/openage_testarc.cab&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1cabextract_1_1test_1a06fe92cb64bbd455b08c332475162505" prot="public" static="no" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage::cabextract::test.TEST_FILES</definition>
+        <argsstring></argsstring>
+        <name>TEST_FILES</name>
+        <initializer>=  {
+    &quot;testfilea&quot;: (&quot;68fe7d874c7887bdd3f6aaca46abd306&quot;, 524288),
+    &quot;testfileb&quot;: (&quot;7f614da9329cd3aebf59b91aadc30bf0&quot;, 67108864),
+    &quot;testfilec&quot;: (&quot;d41d8cd98f00b204e9800998ecf8427e&quot;, 0),
+    &quot;testdir/testfiled&quot;: (&quot;6f75302850b485421030f034fe67380b&quot;, 10),
+    &quot;testdir/testfilee&quot;: (&quot;65116b303f205837d280d3c08b1e0419&quot;, 1033720)
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1cabextract_1_1test_1abdf05d879cdeaaab678ae79a0c76c465" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::cabextract::test.TEST_ARCHIVE_FILENAME</definition>
+        <argsstring></argsstring>
+        <name>TEST_ARCHIVE_FILENAME</name>
+        <initializer>=  os.path.join(gettempdir(), &quot;openage_testarc.cab&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.test.open_cached_test_archive</definition>
+        <argsstring>()</argsstring>
+        <name>open_cached_test_archive</name>
+        <briefdescription>
+<para>Opens the cached test archive file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="39" bodyend="45"/>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" compoundref="cabextract_2test_8py" startline="49" endline="60">openage.cabextract.test.open_test_archive</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.test.open_test_archive</definition>
+        <argsstring>()</argsstring>
+        <name>open_test_archive</name>
+        <briefdescription>
+<para>Opens the cached test archive file, or downloads it if necessary. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="49" bodyend="60"/>
+        <references refid="namespaceopenage_1_1cabextract_1_1test_1acee52df8a2e962b2994d4dc69421093a" compoundref="cabextract_2test_8py" startline="39" endline="45">openage.cabextract.test.open_cached_test_archive</references>
+        <referencedby refid="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" compoundref="cabextract_2test_8py" startline="64" endline="137">openage.cabextract.test.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1cabextract_1_1test_1a37033bf8c1b43c7401ec96dadd3584c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.test.test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <briefdescription>
+<para>The actual test function; registered in <ref refid="namespaceopenage_1_1testing_1_1testlist" kindref="compound">openage.testing.testlist</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" bodystart="64" bodyend="137"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" compoundref="testing_8py" startline="61" endline="73">openage.testing.testing.assert_raises</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="namespaceopenage_1_1cabextract_1_1test_1af34db1a313c38a3853b23df18b8501ee" compoundref="cabextract_2test_8py" startline="49" endline="60">openage.cabextract.test.open_test_archive</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/test.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

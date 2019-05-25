@@ -1,0 +1,4 @@
+<map id="openage.convert.main.set_custom_wineprefix" name="openage.convert.main.set_custom_wineprefix">
+<area shape="rect" id="node1" title="Allow the customization of the WINEPREFIX environment variable." alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1main.xhtml#a1496a2822465ce5d6389a93ec88b96b3" title="Expand relative path to an absolute one, including abbreviations like ~ and environment variables." alt="" coords="224,5,419,47"/>
+</map>

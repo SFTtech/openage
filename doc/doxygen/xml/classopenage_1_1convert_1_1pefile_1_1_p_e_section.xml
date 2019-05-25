@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1pefile_1_1_p_e_section" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::pefile::PESection</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1ab626c46fca7d28efc1f34d603584af32" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a446f95e13b6c249142b05c3ad6cf688d" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <initializer>=  &quot;8s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="142" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a876b4ebc8d8460906735d64bd097fcb8" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::virtual_size</definition>
+        <argsstring></argsstring>
+        <name>virtual_size</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a54849e82c5c2c8a20ea2b11f5a8d9eae" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::virtual_address</definition>
+        <argsstring></argsstring>
+        <name>virtual_address</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a03fc1590accfde0566086126b975b637" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::size_on_disk</definition>
+        <argsstring></argsstring>
+        <name>size_on_disk</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a4544c9bb5a6efea48ff59beb79d2fcad" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::file_offset</definition>
+        <argsstring></argsstring>
+        <name>file_offset</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a61a9dfecbdf6282d89be9aa6037c90cb" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::reserved</definition>
+        <argsstring></argsstring>
+        <name>reserved</name>
+        <initializer>=  &quot;12s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="147" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a647a5046ace5c1d877454ed7a3624430" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.pefile.PESection::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="148" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Describes a section in a PE file (like an ELF section). </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1556">
+        <label>type</label>
+      </node>
+      <node id="1555">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1556" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1552">
+        <label>openage.convert.pefile.PESection</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section"/>
+        <childnode refid="1553" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1553">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1554" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1555" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1554">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1561">
+        <label>type</label>
+      </node>
+      <node id="1560">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1561" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1557">
+        <label>openage.convert.pefile.PESection</label>
+        <link refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section"/>
+        <childnode refid="1558" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1558">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1559" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1560" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1559">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" bodystart="136" bodyend="151"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1ab626c46fca7d28efc1f34d603584af32" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a4544c9bb5a6efea48ff59beb79d2fcad" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>file_offset</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a647a5046ace5c1d877454ed7a3624430" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>flags</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a446f95e13b6c249142b05c3ad6cf688d" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>name</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a61a9dfecbdf6282d89be9aa6037c90cb" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>reserved</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>size</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a03fc1590accfde0566086126b975b637" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>size_on_disk</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>unpack</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a54849e82c5c2c8a20ea2b11f5a8d9eae" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>virtual_address</name></member>
+      <member refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section_1a876b4ebc8d8460906735d64bd097fcb8" prot="public" virt="non-virtual"><scope>openage::convert::pefile::PESection</scope><name>virtual_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

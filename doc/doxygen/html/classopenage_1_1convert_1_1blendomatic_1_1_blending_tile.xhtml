@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.blendomatic.BlendingTile Class Reference</title>
+<title>openage: openage.convert.blendomatic.BlendingTile Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -95,11 +96,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1blendomatic
 <div class="title">openage.convert.blendomatic.BlendingTile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Collaboration diagram for openage.convert.blendomatic.BlendingTile:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile__coll__graph.svg" width="206" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.blendomatic.BlendingTile:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile__coll__graph.svg" width="206" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -162,7 +164,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="blendomatic_8py_source.xhtml#l00029">29</a> of file <a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        self.width = width</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        self.height = height</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">def </span>get_picture_data(self):</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -185,6 +187,17 @@ Public Attributes</h2></td></tr>
 <p>Return a numpy array of image data for a blending tile. </p>
 
 <p class="definition">Definition at line <a class="el" href="blendomatic_8py_source.xhtml#l00037">37</a> of file <a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">import</span> numpy</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        tile_rows = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>()</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">for</span> picture_row <span class="keywordflow">in</span> self.row_data:</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            tile_row_data = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>()</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">for</span> alpha_data <span class="keywordflow">in</span> picture_row:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">if</span> alpha_data == -1:</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="comment"># draw full transparency</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    alpha = 0</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    val = 0</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">else</span>:</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">if</span> alpha_data == 128:</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        alpha = 255</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        val = 0</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    <span class="keywordflow">else</span>:</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        <span class="comment"># original data contains 7-bit values only</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        alpha = 128</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        val = (127 - (alpha_data &amp; 0x7f)) * 2</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                tile_row_data.append((val, val, val, alpha))</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            tile_rows.append(tile_row_data)</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> numpy.array(tile_rows)</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">class </span>BlendingMode:</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">    One blending mode, which contains tiles that make up</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">    for all the influence directions possible.</span></div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">    One mode is for example &quot;ice&quot; or &quot;grass&quot;, i.e. the transition shape.</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00359">openage::py.list()</a>, and <a class="el" href="blendomatic_8py_source.xhtml#l00030">openage.convert.blendomatic.BlendingTile.row_data</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1blendomatic_1_1_blending_tile_a15c617e71bf0ced91bf11ef18c134c6c_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -203,6 +216,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="blendomatic_8py_source.xhtml#l00032">32</a> of file <a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00106">openage.convert.texture.Texture.__init__()</a>.</p>
+
 </div>
 </div>
 <a id="aa85a8bbd7df281c1a9c3613335bf1d18"></a>
@@ -218,6 +233,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="blendomatic_8py_source.xhtml#l00030">30</a> of file <a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="blendomatic_8py_source.xhtml#l00037">openage.convert.blendomatic.BlendingTile.get_picture_data()</a>.</p>
 
 </div>
 </div>
@@ -235,10 +252,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="blendomatic_8py_source.xhtml#l00031">31</a> of file <a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00106">openage.convert.texture.Texture.__init__()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="blendomatic_8py_source.xhtml">blendomatic.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

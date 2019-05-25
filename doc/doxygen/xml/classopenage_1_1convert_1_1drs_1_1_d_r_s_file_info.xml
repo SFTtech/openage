@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::drs::DRSFileInfo</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a8392d48b6a96941f45f1c528474b6957" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.drs.DRSFileInfo::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a4f7e6a769dc7100b3be101116b8c85b1" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.drs.DRSFileInfo::file_id</definition>
+        <argsstring></argsstring>
+        <name>file_id</name>
+        <initializer>=  &quot;i&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1aa7f7788dce5667c84dc244843c52cf2f" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.drs.DRSFileInfo::file_data_offset</definition>
+        <argsstring></argsstring>
+        <name>file_data_offset</name>
+        <initializer>=  &quot;i&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a1ea9f19552fc5dc7348802d9e039d0cd" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.drs.DRSFileInfo::file_size</definition>
+        <argsstring></argsstring>
+        <name>file_size</name>
+        <initializer>=  &quot;i&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s" kindref="compound">DRS</ref> file header. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1165">
+        <label>openage.convert.drs.DRSFileInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info"/>
+        <childnode refid="1166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1169">
+        <label>type</label>
+      </node>
+      <node id="1168">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1169" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1166">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1167" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1168" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1167">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1170">
+        <label>openage.convert.drs.DRSFileInfo</label>
+        <link refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info"/>
+        <childnode refid="1171" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1174">
+        <label>type</label>
+      </node>
+      <node id="1173">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="1174" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1171">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="1172" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1173" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1172">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="60" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a8392d48b6a96941f45f1c528474b6957" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1aa7f7788dce5667c84dc244843c52cf2f" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>file_data_offset</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a4f7e6a769dc7100b3be101116b8c85b1" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>file_id</name></member>
+      <member refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info_1a1ea9f19552fc5dc7348802d9e039d0cd" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>file_size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::convert::drs::DRSFileInfo</scope><name>unpack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

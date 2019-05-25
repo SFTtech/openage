@@ -1,0 +1,7 @@
+<map id="openage.convert.gamedata.empiresdat.load_gamespec" name="openage.convert.gamedata.empiresdat.load_gamespec">
+<area shape="rect" id="node1" title=" " alt="" coords="5,74,279,115"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="332,5,449,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="333,56,449,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a173fdf777356d529586708570ee36be4" title="spam message" alt="" coords="327,107,455,133"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36" title="warning message" alt="" coords="329,157,452,184"/>
+</map>

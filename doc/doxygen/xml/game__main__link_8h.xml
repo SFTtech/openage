@@ -5,10 +5,10 @@
     <includes local="no">QQmlParserStatus</includes>
     <includes refid="gui__item_8h" local="yes">guisys/link/gui_item.h</includes>
     <includes refid="game__main_8h" local="yes">../gamestate/game_main.h</includes>
-    <includedby refid="game__control__link_8cpp" local="yes">libopenage/gui/game_control_link.cpp</includedby>
-    <includedby refid="game__creator_8cpp" local="yes">libopenage/gui/game_creator.cpp</includedby>
-    <includedby refid="game__main__link_8cpp" local="yes">libopenage/gui/game_main_link.cpp</includedby>
-    <includedby refid="game__saver_8cpp" local="yes">libopenage/gui/game_saver.cpp</includedby>
+    <includedby refid="game__control__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</includedby>
+    <includedby refid="game__creator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</includedby>
+    <includedby refid="game__main__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</includedby>
+    <includedby refid="game__saver_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</includedby>
     <incdepgraph>
       <node id="12133">
         <label>list</label>
@@ -451,7 +451,7 @@
         <label>coord_xy.gen.h</label>
       </node>
       <node id="12082">
-        <label>libopenage/gui/game_main_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h</label>
         <link refid="game__main__link_8h"/>
         <childnode refid="12083" relation="include">
         </childnode>
@@ -869,11 +869,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12191">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="12189">
-        <label>libopenage/gui/game_main_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h</label>
         <link refid="game__main__link_8h"/>
         <childnode refid="12190" relation="include">
         </childnode>
@@ -885,15 +885,15 @@
         </childnode>
       </node>
       <node id="12190">
-        <label>libopenage/gui/game_control_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_control_link.cpp</label>
         <link refid="game__control__link_8cpp"/>
       </node>
       <node id="12192">
-        <label>libopenage/gui/game_main_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.cpp</label>
         <link refid="game__main__link_8cpp"/>
       </node>
       <node id="12193">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
     </invincdepgraph>
@@ -947,8 +947,8 @@
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_INTERFACES(QQmlParserStatus)</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_ENUMS(<ref refid="classopenage_1_1gui_1_1_game_main_link_1a09595e0b9d8ecead9ecee7cfce33077b" kindref="member">State</ref>)</highlight></codeline>
-<codeline lineno="40" refid="classopenage_1_1gui_1_1_game_main_link_1aa5c0e0b86099726d69cce45b070c0215" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_game_main_link_1a09595e0b9d8ecead9ecee7cfce33077b" kindref="member">State</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa5c0e0b86099726d69cce45b070c0215" kindref="member">state</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa3b38bda79ba9a2853261b54de450a9f" kindref="member">get_state</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1adb9623f074c0891de549cc0fffb866e6" kindref="member">state_changed</ref>)</highlight></codeline>
-<codeline lineno="41" refid="classopenage_1_1gui_1_1_game_main_link_1a4ce2d720a2bf50f1f5e1009d7b2dad9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1a4ce2d720a2bf50f1f5e1009d7b2dad9f" kindref="member">engine</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1ac83893f0323a494fd56e5008a1f49ae0" kindref="member">get_engine</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa0240c4d6597ebd69b1b09334384daf6" kindref="member">set_engine</ref>)</highlight></codeline>
+<codeline lineno="40" refid="classopenage_1_1gui_1_1_game_main_link_1aa5c0e0b86099726d69cce45b070c0215" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_game_main_link_1a09595e0b9d8ecead9ecee7cfce33077b" kindref="member">State</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa5c0e0b86099726d69cce45b070c0215" kindref="member">state</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa3b38bda79ba9a2853261b54de450a9f" kindref="member">get_state</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1adb9623f074c0891de549cc0fffb866e6" kindref="member">state_changed</ref>)</highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1gui_1_1_game_main_link_1a4ce2d720a2bf50f1f5e1009d7b2dad9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1a4ce2d720a2bf50f1f5e1009d7b2dad9f" kindref="member">engine</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1ac83893f0323a494fd56e5008a1f49ae0" kindref="member">get_engine</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link_1aa0240c4d6597ebd69b1b09334384daf6" kindref="member">set_engine</ref>)</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/><ref refid="classopenage_1_1gui_1_1_game_main_link" kindref="compound">GameMainLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -983,6 +983,6 @@
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_main_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_main_link.h"/>
   </compounddef>
 </doxygen>

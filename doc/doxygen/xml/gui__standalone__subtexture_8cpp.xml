@@ -5,7 +5,7 @@
     <includes refid="gui__standalone__subtexture_8h" local="yes">gui_standalone_subtexture.h</includes>
     <incdepgraph>
       <node id="14472">
-        <label>libopenage/gui/integration/private/gui_standalone_subtexture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp</label>
         <link refid="gui__standalone__subtexture_8cpp"/>
         <childnode refid="14473" relation="include">
         </childnode>
@@ -76,6 +76,6 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_standalone_subtexture.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp"/>
   </compounddef>
 </doxygen>

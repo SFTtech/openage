@@ -16,7 +16,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" compoundref="gui__texture__handle_8cpp" startline="24" endline="26">openage::gui::isAtlasTexture</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" compoundref="gui__texture__handle_8cpp" startline="32" endline="41">openage::gui::native_size</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1afee0e8d811d508b6e16ae7ab4cf2c4a3" compoundref="gui__texture_8cpp" startline="103" endline="111">openage::gui::GuiTexture::normalizedTextureSubRect</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1acabd4037e0b47cda554ae353c2c3be3e" compoundref="gui__texture_8cpp" startline="69" endline="101">openage::gui::GuiTexture::removedFromAtlas</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" compoundref="gui__texture__factory_8cpp" startline="27" endline="30">openage::gui::GuiTextureFactory::textureByteCount</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1aae0bd80c66326d89472b98043e40ce4f" compoundref="gui__texture_8cpp" startline="113" endline="115">openage::gui::GuiTexture::textureId</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -29,7 +35,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="16" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" compoundref="gui__texture__handle_8cpp" startline="24" endline="26">openage::gui::isAtlasTexture</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" compoundref="gui__texture__handle_8cpp" startline="32" endline="41">openage::gui::native_size</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1afee0e8d811d508b6e16ae7ab4cf2c4a3" compoundref="gui__texture_8cpp" startline="103" endline="111">openage::gui::GuiTexture::normalizedTextureSubRect</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1acabd4037e0b47cda554ae353c2c3be3e" compoundref="gui__texture_8cpp" startline="69" endline="101">openage::gui::GuiTexture::removedFromAtlas</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,38 +47,38 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4474">
+      <node id="3695">
         <label>openage::gui::TextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_texture_handle"/>
       </node>
-      <node id="4475">
+      <node id="3696">
         <label>openage::gui::SizedTextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
-        <childnode refid="4474" relation="public-inheritance">
+        <childnode refid="3695" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4478">
+      <node id="3699">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="4476">
+      <node id="3697">
         <label>openage::gui::TextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_texture_handle"/>
-        <childnode refid="4477" relation="usage">
+        <childnode refid="3698" relation="usage">
           <edgelabel>+texture</edgelabel>
         </childnode>
       </node>
-      <node id="4477">
+      <node id="3698">
         <label>openage::Texture</label>
         <link refid="classopenage_1_1_texture"/>
-        <childnode refid="4478" relation="usage">
+        <childnode refid="3699" relation="usage">
           <edgelabel>-filename</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="13" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="13" bodyend="17"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" bodystart="13" bodyend="17"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" prot="public" virt="non-virtual"><scope>openage::gui::TextureHandle</scope><name>subid</name></member>
       <member refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" prot="public" virt="non-virtual"><scope>openage::gui::TextureHandle</scope><name>texture</name></member>

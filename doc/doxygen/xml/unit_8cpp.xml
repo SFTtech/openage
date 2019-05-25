@@ -191,7 +191,7 @@
         <label>cstdint</label>
       </node>
       <node id="26421">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
         <childnode refid="26422" relation="include">
         </childnode>
@@ -1477,7 +1477,7 @@
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53" refid="classopenage_1_1_unit_1a86a49987e082055274e98a142baffad8" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_unit_action" kindref="compound">UnitAction</ref><sp/>*<ref refid="classopenage_1_1_unit_1a86a49987e082055274e98a142baffad8" kindref="member">Unit::top</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_unit_1a878fa4f611ba7b3a4d01f3ab6fd16b2a" kindref="member">action_stack</ref>.empty())<sp/>{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unit<sp/>stack<sp/>empty<sp/>-<sp/>no<sp/>top<sp/>action<sp/>exists&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unit<sp/>stack<sp/>empty<sp/>-<sp/>no<sp/>top<sp/>action<sp/>exists&quot;</highlight><highlight class="normal">};</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_unit_1a878fa4f611ba7b3a4d01f3ab6fd16b2a" kindref="member">action_stack</ref>.back().get();</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">}</highlight></codeline>
@@ -1591,14 +1591,14 @@
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>top_action<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_unit_1a86a49987e082055274e98a142baffad8" kindref="member">top</ref>();</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>draw_graphic<sp/>=<sp/>top_action-&gt;type();</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(grpc.count(draw_graphic)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Graphic<sp/>not<sp/>available&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Graphic<sp/>not<sp/>available&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>texture<sp/>to<sp/>draw<sp/>with</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>draw_texture<sp/>=<sp/>grpc.at(draw_graphic);</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!draw_texture)<sp/>{</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Graphic<sp/>null&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Graphic<sp/>null&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
@@ -1758,6 +1758,6 @@
 <codeline lineno="333"><highlight class="normal"></highlight></codeline>
 <codeline lineno="334"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/unit.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp"/>
   </compounddef>
 </doxygen>

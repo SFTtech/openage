@@ -1,0 +1,7 @@
+<map id="openage.testing.testing.assert_raises" name="openage.testing.testing.assert_raises">
+<area shape="rect" id="node1" title="Context guard that asserts that a certain exception is raised inside." alt="" coords="468,57,665,98"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#a37033bf8c1b43c7401ec96dadd3584c7" title="The actual test function; registered in openage.testing.testlist." alt="" coords="232,5,420,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1threading.xhtml#aaf02a648f9349f36e6ee76f092059ef0" title="Tests concurrent_chain." alt="" coords="239,57,413,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util_1_1fslike_1_1test.xhtml#acb02a5c9b3b2064338f1e207ea4491cb" title="Union functionality testing." alt="" coords="237,122,415,163"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1util_1_1fslike_1_1test.xhtml#ab7e67abca763ba5d40533133b92cfde4" title="Perform functionality tests for the filesystem abstraction interface." alt="" coords="5,129,184,156"/>
+</map>

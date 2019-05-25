@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.dataformat.struct_snippet.StructSnippet Class Reference</title>
+<title>openage: openage.convert.dataformat.struct_snippet.StructSnippet Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,17 +100,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1dataformat_
 
 <p>text snippet for generating C++ structs.  
  <a href="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.dataformat.struct_snippet.StructSnippet:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.dataformat.struct_snippet.StructSnippet:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.dataformat.struct_snippet.StructSnippet:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.dataformat.struct_snippet.StructSnippet:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -257,7 +260,8 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00029">29</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                         SectionType.section_body,</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                         orderby=struct_name)</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        self.data_ready = <span class="keyword">False</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        self.struct_name = struct_name</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        self.member_list = <a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>()</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        self.set_comment(comment)</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        self.set_parents(parents)</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        self.reprtxt = <span class="stringliteral">&quot;struct %s&quot;</span> % (self.struct_name)</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        self.typedefs |= {self.struct_name}</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        self.members = <span class="keywordtype">None</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">def </span>set_comment(self, comment):</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -292,6 +296,8 @@ Static Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a08264818a289ac0da53e77168136b084">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00106">106</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> (</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            self.struct_name == other.struct_name <span class="keywordflow">and</span></div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            self.file_name == other.file_name <span class="keywordflow">and</span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            self.data == other.data <span class="keywordflow">and</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            self.member_list == other.member_list <span class="keywordflow">and</span></div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            self.section == other.section <span class="keywordflow">and</span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            self.typedefs == other.typedefs <span class="keywordflow">and</span></div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            self.typerefs == other.typerefs</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        )</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">def </span>__str__(self):</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> self.data_ready:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="struct__snippet_8py_source.xhtml#l00036">openage.convert.dataformat.struct_snippet.StructSnippet.struct_name</a>.</p>
 
 </div>
 </div>
@@ -316,6 +322,16 @@ Static Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#aac51f2cc25a8fd6dd2949923bd704169">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00095">95</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            self.struct_name,</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            frozenset(self.member_list),</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            self.data,</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            self.file_name,</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            self.section,</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            frozenset(self.typedefs),</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            frozenset(self.typerefs),</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        ))</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">def </span>__eq__(self, other):</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> type(other) <span class="keywordflow">is</span> <span class="keywordflow">not</span> type(self):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="datastructure_2tests_8h_source.xhtml#l00016">openage::datastructure::tests::heap_elem.data</a>, <a class="el" href="audio_2types_8h_source.xhtml#l00021">openage::audio::audio_chunk_t.data</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00029">openage.convert.dataformat.content_snippet.ContentSnippet.data</a>, <a class="el" href="pairing__heap_8h_source.xhtml#l00048">openage::datastructure::PairingHeapNode&lt; T, compare &gt;.data</a>, <a class="el" href="texture_8h_source.xhtml#l00058">openage::gl_texture_buffer.data</a>, <a class="el" href="terrain__chunk_8h_source.xhtml#l00061">openage::TerrainChunk.data</a>, <a class="el" href="texture__data_8h_source.xhtml#l00068">openage::renderer::resources::Texture2dData.data</a>, <a class="el" href="unit__container_8h_source.xhtml#l00068">openage::UnitReference.data</a>, <a class="el" href="constinit__vector_8h_source.xhtml#l00094">openage::util::ConstInitVector&lt; T &gt;.data</a>, <a class="el" href="terrain_8h_source.xhtml#l00106">openage::influence_group.data</a>, <a class="el" href="csv_8h_source.xhtml#l00130">openage::util::CSVCollection.data</a>, <a class="el" href="terrain_8h_source.xhtml#l00140">openage::tile_draw_data.data</a>, <a class="el" href="mesh__data_8h_source.xhtml#l00140">openage::renderer::resources::MeshData.data</a>, <a class="el" href="csv_8h_source.xhtml#l00151">openage::util::csv_subdata&lt; lineformat &gt;.data</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00030">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</a>, <a class="el" href="hash_8cpp_source.xhtml#l00036">openage::util.hash()</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00037">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00034">openage.convert.dataformat.content_snippet.ContentSnippet.section</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00036">openage.convert.dataformat.struct_snippet.StructSnippet.struct_name</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00032">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</a>, and <a class="el" href="content__snippet_8py_source.xhtml#l00031">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_a9e739fd9d74f6571c56fea8df3f70e76_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -338,6 +354,17 @@ Static Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#a2ac6a4c4c3a9f91347f396c3860d868d">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00120">120</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">return</span> super().__str__()</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">import</span> pprint</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>.join((</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(self), <span class="stringliteral">&quot; =&gt; members = \n&quot;</span>,</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            pprint.pformat(self.member_list),</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        ))</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="content__snippet_8py_source.xhtml#l00043">openage.convert.dataformat.content_snippet.ContentSnippet.data_ready</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00037">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</a>, and <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_ac3b15546f9588a44f28827c3ba379cd4_cgraph.svg" width="646" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -370,6 +397,8 @@ Static Public Attributes</h2></td></tr>
 <p>Add a data member to the struct definition. </p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00075">75</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">def </span>add_members(self, members):</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="struct__snippet_8py_source.xhtml#l00037">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</a>.</p>
 
 </div>
 </div>
@@ -402,6 +431,8 @@ Static Public Attributes</h2></td></tr>
 <p>Add multiple data members to the struct definition. </p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00081">81</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">def </span>generate_content(self):</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="struct__snippet_8py_source.xhtml#l00037">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</a>.</p>
 
 </div>
 </div>
@@ -424,6 +455,9 @@ Static Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet.xhtml#afc550a2b9cedfe1e91a8852514cc0ecb">openage.convert.dataformat.content_snippet.ContentSnippet</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00088">88</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        self.members = <span class="stringliteral">&quot;&quot;</span>.join(<span class="stringliteral">&quot;\t%s\n&quot;</span> % m <span class="keywordflow">for</span> m <span class="keywordflow">in</span> self.member_list)</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        self.data = self.struct_base.substitute(self.__dict__)</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        self.data_ready = <span class="keyword">True</span></div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">def </span>__hash__(self):</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">hash</a>((</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a3cb605abe74b26763ac7340c3785656a"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a">openage::util::hash</a></div><div class="ttdeci">uint64_t hash(const uint64_t key[2], const uint8_t *data, size_t len_data)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8cpp_source.xhtml#l00036">hash.cpp:36</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="struct__snippet_8py_source.xhtml#l00037">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00045">openage.convert.dataformat.struct_snippet.StructSnippet.members</a>, <a class="el" href="struct__definition_8py_source.xhtml#l00056">openage.convert.dataformat.struct_definition.StructDefinition.members</a>, and <a class="el" href="team_8h_source.xhtml#l00071">openage::Team.members</a>.</p>
 
 </div>
 </div>
@@ -456,7 +490,7 @@ Static Public Attributes</h2></td></tr>
 <p>Add a comment to the struct definition. </p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00050">50</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> comment:</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            self.comment = <span class="stringliteral">&quot;&quot;</span>.join((</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="stringliteral">&quot;/**\n * &quot;</span>,</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="stringliteral">&quot;\n * &quot;</span>.join(comment.split(<span class="stringliteral">&quot;\n&quot;</span>)),</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="stringliteral">&quot;\n */\n&quot;</span>,</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            ))</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            self.comment = <span class="stringliteral">&quot;&quot;</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">def </span>set_parents(self, parent_types):</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="ad949c7ae1a270820b7dd41c3f7adf6a2"></a>
@@ -488,6 +522,8 @@ Static Public Attributes</h2></td></tr>
 <p>Add inheritance partents to the struct definition. </p>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00064">64</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> parent_types:</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            self.typerefs |= set(parent_types)</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            self.inheritance = <span class="stringliteral">&quot; : %s&quot;</span> % (<span class="stringliteral">&quot;, &quot;</span>.join(parent_types))</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            self.inheritance = <span class="stringliteral">&quot;&quot;</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">def </span>add_member(self, member):</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="content__snippet_8py_source.xhtml#l00031">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</a>.</p>
 
 </div>
 </div>
@@ -521,6 +557,8 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00092">92</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture_8py_source.xhtml#l00078">openage.convert.texture.TextureImage.get_data()</a>, <a class="el" href="texture_8py_source.xhtml#l00075">openage.convert.texture.TextureImage.get_pil_image()</a>, and <a class="el" href="peresource_8py_source.xhtml#l00168">openage.convert.peresource.PEResources.read_directory()</a>.</p>
 
 </div>
 </div>
@@ -586,6 +624,8 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00037">37</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="struct__snippet_8py_source.xhtml#l00095">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__()</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00120">openage.convert.dataformat.struct_snippet.StructSnippet.__str__()</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00075">openage.convert.dataformat.struct_snippet.StructSnippet.add_member()</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00081">openage.convert.dataformat.struct_snippet.StructSnippet.add_members()</a>, and <a class="el" href="struct__snippet_8py_source.xhtml#l00088">openage.convert.dataformat.struct_snippet.StructSnippet.generate_content()</a>.</p>
+
 </div>
 </div>
 <a id="a98ec9ed7e8eb75988d8d9c63f011f710"></a>
@@ -601,6 +641,8 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00045">45</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="struct__snippet_8py_source.xhtml#l00088">openage.convert.dataformat.struct_snippet.StructSnippet.generate_content()</a>.</p>
 
 </div>
 </div>
@@ -674,6 +716,8 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="struct__snippet_8py_source.xhtml#l00036">36</a> of file <a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="struct__snippet_8py_source.xhtml#l00106">openage.convert.dataformat.struct_snippet.StructSnippet.__eq__()</a>, and <a class="el" href="struct__snippet_8py_source.xhtml#l00095">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__()</a>.</p>
+
 </div>
 </div>
 <a id="aa4b5c0fc7c7650302ff9e3e5377bcb7d"></a>
@@ -709,7 +753,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/dataformat/<a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/<a class="el" href="struct__snippet_8py_source.xhtml">struct_snippet.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="32" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="32" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="37" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="37" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -46,42 +46,42 @@
 <para>superclass for all possible drawing operations in the game. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2920">
+      <node id="3777">
         <label>openage::GameControl</label>
         <link refid="classopenage_1_1_game_control"/>
-        <childnode refid="2918" relation="public-inheritance">
+        <childnode refid="3775" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2921">
+      <node id="3778">
         <label>openage::gui::GUI</label>
         <link refid="classopenage_1_1gui_1_1_g_u_i"/>
-        <childnode refid="2918" relation="public-inheritance">
+        <childnode refid="3775" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2919">
+      <node id="3776">
         <label>openage::console::Console</label>
         <link refid="classopenage_1_1console_1_1_console"/>
-        <childnode refid="2918" relation="private-inheritance">
+        <childnode refid="3775" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="2918">
+      <node id="3775">
         <label>openage::HudHandler</label>
         <link refid="classopenage_1_1_hud_handler"/>
       </node>
-      <node id="2922">
+      <node id="3779">
         <label>openage::UnitSelection</label>
         <link refid="classopenage_1_1_unit_selection"/>
-        <childnode refid="2918" relation="public-inheritance">
+        <childnode refid="3775" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2923">
+      <node id="3780">
         <label>openage::HudHandler</label>
         <link refid="classopenage_1_1_hud_handler"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/handlers.h" line="30" column="1" bodyfile="libopenage/handlers.h" bodystart="30" bodyend="38"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" bodystart="30" bodyend="38"/>
     <listofallmembers>
       <member refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48" prot="public" virt="pure-virtual"><scope>openage::HudHandler</scope><name>on_drawhud</name></member>
       <member refid="classopenage_1_1_hud_handler_1a5b1435a782148709e7acf4a0dd94189f" prot="public" virt="virtual"><scope>openage::HudHandler</scope><name>~HudHandler</name></member>

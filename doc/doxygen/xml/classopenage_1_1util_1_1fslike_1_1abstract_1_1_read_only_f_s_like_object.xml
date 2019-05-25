@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::abstract::ReadOnlyFSLikeObject</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object" prot="public" virt="non-virtual">openage.util.fslike.abstract.FSLikeObject</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker" prot="public" virt="non-virtual">openage.util.fslike.wrapper.WriteBlocker</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>read_only_error</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Helper method to be called from all other methods. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="193" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="193" bodyend="196"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a599de6a44e07de7953d470a52e73b5dd" compoundref="fslike_2abstract_8py" startline="200" endline="202">openage.util.fslike.abstract.ReadOnlyFSLikeObject.mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ab8029eaad6e6319c24ab0cc751c5d616" compoundref="fslike_2abstract_8py" startline="197" endline="199">openage.util.fslike.abstract.ReadOnlyFSLikeObject.open_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a4c0b6210f50093741463c86a97ae0002" compoundref="fslike_2abstract_8py" startline="212" endline="215">openage.util.fslike.abstract.ReadOnlyFSLikeObject.rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a050c6a9d4ffd3567d3632a11bacd8d75" compoundref="fslike_2abstract_8py" startline="203" endline="205">openage.util.fslike.abstract.ReadOnlyFSLikeObject.rmdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ac2dca332d04bf264b617d7f10f50a3f7" compoundref="fslike_2abstract_8py" startline="209" endline="211">openage.util.fslike.abstract.ReadOnlyFSLikeObject.touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a5a792df23924bd36958b23922df5c3f9" compoundref="fslike_2abstract_8py" startline="206" endline="208">openage.util.fslike.abstract.ReadOnlyFSLikeObject.unlink</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ab8029eaad6e6319c24ab0cc751c5d616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.open_w</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a446d488c2bf95097706a467c93c4f973">open_w</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedWriter for the given file (&quot;mode &apos;wb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="197" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="197" bodyend="199"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a599de6a44e07de7953d470a52e73b5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.mkdirs</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>mkdirs</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a18afc9774e36ec8e17d67eaad2f7aa69">mkdirs</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall ensure that the directory exists. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="200" bodyend="202"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a050c6a9d4ffd3567d3632a11bacd8d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.rmdir</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>rmdir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a6358bbae487c06aaccc7cbede61a2954">rmdir</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall remove an empty directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="203" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="203" bodyend="205"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a5a792df23924bd36958b23922df5c3f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.unlink</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>unlink</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a50009b666fb9e32369df9cadc3fc2de5">unlink</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall remove a single file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="206" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="206" bodyend="208"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ac2dca332d04bf264b617d7f10f50a3f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.touch</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>touch</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7010b622bd45a905fa68a8fc8942ced3">touch</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall create the file or update its timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="209" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="209" bodyend="211"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a4c0b6210f50093741463c86a97ae0002" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.rename</definition>
+        <argsstring>(self, srcparts, tgtparts)</argsstring>
+        <name>rename</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a66554d4fda1edd835b6fa692ef16cc5b">rename</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>srcparts</type>
+          <defname>srcparts</defname>
+        </param>
+        <param>
+          <type>tgtparts</type>
+          <defname>tgtparts</defname>
+        </param>
+        <briefdescription>
+<para>Shall rename a file or directory to the target name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="212" bodyend="215"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" compoundref="fslike_2abstract_8py" startline="193" endline="196">openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1abebe55de4393c5601d0025eb96b42ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.abstract.ReadOnlyFSLikeObject.writable</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1aba8782dfa670c2368980eccca0b8c8dc">writable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="216" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="216" bodyend="219"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5834">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5836">
+        <label>openage.util.fslike.wrapper.WriteBlocker</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker"/>
+        <childnode refid="5833" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5835">
+        <label>ABC</label>
+      </node>
+      <node id="5833">
+        <label>openage.util.fslike.abstract.ReadOnlyFSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object"/>
+        <childnode refid="5834" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5838">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5839" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5839">
+        <label>ABC</label>
+      </node>
+      <node id="5837">
+        <label>openage.util.fslike.abstract.ReadOnlyFSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object"/>
+        <childnode refid="5838" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="188" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" bodystart="188" bodyend="219"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a4d5b4fb1a16c90393da7eda7525c8789" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a336d8d1597189253f24703641c7fd436" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af973fe09db18f1f04474fab94da350c5" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a81c203eb78e5823ce410f845c1c17aee" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a599de6a44e07de7953d470a52e73b5dd" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a230d244732d46d5fabcec7638f3757c9" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7eb9f9c28532ad799503acfd424dee7c" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ab8029eaad6e6319c24ab0cc751c5d616" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a19ace3ca4d2ef770c421e5790968f60a" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a2e8e2035b251083880f7fe97d4090734" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>read_only_error</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a4c0b6210f50093741463c86a97ae0002" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a050c6a9d4ffd3567d3632a11bacd8d75" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1ac2dca332d04bf264b617d7f10f50a3f7" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1a5a792df23924bd36958b23922df5c3f9" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a531d4b17f9b239772a6de4d315cd9ddf" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object_1abebe55de4393c5601d0025eb96b42ff9" prot="public" virt="non-virtual"><scope>openage::util::fslike::abstract::ReadOnlyFSLikeObject</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

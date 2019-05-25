@@ -1,0 +1,5 @@
+<map id="openage.util.fslike.path.Path.with_name" name="openage.util.fslike.path.Path.with_name">
+<area shape="rect" id="node1" title="Returns path for differing name (same parent)." alt="" coords="5,39,164,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a74ff93acd2b9f012f04c79b64438a632" title="Returns path for the given subpath." alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#afef5c9a94242cabc5c4d097ab636c1cb" title="Parent path object." alt="" coords="212,71,371,112"/>
+</map>

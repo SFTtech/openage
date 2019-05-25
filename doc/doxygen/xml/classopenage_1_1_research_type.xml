@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="68" column="1" bodyfile="libopenage/unit/research.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_research_1a51f059ce7313e37d3848481309b1dbd4" compoundref="research_8cpp" startline="50" endline="61">openage::Research::apply</referencedby>
+        <referencedby refid="classopenage_1_1_research_type_1ad59b4d014b294022fef3a9ce5a9a5a53" compoundref="research_8cpp" startline="9" endline="12">ResearchType</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +38,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="42" column="1" bodyfile="libopenage/unit/research.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp" bodystart="9" bodyend="12"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</references>
+        <references refid="classopenage_1_1_research_type_1adb394897aa588ce3b6399adb8b53b4ec" compoundref="research_8h" startline="68">owner</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a36804d9b56a050b726d0c3e036ae0d89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -50,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="47" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="47" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a46f438491a0104f174bdb54034f88288" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -64,7 +68,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="52" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="52" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a76a5bd220674135f0bf93eed3f1bce92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceopenage_1ac519db9c9f959f36985d551eeb69082a" kindref="member">research_category</ref></type>
@@ -78,7 +85,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="57" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="57" column="1"/>
+        <referencedby refid="classopenage_1_1_research_1a51f059ce7313e37d3848481309b1dbd4" compoundref="research_8cpp" startline="50" endline="61">openage::Research::apply</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a52361828cbac190a167c20a3fc825490" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_research" kindref="compound">Research</ref> &gt;</type>
@@ -92,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="63" column="1" bodyfile="libopenage/unit/research.cpp" bodystart="14" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp" bodystart="14" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1aca6b37a0f8d31b9646a97ee0bf2f2228" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -106,7 +114,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="74" column="1" bodyfile="libopenage/unit/research.h" bodystart="74" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" bodystart="74" bodyend="74"/>
+        <referencedby refid="classopenage_1_1_research_1a5d51cbba6f525d77aef2055ade6e36e6" compoundref="research_8cpp" startline="38" endline="40">openage::Research::can_start</referencedby>
+        <referencedby refid="classopenage_1_1_research_1abfc56f1ccdd12a99f4582cfc89ac80f3" compoundref="research_8cpp" startline="46" endline="48">openage::Research::is_researched</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a4a3186a0805b6d799dfc6abac2c9a404" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>unsigned int</type>
@@ -119,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="76" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="76" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1a2b99e4ff298e19b86c6fa251802fcaf3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1_resource_cost" kindref="compound">ResourceCost</ref></type>
@@ -132,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="78" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="78" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_research_type_1af58948dd42b8d8a97233d2fdd9885e83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -146,7 +156,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/research.h" line="83" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="83" column="1"/>
+        <referencedby refid="classopenage_1_1_research_1a51f059ce7313e37d3848481309b1dbd4" compoundref="research_8cpp" startline="50" endline="61">openage::Research::apply</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,88 +167,88 @@
 <para>The get_max_repeats (with a default value of 1) can allow for a research to be performed multiple types </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4068">
+      <node id="4999">
         <label>openage::ResearchType</label>
         <link refid="classopenage_1_1_research_type"/>
       </node>
-      <node id="4069">
+      <node id="5000">
         <label>openage::NyanResearchType</label>
         <link refid="classopenage_1_1_nyan_research_type"/>
-        <childnode refid="4068" relation="public-inheritance">
+        <childnode refid="4999" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4075">
+      <node id="5006">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="4073" relation="public-inheritance">
+        <childnode refid="5004" relation="public-inheritance">
         </childnode>
-        <childnode refid="4074" relation="usage">
+        <childnode refid="5005" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="4072">
+      <node id="5003">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="4073" relation="public-inheritance">
+        <childnode refid="5004" relation="public-inheritance">
         </childnode>
-        <childnode refid="4071" relation="usage">
+        <childnode refid="5002" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="4073">
+      <node id="5004">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="4074">
+      <node id="5005">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="4075" relation="usage">
+        <childnode refid="5006" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="4078">
+      <node id="5009">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="4071">
+      <node id="5002">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="4072" relation="usage">
+        <childnode refid="5003" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="4074" relation="usage">
+        <childnode refid="5005" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="4076" relation="usage">
+        <childnode refid="5007" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="4077" relation="usage">
+        <childnode refid="5008" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="4078" relation="usage">
+        <childnode refid="5009" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="4076">
+      <node id="5007">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="4077">
+      <node id="5008">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="4070">
+      <node id="5001">
         <label>openage::ResearchType</label>
         <link refid="classopenage_1_1_research_type"/>
-        <childnode refid="4071" relation="usage">
+        <childnode refid="5002" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/research.h" line="39" column="1" bodyfile="libopenage/unit/research.h" bodystart="39" bodyend="89"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h" bodystart="39" bodyend="89"/>
     <listofallmembers>
       <member refid="classopenage_1_1_research_type_1af58948dd42b8d8a97233d2fdd9885e83" prot="public" virt="pure-virtual"><scope>openage::ResearchType</scope><name>apply</name></member>
       <member refid="classopenage_1_1_research_type_1a76a5bd220674135f0bf93eed3f1bce92" prot="public" virt="pure-virtual"><scope>openage::ResearchType</scope><name>category</name></member>

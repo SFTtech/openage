@@ -122,7 +122,7 @@
         <label>coord_nese.gen.h</label>
       </node>
       <node id="9030">
-        <label>libopenage/gamestate/cost.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/cost.cpp</label>
         <link refid="cost_8cpp"/>
         <childnode refid="9031" relation="include">
         </childnode>
@@ -745,6 +745,6 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/cost.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/cost.cpp"/>
   </compounddef>
 </doxygen>

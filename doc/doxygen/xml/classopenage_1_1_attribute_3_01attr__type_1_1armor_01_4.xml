@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="274" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="274" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="274" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="265" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="265" bodyend="268"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="265" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="265" bodyend="268"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a3ee45b1ff632881c66b6b92f45a47fd7">openage::armor</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4_1a50f72b0b5242f0779c46970b6500d6c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -52,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="270" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="270" bodyend="272"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="270" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="270" bodyend="272"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,42 +61,42 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="362">
+      <node id="271">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="363" relation="public-inheritance">
+        <childnode refid="272" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="361">
+      <node id="270">
         <label>openage::Attribute&lt; attr_type::armor &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4"/>
-        <childnode refid="362" relation="public-inheritance">
+        <childnode refid="271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="363">
+      <node id="272">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="365">
+      <node id="274">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="366" relation="public-inheritance">
+        <childnode refid="275" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="364">
+      <node id="273">
         <label>openage::Attribute&lt; attr_type::armor &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4"/>
-        <childnode refid="365" relation="public-inheritance">
+        <childnode refid="274" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="366">
+      <node id="275">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="263" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="263" bodyend="275"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="263" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="263" bodyend="275"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4_1a5da952c1eb9e46f0ab1b594acf9994bc" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::armor &gt;</scope><name>armor</name></member>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4_1a8f617a871f44a19783a88220ffbf26b3" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::armor &gt;</scope><name>Attribute</name></member>

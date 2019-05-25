@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1hardcoded_1_1termcolors" kind="namespace" language="Python">
+    <compoundname>openage::convert::hardcoded::termcolors</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1hardcoded_1_1termcolors_1ae0cc4a962c33e65b53da1dcef671c42d" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>list openage::convert::hardcoded::termcolors.URXVTCOLS</definition>
+        <argsstring></argsstring>
+        <name>URXVTCOLS</name>
+        <briefdescription>
+<para>The 256 colors for use by the in-game terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Proudly determined from an URXVT screenshot. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/termcolors.py" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/termcolors.py" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/termcolors.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

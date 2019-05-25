@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="494" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="494" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="494" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="494" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="483" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="483" bodyend="486"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="483" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="483" bodyend="486"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a82ac54bc705e60f101a783334be1e7e1">openage::dropsite</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a4c35f9dc58f6fa9ba9f76a506a9dfebd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -52,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="488" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="488" bodyend="490"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="488" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="488" bodyend="490"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1af3258763ccb44c7136525e19b8519f1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -69,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="492" column="1" bodyfile="libopenage/unit/attribute.cpp" bodystart="9" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="492" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.cpp" bodystart="9" bodyend="11"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -78,42 +79,42 @@
 <para>The resources that are accepted to be dropped. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="423">
+      <node id="334">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="424" relation="public-inheritance">
+        <childnode refid="335" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="422">
+      <node id="333">
         <label>openage::Attribute&lt; attr_type::dropsite &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4"/>
-        <childnode refid="423" relation="public-inheritance">
+        <childnode refid="334" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="424">
+      <node id="335">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="426">
+      <node id="337">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="427" relation="public-inheritance">
+        <childnode refid="338" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="425">
+      <node id="336">
         <label>openage::Attribute&lt; attr_type::dropsite &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4"/>
-        <childnode refid="426" relation="public-inheritance">
+        <childnode refid="337" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="427">
+      <node id="338">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="481" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="481" bodyend="495"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="481" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="481" bodyend="495"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1af3258763ccb44c7136525e19b8519f1c" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>accepting_resource</name></member>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a7e18888cd242c93d8e4eb8d770938051" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>Attribute</name></member>

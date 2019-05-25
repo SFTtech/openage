@@ -1,11 +1,11 @@
-<map id="libopenage/renderer/opengl/context.h" name="libopenage/renderer/opengl/context.h">
-<area shape="rect" id="node1" title=" " alt="" coords="246,5,381,47"/>
-<area shape="rect" id="node2" href="$context_8cpp.xhtml" title=" " alt="" coords="5,95,141,136"/>
-<area shape="rect" id="node3" href="$opengl_2renderer_8h.xhtml" title=" " alt="" coords="309,184,443,225"/>
-<area shape="rect" id="node6" href="$opengl_2shader__program_8h.xhtml" title=" " alt="" coords="166,95,338,136"/>
-<area shape="rect" id="node8" href="$opengl_2window_8h.xhtml" title=" " alt="" coords="467,95,602,136"/>
-<area shape="rect" id="node4" href="$opengl_2renderer_8cpp.xhtml" title=" " alt="" coords="186,273,326,315"/>
-<area shape="rect" id="node5" href="$opengl_2window_8cpp.xhtml" title=" " alt="" coords="427,273,562,315"/>
-<area shape="rect" id="node7" href="$shader__program_8cpp.xhtml" title=" " alt="" coords="97,184,284,225"/>
-<area shape="rect" id="node9" href="$renderer_2tests_8cpp.xhtml" title=" " alt="" coords="467,184,602,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/opengl/context.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/opengl/context.h">
+<area shape="rect" id="node1" title=" " alt="" coords="320,5,529,61"/>
+<area shape="rect" id="node2" href="$context_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$opengl_2renderer_8h.xhtml" title=" " alt="" coords="395,213,604,269"/>
+<area shape="rect" id="node6" href="$opengl_2shader__program_8h.xhtml" title=" " alt="" coords="239,109,461,165"/>
+<area shape="rect" id="node8" href="$opengl_2window_8h.xhtml" title=" " alt="" coords="628,109,837,165"/>
+<area shape="rect" id="node4" href="$opengl_2renderer_8cpp.xhtml" title=" " alt="" coords="235,317,444,373"/>
+<area shape="rect" id="node5" href="$opengl_2window_8cpp.xhtml" title=" " alt="" coords="553,317,763,373"/>
+<area shape="rect" id="node7" href="$shader__program_8cpp.xhtml" title=" " alt="" coords="133,213,370,269"/>
+<area shape="rect" id="node9" href="$renderer_2tests_8cpp.xhtml" title=" " alt="" coords="628,213,837,269"/>
 </map>

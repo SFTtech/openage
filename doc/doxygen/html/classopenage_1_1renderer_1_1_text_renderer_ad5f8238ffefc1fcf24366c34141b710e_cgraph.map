@@ -1,0 +1,22 @@
+<map id="openage::renderer::TextRenderer::render" name="openage::renderer::TextRenderer::render">
+<area shape="rect" id="node1" title=" " alt="" coords="5,123,148,164"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae2dd04418a0db610c8c007993ecfdd22" title=" " alt="" coords="231,5,365,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c" title=" " alt="" coords="710,89,845,131"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#ae5ac0cf0b966e3636c0f9a950e3f1870" title=" " alt="" coords="231,123,365,164"/>
+<area shape="rect" id="node19" href="$classopenage_1_1shader_1_1_program.xhtml#abfd70a48ce216cf044f558328f8dfa4e" title=" " alt="" coords="211,188,385,229"/>
+<area shape="rect" id="node20" href="$classopenage_1_1shader_1_1_program.xhtml#ab36b7c92db2a3e3ce76b79e0451b6978" title=" " alt="" coords="196,254,400,281"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a4d5611a559a9c63bcb0865c8a0829d4a" title=" " alt="" coords="925,82,1063,138"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#a936adb09a68c1fc46e9572cd2866d961" title=" " alt="" coords="448,173,631,215"/>
+<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa029b621d32aec3deda5ba7231e42a33" title=" " alt="" coords="472,265,607,307"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a3cb605abe74b26763ac7340c3785656a" title=" " alt="" coords="711,155,843,182"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1util.xhtml#a5cfc0e84830b5945b5731d2148eea3b4" title=" " alt="" coords="711,207,843,248"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#a69b6ecf2b5119f11c33d2b5b89cec86c" title=" " alt="" coords="924,175,1064,216"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="1153,246,1264,273"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="1112,182,1305,209"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="1353,182,1480,209"/>
+<area shape="rect" id="node14" href="$classopenage_1_1renderer_1_1_glyph_atlas.xhtml#aa24165b0ea4cee5ea03cec1e0609499c" title=" " alt="" coords="679,324,876,365"/>
+<area shape="rect" id="node15" href="$namespacestd.xhtml#a1c0bc145caf5f0b2af8d16d29d952180" title=" " alt="" coords="957,327,1031,354"/>
+<area shape="rect" id="node18" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="959,378,1029,405"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="1125,312,1292,353"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="1125,377,1292,419"/>
+</map>

@@ -194,7 +194,7 @@
         </childnode>
       </node>
       <node id="24942">
-        <label>libopenage/terrain/terrain_search.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp</label>
         <link refid="terrain__search_8cpp"/>
         <childnode refid="24943" relation="include">
         </childnode>
@@ -638,11 +638,11 @@
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1_terrain_search_1a6863c70e3157a232ae161a729070c1de" kindref="member">max_radius</ref><sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a01d013ba8b4a285b3041dd25ac589e47" kindref="member">previous_radius</ref><sp/>&gt;<sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a6863c70e3157a232ae161a729070c1de" kindref="member">max_radius</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a0db543b44fe51d0f1403bedba1f575a8" kindref="member">reset</ref>();</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref><sp/>result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a2c95477aea517bbf5d2b3175bc81d59b" kindref="member">tiles</ref>.front();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a2c95477aea517bbf5d2b3175bc81d59b" kindref="member">tiles</ref>.front();</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a2c95477aea517bbf5d2b3175bc81d59b" kindref="member">tiles</ref>.pop();</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>to_add<sp/>=<sp/>result<sp/>+<sp/><ref refid="namespaceopenage_1ac27a19b7546e41750ef227ae0af62f9c" kindref="member">neigh_tile</ref>[i];</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>to_add<sp/>=<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+<sp/><ref refid="namespaceopenage_1ac27a19b7546e41750ef227ae0af62f9c" kindref="member">neigh_tile</ref>[i];</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>not<sp/>visited<sp/>and<sp/>tile<sp/>is<sp/>within<sp/>map</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_terrain_search_1a3f3f713314cc35ac39ceebd269d4c04d" kindref="member">visited</ref>.count(to_add)<sp/>==<sp/>0<sp/>&amp;&amp;<sp/><ref refid="classopenage_1_1_terrain_search_1aabc2d7105bbc2e1ba01b95977fa0de58" kindref="member">terrain</ref>-&gt;get_data(to_add))<sp/>{</highlight></codeline>
@@ -651,12 +651,12 @@
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a01d013ba8b4a285b3041dd25ac589e47" kindref="member">previous_radius</ref><sp/>=<sp/><ref refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" kindref="member">std::hypot</ref>(result.ne<sp/>-<sp/><ref refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" kindref="member">start</ref>.ne,<sp/>result.se<sp/>-<sp/><ref refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" kindref="member">start</ref>.se);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_terrain_search_1a01d013ba8b4a285b3041dd25ac589e47" kindref="member">previous_radius</ref><sp/>=<sp/><ref refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" kindref="member">std::hypot</ref>(result.ne<sp/>-<sp/><ref refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" kindref="member">start</ref>.ne,<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.se<sp/>-<sp/><ref refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" kindref="member">start</ref>.se);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/terrain/terrain_search.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_search.cpp"/>
   </compounddef>
 </doxygen>

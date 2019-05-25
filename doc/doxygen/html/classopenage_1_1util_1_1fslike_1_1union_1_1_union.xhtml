@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.fslike.union.Union Class Reference</title>
+<title>openage: openage.util.fslike.union.Union Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1fslike_1_1unio
 
 <p>FSLikeObject that provides a structure for mounting several path objects.  
  <a href="classopenage_1_1util_1_1fslike_1_1union_1_1_union.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.util.fslike.union.Union:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.fslike.union.Union:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.fslike.union.Union:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.fslike.union.Union:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -219,7 +222,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00029">29</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment"># (mountpoint, pathobj, priority), sorted by priority.</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        self.mounts = []</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment"># mountpoints and their parent directories, {name: {...}}.</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment"># these are the virtual empty folders where mounts can be done</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        self.dirstructure = {}</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">def </span>__str__(self):</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;Union({})&quot;</span>.format(</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -240,6 +243,17 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00039">39</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="stringliteral">&quot;, &quot;</span>.join([<span class="stringliteral">&quot;%s @ %s&quot;</span> % (<a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(pnt[1]),</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                    <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(pnt[0]))</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                       <span class="keywordflow">for</span> pnt <span class="keywordflow">in</span> self.mounts])</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        )</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    @property</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">def </span>root(self):</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00033">openage.util.fslike.union.Union.mounts</a>, and <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_ac8aa7e6454da5c8b49a6f5b093467b5f_cgraph.svg" width="592" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -282,6 +296,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00056">56</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(pathobj, Path):</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;only a fslike.Path can be mounted, &quot;</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                            <span class="stringliteral">&quot;not {}&quot;</span>.format(type(pathobj)))</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment"># search for the right place to insert the mount.</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        idx = len(self.mounts) - 1</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">while</span> idx &gt;= 0 <span class="keywordflow">and</span> priority &gt;= self.mounts[idx][2]:</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            idx -= 1</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        self.mounts.insert(idx + 1, (tuple(mountpoint), pathobj, priority))</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment"># &#39;create&#39; parent directories as needed.</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        dirstructure = self.dirstructure</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">for</span> subdir <span class="keywordflow">in</span> mountpoint:</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            dirstructure = dirstructure.setdefault(subdir, {})</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">def </span>remove_mount(self, search_mountpoint, source_pathobj=None):</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00037">openage.util.fslike.union.Union.dirstructure</a>, and <a class="el" href="union_8py_source.xhtml#l00033">openage.util.fslike.union.Union.mounts</a>.</p>
 
 </div>
 </div>
@@ -316,6 +332,18 @@ Public Attributes</h2></td></tr>
    their priorities.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00103">103</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">for</span> mountpoint, pathobj, _ <span class="keywordflow">in</span> self.mounts:</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            cut_parts = tuple(parts[:len(mountpoint)])</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">if</span> mountpoint == cut_parts:</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">yield</span> pathobj.joinpath(parts[len(mountpoint):])</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">def </span>open_r(self, parts):</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00033">openage.util.fslike.union.Union.mounts</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="union_8py_source.xhtml#l00174">openage.util.fslike.union.Union.filesize()</a>, <a class="el" href="union_8py_source.xhtml#l00250">openage.util.fslike.union.Union.is_dir()</a>, <a class="el" href="union_8py_source.xhtml#l00243">openage.util.fslike.union.Union.is_file()</a>, <a class="el" href="union_8py_source.xhtml#l00138">openage.util.fslike.union.Union.list()</a>, <a class="el" href="union_8py_source.xhtml#l00188">openage.util.fslike.union.Union.mkdirs()</a>, <a class="el" href="union_8py_source.xhtml#l00181">openage.util.fslike.union.Union.mtime()</a>, <a class="el" href="union_8py_source.xhtml#l00110">openage.util.fslike.union.Union.open_r()</a>, <a class="el" href="union_8py_source.xhtml#l00116">openage.util.fslike.union.Union.open_w()</a>, <a class="el" href="union_8py_source.xhtml#l00225">openage.util.fslike.union.Union.rename()</a>, <a class="el" href="union_8py_source.xhtml#l00124">openage.util.fslike.union.Union.resolve_r()</a>, <a class="el" href="union_8py_source.xhtml#l00131">openage.util.fslike.union.Union.resolve_w()</a>, <a class="el" href="union_8py_source.xhtml#l00194">openage.util.fslike.union.Union.rmdir()</a>, <a class="el" href="union_8py_source.xhtml#l00218">openage.util.fslike.union.Union.touch()</a>, <a class="el" href="union_8py_source.xhtml#l00206">openage.util.fslike.union.Union.unlink()</a>, <a class="el" href="union_8py_source.xhtml#l00272">openage.util.fslike.union.Union.watch()</a>, and <a class="el" href="union_8py_source.xhtml#l00265">openage.util.fslike.union.Union.writable()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_aa07650df3f22844b7731b2b60c97e202_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -348,6 +376,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a4d5b4fb1a16c90393da7eda7525c8789">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00174">174</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> path.is_file():</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span> path.filesize</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keyword">def </span>mtime(self, parts):</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_acc8f8159ef03f233586ffba4449cd89a_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -380,6 +418,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a336d8d1597189253f24703641c7fd436">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00250">250</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            dirstructure = self.dirstructure</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">for</span> part <span class="keywordflow">in</span> parts:</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                dirstructure = dirstructure[part]</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">except</span> KeyError:</div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">pass</span></div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> path.is_dir():</div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keyword">def </span>writable(self, parts):</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>, and <a class="el" href="union_8py_source.xhtml#l00037">openage.util.fslike.union.Union.dirstructure</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a11b1a3c7123d0359f3f8fc51f4af9d40_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -412,6 +460,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#af973fe09db18f1f04474fab94da350c5">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00243">243</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">if</span> path.is_file():</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">def </span>is_dir(self, parts):</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordflow">try</span>:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a268a3d26f652286a0917a70bf637d710_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -446,6 +504,17 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a81c203eb78e5823ce410f845c1c17aee">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00138">138</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        dir_exists = <span class="keyword">False</span></div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        dirstructure = self.dirstructure</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">try</span>:</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="comment"># &quot;cd&quot; into the virtual dirstructure</span></div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">for</span> subdir <span class="keywordflow">in</span> parts:</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                dirstructure = dirstructure[subdir]</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            dir_exists = <span class="keyword">True</span></div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="comment"># yield the virtual folders in this folder</span></div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">yield</span> <span class="keyword">from</span> dirstructure</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            duplicates.update(dirstructure)</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">except</span> KeyError:</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            dir_exists = <span class="keyword">False</span></div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> path.is_file():</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">raise</span> NotADirectoryError(<a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(path))</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> path.is_dir():</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">continue</span></div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            dir_exists = <span class="keyword">True</span></div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">for</span> name <span class="keywordflow">in</span> path.list():</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">if</span> name <span class="keywordflow">not</span> <span class="keywordflow">in</span> duplicates:</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    <span class="keywordflow">yield</span> name</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    duplicates.add(name)</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> dir_exists:</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">def </span>filesize(self, parts):</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>, <a class="el" href="union_8py_source.xhtml#l00037">openage.util.fslike.union.Union.dirstructure</a>, and <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a260ca9cd43939238415b186f97220452_cgraph.svg" width="631" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -480,6 +549,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a18afc9774e36ec8e17d67eaad2f7aa69">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00188">188</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">if</span> path.writable():</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <span class="keywordflow">return</span> path.mkdirs()</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keyword">def </span>rmdir(self, parts):</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        found = <span class="keyword">False</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a7af845af1ad7c6fdeb4b246bc802018b_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -512,6 +591,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a230d244732d46d5fabcec7638f3757c9">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00181">181</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">if</span> path.exists():</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordflow">return</span> path.mtime</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keyword">def </span>mkdirs(self, parts):</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a53d66dd260339405afd52713a981c566_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -546,6 +635,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a7eb9f9c28532ad799503acfd424dee7c">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00110">110</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> path.is_file():</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">return</span> path.open_r()</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">def </span>open_w(self, parts):</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a13e6de81f78a548cbfbb9a9c9f880990_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -580,6 +679,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a446d488c2bf95097706a467c93c4f973">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00116">116</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> path.writable():</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">return</span> path.open_w()</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">raise</span> UnsupportedOperation(</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="stringliteral">&quot;not writable: &quot;</span> + b<span class="stringliteral">&#39;/&#39;</span>.join(parts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">def </span>resolve_r(self, parts):</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a1f09a82ec0577beb8c1bcf4cea3c476e_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -602,6 +711,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a19ace3ca4d2ef770c421e5790968f60a">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00280">280</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            pathobj.poll_fs_watches()</div><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="keyword">class </span>UnionPath(Path):</div><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00033">openage.util.fslike.union.Union.mounts</a>.</p>
 
 </div>
 </div>
@@ -638,6 +749,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00079">79</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        unmount = []</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">for</span> idx, (mountpoint, pathobj, _) <span class="keywordflow">in</span> enumerate(self.mounts):</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="comment"># cut the search so prefixes can be matched.</span></div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> mountpoint == tuple(search_mountpoint[:len(mountpoint)]):</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> <span class="keywordflow">not</span> source_pathobj <span class="keywordflow">or</span> source_pathobj == pathobj:</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    unmount.append(idx)</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> unmount:</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="comment"># reverse the order so that the indices never shift.</span></div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">for</span> idx <span class="keywordflow">in</span> reversed(sorted(unmount)):</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                del self.mounts[idx]</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;could not find mounted source&quot;</span>)</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">def </span>candidate_paths(self, parts):</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00033">openage.util.fslike.union.Union.mounts</a>.</p>
 
 </div>
 </div>
@@ -678,6 +791,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a66554d4fda1edd835b6fa692ef16cc5b">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00225">225</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">for</span> srcpath <span class="keywordflow">in</span> self.candidate_paths(srcparts):</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">if</span> srcpath.exists():</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                found = <span class="keyword">True</span></div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">if</span> srcpath.writable():</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                    <span class="keywordflow">for</span> tgtpath <span class="keywordflow">in</span> self.candidate_paths(tgtparts):</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        <span class="keywordflow">if</span> tgtpath.writable():</div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                            <span class="keywordflow">return</span> srcpath.rename(tgtpath)</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> found:</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">raise</span> UnsupportedOperation(</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="stringliteral">&quot;read-only rename: &quot;</span> +</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                b<span class="stringliteral">&#39;/&#39;</span>.join(srcparts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>) + <span class="stringliteral">&#39; to &#39;</span> +</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                b<span class="stringliteral">&#39;/&#39;</span>.join(tgtparts).decode(errors=<span class="stringliteral">&#39;replace&#39;</span>))</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(srcparts))</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">def </span>is_file(self, parts):</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_ad171b4126b1ce13ace487d3e5932c8e4_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -710,6 +833,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#af30b34d88a17e5d1d7e99046da0490f5">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00124">124</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> path.is_file() <span class="keywordflow">or</span> path.is_dir():</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="comment"># pylint: disable=protected-access</span></div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">return</span> path._resolve_r()</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">def </span>resolve_w(self, parts):</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a5b17e82e4997bbf12c4b982b680d89dd_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -745,6 +878,17 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a255427aef3f55eea705114af7d7c107f">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00131">131</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">if</span> path.writable():</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="comment"># pylint: disable=protected-access</span></div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">return</span> path._resolve_w()</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">list</a>(self, parts):</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        duplicates = set()</div><div class="ttc" id="namespaceopenage_1_1py_xhtml_a58cbca251b8e2118e0a6b9b0b78a7b32"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32">openage::py::list</a></div><div class="ttdeci">Obj list()</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00359">pyobject.cpp:359</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a54d57b95c3da660c411d31ecc2c903c8_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -779,6 +923,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a6358bbae487c06aaccc7cbede61a2954">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00194">194</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment"># remove the directory in all mounts where it exists</span></div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">if</span> path.is_dir():</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                path.rmdir()</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                found = <span class="keyword">True</span></div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> found:</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keyword">def </span>unlink(self, parts):</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        found = <span class="keyword">False</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_ae02e2fa23d9e2d669a9643a8fc2feaf4_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -804,7 +958,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a04bffeae7754d2f18fc374b4c656633e">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00047">47</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">def </span>add_mount(self, pathobj, mountpoint, priority):</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="aa97093f892491f850a21f57b3b7396fc"></a>
@@ -838,6 +992,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a7010b622bd45a905fa68a8fc8942ced3">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00218">218</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> path.writable():</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">return</span> path.touch()</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">def </span>rename(self, srcparts, tgtparts):</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        found = <span class="keyword">False</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_aa97093f892491f850a21f57b3b7396fc_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -872,6 +1036,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a50009b666fb9e32369df9cadc3fc2de5">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00206">206</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment"># remove the file in all mounts where it exists</span></div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">if</span> path.is_file():</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                path.unlink()</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                found = <span class="keyword">True</span></div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> found:</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">raise</span> FileNotFoundError(b<span class="stringliteral">&#39;/&#39;</span>.join(parts))</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keyword">def </span>touch(self, parts):</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a442fd6e04319b0fa4324fc701ffa3167_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -910,6 +1084,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a531d4b17f9b239772a6de4d315cd9ddf">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00272">272</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> self.candidate_paths(parts):</div><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> path.exists():</div><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                watching = watching <span class="keywordflow">or</span> path.watch(callback)</div><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div><div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">return</span> watching</div><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keyword">def </span>poll_watches(self):</div><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordflow">for</span> _, pathobj, _ <span class="keywordflow">in</span> self.mounts:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_a190b7686ea0b21816f667b66fc845c94_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -942,6 +1126,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#aba8782dfa670c2368980eccca0b8c8dc">openage.util.fslike.abstract.FSLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00265">265</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">if</span> path.writable():</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">False</span></div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div><div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">def </span>watch(self, parts, callback):</div><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        watching = <span class="keyword">False</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1fslike_1_1union_1_1_union_ab579d912b66143e8042f4a6cc4387573_cgraph.svg" width="390" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -960,6 +1154,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00037">37</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="union_8py_source.xhtml#l00056">openage.util.fslike.union.Union.add_mount()</a>, <a class="el" href="union_8py_source.xhtml#l00250">openage.util.fslike.union.Union.is_dir()</a>, and <a class="el" href="union_8py_source.xhtml#l00138">openage.util.fslike.union.Union.list()</a>.</p>
+
 </div>
 </div>
 <a id="a683cf995ca39bdd6806e51c030274ec4"></a>
@@ -976,10 +1172,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="union_8py_source.xhtml#l00033">33</a> of file <a class="el" href="union_8py_source.xhtml">union.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="union_8py_source.xhtml#l00039">openage.util.fslike.union.Union.__str__()</a>, <a class="el" href="union_8py_source.xhtml#l00056">openage.util.fslike.union.Union.add_mount()</a>, <a class="el" href="union_8py_source.xhtml#l00103">openage.util.fslike.union.Union.candidate_paths()</a>, <a class="el" href="union_8py_source.xhtml#l00280">openage.util.fslike.union.Union.poll_watches()</a>, and <a class="el" href="union_8py_source.xhtml#l00079">openage.util.fslike.union.Union.remove_mount()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/fslike/<a class="el" href="union_8py_source.xhtml">union.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/<a class="el" href="union_8py_source.xhtml">union.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

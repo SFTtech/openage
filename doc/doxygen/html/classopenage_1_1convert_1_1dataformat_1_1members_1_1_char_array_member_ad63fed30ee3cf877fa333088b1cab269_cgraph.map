@@ -1,0 +1,6 @@
+<map id="openage.convert.dataformat.members.CharArrayMember.get_parsers" name="openage.convert.dataformat.members.CharArrayMember.get_parsers">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,248,112"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1dataformat_1_1util.xhtml#abe9d9997e55017fa14737a7603afadba" title="returns the includable headers for using the given C type." alt="" coords="296,5,559,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml#a5020d135379031c1726d24343ab23310" title=" " alt="" coords="306,71,549,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml#a65df1261e8a5c28c98ad325de5c4fdbe" title=" " alt="" coords="306,136,549,177"/>
+</map>

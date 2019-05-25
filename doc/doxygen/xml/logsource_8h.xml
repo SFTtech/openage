@@ -4,11 +4,11 @@
     <compoundname>logsource.h</compoundname>
     <includes local="no">string</includes>
     <includes refid="message_8h" local="yes">message.h</includes>
-    <includedby refid="unit_8h" local="yes">libopenage/unit/unit.h</includedby>
-    <includedby refid="file__logsink_8cpp" local="yes">libopenage/log/file_logsink.cpp</includedby>
-    <includedby refid="named__logsource_8h" local="yes">libopenage/log/named_logsource.h</includedby>
-    <includedby refid="logsource_8cpp" local="yes">libopenage/log/logsource.cpp</includedby>
-    <includedby refid="test_8cpp" local="yes">libopenage/log/test.cpp</includedby>
+    <includedby refid="unit_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.h</includedby>
+    <includedby refid="file__logsink_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp</includedby>
+    <includedby refid="named__logsource_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h</includedby>
+    <includedby refid="logsource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp</includedby>
+    <includedby refid="test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp</includedby>
     <incdepgraph>
       <node id="17756">
         <label>list</label>
@@ -26,7 +26,7 @@
         <label>cstdint</label>
       </node>
       <node id="17733">
-        <label>libopenage/log/logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h</label>
         <link refid="logsource_8h"/>
         <childnode refid="17734" relation="include">
         </childnode>
@@ -180,19 +180,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="17782">
-        <label>libopenage/log/named_logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.cpp</label>
         <link refid="named__logsource_8cpp"/>
       </node>
       <node id="17769">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="17779">
-        <label>libopenage/log/file_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp</label>
         <link refid="file__logsink_8cpp"/>
       </node>
       <node id="17761">
-        <label>libopenage/log/logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h</label>
         <link refid="logsource_8h"/>
         <childnode refid="17762" relation="include">
         </childnode>
@@ -206,15 +206,15 @@
         </childnode>
       </node>
       <node id="17765">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="17767">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="17780">
-        <label>libopenage/log/named_logsource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/named_logsource.h</label>
         <link refid="named__logsource_8h"/>
         <childnode refid="17781" relation="include">
         </childnode>
@@ -224,27 +224,27 @@
         </childnode>
       </node>
       <node id="17764">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="17773">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="17776">
-        <label>libopenage/gamestate/player.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/player.cpp</label>
         <link refid="player_8cpp"/>
       </node>
       <node id="17778">
-        <label>libopenage/unit/attribute.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.cpp</label>
         <link refid="attribute_8cpp"/>
       </node>
       <node id="17770">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="17771">
-        <label>libopenage/unit/producer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h</label>
         <link refid="producer_8h"/>
         <childnode refid="17764" relation="include">
         </childnode>
@@ -264,39 +264,39 @@
         </childnode>
       </node>
       <node id="17781">
-        <label>libopenage/log/log.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/log.cpp</label>
         <link refid="log_8cpp"/>
       </node>
       <node id="17784">
-        <label>libopenage/log/logsource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.cpp</label>
         <link refid="logsource_8cpp"/>
       </node>
       <node id="17766">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="17768">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="17774">
-        <label>libopenage/unit/unit_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_container.cpp</label>
         <link refid="unit__container_8cpp"/>
       </node>
       <node id="17777">
-        <label>libopenage/terrain/terrain_object.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain_object.cpp</label>
         <link refid="terrain__object_8cpp"/>
       </node>
       <node id="17775">
-        <label>libopenage/gamestate/generator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/generator.cpp</label>
         <link refid="generator_8cpp"/>
       </node>
       <node id="17772">
-        <label>libopenage/gamestate/game_save.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_save.cpp</label>
         <link refid="game__save_8cpp"/>
       </node>
       <node id="17762">
-        <label>libopenage/unit/unit.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.h</label>
         <link refid="unit_8h"/>
         <childnode refid="17763" relation="include">
         </childnode>
@@ -328,11 +328,11 @@
         </childnode>
       </node>
       <node id="17783">
-        <label>libopenage/log/stdout_logsink.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/stdout_logsink.cpp</label>
         <link refid="stdout__logsink_8cpp"/>
       </node>
       <node id="17763">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="17764" relation="include">
         </childnode>
@@ -350,7 +350,7 @@
         </childnode>
       </node>
       <node id="17785">
-        <label>libopenage/log/test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp</label>
         <link refid="test_8cpp"/>
       </node>
     </invincdepgraph>
@@ -397,6 +397,6 @@
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/log/logsource.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/logsource.h"/>
   </compounddef>
 </doxygen>

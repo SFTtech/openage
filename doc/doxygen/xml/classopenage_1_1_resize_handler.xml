@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="71" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="71" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/handlers.h" line="76" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="76" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -48,36 +48,36 @@
 <para>superclass for handling a window resize event. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4088">
+      <node id="5013">
         <label>openage::gui::GUI</label>
         <link refid="classopenage_1_1gui_1_1_g_u_i"/>
-        <childnode refid="4085" relation="public-inheritance">
+        <childnode refid="5010" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4086">
+      <node id="5011">
         <label>openage::console::Console</label>
         <link refid="classopenage_1_1console_1_1_console"/>
-        <childnode refid="4085" relation="private-inheritance">
+        <childnode refid="5010" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="4087">
+      <node id="5012">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="4085" relation="public-inheritance">
+        <childnode refid="5010" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4085">
+      <node id="5010">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4089">
+      <node id="5014">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/handlers.h" line="69" column="1" bodyfile="libopenage/handlers.h" bodystart="69" bodyend="77"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/handlers.h" bodystart="69" bodyend="77"/>
     <listofallmembers>
       <member refid="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d" prot="public" virt="pure-virtual"><scope>openage::ResizeHandler</scope><name>on_resize</name></member>
       <member refid="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="public" virt="virtual"><scope>openage::ResizeHandler</scope><name>~ResizeHandler</name></member>

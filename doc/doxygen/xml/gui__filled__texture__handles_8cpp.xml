@@ -9,7 +9,7 @@
         <label>functional</label>
       </node>
       <node id="13663">
-        <label>libopenage/gui/integration/private/gui_filled_texture_handles.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp</label>
         <link refid="gui__filled__texture__handles_8cpp"/>
         <childnode refid="13664" relation="include">
         </childnode>
@@ -126,6 +126,6 @@
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_filled_texture_handles.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp"/>
   </compounddef>
 </doxygen>

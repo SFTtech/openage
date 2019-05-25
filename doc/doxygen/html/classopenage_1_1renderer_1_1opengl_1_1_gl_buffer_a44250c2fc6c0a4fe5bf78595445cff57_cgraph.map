@@ -1,0 +1,5 @@
+<map id="openage::renderer::opengl::GlBuffer::upload_data" name="openage::renderer::opengl::GlBuffer::upload_data">
+<area shape="rect" id="node1" title=" " alt="" coords="5,35,197,76"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml#a25db93a238c2cd0056d897a04d87e35d" title="Bind this buffer to the specified GL target." alt="" coords="245,5,392,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="440,42,551,69"/>
+</map>

@@ -14,7 +14,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/sdl_global.cpp" line="49" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="49" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">make_available</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" prot="private" static="yes" mutable="no">
         <type>bool</type>
@@ -28,7 +29,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/sdl_global.cpp" line="50" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="50" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" bodystart="50" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" compoundref="sdl__global_8cpp" startline="15" endline="37">make_available</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" compoundref="sdl__global_8cpp" startline="39" endline="46">~SDL</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -43,7 +46,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/sdl_global.cpp" line="15" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="15" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" bodystart="15" bodyend="37"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" compoundref="sdl__global_8cpp" startline="50">inited</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" compoundref="sdl__global_8cpp" startline="49">sdl</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" compoundref="sdl__global_8cpp" startline="56" endline="58">openage::renderer::make_sdl_available</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -58,7 +68,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/sdl_global.cpp" line="39" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="39" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" bodystart="39" bodyend="46"/>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" compoundref="sdl__global_8cpp" startline="50">inited</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -67,15 +81,15 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4136">
+      <node id="4770">
         <label>openage::renderer::SDL</label>
         <link refid="classopenage_1_1renderer_1_1_s_d_l"/>
-        <childnode refid="4136" relation="usage">
+        <childnode refid="4770" relation="usage">
           <edgelabel>-sdl</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/sdl_global.cpp" line="13" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="13" bodyend="51"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.cpp" bodystart="13" bodyend="51"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" prot="private" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>inited</name></member>
       <member refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" prot="public" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>make_available</name></member>

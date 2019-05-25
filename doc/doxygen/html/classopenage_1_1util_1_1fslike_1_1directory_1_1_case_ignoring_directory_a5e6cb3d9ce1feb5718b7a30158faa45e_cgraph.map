@@ -1,0 +1,5 @@
+<map id="openage.util.fslike.directory.CaseIgnoringDirectory.resolve" name="openage.util.fslike.directory.CaseIgnoringDirectory.resolve">
+<area shape="rect" id="node1" title="resolves parts to an actual path name." alt="" coords="5,39,199,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory.xhtml#af57fc26b68b337aa0a8a36fce91a1790" title=" " alt="" coords="247,5,473,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_case_ignoring_directory.xhtml#af9d13b42632b797542414aed091b5093" title="Shall yield the entry names of the given directory." alt="" coords="268,71,452,112"/>
+</map>

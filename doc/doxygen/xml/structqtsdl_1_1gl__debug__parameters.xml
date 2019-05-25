@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="14" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="14" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="namespaceqtsdl_1ab9d9e0ee6419f87d80c1ed0067c3c08f" compoundref="opengl__debug__logger_8cpp" startline="30" endline="46">qtsdl::apply_opengl_debug_parameters</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" prot="public" static="no" mutable="no">
         <type>GLvoid *</type>
@@ -30,7 +31,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="namespaceqtsdl_1ab9d9e0ee6419f87d80c1ed0067c3c08f" compoundref="opengl__debug__logger_8cpp" startline="30" endline="46">qtsdl::apply_opengl_debug_parameters</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -44,7 +46,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="24" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="namespaceqtsdl_1ab9d9e0ee6419f87d80c1ed0067c3c08f" compoundref="opengl__debug__logger_8cpp" startline="30" endline="46">qtsdl::apply_opengl_debug_parameters</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -52,12 +55,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2373">
+      <node id="6175">
         <label>qtsdl::gl_debug_parameters</label>
         <link refid="structqtsdl_1_1gl__debug__parameters"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="10" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="10" bodyend="25"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="10" bodyend="25"/>
     <listofallmembers>
       <member refid="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" prot="public" virt="non-virtual"><scope>qtsdl::gl_debug_parameters</scope><name>callback</name></member>
       <member refid="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" prot="public" virt="non-virtual"><scope>qtsdl::gl_debug_parameters</scope><name>is_debug</name></member>

@@ -1,0 +1,12 @@
+<map id="openage::renderer::make_sdl_available" name="openage::renderer::make_sdl_available">
+<area shape="rect" id="node1" title=" " alt="" coords="5,49,140,90"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1_s_d_l.xhtml#a49774bd3b06bf0ac40e5c471fed34013" title=" " alt="" coords="188,49,331,90"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="384,5,495,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="379,56,500,83"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="381,107,497,133"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="570,19,717,61"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="548,85,739,112"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="816,13,955,54"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="799,78,971,119"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="787,144,984,171"/>
+</map>

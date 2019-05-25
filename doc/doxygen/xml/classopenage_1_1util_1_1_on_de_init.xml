@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="60" column="1" bodyfile="libopenage/util/init.h" bodystart="60" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" compoundref="init_8h" startline="50" endline="52">OnDeInit</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_on_de_init_1a3dd4aa892cc3763f73e856b880f34093" compoundref="init_8h" startline="55" endline="57">~OnDeInit</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +36,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="50" column="1" bodyfile="libopenage/util/init.h" bodystart="50" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="50" bodyend="52"/>
+        <references refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" compoundref="init_8h" startline="60">code</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_de_init_1a3dd4aa892cc3763f73e856b880f34093" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -47,7 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="55" column="1" bodyfile="libopenage/util/init.h" bodystart="55" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="55" bodyend="57"/>
+        <references refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" compoundref="init_8h" startline="60">code</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -65,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="63" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="63" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_de_init_1ae70a13f2060efa4d86f006ec0af01d0c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="64" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="64" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_de_init_1a2d9aaee47a936d8376373d746dcc630c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref> &amp;</type>
@@ -97,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="66" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="66" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_de_init_1a6124d0036dabe722ee6b5689ab07ba88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref> &amp;</type>
@@ -113,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="67" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="67" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -123,12 +127,12 @@
 <para>Designed mostly for use as a global object, though theoretically it might be useful as a stack-allocated object in some circumstances. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3470">
+      <node id="5961">
         <label>openage::util::OnDeInit</label>
         <link refid="classopenage_1_1util_1_1_on_de_init"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/init.h" line="48" column="1" bodyfile="libopenage/util/init.h" bodystart="48" bodyend="68"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="48" bodyend="68"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" prot="private" virt="non-virtual"><scope>openage::util::OnDeInit</scope><name>code</name></member>
       <member refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" prot="public" virt="non-virtual"><scope>openage::util::OnDeInit</scope><name>OnDeInit</name></member>

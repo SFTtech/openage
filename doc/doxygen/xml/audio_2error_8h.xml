@@ -3,14 +3,14 @@
   <compounddef id="audio_2error_8h" kind="file" language="C++">
     <compoundname>error.h</compoundname>
     <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
-    <includedby refid="audio__manager_8cpp" local="yes">libopenage/audio/audio_manager.cpp</includedby>
-    <includedby refid="dynamic__loader_8cpp" local="yes">libopenage/audio/dynamic_loader.cpp</includedby>
-    <includedby refid="audio_2error_8cpp" local="yes">libopenage/audio/error.cpp</includedby>
-    <includedby refid="in__memory__loader_8cpp" local="yes">libopenage/audio/in_memory_loader.cpp</includedby>
-    <includedby refid="opus__dynamic__loader_8cpp" local="yes">libopenage/audio/opus_dynamic_loader.cpp</includedby>
-    <includedby refid="opus__in__memory__loader_8cpp" local="yes">libopenage/audio/opus_in_memory_loader.cpp</includedby>
-    <includedby refid="opus__loading_8cpp" local="yes">libopenage/audio/opus_loading.cpp</includedby>
-    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
+    <includedby refid="audio__manager_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</includedby>
+    <includedby refid="dynamic__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</includedby>
+    <includedby refid="audio_2error_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.cpp</includedby>
+    <includedby refid="in__memory__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.cpp</includedby>
+    <includedby refid="opus__dynamic__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</includedby>
+    <includedby refid="opus__in__memory__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</includedby>
+    <includedby refid="opus__loading_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</includedby>
     <incdepgraph>
       <node id="755">
         <label>list</label>
@@ -172,7 +172,7 @@
         <label>mutex</label>
       </node>
       <node id="730">
-        <label>libopenage/audio/error.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.h</label>
         <link refid="audio_2error_8h"/>
         <childnode refid="731" relation="include">
         </childnode>
@@ -199,35 +199,35 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="764">
-        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/in_memory_loader.cpp</label>
         <link refid="in__memory__loader_8cpp"/>
       </node>
       <node id="762">
-        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</label>
         <link refid="dynamic__loader_8cpp"/>
       </node>
       <node id="766">
-        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</label>
         <link refid="opus__in__memory__loader_8cpp"/>
       </node>
       <node id="768">
-        <label>libopenage/gamestate/game_spec.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_spec.cpp</label>
         <link refid="game__spec_8cpp"/>
       </node>
       <node id="767">
-        <label>libopenage/audio/opus_loading.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp</label>
         <link refid="opus__loading_8cpp"/>
       </node>
       <node id="761">
-        <label>libopenage/audio/audio_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/audio_manager.cpp</label>
         <link refid="audio__manager_8cpp"/>
       </node>
       <node id="765">
-        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</label>
         <link refid="opus__dynamic__loader_8cpp"/>
       </node>
       <node id="760">
-        <label>libopenage/audio/error.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.h</label>
         <link refid="audio_2error_8h"/>
         <childnode refid="761" relation="include">
         </childnode>
@@ -247,7 +247,7 @@
         </childnode>
       </node>
       <node id="763">
-        <label>libopenage/audio/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.cpp</label>
         <link refid="audio_2error_8cpp"/>
       </node>
     </invincdepgraph>
@@ -275,6 +275,6 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/error.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/error.h"/>
   </compounddef>
 </doxygen>

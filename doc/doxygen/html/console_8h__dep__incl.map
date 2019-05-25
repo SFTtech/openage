@@ -1,8 +1,8 @@
-<map id="libopenage/console/console.h" name="libopenage/console/console.h">
-<area shape="rect" id="node1" title=" " alt="" coords="320,5,453,47"/>
-<area shape="rect" id="node2" href="$console_8cpp.xhtml" title=" " alt="" coords="5,95,139,136"/>
-<area shape="rect" id="node3" href="$draw_8cpp.xhtml" title=" " alt="" coords="163,95,296,136"/>
-<area shape="rect" id="node4" href="$console_2tests_8cpp.xhtml" title=" " alt="" coords="320,95,453,136"/>
-<area shape="rect" id="node5" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="478,102,677,129"/>
-<area shape="rect" id="node6" href="$main_8cpp.xhtml" title=" " alt="" coords="701,102,843,129"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/console/console.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/console/console.h">
+<area shape="rect" id="node1" title=" " alt="" coords="472,5,681,61"/>
+<area shape="rect" id="node2" href="$console_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$draw_8cpp.xhtml" title=" " alt="" coords="239,109,448,165"/>
+<area shape="rect" id="node4" href="$console_2tests_8cpp.xhtml" title=" " alt="" coords="472,109,681,165"/>
+<area shape="rect" id="node5" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
+<area shape="rect" id="node6" href="$main_8cpp.xhtml" title=" " alt="" coords="939,109,1148,165"/>
 </map>

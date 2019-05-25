@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::data_formatter::DataFormatter</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a2ee353d31aed79b45e5fbbb6ebfbe39b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.data_formatter.DataFormatter::DELIMITER</definition>
+        <argsstring></argsstring>
+        <name>DELIMITER</name>
+        <initializer>=  &quot;,&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a85ead735668cbfde167276d76cde7830" prot="public" static="yes" mutable="no">
+        <type>dictionary</type>
+        <definition>dictionary openage.convert.dataformat.data_formatter.DataFormatter::member_methods</definition>
+        <argsstring></argsstring>
+        <name>member_methods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a13a1209ec54d2f580f14a94bbad919f1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.data_formatter.DataFormatter::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="117" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.data_formatter.DataFormatter::typedefs</definition>
+        <argsstring></argsstring>
+        <name>typedefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="120" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a066f78e6d40708f497833c4280a75217" compoundref="generated__file_8py" startline="84" endline="105">openage.convert.dataformat.generated_file.GeneratedFile.add_snippet</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a37aae935de963e1abdb6f501c6e75076" compoundref="generated__file_8py" startline="123" endline="139">openage.convert.dataformat.generated_file.GeneratedFile.create_xref_headers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a04eade25083ec6a497f465c0e4675508" compoundref="generated__file_8py" startline="109" endline="119">openage.convert.dataformat.generated_file.GeneratedFile.get_include_snippet</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a8400943f6fb6fbe252b6848075fd5260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.data_formatter.DataFormatter.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="115" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.data_formatter.DataFormatter.add_data</definition>
+        <argsstring>(self, data_set_pile, prefix=None, single_output=None)</argsstring>
+        <name>add_data</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data_set_pile</type>
+          <defname>data_set_pile</defname>
+        </param>
+        <param>
+          <type>prefix</type>
+          <defname>prefix</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>single_output</type>
+          <defname>single_output</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>add a given StructDefinition to the storage, so it can be exported later. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   other exported data structures are collected from the given input.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="127" bodyend="164"/>
+        <references refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" compoundref="datastructure_2tests_8h" startline="16">openage::datastructure::tests::heap_elem::data</references>
+        <references refid="structopenage_1_1audio_1_1audio__chunk__t_1a7c743fc27e3431d759716fc0d44bee1c" compoundref="audio_2types_8h" startline="21">openage::audio::audio_chunk_t::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aaeb6d3824f1ff77e825f5c7f75c63e00" compoundref="content__snippet_8py" startline="29">openage.convert.dataformat.content_snippet.ContentSnippet.data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ae7eb719925360c6c4c256d1cb0e01ab2" compoundref="data__definition_8py" startline="29">openage.convert.dataformat.data_definition.DataDefinition.data</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
+        <references refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" compoundref="texture_8h" startline="58">openage::gl_texture_buffer::data</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a8a7bc88cee1e85210f19389eab6794eb" compoundref="terrain__chunk_8h" startline="61">openage::TerrainChunk::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">openage::renderer::resources::Texture2dData::data</references>
+        <references refid="classopenage_1_1_unit_reference_1accccaa53b2f44fcef0f75b5c4e63eb86" compoundref="unit__container_8h" startline="68">openage::UnitReference::data</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
+        <references refid="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" compoundref="terrain_8h" startline="106">openage::influence_group::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a13a1209ec54d2f580f14a94bbad919f1" compoundref="data__formatter_8py" startline="117">openage.convert.dataformat.data_formatter.DataFormatter.data</references>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" compoundref="csv_8h" startline="130">openage::util::CSVCollection::data</references>
+        <references refid="structopenage_1_1tile__draw__data_1abb735fac94699d37947a4456ac4177a9" compoundref="terrain_8h" startline="140">openage::tile_draw_data::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" compoundref="mesh__data_8h" startline="140">openage::renderer::resources::MeshData::data</references>
+        <references refid="structopenage_1_1util_1_1csv__subdata_1a4a1a85e2b3d2479aba87d487943cd63a" compoundref="csv_8h" startline="151">openage::util::csv_subdata&lt; lineformat &gt;::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" compoundref="data__formatter_8py" startline="120">openage.convert.dataformat.data_formatter.DataFormatter.typedefs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.data_formatter.DataFormatter.export</definition>
+        <argsstring>(self, projectdir, requested_formats)</argsstring>
+        <name>export</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>projectdir</type>
+          <defname>projectdir</defname>
+        </param>
+        <param>
+          <type>requested_formats</type>
+          <defname>requested_formats</defname>
+        </param>
+        <briefdescription>
+<para>Generates files in the requested formats to projectdir. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   projectdir is a util.fslike.path.Path.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="170" bodyend="231"/>
+        <references refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" compoundref="datastructure_2tests_8h" startline="16">openage::datastructure::tests::heap_elem::data</references>
+        <references refid="structopenage_1_1audio_1_1audio__chunk__t_1a7c743fc27e3431d759716fc0d44bee1c" compoundref="audio_2types_8h" startline="21">openage::audio::audio_chunk_t::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aaeb6d3824f1ff77e825f5c7f75c63e00" compoundref="content__snippet_8py" startline="29">openage.convert.dataformat.content_snippet.ContentSnippet.data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ae7eb719925360c6c4c256d1cb0e01ab2" compoundref="data__definition_8py" startline="29">openage.convert.dataformat.data_definition.DataDefinition.data</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
+        <references refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" compoundref="texture_8h" startline="58">openage::gl_texture_buffer::data</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a8a7bc88cee1e85210f19389eab6794eb" compoundref="terrain__chunk_8h" startline="61">openage::TerrainChunk::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">openage::renderer::resources::Texture2dData::data</references>
+        <references refid="classopenage_1_1_unit_reference_1accccaa53b2f44fcef0f75b5c4e63eb86" compoundref="unit__container_8h" startline="68">openage::UnitReference::data</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
+        <references refid="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" compoundref="terrain_8h" startline="106">openage::influence_group::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a13a1209ec54d2f580f14a94bbad919f1" compoundref="data__formatter_8py" startline="117">openage.convert.dataformat.data_formatter.DataFormatter.data</references>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" compoundref="csv_8h" startline="130">openage::util::CSVCollection::data</references>
+        <references refid="structopenage_1_1tile__draw__data_1abb735fac94699d37947a4456ac4177a9" compoundref="terrain_8h" startline="140">openage::tile_draw_data::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" compoundref="mesh__data_8h" startline="140">openage::renderer::resources::MeshData::data</references>
+        <references refid="structopenage_1_1util_1_1csv__subdata_1a4a1a85e2b3d2479aba87d487943cd63a" compoundref="csv_8h" startline="151">openage::util::csv_subdata&lt; lineformat &gt;::data</references>
+        <references refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" compoundref="pyobject_8cpp" startline="352" endline="356">openage::py::dict</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" compoundref="data__formatter_8py" startline="120">openage.convert.dataformat.data_formatter.DataFormatter.typedefs</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="952">
+        <label>openage.convert.dataformat.data_formatter.DataFormatter</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/data_formatter.py" bodystart="20" bodyend="231"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a8400943f6fb6fbe252b6848075fd5260" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>add_data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a13a1209ec54d2f580f14a94bbad919f1" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a2ee353d31aed79b45e5fbbb6ebfbe39b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>DELIMITER</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>export</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a85ead735668cbfde167276d76cde7830" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>member_methods</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1ae3f03279be0148880a253eb1f134e4ab" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::data_formatter::DataFormatter</scope><name>typedefs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

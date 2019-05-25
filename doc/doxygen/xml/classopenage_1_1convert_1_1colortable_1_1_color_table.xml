@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1colortable_1_1_color_table" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::colortable::ColorTable</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table" prot="public" virt="non-virtual">openage.convert.colortable.PlayerColorTable</derivedcompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1afc5f277541d4b9ea2a01e3c5cc671331" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.colortable.ColorTable::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;palette_color&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ac09e6c33a6e513d8e880fec2422c4c7a" compoundref="data__definition_8py" startline="136" endline="138">openage.convert.dataformat.data_definition.DataDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a09caba3631e9613aa48899149d860e18" compoundref="struct__definition_8py" startline="235" endline="237">openage.convert.dataformat.struct_definition.StructDefinition.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" compoundref="exportable_8py" startline="483" endline="485">openage.convert.dataformat.exportable.Exportable.get_effective_type</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae0cd434a08e48a1ca8e5010d1c5f43e9" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.colortable.ColorTable::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;color&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a25563a8e16af5b93eac7fc52e4f8e733" compoundref="struct__definition_8py" startline="184" endline="225">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct_implementation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8bce36e82e0d01a644ab260c0c41f29e" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.colortable.ColorTable::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;indexed color storage.&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" compoundref="exportable_8py" startline="447" endline="481">openage.convert.dataformat.exportable.Exportable.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a497aa98fbdddacc2b623b5bedd161f5e" compoundref="struct__definition_8py" startline="146" endline="179">openage.convert.dataformat.struct_definition.StructDefinition.generate_struct</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a6261d704ebd64dd435f50b8e3e44dda0" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.colortable.ColorTable::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  (
+        (True, &quot;idx&quot;, &quot;int32_t&quot;),
+        (True, &quot;r&quot;,   &quot;uint8_t&quot;),
+        (True, &quot;g&quot;,   &quot;uint8_t&quot;),
+        (True, &quot;b&quot;,   &quot;uint8_t&quot;),
+        (True, &quot;a&quot;,   &quot;uint8_t&quot;),
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" compoundref="exportable_8py" startline="494" endline="519">openage.convert.dataformat.exportable.Exportable.get_data_format</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.ColorTable::palette</definition>
+        <argsstring></argsstring>
+        <name>palette</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ac83e6de3e8c5efa26a91c9355799e002" compoundref="colortable_8py" startline="71" endline="73">openage.convert.colortable.ColorTable.__getitem__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1adbe5ef034f3045f9325c8f1c817a94bb" compoundref="colortable_8py" startline="74" endline="76">openage.convert.colortable.ColorTable.__len__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a78cbe87b9e25fbd014bc48adbd392aa8" compoundref="colortable_8py" startline="77" endline="79">openage.convert.colortable.ColorTable.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1af69af2e6d8ea907648f84453f72b3164" compoundref="colortable_8py" startline="196" endline="198">openage.convert.colortable.PlayerColorTable.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a2d23de53da50584b86b6c27d956d4503" compoundref="colortable_8py" startline="80" endline="82">openage.convert.colortable.ColorTable.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" compoundref="colortable_8py" startline="149" endline="164">openage.convert.colortable.ColorTable.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" compoundref="colortable_8py" startline="86" endline="145">openage.convert.colortable.ColorTable.gen_image</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8141462f04a3e68e374de5da8abff508" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.ColorTable::header</definition>
+        <argsstring></argsstring>
+        <name>header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a4ad2842989cd9deac0bbd7dbae39c9fb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.colortable.ColorTable::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.__init__</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>__init__</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1a751c7014332d76798a342665bfb2ab54">__init__</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="28" bodyend="35"/>
+        <references refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a03e6fa8867f7baf6a41625ce3330fbfb" compoundref="texture__subinfo_8cpp" startline="46" endline="49">openage::renderer::resources::Texture2dSubInfo::fill</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a041e669aa436085f5da150f2228f8788" compoundref="colortable_8py" startline="39" endline="70">openage.convert.colortable.ColorTable.fill</references>
+        <references refid="classopenage_1_1rng_1_1_r_n_g_1a77a4af9133abbcd242c9adf3921bbd89" compoundref="rng_8cpp" startline="120" endline="127">openage::rng::RNG::fill</references>
+        <references refid="classopenage_1_1_terrain_1ac5f73cac07115849392bb22598ae8fba" compoundref="terrain_8cpp" startline="64" endline="80">openage::Terrain::fill</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a01d3ab46b2384adbf99a4ca231173e9d" compoundref="colortable_8py" startline="36" endline="38">openage.convert.colortable.ColorTable.fill_from_array</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a01d3ab46b2384adbf99a4ca231173e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.fill_from_array</definition>
+        <argsstring>(self, ar)</argsstring>
+        <name>fill_from_array</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>ar</type>
+          <defname>ar</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="36" bodyend="38"/>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e" compoundref="colortable_8py" startline="28" endline="35">openage.convert.colortable.ColorTable.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a041e669aa436085f5da150f2228f8788" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.fill</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>fill</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="39" bodyend="70"/>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e" compoundref="colortable_8py" startline="28" endline="35">openage.convert.colortable.ColorTable.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1ac83e6de3e8c5efa26a91c9355799e002" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.__getitem__</definition>
+        <argsstring>(self, index)</argsstring>
+        <name>__getitem__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>index</type>
+          <defname>index</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="71" bodyend="73"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1adbe5ef034f3045f9325c8f1c817a94bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.__len__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__len__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="74" bodyend="76"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a78cbe87b9e25fbd014bc48adbd392aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1af69af2e6d8ea907648f84453f72b3164">__repr__</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="77" bodyend="79"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a2d23de53da50584b86b6c27d956d4503" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="80" bodyend="82"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.gen_image</definition>
+        <argsstring>(self, draw_text=True, squaresize=100)</argsstring>
+        <name>gen_image</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>draw_text</type>
+          <defname>draw_text</defname>
+          <defval>True</defval>
+        </param>
+        <param>
+          <type>squaresize</type>
+          <defname>squaresize</defname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+<para>writes this color table (palette) to a png image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="86" bodyend="145"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1aeea5aabc465e55e3b8a519049bbcb623" compoundref="colortable_8py" startline="146" endline="148">openage.convert.colortable.ColorTable.save_visualization</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1aeea5aabc465e55e3b8a519049bbcb623" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.save_visualization</definition>
+        <argsstring>(self, fileobj)</argsstring>
+        <name>save_visualization</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="146" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="146" bodyend="148"/>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" compoundref="colortable_8py" startline="86" endline="145">openage.convert.colortable.ColorTable.gen_image</references>
+        <references refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" compoundref="game__save_8cpp" startline="70" endline="100">openage::gameio::save</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.dump</definition>
+        <argsstring>(self, filename)</argsstring>
+        <name>dump</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3">dump</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+<para>main data dumping function, the magic happens in here. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   recursively dumps all object members as DataDefinitions.
+
+   returns [DataDefinition, ..]
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="149" bodyend="164"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1colortable_1_1_color_table_1a10b07bce8d65fa9165a529a96a3fa3b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.colortable.ColorTable.structs</definition>
+        <argsstring>(cls)</argsstring>
+        <name>structs</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6">structs</reimplements>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+<para>create struct definitions for this class and its subdata references. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="166" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="928">
+        <label>openage.convert.colortable.ColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_color_table"/>
+        <childnode refid="929" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="929">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="930">
+        <label>openage.convert.colortable.PlayerColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table"/>
+        <childnode refid="928" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="931">
+        <label>openage.convert.colortable.ColorTable</label>
+        <link refid="classopenage_1_1convert_1_1colortable_1_1_color_table"/>
+        <childnode refid="932" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="932">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/colortable.py" bodystart="15" bodyend="170"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ac83e6de3e8c5efa26a91c9355799e002" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a5223d2c9c8019307e1c81e31b9b5124e" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::exportable::Exportable."><scope>openage::convert::colortable::ColorTable</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1adbe5ef034f3045f9325c8f1c817a94bb" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a78cbe87b9e25fbd014bc48adbd392aa8" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a2d23de53da50584b86b6c27d956d4503" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a6261d704ebd64dd435f50b8e3e44dda0" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae898e30caff083194c651a9ad9938db3" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a041e669aa436085f5da150f2228f8788" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>fill</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a01d3ab46b2384adbf99a4ca231173e9d" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>fill_from_array</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a117e184527bb7a1a371a8c53bf7f61ff" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>gen_image</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8141462f04a3e68e374de5da8abff508" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>header</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1afc5f277541d4b9ea2a01e3c5cc671331" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1ae0cd434a08e48a1ca8e5010d1c5f43e9" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>palette</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1aeea5aabc465e55e3b8a519049bbcb623" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>save_visualization</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a8bce36e82e0d01a644ab260c0c41f29e" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a10b07bce8d65fa9165a529a96a3fa3b7" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>structs</name></member>
+      <member refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a4ad2842989cd9deac0bbd7dbae39c9fb" prot="public" virt="non-virtual"><scope>openage::convert::colortable::ColorTable</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

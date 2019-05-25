@@ -1,0 +1,5 @@
+<map id="openage::event::demo::BallReflectWall::invoke" name="openage::event::demo::BallReflectWall::invoke">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,168,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c" title=" " alt="" coords="216,5,401,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="225,71,392,112"/>
+</map>

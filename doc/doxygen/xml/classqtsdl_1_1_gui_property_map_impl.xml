@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="13" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="12" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_property_map_impl_1afadd863ae9d3f4b0f8105e7dcb893568" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="14" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="17" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="17" bodyend="18"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -52,7 +52,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="17" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" line="17" column="1"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a0e965b2d5161f95e8118b197ac2f0f42" compoundref="gui__item__list__model_8h" startline="45" endline="50">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_to_gui_propagation</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" compoundref="gui__property__map__impl_8cpp" startline="20" endline="28">event</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -71,7 +73,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="20" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="20" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="20" bodyend="28"/>
+        <references refid="classqtsdl_1_1_gui_property_map_impl_1a2842145dde93db062bfcc6d8ba6e0d90">property_changed</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -79,28 +82,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2746">
+      <node id="6458">
         <label>QObject</label>
       </node>
-      <node id="2745">
+      <node id="6457">
         <label>qtsdl::GuiPropertyMapImpl</label>
         <link refid="classqtsdl_1_1_gui_property_map_impl"/>
-        <childnode refid="2746" relation="public-inheritance">
+        <childnode refid="6458" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2748">
+      <node id="6460">
         <label>QObject</label>
       </node>
-      <node id="2747">
+      <node id="6459">
         <label>qtsdl::GuiPropertyMapImpl</label>
         <link refid="classqtsdl_1_1_gui_property_map_impl"/>
-        <childnode refid="2748" relation="public-inheritance">
+        <childnode refid="6460" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="9" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.h" bodystart="9" bodyend="21"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h" bodystart="9" bodyend="21"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" prot="private" virt="virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>event</name></member>
       <member refid="classqtsdl_1_1_gui_property_map_impl_1ae39a771d14c1000e2614e9b11270dacd" prot="public" virt="non-virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>GuiPropertyMapImpl</name></member>

@@ -15,7 +15,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/action.h" line="74" column="1" bodyfile="libopenage/input/action.h" bodystart="74" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" compoundref="input__context_8cpp" startline="46" endline="74">openage::input::InputContext::execute_if_bound</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1input_1_1action__arg__t_1acb2429b802ec5c65f21c65a0181d3d14" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenage_1_1coord_1_1input" kindref="compound">coord::input</ref></type>
@@ -28,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/action.h" line="77" column="1" bodyfile="libopenage/input/action.h" bodystart="77" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" bodystart="77" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1input_1_1action__arg__t_1a9b4488b1999c27270549675ca1a8fb42" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenage_1_1coord_1_1input__delta" kindref="compound">coord::input_delta</ref></type>
@@ -41,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/action.h" line="78" column="1" bodyfile="libopenage/input/action.h" bodystart="78" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1input_1_1action__arg__t_1ac95576311a76aacd530a277bfaaf25d9" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="namespaceopenage_1_1input_1a1b138fc1f2c04cbb787073b612f1e5a9" kindref="member">action_id_t</ref> &gt;</type>
@@ -54,7 +60,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/action.h" line="82" column="1" bodyfile="libopenage/input/action.h" bodystart="82" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" bodystart="82" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" compoundref="input__context_8cpp" startline="46" endline="74">openage::input::InputContext::execute_if_bound</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -63,50 +70,50 @@
 <para>Contains information about a triggered event. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="7">
+      <node id="3807">
         <label>openage::input::action_arg_t</label>
         <link refid="structopenage_1_1input_1_1action__arg__t"/>
-        <childnode refid="8" relation="usage">
+        <childnode refid="3808" relation="usage">
           <edgelabel>+mouse</edgelabel>
         </childnode>
-        <childnode refid="10" relation="usage">
+        <childnode refid="3810" relation="usage">
           <edgelabel>+motion</edgelabel>
         </childnode>
-        <childnode refid="12" relation="usage">
+        <childnode refid="3812" relation="usage">
           <edgelabel>+e</edgelabel>
         </childnode>
       </node>
-      <node id="12">
+      <node id="3812">
         <label>openage::input::Event</label>
         <link refid="classopenage_1_1input_1_1_event"/>
-        <childnode refid="13" relation="usage">
+        <childnode refid="3813" relation="usage">
           <edgelabel>+cc</edgelabel>
         </childnode>
       </node>
-      <node id="11">
+      <node id="3811">
         <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="8">
+      <node id="3808">
         <label>openage::coord::input</label>
         <link refid="structopenage_1_1coord_1_1input"/>
-        <childnode refid="9" relation="public-inheritance">
+        <childnode refid="3809" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="3809">
         <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="13">
+      <node id="3813">
         <label>openage::input::ClassCode</label>
         <link refid="classopenage_1_1input_1_1_class_code"/>
       </node>
-      <node id="10">
+      <node id="3810">
         <label>openage::coord::input_delta</label>
         <link refid="structopenage_1_1coord_1_1input__delta"/>
-        <childnode refid="11" relation="public-inheritance">
+        <childnode refid="3811" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/input/action.h" line="71" column="1" bodyfile="libopenage/input/action.h" bodystart="71" bodyend="83"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/action.h" bodystart="71" bodyend="83"/>
     <listofallmembers>
       <member refid="structopenage_1_1input_1_1action__arg__t_1a75c7dda55a421ea33b2503f69fe2383a" prot="public" virt="non-virtual"><scope>openage::input::action_arg_t</scope><name>e</name></member>
       <member refid="structopenage_1_1input_1_1action__arg__t_1ac95576311a76aacd530a277bfaaf25d9" prot="public" virt="non-virtual"><scope>openage::input::action_arg_t</scope><name>hints</name></member>

@@ -1,0 +1,20 @@
+<map id="openage::path::to_point" name="openage::path::to_point">
+<area shape="rect" id="node1" title=" " alt="" coords="5,268,164,295"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1path.xhtml#acafe3c2e0b6cef7750a14663eab6c883" title=" " alt="" coords="237,188,385,215"/>
+<area shape="rect" id="node16" href="$namespaceopenage_1_1path.xhtml#a18aa96b43da6809c7796eaa4214a3420" title=" " alt="" coords="212,239,411,265"/>
+<area shape="rect" id="node17" href="$namespaceopenage_1_1path.xhtml#a64affc7c4a103a4ffabfd72c454962cf" title=" " alt="" coords="228,290,395,331"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a07a0fa1c13f5aff3f184a2d82574e7e7" title=" " alt="" coords="228,355,395,397"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="495,5,613,32"/>
+<area shape="rect" id="node4" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ab94d37206816a45bcfe49f8631cc82a9" title=" " alt="" coords="473,57,635,98"/>
+<area shape="rect" id="node5" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a7a529d5ee64fa5002f6487d3821df5f6" title=" " alt="" coords="477,122,631,163"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="493,188,615,215"/>
+<area shape="rect" id="node12" href="$namespaceopenage_1_1path.xhtml#a2752186f11f3e1a26c7a72c647e7ccdd" title=" " alt="" coords="459,239,649,265"/>
+<area shape="rect" id="node14" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#ac6bcfcb890dd8d546b1b4c466cf09009" title=" " alt="" coords="477,290,631,331"/>
+<area shape="rect" id="node15" href="$classopenage_1_1datastructure_1_1_pairing_heap.xhtml#a75e9e7602b59aeee47a2fd84a10c8f74" title=" " alt="" coords="477,355,631,397"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="719,122,866,163"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="697,188,888,215"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="965,115,1104,157"/>
+<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="949,181,1121,222"/>
+<area shape="rect" id="node11" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="936,247,1133,273"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554" title=" " alt="" coords="709,239,876,281"/>
+</map>

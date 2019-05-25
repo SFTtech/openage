@@ -224,7 +224,7 @@
         <label>ciso646</label>
       </node>
       <node id="3034">
-        <label>libopenage/pathfinding/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</label>
         <link refid="pathfinding_2tests_8cpp"/>
         <childnode refid="3035" relation="include">
         </childnode>
@@ -648,6 +648,6 @@
 <codeline lineno="315"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>pathfinding</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="316"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pathfinding/tests.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp"/>
   </compounddef>
 </doxygen>

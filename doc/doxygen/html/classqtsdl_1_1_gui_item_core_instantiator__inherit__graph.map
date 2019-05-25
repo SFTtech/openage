@@ -1,6 +1,33 @@
 <map id="qtsdl::GuiItemCoreInstantiator&lt; T &gt;" name="qtsdl::GuiItemCoreInstantiator&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,233,231,369"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="51,417,185,495"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="26,5,210,185"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title=" " alt="" coords="15,543,221,693"/>
+<area shape="rect" id="node1" title=" " alt="" coords="960,235,1185,371"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="488,470,623,547"/>
+<area shape="rect" id="node16" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="262,433,457,584"/>
+<area shape="rect" id="node17" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="647,433,842,584"/>
+<area shape="rect" id="node18" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="1203,608,1398,759"/>
+<area shape="rect" id="node21" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="1506,441,1733,577"/>
+<area shape="rect" id="node27" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="30,433,225,584"/>
+<area shape="rect" id="node28" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="866,433,1061,584"/>
+<area shape="rect" id="node29" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="1834,608,2029,759"/>
+<area shape="rect" id="node30" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="1405,608,1599,759"/>
+<area shape="rect" id="node31" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="1085,433,1279,584"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="981,5,1165,185"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title=" " alt="" coords="436,783,643,933"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="233,812,411,904"/>
+<area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="667,812,839,904"/>
+<area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="17,812,208,904"/>
+<area shape="rect" id="node12" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="863,812,1061,904"/>
+<area shape="rect" id="node14" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="1092,812,1272,904"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_list_model.xhtml" title=" " alt="" coords="545,1238,752,1403"/>
+<area shape="rect" id="node6" href="$classopenage_1_1gui_1_1_generator_link.xhtml" title=" " alt="" coords="556,1797,741,1889"/>
+<area shape="rect" id="node8" href="$classopenage_1_1gui_1_1_game_main_link.xhtml" title=" " alt="" coords="233,1194,424,1447"/>
+<area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_game_control_link.xhtml" title=" " alt="" coords="5,1011,209,1631"/>
+<area shape="rect" id="node13" href="$classopenage_1_1gui_1_1_asset_manager_link.xhtml" title=" " alt="" coords="849,1223,1061,1418"/>
+<area shape="rect" id="node15" href="$classopenage_1_1gui_1_1_game_spec_link.xhtml" title=" " alt="" coords="1085,1128,1279,1513"/>
+<area shape="rect" id="node19" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="1303,1267,1485,1374"/>
+<area shape="rect" id="node20" href="$classopenage_1_1gui_1_1_editor_mode_link.xhtml" title=" " alt="" coords="1290,1680,1495,2007"/>
+<area shape="rect" id="node22" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="1545,812,1693,904"/>
+<area shape="rect" id="node23" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="1528,1267,1711,1374"/>
+<area shape="rect" id="node25" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="1821,1267,2004,1374"/>
+<area shape="rect" id="node24" href="$classopenage_1_1gui_1_1_create_mode_link.xhtml" title=" " alt="" coords="1520,1797,1719,1889"/>
+<area shape="rect" id="node26" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml" title=" " alt="" coords="1814,1724,2011,1963"/>
 </map>

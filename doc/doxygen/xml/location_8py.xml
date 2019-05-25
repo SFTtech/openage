@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="location_8py" kind="file" language="Python">
+    <compoundname>location.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1cvar_1_1location">openage::cvar::location</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1cvar_1_1location" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Determine<sp/>the<sp/>config<sp/>file<sp/>location<sp/>and<sp/>set<sp/>up<sp/>mounts.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>pathlib</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>config,<sp/>default_dirs</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.directory<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Directory</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.union<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Union</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.wrapper<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>WriteBlocker</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1cvar_1_1location_1a55d460c893fbe41db12a729492a8eea2" kindref="member">get_config_path</ref>(custom_cfg_dir=None):</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Locates<sp/>the<sp/>main<sp/>configuration<sp/>file<sp/>by<sp/>name<sp/>in<sp/>some<sp/>searchpaths.</highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Optionally,<sp/>mount<sp/>a<sp/>custom<sp/>directory<sp/>with<sp/>highest<sp/>priority.</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="namespaceopenage_1_1cvar_1_1location_1a55d460c893fbe41db12a729492a8eea2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>if<sp/>we&apos;re<sp/>in<sp/>devmode,<sp/>use<sp/>only<sp/>the<sp/>build<sp/>source<sp/>config<sp/>folder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>config.DEVMODE:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(os.path.join(config.BUILD_SRC_DIR,<sp/></highlight><highlight class="stringliteral">&quot;cfg&quot;</highlight><highlight class="normal">)).root</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>else,<sp/>mount<sp/>the<sp/>possible<sp/>locations<sp/>in<sp/>an<sp/>union</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>to<sp/>overlay<sp/>the<sp/>global<sp/>dir<sp/>and<sp/>the<sp/>user<sp/>dir.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union" kindref="compound">Union</ref>().root</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>mount<sp/>the<sp/>global<sp/>config<sp/>dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>we<sp/>don&apos;t<sp/>use<sp/>xdg<sp/>config_dirs<sp/>because<sp/>that<sp/>would<sp/>be<sp/>/etc/xdg/openage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>and<sp/>nobody<sp/>would<sp/>ever<sp/>look<sp/>in<sp/>there.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>global_configs<sp/>=<sp/>pathlib.Path(config.GLOBAL_CONFIG_DIR)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>global_configs.is_dir():</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.mount(<ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker" kindref="compound">WriteBlocker</ref>(<ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(global_configs).root).root)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>then<sp/>the<sp/>per-user<sp/>config<sp/>dir<sp/>(probably<sp/>~/.config/openage)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>home_cfg<sp/>=<sp/>default_dirs.get_dir(</highlight><highlight class="stringliteral">&quot;config_home&quot;</highlight><highlight class="normal">)<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;openage&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>result.mount(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>home_cfg,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_if_missing=</highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>).root</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>optional<sp/>command<sp/>line<sp/>argument<sp/>overrides<sp/>it<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>custom_cfg_dir:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.mount(<ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(custom_cfg_dir).root)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/location.py"/>
+  </compounddef>
+</doxygen>

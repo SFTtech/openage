@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::Window Class Reference</title>
+<title>openage: openage::renderer::Window Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,17 +100,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_window.xh
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="window_8h_source.xhtml">window.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::renderer::Window:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__inherit__graph.svg" width="342" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::renderer::Window:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__inherit__graph.svg" width="342" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::Window:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__coll__graph.svg" width="218" height="323"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::Window:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window__coll__graph.svg" width="218" height="323"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -299,7 +302,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00009">9</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a>(std::make_pair(width, height)) {}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_af5a66173372ae66504a59fd2b8448cdb"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">openage::renderer::Window::size</a></div><div class="ttdeci">std::pair&lt; size_t, size_t &gt; size</div><div class="ttdoc">The current size of the framebuffer.</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00054">window.h:54</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -320,6 +324,9 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#adc14f04028ef5322055dc37569a173f5">on_key</a>.push_back(cb);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_adc14f04028ef5322055dc37569a173f5"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#adc14f04028ef5322055dc37569a173f5">openage::renderer::Window::on_key</a></div><div class="ttdeci">std::vector&lt; key_cb_t &gt; on_key</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00056">window.h:56</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00056">on_key</a>.</p>
 
 </div>
 </div>
@@ -340,6 +347,19 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                                                  {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a13488daef83f3f84d9275dfb2aac7cfd">on_mouse_button</a>.push_back(cb);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a13488daef83f3f84d9275dfb2aac7cfd"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a13488daef83f3f84d9275dfb2aac7cfd">openage::renderer::Window::on_mouse_button</a></div><div class="ttdeci">std::vector&lt; mouse_button_cb_t &gt; on_mouse_button</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00057">window.h:57</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00057">on_mouse_button</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window_ad5c7edd81a2909b1b75b70095f61d47c_icgraph.svg" width="598" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -360,6 +380,9 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00024">24</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a9499b8211b2a3bab0b9942f6a098380d">on_mouse_wheel</a>.push_back(cb);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a9499b8211b2a3bab0b9942f6a098380d"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a9499b8211b2a3bab0b9942f6a098380d">openage::renderer::Window::on_mouse_wheel</a></div><div class="ttdeci">std::vector&lt; mouse_wheel_cb_t &gt; on_mouse_wheel</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00058">window.h:58</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00058">on_mouse_wheel</a>.</p>
 
 </div>
 </div>
@@ -380,6 +403,19 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00032">32</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                      {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">on_resize</a>.push_back(cb);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a562d2533dabf72a06426c3c9d7cef261"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a562d2533dabf72a06426c3c9d7cef261">openage::renderer::Window::on_resize</a></div><div class="ttdeci">std::vector&lt; resize_cb_t &gt; on_resize</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00059">window.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00059">on_resize</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="opengl_2window_8cpp_source.xhtml#l00016">openage::renderer::opengl::GlWindow::GlWindow()</a>, and <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window_ad63c0200f828c7134ddc81ce711c171b_icgraph.svg" width="642" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -401,6 +437,19 @@ Protected Attributes</h2></td></tr>
 <p>Returns the dimensions of this window. </p>
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                               {</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">size</a>;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_af5a66173372ae66504a59fd2b8448cdb"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#af5a66173372ae66504a59fd2b8448cdb">openage::renderer::Window::size</a></div><div class="ttdeci">std::pair&lt; size_t, size_t &gt; size</div><div class="ttdoc">The current size of the framebuffer.</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00054">window.h:54</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00054">size</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>, and <a class="el" href="filelike_2abstract_8py_source.xhtml#l00127">openage.util.filelike.abstract.FileLikeObject::seek_helper()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window_a1bf53e4db756c04ed522a975573b36a6_icgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -490,6 +539,19 @@ Protected Attributes</h2></td></tr>
 <p>Returns true if this window should be closed. </p>
 
 <p class="definition">Definition at line <a class="el" href="window_8cpp_source.xhtml#l00016">16</a> of file <a class="el" href="window_8cpp_source.xhtml">window.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_window.xhtml#a7fdf5fbab00699344b8ce451cc73e688">should_be_closed</a>;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_window_xhtml_a7fdf5fbab00699344b8ce451cc73e688"><div class="ttname"><a href="classopenage_1_1renderer_1_1_window.xhtml#a7fdf5fbab00699344b8ce451cc73e688">openage::renderer::Window::should_be_closed</a></div><div class="ttdeci">bool should_be_closed</div><div class="ttdef"><b>Definition:</b> <a href="window_8h_source.xhtml#l00051">window.h:51</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="window_8h_source.xhtml#l00051">should_be_closed</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="renderer_2tests_8cpp_source.xhtml#l00033">openage::renderer::tests::renderer_demo_0()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_window_a8fa5671d7e11d9797cd19d4258ddc69b_icgraph.svg" width="563" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -544,6 +606,8 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00056">56</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="window_8cpp_source.xhtml#l00028">add_key_callback()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">openage::renderer::opengl::GlWindow::update()</a>.</p>
+
 </div>
 </div>
 <a id="a13488daef83f3f84d9275dfb2aac7cfd"></a>
@@ -567,6 +631,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00057">57</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="window_8cpp_source.xhtml#l00020">add_mouse_button_callback()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">openage::renderer::opengl::GlWindow::update()</a>.</p>
 
 </div>
 </div>
@@ -592,6 +658,8 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00058">58</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="window_8cpp_source.xhtml#l00024">add_mouse_wheel_callback()</a>.</p>
+
 </div>
 </div>
 <a id="a562d2533dabf72a06426c3c9d7cef261"></a>
@@ -616,6 +684,8 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00059">59</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="window_8cpp_source.xhtml#l00032">add_resize_callback()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00047">openage::renderer::opengl::GlWindow::set_size()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">openage::renderer::opengl::GlWindow::update()</a>.</p>
+
 </div>
 </div>
 <a id="a7fdf5fbab00699344b8ce451cc73e688"></a>
@@ -639,6 +709,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00051">51</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="window_8cpp_source.xhtml#l00016">should_close()</a>, and <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">openage::renderer::opengl::GlWindow::update()</a>.</p>
 
 </div>
 </div>
@@ -666,11 +738,13 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="window_8h_source.xhtml#l00054">54</a> of file <a class="el" href="window_8h_source.xhtml">window.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="bytequeue_8py_source.xhtml#l00043">openage.util.bytequeue.ByteQueue::__len__()</a>, <a class="el" href="bytequeue_8py_source.xhtml#l00049">openage.util.bytequeue.ByteQueue::append()</a>, <a class="el" href="window_8cpp_source.xhtml#l00012">get_size()</a>, <a class="el" href="stream_8py_source.xhtml#l00149">openage.util.filelike.stream.StreamFragment::get_size()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00016">openage::renderer::opengl::GlWindow::GlWindow()</a>, <a class="el" href="bytequeue_8py_source.xhtml#l00059">openage.util.bytequeue.ByteQueue::popleft()</a>, <a class="el" href="stream_8py_source.xhtml#l00130">openage.util.filelike.stream.StreamFragment::read()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00047">openage::renderer::opengl::GlWindow::set_size()</a>, <a class="el" href="opengl_2window_8cpp_source.xhtml#l00058">openage::renderer::opengl::GlWindow::update()</a>, and <a class="el" href="windowvk_8cpp_source.xhtml#l00080">openage::renderer::vulkan::VlkWindow::VlkWindow()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/renderer/<a class="el" href="window_8h_source.xhtml">window.h</a></li>
-<li>libopenage/renderer/<a class="el" href="window_8cpp_source.xhtml">window.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/<a class="el" href="window_8h_source.xhtml">window.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/<a class="el" href="window_8cpp_source.xhtml">window.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

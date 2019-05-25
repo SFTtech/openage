@@ -27,7 +27,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="248" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="248" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="248" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="248" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1acea6cb67bc0e8ea78d513f6db4e2e477" compoundref="functional_8h" startline="168" endline="173">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::bind_catchexcept_impl</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" compoundref="functional_8h" startline="194" endline="198">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::bind_noexcept</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" compoundref="functional_8h" startline="126" endline="129">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::call</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" compoundref="functional_8h" startline="111" endline="121">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" compoundref="functional_8h" startline="66" endline="68">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::Func</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" compoundref="functional_8h" startline="143" endline="146">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" compoundref="functional_8h" startline="135" endline="138">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::operator const std::function&lt; ReturnType</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" compoundref="functional_8h" startline="86" endline="89">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::operator=</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="60" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="60" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -64,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="66" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="66" bodyend="68"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -86,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="71" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="71" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -103,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="76" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -120,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="80" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -142,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="86" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="86" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="86" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a79f4926a369a8e3cf54214abe80257a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -164,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="92" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="92" bodyend="95"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa4c47359a02ab210750ba35bf012ff37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
@@ -181,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="98" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="98" bodyend="101"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="98" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a0193d5a98fe674619cd1d9b8d00d6b55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
@@ -198,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="103" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="103" bodyend="106"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="103" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -212,7 +220,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="111" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="111" bodyend="121"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="111" bodyend="121"/>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" compoundref="functional_8h" startline="126" endline="129">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::call</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" compoundref="functional_8h" startline="143" endline="146">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::get</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" compoundref="functional_8h" startline="135" endline="138">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::operator const std::function&lt; ReturnType</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>ReturnType</type>
@@ -230,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="126" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="126" bodyend="129"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="126" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
         <type></type>
@@ -247,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="135" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="135" bodyend="138"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;</type>
@@ -261,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="143" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="143" bodyend="146"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -292,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="158" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="158" bodyend="160"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="158" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -321,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="194" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="194" bodyend="198"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="194" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -338,7 +349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="201" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="201" bodyend="204"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="201" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="201" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -355,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="206" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="206" bodyend="209"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="206" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="206" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -381,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="212" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="212" bodyend="215"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="212" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -407,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="218" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="218" bodyend="221"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="218" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="218" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -440,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="224" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="224" bodyend="227"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="224" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="224" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -473,7 +484,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="230" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="230" bodyend="233"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="230" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="230" bodyend="233"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -513,7 +524,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="236" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="236" bodyend="239"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="236" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="236" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -553,7 +564,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="242" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="242" bodyend="245"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="242" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="242" bodyend="245"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -589,7 +600,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="168" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="168" bodyend="173"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="168" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="168" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -623,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="180" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="180" bodyend="186"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="180" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="180" bodyend="186"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -641,13 +652,32 @@
 <para>Note that you shouldn&apos;t use this type purely internally in Cython, since if you bind a Cython function and call it from Cython, every Exception would be needlessly converted from Py to C++ to Py...</para>
 <para>For global function pointers that should be initialized at pyinterface initialization time, use <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> instead of <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>; that class has some additional code to verify successful initialization. </para>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="4538">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+        <childnode refid="4537" relation="template-instance">
+          <edgelabel>&lt; ReturnType, ArgTypes ... &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="4539">
+        <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
+        <childnode refid="4538" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4537">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+      </node>
+    </inheritancegraph>
     <collaborationgraph>
-      <node id="1560">
+      <node id="4540">
         <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;</label>
         <link refid="classopenage_1_1pyinterface_1_1_func"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pyinterface/functional.h" line="58" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="58" bodyend="249"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="58" bodyend="249"/>
     <listofallmembers>
       <member refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind</name></member>
       <member refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind0</name></member>

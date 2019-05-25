@@ -3,9 +3,9 @@
   <compounddef id="gui__game__spec__image__provider__by__id__impl_8h" kind="file" language="C++">
     <compoundname>gui_game_spec_image_provider_by_id_impl.h</compoundname>
     <includes refid="gui__game__spec__image__provider__impl_8h" local="yes">gui_game_spec_image_provider_impl.h</includes>
-    <includedby refid="gui__game__spec__image__provider__by__graphic__id__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</includedby>
-    <includedby refid="gui__game__spec__image__provider__by__id__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</includedby>
-    <includedby refid="gui__game__spec__image__provider__by__terrain__id__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__graphic__id__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__id__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__terrain__id__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</includedby>
     <incdepgraph>
       <node id="14037">
         <label>functional</label>
@@ -33,7 +33,7 @@
         </childnode>
       </node>
       <node id="14027">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8h"/>
         <childnode refid="14028" relation="include">
         </childnode>
@@ -113,23 +113,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14047">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="14051">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
       </node>
       <node id="14048">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="14046">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
       </node>
       <node id="14044">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8h"/>
         <childnode refid="14045" relation="include">
         </childnode>
@@ -139,11 +139,11 @@
         </childnode>
       </node>
       <node id="14049">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
       </node>
       <node id="14050">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8h"/>
         <childnode refid="14051" relation="include">
         </childnode>
@@ -153,7 +153,7 @@
         </childnode>
       </node>
       <node id="14045">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8h"/>
         <childnode refid="14046" relation="include">
         </childnode>
@@ -192,6 +192,6 @@
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream" kind="class" language="Python" prot="public">
+    <compoundname>openage::cabextract::cab::CABFolderStream</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::fileobj</definition>
+        <argsstring></argsstring>
+        <name>fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="435" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="435" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf_1aab2f9c67bf2e32d12e6199053c0bf429" compoundref="peresource_8py" startline="115" endline="119">openage.convert.peresource.ResourceLeaf.open</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" compoundref="pefile_8py" startline="212" endline="222">openage.convert.pefile.PEFile.open_section</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1affe5dcb69686e8b8963f29256df98348" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::blockcount</definition>
+        <argsstring></argsstring>
+        <name>blockcount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="436" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="436" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aca36850e8a35ae6d29fd7b1c1263a702" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::blockreserved</definition>
+        <argsstring></argsstring>
+        <name>blockreserved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="437" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="437" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" compoundref="cab_8py" startline="448" endline="454">openage.cabextract.cab.CABFolderStream.next_block_size</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a93b53ba3420a1c165c283ee91a18dd10" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::blockoffsets</definition>
+        <argsstring></argsstring>
+        <name>blockoffsets</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="440" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="440" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" compoundref="cab_8py" startline="448" endline="454">openage.cabextract.cab.CABFolderStream.next_block_size</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a4ad893fc5e33e9a96874d9a6fd70d8bb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::streamindex</definition>
+        <argsstring></argsstring>
+        <name>streamindex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="443" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="443" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" compoundref="cab_8py" startline="448" endline="454">openage.cabextract.cab.CABFolderStream.next_block_size</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" compoundref="cab_8py" startline="501" endline="542">openage.cabextract.cab.CABFolderStream.read_blocks</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa3e35032def0fef5bca09bedb21e96e3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CABFolderStream::closed</definition>
+        <argsstring></argsstring>
+        <name>closed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="551" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="551" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" compoundref="threading_8py" startline="75" endline="79">openage.util.threading.ClosableQueue.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa7cd2f218913d84d5318d4c9f1e76884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.__init__</definition>
+        <argsstring>(self, fileobj, offset, blockcount, blockreserved)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" kindref="member">fileobj</ref></type>
+          <defname>fileobj</defname>
+        </param>
+        <param>
+          <type>offset</type>
+          <defname>offset</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1affe5dcb69686e8b8963f29256df98348" kindref="member">blockcount</ref></type>
+          <defname>blockcount</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aca36850e8a35ae6d29fd7b1c1263a702" kindref="member">blockreserved</ref></type>
+          <defname>blockreserved</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="432" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="432" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.next_block_size</definition>
+        <argsstring>(self, payloadsize)</argsstring>
+        <name>next_block_size</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>payloadsize</type>
+          <defname>payloadsize</defname>
+        </param>
+        <briefdescription>
+<para>adds metadata for the next block </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="448" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="448" bodyend="454"/>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a93b53ba3420a1c165c283ee91a18dd10" compoundref="cab_8py" startline="440">openage.cabextract.cab.CABFolderStream.blockoffsets</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aca36850e8a35ae6d29fd7b1c1263a702" compoundref="cab_8py" startline="437">openage.cabextract.cab.CABFolderStream.blockreserved</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a4ad893fc5e33e9a96874d9a6fd70d8bb" compoundref="cab_8py" startline="443">openage.cabextract.cab.CABFolderStream.streamindex</references>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.read_block_data</definition>
+        <argsstring>(self, block_id)</argsstring>
+        <name>read_block_data</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>block_id</type>
+          <defname>block_id</defname>
+        </param>
+        <briefdescription>
+<para>reads the data of block block_id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   if necessary, the metadata info in self.blockvalues and
+   self.blockoffsets is updated.
+
+   returns the block data.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="463" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="463" bodyend="494"/>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1affe5dcb69686e8b8963f29256df98348" compoundref="cab_8py" startline="436">openage.cabextract.cab.CABFolderStream.blockcount</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a93b53ba3420a1c165c283ee91a18dd10" compoundref="cab_8py" startline="440">openage.cabextract.cab.CABFolderStream.blockoffsets</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aca36850e8a35ae6d29fd7b1c1263a702" compoundref="cab_8py" startline="437">openage.cabextract.cab.CABFolderStream.blockreserved</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">openage::util::filelike::Python::fileobj</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" compoundref="cab_8py" startline="435">openage.cabextract.cab.CABFolderStream.fileobj</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" compoundref="cab_8py" startline="448" endline="454">openage.cabextract.cab.CABFolderStream.next_block_size</references>
+        <references refid="namespaceopenage_1_1util_1_1files_1aa2ba5a14f2468fd0745e07dc84ff2188" compoundref="files_8py" startline="15" endline="29">openage.util.files.read_guaranteed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" compoundref="readonly_8py" startline="55" endline="57">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek</references>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" compoundref="cab_8py" startline="501" endline="542">openage.cabextract.cab.CABFolderStream.read_blocks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.read_blocks</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read_blocks</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="501" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="501" bodyend="542"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a4ad893fc5e33e9a96874d9a6fd70d8bb" compoundref="cab_8py" startline="443">openage.cabextract.cab.CABFolderStream.streamindex</references>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa01e2f0b6657c5c629188cbc3a0e0a57" compoundref="cab_8py" startline="543" endline="545">openage.cabextract.cab.CABFolderStream.read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa01e2f0b6657c5c629188cbc3a0e0a57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.read</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902">read</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Read at most size bytes (less if EOF has been reached). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for write-only objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="543" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="543" bodyend="545"/>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" compoundref="cab_8py" startline="501" endline="542">openage.cabextract.cab.CABFolderStream.read_blocks</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a22d3c8597d3b8ef507a98145bd623990" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.get_size</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7">get_size</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="546" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="546" bodyend="549"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae5a7fefaa419877c7b44e69e7451c6f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cabextract.cab.CABFolderStream.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75">close</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="550" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="550" bodyend="555"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="680">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="681" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="679">
+        <label>openage.cabextract.cab.CABFolderStream</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream"/>
+        <childnode refid="680" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="683">
+        <label>ABC</label>
+      </node>
+      <node id="681">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="682" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="682">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="683" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="685">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="686" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="684">
+        <label>openage.cabextract.cab.CABFolderStream</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream"/>
+        <childnode refid="685" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="688">
+        <label>ABC</label>
+      </node>
+      <node id="686">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="687" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="687">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="688" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="430" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="430" bodyend="555"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa7cd2f218913d84d5318d4c9f1e76884" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a1d17d3141151809fc8ae179baf150ac7" prot="public" virt="non-virtual" ambiguityscope="openage::util::filelike::readonly::PosSavingReadOnlyFileLikeObject."><scope>openage::cabextract::cab::CABFolderStream</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1affe5dcb69686e8b8963f29256df98348" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>blockcount</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a93b53ba3420a1c165c283ee91a18dd10" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>blockoffsets</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aca36850e8a35ae6d29fd7b1c1263a702" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>blockreserved</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae5a7fefaa419877c7b44e69e7451c6f8" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>close</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa3e35032def0fef5bca09bedb21e96e3" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>closed</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae0cddd916e7ff13331545f7e355ca3de" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>fileobj</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>flush</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a22d3c8597d3b8ef507a98145bd623990" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1adc3af5aa923ad52702de79831c669dc3" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>next_block_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>pos</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa01e2f0b6657c5c629188cbc3a0e0a57" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>read</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>read_block_data</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ad9654069c6554f9859298fa5c1e85b73" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>read_blocks</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a2312775f74be5a112a1ab18f0f581173" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1a4bf4ea1cc9983a0de92608d672d8d93b" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a4ad893fc5e33e9a96874d9a6fd70d8bb" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>streamindex</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1ac304e7a45b420606ab9082078ad14a0b" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CABFolderStream</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

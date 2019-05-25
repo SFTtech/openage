@@ -4,8 +4,8 @@
     <compoundname>text_to_event.h</compoundname>
     <includes local="no">string</includes>
     <includes refid="input_2event_8h" local="yes">event.h</includes>
-    <includedby refid="input__manager_8cpp" local="yes">libopenage/input/input_manager.cpp</includedby>
-    <includedby refid="text__to__event_8cpp" local="yes">libopenage/input/text_to_event.cpp</includedby>
+    <includedby refid="input__manager_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp</includedby>
+    <includedby refid="text__to__event_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp</includedby>
     <incdepgraph>
       <node id="15826">
         <label>string</label>
@@ -37,7 +37,7 @@
         </childnode>
       </node>
       <node id="15825">
-        <label>libopenage/input/text_to_event.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.h</label>
         <link refid="text__to__event_8h"/>
         <childnode refid="15826" relation="include">
         </childnode>
@@ -47,15 +47,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="15834">
-        <label>libopenage/input/text_to_event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp</label>
         <link refid="text__to__event_8cpp"/>
       </node>
       <node id="15833">
-        <label>libopenage/input/input_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp</label>
         <link refid="input__manager_8cpp"/>
       </node>
       <node id="15832">
-        <label>libopenage/input/text_to_event.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.h</label>
         <link refid="text__to__event_8h"/>
         <childnode refid="15833" relation="include">
         </childnode>
@@ -85,6 +85,6 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/input/text_to_event.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.h"/>
   </compounddef>
 </doxygen>

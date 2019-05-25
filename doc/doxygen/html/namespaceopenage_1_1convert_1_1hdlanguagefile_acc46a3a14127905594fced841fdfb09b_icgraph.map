@@ -1,0 +1,8 @@
+<map id="openage.convert.hdlanguagefile.read_hd_language_file" name="openage.convert.hdlanguagefile.read_hd_language_file">
+<area shape="rect" id="node1" title="Takes a file object, and the file&#39;s language code." alt="" coords="989,39,1220,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#a189674ed7c17e3398bf7e39919e3b641" title=" " alt="" coords="711,5,941,47"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1hdlanguagefile.xhtml#a352b2dbd5b398f49f4f46dcca838cebd" title=" " alt="" coords="711,71,941,112"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#adbdd640ef25ad8535078cc706f314686" title="reads the (language) string resources" alt="" coords="491,39,663,80"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="248,39,443,80"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,46,200,73"/>
+</map>

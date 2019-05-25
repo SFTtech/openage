@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1pefile" kind="namespace" language="Python">
+    <compoundname>openage::convert::pefile</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_c_o_f_f_header" prot="public">openage::convert::pefile::PECOFFHeader</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_data_directory" prot="public">openage::convert::pefile::PEDataDirectory</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_d_o_s_header" prot="public">openage::convert::pefile::PEDOSHeader</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file" prot="public">openage::convert::pefile::PEFile</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_optional_header" prot="public">openage::convert::pefile::PEOptionalHeader</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1pefile_1_1_p_e_section" prot="public">openage::convert::pefile::PESection</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/pefile.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

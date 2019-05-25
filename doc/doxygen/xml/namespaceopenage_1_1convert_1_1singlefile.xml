@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1singlefile" kind="namespace" language="Python">
+    <compoundname>openage::convert::singlefile</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1singlefile_1a139996d57bd8ce7cc602a0ec9e6dc218" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.singlefile.init_subparser</definition>
+        <argsstring>(cli)</argsstring>
+        <name>init_subparser</name>
+        <param>
+          <type>cli</type>
+          <defname>cli</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the parser for convert-specific args. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py" bodystart="19" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1singlefile_1a24cbe33666ca577f3d4bcb9ab5235b9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.singlefile.main</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>main</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+<para>CLI entry point for single file conversions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py" bodystart="39" bodyend="78"/>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

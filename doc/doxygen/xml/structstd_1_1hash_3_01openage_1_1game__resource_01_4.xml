@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="201" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="201" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="201" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="203" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="203" bodyend="206"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="203" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="203" bodyend="206"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,12 +45,12 @@
 <para>hasher for game resource </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2827">
+      <node id="6633">
         <label>std::hash&lt; openage::game_resource &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/resource.h" line="200" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="200" bodyend="207"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="200" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="200" bodyend="207"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a635c3e575f260499cb87d2813f613b75" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::game_resource &gt;</scope><name>operator()</name></member>
       <member refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a23a4728a16d931b5bae5c612c24c1385" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::game_resource &gt;</scope><name>underlying_type</name></member>

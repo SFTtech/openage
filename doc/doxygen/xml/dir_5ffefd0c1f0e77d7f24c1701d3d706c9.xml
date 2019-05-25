@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_5ffefd0c1f0e77d7f24c1701d3d706c9" kind="dir">
-    <compoundname>libopenage/terrain</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain</compoundname>
     <innerfile refid="terrain_8cpp">terrain.cpp</innerfile>
     <innerfile refid="terrain_8h">terrain.h</innerfile>
     <innerfile refid="terrain__chunk_8cpp">terrain_chunk.cpp</innerfile>
@@ -16,6 +16,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/terrain/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/"/>
   </compounddef>
 </doxygen>

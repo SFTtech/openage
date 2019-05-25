@@ -7,9 +7,9 @@
     <includes local="no">opus/opusfile.h</includes>
     <includes local="no">string</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="opus__dynamic__loader_8h" local="yes">libopenage/audio/opus_dynamic_loader.h</includedby>
-    <includedby refid="opus__in__memory__loader_8cpp" local="yes">libopenage/audio/opus_in_memory_loader.cpp</includedby>
-    <includedby refid="opus__loading_8cpp" local="yes">libopenage/audio/opus_loading.cpp</includedby>
+    <includedby refid="opus__dynamic__loader_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h</includedby>
+    <includedby refid="opus__in__memory__loader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</includedby>
+    <includedby refid="opus__loading_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp</includedby>
     <incdepgraph>
       <node id="1796">
         <label>list</label>
@@ -274,7 +274,7 @@
         <label>config.h</label>
       </node>
       <node id="1763">
-        <label>libopenage/audio/opus_loading.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.h</label>
         <link refid="opus__loading_8h"/>
         <childnode refid="1764" relation="include">
         </childnode>
@@ -303,15 +303,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1806">
-        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_loader.cpp</label>
         <link refid="dynamic__loader_8cpp"/>
       </node>
       <node id="1808">
-        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_in_memory_loader.cpp</label>
         <link refid="opus__in__memory__loader_8cpp"/>
       </node>
       <node id="1805">
-        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.h</label>
         <link refid="opus__dynamic__loader_8h"/>
         <childnode refid="1806" relation="include">
         </childnode>
@@ -319,15 +319,15 @@
         </childnode>
       </node>
       <node id="1809">
-        <label>libopenage/audio/opus_loading.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.cpp</label>
         <link refid="opus__loading_8cpp"/>
       </node>
       <node id="1807">
-        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_dynamic_loader.cpp</label>
         <link refid="opus__dynamic__loader_8cpp"/>
       </node>
       <node id="1804">
-        <label>libopenage/audio/opus_loading.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.h</label>
         <link refid="opus__loading_8h"/>
         <childnode refid="1805" relation="include">
         </childnode>
@@ -371,6 +371,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/opus_loading.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/opus_loading.h"/>
   </compounddef>
 </doxygen>

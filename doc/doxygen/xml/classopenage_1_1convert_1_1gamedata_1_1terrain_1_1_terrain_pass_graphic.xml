@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::gamedata::terrain::TerrainPassGraphic</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" prot="public" virt="non-virtual">openage.convert.dataformat.exportable.Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1af52250e1bcda6bab54184b62fdaf7dbe" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.terrain.TerrainPassGraphic::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;terrain&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a1d4b8d6c877cfd49096e1366542b8721" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.gamedata.terrain.TerrainPassGraphic::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;terrain_pass_graphic&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a2d69d84bb93d652f1b2ee42ae9958dfc" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.gamedata.terrain.TerrainPassGraphic::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a5f56961f39a84e03ce050ffb8217f612" prot="public" static="yes" mutable="no">
+        <type>list</type>
+        <definition>list openage.convert.gamedata.terrain.TerrainPassGraphic::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  [
+        # when this restriction in unit a was selected, can the unit be placed on this terrain id? 0=no, -1=yes
+        (READ, &quot;slp_id_exit_tile&quot;, &quot;int32_t&quot;),
+        (READ, &quot;slp_id_enter_tile&quot;, &quot;int32_t&quot;),
+        (READ, &quot;slp_id_walk_tile&quot;, &quot;int32_t&quot;),
+    ]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1320">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1319">
+        <label>openage.convert.gamedata.terrain.TerrainPassGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic"/>
+        <childnode refid="1320" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1322">
+        <label>openage.convert.dataformat.exportable.Exportable</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable"/>
+      </node>
+      <node id="1321">
+        <label>openage.convert.gamedata.terrain.TerrainPassGraphic</label>
+        <link refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic"/>
+        <childnode refid="1322" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/terrain.py" bodystart="25" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aa3a9133c9cc4cb3b99704e99be6d4e14" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a5f56961f39a84e03ce050ffb8217f612" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abd30175646af16d47c9024685a16e3e3" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1a552736ad870b3bc198363f257765da34" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aeab3df1ddd1525a18b1383c69f4c4df6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>game_versions</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ac173bb76cce6f538107168c61a427ab9" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>get_data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a1d4b8d6c877cfd49096e1366542b8721" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1af52250e1bcda6bab54184b62fdaf7dbe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>read</name></member>
+      <member refid="classopenage_1_1convert_1_1gamedata_1_1terrain_1_1_terrain_pass_graphic_1a2d69d84bb93d652f1b2ee42ae9958dfc" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1abb235653b7107dc8194c16bd114210e6" prot="public" virt="non-virtual"><scope>openage::convert::gamedata::terrain::TerrainPassGraphic</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

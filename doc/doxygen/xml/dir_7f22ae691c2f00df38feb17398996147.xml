@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_7f22ae691c2f00df38feb17398996147" kind="dir">
-    <compoundname>libopenage/coord</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord</compoundname>
     <innerfile refid="chunk_8cpp">chunk.cpp</innerfile>
     <innerfile refid="chunk_8h">chunk.h</innerfile>
     <innerfile refid="coord__test_8cpp">coord_test.cpp</innerfile>
@@ -21,6 +21,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/coord/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/"/>
   </compounddef>
 </doxygen>

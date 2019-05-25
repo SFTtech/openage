@@ -6,8 +6,8 @@
     <includes local="no">unordered_map</includes>
     <includes local="no">vector</includes>
     <includes refid="font_8h" local="yes">font.h</includes>
-    <includedby refid="text_8h" local="yes">libopenage/renderer/text.h</includedby>
-    <includedby refid="glyph__atlas_8cpp" local="yes">libopenage/renderer/font/glyph_atlas.cpp</includedby>
+    <includedby refid="text_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</includedby>
+    <includedby refid="glyph__atlas_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp</includedby>
     <incdepgraph>
       <node id="20695">
         <label>list</label>
@@ -208,7 +208,7 @@
         <label>config.h</label>
       </node>
       <node id="20663">
-        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h</label>
         <link refid="glyph__atlas_8h"/>
         <childnode refid="20664" relation="include">
         </childnode>
@@ -252,11 +252,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="20704">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="20701">
-        <label>libopenage/renderer/text.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</label>
         <link refid="text_8h"/>
         <childnode refid="20702" relation="include">
         </childnode>
@@ -268,23 +268,23 @@
         </childnode>
       </node>
       <node id="20703">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="20706">
-        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp</label>
         <link refid="glyph__atlas_8cpp"/>
       </node>
       <node id="20705">
-        <label>libopenage/renderer/text.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp</label>
         <link refid="text_8cpp"/>
       </node>
       <node id="20702">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="20700">
-        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h</label>
         <link refid="glyph__atlas_8h"/>
         <childnode refid="20701" relation="include">
         </childnode>
@@ -399,6 +399,6 @@
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/font/glyph_atlas.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h"/>
   </compounddef>
 </doxygen>

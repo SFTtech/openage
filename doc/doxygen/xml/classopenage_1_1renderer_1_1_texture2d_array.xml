@@ -17,7 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/texture_array.h" line="31" column="1" bodyfile="libopenage/renderer/texture_array.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_texture2d_array_1a67346f78f3693e422f03dc2c711b1c07" compoundref="texture__array_8cpp" startline="14" endline="16">get_info</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a780b276d8b13fa2b8e2e1258e32e4199" compoundref="opengl_2texture__array_8cpp" startline="22" endline="43">openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" compoundref="opengl_2texture__array_8cpp" startline="79" endline="98">openage::renderer::opengl::GlTexture2dArray::upload</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/texture_array.h" line="16" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="16" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_texture2d_array_1a67346f78f3693e422f03dc2c711b1c07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref> const  &amp;</type>
@@ -46,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/texture_array.h" line="19" column="1" bodyfile="libopenage/renderer/texture_array.cpp" bodystart="14" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.cpp" bodystart="14" bodyend="16"/>
+        <references refid="classopenage_1_1renderer_1_1_texture2d_array_1a3f54828c980df5c3f6d0668c5f3fef0e" compoundref="texture__array_8h" startline="31">layer_info</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_texture2d_array_1a3ca94c755d0a68c00a1c3c93a549a938" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -68,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/texture_array.h" line="24" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="24" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -88,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/texture_array.h" line="28" column="1" bodyfile="libopenage/renderer/texture_array.cpp" bodystart="9" bodyend="10"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.cpp" bodystart="9" bodyend="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -97,31 +101,31 @@
 <para>A texture array, where individual elements are 2D textures. The array elements are referred to as &quot;layers&quot;, and every layer must have the same format (size, pixel format, etc). </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4464">
+      <node id="4798">
         <label>openage::renderer::opengl::GlTexture2dArray</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array"/>
-        <childnode refid="4463" relation="public-inheritance">
+        <childnode refid="4797" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4463">
+      <node id="4797">
         <label>openage::renderer::Texture2dArray</label>
         <link refid="classopenage_1_1renderer_1_1_texture2d_array"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4465">
+      <node id="4799">
         <label>openage::renderer::Texture2dArray</label>
         <link refid="classopenage_1_1renderer_1_1_texture2d_array"/>
-        <childnode refid="4466" relation="usage">
+        <childnode refid="4800" relation="usage">
           <edgelabel>#layer_info</edgelabel>
         </childnode>
       </node>
-      <node id="4466">
+      <node id="4800">
         <label>openage::renderer::resources::Texture2dInfo</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/texture_array.h" line="14" column="1" bodyfile="libopenage/renderer/texture_array.h" bodystart="14" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/texture_array.h" bodystart="14" bodyend="32"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_texture2d_array_1a67346f78f3693e422f03dc2c711b1c07" prot="public" virt="non-virtual"><scope>openage::renderer::Texture2dArray</scope><name>get_info</name></member>
       <member refid="classopenage_1_1renderer_1_1_texture2d_array_1a3f54828c980df5c3f6d0668c5f3fef0e" prot="protected" virt="non-virtual"><scope>openage::renderer::Texture2dArray</scope><name>layer_info</name></member>

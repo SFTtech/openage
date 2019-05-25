@@ -1,0 +1,10 @@
+<map id="openage::renderer::vulkan::VlkRenderer::do_the_thing" name="openage::renderer::vulkan::VlkRenderer::do_the_thing">
+<area shape="rect" id="node1" title="Testing function that draws a triangle. Not part of the final renderer implementation." alt="" coords="5,187,143,243"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="233,5,343,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device.xhtml#a5d8a1353bad85bd21c733fc21d8bef76" title=" " alt="" coords="192,56,384,112"/>
+<area shape="rect" id="node4" href="$util_8h.xhtml#a856371a624dd7d99cc9da19f0d7889f0" title=" " alt="" coords="433,104,524,131"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device.xhtml#a19d43547d0fa2d45ae1b9299637c2f8e" title=" " alt="" coords="201,187,375,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device.xhtml#a94443fbae944ba5163514c6ea7397099" title=" " alt="" coords="201,267,375,323"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="230,347,346,373"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="191,397,385,424"/>
+</map>

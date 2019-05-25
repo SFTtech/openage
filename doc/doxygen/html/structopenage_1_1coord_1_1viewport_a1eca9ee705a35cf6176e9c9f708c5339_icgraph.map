@@ -1,0 +1,6 @@
+<map id="openage::coord::viewport::to_camhud" name="openage::coord::viewport::to_camhud">
+<area shape="rect" id="node1" title=" " alt="" coords="425,39,591,80"/>
+<area shape="rect" id="node2" href="$structopenage_1_1coord_1_1camgame.xhtml#a91e45e5fd4f7ea2cb447d51a24543187" title=" " alt="" coords="201,5,377,47"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1phys3.xhtml#a851739e9304a9ed9f55f51ef99c814e7" title=" " alt="" coords="212,71,367,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_action_mode.xhtml#aab55848d4a5495b982df54fe1d41865b" title=" " alt="" coords="5,71,153,112"/>
+</map>

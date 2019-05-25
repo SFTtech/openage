@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="27" column="1" bodyfile="libopenage/console/buf.h" bodystart="27" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" prot="public" static="no">
         <type>uint16_t</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="28" column="1" bodyfile="libopenage/console/buf.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" prot="public" static="no">
         <type>uint8_t</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="94" column="1" bodyfile="libopenage/console/buf.h" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -65,7 +65,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="30" column="1" bodyfile="libopenage/console/buf.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a8344de72e80fee53e75bb2d8ed0d05fa" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -79,7 +81,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="31" column="1" bodyfile="libopenage/console/buf.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a0c77f6f996bfc8d29bcf3328dd59a7ed" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -93,7 +96,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="32" column="1" bodyfile="libopenage/console/buf.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1af47bf3d97cd359c6c10f897202d86f6e" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -107,7 +111,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="33" column="1" bodyfile="libopenage/console/buf.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a4c87ac281f12c1a70ce7a42e994b1f4e" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -121,7 +128,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="34" column="1" bodyfile="libopenage/console/buf.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a93039d0f5b2e81d5c16ea27f24726d46" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -135,7 +144,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="35" column="1" bodyfile="libopenage/console/buf.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a5e51abe4b309530b0e3ce99dd7e15542" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -149,7 +159,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="36" column="1" bodyfile="libopenage/console/buf.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1ab5697bf92be9d8d51dcf4302601bca8b" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -163,7 +174,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="37" column="1" bodyfile="libopenage/console/buf.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -177,7 +189,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="38" column="1" bodyfile="libopenage/console/buf.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" compoundref="draw_8cpp" startline="91" endline="169">openage::console::draw::to_terminal</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1afb42dd8609458df8845f0fcfe1369a02" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -191,7 +206,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="39" column="1" bodyfile="libopenage/console/buf.h" bodystart="39" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a5ed01c84ea51ab071895ba4893def65a" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -205,7 +222,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="40" column="1" bodyfile="libopenage/console/buf.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a5b36a87df8bd26b15cd6cf9c405be21e" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -219,7 +237,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="41" column="1" bodyfile="libopenage/console/buf.h" bodystart="41" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1ac1c0a1692341ff6e2f561f047ae69443" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -233,7 +252,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="42" column="1" bodyfile="libopenage/console/buf.h" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1ad9457c58e4cd80cf614f2fdfd9746a52" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -247,7 +267,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="43" column="1" bodyfile="libopenage/console/buf.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a0e58c4dd9bc39bc92df452fed1d3b3bd" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -261,7 +282,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="44" column="1" bodyfile="libopenage/console/buf.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a2fdcdc91078a83eb1c89e268f9b45426" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
@@ -275,7 +297,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="45" column="1" bodyfile="libopenage/console/buf.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" compoundref="buf_8cpp" startline="918" endline="1075">openage::console::Buf::process_sgr_code</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1aa09a20fff5c3fe6f00987bb27d28c3ff" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
@@ -290,7 +313,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="99" column="1" bodyfile="libopenage/console/buf.h" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a2f8b6f12c1655f3259fbdc6873ccb0a2" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
@@ -305,7 +330,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="103" column="1" bodyfile="libopenage/console/buf.h" bodystart="103" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="103" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" compoundref="buf_8cpp" startline="191" endline="210">openage::console::NewBuf::new_chr</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1ae5dcef92c8c76cebffd40c925cb209cd" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
@@ -321,7 +349,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="110" column="1" bodyfile="libopenage/console/buf.h" bodystart="110" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="110" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" compoundref="buf_8cpp" startline="191" endline="210">openage::console::NewBuf::new_chr</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" compoundref="buf_8cpp" startline="392" endline="413">openage::console::Buf::pop_last_char</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" compoundref="buf_8cpp" startline="478" endline="596">openage::console::Buf::print_codepoint</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1console_1a84a7cb454b1e8ee8221d2099833547ae" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref></type>
@@ -335,7 +366,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.h" line="119" column="1" bodyfile="libopenage/console/buf.h" bodystart="119" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a76d65b492fdef7853b939598235881e2" compoundref="buf_8cpp" startline="1125" endline="1138">openage::console::Buf::linedata_clear</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_new_buf_1a5b5b1d0951916fee7948751eaf03228c" compoundref="buf_8cpp" startline="156" endline="172">openage::console::NewBuf::move_ptrs_to_next_line</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -358,7 +391,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/console/buf.cpp" line="598" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="598" bodyend="606"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp" line="598" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp" bodystart="598" bodyend="606"/>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1ac59a20dcbdcb3aaffaedc8d9d21d0ec9" compoundref="buf_8cpp" startline="608" endline="613">openage::console::Buf::escape_sequence_aborted</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -366,6 +400,6 @@
     <detaileddescription>
 <para>In-game console subsystem. Featuring a full terminal emulator. </para>
     </detaileddescription>
-    <location file="libopenage/console/buf.cpp" line="10" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp" line="10" column="1"/>
   </compounddef>
 </doxygen>

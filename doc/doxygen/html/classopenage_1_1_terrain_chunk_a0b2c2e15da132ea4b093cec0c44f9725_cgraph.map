@@ -1,0 +1,9 @@
+<map id="openage::TerrainChunk::get_data" name="openage::TerrainChunk::get_data">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,160,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_terrain_chunk.xhtml#a3c24b782383d5e958a13572159e9218b" title=" " alt="" coords="208,71,363,112"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="419,5,557,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="613,13,743,39"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_terrain_chunk.xhtml#a75e4bde3d50f5af6b946a08ba5e50dbb" title=" " alt="" coords="411,71,565,112"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="433,137,543,163"/>
+</map>

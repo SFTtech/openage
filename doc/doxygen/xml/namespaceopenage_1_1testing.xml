@@ -3,6 +3,12 @@
   <compounddef id="namespaceopenage_1_1testing" kind="namespace" language="C++">
     <compoundname>openage::testing</compoundname>
     <innerclass refid="classopenage_1_1testing_1_1_test_error" prot="public">openage::testing::TestError</innerclass>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1benchmark">openage::testing::benchmark</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1doctest">openage::testing::doctest</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1list__processor">openage::testing::list_processor</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1main">openage::testing::main</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1testing">openage::testing::testing</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing_1_1testlist">openage::testing::testlist</innernamespace>
       <sectiondef kind="func">
       <memberdef kind="function" id="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -20,7 +26,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/testing/testing.cpp" line="9" column="1" bodyfile="libopenage/testing/testing.cpp" bodystart="9" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testing.cpp" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testing.cpp" bodystart="9" bodyend="11"/>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1ae7d9467b4f3d76c68a9a7f85a78510cd" compoundref="rng_8cpp" startline="157" endline="163">openage::rng::RNG::from_stream</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a144e524ab2720b65d7369fdfaf6f3136" compoundref="rng_8cpp" startline="148" endline="154">openage::rng::RNG::to_stream</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1testing_1a416af96b7ec2fb61d466c63325456e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref> void</type>
@@ -39,13 +47,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/testing/testlist.h" line="21" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testlist.h" line="21" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/testing/testing.cpp" line="6" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testing.cpp" line="6" column="1"/>
   </compounddef>
 </doxygen>

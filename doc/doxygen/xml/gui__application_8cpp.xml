@@ -6,7 +6,7 @@
     <includes refid="gui__application__impl_8h" local="yes">../private/gui_application_impl.h</includes>
     <incdepgraph>
       <node id="13462">
-        <label>libopenage/gui/guisys/public/gui_application.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp</label>
         <link refid="gui__application_8cpp"/>
         <childnode refid="13463" relation="include">
         </childnode>
@@ -72,6 +72,6 @@
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_application.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_application.cpp"/>
   </compounddef>
 </doxygen>

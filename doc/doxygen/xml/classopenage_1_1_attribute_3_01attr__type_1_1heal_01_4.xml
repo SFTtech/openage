@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="386" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="386" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="386" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="386" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4_1a24d62a5e2b9b10110fd8398beae8dab1" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="391" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="391" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="391" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="391" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4_1a293f0e91b8c1735b2b2eadda76e6d881" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="396" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="396" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="396" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="396" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +74,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="372" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="372" bodyend="377"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="372" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="372" bodyend="377"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a214d940b5313897d9e25b3a2b3533770">openage::heal</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4_1aad8c1080ad6d11eef5936ea2a7332b81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -89,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="379" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="379" bodyend="381"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="379" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="379" bodyend="381"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -98,49 +99,62 @@
 <para>Healing capabilities. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="441">
+      <node id="352">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="442" relation="public-inheritance">
+        <childnode refid="353" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="442">
+      <node id="353">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="440">
+      <node id="351">
         <label>openage::Attribute&lt; attr_type::heal &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4"/>
-        <childnode refid="441" relation="public-inheritance">
+        <childnode refid="352" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="444">
+      <node id="355">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="445" relation="public-inheritance">
+        <childnode refid="356" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="445">
+      <node id="359">
+        <label>int_type</label>
+      </node>
+      <node id="358">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="359" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="356">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="443">
+      <node id="354">
         <label>openage::Attribute&lt; attr_type::heal &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4"/>
-        <childnode refid="444" relation="public-inheritance">
+        <childnode refid="355" relation="public-inheritance">
         </childnode>
-        <childnode refid="446" relation="usage">
+        <childnode refid="357" relation="usage">
           <edgelabel>+range</edgelabel>
         </childnode>
       </node>
-      <node id="446">
+      <node id="357">
         <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="358" relation="template-instance">
+          <edgelabel>&lt; int64_t, phys_t_radix_pos &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="370" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="370" bodyend="397"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="370" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="370" bodyend="397"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4_1aa0f3ceb2e4ae754a0816e1abbf168ded" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::heal &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::heal &gt;</scope><name>AttributeContainer</name></member>

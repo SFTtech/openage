@@ -21,7 +21,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="206" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="206" bodyend="211"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="206" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="206" bodyend="211"/>
+        <references refid="classopenage_1_1path_1_1_node_1ab2a7dc59c9efb7f5baef572bbbb00228" compoundref="pathfinding_2path_8h" startline="119">openage::path::Node::position</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -30,12 +31,12 @@
 <para>Hash function for path nodes. Just uses their position. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2831">
+      <node id="6637">
         <label>std::hash&lt; openage::path::Node &amp; &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pathfinding/path.h" line="205" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="205" bodyend="212"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="205" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="205" bodyend="212"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4_1a82c375ba3d6cda6123b93c89890b5af1" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::path::Node &amp; &gt;</scope><name>operator()</name></member>
     </listofallmembers>

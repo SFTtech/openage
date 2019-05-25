@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/command.h" line="30" column="1" bodyfile="libopenage/unit/command.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/command.h" line="32" column="1" bodyfile="libopenage/unit/command.h" bodystart="32" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" bodystart="32" bodyend="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,12 +45,12 @@
 <para>hasher for game command flags </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2819">
+      <node id="6625">
         <label>std::hash&lt; openage::command_flag &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1command__flag_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/command.h" line="29" column="1" bodyfile="libopenage/unit/command.h" bodystart="29" bodyend="36"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/command.h" bodystart="29" bodyend="36"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1command__flag_01_4_1af35e49195c572047d1ada4b1ad9305b5" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::command_flag &gt;</scope><name>operator()</name></member>
       <member refid="structstd_1_1hash_3_01openage_1_1command__flag_01_4_1afa050d9760fdc3b6974faf5aa7ec50af" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::command_flag &gt;</scope><name>underlying_type</name></member>

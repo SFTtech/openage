@@ -5,14 +5,14 @@
     <includes local="no">memory</includes>
     <includes local="no">QQmlEngine</includes>
     <includes refid="gui__image__provider__impl_8h" local="yes">../private/gui_image_provider_impl.h</includes>
-    <includedby refid="engine__link_8cpp" local="yes">libopenage/gui/engine_link.cpp</includedby>
-    <includedby refid="qml__engine__with__singleton__items__info_8cpp" local="yes">libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</includedby>
-    <includedby refid="gui__engine__impl_8h" local="yes">libopenage/gui/guisys/private/gui_engine_impl.h</includedby>
-    <includedby refid="gui__image__provider__link_8cpp" local="yes">libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
-    <includedby refid="main__args__link_8cpp" local="yes">libopenage/gui/main_args_link.cpp</includedby>
+    <includedby refid="engine__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</includedby>
+    <includedby refid="qml__engine__with__singleton__items__info_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</includedby>
+    <includedby refid="gui__engine__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</includedby>
+    <includedby refid="gui__image__provider__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
+    <includedby refid="main__args__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp</includedby>
     <incdepgraph>
       <node id="12857">
-        <label>libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h</label>
         <link refid="qml__engine__with__singleton__items__info_8h"/>
         <childnode refid="12858" relation="include">
         </childnode>
@@ -46,11 +46,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12870">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="12863">
-        <label>libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h</label>
         <link refid="qml__engine__with__singleton__items__info_8h"/>
         <childnode refid="12864" relation="include">
         </childnode>
@@ -64,7 +64,7 @@
         </childnode>
       </node>
       <node id="12866">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</label>
         <link refid="gui__engine__impl_8h"/>
         <childnode refid="12867" relation="include">
         </childnode>
@@ -74,27 +74,27 @@
         </childnode>
       </node>
       <node id="12864">
-        <label>libopenage/gui/engine_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.cpp</label>
         <link refid="engine__link_8cpp"/>
       </node>
       <node id="12871">
-        <label>libopenage/gui/main_args_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp</label>
         <link refid="main__args__link_8cpp"/>
       </node>
       <node id="12869">
-        <label>libopenage/gui/guisys/public/gui_engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp</label>
         <link refid="gui__engine_8cpp"/>
       </node>
       <node id="12865">
-        <label>libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</label>
         <link refid="qml__engine__with__singleton__items__info_8cpp"/>
       </node>
       <node id="12868">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="12867">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -137,6 +137,6 @@
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h"/>
   </compounddef>
 </doxygen>

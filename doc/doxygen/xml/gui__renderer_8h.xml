@@ -4,13 +4,13 @@
     <compoundname>gui_renderer.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">GL/gl.h</includes>
-    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
-    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
-    <includedby refid="gui__renderer__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_renderer_impl.cpp</includedby>
-    <includedby refid="gui__renderer_8cpp" local="yes">libopenage/gui/guisys/public/gui_renderer.cpp</includedby>
+    <includedby refid="gui_2gui_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__renderer__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</includedby>
+    <includedby refid="gui__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</includedby>
     <incdepgraph>
       <node id="13597">
-        <label>libopenage/gui/guisys/public/gui_renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.h</label>
         <link refid="gui__renderer_8h"/>
         <childnode refid="13598" relation="include">
         </childnode>
@@ -26,23 +26,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13605">
-        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
         <link refid="gui__renderer__impl_8cpp"/>
       </node>
       <node id="13603">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="13604">
-        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</label>
         <link refid="gui__input__impl_8cpp"/>
       </node>
       <node id="13602">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="13600">
-        <label>libopenage/gui/guisys/public/gui_renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.h</label>
         <link refid="gui__renderer_8h"/>
         <childnode refid="13601" relation="include">
         </childnode>
@@ -54,7 +54,7 @@
         </childnode>
       </node>
       <node id="13601">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="13602" relation="include">
         </childnode>
@@ -62,7 +62,7 @@
         </childnode>
       </node>
       <node id="13606">
-        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.cpp</label>
         <link refid="gui__renderer_8cpp"/>
       </node>
     </invincdepgraph>
@@ -111,6 +111,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_renderer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_renderer.h"/>
   </compounddef>
 </doxygen>

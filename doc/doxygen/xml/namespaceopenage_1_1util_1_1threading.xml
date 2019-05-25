@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1threading" kind="namespace" language="Python">
+    <compoundname>openage::util::threading</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1threading_1_1_closable_queue" prot="public">openage::util::threading::ClosableQueue</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1threading_1_1_generator_event" prot="public">openage::util::threading::GeneratorEvent</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.concurrent_chain</definition>
+        <argsstring>(generators, jobs=None)</argsstring>
+        <name>concurrent_chain</name>
+        <param>
+          <type>generators</type>
+          <defname>generators</defname>
+        </param>
+        <param>
+          <type>jobs</type>
+          <defname>jobs</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="24" bodyend="54"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1ad7f7fa271abe4e1c3bc43160e84bc58f" compoundref="driver_8py" startline="239" endline="310">openage.convert.driver.convert_media</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" compoundref="threading_8py" startline="117" endline="137">openage.util.threading.test_concurrent_chain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1threading_1a1f8d251956234d35535fbdc382d49571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.generator_to_queue</definition>
+        <argsstring>(generator, queue)</argsstring>
+        <name>generator_to_queue</name>
+        <param>
+          <type>generator</type>
+          <defname>generator</defname>
+        </param>
+        <param>
+          <type>queue</type>
+          <defname>queue</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="105" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1threading_1aaf02a648f9349f36e6ee76f092059ef0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.test_concurrent_chain</definition>
+        <argsstring>()</argsstring>
+        <name>test_concurrent_chain</name>
+        <briefdescription>
+<para>Tests concurrent_chain. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="117" bodyend="137"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" compoundref="testing_8py" startline="61" endline="73">openage.testing.testing.assert_raises</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1util_1_1threading_1a95e47e3e6d90915099eb2ee2ebc15260" compoundref="threading_8py" startline="24" endline="54">openage.util.threading.concurrent_chain</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

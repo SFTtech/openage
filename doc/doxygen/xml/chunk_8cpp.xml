@@ -245,7 +245,7 @@
         </childnode>
       </node>
       <node id="3192">
-        <label>libopenage/coord/chunk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/chunk.cpp</label>
         <link refid="chunk_8cpp"/>
         <childnode refid="3193" relation="include">
         </childnode>
@@ -292,6 +292,6 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/chunk.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/chunk.cpp"/>
   </compounddef>
 </doxygen>

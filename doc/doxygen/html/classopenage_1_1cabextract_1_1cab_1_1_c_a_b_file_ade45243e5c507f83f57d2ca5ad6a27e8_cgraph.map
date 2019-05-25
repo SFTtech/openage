@@ -1,0 +1,10 @@
+<map id="openage.cabextract.cab.CABFile.read_file_headers" name="openage.cabextract.cab.CABFile.read_file_headers">
+<area shape="rect" id="node1" title="Called during the constructor run." alt="" coords="5,57,248,98"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="312,5,429,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1files.xhtml#a648056f11b83f759c99f551f483e9bef" title="Reads bytes until a null terminator is reached." alt="" coords="296,57,445,98"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" title=" " alt="" coords="307,123,435,149"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188" title=" " alt="" coords="493,27,641,69"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1" title=" " alt="" coords="501,93,634,120"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="689,93,883,120"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="931,93,1057,120"/>
+</map>

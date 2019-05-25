@@ -1,0 +1,9 @@
+<map id="openage::coord::viewport::to_tile" name="openage::coord::viewport::to_tile">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,171,80"/>
+<area shape="rect" id="node2" href="$structopenage_1_1coord_1_1viewport.xhtml#ab5b83e1486c0898fcb68f163fe49904f" title=" " alt="" coords="224,5,389,47"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camgame.xhtml#a323da0da625f2160938843dc8a248e6c" title=" " alt="" coords="219,71,395,112"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1camgame.xhtml#a0b8e17b9f35af0cb50dbd56e8d6ff243" title=" " alt="" coords="443,37,619,79"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1phys3.xhtml#aa8aa4b7a7a76ddb625b8770ba12484d6" title=" " alt="" coords="453,103,608,144"/>
+<area shape="rect" id="node6" href="$structopenage_1_1coord_1_1tile3.xhtml#af828e2ee284deb35ce13d30b57b14ad0" title=" " alt="" coords="673,69,815,111"/>
+<area shape="rect" id="node7" href="$structopenage_1_1coord_1_1phys3.xhtml#a8ed61fb85a083922af8fbbabd087ae31" title=" " alt="" coords="667,135,821,176"/>
+</map>

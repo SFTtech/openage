@@ -1,0 +1,5 @@
+<map id="openage.convert.driver.get_gamespec" name="openage.convert.driver.get_gamespec">
+<area shape="rect" id="node1" title="reads empires.dat and fixes it" alt="" coords="491,5,663,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="248,5,443,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,13,200,39"/>
+</map>

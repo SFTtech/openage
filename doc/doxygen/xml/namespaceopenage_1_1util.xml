@@ -37,11 +37,23 @@
     <innerclass refid="classopenage_1_1util_1_1_variable" prot="public">openage::util::Variable</innerclass>
     <innerclass refid="classopenage_1_1util_1_1_variable_base" prot="public">openage::util::VariableBase</innerclass>
     <innerclass refid="classopenage_1_1util_1_1_vector" prot="public">openage::util::Vector</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1bytequeue">openage::util::bytequeue</innernamespace>
     <innernamespace refid="namespaceopenage_1_1util_1_1compress">openage::util::compress</innernamespace>
     <innernamespace refid="namespaceopenage_1_1util_1_1constexpr__">openage::util::constexpr_</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1context">openage::util::context</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1decorators">openage::util::decorators</innernamespace>
     <innernamespace refid="namespaceopenage_1_1util_1_1filelike">openage::util::filelike</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1files">openage::util::files</innernamespace>
     <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fsprinting">openage::util::fsprinting</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1iterators">openage::util::iterators</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1math">openage::util::math</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1profiler">openage::util::profiler</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1strings">openage::util::strings</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1struct">openage::util::struct</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1system">openage::util::system</innernamespace>
     <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1threading">openage::util::threading</innernamespace>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1aa62f335908f8f5e68345cb3386ab94c6" prot="public" static="no">
         <templateparamlist>
@@ -60,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="273" column="1" bodyfile="libopenage/util/matrix.h" bodystart="273" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="273" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a748106aeb16275c1ebf6f0f9276381cd" prot="public" static="no">
         <templateparamlist>
@@ -79,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="276" column="1" bodyfile="libopenage/util/matrix.h" bodystart="276" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="276" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1ae5976ba79c39027e28f3f02458e93e38" prot="public" static="no">
         <templateparamlist>
@@ -98,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="279" column="1" bodyfile="libopenage/util/matrix.h" bodystart="279" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="279" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="279" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1af077ef0b2ea660c4044917c60c4f0385" prot="public" static="no">
         <templateparamlist>
@@ -123,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="282" column="1" bodyfile="libopenage/util/matrix.h" bodystart="282" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="282" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="282" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a21feb2f799e75fd645e0d663ec4712f9" prot="public" static="no">
         <templateparamlist>
@@ -148,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="285" column="1" bodyfile="libopenage/util/matrix.h" bodystart="285" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="285" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="285" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a00694c43ac6582c643b2591d420ce472" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 2, 2, float &gt;</type>
@@ -161,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="287" column="1" bodyfile="libopenage/util/matrix.h" bodystart="287" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="287" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="287" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1aaa417153128f83c6b7ee0b42efc418aa" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 3, 3, float &gt;</type>
@@ -174,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="288" column="1" bodyfile="libopenage/util/matrix.h" bodystart="288" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="288" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="288" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1afd42b418dc20fcb64677b2f75ecd97b8" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 4, 4, float &gt;</type>
@@ -187,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="289" column="1" bodyfile="libopenage/util/matrix.h" bodystart="289" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="289" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="289" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a94d988fc19451e9042116f14432ec1b6" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 2, 2, double &gt;</type>
@@ -200,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="291" column="1" bodyfile="libopenage/util/matrix.h" bodystart="291" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="291" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="291" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a157c43b340256c0f1124074fae7aa807" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 3, 3, double &gt;</type>
@@ -213,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="292" column="1" bodyfile="libopenage/util/matrix.h" bodystart="292" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="292" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="292" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a06158fd9e1e05c74de527f554486f2b6" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 4, 4, double &gt;</type>
@@ -226,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="293" column="1" bodyfile="libopenage/util/matrix.h" bodystart="293" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="293" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="293" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1ac0edd3e6d8ddf01c639814c3f2cb83fc" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref>&lt; float &gt;</type>
@@ -239,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="435" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="435" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="435" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1ad6fb313e7100659b50538dadeb6fb0f3" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref>&lt; double &gt;</type>
@@ -252,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="436" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="436" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="436" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="436" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" prot="public" static="no">
         <type>int32_t</type>
@@ -265,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="15" column="1" bodyfile="libopenage/util/unicode.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a3b7551617f7e81afd786778a18a6e115" prot="public" static="no">
         <templateparamlist>
@@ -284,7 +296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="207" column="1" bodyfile="libopenage/util/vector.h" bodystart="207" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="207" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" prot="public" static="no">
         <templateparamlist>
@@ -303,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="210" column="1" bodyfile="libopenage/util/vector.h" bodystart="210" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="210" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="210" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1ab85260365ee607e213b044335a3c4ac2" prot="public" static="no">
         <templateparamlist>
@@ -322,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="213" column="1" bodyfile="libopenage/util/vector.h" bodystart="213" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="213" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="213" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a412362dd7eb21295a62e2c22031ac77c" prot="public" static="no">
         <templateparamlist>
@@ -342,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="216" column="1" bodyfile="libopenage/util/vector.h" bodystart="216" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="216" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="216" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a333446966cecccc963bdaa41f5395339" prot="public" static="no">
         <templateparamlist>
@@ -362,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="219" column="1" bodyfile="libopenage/util/vector.h" bodystart="219" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="219" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a285db29af032ad3b2a79f810faaf65d3" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 2, float &gt;</type>
@@ -375,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="221" column="1" bodyfile="libopenage/util/vector.h" bodystart="221" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="221" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1ab7bb49fe673b7a4d72fb6fb91aba44c8" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 3, float &gt;</type>
@@ -388,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="222" column="1" bodyfile="libopenage/util/vector.h" bodystart="222" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="222" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1af3c02e2c02d3b68c87d58b867e609bbf" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 4, float &gt;</type>
@@ -401,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="223" column="1" bodyfile="libopenage/util/vector.h" bodystart="223" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="223" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="223" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 2, double &gt;</type>
@@ -414,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="225" column="1" bodyfile="libopenage/util/vector.h" bodystart="225" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="225" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1aaa92edd0399f568ff984de550f094c9d" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 3, double &gt;</type>
@@ -427,7 +439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="226" column="1" bodyfile="libopenage/util/vector.h" bodystart="226" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="226" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1util_1af8c841be325b73ea41a31e63bc2013dd" prot="public" static="no">
         <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 4, double &gt;</type>
@@ -440,7 +452,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector.h" line="227" column="1" bodyfile="libopenage/util/vector.h" bodystart="227" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" line="227" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -456,7 +468,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.cpp" line="8" column="1" bodyfile="libopenage/util/misc.cpp" bodystart="8" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.cpp" line="8" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.cpp" bodystart="8" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" compoundref="util_2path_8cpp" startline="252" endline="259">openage::util::Path::get_name</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" prot="public" static="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -470,7 +483,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="94" column="1" bodyfile="libopenage/util/misc.h" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1abab1bbea3efd69cf8087a807b5b5f8f2" compoundref="misc_8h" startline="170" endline="173">array64_size</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" compoundref="misc_8h" startline="222" endline="232">array64_to_array8</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">array8_to_array64</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">array8_to_uint64</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">uint64_to_array8</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1abd7c6427c843cb61f0892c36a58dabbf" prot="public" static="no" mutable="no">
         <type>constexpr const char *</type>
@@ -484,7 +502,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/repr.cpp" line="9" column="1" bodyfile="libopenage/util/repr.cpp" bodystart="9" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/repr.cpp" line="9" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/repr.cpp" bodystart="9" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">repr</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -516,7 +535,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/algorithm.h" line="17" column="1" bodyfile="libopenage/util/algorithm.h" bodystart="17" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h" bodystart="17" bodyend="22"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <referencedby refid="classopenage_1_1_editor_mode_1a8bc3906c89a7ecceff2c24512c5be24b" compoundref="game__control_8cpp" startline="659" endline="673">openage::EditorMode::announce_category_content</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" compoundref="gui__filled__texture__handles_8cpp" startline="28" endline="34">openage::gui::GuiFilledTextureHandles::fill_all_handles_with_texture</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_live_reloader_1adf7dd5c498505ea59b89d72ff67db8fb" compoundref="gui__live__reloader_8cpp" startline="55" endline="87">qtsdl::GuiLiveReloader::init_persistent_items</referencedby>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="30" endline="35">qtsdl::QmlEngineWithSingletonItemsInfo::~QmlEngineWithSingletonItemsInfo</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -546,7 +570,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/algorithm.h" line="28" column="1" bodyfile="libopenage/util/algorithm.h" bodystart="28" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h" bodystart="28" bodyend="33"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -565,7 +590,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compiler.cpp" line="25" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="25" bodyend="43"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="25" bodyend="43"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" compoundref="exctranslate__tests_8cpp" startline="42" endline="105">openage::pyinterface::tests::err_py_to_cpp</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" compoundref="game__spec_8cpp" startline="34" endline="77">openage::GameSpec::initialize</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" compoundref="error_2error_8cpp" startline="89" endline="128">openage::error::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" compoundref="error_2handlers_8cpp" startline="69" endline="104">openage::error::terminate_handler</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" compoundref="exctranslate_8cpp" startline="47" endline="107">openage::pyinterface::translate_exc_cpp_to_py</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" compoundref="error_2error_8cpp" startline="77" endline="79">openage::error::Error::type_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -582,7 +615,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compiler.cpp" line="46" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="46" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="46" bodyend="48"/>
+        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
+        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -612,7 +647,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compiler.cpp" line="98" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="98" bodyend="133"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="98" bodyend="133"/>
+        <references refid="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" compoundref="compiler_8cpp" startline="46" endline="48">addr_to_string</references>
+        <references refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" compoundref="compiler_8cpp" startline="25" endline="43">demangle</references>
+        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</references>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" compoundref="setup_8cpp" startline="73" endline="124">openage::pyinterface::check</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" compoundref="functional_8h" startline="111" endline="121">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" compoundref="stackanalyzer_8cpp" startline="268" endline="293">openage::error::StackAnalyzer::get_symbols</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -630,7 +672,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/compiler.cpp" line="136" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="136" bodyend="154"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compiler.cpp" bodystart="136" bodyend="154"/>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a16ef0fe69558a29af4a8d568f2b5b518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -653,7 +696,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="182" column="1" bodyfile="libopenage/util/csv.h" bodystart="182" bodyend="214"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="182" bodyend="214"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" compoundref="file_8cpp" startline="101" endline="114">openage::util::File::get_lines</references>
+        <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</references>
+        <references refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">openage::util::Path::open</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -674,7 +721,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/file.cpp" line="122" column="1" bodyfile="libopenage/util/file.cpp" bodystart="122" bodyend="128"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/file.cpp" bodystart="122" bodyend="128"/>
+        <references refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" compoundref="file_8h" startline="105">openage::util::File::filelike</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1afe036a1f307dd739bb4855cb0b799f38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -702,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="28" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="28" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="28" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a1f37c9c7cfd9dbe87e3ce104476bbda4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -730,7 +778,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="43" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="43" bodyend="45"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="43" bodyend="45"/>
+        <referencedby refid="namespaceopenage_1_1util_1a101479979c88a661de76a6e70fb2978b" compoundref="fixed__point_8h" startline="62" endline="64">safe_shift</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aa341b7244c12ea3496bdcd56e226d791" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -757,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="50" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="50" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="50" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a101479979c88a661de76a6e70fb2978b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -785,7 +834,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="62" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="62" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="62" bodyend="64"/>
+        <references refid="namespaceopenage_1_1util_1a1f37c9c7cfd9dbe87e3ce104476bbda4" compoundref="fixed__point_8h" startline="43" endline="45">safe_shiftright</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a5346916e27392c8a141e10890f42925e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -812,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="70" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="70" bodyend="72"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="70" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a4202ea3aad51da9bcef0572898fc7175" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -844,7 +894,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="406" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="406" bodyend="408"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="406" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="406" bodyend="408"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a4e4ab8c3700eebbe1f3367ea7aa4de17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -876,7 +928,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="414" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="414" bodyend="416"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="414" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="414" bodyend="416"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_double</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a976790c1ec88a9cce32a887ca49526db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -908,7 +961,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="422" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="422" bodyend="424"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="422" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="422" bodyend="424"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a0691ea67643c9ec3e8ef552a45583a81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -940,7 +995,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="430" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="430" bodyend="432"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="430" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="430" bodyend="432"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_double</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aa3949bf1d23f5c8446474135851399fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -975,7 +1031,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="440" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="440" bodyend="442"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="440" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="440" bodyend="442"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1010,7 +1068,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="459" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="459" bodyend="461"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="459" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="459" bodyend="461"/>
+        <references refid="namespaceopenage_1_1util_1a34ba6f7abd32acb48dfc6ad6efdc1bc8" compoundref="misc_8h" startline="75" endline="77">div</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1032,7 +1093,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.cpp" line="12" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="12" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="12" bodyend="15"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" compoundref="glyph__atlas_8cpp" startline="93" endline="98">openage::renderer::GlyphAtlas::get_cache_key</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" compoundref="font_8h" startline="201" endline="206">std::hash&lt; openage::renderer::font_description &gt;::operator()</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -1060,7 +1123,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.cpp" line="36" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="36" bodyend="104"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="36" bodyend="104"/>
+        <references refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">array8_to_uint64</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" compoundref="hash_8cpp" startline="107" endline="109">openage::util::Siphash::digest</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" compoundref="glyph__atlas_8cpp" startline="93" endline="98">openage::renderer::GlyphAtlas::get_cache_key</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" compoundref="font_8h" startline="201" endline="206">std::hash&lt; openage::renderer::font_description &gt;::operator()</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a8cb190d6ba8c160e1453ff4379dd2dcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1082,7 +1152,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/language.h" line="38" column="1" bodyfile="libopenage/util/language.h" bodystart="38" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/language.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/language.h" bodystart="38" bodyend="38"/>
+        <referencedby refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" compoundref="error_2handlers_8cpp" startline="107" endline="116">openage::error::sigsegv_handler</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1af3f37a72fc7fc649b471cff17733f7ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1119,7 +1190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="258" column="1" bodyfile="libopenage/util/matrix.h" bodystart="258" bodyend="260"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="258" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a759079d1391952faee3b693dba78382c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1156,7 +1227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix.h" line="268" column="1" bodyfile="libopenage/util/matrix.h" bodystart="268" bodyend="270"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" line="268" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix.h" bodystart="268" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1183,7 +1254,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="32" column="1" bodyfile="libopenage/util/misc.h" bodystart="32" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="32" bodyend="40"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" compoundref="profiler_8cpp" startline="87" endline="108">openage::util::Profiler::draw_component_performance</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1a3f1fe3ab63277870db07fb817a91696b" compoundref="input__manager_8cpp" startline="309" endline="312">openage::input::InputManager::get_mod</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1ab4811e492cabe885d33e85df51ceff83" compoundref="tile_8cpp" startline="68" endline="73">openage::coord::tile::get_pos_on_chunk</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" compoundref="input_2event_8cpp" startline="127" endline="150">openage::input::sdl_key</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" compoundref="input_2event_8cpp" startline="110" endline="124">openage::input::sdl_mod</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" compoundref="input_2event_8cpp" startline="156" endline="158">openage::input::sdl_mouse</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" compoundref="input_2event_8cpp" startline="160" endline="162">openage::input::sdl_mouse_up_down</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1ab6f0345d20c07a72034dc85a73d1cdf1" compoundref="input_2event_8cpp" startline="164" endline="166">openage::input::sdl_wheel</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" compoundref="text__to__event_8cpp" startline="76" endline="109">openage::input::text_to_event</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aebb1428f079400b957bd2ce2fb8ad583" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1211,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="47" column="1" bodyfile="libopenage/util/misc.h" bodystart="47" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="47" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a656c9d55c02d291f899cdae14b356d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1239,7 +1320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="63" column="1" bodyfile="libopenage/util/misc.h" bodystart="63" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a34ba6f7abd32acb48dfc6ad6efdc1bc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1266,7 +1347,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="75" column="1" bodyfile="libopenage/util/misc.h" bodystart="75" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="75" bodyend="77"/>
+        <referencedby refid="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" compoundref="fixed__point_8h" startline="459" endline="461">operator/</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a8a479bc1182f83c94eecc577eb493d7f" compoundref="fixed__point_8h" startline="372" endline="375">openage::util::FixedPoint&lt; int64_t, 16 &gt;::operator/=</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1a47c3fa2d9edf30712ddbc3b8ae217eb0" compoundref="tile_8cpp" startline="60" endline="65">openage::coord::tile::to_chunk</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint64_t</type>
@@ -1322,7 +1406,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="111" column="1" bodyfile="libopenage/util/misc.h" bodystart="111" bodyend="129"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="111" bodyend="129"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" compoundref="misc_8h" startline="94">uint64_s</references>
+        <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">array8_to_array64</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" compoundref="misc__test_8cpp" startline="13" endline="78">openage::util::tests::array_conversion</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">hash</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" compoundref="hash_8cpp" startline="23" endline="28">openage::util::Siphash::set_key</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -1366,7 +1458,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="145" column="1" bodyfile="libopenage/util/misc.h" bodystart="145" bodyend="159"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="145" bodyend="159"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" compoundref="misc_8h" startline="94">uint64_s</references>
+        <referencedby refid="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" compoundref="misc_8h" startline="222" endline="232">array64_to_array8</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" compoundref="misc__test_8cpp" startline="13" endline="78">openage::util::tests::array_conversion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" compoundref="hash_8cpp" startline="112" endline="115">openage::util::Siphash::digest</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1abab1bbea3efd69cf8087a807b5b5f8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr size_t</type>
@@ -1388,7 +1485,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="170" column="1" bodyfile="libopenage/util/misc.h" bodystart="170" bodyend="173"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="170" bodyend="173"/>
+        <references refid="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" compoundref="misc_8h" startline="94">uint64_s</references>
+        <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">array8_to_array64</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; uint64_t &gt;</type>
@@ -1444,7 +1543,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="190" column="1" bodyfile="libopenage/util/misc.h" bodystart="190" bodyend="204"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="190" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="190" bodyend="204"/>
+        <references refid="namespaceopenage_1_1util_1abab1bbea3efd69cf8087a807b5b5f8f2" compoundref="misc_8h" startline="170" endline="173">array64_size</references>
+        <references refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">array8_to_uint64</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" compoundref="misc_8h" startline="94">uint64_s</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" compoundref="misc__test_8cpp" startline="13" endline="78">openage::util::tests::array_conversion</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -1500,7 +1605,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="222" column="1" bodyfile="libopenage/util/misc.h" bodystart="222" bodyend="232"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="222" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="222" bodyend="232"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" compoundref="misc_8h" startline="94">uint64_s</references>
+        <references refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">uint64_to_array8</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" compoundref="misc__test_8cpp" startline="13" endline="78">openage::util::tests::array_conversion</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1af88424f642ef1ba4e6b2eb1c05ad8e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1527,7 +1636,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="239" column="1" bodyfile="libopenage/util/misc.h" bodystart="239" bodyend="242"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="239" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="239" bodyend="242"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" compoundref="directory_8cpp" startline="148" endline="182">openage::util::fslike::Directory::mkdirs</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a9fb1a345070c4a9dd714eb2e8ac2951c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1553,7 +1663,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="249" column="1" bodyfile="libopenage/util/misc.h" bodystart="249" bodyend="258"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="249" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="249" bodyend="258"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1acd8f5a72ed6227f640eda13229878c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1581,7 +1692,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="268" column="1" bodyfile="libopenage/util/misc.h" bodystart="268" bodyend="280"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="268" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="268" bodyend="280"/>
+        <referencedby refid="classopenage_1_1audio_1_1_audio_manager_1a4a4b32a5632f953c11696400487b1ef5" compoundref="audio__manager_8cpp" startline="163" endline="192">openage::audio::AudioManager::audio_callback</referencedby>
+        <referencedby refid="classopenage_1_1audio_1_1_audio_manager_1a30af6b961d77d0b564e4813560666b2c" compoundref="audio__manager_8cpp" startline="203" endline="215">openage::audio::AudioManager::remove_sound</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a72bef8f3b092e74cf890a38611b9bbc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1596,7 +1709,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/opengl.cpp" line="12" column="1" bodyfile="libopenage/util/opengl.cpp" bodystart="12" bodyend="71"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/opengl.cpp" bodystart="12" bodyend="71"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">openage::Engine::loop</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1618,7 +1734,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.cpp" line="21" column="1" bodyfile="libopenage/util/path.cpp" bodystart="21" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="21" bodyend="38"/>
+        <references refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" compoundref="compiler_8h" startline="52">likely</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aae7cd67becf8e8e8e0be8e54a12624d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -1639,7 +1756,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.cpp" line="349" column="1" bodyfile="libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" line="349" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1657,7 +1776,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.cpp" line="364" column="1" bodyfile="libopenage/util/path.cpp" bodystart="364" bodyend="371"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" line="364" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="364" bodyend="371"/>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" compoundref="fslike_2native_8h" startline="13">openage::util::fslike::PATHSEP</references>
+        <referencedby refid="classopenage_1_1gui_1_1_game_saver_1a8d88b6621b60cfc359cbeaae88475686" compoundref="game__saver_8cpp" startline="37" endline="79">openage::gui::GameSaver::activate</referencedby>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">openage::ScreenshotManager::encode_png</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1abd2787a6c2616899f61d17814ad65a67" compoundref="file__logsink_8cpp" startline="15" endline="17">openage::log::FileSink::FileSink</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1abd8690a2db783f6d55a7ef374f6db782" compoundref="csv_8h" startline="89" endline="127">openage::util::CSVCollection::get_data</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl_1ad8530c9e494933db31e465f6947574d5" compoundref="gui__game__spec__image__provider__by__filename__impl_8cpp" startline="28" endline="50">openage::gui::GuiGameSpecImageProviderByFilenameImpl::get_texture_handle</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a942ae5fea51139bab5bdc29ac244125d" compoundref="exctranslate_8cpp" startline="137" endline="148">openage::pyinterface::init_exc_message</referencedby>
+        <referencedby refid="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" compoundref="subprocess_8cpp" startline="25" endline="35">openage::subprocess::is_executable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</referencedby>
+        <referencedby refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">openage::subprocess::which</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1675,7 +1804,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/path.cpp" line="374" column="1" bodyfile="libopenage/util/path.cpp" bodystart="374" bodyend="381"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" line="374" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp" bodystart="374" bodyend="381"/>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" compoundref="fslike_2native_8h" startline="13">openage::util::fslike::PATHSEP</references>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" compoundref="csv_8h" startline="59" endline="82">openage::util::CSVCollection::read</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1693,7 +1824,44 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/repr.cpp" line="12" column="1" bodyfile="libopenage/util/repr.cpp" bodystart="12" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/repr.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/repr.cpp" bodystart="12" bodyend="33"/>
+        <references refid="namespaceopenage_1_1util_1abd7c6427c843cb61f0892c36a58dabbf" compoundref="repr_8cpp" startline="9">HEX_DIGITS</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1a17b11fd7e416e7e4bac798af10470d54" compoundref="cab_8py" startline="229" endline="288">openage.cabextract.cab.CABFile.__init__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a22298fb54ac07968189e0f917d48250f" compoundref="content__snippet_8py" startline="109" endline="123">openage.convert.dataformat.content_snippet.ContentSnippet.__lt__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" compoundref="struct_8py" startline="29" endline="82">openage.util.struct.NamedStructMeta.__new__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_meta_1a7f7aa6ac1d715dc74204a215f710794b" compoundref="struct_8py" startline="222" endline="264">openage.util.struct.FlagsMeta.__new__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a3227b756d3668ec163a3046b308de7cd" compoundref="wrapper_8py" startline="43" endline="49">openage.util.fslike.wrapper.Wrapper.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a250e49c6abb64b66594cad8e7adc8792" compoundref="path_8py" startline="73" endline="78">openage.util.fslike.path.Path.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a2ad3cdde94231847073835b9a40f7063" compoundref="codegen_8py" startline="104" endline="117">openage.codegen.codegen.CodegenDirWrapper.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member_1a49a5bbd442b7928e4818318bce236b63" compoundref="members_8py" startline="127" endline="140">openage.convert.dataformat.members.GroupMember.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker_1aa092bdb482ed75ce36c9de35d521c600" compoundref="wrapper_8py" startline="134" endline="137">openage.util.fslike.wrapper.WriteBlocker.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members_1a76445c68e5173f4c164a4799134a80e6" compoundref="members_8py" startline="146" endline="149">openage.convert.dataformat.members.IncludeMembers.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a19001e4b1481baebbabd0f3adf589e09" compoundref="wrapper_8py" startline="146" endline="155">openage.util.fslike.wrapper.Synchronizer.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" compoundref="wrapper_8py" startline="202" endline="211">openage.util.fslike.wrapper.GuardedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" compoundref="struct_8py" startline="208" endline="210">openage.util.struct.NamedStruct.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a9f6a718342072c143f8d66ebf9f5ff53" compoundref="struct_8py" startline="317" endline="319">openage.util.struct.Flags.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ac8aa7e6454da5c8b49a6f5b093467b5f" compoundref="union_8py" startline="39" endline="45">openage.util.fslike.union.Union.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a2d23de53da50584b86b6c27d956d4503" compoundref="colortable_8py" startline="80" endline="82">openage.convert.colortable.ColorTable.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ac3b15546f9588a44f28827c3ba379cd4" compoundref="struct__snippet_8py" startline="120" endline="129">openage.convert.dataformat.struct_snippet.StructSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1a381c562b66a8185c569778ee982fca1b" compoundref="struct__definition_8py" startline="226" endline="234">openage.convert.dataformat.struct_definition.StructDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ae463a515baf512fb39d859990812481f" compoundref="content__snippet_8py" startline="60" endline="76">openage.convert.dataformat.content_snippet.ContentSnippet.add_required_snippets</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a85b720a4206241057c0feff293f38e90" compoundref="bytequeue_8py" startline="111" endline="117">openage.util.bytequeue.ByteBuffer.append</referencedby>
+        <referencedby refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_action_manager_1a172292484fa92f4c391479d6e656808a" compoundref="input_2action_8cpp" startline="117" endline="147">openage::input::ActionManager::create</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1ad1e3e3ba7c5728c42f2c8d9619a93e7a" compoundref="generated__file_8py" startline="151" endline="241">openage.convert.dataformat.generated_file.GeneratedFile.generate</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a260ca9cd43939238415b186f97220452" compoundref="union_8py" startline="138" endline="173">openage.util.fslike.union.Union.list</referencedby>
+        <referencedby refid="namespaceopenage_1_1cvar_1_1config__file_1aee5a9b4650b459614a87fe8adadb8ad7" compoundref="config__file_8py" startline="18" endline="54">openage.cvar.config_file.load_config_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1strings_1a7ae648d1a835e5ee33b60c06d1f3f612" compoundref="strings_8py" startline="85" endline="92">openage.util.strings.lstrip_once</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" compoundref="pyobject__tests_8cpp" startline="16" endline="130">openage::pyinterface::tests::pyobject</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1strings_1af1d14da687cbcc0bdf4ab1afbd5bc867" compoundref="strings_8py" startline="99" endline="107">openage.util.strings.rstrip_once</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1714,7 +1882,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="20" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="20" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="20" bodyend="29"/>
+        <references refid="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" compoundref="strings_8cpp" startline="32" endline="61">vsformat</references>
+        <referencedby refid="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" compoundref="compiler_8cpp" startline="46" endline="48">addr_to_string</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" compoundref="test_8cpp" startline="41" endline="65">openage::log::tests::demo</referencedby>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" compoundref="screenshot_8cpp" startline="32" endline="48">openage::ScreenshotManager::gen_next_filename</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" compoundref="game__spec_8cpp" startline="91" endline="108">openage::GameSpec::get_texture</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a6f6bbcfb3a4dd8586bbed00f62054bf1" compoundref="game__spec_8cpp" startline="329" endline="401">openage::GameSpec::load_terrain</referencedby>
+        <referencedby refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" compoundref="game__spec_8cpp" startline="192" endline="270">openage::GameSpec::on_gamedata_loaded</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">symbol_name</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1740,7 +1916,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="32" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="32" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="32" bodyend="61"/>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" compoundref="text_8cpp" startline="87" endline="95">openage::renderer::TextRenderer::draw</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">openage::Engine::render_text</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">sformat</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; char[]&gt;</type>
@@ -1758,7 +1938,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="64" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="64" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="64" bodyend="69"/>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</references>
+        <referencedby refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">openage::subprocess::which</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1abeb6a94572d93a14498661545b8332ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1776,7 +1958,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="72" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="72" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="72" bodyend="89"/>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</references>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a60449ccfe2e14452ec0fcdde0b4bcfbc" compoundref="pefile_8py" startline="158" endline="205">openage.convert.pefile.PEFile.__init__</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aae9cd09351bc11ad2c9fcf701786340a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1798,7 +1982,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="92" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="92" bodyend="133"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="92" bodyend="133"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -1820,7 +2005,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="136" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="136" bodyend="141"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="136" bodyend="141"/>
+        <referencedby refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a041e669aa436085f5da150f2228f8788" compoundref="colortable_8py" startline="39" endline="70">openage.convert.colortable.ColorTable.fill</referencedby>
+        <referencedby refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" compoundref="gui__property__map_8cpp" startline="160" endline="162">qtsdl::GuiPropertyMap::get_csv</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" compoundref="util_2path_8cpp" startline="303" endline="305">openage::util::Path::joinpath</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" compoundref="directory_8cpp" startline="148" endline="182">openage::util::fslike::Directory::mkdirs</referencedby>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1a1e6e694be0654b40e778b12ff2334b87" compoundref="codegen_8py" startline="266" endline="294">openage.codegen.codegen.postprocess_write</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_file_1ade45243e5c507f83f57d2ca5ad6a27e8" compoundref="cab_8py" startline="356" endline="429">openage.cabextract.cab.CABFile.read_file_headers</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1hdlanguagefile_1acc46a3a14127905594fced841fdfb09b" compoundref="hdlanguagefile_8py" startline="101" endline="126">openage.convert.hdlanguagefile.read_hd_language_file</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1files_1aefc9024dcd367647401c6682c2d0d7a5" compoundref="files_8py" startline="54" endline="74">openage.util.files.which</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aa7f8fe5c3426ea9e4968ef9aa21660ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -1849,7 +2042,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.cpp" line="144" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="144" bodyend="212"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.cpp" bodystart="144" bodyend="212"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" compoundref="compiler_8h" startline="52">likely</references>
+        <referencedby refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ad1512b3a27b24f2e1edc45d361b30a3a" compoundref="texture__subinfo_8cpp" startline="10" endline="36">openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a08c4ca36b7f1f7b60da3629f01635167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1882,7 +2078,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.h" line="34" column="1" bodyfile="libopenage/util/strings.h" bodystart="34" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" bodystart="34" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1abfc839970f77edd26fe675758a6ca1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1913,7 +2109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/strings.h" line="88" column="1" bodyfile="libopenage/util/strings.h" bodystart="88" bodyend="97"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/strings.h" bodystart="88" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1ac99f61e1d0c06d9b83650a71cff2f02f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1928,7 +2124,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/thread_id.cpp" line="44" column="1" bodyfile="libopenage/util/thread_id.cpp" bodystart="44" bodyend="51"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/thread_id.cpp" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/thread_id.cpp" bodystart="44" bodyend="51"/>
+        <referencedby refid="classopenage_1_1job_1_1_job_manager_1ae81b425a182f26b155c9f31de6b74d63" compoundref="job__manager_8cpp" startline="59" endline="80">openage::job::JobManager::execute_callbacks</referencedby>
+        <referencedby refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" compoundref="message_8cpp" startline="17" endline="20">openage::log::message::init</referencedby>
+        <referencedby refid="classopenage_1_1job_1_1_typed_job_state_base_1a8e29b857a4d99759518b542746a02936" compoundref="typed__job__state__base_8h" startline="51" endline="56">openage::job::TypedJobStateBase&lt; T &gt;::TypedJobStateBase</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1958,7 +2157,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.cpp" line="72" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="72" bodyend="118"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="72" bodyend="118"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -1981,7 +2181,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.cpp" line="120" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="120" bodyend="152"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="120" bodyend="152"/>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" compoundref="fds_8cpp" startline="65" endline="73">openage::util::FD::putcp</referencedby>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -2000,7 +2202,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.cpp" line="154" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="154" bodyend="165"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" line="154" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="154" bodyend="165"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">openage::util::constexpr_::strlen</references>
+        <referencedby refid="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" compoundref="unicode_8cpp" startline="167" endline="169">utf8_pop_back</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2018,13 +2223,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.cpp" line="167" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="167" bodyend="169"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="167" bodyend="169"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" compoundref="unicode_8cpp" startline="154" endline="165">utf8_last_char_size</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/console/draw.h" line="9" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.h" line="9" column="1"/>
   </compounddef>
 </doxygen>

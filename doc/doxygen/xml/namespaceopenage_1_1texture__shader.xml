@@ -14,7 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="22" column="1" bodyfile="libopenage/texture.cpp" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a83040812fefc420ba1b9c55bcd29b52c" compoundref="game__renderer_8cpp" startline="188" endline="196">openage::GameRenderer::~GameRenderer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1texture__shader_1ab12adc72bbe0d0f68ad592800b3e57d4" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -27,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="23" column="1" bodyfile="libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1texture__shader_1afc27bd08aad20cadf84d8f39268876af" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -40,13 +42,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.cpp" line="23" column="1" bodyfile="libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">openage::Texture::draw</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/texture.cpp" line="21" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" line="21" column="1"/>
   </compounddef>
 </doxygen>

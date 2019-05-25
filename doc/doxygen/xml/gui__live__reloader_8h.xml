@@ -9,11 +9,11 @@
     <includes local="no">QHash</includes>
     <includes local="no">QList</includes>
     <includes local="no">QtQml</includes>
-    <includedby refid="gui__subtree__impl_8h" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.h</includedby>
-    <includedby refid="gui__live__reloader_8cpp" local="yes">libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h</includedby>
+    <includedby refid="gui__live__reloader_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</includedby>
     <incdepgraph>
       <node id="13354">
-        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h</label>
         <link refid="gui__live__reloader_8h"/>
         <childnode refid="13355" relation="include">
         </childnode>
@@ -54,7 +54,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13362">
-        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h</label>
         <link refid="gui__live__reloader_8h"/>
         <childnode refid="13363" relation="include">
         </childnode>
@@ -62,15 +62,15 @@
         </childnode>
       </node>
       <node id="13366">
-        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
         <link refid="gui__live__reloader_8cpp"/>
       </node>
       <node id="13365">
-        <label>libopenage/gui/guisys/public/gui_subtree.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.cpp</label>
         <link refid="gui__subtree_8cpp"/>
       </node>
       <node id="13363">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.h</label>
         <link refid="gui__subtree__impl_8h"/>
         <childnode refid="13364" relation="include">
         </childnode>
@@ -78,7 +78,7 @@
         </childnode>
       </node>
       <node id="13364">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -122,7 +122,7 @@
 <codeline lineno="30" refid="classqtsdl_1_1_gui_live_reloader_attached_property" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property" kindref="compound">GuiLiveReloaderAttachedProperty</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject<sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref><sp/>READ<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a90b3968cec094c41169c0bd8c7e8b5d4" kindref="member">get_tag</ref><sp/>WRITE<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1aeaec5994b2a4581b52efe79e5cfbd3df" kindref="member">set_tag</ref>)</highlight></codeline>
+<codeline lineno="33" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a90b3968cec094c41169c0bd8c7e8b5d4" kindref="member">get_tag</ref><sp/>WRITE<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1aeaec5994b2a4581b52efe79e5cfbd3df" kindref="member">set_tag</ref>)</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1abc11e1448e1f8b503378927100243d6b" kindref="member">GuiLiveReloaderAttachedProperty</ref>(QObject<sp/>*</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
@@ -161,6 +161,6 @@
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal">QML_DECLARE_TYPEINFO(<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider" kindref="compound">qtsdl::GuiLiveReloaderAttachedPropertyProvider</ref>,<sp/>QML_HAS_ATTACHED_PROPERTIES)</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/gui_live_reloader.h"/>
   </compounddef>
 </doxygen>

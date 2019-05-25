@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="21" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="23" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="23" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="23" bodyend="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,12 +45,12 @@
 <para>hasher for unit classes enum type </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2829">
+      <node id="6635">
         <label>std::hash&lt; openage::gamedata::unit_classes &gt;</label>
         <link refid="structstd_1_1hash_3_01openage_1_1gamedata_1_1unit__classes_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="20" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="20" bodyend="27"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="20" bodyend="27"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01openage_1_1gamedata_1_1unit__classes_01_4_1a7f87a68b79a14a0d89d4a08ed4fbacba" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::gamedata::unit_classes &gt;</scope><name>operator()</name></member>
       <member refid="structstd_1_1hash_3_01openage_1_1gamedata_1_1unit__classes_01_4_1a41702e5fe0a4ac278d583eae0486261e" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::gamedata::unit_classes &gt;</scope><name>underlying_type</name></member>

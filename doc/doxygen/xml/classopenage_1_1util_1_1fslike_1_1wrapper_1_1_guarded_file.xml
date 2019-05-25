@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::wrapper::GuardedFile</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.abstract.FileLikeObject</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.wrapper.GuardedFile::obj</definition>
+        <argsstring></argsstring>
+        <name>obj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="159" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="159" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" compoundref="wrapper_8py" startline="202" endline="211">openage.util.fslike.wrapper.GuardedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a1ee9575f857677c147ca53ebf138bf93" compoundref="wrapper_8py" startline="190" endline="193">openage.util.fslike.wrapper.GuardedFile.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aadcfece174ea70aab42cb15c92cf52b1" compoundref="wrapper_8py" startline="194" endline="197">openage.util.fslike.wrapper.GuardedFile.flush</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ab9756db4c5d984108d5415c4c3adc85d" compoundref="wrapper_8py" startline="198" endline="201">openage.util.fslike.wrapper.GuardedFile.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" compoundref="wrapper_8py" startline="162" endline="165">openage.util.fslike.wrapper.GuardedFile.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a968e1af8c9b62b815a4bc702ee931714" compoundref="wrapper_8py" startline="166" endline="169">openage.util.fslike.wrapper.GuardedFile.readable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" compoundref="wrapper_8py" startline="178" endline="181">openage.util.fslike.wrapper.GuardedFile.seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a12490137c4995af97ebb161a403258c5" compoundref="wrapper_8py" startline="182" endline="185">openage.util.fslike.wrapper.GuardedFile.seekable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1af26b8955c2d939c5e2c3c940c62ecdc2" compoundref="wrapper_8py" startline="186" endline="189">openage.util.fslike.wrapper.GuardedFile.tell</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1acbed596f8c057616d085773c3f8c46ee" compoundref="wrapper_8py" startline="174" endline="177">openage.util.fslike.wrapper.GuardedFile.writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" compoundref="wrapper_8py" startline="170" endline="173">openage.util.fslike.wrapper.GuardedFile.write</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.wrapper.GuardedFile::guard</definition>
+        <argsstring></argsstring>
+        <name>guard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="160" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="160" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" compoundref="wrapper_8py" startline="202" endline="211">openage.util.fslike.wrapper.GuardedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a1ee9575f857677c147ca53ebf138bf93" compoundref="wrapper_8py" startline="190" endline="193">openage.util.fslike.wrapper.GuardedFile.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aadcfece174ea70aab42cb15c92cf52b1" compoundref="wrapper_8py" startline="194" endline="197">openage.util.fslike.wrapper.GuardedFile.flush</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ab9756db4c5d984108d5415c4c3adc85d" compoundref="wrapper_8py" startline="198" endline="201">openage.util.fslike.wrapper.GuardedFile.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" compoundref="wrapper_8py" startline="162" endline="165">openage.util.fslike.wrapper.GuardedFile.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a968e1af8c9b62b815a4bc702ee931714" compoundref="wrapper_8py" startline="166" endline="169">openage.util.fslike.wrapper.GuardedFile.readable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" compoundref="wrapper_8py" startline="178" endline="181">openage.util.fslike.wrapper.GuardedFile.seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a12490137c4995af97ebb161a403258c5" compoundref="wrapper_8py" startline="182" endline="185">openage.util.fslike.wrapper.GuardedFile.seekable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1af26b8955c2d939c5e2c3c940c62ecdc2" compoundref="wrapper_8py" startline="186" endline="189">openage.util.fslike.wrapper.GuardedFile.tell</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1acbed596f8c057616d085773c3f8c46ee" compoundref="wrapper_8py" startline="174" endline="177">openage.util.fslike.wrapper.GuardedFile.writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" compoundref="wrapper_8py" startline="170" endline="173">openage.util.fslike.wrapper.GuardedFile.write</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ad1056de757e4d8995c11753d3c5fdbe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.__init__</definition>
+        <argsstring>(self, obj, guard)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" kindref="member">obj</ref></type>
+          <defname>obj</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" kindref="member">guard</ref></type>
+          <defname>guard</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="157" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.read</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902">read</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Read at most size bytes (less if EOF has been reached). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for write-only objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="162" bodyend="165"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a968e1af8c9b62b815a4bc702ee931714" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.readable</definition>
+        <argsstring>(self)</argsstring>
+        <name>readable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a921de3bfb2d8bcaae526bd93347d4764">readable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" kindref="member">read()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="166" bodyend="169"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.write</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>write</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a118b6ae6f4476f578a6cee666adc02cb">write</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Writes all of data to the file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for read-only object.
+
+   There is no return value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="170" bodyend="173"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1acbed596f8c057616d085773c3f8c46ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.writable</definition>
+        <argsstring>(self)</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a08761f78387658db85dc2f1137cb3db6">writable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" kindref="member">write()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="174" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="174" bodyend="177"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.seek</definition>
+        <argsstring>(self, offset, whence=os.SEEK_SET)</argsstring>
+        <name>seek</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad255ffd40c48e6610e464d5c3c43b2fb">seek</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>offset</type>
+          <defname>offset</defname>
+        </param>
+        <param>
+          <type>whence</type>
+          <defname>whence</defname>
+          <defval>os.SEEK_SET</defval>
+        </param>
+        <briefdescription>
+<para>Seeks to a given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   May raise UnsupportedOperation for any or all arguments, in case of
+   unseekable streams.
+
+   For testing seek capabilities, it&apos;s recommended to call seek(0)
+   immediately after object creation.
+
+   There is no return value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="178" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="178" bodyend="181"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a12490137c4995af97ebb161a403258c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.seekable</definition>
+        <argsstring>(self)</argsstring>
+        <name>seekable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a72fc53b76ba8da3a41cd61647dbaae6e">seekable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" kindref="member">seek()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="182" bodyend="185"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1af26b8955c2d939c5e2c3c940c62ecdc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.tell</definition>
+        <argsstring>(self)</argsstring>
+        <name>tell</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b">tell</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns the current position in the file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Must work properly for all file-like objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="186" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="186" bodyend="189"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a1ee9575f857677c147ca53ebf138bf93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75">close</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="190" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="190" bodyend="193"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aadcfece174ea70aab42cb15c92cf52b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.flush</definition>
+        <argsstring>(self)</argsstring>
+        <name>flush</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1af0f454daf7adab7c0dbbe38f3ec8dedb">flush</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="194" bodyend="197"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ab9756db4c5d984108d5415c4c3adc85d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.get_size</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7">get_size</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="198" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="198" bodyend="201"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.wrapper.GuardedFile.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="202" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="202" bodyend="211"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" compoundref="wrapper_8py" startline="160">openage.util.fslike.wrapper.GuardedFile.guard</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1adecd44b6b3b415426460d74232f5b44d" compoundref="wrapper_8py" startline="37">openage.util.fslike.wrapper.Wrapper.obj</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" compoundref="wrapper_8py" startline="159">openage.util.fslike.wrapper.GuardedFile.obj</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5907">
+        <label>openage.util.fslike.wrapper.GuardedFile</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file"/>
+        <childnode refid="5908" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5909">
+        <label>ABC</label>
+      </node>
+      <node id="5908">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5909" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5910">
+        <label>openage.util.fslike.wrapper.GuardedFile</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file"/>
+        <childnode refid="5911" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5912">
+        <label>ABC</label>
+      </node>
+      <node id="5911">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5912" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/wrapper.py" bodystart="156" bodyend="212"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ad1056de757e4d8995c11753d3c5fdbe3" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad1e8617a5d0fedd8596e6bb8ad5a6bb2" prot="public" virt="non-virtual" ambiguityscope="openage::util::filelike::abstract::FileLikeObject."><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a1ee9575f857677c147ca53ebf138bf93" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aadcfece174ea70aab42cb15c92cf52b1" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ab9756db4c5d984108d5415c4c3adc85d" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a605a616ee4448ce626524bdb5be86dd3" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>guard</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a79a00dce9024fc9a8fc3100a3595948b" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>obj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a968e1af8c9b62b815a4bc702ee931714" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a12490137c4995af97ebb161a403258c5" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1af26b8955c2d939c5e2c3c940c62ecdc2" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1acbed596f8c057616d085773c3f8c46ee" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" prot="public" virt="non-virtual"><scope>openage::util::fslike::wrapper::GuardedFile</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

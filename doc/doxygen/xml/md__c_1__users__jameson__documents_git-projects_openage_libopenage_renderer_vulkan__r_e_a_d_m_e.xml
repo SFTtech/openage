@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="md__c_1__users__jameson__documents_git-projects_openage_libopenage_renderer_vulkan__r_e_a_d_m_e" kind="page">
+    <compoundname>md_C:_Users_Jameson_Documents_git-projects_openage_libopenage_renderer_vulkan_README</compoundname>
+    <title>Vulkan renderer</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An experimental, mostly unimplemented Vulkan renderer. Can draw one triangle at best. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

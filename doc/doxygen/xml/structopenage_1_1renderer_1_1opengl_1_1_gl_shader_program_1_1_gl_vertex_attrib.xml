@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="96" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="97" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -40,7 +40,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="99" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -49,12 +54,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2459">
+      <node id="4703">
         <label>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</label>
         <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/shader_program.h" line="95" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="95" bodyend="100"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="95" bodyend="100"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</scope><name>location</name></member>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</scope><name>size</name></member>

@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1struct_1_1_flags" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::struct::Flags</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">metaclass</basecompoundref>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_flags_meta" prot="public" virt="non-virtual">openage.util.struct.FlagsMeta</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes" prot="public" virt="non-virtual">openage.cabextract.cab.CFFileAttributes</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags" prot="public" virt="non-virtual">openage.cabextract.cab.CFHeaderFlags</derivedcompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1struct_1_1_flags_1a8a170009d09cddd227fda40f8a9e0bc5" prot="private" static="yes" mutable="no">
+        <type></type>
+        <definition>openage::util.struct.Flags::_flags</definition>
+        <argsstring></argsstring>
+        <name>_flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="289" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="289" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a3407f22b41e48ab3863a9f593435933e" compoundref="struct_8py" startline="291" endline="301">openage.util.struct.Flags.__init__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a6a0ca67c162ec2342ddf176a0fa5598e" compoundref="struct_8py" startline="313" endline="316">openage.util.struct.Flags.as_dict</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_flags_1a3407f22b41e48ab3863a9f593435933e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.Flags.__init__</definition>
+        <argsstring>(self, val)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref></type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="291" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="291" bodyend="301"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_flags_1a8a170009d09cddd227fda40f8a9e0bc5" compoundref="struct_8py" startline="289">openage.util.struct.Flags._flags</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" compoundref="struct_8py" startline="305" endline="309">openage.util.struct.Flags.unknown</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.Flags.unknown</definition>
+        <argsstring>(self, unknownflags)</argsstring>
+        <name>unknown</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>unknownflags</type>
+          <defname>unknownflags</defname>
+        </param>
+        <briefdescription>
+<para>Default handler for any unknown bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Overload if needed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="305" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="305" bodyend="309"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" compoundref="struct_8py" startline="201" endline="204">openage.util.struct.NamedStruct.as_dict</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_flags_1a6a0ca67c162ec2342ddf176a0fa5598e" compoundref="struct_8py" startline="313" endline="316">openage.util.struct.Flags.as_dict</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a3407f22b41e48ab3863a9f593435933e" compoundref="struct_8py" startline="291" endline="301">openage.util.struct.Flags.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_flags_1a6a0ca67c162ec2342ddf176a0fa5598e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.Flags.as_dict</definition>
+        <argsstring>(self)</argsstring>
+        <name>as_dict</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns a key-value dict for all flags. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="313" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="313" bodyend="316"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_flags_1a8a170009d09cddd227fda40f8a9e0bc5" compoundref="struct_8py" startline="289">openage.util.struct.Flags._flags</references>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1a9f6a718342072c143f8d66ebf9f5ff53" compoundref="struct_8py" startline="317" endline="319">openage.util.struct.Flags.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" compoundref="struct_8py" startline="305" endline="309">openage.util.struct.Flags.unknown</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1struct_1_1_flags_1a9f6a718342072c143f8d66ebf9f5ff53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.struct.Flags.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="317" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="317" bodyend="319"/>
+        <references refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" compoundref="struct_8py" startline="201" endline="204">openage.util.struct.NamedStruct.as_dict</references>
+        <references refid="classopenage_1_1util_1_1struct_1_1_flags_1a6a0ca67c162ec2342ddf176a0fa5598e" compoundref="struct_8py" startline="313" endline="316">openage.util.struct.Flags.as_dict</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Designed to be inherited from, similar to <ref refid="classopenage_1_1util_1_1_enum" kindref="compound">Enum</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Used to generate flag parsers (for boolean flags that are stored in an integer value).</para>
+<para>Specify the bit numbers of all possible flags as attributes, e.g.:</para>
+<para>class MyFlags(Flags): thisflag = 0 thatflag = 1</para>
+<para>The constructor of the class takes an integer argument, which is parsed; all the boolean values are stored in the attributes. If any unknown bits are set, self.unknown() is called. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6033">
+        <label>openage.cabextract.cab.CFFileAttributes</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_attributes"/>
+        <childnode refid="6029" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6034">
+        <label>openage.cabextract.cab.CFHeaderFlags</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags"/>
+        <childnode refid="6029" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6032">
+        <label>type</label>
+      </node>
+      <node id="6029">
+        <label>openage.util.struct.Flags</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags"/>
+        <childnode refid="6030" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6031" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6031">
+        <label>openage.util.struct.FlagsMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags_meta"/>
+        <childnode refid="6032" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6030">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6038">
+        <label>type</label>
+      </node>
+      <node id="6035">
+        <label>openage.util.struct.Flags</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags"/>
+        <childnode refid="6036" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6037" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6037">
+        <label>openage.util.struct.FlagsMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_flags_meta"/>
+        <childnode refid="6038" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6036">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" line="283" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/struct.py" bodystart="283" bodyend="319"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_1a3407f22b41e48ab3863a9f593435933e" prot="public" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_meta_1a7f7aa6ac1d715dc74204a215f710794b" prot="public" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_1a9f6a718342072c143f8d66ebf9f5ff53" prot="public" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_1a8a170009d09cddd227fda40f8a9e0bc5" prot="private" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>_flags</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_1a6a0ca67c162ec2342ddf176a0fa5598e" prot="public" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_flags_1aff72d5cb5a508e186cc5ff6fe122b165" prot="public" virt="non-virtual"><scope>openage::util::struct::Flags</scope><name>unknown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

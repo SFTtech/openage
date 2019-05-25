@@ -25,7 +25,7 @@
         <label>functional</label>
       </node>
       <node id="697">
-        <label>libopenage/error/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp</label>
         <link refid="error_2error_8cpp"/>
         <childnode refid="698" relation="include">
         </childnode>
@@ -352,6 +352,6 @@
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/error/error.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp"/>
   </compounddef>
 </doxygen>

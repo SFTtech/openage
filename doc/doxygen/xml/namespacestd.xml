@@ -33,7 +33,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.cpp" line="193" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="193" bodyend="206"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.cpp" line="193" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.cpp" bodystart="193" bodyend="206"/>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da62506be34d574da4a0d158a67253ea99">openage::food</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328dae07e81c20cf5935f5225765f0af81755">openage::gold</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0a840ef45467fb3932dbf2c2896c5cbf">openage::stone</references>
+        <references refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da22811dd94d65037ef86535740b98dec8">openage::wood</references>
+        <referencedby refid="classopenage_1_1_action_mode_1a6288ce1c7b45e988f140ace30845bc69" compoundref="game__control_8cpp" startline="478" endline="484">openage::ActionMode::announce</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1a3d4b9fbef261d19138ba87083e4083a5" compoundref="game__control_8cpp" startline="832" endline="838">openage::GameControl::announce_current_player_name</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">openage::input::Event::info</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1ae769f520dfdb148ec831c151a954a881" compoundref="unit_8cpp" startline="311" endline="313">openage::Unit::logsource_name</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" compoundref="input__manager_8cpp" startline="126" endline="128">openage::input::InputManager::mouse_bind_to_string</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1ac96d0e9e50c7efe2810017f60aa7a6ce" compoundref="selection_8cpp" startline="283" endline="317">openage::UnitSelection::show_attributes</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" compoundref="options_8cpp" startline="171" endline="197">openage::options::OptionValue::str_value</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1aa72527aa78526c376d473b0e9a4e66a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>string</type>
@@ -50,7 +62,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/score.cpp" line="94" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="94" bodyend="107"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/score.cpp" bodystart="94" bodyend="107"/>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a0959a8b663be96468a1c5c1d456243a2">openage::economy</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a31ba6d3619a6d70c983151afa0764de4">openage::military</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a7310936c1bff3304c3767495298a29fc">openage::society</references>
+        <references refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a83ec45960b80c035a0068df1d9df5aa8">openage::technology</references>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1ac276d688c378e08da8419f69f5008657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>string</type>
@@ -67,7 +83,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/ability.cpp" line="415" column="1" bodyfile="libopenage/unit/ability.cpp" bodystart="415" bodyend="444"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp" line="415" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp" bodystart="415" bodyend="444"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659">openage::attack</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1">openage::build</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a31168275dcaac634489082b54c4c66d0">openage::convert</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a2dc979d8571788e647e49a10223acae8">openage::garrison</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a76a79a1cdd981d7b73a1b7cf9cc6e0de">openage::gather</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a214d940b5313897d9e25b3a2b3533770">openage::heal</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7e39411afa494a20a2b1a11eff1fe660">openage::patrol</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a9ab776b93b3c6bbb67f4545371814423">openage::repair</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7412df2b1db8cd2a5d4aafdb6c2090d3">openage::research</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a61b3a8faa9c1091806675c230a9abe64">openage::train</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828aa2218a02430bfb386f4dfee54f6d2325">openage::ungarrison</references>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -94,7 +122,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="470" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="470" bodyend="472"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="470" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="470" bodyend="472"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" compoundref="fixed__point_8h" startline="394" endline="396">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::sqrt</references>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" compoundref="terrain_8cpp" startline="402" endline="465">openage::Terrain::create_tile_advice</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="namespaceopenage_1_1math_1a29c55215e73408c49f2654261fd73d8e" compoundref="math_8h" startline="17" endline="19">openage::math::hypot3</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" compoundref="vector_8h" startline="160" endline="162">openage::util::Vector&lt; N, T &gt;::norm</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" compoundref="quaternion_8h" startline="173" endline="175">openage::util::Quaternion&lt; T &gt;::norm</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" compoundref="quaternion_8h" startline="66" endline="133">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" compoundref="fixed__point_8h" startline="394" endline="396">openage::util::FixedPoint&lt; int64_t, 16 &gt;::sqrt</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -125,7 +162,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="475" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="475" bodyend="480"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="475" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="475" bodyend="480"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
+        <referencedby refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">openage::util::array8_to_array64</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_best_packer_1a94a5247cf3049d7b95b2937858d0db31" compoundref="binpack_8py" startline="116" endline="118">openage.convert.binpack.BestPacker.best_packer</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" compoundref="math_8py" startline="29" endline="31">openage.util.math.clamp</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" compoundref="eventqueue_8cpp" startline="16" endline="73">openage::event::EventQueue::create_event</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" compoundref="lzxd_8cpp" startline="740" endline="860">openage::util::compress::LZXDStream::decompress_next_frame</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" compoundref="loop_8cpp" startline="90" endline="155">openage::event::Loop::execute_events</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1a11543b907256b66c6b74af27ebb7c82c" compoundref="bytequeue_8py" startline="189" endline="222">openage.util.bytequeue.ByteBuffer.get_buffers</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" compoundref="keyframe__container_8h" startline="172" endline="179">openage::curve::KeyframeContainer&lt; T &gt;::KeyframeContainer</referencedby>
+        <referencedby refid="namespaceopenage_1_1convert_1_1binpack_1ac86edd0acbc07bb4b440e2f911ca50f3" compoundref="binpack_8py" startline="144" endline="150">openage.convert.binpack.maxside_heuristic</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1ac5232c53c071a31afb4be3f6ffe45b10" compoundref="terrain__object_8cpp" startline="380" endline="382">openage::SquareObject::min_axis</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" compoundref="fixed__point_8h" startline="209" endline="211">openage::util::FixedPoint&lt; int64_t, 16 &gt;::min_value</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="324" endline="334">openage::SquareObject::on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" compoundref="selection_8cpp" startline="246" endline="270">openage::UnitSelection::select_space</referencedby>
+        <referencedby refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" compoundref="logsink_8cpp" startline="66" endline="71">openage::log::LogSinkList::set_lowest_loglevel</referencedby>
+        <referencedby refid="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" compoundref="selection_8cpp" startline="331" endline="362">openage::tiles_in_range</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" compoundref="loop_8cpp" startline="158" endline="215">openage::event::Loop::update_changes</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -156,7 +215,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="483" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="483" bodyend="488"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="483" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="483" bodyend="488"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
+        <referencedby refid="namespaceopenage_1_1path_1a7d47462a02dd8b972acca24d5e05f179" compoundref="heuristics_8cpp" startline="18" endline="22">openage::path::chebyshev_cost</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" compoundref="generator_8cpp" startline="153" endline="234">openage::Generator::create_regions</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a2858e0798bf7e033c56f6ec653180588" compoundref="fixed__point_8h" startline="119" endline="126">openage::util::FixedPoint&lt; int64_t, 16 &gt;::fractional_part_bitmask</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="415" endline="420">openage::RadialObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" compoundref="fixed__point_8h" startline="216" endline="218">openage::util::FixedPoint&lt; int64_t, 16 &gt;::max_value</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1aaab1452776a2962c6ccb6bf3b55efecf" compoundref="terrain__object_8cpp" startline="324" endline="334">openage::SquareObject::on_edge</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" compoundref="selection_8cpp" startline="246" endline="270">openage::UnitSelection::select_space</referencedby>
+        <referencedby refid="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" compoundref="selection_8cpp" startline="331" endline="362">openage::tiles_in_range</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" compoundref="glyph__atlas_8cpp" startline="147" endline="154">openage::renderer::GlyphAtlas::update_dirty_area</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1a6af851cc1249a970adde4dc422ff824a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -183,7 +257,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="491" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="491" bodyend="495"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="491" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="491" bodyend="495"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" compoundref="fixed__point_8h" startline="224" endline="228">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" compoundref="rng__tests_8cpp" startline="84" endline="98">openage::rng::tests::bool_dist</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a7d47462a02dd8b972acca24d5e05f179" compoundref="heuristics_8cpp" startline="18" endline="22">openage::path::chebyshev_cost</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ab0736d57ce5014c9caea96125ad87b0d" compoundref="terrain_8cpp" startline="329" endline="399">openage::Terrain::create_draw_advice</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" compoundref="vector_8h" startline="60" endline="68">openage::util::Vector&lt; N, T &gt;::equals</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" compoundref="matrix_8h" startline="89" endline="98">openage::util::Matrix&lt; M, N, T &gt;::equals</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" compoundref="quaternion_8h" startline="264" endline="269">openage::util::Quaternion&lt; T &gt;::equals_rad</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" compoundref="rng__tests_8cpp" startline="36" endline="77">openage::rng::tests::freq_dist</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a825dde52e9d0fd7fe6fa6970a1ec58e0" compoundref="heuristics_8cpp" startline="12" endline="16">openage::path::manhattan_cost</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" compoundref="rng__tests_8cpp" startline="108" endline="136">openage::rng::tests::real_dist</referencedby>
+        <referencedby refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" compoundref="terrain__outline_8cpp" startline="12" endline="31">openage::square_outline</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -214,13 +301,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point.h" line="498" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="498" bodyend="500"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" line="498" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point.h" bodystart="498" bodyend="500"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::hypot</references>
+        <referencedby refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1af43e3d3caa4951b79a5dfee9a4aeee8a" compoundref="terrain__object_8cpp" startline="310" endline="322">openage::SquareObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" compoundref="fixed__point_8h" startline="338" endline="340">openage::util::FixedPoint&lt; int64_t, 16 &gt;::hypot</referencedby>
+        <referencedby refid="classopenage_1_1_square_object_1a6ab34e730282117594441a96e2fb5882" compoundref="terrain__object_8cpp" startline="347" endline="378">openage::SquareObject::intersects</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys2__delta_1a3b3d995d39587eef8aa02a684823d6df" compoundref="phys_8cpp" startline="31" endline="33">openage::coord::phys2_delta::length</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" compoundref="terrain__search_8cpp" startline="81" endline="102">openage::TerrainSearch::next_tile</referencedby>
+        <referencedby refid="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" compoundref="terrain__outline_8cpp" startline="33" endline="59">openage::radial_outline</referencedby>
+        <referencedby refid="classopenage_1_1_move_action_1a87eb54704dff471c3401ec7c7a88b044" compoundref="unit_2action_8cpp" startline="726" endline="736">openage::MoveAction::set_distance</referencedby>
+        <referencedby refid="classopenage_1_1_move_action_1afa4e4983c00b0207af76c7b717e81a05" compoundref="unit_2action_8cpp" startline="591" endline="685">openage::MoveAction::update</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/audio/hash_functions.h" line="9" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/hash_functions.h" line="9" column="1"/>
   </compounddef>
 </doxygen>

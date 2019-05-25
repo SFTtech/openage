@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1codegen_1_1codegen_1_1_write_catcher" kind="class" language="Python" prot="public">
+    <compoundname>openage::codegen::codegen::WriteCatcher</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o" prot="public" virt="non-virtual">openage.util.filelike.fifo.FIFO</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad6a8efec2fd957629879b16a6c02bfe7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.codegen.codegen.WriteCatcher::eof</definition>
+        <argsstring></argsstring>
+        <name>eof</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" compoundref="codegen_8py" startline="51" endline="57">openage.codegen.codegen.WriteCatcher.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a77dba0458d85fcf0bec2fd7d11b3737a" compoundref="fifo_8py" startline="99" endline="108">openage.util.filelike.fifo.FIFO.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1af9bde4cd9fa0a8d6e1e3f2bc338c245a" compoundref="fifo_8py" startline="76" endline="78">openage.util.filelike.fifo.FIFO.seteof</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1accebc5f8a3967df023b5be58c787ee94" compoundref="fifo_8py" startline="82" endline="87">openage.util.filelike.fifo.FIFO.write</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1a81a39d07ebb17dfc512f9c4f904fb692" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.WriteCatcher.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a351589952d273be499c172e2aa9a3601">close</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="48" bodyend="50"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.WriteCatcher.read</definition>
+        <argsstring>(self, size=-1)</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a77dba0458d85fcf0bec2fd7d11b3737a">read</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>size</type>
+          <defname>size</defname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Read at most size bytes (less if EOF has been reached). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for write-only objects.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="51" bodyend="57"/>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad6a8efec2fd957629879b16a6c02bfe7" compoundref="codegen_8py" startline="49">openage.codegen.codegen.WriteCatcher.eof</references>
+        <references refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" compoundref="bitstream_8h" startline="74">openage::util::compress::BitStream&lt; inbuf_size &gt;::eof</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="794">
+        <label>openage.util.filelike.fifo.FIFO</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o"/>
+        <childnode refid="795" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="796">
+        <label>ABC</label>
+      </node>
+      <node id="793">
+        <label>openage.codegen.codegen.WriteCatcher</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher"/>
+        <childnode refid="794" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="795">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="796" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="798">
+        <label>openage.util.filelike.fifo.FIFO</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o"/>
+        <childnode refid="799" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="800">
+        <label>ABC</label>
+      </node>
+      <node id="797">
+        <label>openage.codegen.codegen.WriteCatcher</label>
+        <link refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher"/>
+        <childnode refid="798" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="799">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="800" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="47" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a2313ec42fd2d4ef616f78f2664acf44b" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a4b5d580d6081a28f13ddaaf2ebf857eb" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1a81a39d07ebb17dfc512f9c4f904fb692" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a7e7f527351f4e3f9b1eab58e6fae37cd" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>closed</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad6a8efec2fd957629879b16a6c02bfe7" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>eof</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1ad5dbe366edae03adfb5fc0bc9a7c65ca" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a9b982f9dc63389db10c765590221724c" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>pos</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1af8c5faf14bb51ad9707f209200b43ec0" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>queue</name></member>
+      <member refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1ad481d2443b0fd3d9f33567caf73b4512" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1adf7d8d5053f311bd15b1bfa3ca453e50" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1adbb99e71fbabcc53639c4ad1c02d381b" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1af21b86aeeaeb8df5d14d08d39c8fa454" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1af9bde4cd9fa0a8d6e1e3f2bc338c245a" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>seteof</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1ab1278c0d10552496525b21f96e71fd20" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1ace650d43f4634611321d48b48876c577" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>tellw</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a7e3c29ecf26b6f213c6c06d0eceba8fe" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1accebc5f8a3967df023b5be58c787ee94" prot="public" virt="non-virtual"><scope>openage::codegen::codegen::WriteCatcher</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

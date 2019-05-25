@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_a25237b91464ed624c167f154229e196" kind="dir">
-    <compoundname>libopenage/util</compoundname>
-    <innerdir refid="dir_ba3d381123465cb5dd7373109ded0835">libopenage/util/compress</innerdir>
-    <innerdir refid="dir_08f007f8ad7650aeb247b9a033bf8b2f">libopenage/util/filelike</innerdir>
-    <innerdir refid="dir_41e3defe94721b47a761b9a8863212b0">libopenage/util/fslike</innerdir>
-    <innerdir refid="dir_5327f161809840a3cb1fbad9bbb545fa">libopenage/util/macro</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util</compoundname>
+    <innerdir refid="dir_ba3d381123465cb5dd7373109ded0835">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/compress</innerdir>
+    <innerdir refid="dir_08f007f8ad7650aeb247b9a033bf8b2f">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike</innerdir>
+    <innerdir refid="dir_41e3defe94721b47a761b9a8863212b0">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike</innerdir>
+    <innerdir refid="dir_5327f161809840a3cb1fbad9bbb545fa">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/macro</innerdir>
     <innerfile refid="algorithm_8h">algorithm.h</innerfile>
     <innerfile refid="util_2color_8cpp">color.cpp</innerfile>
     <innerfile refid="util_2color_8h">color.h</innerfile>
@@ -85,6 +85,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/"/>
   </compounddef>
 </doxygen>

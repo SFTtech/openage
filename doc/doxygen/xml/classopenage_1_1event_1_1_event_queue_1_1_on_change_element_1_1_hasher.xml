@@ -19,7 +19,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventqueue.h" line="36" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="36" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="36" bodyend="38"/>
+        <references refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a2ecd185040dfb65425159b2fe64c80b7" compoundref="eventqueue_8h" startline="32">openage::event::EventQueue::OnChangeElement::hash</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -27,12 +28,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2845">
+      <node id="2255">
         <label>openage::event::EventQueue::OnChangeElement::Hasher</label>
         <link refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventqueue.h" line="34" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="34" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventqueue.h" bodystart="34" bodyend="39"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher_1a4d09231e34a0c45f2a639c34efbf32b2" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement::Hasher</scope><name>operator()</name></member>
     </listofallmembers>

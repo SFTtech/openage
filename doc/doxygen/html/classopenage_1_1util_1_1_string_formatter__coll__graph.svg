@@ -48,15 +48,15 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 257;
 var viewHeight = 674;
-var sectionId = 'dynsection-0';
+var sectionId = 'dynsection-1';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>openage::util::StringFormatter&lt; ChildType &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-670 253,-670 253,4 -4,4"/>
-<!-- Node1 -->
-<g id="node1" class="node"><title>Node1</title>
+<!-- Node7 -->
+<g id="node1" class="node"><title>Node7</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="9,-0.5 9,-189.5 155,-189.5 155,-0.5 9,-0.5"/>
 <text text-anchor="start" x="17" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::StringFormatter</text>
@@ -79,8 +79,8 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node2 -->
-<g id="node2" class="node"><title>Node2</title>
+<!-- Node8 -->
+<g id="node2" class="node"><title>Node8</title>
 <g id="a_node2"><a xlink:href="classopenage_1_1util_1_1_cachable_o_s_stream.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-237.5 0,-327.5 164,-327.5 164,-237.5 0,-237.5"/>
 <text text-anchor="middle" x="82" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::CachableOSStream</text>
@@ -94,14 +94,14 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node1 -->
-<g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>
+<!-- Node8&#45;&gt;Node7 -->
+<g id="edge1" class="edge"><title>Node8&#45;&gt;Node7</title>
 <path fill="none" stroke="#404040" d="M82,-237.068C82,-226.296 82,-214.318 82,-202.021"/>
 <polygon fill="none" stroke="#404040" points="82.0001,-201.652 78,-195.652 82,-189.652 86,-195.652 82.0001,-201.652"/>
 <text text-anchor="middle" x="108.5" y="-211" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;stream_ptr</text>
 </g>
-<!-- Node3 -->
-<g id="node3" class="node"><title>Node3</title>
+<!-- Node9 -->
+<g id="node3" class="node"><title>Node9</title>
 <g id="a_node3"><a xlink:href="classopenage_1_1util_1_1_external_o_string_stream.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="8.5,-375.5 8.5,-454.5 155.5,-454.5 155.5,-375.5 8.5,-375.5"/>
 <text text-anchor="start" x="16.5" y="-442.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalOString</text>
@@ -114,14 +114,14 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node2 -->
-<g id="edge2" class="edge"><title>Node3&#45;&gt;Node2</title>
+<!-- Node9&#45;&gt;Node8 -->
+<g id="edge2" class="edge"><title>Node9&#45;&gt;Node8</title>
 <path fill="none" stroke="#404040" d="M82,-375.199C82,-364.158 82,-351.901 82,-340.035"/>
 <polygon fill="none" stroke="#404040" points="82.0001,-339.879 78,-333.879 82,-327.879 86,-333.879 82.0001,-339.879"/>
 <text text-anchor="middle" x="102" y="-349" font-family="Helvetica,sans-Serif" font-size="10.00"> +stream</text>
 </g>
-<!-- Node4 -->
-<g id="node4" class="node"><title>Node4</title>
+<!-- Node10 -->
+<g id="node4" class="node"><title>Node10</title>
 <g id="a_node4"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="5.5,-508 5.5,-565 76.5,-565 76.5,-508 5.5,-508"/>
 <text text-anchor="middle" x="41" y="-553" font-family="Helvetica,sans-Serif" font-size="10.00">std::ostream</text>
@@ -132,13 +132,13 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node3 -->
-<g id="edge3" class="edge"><title>Node4&#45;&gt;Node3</title>
+<!-- Node10&#45;&gt;Node9 -->
+<g id="edge3" class="edge"><title>Node10&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M53.8169,-498.143C58.5378,-484.384 63.8942,-468.772 68.6601,-454.881"/>
 <polygon fill="none" stroke="midnightblue" points="50.444,-497.189 50.5093,-507.784 57.0652,-499.461 50.444,-497.189"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node"><title>Node5</title>
+<!-- Node11 -->
+<g id="node5" class="node"><title>Node11</title>
 <g id="a_node5"><a xlink:href="classopenage_1_1util_1_1_external_string_buf.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="95,-502.5 95,-570.5 249,-570.5 249,-502.5 95,-502.5"/>
 <text text-anchor="middle" x="172" y="-558.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::util::ExternalStringBuf</text>
@@ -150,14 +150,14 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node5&#45;&gt;Node3 -->
-<g id="edge4" class="edge"><title>Node5&#45;&gt;Node3</title>
+<!-- Node11&#45;&gt;Node9 -->
+<g id="edge4" class="edge"><title>Node11&#45;&gt;Node9</title>
 <path fill="none" stroke="#404040" d="M146.93,-502.213C138.147,-490.551 128.095,-477.204 118.566,-464.552"/>
 <polygon fill="none" stroke="#404040" points="118.29,-464.185 111.485,-461.799 111.071,-454.6 117.876,-456.986 118.29,-464.185"/>
 <text text-anchor="middle" x="141.5" y="-476" font-family="Helvetica,sans-Serif" font-size="10.00"> &#45;buf</text>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node"><title>Node6</title>
+<!-- Node12 -->
+<g id="node6" class="node"><title>Node12</title>
 <g id="a_node6"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="132.5,-608.5 132.5,-665.5 211.5,-665.5 211.5,-608.5 132.5,-608.5"/>
 <text text-anchor="middle" x="172" y="-653.5" font-family="Helvetica,sans-Serif" font-size="10.00">std::streambuf</text>
@@ -168,8 +168,8 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node6&#45;&gt;Node5 -->
-<g id="edge5" class="edge"><title>Node6&#45;&gt;Node5</title>
+<!-- Node12&#45;&gt;Node11 -->
+<g id="edge5" class="edge"><title>Node12&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M172,-598.007C172,-588.962 172,-579.383 172,-570.578"/>
 <polygon fill="none" stroke="midnightblue" points="168.5,-598.3 172,-608.3 175.5,-598.3 168.5,-598.3"/>
 </g>

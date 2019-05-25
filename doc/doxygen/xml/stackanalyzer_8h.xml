@@ -3,12 +3,12 @@
   <compounddef id="stackanalyzer_8h" kind="file" language="C++">
     <compoundname>stackanalyzer.h</compoundname>
     <includes refid="backtrace_8h" local="yes">backtrace.h</includes>
-    <includedby refid="error_2error_8cpp" local="yes">libopenage/error/error.cpp</includedby>
-    <includedby refid="error_2handlers_8cpp" local="yes">libopenage/error/handlers.cpp</includedby>
-    <includedby refid="stackanalyzer_8cpp" local="yes">libopenage/error/stackanalyzer.cpp</includedby>
+    <includedby refid="error_2error_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp</includedby>
+    <includedby refid="error_2handlers_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</includedby>
+    <includedby refid="stackanalyzer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</includedby>
     <incdepgraph>
       <node id="6534">
-        <label>libopenage/error/stackanalyzer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h</label>
         <link refid="stackanalyzer_8h"/>
         <childnode refid="6535" relation="include">
         </childnode>
@@ -40,7 +40,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="6540">
-        <label>libopenage/error/stackanalyzer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h</label>
         <link refid="stackanalyzer_8h"/>
         <childnode refid="6541" relation="include">
         </childnode>
@@ -50,15 +50,15 @@
         </childnode>
       </node>
       <node id="6541">
-        <label>libopenage/error/error.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/error.cpp</label>
         <link refid="error_2error_8cpp"/>
       </node>
       <node id="6543">
-        <label>libopenage/error/stackanalyzer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</label>
         <link refid="stackanalyzer_8cpp"/>
       </node>
       <node id="6542">
-        <label>libopenage/error/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</label>
         <link refid="error_2handlers_8cpp"/>
       </node>
     </invincdepgraph>
@@ -99,6 +99,6 @@
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/error/stackanalyzer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h"/>
   </compounddef>
 </doxygen>

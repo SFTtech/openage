@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="19" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="19" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="19" bodyend="24"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" prot="public" static="no" strong="yes">
         <type></type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="27" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="27" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="27" bodyend="34"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" prot="public" static="no" strong="yes">
         <type></type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="37" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="37" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="37" bodyend="41"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" prot="public" static="no" strong="yes">
         <type></type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="50" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="50" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="50" bodyend="55"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" prot="public" static="no" strong="yes">
         <type></type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/shader_source.h" line="15" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="15" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h" bodystart="15" bodyend="18"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" prot="public" static="no" strong="yes">
         <type></type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/shader_source.h" line="21" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="21" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/shader_source.h" bodystart="21" bodyend="27"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" prot="public" static="no" strong="yes">
         <type></type>
@@ -302,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="18" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="18" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="18" bodyend="33"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -323,7 +323,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.cpp" line="17" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="17" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" compoundref="mesh__data_8cpp" startline="31" endline="33">vertex_input_size</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a51463bbd68af13770e97e0867de4d6d6" prot="public" static="yes" mutable="no">
         <type>constexpr auto</type>
@@ -342,7 +343,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.cpp" line="24" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="24" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" compoundref="mesh__data_8cpp" startline="35" endline="37">vertex_input_count</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a735d6d55173355397ad37c31956361ee" prot="public" static="yes" mutable="no">
         <type>constexpr const std::array&lt; float, 16 &gt;</type>
@@ -362,7 +364,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.cpp" line="116" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="116" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="116" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" compoundref="mesh__data_8cpp" startline="123" endline="131">openage::renderer::resources::MeshData::make_quad</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -382,7 +385,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.cpp" line="31" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="31" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="31" bodyend="33"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a977e4848365083e50e14907e94ceb00e" compoundref="mesh__data_8cpp" startline="17">vin_size</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" compoundref="mesh__data_8cpp" startline="60" endline="66">openage::renderer::resources::VertexInputInfo::vert_size</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -400,7 +405,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.cpp" line="35" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="35" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="35" bodyend="37"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a51463bbd68af13770e97e0867de4d6d6" compoundref="mesh__data_8cpp" startline="24">vin_count</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr size_t</type>
@@ -451,7 +457,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_data.cpp" line="22" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="22" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_data.cpp" bodystart="22" bodyend="54"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" compoundref="texture__info_8h" startline="36" endline="48">pixel_size</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" compoundref="texture__data_8cpp" startline="56" endline="119">openage::renderer::resources::Texture2dData::Texture2dData</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr size_t</type>
@@ -469,13 +477,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/texture_info.h" line="36" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="36" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/texture_info.h" bodystart="36" bodyend="48"/>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39">bgr8</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70">depth24</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea73c959d144da660efa48a52e564aa633">r16ui</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea939e20bb21f297a3c7be5d44d77904f5">r32ui</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a">rgb8</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">rgba8</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaeed8ba7e197acdfba86db426ce2233c">rgba8ui</references>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" compoundref="texture__info_8cpp" startline="40" endline="51">openage::renderer::resources::Texture2dInfo::get_row_size</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" compoundref="texture__data_8cpp" startline="22" endline="54">guess_row_alignment</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/renderer.h" line="12" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/renderer.h" line="12" column="1"/>
   </compounddef>
 </doxygen>

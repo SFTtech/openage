@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::options Namespace Reference</title>
+<title>openage: openage::options Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -199,7 +200,12 @@ Functions</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="options_8h_source.xhtml#l00020">20</a> of file <a class="el" href="options_8h_source.xhtml">options.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                       {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863">bool_type</a>,</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd">int_type</a>,</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc">double_type</a>,</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48">string_type</a>,</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a">list_type</a></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div><div class="ttc" id="namespaceopenage_1_1options_xhtml_a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd"><div class="ttname"><a href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd">openage::options::option_type::int_type</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1options_xhtml_a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48"><div class="ttname"><a href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48">openage::options::option_type::string_type</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1options_xhtml_a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc"><div class="ttname"><a href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc">openage::options::option_type::double_type</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1options_xhtml_a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863"><div class="ttname"><a href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863">openage::options::option_type::bool_type</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1options_xhtml_a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a"><div class="ttname"><a href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a">openage::options::option_type::list_type</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -230,6 +236,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.xhtml#l00200">200</a> of file <a class="el" href="options_8cpp_source.xhtml">options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                              {</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">switch</span>(t) {</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">case</span> options::option_type::bool_type:</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">return</span> options::OptionValue(s == <span class="stringliteral">&quot;true&quot;</span>);</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">case</span> option_type::int_type:</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">return</span> options::OptionValue(stoi(s));</div><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">case</span> option_type::double_type:</div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">return</span> options::OptionValue(stod(s));</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">case</span> option_type::string_type:</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">return</span> options::OptionValue(s);</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">case</span> option_type::list_type:</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="comment">// TODO:</span></div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">return</span> options::OptionValue(<span class="keyword">false</span>);</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">return</span> options::OptionValue(<span class="keyword">false</span>);</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863">bool_type</a>, <a class="el" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc">double_type</a>, <a class="el" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd">int_type</a>, <a class="el" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a">list_type</a>, and <a class="el" href="namespaceopenage_1_1options.xhtml#a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48">string_type</a>.</p>
 
 </div>
 </div>

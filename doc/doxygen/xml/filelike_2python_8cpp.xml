@@ -116,7 +116,7 @@
         </childnode>
       </node>
       <node id="29839">
-        <label>libopenage/util/filelike/python.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp</label>
         <link refid="filelike_2python_8cpp"/>
         <childnode refid="29840" relation="include">
         </childnode>
@@ -383,6 +383,6 @@
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/filelike/python.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp"/>
   </compounddef>
 </doxygen>

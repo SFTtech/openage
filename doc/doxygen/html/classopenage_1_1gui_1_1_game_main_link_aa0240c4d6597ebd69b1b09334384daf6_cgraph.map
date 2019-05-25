@@ -1,0 +1,5 @@
+<map id="openage::gui::GameMainLink::set_engine" name="openage::gui::GameMainLink::set_engine">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,196,80"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361" title=" " alt="" coords="259,5,412,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_game_main_handle.xhtml#ac317d2db9befaa2614ed803e32a5ab38" title=" " alt="" coords="244,71,427,112"/>
+</map>

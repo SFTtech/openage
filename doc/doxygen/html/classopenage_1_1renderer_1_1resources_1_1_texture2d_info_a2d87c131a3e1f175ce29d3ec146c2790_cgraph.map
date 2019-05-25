@@ -1,0 +1,4 @@
+<map id="openage::renderer::resources::Texture2dInfo::get_row_size" name="openage::renderer::resources::Texture2dInfo::get_row_size">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,169,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1renderer_1_1resources.xhtml#aa8bc42c345504717eba7d38b39d278c2" title="Returns the size in bytes of a single pixel of the specified format." alt="" coords="217,13,363,54"/>
+</map>

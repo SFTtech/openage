@@ -1,7 +1,15 @@
 <map id="qtsdl::Inherits&lt; T, P &gt;" name="qtsdl::Inherits&lt; T, P &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="101,417,249,509"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="5,233,140,369"/>
-<area shape="rect" id="node3" title=" " alt="" coords="53,57,92,134"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="165,233,391,369"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="185,5,371,185"/>
+<area shape="rect" id="node1" title=" " alt="" coords="261,676,409,768"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="27,845,210,952"/>
+<area shape="rect" id="node10" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="243,845,426,952"/>
+<area shape="rect" id="node12" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="458,845,641,952"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="145,491,279,627"/>
+<area shape="rect" id="node3" title=" " alt="" coords="193,299,231,377"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="304,491,531,627"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="289,248,476,428"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="427,5,611,185"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="501,270,726,406"/>
+<area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_editor_mode_link.xhtml" title=" " alt="" coords="5,1001,211,1328"/>
+<area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_create_mode_link.xhtml" title=" " alt="" coords="235,1119,434,1211"/>
+<area shape="rect" id="node13" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml" title=" " alt="" coords="459,1045,656,1284"/>
 </map>

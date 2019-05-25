@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="35" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" compoundref="gui__rendering__setup__routines_8cpp" startline="31" endline="33">get_ctx</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_rendering_setup_routines_1aeefd59c38fe8d9ac2bae03c690497b70" compoundref="gui__rendering__setup__routines_8cpp" startline="13" endline="26">GuiRenderingSetupRoutines</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" compoundref="gui__rendering__setup__routines_8cpp" startline="39" endline="41">post_render</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" compoundref="gui__rendering__setup__routines_8cpp" startline="35" endline="37">pre_render</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -49,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="25" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="13" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="13" bodyend="26"/>
+        <references refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" compoundref="gui__rendering__setup__routines_8h" startline="35">ctx_extraction_mode</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1a5a11aab18d8dab01d045bd9121208a00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -62,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="28" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="28" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>QOpenGLContext *</type>
@@ -75,7 +80,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="31" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="31" bodyend="33"/>
+        <references refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" compoundref="gui__rendering__setup__routines_8h" startline="35">ctx_extraction_mode</references>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">qtsdl::GuiRendererImpl::reinit_fbo_if_needed</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -90,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="32" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="35" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="35" bodyend="37"/>
+        <references refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" compoundref="gui__rendering__setup__routines_8h" startline="35">ctx_extraction_mode</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -103,7 +111,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="33" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="39" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="39" bodyend="41"/>
+        <references refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" compoundref="gui__rendering__setup__routines_8h" startline="35">ctx_extraction_mode</references>
+        <referencedby refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a7f43aa071cbea190624038b51a108beb" compoundref="gui__rendering__setup__routines_8cpp" startline="50" endline="53">qtsdl::GuiRenderingCtxActivator::~GuiRenderingCtxActivator</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -112,12 +122,12 @@
 <para>Returns a GL context usable by Qt classes. Provides pre- and post-rendering functions to make the context usable for GUI rendering. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2760">
+      <node id="6472">
         <label>qtsdl::GuiRenderingSetupRoutines</label>
         <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="23" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="23" bodyend="36"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="23" bodyend="36"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>ctx_extraction_mode</name></member>
       <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>get_ctx</name></member>

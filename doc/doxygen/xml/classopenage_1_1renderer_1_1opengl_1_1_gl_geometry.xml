@@ -18,7 +18,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/geometry.h" line="46" column="1" bodyfile="libopenage/renderer/opengl/geometry.h" bodystart="46" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a99c9999b09c6cf8916a8f8bc82dcdee5" compoundref="opengl_2geometry_8cpp" startline="54" endline="77">draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a0107bf16583a0fb4bb73dd9d74678925" compoundref="opengl_2geometry_8cpp" startline="20" endline="39">GlGeometry</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1ab1574744e9d7afafa476f648c2abcf21" compoundref="opengl_2geometry_8cpp" startline="41" endline="52">update_verts_offset</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/geometry.h" line="22" column="1" bodyfile="libopenage/renderer/opengl/geometry.cpp" bodystart="17" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp" bodystart="17" bodyend="18"/>
+        <references refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8ccaf8abdf5b19a729759024275eaeb19a6a">openage::renderer::bufferless_quad</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a0107bf16583a0fb4bb73dd9d74678925" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +56,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/geometry.h" line="25" column="1" bodyfile="libopenage/renderer/opengl/geometry.cpp" bodystart="20" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp" bodystart="20" bodyend="39"/>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1a4ea3d4a79deb9b17eb3acb0e9ff12681" compoundref="lookup_8h" startline="150">openage::renderer::opengl::GL_INDEX_TYPE</references>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1aa1c08cb649fac64ab09cba708fa5cdba" compoundref="lookup_8h" startline="140">openage::renderer::opengl::GL_PRIMITIVE</references>
+        <references refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20">openage::renderer::mesh</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a8f732da4945e275d07451952179353de" compoundref="opengl_2geometry_8h" startline="46">mesh</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a99c9999b09c6cf8916a8f8bc82dcdee5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -66,7 +75,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/geometry.h" line="29" column="1" bodyfile="libopenage/renderer/opengl/geometry.cpp" bodystart="54" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp" bodystart="54" bodyend="77"/>
+        <references refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8ccaf8abdf5b19a729759024275eaeb19a6a">openage::renderer::bufferless_quad</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1_geometry_1af798beba5997d99d6cd882ac4451cc25" compoundref="geometry_8cpp" startline="12" endline="14">openage::renderer::Geometry::get_type</references>
+        <references refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20">openage::renderer::mesh</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a8f732da4945e275d07451952179353de" compoundref="opengl_2geometry_8h" startline="46">mesh</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4344b9058a349eaa6a8f3fd2ea4a0425" compoundref="shader__program_8cpp" startline="301" endline="365">openage::renderer::opengl::GlShaderProgram::execute_with</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1ab1574744e9d7afafa476f648c2abcf21" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -98,7 +114,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/geometry.h" line="31" column="1" bodyfile="libopenage/renderer/opengl/geometry.cpp" bodystart="41" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp" bodystart="41" bodyend="52"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1renderer_1_1_geometry_1af798beba5997d99d6cd882ac4451cc25" compoundref="geometry_8cpp" startline="12" endline="14">openage::renderer::Geometry::get_type</references>
+        <references refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20">openage::renderer::mesh</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a8f732da4945e275d07451952179353de" compoundref="opengl_2geometry_8h" startline="46">mesh</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -107,30 +128,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2388">
+      <node id="4666">
         <label>openage::renderer::Geometry</label>
         <link refid="classopenage_1_1renderer_1_1_geometry"/>
       </node>
-      <node id="2387">
+      <node id="4665">
         <label>openage::renderer::opengl::GlGeometry</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry"/>
-        <childnode refid="2388" relation="public-inheritance">
+        <childnode refid="4666" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2390">
+      <node id="4668">
         <label>openage::renderer::Geometry</label>
         <link refid="classopenage_1_1renderer_1_1_geometry"/>
       </node>
-      <node id="2389">
+      <node id="4667">
         <label>openage::renderer::opengl::GlGeometry</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry"/>
-        <childnode refid="2390" relation="public-inheritance">
+        <childnode refid="4668" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/geometry.h" line="19" column="1" bodyfile="libopenage/renderer/opengl/geometry.h" bodystart="19" bodyend="47"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h" bodystart="19" bodyend="47"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry_1a99c9999b09c6cf8916a8f8bc82dcdee5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlGeometry</scope><name>draw</name></member>
       <member refid="classopenage_1_1renderer_1_1_geometry_1abd04967c368d566677e44d49f370135d" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlGeometry</scope><name>Geometry</name></member>

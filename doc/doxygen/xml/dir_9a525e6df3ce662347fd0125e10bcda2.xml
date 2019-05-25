@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_9a525e6df3ce662347fd0125e10bcda2" kind="dir">
-    <compoundname>libopenage/gui/guisys/private/livereload</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload</compoundname>
     <innerfile refid="deferred__initial__constant__property__values_8cpp">deferred_initial_constant_property_values.cpp</innerfile>
     <innerfile refid="deferred__initial__constant__property__values_8h">deferred_initial_constant_property_values.h</innerfile>
     <innerfile refid="gui__live__reloader_8cpp">gui_live_reloader.cpp</innerfile>
@@ -14,6 +14,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/guisys/private/livereload/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/livereload/"/>
   </compounddef>
 </doxygen>

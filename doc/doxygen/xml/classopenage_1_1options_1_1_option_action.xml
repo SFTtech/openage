@@ -16,7 +16,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="150" column="1" bodyfile="libopenage/options.h" bodystart="150" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="150" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="150" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" compoundref="options_8cpp" startline="325" endline="327">openage::options::OptionNode::add_action</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" compoundref="header__snippet_8py" startline="26" endline="28">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_option_action_1a8543517939fade7350330c12c7f09e17" compoundref="options_8cpp" startline="219" endline="223">OptionAction</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -31,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="153" column="1" bodyfile="libopenage/options.h" bodystart="153" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="153" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +63,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="140" column="1" bodyfile="libopenage/options.cpp" bodystart="219" bodyend="223"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="140" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" bodystart="219" bodyend="223"/>
+        <references refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" compoundref="options_8h" startline="150">name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref></type>
@@ -68,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="145" column="1" bodyfile="libopenage/options.cpp" bodystart="226" bodyend="228"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.cpp" bodystart="226" bodyend="228"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,12 +86,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3474">
+      <node id="4339">
         <label>openage::options::OptionAction</label>
         <link refid="classopenage_1_1options_1_1_option_action"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/options.h" line="138" column="1" bodyfile="libopenage/options.h" bodystart="138" bodyend="155"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="138" bodyend="155"/>
     <listofallmembers>
       <member refid="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" prot="public" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>do_action</name></member>
       <member refid="classopenage_1_1options_1_1_option_action_1aaaa39ca37ed1412cd4ef03c06a5530be" prot="private" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>function</name></member>

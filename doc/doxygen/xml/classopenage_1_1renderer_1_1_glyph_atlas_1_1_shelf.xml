@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="92" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="92" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -29,7 +29,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="94" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="94" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="94" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3877fca5afd9bb460330220bdc9d7623" compoundref="glyph__atlas_8cpp" startline="17" endline="24">Shelf</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab5df8c46bb90b4586a92b0e4e7286280" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -42,7 +44,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="95" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -55,7 +58,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="96" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" compoundref="glyph__atlas_8cpp" startline="100" endline="145">openage::renderer::GlyphAtlas::set</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a66c2047e5f0bdea3327e6a7b4a3766a8" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -68,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="97" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +100,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="85" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="17" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp" bodystart="17" bodyend="24"/>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" compoundref="glyph__atlas_8h" startline="94">y_position</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -116,7 +122,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="87" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="26" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp" bodystart="26" bodyend="31"/>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" compoundref="glyph__atlas_8h" startline="111">openage::renderer::GlyphAtlas::height</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1abe91f123bbdf8af590b6f6ebe266d6fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -137,7 +144,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/glyph_atlas.h" line="89" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="33" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp" bodystart="33" bodyend="37"/>
+        <references refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" compoundref="glyph__atlas_8h" startline="108">openage::renderer::GlyphAtlas::width</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -145,12 +153,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4174">
+      <node id="4651">
         <label>openage::renderer::GlyphAtlas::Shelf</label>
         <link refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/glyph_atlas.h" line="83" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="83" bodyend="98"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h" bodystart="83" bodyend="98"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>check_fits</name></member>
       <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab6cd5bc9cb2e16e50da98b4f4aeda5a4" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>GlyphAtlas</name></member>

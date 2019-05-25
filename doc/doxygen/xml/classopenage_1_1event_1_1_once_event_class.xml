@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventclass.h" line="214" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="43" bodyend="45"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="214" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.cpp" bodystart="43" bodyend="45"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,36 +29,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3462">
+      <node id="2281">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="3461">
+      <node id="2280">
         <label>openage::event::OnceEventClass</label>
         <link refid="classopenage_1_1event_1_1_once_event_class"/>
-        <childnode refid="3462" relation="public-inheritance">
+        <childnode refid="2281" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3463">
+      <node id="2282">
         <label>openage::event::demo::ResetGame</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
-        <childnode refid="3461" relation="public-inheritance">
+        <childnode refid="2280" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3465">
+      <node id="2284">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="3464">
+      <node id="2283">
         <label>openage::event::OnceEventClass</label>
         <link refid="classopenage_1_1event_1_1_once_event_class"/>
-        <childnode refid="3465" relation="public-inheritance">
+        <childnode refid="2284" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventclass.h" line="212" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="212" bodyend="215"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" line="212" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventclass.h" bodystart="212" bodyend="215"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::OnceEventClass</scope><name>EventClass</name></member>
       <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::OnceEventClass</scope><name>id</name></member>

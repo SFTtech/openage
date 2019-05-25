@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::pyinterface Namespace Reference</title>
+<title>openage: openage::pyinterface Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -396,6 +397,32 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>checker is a function that must have defined behavior until destroy_py_if_component has been called for thisptr. It shall return true if the object has been properly initialized, and shall not throw any exceptions. </p>
 
 <p class="definition">Definition at line <a class="el" href="setup_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="setup_8cpp_source.xhtml">setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                                      {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    state &amp;checkers = state::get();</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{checkers.lock};</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// enforce that the object has an associated symbol name.</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(not <a class="code" href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24">util::is_symbol</a>(thisptr))) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">throw</span> Error(</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="stringliteral">&quot;Can&#39;t instantiate py interface component as non-global object. &quot;</span> &lt;&lt;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="stringliteral">&quot;Attempted instantiation at &quot;</span> &lt;&lt;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">util::symbol_name</a>(thisptr) &lt;&lt; <span class="stringliteral">&quot;.&quot;</span>,</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">true</span>);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    checkers.map[thisptr] = checker;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac6219374623d05b075782ea1adb09c0c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">openage::util::symbol_name</a></div><div class="ttdeci">std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8cpp_source.xhtml#l00098">compiler.cpp:98</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ae411a50a0e24d32ab564979b2df6ed24"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ae411a50a0e24d32ab564979b2df6ed24">openage::util::is_symbol</a></div><div class="ttdeci">bool is_symbol(const void *addr)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8cpp_source.xhtml#l00136">compiler.cpp:136</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="compiler_8cpp_source.xhtml#l00136">openage::util::is_symbol()</a>, <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="compiler_8cpp_source.xhtml#l00098">openage::util::symbol_name()</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="functional_8h_source.xhtml#l00409">openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::PyIfFunc()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a591d9bd55fa1f9904547f3f2dcb3796d_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a591d9bd55fa1f9904547f3f2dcb3796d_icgraph.svg" width="358" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -419,6 +446,30 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>pxd: void <a class="el" href="namespaceopenage_1_1pyinterface.xhtml#a7c3f96bce0d4711ba04a941b5c460b17">check()</a> except + </p>
 
 <p class="definition">Definition at line <a class="el" href="setup_8cpp_source.xhtml#l00073">73</a> of file <a class="el" href="setup_8cpp_source.xhtml">setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;             {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    state &amp;checkers = state::get();</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{checkers.lock};</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (checkers.check_performed) {</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="stringliteral">&quot;py interface initialization check has already been performed. &quot;</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="stringliteral">&quot;fix your init code.&quot;</span>);</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    checkers.check_performed = <span class="keyword">true</span>;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> error_found = <span class="keyword">false</span>;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">auto</span> msg = <a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    msg &lt;&lt; <span class="stringliteral">&quot;Fix your init code: &quot;</span>;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (not checkers.destroyed_components.empty()) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        msg &lt;&lt; std::endl &lt;&lt;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="stringliteral">&quot;Py interface components have been de-initialized before &quot;</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="stringliteral">&quot;initialization had even been completed:&quot;</span>;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">void</span> *thisptr : checkers.destroyed_components) {</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            msg &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">util::symbol_name</a>(thisptr);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        error_found = <span class="keyword">true</span>;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    checkers.destroyed_components.clear();</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;checker : checkers.map) {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span> (not checker.second()) {</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (first) {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                msg &lt;&lt; std::endl &lt;&lt;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    <span class="stringliteral">&quot;The following components have not been initialized:&quot;</span>;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                first = <span class="keyword">false</span>;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                error_found = <span class="keyword">true</span>;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            msg &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">util::symbol_name</a>(checker.first);</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    checkers.map.clear();</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (error_found) {</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">throw</span> Error(msg);</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_ac6219374623d05b075782ea1adb09c0c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#ac6219374623d05b075782ea1adb09c0c">openage::util::symbol_name</a></div><div class="ttdeci">std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8cpp_source.xhtml#l00098">compiler.cpp:98</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, and <a class="el" href="compiler_8cpp_source.xhtml#l00098">openage::util::symbol_name()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="setup_8py_source.xhtml#l00030">openage.cppinterface.setup::setup()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a7c3f96bce0d4711ba04a941b5c460b17_cgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a7c3f96bce0d4711ba04a941b5c460b17_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -440,6 +491,19 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>Signals that an interface component that has been previously registered via add_py_if_component is no longer valid, e.g. because its destructor has been invoked. Usually, you'd call this from a component's destructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="setup_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="setup_8cpp_source.xhtml">setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                            {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    state &amp;checkers = state::get();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{checkers.lock};</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    checkers.destroyed_components.insert(thisptr);</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    checkers.map.erase(thisptr);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div><div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="functional_8h_source.xhtml#l00420">openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::~PyIfFunc()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a3eda9726ffb3eeec9b423f300ec70c07_icgraph.svg" width="386" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -493,6 +557,18 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>pxd: void init_exc_message(message *msg, string filename, unsigned int lineno, string functionname) noexcept </p>
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00137">137</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                                                                                                               {</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        msg-&gt;init_with_metadata_copy(<a class="code" href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">filename</a>, functionname);</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    } <span class="keywordflow">catch</span> (...) {</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="comment">// we cannot afford to raise an exception from this function;</span></div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">// this is part of the exception translation code.</span></div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;[WTF] failed so init exception message!&quot;</span> &lt;&lt; std::endl;</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    msg-&gt;lvl = <a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">log::level::err</a>;</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    msg-&gt;lineno = lineno;</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a664e0be1f5d2f4d1e1a624f6f4a5f0c1"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">openage::util::filename</a></div><div class="ttdeci">std::string filename(const std::string &amp;fullpath)</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00364">path.cpp:364</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, and <a class="el" href="util_2path_8cpp_source.xhtml#l00364">openage::util::filename()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a942ae5fea51139bab5bdc29ac244125d_cgraph.svg" width="354" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -524,6 +600,10 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>Stream operator for printing PyObjects </p>
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00261">261</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                                {</div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(<a class="code" href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a>.get_ref() == <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        os &lt;&lt; <span class="stringliteral">&quot;PyObjectRef[null]&quot;</span>;</div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        os &lt;&lt; <span class="stringliteral">&quot;PyObjectRef[&quot;</span> &lt;&lt; <a class="code" href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a>.repr() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span>;</div><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> os;</div><div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div><div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="constinit__vector_8cpp_xhtml_aad68795cb6d982f4dda0a4b91a8c1577"><div class="ttname"><a href="constinit__vector_8cpp.xhtml#aad68795cb6d982f4dda0a4b91a8c1577">ref</a></div><div class="ttdeci">int * ref</div><div class="ttdef"><b>Definition:</b> <a href="constinit__vector_8cpp_source.xhtml#l00047">constinit_vector.cpp:47</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="constinit__vector_8cpp_source.xhtml#l00047">ref</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
 
 </div>
 </div>
@@ -595,6 +675,12 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>void set_exc_translation_funcs( void (*)(Error *) except * with gil, void (*)(<a class="el" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml">PyException</a> *) except * with gil, cppbool (*)() with gil, void (*)(<a class="el" href="classopenage_1_1pyinterface_1_1_py_exception.xhtml">PyException</a> *) except * with gil ) noexcept </p>
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                                       {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">raise_cpp_error</a> = raise_cpp_error_impl;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a1ed950b8158655d0bcb54fbb36404873">raise_cpp_pyexception</a> = raise_cpp_pyexception_impl;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#aa215bdc802dfaf2c82acb6b3acf3d6e6">check_for_py_exception</a> = check_for_py_exception_impl;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a29e783fc0db24c266caed883f5781e96">describe_py_exception</a> = describe_py_exception_impl;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a1ed950b8158655d0bcb54fbb36404873"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a1ed950b8158655d0bcb54fbb36404873">openage::pyinterface::raise_cpp_pyexception</a></div><div class="ttdeci">void(* raise_cpp_pyexception)(PyException *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00025">exctranslate.cpp:25</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a53f43e6841f4160dfdaea8592cb0db3d"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">openage::pyinterface::raise_cpp_error</a></div><div class="ttdeci">void(* raise_cpp_error)(Error *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00024">exctranslate.cpp:24</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_aa215bdc802dfaf2c82acb6b3acf3d6e6"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#aa215bdc802dfaf2c82acb6b3acf3d6e6">openage::pyinterface::check_for_py_exception</a></div><div class="ttdeci">bool(* check_for_py_exception)()</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00028">exctranslate.cpp:28</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a29e783fc0db24c266caed883f5781e96"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a29e783fc0db24c266caed883f5781e96">openage::pyinterface::describe_py_exception</a></div><div class="ttdeci">void(* describe_py_exception)(PyException *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00027">exctranslate.cpp:27</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="exctranslate_8cpp_source.xhtml#l00028">check_for_py_exception</a>, <a class="el" href="exctranslate_8cpp_source.xhtml#l00027">describe_py_exception</a>, <a class="el" href="exctranslate_8cpp_source.xhtml#l00024">raise_cpp_error</a>, and <a class="el" href="exctranslate_8cpp_source.xhtml#l00025">raise_cpp_pyexception</a>.</p>
 
 </div>
 </div>
@@ -617,6 +703,23 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>Designed to be called by auto-generated Cython code; Do not use in any other way. </p>
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                               {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// when we reach this, cython caught an error.</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// and we&#39;re now in the handler.</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// to continue, first rethrow the exception so we can analyze it:</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">throw</span>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">catch</span> (PyException &amp;exc) {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(<a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a1ed950b8158655d0bcb54fbb36404873">raise_cpp_pyexception</a> == <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="stringliteral">&quot;raise_pyexception_in_py is uninitialized; &quot;</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="stringliteral">&quot;can&#39;t translate C++ exception to Python exception.&quot;</span>,</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keyword">false</span>, <span class="keyword">false</span>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// handle the python object directly by PyErr_SetObject</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a1ed950b8158655d0bcb54fbb36404873">raise_cpp_pyexception</a>(&amp;exc);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    } <span class="keywordflow">catch</span> (Error &amp;exc) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(<a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">raise_cpp_error</a> == <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="stringliteral">&quot;raise_error_in_py is uninitialized; &quot;</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="stringliteral">&quot;can&#39;t translate C++ exception to Python exception.&quot;</span>,</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keyword">false</span>, <span class="keyword">false</span>);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// translate the exception to python</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// = insert it in pythons backtrace</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">raise_cpp_error</a>(&amp;exc);</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// we also need to catch std::exception so that rethrown causes are handled</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// properly. otherwise they just crash everything. not good.</span></div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;exc) {</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">// the std::exception doesn&#39;t contain a stack trace...</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// as we&#39;re at a special place we must not generate the current</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// stack trace either. and we _must not_ store the causing</span></div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// exception, as the whole point of this code is to get rid</span></div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">// of std::exceptions.</span></div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        Error error{</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;std::exception: &quot;</span></div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                &lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318">util::demangle</a>(<span class="keyword">typeid</span>(exc).name())</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;: &quot;</span></div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                &lt;&lt; exc.what(),</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">false</span>,</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keyword">false</span></div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        };</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">raise_cpp_error</a>(&amp;error);</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">/*</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     * all other exceptions are more than unexpected;</span></div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">     * they don&#39;t contain any useful stack trace information,</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     * so the safest course of action is not to catch them.</span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     * That way, terminate() is called, where we can analyze the stack</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     * trace and debug the issue in gdb.</span></div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     */</span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a1ed950b8158655d0bcb54fbb36404873"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a1ed950b8158655d0bcb54fbb36404873">openage::pyinterface::raise_cpp_pyexception</a></div><div class="ttdeci">void(* raise_cpp_pyexception)(PyException *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00025">exctranslate.cpp:25</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a53f43e6841f4160dfdaea8592cb0db3d"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a53f43e6841f4160dfdaea8592cb0db3d">openage::pyinterface::raise_cpp_error</a></div><div class="ttdeci">void(* raise_cpp_error)(Error *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00024">exctranslate.cpp:24</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a735563036dced0b7d6cc98f97ea4978b"><div class="ttname"><a href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a></div><div class="ttdeci">#define ERR</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00179">message.h:179</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_aebed129b2a0773520cdd8d40b0f70318"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#aebed129b2a0773520cdd8d40b0f70318">openage::util::demangle</a></div><div class="ttdeci">std::string demangle(const char *symbol)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8cpp_source.xhtml#l00025">compiler.cpp:25</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="compiler_8cpp_source.xhtml#l00025">openage::util::demangle()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="message_8h_source.xhtml#l00179">ERR</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="exctranslate_8cpp_source.xhtml#l00024">raise_cpp_error</a>, <a class="el" href="exctranslate_8cpp_source.xhtml#l00025">raise_cpp_pyexception</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a17ffe36150248f6802ac372166798637_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -638,6 +741,33 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 <p>Works, and is designed to be used in, situations where there is no current Python exception (it's a no-op then). </p>
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00110">110</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                               {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(<a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a29e783fc0db24c266caed883f5781e96">describe_py_exception</a> == <span class="keyword">nullptr</span>)) {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="stringliteral">&quot;describe_py_exception is uninitialized; &quot;</span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="stringliteral">&quot;can&#39;t check for and translate Python exception to C++ exception.&quot;</span>);</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a>(not <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#aa215bdc802dfaf2c82acb6b3acf3d6e6">check_for_py_exception</a>())) {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">// no exception has occurred.</span></div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    PyException pyex;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a29e783fc0db24c266caed883f5781e96">describe_py_exception</a>(&amp;pyex);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// recurse to throw a possible cause.</span></div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="namespaceopenage_1_1pyinterface.xhtml#a89529648faa2ef530fefcc90f1c1ab70">translate_exc_py_to_cpp</a>();</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } <span class="keywordflow">catch</span> (...) {</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        pyex.store_cause();</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// throw exception without cause.</span></div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">throw</span> pyex;</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_a217a0bd562b98ae8c2ffce44935351e1"><div class="ttname"><a href="compiler_8h.xhtml#a217a0bd562b98ae8c2ffce44935351e1">likely</a></div><div class="ttdeci">#define likely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00052">compiler.h:52</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_aa215bdc802dfaf2c82acb6b3acf3d6e6"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#aa215bdc802dfaf2c82acb6b3acf3d6e6">openage::pyinterface::check_for_py_exception</a></div><div class="ttdeci">bool(* check_for_py_exception)()</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00028">exctranslate.cpp:28</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a29e783fc0db24c266caed883f5781e96"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a29e783fc0db24c266caed883f5781e96">openage::pyinterface::describe_py_exception</a></div><div class="ttdeci">void(* describe_py_exception)(PyException *)</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00027">exctranslate.cpp:27</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1pyinterface_xhtml_a89529648faa2ef530fefcc90f1c1ab70"><div class="ttname"><a href="namespaceopenage_1_1pyinterface.xhtml#a89529648faa2ef530fefcc90f1c1ab70">openage::pyinterface::translate_exc_py_to_cpp</a></div><div class="ttdeci">void translate_exc_py_to_cpp()</div><div class="ttdef"><b>Definition:</b> <a href="exctranslate_8cpp_source.xhtml#l00110">exctranslate.cpp:110</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="exctranslate_8cpp_source.xhtml#l00028">check_for_py_exception</a>, <a class="el" href="exctranslate_8cpp_source.xhtml#l00027">describe_py_exception</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="compiler_8h_source.xhtml#l00052">likely</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="error_2error_8cpp_source.xhtml#l00041">openage::error::Error::store_cause()</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="functional_8h_source.xhtml#l00168">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::bind_catchexcept_impl()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a89529648faa2ef530fefcc90f1c1ab70_cgraph.svg" width="375" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1pyinterface_a89529648faa2ef530fefcc90f1c1ab70_icgraph.svg" width="434" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -656,6 +786,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="exctranslate_8cpp_source.xhtml#l00031">set_exc_translation_funcs()</a>, and <a class="el" href="exctranslate_8cpp_source.xhtml#l00110">translate_exc_py_to_cpp()</a>.</p>
+
 </div>
 </div>
 <a id="a29e783fc0db24c266caed883f5781e96"></a>
@@ -672,6 +804,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00027">27</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="exctranslate_8cpp_source.xhtml#l00031">set_exc_translation_funcs()</a>, and <a class="el" href="exctranslate_8cpp_source.xhtml#l00110">translate_exc_py_to_cpp()</a>.</p>
+
 </div>
 </div>
 <a id="ad71d6296abe650b46217af0efb0725a2"></a>
@@ -687,6 +821,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00308">308</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
 
 </div>
 </div>
@@ -720,6 +856,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00298">298</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00317">openage::py::builtin()</a>.</p>
+
 </div>
 </div>
 <a id="a1da67fe4551652e4267a218123e27309"></a>
@@ -735,6 +873,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00277">277</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00132">openage::pyinterface::PyObjectRef::bytes()</a>.</p>
 
 </div>
 </div>
@@ -752,6 +892,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00280">280</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00147">openage::pyinterface::PyObjectRef::call_impl()</a>.</p>
+
 </div>
 </div>
 <a id="a2ff686c130c1870c58243e9f9530685a"></a>
@@ -767,6 +909,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00279">279</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00142">openage::pyinterface::PyObjectRef::callable()</a>.</p>
 
 </div>
 </div>
@@ -784,6 +928,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00281">281</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00147">openage::pyinterface::PyObjectRef::call_impl()</a>.</p>
+
 </div>
 </div>
 <a id="a4912d8bb9e44d51c84e6363694941f42"></a>
@@ -799,6 +945,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00296">296</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00256">openage::pyinterface::PyObjectRef::classname()</a>.</p>
 
 </div>
 </div>
@@ -816,6 +964,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00301">301</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00338">openage::py::bytes()</a>.</p>
+
 </div>
 </div>
 <a id="afd53890300da035a2fa6cf0366f3f755"></a>
@@ -831,6 +981,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00303">303</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00352">openage::py::dict()</a>.</p>
 
 </div>
 </div>
@@ -848,6 +1000,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00302">302</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00345">openage::py::integer()</a>.</p>
+
 </div>
 </div>
 <a id="a3b908fa94eb8b9a2209772fb111795a9"></a>
@@ -863,6 +1017,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00304">304</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00359">openage::py::list()</a>.</p>
 
 </div>
 </div>
@@ -880,6 +1036,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00300">300</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00331">openage::py::str()</a>.</p>
+
 </div>
 </div>
 <a id="a7dd7680eb550d5db3c7f902316a748c1"></a>
@@ -895,6 +1053,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00288">288</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00193">openage::pyinterface::PyObjectRef::dir()</a>.</p>
 
 </div>
 </div>
@@ -912,6 +1072,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00289">289</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00203">openage::pyinterface::PyObjectRef::equals()</a>.</p>
+
 </div>
 </div>
 <a id="a63919a2347c856579a992996c9c26d8a"></a>
@@ -927,6 +1089,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00291">291</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00208">openage::pyinterface::PyObjectRef::eval()</a>.</p>
 
 </div>
 </div>
@@ -944,6 +1108,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00290">290</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00215">openage::pyinterface::PyObjectRef::exec()</a>.</p>
+
 </div>
 </div>
 <a id="a26ef6836021b3dc7fe2215b7fab97e9d"></a>
@@ -959,6 +1125,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00292">292</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00220">openage::pyinterface::PyObjectRef::get()</a>.</p>
 
 </div>
 </div>
@@ -976,6 +1144,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00283">283</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00166">openage::pyinterface::PyObjectRef::getattr()</a>.</p>
+
 </div>
 </div>
 <a id="a72f6244131021857b5da82ec1a2b60b4"></a>
@@ -991,6 +1161,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00282">282</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00161">openage::pyinterface::PyObjectRef::hasattr()</a>.</p>
 
 </div>
 </div>
@@ -1008,6 +1180,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00299">299</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00324">openage::py::import()</a>.</p>
+
 </div>
 </div>
 <a id="a963c22d15551b5aa2e567e9603ef79e1"></a>
@@ -1023,6 +1197,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00293">293</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00239">openage::pyinterface::PyObjectRef::in()</a>.</p>
 
 </div>
 </div>
@@ -1040,6 +1216,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00285">285</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00188">openage::pyinterface::PyObjectRef::isinstance()</a>.</p>
+
 </div>
 </div>
 <a id="ad0be0c0750d33fff88a405db89a1dbe7"></a>
@@ -1055,6 +1233,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00278">278</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00137">openage::pyinterface::PyObjectRef::len()</a>.</p>
 
 </div>
 </div>
@@ -1072,6 +1252,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00295">295</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00251">openage::pyinterface::PyObjectRef::modulename()</a>.</p>
+
 </div>
 </div>
 <a id="afc5196e488904c84cd675b55494f3695"></a>
@@ -1087,6 +1269,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00276">276</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00127">openage::pyinterface::PyObjectRef::repr()</a>.</p>
 
 </div>
 </div>
@@ -1104,6 +1288,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00284">284</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00173">openage::pyinterface::PyObjectRef::setattr()</a>.</p>
+
 </div>
 </div>
 <a id="aee648d1c95091e0207f3bf9d4f69dd01"></a>
@@ -1119,6 +1305,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00275">275</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00122">openage::pyinterface::PyObjectRef::str()</a>.</p>
 
 </div>
 </div>
@@ -1136,6 +1324,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00286">286</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00178">openage::pyinterface::PyObjectRef::to_bool()</a>.</p>
+
 </div>
 </div>
 <a id="a4c514ea8f04bb945cd0d0086c89e8aa3"></a>
@@ -1151,6 +1341,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00287">287</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00183">openage::pyinterface::PyObjectRef::to_int()</a>.</p>
 
 </div>
 </div>
@@ -1168,6 +1360,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00294">294</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00244">openage::pyinterface::PyObjectRef::type()</a>.</p>
+
 </div>
 </div>
 <a id="ab5131b0e0209f78e76c5556cd7371dd7"></a>
@@ -1183,6 +1377,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00273">273</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00043">openage::pyinterface::PyObjectRef::operator=()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00103">openage::pyinterface::PyObjectRef::set_ref()</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00113">openage::pyinterface::PyObjectRef::set_ref_without_incrementing()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00096">openage::pyinterface::PyObjectRef::~PyObjectRef()</a>.</p>
 
 </div>
 </div>
@@ -1200,6 +1396,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00272">272</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pyobject_8cpp_source.xhtml#l00043">openage::pyinterface::PyObjectRef::operator=()</a>, and <a class="el" href="pyobject_8cpp_source.xhtml#l00103">openage::pyinterface::PyObjectRef::set_ref()</a>.</p>
+
 </div>
 </div>
 <a id="abd497e13d9c1d349faac93274a50dece"></a>
@@ -1215,6 +1413,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyexception_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="pyexception_8cpp_source.xhtml">pyexception.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyexception_8cpp_source.xhtml#l00011">openage::pyinterface::PyExceptionBacktrace::get_symbols()</a>.</p>
 
 </div>
 </div>
@@ -1232,6 +1432,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00024">24</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="exctranslate_8cpp_source.xhtml#l00031">set_exc_translation_funcs()</a>, and <a class="el" href="exctranslate_8cpp_source.xhtml#l00047">translate_exc_cpp_to_py()</a>.</p>
+
 </div>
 </div>
 <a id="a1ed950b8158655d0bcb54fbb36404873"></a>
@@ -1248,6 +1450,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 
 <p class="definition">Definition at line <a class="el" href="exctranslate_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="exctranslate_8cpp_source.xhtml">exctranslate.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="exctranslate_8cpp_source.xhtml#l00031">set_exc_translation_funcs()</a>, and <a class="el" href="exctranslate_8cpp_source.xhtml#l00047">translate_exc_cpp_to_py()</a>.</p>
+
 </div>
 </div>
 <a id="a09953e7373020e0af78c70ea155754ee"></a>
@@ -1263,6 +1467,8 @@ template&lt;typename RT , typename AT0 , typename AT1 , typename AT2 , typename 
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="pyobject_8cpp_source.xhtml#l00307">307</a> of file <a class="el" href="pyobject_8cpp_source.xhtml">pyobject.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pyobject__tests_8cpp_source.xhtml#l00016">openage::pyinterface::tests::pyobject()</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,9 @@
+<map id="openage.util.math.clamp" name="openage.util.math.clamp">
+<area shape="rect" id="node1" title="clamps val to be at least minval, and at most maxval." alt="" coords="469,78,633,105"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer.xhtml#a37e1fc79dc2eeffcd4d529e9607db220" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="241,5,421,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment.xhtml#a2c451557a21c0bb2481bd4a8da2f6df5" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="241,71,421,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a10c8ba63b955b0c97dc3b3323f73a4b2" title="Translates an integer verbosity to a log level." alt="" coords="258,136,405,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1peresource_1_1_string_literal.xhtml#afe54133fe4a7d4cb75352a250a11a024" title="In addition to the static data, reads the string." alt="" coords="5,27,193,68"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log_1_1tests.xhtml#a9ca6bf494467589807a56e954b8b3bb3" title="Demonstrates the Python logging facility." alt="" coords="19,114,180,141"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1____main____.xhtml#a2cf9c123d48ac683e5cf594b0114e5e3" title="Top&#45;level argparsing; invokes subparser for all submodules." alt="" coords="18,165,181,191"/>
+</map>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="268" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="268" bodyend="270"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="268" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="268" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a3f85b39bd4cd0b45ec66c681f5a3553e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="272" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="272" bodyend="273"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="272" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="272" bodyend="273"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -74,7 +74,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="275" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="275" bodyend="352"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="275" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="275" bodyend="352"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" compoundref="global__rng_8cpp" startline="18" endline="21">openage::rng::random</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a33a2a9a5f92a673b2cef91dac21eab78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
@@ -128,7 +134,7 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="354" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="354" bodyend="358"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="354" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="354" bodyend="358"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -136,42 +142,42 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4081">
+      <node id="2200">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="4080">
+      <node id="2199">
         <label>openage::event::OnceEventClass</label>
         <link refid="classopenage_1_1event_1_1_once_event_class"/>
-        <childnode refid="4081" relation="public-inheritance">
+        <childnode refid="2200" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4079">
+      <node id="2198">
         <label>openage::event::demo::ResetGame</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
-        <childnode refid="4080" relation="public-inheritance">
+        <childnode refid="2199" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4084">
+      <node id="2203">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="4083">
+      <node id="2202">
         <label>openage::event::OnceEventClass</label>
         <link refid="classopenage_1_1event_1_1_once_event_class"/>
-        <childnode refid="4084" relation="public-inheritance">
+        <childnode refid="2203" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4082">
+      <node id="2201">
         <label>openage::event::demo::ResetGame</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
-        <childnode refid="4083" relation="public-inheritance">
+        <childnode refid="2202" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/demo/physics.cpp" line="266" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="266" bodyend="359"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="266" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="266" bodyend="359"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>EventClass</name></member>
       <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>id</name></member>

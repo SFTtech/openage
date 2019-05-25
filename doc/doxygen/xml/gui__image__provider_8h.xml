@@ -4,15 +4,15 @@
     <compoundname>gui_image_provider.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">functional</includes>
-    <includedby refid="gui__game__spec__image__provider_8h" local="yes">libopenage/gui/integration/public/gui_game_spec_image_provider.h</includedby>
-    <includedby refid="gui__image__provider__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_image_provider_impl.cpp</includedby>
-    <includedby refid="gui__image__provider_8cpp" local="yes">libopenage/gui/guisys/public/gui_image_provider.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.h</includedby>
+    <includedby refid="gui__image__provider__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp</includedby>
+    <includedby refid="gui__image__provider_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.cpp</includedby>
     <incdepgraph>
       <node id="13527">
         <label>functional</label>
       </node>
       <node id="13525">
-        <label>libopenage/gui/guisys/public/gui_image_provider.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.h</label>
         <link refid="gui__image__provider_8h"/>
         <childnode refid="13526" relation="include">
         </childnode>
@@ -25,7 +25,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13529">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
         <link refid="gui__game__spec__image__provider_8h"/>
         <childnode refid="13530" relation="include">
         </childnode>
@@ -33,27 +33,27 @@
         </childnode>
       </node>
       <node id="13533">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="13532">
-        <label>libopenage/gui/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.cpp</label>
         <link refid="gui_2gui_8cpp"/>
       </node>
       <node id="13531">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="13535">
-        <label>libopenage/gui/guisys/public/gui_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.cpp</label>
         <link refid="gui__image__provider_8cpp"/>
       </node>
       <node id="13534">
-        <label>libopenage/gui/guisys/private/gui_image_provider_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp</label>
         <link refid="gui__image__provider__impl_8cpp"/>
       </node>
       <node id="13528">
-        <label>libopenage/gui/guisys/public/gui_image_provider.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.h</label>
         <link refid="gui__image__provider_8h"/>
         <childnode refid="13529" relation="include">
         </childnode>
@@ -63,7 +63,7 @@
         </childnode>
       </node>
       <node id="13530">
-        <label>libopenage/gui/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h</label>
         <link refid="gui_2gui_8h"/>
         <childnode refid="13531" relation="include">
         </childnode>
@@ -101,6 +101,6 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_image_provider.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.h"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="28" column="1" bodyfile="libopenage/util/unicode.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">feed</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" compoundref="unicode_8cpp" startline="14" endline="17">reset</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" prot="public" static="no" mutable="no">
         <type>unsigned</type>
@@ -31,7 +34,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="33" column="1" bodyfile="libopenage/util/unicode.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" compoundref="unicode_8cpp" startline="19" endline="70">feed</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" compoundref="unicode_8cpp" startline="14" endline="17">reset</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +52,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="19" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="10" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="10" bodyend="12"/>
+        <references refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" compoundref="unicode_8cpp" startline="14" endline="17">reset</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -66,7 +73,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="54" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="19" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="19" bodyend="70"/>
+        <references refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" compoundref="unicode_8h" startline="28">out</references>
+        <references refid="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" compoundref="unicode_8h" startline="33">remaining</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" compoundref="buf_8cpp" startline="381" endline="390">openage::console::Buf::write</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -80,7 +91,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/unicode.h" line="59" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="14" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp" bodystart="14" bodyend="17"/>
+        <references refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" compoundref="unicode_8h" startline="28">out</references>
+        <references refid="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" compoundref="unicode_8h" startline="33">remaining</references>
+        <referencedby refid="classopenage_1_1util_1_1utf8__decoder_1ae33f30385d0dd3708f7465705c9a73de" compoundref="unicode_8cpp" startline="10" endline="12">utf8_decoder</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -88,12 +102,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4903">
+      <node id="6122">
         <label>openage::util::utf8_decoder</label>
         <link refid="classopenage_1_1util_1_1utf8__decoder"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/unicode.h" line="17" column="1" bodyfile="libopenage/util/unicode.h" bodystart="17" bodyend="60"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h" bodystart="17" bodyend="60"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" prot="public" virt="non-virtual"><scope>openage::util::utf8_decoder</scope><name>feed</name></member>
       <member refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" prot="public" virt="non-virtual"><scope>openage::util::utf8_decoder</scope><name>out</name></member>

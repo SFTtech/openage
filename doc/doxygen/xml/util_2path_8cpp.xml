@@ -65,7 +65,7 @@
         <label>cmath</label>
       </node>
       <node id="18710">
-        <label>libopenage/util/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp</label>
         <link refid="util_2path_8cpp"/>
         <childnode refid="18711" relation="include">
         </childnode>
@@ -790,6 +790,6 @@
 <codeline lineno="383"><highlight class="normal"></highlight></codeline>
 <codeline lineno="384"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/path.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp"/>
   </compounddef>
 </doxygen>

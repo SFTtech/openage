@@ -20,7 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="59" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="92" bodyend="95"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="92" bodyend="95"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" compoundref="coordmanager_8h" startline="43">openage::coord::CoordManager::camhud_viewport</references>
+        <referencedby refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">openage::Texture::draw</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,28 +30,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="722">
+      <node id="1699">
         <label>CoordXYAbsolute&lt; pixel_t, camhud, camhud_delta &gt;</label>
       </node>
-      <node id="721">
+      <node id="1698">
         <label>openage::coord::camhud</label>
         <link refid="structopenage_1_1coord_1_1camhud"/>
-        <childnode refid="722" relation="public-inheritance">
+        <childnode refid="1699" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="724">
+      <node id="1701">
         <label>CoordXYAbsolute&lt; pixel_t, camhud, camhud_delta &gt;</label>
       </node>
-      <node id="723">
+      <node id="1700">
         <label>openage::coord::camhud</label>
         <link refid="structopenage_1_1coord_1_1camhud"/>
-        <childnode refid="724" relation="public-inheritance">
+        <childnode refid="1701" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/pixel.h" line="56" column="1" bodyfile="libopenage/coord/pixel.h" bodystart="56" bodyend="60"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" bodystart="56" bodyend="60"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" prot="public" virt="non-virtual"><scope>openage::coord::camhud</scope><name>to_viewport</name></member>
     </listofallmembers>

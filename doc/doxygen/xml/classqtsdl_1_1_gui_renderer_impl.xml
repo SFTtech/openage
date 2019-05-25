@@ -17,7 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="117" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="117" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="117" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_event_handling_quick_window" kindref="compound">EventHandlingQuickWindow</ref> &gt;</type>
@@ -31,7 +33,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="122" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="122" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="122" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" compoundref="gui__renderer__impl_8cpp" startline="240" endline="242">get_window</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" prot="private" static="no" mutable="no">
         <type>QQuickRenderControl</type>
@@ -45,7 +50,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="127" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="127" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="127" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" compoundref="gui__renderer__impl_8cpp" startline="182" endline="193">make_sure_render_thread_unlocked</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" compoundref="gui__renderer__impl_8cpp" startline="195" endline="213">make_sure_render_thread_wont_sync</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" compoundref="gui__renderer__impl_8cpp" startline="113" endline="117">on_scene_changed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; QOpenGLFramebufferObject &gt;</type>
@@ -59,7 +68,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="132" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="132" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="132" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a5847e3637b5a63f60874fac9a573b8f3" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; int &gt;</type>
@@ -72,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="134" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="134" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="134" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="134" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a87ad2c335957f9eb5a89f8edf24a2e11" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; int &gt;</type>
@@ -85,7 +97,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="135" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="135" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="135" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -98,7 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="136" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="136" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="136" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -111,7 +125,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="138" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="138" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="138" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" compoundref="gui__renderer__impl_8cpp" startline="215" endline="218">demand_sync</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" compoundref="gui__renderer__impl_8cpp" startline="182" endline="193">make_sure_render_thread_unlocked</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" compoundref="gui__renderer__impl_8cpp" startline="195" endline="213">make_sure_render_thread_wont_sync</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" compoundref="gui__renderer__impl_8cpp" startline="113" endline="117">on_scene_changed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a5f7264da514815fd33c84ca24e4e6632" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -124,7 +143,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="139" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="139" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="139" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" compoundref="gui__renderer__impl_8cpp" startline="113" endline="117">on_scene_changed</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -137,7 +157,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="141" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="141" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="141" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="141" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" compoundref="gui__renderer__impl_8cpp" startline="230" endline="238">process_freeze</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" prot="private" static="no" mutable="no">
         <type>std::mutex</type>
@@ -150,7 +172,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="142" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="142" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="142" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" compoundref="gui__renderer__impl_8cpp" startline="220" endline="228">event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" compoundref="gui__renderer__impl_8cpp" startline="182" endline="193">make_sure_render_thread_unlocked</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" compoundref="gui__renderer__impl_8cpp" startline="195" endline="213">make_sure_render_thread_wont_sync</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" prot="private" static="no" mutable="no">
         <type>std::condition_variable</type>
@@ -163,7 +189,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="143" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="143" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="143" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" compoundref="gui__renderer__impl_8cpp" startline="230" endline="238">process_freeze</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -176,7 +204,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="144" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="144" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="144" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" compoundref="gui__renderer__impl_8cpp" startline="182" endline="193">make_sure_render_thread_unlocked</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" compoundref="gui__renderer__impl_8cpp" startline="195" endline="213">make_sure_render_thread_wont_sync</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -195,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="49" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="76" bodyend="111"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="76" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a26bbabfbcf03198fc22b8b86af60e2c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -208,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="50" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="131" bodyend="139"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="131" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>GLuint</type>
@@ -224,7 +255,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="57" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="145" bodyend="180"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="145" bodyend="180"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" compoundref="gui__renderer__impl_8h" startline="132">fbo</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" compoundref="gui__renderer__impl_8h" startline="142">gui_guard</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" compoundref="gui__renderer__impl_8h" startline="141">gui_locked</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" compoundref="gui__renderer__impl_8h" startline="143">gui_locked_cond</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" compoundref="gui__renderer__impl_8h" startline="117">gui_rendering_setup_routines</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" compoundref="gui__renderer__impl_8h" startline="138">need_sync</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" compoundref="gui__renderer__impl_8cpp" startline="119" endline="129">reinit_fbo_if_needed</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" compoundref="gui__renderer__impl_8h" startline="127">render_control</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" compoundref="gui__renderer__impl_8h" startline="144">renderer_waiting_on_cond</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" compoundref="gui__renderer__impl_8h" startline="122">window</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -241,7 +282,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="59" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="244" bodyend="246"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="244" bodyend="246"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1aaabcf6524660f031e1406ef57bb3278e">resized</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classqtsdl_1_1_event_handling_quick_window" kindref="compound">EventHandlingQuickWindow</ref> *</type>
@@ -254,7 +296,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="61" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="240" bodyend="242"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="240" bodyend="242"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" compoundref="gui__renderer__impl_8h" startline="122">window</references>
+        <referencedby refid="classqtsdl_1_1_gui_engine_impl_1a5b83bd915fa9ce9bf9e36f26000143cc" compoundref="gui__engine__impl_8cpp" startline="51" endline="54">qtsdl::GuiEngineImpl::attach_to</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_subtree_impl_1a810b181409e571b440ab128d2c073703" compoundref="gui__subtree__impl_8cpp" startline="171" endline="178">qtsdl::GuiSubtreeImpl::reparent_root</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -271,7 +316,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="78" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="182" bodyend="193"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="182" bodyend="193"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" compoundref="gui__renderer__impl_8h" startline="142">gui_guard</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" compoundref="gui__renderer__impl_8h" startline="138">need_sync</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" compoundref="gui__renderer__impl_8cpp" startline="230" endline="238">process_freeze</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" compoundref="gui__renderer__impl_8h" startline="127">render_control</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" compoundref="gui__renderer__impl_8h" startline="144">renderer_waiting_on_cond</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -289,7 +339,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="87" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="195" bodyend="213"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="195" bodyend="213"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" compoundref="gui__renderer__impl_8h" startline="142">gui_guard</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" compoundref="gui__renderer__impl_8h" startline="138">need_sync</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" compoundref="gui__renderer__impl_8cpp" startline="230" endline="238">process_freeze</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" compoundref="gui__renderer__impl_8h" startline="127">render_control</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" compoundref="gui__renderer__impl_8h" startline="144">renderer_waiting_on_cond</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -304,7 +359,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="94" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="215" bodyend="218"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="215" bodyend="218"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" compoundref="gui__renderer__impl_8h" startline="138">need_sync</references>
+        <referencedby refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" compoundref="gui__renderer__impl_8cpp" startline="254" endline="257">qtsdl::TemporaryDisableGuiRendererSync::~TemporaryDisableGuiRendererSync</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -323,7 +380,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="52" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="141" bodyend="143"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="141" bodyend="143"/>
+        <references refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" compoundref="gui__renderer_8h" startline="37">qtsdl::GuiRenderer::impl</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -342,7 +400,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="97" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="97" column="1"/>
+        <referencedby refid="classqtsdl_1_1_gui_subtree_impl_1aee5a3d8f253ea34f7c49a6709b5e1e8f" compoundref="gui__subtree__impl_8cpp" startline="94" endline="109">qtsdl::GuiSubtreeImpl::attach_to</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" compoundref="gui__renderer__impl_8cpp" startline="244" endline="246">resize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -361,7 +421,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="100" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="220" bodyend="228"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="220" bodyend="228"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" compoundref="gui__renderer__impl_8h" startline="142">gui_guard</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" compoundref="gui__renderer__impl_8cpp" startline="230" endline="238">process_freeze</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -378,7 +440,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="102" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="230" bodyend="238"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="230" bodyend="238"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" compoundref="gui__renderer__impl_8h" startline="141">gui_locked</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" compoundref="gui__renderer__impl_8h" startline="143">gui_locked_cond</references>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" compoundref="gui__renderer__impl_8cpp" startline="220" endline="228">event</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" compoundref="gui__renderer__impl_8cpp" startline="182" endline="193">make_sure_render_thread_unlocked</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" compoundref="gui__renderer__impl_8cpp" startline="195" endline="213">make_sure_render_thread_wont_sync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -392,7 +459,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="111" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="119" bodyend="129"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="119" bodyend="129"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" compoundref="gui__renderer__impl_8h" startline="132">fbo</references>
+        <references refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" compoundref="gui__rendering__setup__routines_8cpp" startline="31" endline="33">qtsdl::GuiRenderingSetupRoutines::get_ctx</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" compoundref="gui__renderer__impl_8h" startline="117">gui_rendering_setup_routines</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" compoundref="gui__renderer__impl_8h" startline="136">need_fbo_resize</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a87ad2c335957f9eb5a89f8edf24a2e11" compoundref="gui__renderer__impl_8h" startline="135">new_fbo_height</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a5847e3637b5a63f60874fac9a573b8f3" compoundref="gui__renderer__impl_8h" startline="134">new_fbo_width</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" compoundref="gui__renderer__impl_8h" startline="122">window</references>
+        <referencedby refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" compoundref="gui__renderer__impl_8cpp" startline="145" endline="180">render</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-slot">
@@ -407,7 +482,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="105" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="113" bodyend="117"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="113" bodyend="117"/>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a5f7264da514815fd33c84ca24e4e6632" compoundref="gui__renderer__impl_8h" startline="139">need_render</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" compoundref="gui__renderer__impl_8h" startline="138">need_sync</references>
+        <references refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" compoundref="gui__renderer__impl_8h" startline="127">render_control</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -416,35 +494,35 @@
 <para>Passes the native graphic context to Qt. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2752">
+      <node id="6464">
         <label>QObject</label>
       </node>
-      <node id="2751">
+      <node id="6463">
         <label>qtsdl::GuiRendererImpl</label>
         <link refid="classqtsdl_1_1_gui_renderer_impl"/>
-        <childnode refid="2752" relation="public-inheritance">
+        <childnode refid="6464" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2755">
+      <node id="6467">
         <label>qtsdl::GuiRenderingSetupRoutines</label>
         <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
       </node>
-      <node id="2754">
+      <node id="6466">
         <label>QObject</label>
       </node>
-      <node id="2753">
+      <node id="6465">
         <label>qtsdl::GuiRendererImpl</label>
         <link refid="classqtsdl_1_1_gui_renderer_impl"/>
-        <childnode refid="2754" relation="public-inheritance">
+        <childnode refid="6466" relation="public-inheritance">
         </childnode>
-        <childnode refid="2755" relation="usage">
+        <childnode refid="6467" relation="usage">
           <edgelabel>-gui_rendering_setup_routines</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="45" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="45" bodyend="145"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="45" bodyend="145"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>demand_sync</name></member>
       <member refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" prot="private" virt="virtual"><scope>qtsdl::GuiRendererImpl</scope><name>event</name></member>

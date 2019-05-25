@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1dataformat_1_1struct__definition" kind="namespace" language="Python">
+    <compoundname>openage::convert::dataformat::struct_definition</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition" prot="public">openage::convert::dataformat::struct_definition::StructDefinition</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1dataformat_1_1struct__definition_1ad5c0d80095074dd4048261937d993556" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::dataformat::struct_definition.vararray_match</definition>
+        <argsstring></argsstring>
+        <name>vararray_match</name>
+        <initializer>=  re.compile(&quot;([{0}]+) *\\[([{0}]+)\\] *;?&quot;.format(&quot;a-zA-Z0-9_&quot;))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_definition.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_definition.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1dataformat_1_1struct__definition_1abd0ff7ed3fbcb5edaf008f2b928e1858" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::convert::dataformat::struct_definition.integer_match</definition>
+        <argsstring></argsstring>
+        <name>integer_match</name>
+        <initializer>=  re.compile(&quot;\\d+&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_definition.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_definition.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_definition.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

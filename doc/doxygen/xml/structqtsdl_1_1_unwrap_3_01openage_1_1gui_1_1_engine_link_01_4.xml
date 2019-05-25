@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/engine_link.h" line="29" column="1" bodyfile="libopenage/gui/engine_link.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,12 +25,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4891">
+      <node id="6589">
         <label>qtsdl::Unwrap&lt; openage::gui::EngineLink &gt;</label>
         <link refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_engine_link_01_4"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/engine_link.h" line="28" column="1" bodyfile="libopenage/gui/engine_link.h" bodystart="28" bodyend="30"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/engine_link.h" bodystart="28" bodyend="30"/>
     <listofallmembers>
       <member refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_engine_link_01_4_1a1b78267c873cd890e7cd14da572475a9" prot="public" virt="non-virtual"><scope>qtsdl::Unwrap&lt; openage::gui::EngineLink &gt;</scope><name>Type</name></member>
     </listofallmembers>

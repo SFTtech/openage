@@ -17,7 +17,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="43" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a7357819459965ee16bda1c736e46a7a9" compoundref="gui__filled__texture__handles_8cpp" startline="16" endline="19">add_texture_handle</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" compoundref="gui__filled__texture__handles_8cpp" startline="28" endline="34">fill_all_handles_with_texture</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a9592f230aa21b060f44bb8c98da7e86b" compoundref="gui__filled__texture__handles_8cpp" startline="21" endline="26">free_texture_handle</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a4996710931e1c2c4d7de7a10872a8b22" compoundref="gui__filled__texture__handles_8cpp" startline="36" endline="49">refresh_all_handles_with_texture</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" prot="private" static="no" mutable="no">
         <type>std::mutex</type>
@@ -30,7 +34,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="44" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a7357819459965ee16bda1c736e46a7a9" compoundref="gui__filled__texture__handles_8cpp" startline="16" endline="19">add_texture_handle</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" compoundref="gui__filled__texture__handles_8cpp" startline="28" endline="34">fill_all_handles_with_texture</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a9592f230aa21b060f44bb8c98da7e86b" compoundref="gui__filled__texture__handles_8cpp" startline="21" endline="26">free_texture_handle</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a4996710931e1c2c4d7de7a10872a8b22" compoundref="gui__filled__texture__handles_8cpp" startline="36" endline="49">refresh_all_handles_with_texture</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="10" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="10" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a739c37e3f8d590a562e8b85d89e9fcbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -58,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="25" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="13" bodyend="14"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="13" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a7357819459965ee16bda1c736e46a7a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -84,7 +92,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="30" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="16" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="16" bodyend="19"/>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a55206c306b7d1a8dd69901b86de8329d" compoundref="gui__filled__texture__handles_8h" startline="43">handles</references>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" compoundref="gui__filled__texture__handles_8h" startline="44">handles_mutex</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a9592f230aa21b060f44bb8c98da7e86b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -101,7 +111,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="31" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="21" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="21" bodyend="26"/>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a55206c306b7d1a8dd69901b86de8329d" compoundref="gui__filled__texture__handles_8h" startline="43">handles</references>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" compoundref="gui__filled__texture__handles_8h" startline="44">handles_mutex</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -118,7 +130,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="33" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="28" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="28" bodyend="34"/>
+        <references refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" compoundref="algorithm_8h" startline="17" endline="22">openage::util::for_each</references>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a55206c306b7d1a8dd69901b86de8329d" compoundref="gui__filled__texture__handles_8h" startline="43">handles</references>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" compoundref="gui__filled__texture__handles_8h" startline="44">handles_mutex</references>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" compoundref="text_8cpp" startline="16">openage::texturefont_shader::texture</references>
+        <references refid="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" compoundref="gui__texture__handle_8cpp" startline="28" endline="30">openage::gui::textureSize</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a4996710931e1c2c4d7de7a10872a8b22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -135,7 +152,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="34" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="36" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.cpp" bodystart="36" bodyend="49"/>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a55206c306b7d1a8dd69901b86de8329d" compoundref="gui__filled__texture__handles_8h" startline="43">handles</references>
+        <references refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a2a711dddb6ee87cae1eb651c9a28febd" compoundref="gui__filled__texture__handles_8h" startline="44">handles_mutex</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -144,12 +163,12 @@
 <para>Stores pointers to game texture handlers given to the Qt. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2531">
+      <node id="3538">
         <label>openage::gui::GuiFilledTextureHandles</label>
         <link refid="classopenage_1_1gui_1_1_gui_filled_texture_handles"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_filled_texture_handles.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="22" bodyend="45"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_filled_texture_handles.h" bodystart="22" bodyend="45"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a7357819459965ee16bda1c736e46a7a9" prot="public" virt="non-virtual"><scope>openage::gui::GuiFilledTextureHandles</scope><name>add_texture_handle</name></member>
       <member refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" prot="public" virt="non-virtual"><scope>openage::gui::GuiFilledTextureHandles</scope><name>fill_all_handles_with_texture</name></member>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1threading_1_1_generator_event" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::threading::GeneratorEvent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1threading_1_1_generator_event_1a8cf93dc8b020874389f18dbd55caaa1b" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int openage::util.threading.GeneratorEvent::VALUE</definition>
+        <argsstring></argsstring>
+        <name>VALUE</name>
+        <initializer>=  0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1threading_1_1_generator_event_1aa2d089fed1e35f14bbf77161defb161d" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int openage::util.threading.GeneratorEvent::EXCEPTION</definition>
+        <argsstring></argsstring>
+        <name>EXCEPTION</name>
+        <initializer>=  1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1threading_1_1_generator_event_1ae9e5eeac715ca25471f9f3266d7a4257" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int openage::util.threading.GeneratorEvent::STOP_ITERATION</definition>
+        <argsstring></argsstring>
+        <name>STOP_ITERATION</name>
+        <initializer>=  2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6115">
+        <label>openage.util.threading.GeneratorEvent</label>
+        <link refid="classopenage_1_1util_1_1threading_1_1_generator_event"/>
+        <childnode refid="6116" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6116">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6117">
+        <label>openage.util.threading.GeneratorEvent</label>
+        <link refid="classopenage_1_1util_1_1threading_1_1_generator_event"/>
+        <childnode refid="6118" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6118">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="94" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="94" bodyend="105"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1threading_1_1_generator_event_1aa2d089fed1e35f14bbf77161defb161d" prot="public" virt="non-virtual"><scope>openage::util::threading::GeneratorEvent</scope><name>EXCEPTION</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_generator_event_1ae9e5eeac715ca25471f9f3266d7a4257" prot="public" virt="non-virtual"><scope>openage::util::threading::GeneratorEvent</scope><name>STOP_ITERATION</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_generator_event_1a8cf93dc8b020874389f18dbd55caaa1b" prot="public" virt="non-virtual"><scope>openage::util::threading::GeneratorEvent</scope><name>VALUE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

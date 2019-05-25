@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="49" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="12" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,12 +32,12 @@
 <para>Cost comparison for node_pt. Extracts the ptr from the shared_ptr. Calls operator &lt; on <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref>. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="810">
+      <node id="4419">
         <label>openage::path::compare_node_cost</label>
         <link refid="structopenage_1_1path_1_1compare__node__cost"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pathfinding/path.h" line="48" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="48" bodyend="50"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="48" bodyend="50"/>
     <listofallmembers>
       <member refid="structopenage_1_1path_1_1compare__node__cost_1a04f9002ed4c203b6f27f64ef8d478770" prot="public" virt="non-virtual"><scope>openage::path::compare_node_cost</scope><name>operator()</name></member>
     </listofallmembers>

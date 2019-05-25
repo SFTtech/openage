@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_4a01dee474130c13b802372087a79ed7" kind="dir">
-    <compoundname>libopenage/renderer</compoundname>
-    <innerdir refid="dir_71bc918c788390e0c00bc0dfb4f34834">libopenage/renderer/font</innerdir>
-    <innerdir refid="dir_50129a17799df7b67570c4983a7bc841">libopenage/renderer/opengl</innerdir>
-    <innerdir refid="dir_0568487d55e2441d52cc8103196705cb">libopenage/renderer/resources</innerdir>
-    <innerdir refid="dir_5e283aaea65a5b19f33079dd4e180ef8">libopenage/renderer/vulkan</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer</compoundname>
+    <innerdir refid="dir_71bc918c788390e0c00bc0dfb4f34834">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font</innerdir>
+    <innerdir refid="dir_50129a17799df7b67570c4983a7bc841">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl</innerdir>
+    <innerdir refid="dir_0568487d55e2441d52cc8103196705cb">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources</innerdir>
+    <innerdir refid="dir_5e283aaea65a5b19f33079dd4e180ef8">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan</innerdir>
     <innerfile refid="renderer_2color_8cpp">color.cpp</innerfile>
     <innerfile refid="renderer_2color_8h">color.h</innerfile>
     <innerfile refid="geometry_8cpp">geometry.cpp</innerfile>
@@ -28,6 +28,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/"/>
   </compounddef>
 </doxygen>

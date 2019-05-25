@@ -6,9 +6,9 @@
     <includes local="no">QQuickTextureFactory</includes>
     <includes refid="gui__texture__handle_8h" local="yes">gui_texture_handle.h</includes>
     <includes refid="gui__filled__texture__handles_8h" local="yes">gui_filled_texture_handles.h</includes>
-    <includedby refid="gui__game__spec__image__provider__by__id__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</includedby>
-    <includedby refid="gui__game__spec__image__provider__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</includedby>
-    <includedby refid="gui__texture__factory_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__id__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</includedby>
+    <includedby refid="gui__texture__factory_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
     <incdepgraph>
       <node id="14646">
         <label>functional</label>
@@ -32,7 +32,7 @@
         <label>QSize</label>
       </node>
       <node id="14638">
-        <label>libopenage/gui/integration/private/gui_texture_factory.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h</label>
         <link refid="gui__texture__factory_8h"/>
         <childnode refid="14639" relation="include">
         </childnode>
@@ -68,19 +68,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14650">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__impl_8cpp"/>
       </node>
       <node id="14651">
-        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.cpp</label>
         <link refid="gui__texture__factory_8cpp"/>
       </node>
       <node id="14649">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
       </node>
       <node id="14648">
-        <label>libopenage/gui/integration/private/gui_texture_factory.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h</label>
         <link refid="gui__texture__factory_8h"/>
         <childnode refid="14649" relation="include">
         </childnode>
@@ -132,6 +132,6 @@
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_texture_factory.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_factory.h"/>
   </compounddef>
 </doxygen>

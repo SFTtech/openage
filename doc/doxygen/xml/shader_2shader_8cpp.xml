@@ -168,7 +168,7 @@
         </childnode>
       </node>
       <node id="21574">
-        <label>libopenage/shader/shader.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp</label>
         <link refid="shader_2shader_8cpp"/>
         <childnode refid="21575" relation="include">
         </childnode>
@@ -371,7 +371,7 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>infolog<sp/>=<sp/>std::make_unique&lt;char[]&gt;(loglen);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetShaderInfoLog(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>loglen,<sp/>NULL,<sp/>infolog.get());</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>errmsg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>errmsg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errmsg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>compile<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1shader_1aba992c07352be620fb7a7060d0349781" kindref="member">type_to_string</ref>(<ref refid="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" kindref="member">type</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>shader\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>infolog;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDeleteShader(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
@@ -386,6 +386,6 @@
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::shader</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/shader/shader.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp"/>
   </compounddef>
 </doxygen>

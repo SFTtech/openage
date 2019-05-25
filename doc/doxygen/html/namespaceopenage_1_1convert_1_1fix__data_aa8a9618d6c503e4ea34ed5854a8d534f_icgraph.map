@@ -1,0 +1,6 @@
+<map id="openage.convert.fix_data.fix_data" name="openage.convert.fix_data.fix_data">
+<area shape="rect" id="node1" title="modernizes/patches the gamespec." alt="" coords="711,5,844,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1driver.xhtml#af952f8f82261ef86e5c83facd56758f9" title="reads empires.dat and fixes it" alt="" coords="491,5,663,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a2147ca3608a15047a639e9661a7a928c" title="Converts the metadata part." alt="" coords="248,5,443,47"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,13,200,39"/>
+</map>

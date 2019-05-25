@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="34" column="1" bodyfile="libopenage/screenshot.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -32,7 +32,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="42" column="1" bodyfile="libopenage/screenshot.h" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" compoundref="screenshot_8cpp" startline="32" endline="48">gen_next_filename</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" prot="private" static="no" mutable="no">
         <type>std::time_t</type>
@@ -46,7 +47,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="45" column="1" bodyfile="libopenage/screenshot.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" compoundref="screenshot_8cpp" startline="32" endline="48">gen_next_filename</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1a24d9434b761a19c8dfe2d0e2a48416ca" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref> *</type>
@@ -60,7 +62,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="48" column="1" bodyfile="libopenage/screenshot.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" compoundref="screenshot_8cpp" startline="51" endline="62">save_screenshot</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="22" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="22" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1ab95fb468a5a80196941863fee32ff2f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -93,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="24" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="29" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="29" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -111,7 +114,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="27" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="51" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="51" bodyend="62"/>
+        <references refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">encode_png</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ab12ca59d9b54653a1106a405a23721b2" compoundref="job__manager_8h" startline="93" endline="98">openage::job::JobManager::enqueue</references>
+        <references refid="classopenage_1_1_screenshot_manager_1a24d9434b761a19c8dfe2d0e2a48416ca" compoundref="screenshot_8h" startline="48">job_manager</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -133,7 +139,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="30" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="65" bodyend="130"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="65" bodyend="130"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
+        <references refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" compoundref="screenshot_8cpp" startline="32" endline="48">gen_next_filename</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" compoundref="screenshot_8cpp" startline="51" endline="62">save_screenshot</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -149,7 +162,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/screenshot.h" line="39" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="32" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.cpp" bodystart="32" bodyend="48"/>
+        <references refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" compoundref="screenshot_8h" startline="42">count</references>
+        <references refid="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" compoundref="screenshot_8h" startline="45">last_time</references>
+        <references refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" compoundref="strings_8cpp" startline="20" endline="29">openage::util::sformat</references>
+        <referencedby refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" compoundref="screenshot_8cpp" startline="65" endline="130">encode_png</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -157,31 +174,31 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4131">
+      <node id="5037">
         <label>openage::ScreenshotManager</label>
         <link refid="classopenage_1_1_screenshot_manager"/>
-        <childnode refid="4132" relation="usage">
+        <childnode refid="5038" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="4133" relation="usage">
+        <childnode refid="5039" relation="usage">
           <edgelabel>+window_size</edgelabel>
         </childnode>
       </node>
-      <node id="4134">
+      <node id="5040">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="4133">
+      <node id="5039">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="4134" relation="public-inheritance">
+        <childnode refid="5040" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4132">
+      <node id="5038">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/screenshot.h" line="17" column="1" bodyfile="libopenage/screenshot.h" bodystart="17" bodyend="49"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/screenshot.h" bodystart="17" bodyend="49"/>
     <listofallmembers>
       <member refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" prot="private" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>count</name></member>
       <member refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>encode_png</name></member>

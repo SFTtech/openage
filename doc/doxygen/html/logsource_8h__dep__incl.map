@@ -1,27 +1,27 @@
-<map id="libopenage/log/logsource.h" name="libopenage/log/logsource.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1558,5,1734,32"/>
-<area shape="rect" id="node2" href="$unit_8h.xhtml" title=" " alt="" coords="861,87,1007,114"/>
-<area shape="rect" id="node19" href="$file__logsink_8cpp.xhtml" title=" " alt="" coords="1422,80,1547,121"/>
-<area shape="rect" id="node20" href="$named__logsource_8h.xhtml" title=" " alt="" coords="1572,80,1720,121"/>
-<area shape="rect" id="node24" href="$logsource_8cpp.xhtml" title=" " alt="" coords="1744,87,1935,114"/>
-<area shape="rect" id="node25" href="$test_8cpp.xhtml" title=" " alt="" coords="1959,87,2115,114"/>
-<area shape="rect" id="node3" href="$unit_2action_8h.xhtml" title=" " alt="" coords="1097,177,1256,203"/>
-<area shape="rect" id="node4" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="1397,266,1596,293"/>
-<area shape="rect" id="node5" href="$ability_8cpp.xhtml" title=" " alt="" coords="1620,266,1792,293"/>
-<area shape="rect" id="node7" href="$producer_8cpp.xhtml" title=" " alt="" coords="415,266,603,293"/>
-<area shape="rect" id="node8" href="$selection_8cpp.xhtml" title=" " alt="" coords="801,266,992,293"/>
-<area shape="rect" id="node9" href="$unit_8cpp.xhtml" title=" " alt="" coords="1215,266,1373,293"/>
-<area shape="rect" id="node10" href="$unit__type_8cpp.xhtml" title=" " alt="" coords="1816,259,1951,300"/>
-<area shape="rect" id="node11" href="$producer_8h.xhtml" title=" " alt="" coords="847,177,1021,203"/>
-<area shape="rect" id="node12" href="$game__save_8cpp.xhtml" title=" " alt="" coords="241,259,390,300"/>
-<area shape="rect" id="node14" href="$unit__container_8cpp.xhtml" title=" " alt="" coords="5,259,140,300"/>
-<area shape="rect" id="node15" href="$generator_8cpp.xhtml" title=" " alt="" coords="34,169,183,211"/>
-<area shape="rect" id="node16" href="$player_8cpp.xhtml" title=" " alt="" coords="207,169,357,211"/>
-<area shape="rect" id="node17" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="381,169,511,211"/>
-<area shape="rect" id="node18" href="$attribute_8cpp.xhtml" title=" " alt="" coords="535,177,720,203"/>
-<area shape="rect" id="node6" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="1017,266,1190,293"/>
-<area shape="rect" id="node13" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="627,259,777,300"/>
-<area shape="rect" id="node21" href="$log_8cpp.xhtml" title=" " alt="" coords="1484,177,1635,203"/>
-<area shape="rect" id="node22" href="$named__logsource_8cpp.xhtml" title=" " alt="" coords="1659,169,1807,211"/>
-<area shape="rect" id="node23" href="$stdout__logsink_8cpp.xhtml" title=" " alt="" coords="1831,169,1976,211"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/log/logsource.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/log/logsource.h">
+<area shape="rect" id="node1" title=" " alt="" coords="1919,5,2128,61"/>
+<area shape="rect" id="node2" href="$unit_8h.xhtml" title=" " alt="" coords="1080,109,1289,165"/>
+<area shape="rect" id="node19" href="$file__logsink_8cpp.xhtml" title=" " alt="" coords="1685,109,1895,165"/>
+<area shape="rect" id="node20" href="$named__logsource_8h.xhtml" title=" " alt="" coords="1919,109,2128,165"/>
+<area shape="rect" id="node24" href="$logsource_8cpp.xhtml" title=" " alt="" coords="2152,109,2361,165"/>
+<area shape="rect" id="node25" href="$test_8cpp.xhtml" title=" " alt="" coords="2385,109,2595,165"/>
+<area shape="rect" id="node3" href="$unit_2action_8h.xhtml" title=" " alt="" coords="1365,213,1575,269"/>
+<area shape="rect" id="node4" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="1741,317,1951,373"/>
+<area shape="rect" id="node5" href="$ability_8cpp.xhtml" title=" " alt="" coords="1975,317,2184,373"/>
+<area shape="rect" id="node7" href="$producer_8cpp.xhtml" title=" " alt="" coords="575,317,784,373"/>
+<area shape="rect" id="node8" href="$selection_8cpp.xhtml" title=" " alt="" coords="1041,317,1251,373"/>
+<area shape="rect" id="node9" href="$unit_8cpp.xhtml" title=" " alt="" coords="1508,317,1717,373"/>
+<area shape="rect" id="node10" href="$unit__type_8cpp.xhtml" title=" " alt="" coords="2208,317,2417,373"/>
+<area shape="rect" id="node11" href="$producer_8h.xhtml" title=" " alt="" coords="1080,213,1289,269"/>
+<area shape="rect" id="node12" href="$game__save_8cpp.xhtml" title=" " alt="" coords="341,317,551,373"/>
+<area shape="rect" id="node14" href="$unit__container_8cpp.xhtml" title=" " alt="" coords="5,317,215,373"/>
+<area shape="rect" id="node15" href="$generator_8cpp.xhtml" title=" " alt="" coords="44,213,253,269"/>
+<area shape="rect" id="node16" href="$player_8cpp.xhtml" title=" " alt="" coords="277,213,487,269"/>
+<area shape="rect" id="node17" href="$terrain__object_8cpp.xhtml" title=" " alt="" coords="511,213,720,269"/>
+<area shape="rect" id="node18" href="$attribute_8cpp.xhtml" title=" " alt="" coords="744,213,953,269"/>
+<area shape="rect" id="node6" href="$unit_2action_8cpp.xhtml" title=" " alt="" coords="1275,317,1484,373"/>
+<area shape="rect" id="node13" href="$game__spec_8cpp.xhtml" title=" " alt="" coords="808,317,1017,373"/>
+<area shape="rect" id="node21" href="$log_8cpp.xhtml" title=" " alt="" coords="1803,213,2012,269"/>
+<area shape="rect" id="node22" href="$named__logsource_8cpp.xhtml" title=" " alt="" coords="2036,213,2245,269"/>
+<area shape="rect" id="node23" href="$stdout__logsink_8cpp.xhtml" title=" " alt="" coords="2269,213,2479,269"/>
 </map>

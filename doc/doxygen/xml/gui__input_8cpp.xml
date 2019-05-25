@@ -20,7 +20,7 @@
         </childnode>
       </node>
       <node id="13536">
-        <label>libopenage/gui/guisys/public/gui_input.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp</label>
         <link refid="gui__input_8cpp"/>
         <childnode refid="13537" relation="include">
         </childnode>
@@ -72,6 +72,6 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_input.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_input.cpp"/>
   </compounddef>
 </doxygen>

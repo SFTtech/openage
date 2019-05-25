@@ -16,7 +16,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="161" column="1" bodyfile="libopenage/unit/producer.h" bodystart="161" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="161" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="161" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_projectile_producer_1a680a3cc3e75719a92ca5e529f840cef5" compoundref="producer_8cpp" startline="814" endline="816">id</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1aa865d0028f76dfeb134b32c24dc63619" compoundref="producer_8cpp" startline="826" endline="845">initialise</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1afd4025733132150438a1c2e116e61427" compoundref="producer_8cpp" startline="822" endline="824">name</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1ac8b3e0a4998857470cae7fb38c618bd0" compoundref="producer_8cpp" startline="818" endline="820">parent_id</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" compoundref="producer_8cpp" startline="847" endline="903">place</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_projectile_producer_1a6adb3a694e881056589835540dff1a0c" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
@@ -29,7 +34,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="162" column="1" bodyfile="libopenage/unit/producer.h" bodystart="162" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="162" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" compoundref="producer_8cpp" startline="847" endline="903">place</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_projectile_producer_1a368c02946db729f57a63511648ef99c2" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt;</type>
@@ -42,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="163" column="1" bodyfile="libopenage/unit/producer.h" bodystart="163" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="163" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_projectile_producer_1a8c17756d4ccd1b1c6cf71f807d7bb59e" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt;</type>
@@ -55,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="164" column="1" bodyfile="libopenage/unit/producer.h" bodystart="164" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="164" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_projectile_producer_1af56c6c8ab3605c8d63a3052b32f74319" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt;</type>
@@ -68,7 +74,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="165" column="1" bodyfile="libopenage/unit/producer.h" bodystart="165" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="165" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="165" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_projectile_producer_1aa865d0028f76dfeb134b32c24dc63619" compoundref="producer_8cpp" startline="826" endline="845">initialise</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +102,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="151" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="790" bodyend="810"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="151" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="790" bodyend="810"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a">openage::owner</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1aa77ac6a3e99375d669bc6ce8b3a13a57" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -108,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="152" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="812" bodyend="812"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="812" bodyend="812"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1a680a3cc3e75719a92ca5e529f840cef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -123,7 +131,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="154" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="814" bodyend="816"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="154" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="814" bodyend="816"/>
+        <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1ac8b3e0a4998857470cae7fb38c618bd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -138,7 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="155" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="818" bodyend="820"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="155" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="818" bodyend="820"/>
+        <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1afd4025733132150438a1c2e116e61427" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -153,7 +163,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="156" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="822" bodyend="824"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="822" bodyend="824"/>
+        <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1aa865d0028f76dfeb134b32c24dc63619" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -176,7 +190,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="157" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="826" bodyend="845"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="826" bodyend="845"/>
+        <references refid="classopenage_1_1_unit_1ab74b08bb7725863fc63839d798f6aedb" compoundref="unit_8cpp" startline="246" endline="248">openage::Unit::add_attribute</references>
+        <references refid="classopenage_1_1_projectile_producer_1af56c6c8ab3605c8d63a3052b32f74319" compoundref="producer_8h" startline="165">destroyed</references>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="classopenage_1_1_unit_type_1a8aefb19903db17d9f07cea64ecba76bf" compoundref="unit__type_8h" startline="143">openage::UnitType::owner</references>
+        <references refid="classopenage_1_1_unit_1aecd686fafc67487f4df4d3637f2621f4" compoundref="unit_8cpp" startline="235" endline="240">openage::Unit::push_action</references>
+        <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
+        <references refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" compoundref="unit_8h" startline="54">openage::Unit::unit_type</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
@@ -201,7 +222,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/producer.h" line="158" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="847" bodyend="903"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="158" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp" bodystart="847" bodyend="903"/>
+        <references refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" compoundref="unit_8h" startline="199" endline="203">openage::Unit::get_attribute</references>
+        <references refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" compoundref="unit_8h" startline="68">openage::Unit::location</references>
+        <references refid="classopenage_1_1_unit_1a76a10b9ab26e62d7b712a6c796052ee3" compoundref="unit_8h" startline="78" endline="88">openage::Unit::make_location</references>
+        <references refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" compoundref="terrain_8h" startline="59">openage::TileContent::obj</references>
+        <references refid="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465eac693ee9f8e776555e9625dd624ad5fa3">openage::placed_no_collision</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2">openage::projectile</references>
+        <references refid="classopenage_1_1_projectile_producer_1a6adb3a694e881056589835540dff1a0c" compoundref="producer_8h" startline="162">terrain_outline</references>
+        <references refid="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" compoundref="terrain__object_8cpp" startline="444" endline="467">openage::tile_list</references>
+        <references refid="classopenage_1_1_projectile_producer_1a5a3ae2ec44c6520240d958a78319de35" compoundref="producer_8h" startline="161">unit_data</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -210,123 +240,123 @@
 <para>creates projectiles todo use <ref refid="classopenage_1_1_movable_producer" kindref="compound">MovableProducer</ref> as base class </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3764">
+      <node id="4522">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
       </node>
-      <node id="3763">
+      <node id="4521">
         <label>openage::ProjectileProducer</label>
         <link refid="classopenage_1_1_projectile_producer"/>
-        <childnode refid="3764" relation="public-inheritance">
+        <childnode refid="4522" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3776">
+      <node id="4534">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="3774" relation="public-inheritance">
+        <childnode refid="4532" relation="public-inheritance">
         </childnode>
-        <childnode refid="3775" relation="usage">
+        <childnode refid="4533" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="3773">
+      <node id="4531">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="3774" relation="public-inheritance">
+        <childnode refid="4532" relation="public-inheritance">
         </childnode>
-        <childnode refid="3772" relation="usage">
+        <childnode refid="4530" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="3774">
+      <node id="4532">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="3766">
+      <node id="4524">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
-        <childnode refid="3767" relation="usage">
+        <childnode refid="4525" relation="usage">
           <edgelabel>+foundation_size</edgelabel>
         </childnode>
-        <childnode refid="3769" relation="usage">
+        <childnode refid="4527" relation="usage">
           <edgelabel>+default_attributes</edgelabel>
         </childnode>
-        <childnode refid="3770" relation="usage">
+        <childnode refid="4528" relation="usage">
           <edgelabel>+cost</edgelabel>
         </childnode>
-        <childnode refid="3772" relation="usage">
+        <childnode refid="4530" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="3775">
+      <node id="4533">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="3776" relation="usage">
+        <childnode refid="4534" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="3765">
+      <node id="4523">
         <label>openage::ProjectileProducer</label>
         <link refid="classopenage_1_1_projectile_producer"/>
-        <childnode refid="3766" relation="public-inheritance">
+        <childnode refid="4524" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3778">
+      <node id="4536">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="3769">
+      <node id="4527">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
-      <node id="3772">
+      <node id="4530">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="3773" relation="usage">
+        <childnode refid="4531" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="3775" relation="usage">
+        <childnode refid="4533" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="3771" relation="usage">
+        <childnode refid="4529" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="3777" relation="usage">
+        <childnode refid="4535" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="3778" relation="usage">
+        <childnode refid="4536" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="3767">
+      <node id="4525">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="3768" relation="public-inheritance">
+        <childnode refid="4526" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3771">
+      <node id="4529">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="3777">
+      <node id="4535">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="3770">
+      <node id="4528">
         <label>openage::ResourceCost</label>
         <link refid="classopenage_1_1_resource_cost"/>
-        <childnode refid="3771" relation="usage">
+        <childnode refid="4529" relation="usage">
           <edgelabel>-resources</edgelabel>
         </childnode>
       </node>
-      <node id="3768">
+      <node id="4526">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/producer.h" line="149" column="1" bodyfile="libopenage/unit/producer.h" bodystart="149" bodyend="166"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.h" bodystart="149" bodyend="166"/>
     <listofallmembers>
       <member refid="classopenage_1_1_unit_type_1acf200f0f7321ae1e074bae39bc437b53" prot="public" virt="non-virtual"><scope>openage::ProjectileProducer</scope><name>copy_attributes</name></member>
       <member refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" prot="public" virt="non-virtual"><scope>openage::ProjectileProducer</scope><name>cost</name></member>

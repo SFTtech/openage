@@ -10,12 +10,12 @@
     <includes refid="tile_8h" local="yes">../coord/tile.h</includes>
     <includes refid="pairing__heap_8h" local="yes">../datastructure/pairing_heap.h</includes>
     <includes refid="misc_8h" local="yes">../util/misc.h</includes>
-    <includedby refid="unit_2action_8h" local="yes">libopenage/unit/action.h</includedby>
-    <includedby refid="heuristics_8h" local="yes">libopenage/pathfinding/heuristics.h</includedby>
-    <includedby refid="a__star_8h" local="yes">libopenage/pathfinding/a_star.h</includedby>
-    <includedby refid="a__star_8cpp" local="yes">libopenage/pathfinding/a_star.cpp</includedby>
-    <includedby refid="pathfinding_2path_8cpp" local="yes">libopenage/pathfinding/path.cpp</includedby>
-    <includedby refid="pathfinding_2tests_8cpp" local="yes">libopenage/pathfinding/tests.cpp</includedby>
+    <includedby refid="unit_2action_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</includedby>
+    <includedby refid="heuristics_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</includedby>
+    <includedby refid="a__star_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</includedby>
+    <includedby refid="a__star_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</includedby>
+    <includedby refid="pathfinding_2path_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp</includedby>
+    <includedby refid="pathfinding_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</includedby>
     <incdepgraph>
       <node id="18794">
         <label>list</label>
@@ -53,7 +53,7 @@
         <label>limits</label>
       </node>
       <node id="18762">
-        <label>libopenage/pathfinding/path.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h</label>
         <link refid="pathfinding_2path_8h"/>
         <childnode refid="18763" relation="include">
         </childnode>
@@ -341,7 +341,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="18809">
-        <label>libopenage/pathfinding/path.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h</label>
         <link refid="pathfinding_2path_8h"/>
         <childnode refid="18810" relation="include">
         </childnode>
@@ -357,43 +357,43 @@
         </childnode>
       </node>
       <node id="18821">
-        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp</label>
         <link refid="heuristics_8cpp"/>
       </node>
       <node id="18816">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="18812">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="18814">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="18811">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="18820">
-        <label>libopenage/pathfinding/a_star.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</label>
         <link refid="a__star_8cpp"/>
       </node>
       <node id="18823">
-        <label>libopenage/pathfinding/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp</label>
         <link refid="pathfinding_2path_8cpp"/>
       </node>
       <node id="18817">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="18813">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="18819">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="18820" relation="include">
         </childnode>
@@ -401,15 +401,15 @@
         </childnode>
       </node>
       <node id="18815">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="18822">
-        <label>libopenage/pathfinding/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</label>
         <link refid="pathfinding_2tests_8cpp"/>
       </node>
       <node id="18818">
-        <label>libopenage/pathfinding/heuristics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</label>
         <link refid="heuristics_8h"/>
         <childnode refid="18819" relation="include">
         </childnode>
@@ -423,7 +423,7 @@
         </childnode>
       </node>
       <node id="18810">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="18811" relation="include">
         </childnode>
@@ -575,6 +575,6 @@
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>std</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pathfinding/path.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h"/>
   </compounddef>
 </doxygen>

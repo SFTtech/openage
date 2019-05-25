@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::slp_converter_pool::SLPConverterPool</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1ab8cdaf7c309255571f22a4a494543d1a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.slp_converter_pool.SLPConverterPool::palette</definition>
+        <argsstring></argsstring>
+        <name>palette</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a1f4f313ff0dda07087f2ef915dbb6e6d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.slp_converter_pool.SLPConverterPool::fake</definition>
+        <argsstring></argsstring>
+        <name>fake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" compoundref="slp__converter__pool_8py" startline="80" endline="87">openage.convert.slp_converter_pool.SLPConverterPool.close</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a95f6aaad729ef45ec619b83d848ba296" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.slp_converter_pool.SLPConverterPool::idle</definition>
+        <argsstring></argsstring>
+        <name>idle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="48" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1aa5583e4dd38e36e03dd67f98da7484e0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.slp_converter_pool.SLPConverterPool::job_mutex</definition>
+        <argsstring></argsstring>
+        <name>job_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="51" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" compoundref="slp__converter__pool_8py" startline="92" endline="123">openage.convert.slp_converter_pool.SLPConverterPool.convert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a828ee90e56e649ae32451a71388afa02" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.slp_converter_pool.SLPConverterPool::processes</definition>
+        <argsstring></argsstring>
+        <name>processes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="55" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" compoundref="slp__converter__pool_8py" startline="80" endline="87">openage.convert.slp_converter_pool.SLPConverterPool.close</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a23af83e63aa7db225c65bc947cb7ad3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.SLPConverterPool.__init__</definition>
+        <argsstring>(self, palette, jobs=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1ab8cdaf7c309255571f22a4a494543d1a" kindref="member">palette</ref></type>
+          <defname>palette</defname>
+        </param>
+        <param>
+          <type>jobs</type>
+          <defname>jobs</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="32" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.SLPConverterPool.close</definition>
+        <argsstring>(self)</argsstring>
+        <name>close</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Closes the converter pool, quitting all the processes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="80" bodyend="87"/>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a1f4f313ff0dda07087f2ef915dbb6e6d" compoundref="slp__converter__pool_8py" startline="38">openage.convert.slp_converter_pool.SLPConverterPool.fake</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a828ee90e56e649ae32451a71388afa02" compoundref="slp__converter__pool_8py" startline="55">openage.convert.slp_converter_pool.SLPConverterPool.processes</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.SLPConverterPool.convert</definition>
+        <argsstring>(self, slpdata, custom_cutter=None)</argsstring>
+        <name>convert</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>slpdata</type>
+          <defname>slpdata</defname>
+        </param>
+        <param>
+          <type>custom_cutter</type>
+          <defname>custom_cutter</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="92" bodyend="123"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a1f4f313ff0dda07087f2ef915dbb6e6d" compoundref="slp__converter__pool_8py" startline="38">openage.convert.slp_converter_pool.SLPConverterPool.fake</references>
+        <references refid="namespaceopenage_1_1util_1_1system_1a72914597dbcbffe50aec0047eb97f3db" compoundref="system_8py" startline="22" endline="41">openage.util.system.free_memory</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a95f6aaad729ef45ec619b83d848ba296" compoundref="slp__converter__pool_8py" startline="48">openage.convert.slp_converter_pool.SLPConverterPool.idle</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1aa5583e4dd38e36e03dd67f98da7484e0" compoundref="slp__converter__pool_8py" startline="51">openage.convert.slp_converter_pool.SLPConverterPool.job_mutex</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1ab8cdaf7c309255571f22a4a494543d1a" compoundref="slp__converter__pool_8py" startline="36">openage.convert.slp_converter_pool.SLPConverterPool.palette</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_color_table_1a27f90ee3468d2e45dc1ba7b3e2f66476" compoundref="colortable_8py" startline="37">openage.convert.colortable.ColorTable.palette</references>
+        <references refid="classopenage_1_1convert_1_1colortable_1_1_player_color_table_1aadb5020831d2d37268fc05aa7e98ec71" compoundref="colortable_8py" startline="184">openage.convert.colortable.PlayerColorTable.palette</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0790584c87c48bf95738b2b2f4ca2f14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.SLPConverterPool.__enter__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__enter__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="124" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.slp_converter_pool.SLPConverterPool.__exit__</definition>
+        <argsstring>(self, exctype, value, traceback)</argsstring>
+        <name>__exit__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>exctype</type>
+          <defname>exctype</defname>
+        </param>
+        <param>
+          <type>value</type>
+          <defname>value</defname>
+        </param>
+        <param>
+          <type>traceback</type>
+          <defname>traceback</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="127" bodyend="131"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" compoundref="filelike_2native_8cpp" startline="139" endline="141">openage::util::filelike::Native::close</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" compoundref="filelike_2python_8cpp" startline="60" endline="62">openage::util::filelike::Python::close</references>
+        <references refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher_1a81a39d07ebb17dfc512f9c4f904fb692" compoundref="codegen_8py" startline="48" endline="50">openage.codegen.codegen.WriteCatcher.close</references>
+        <references refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" compoundref="slp__converter__pool_8py" startline="80" endline="87">openage.convert.slp_converter_pool.SLPConverterPool.close</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23">openage::util::filelike::FileLike::close</references>
+        <references refid="classopenage_1_1util_1_1_file_1a529bcc6a1c3b4b68db36e6524340cc11" compoundref="file_8cpp" startline="86" endline="88">openage::util::File::close</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a0a78e07f80c2a50875e3d689df488e34" compoundref="lzxdstream_8py" startline="98" endline="102">openage.cabextract.lzxdstream.LZXDStream.close</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1ae5a7fefaa419877c7b44e69e7451c6f8" compoundref="cab_8py" startline="550" endline="555">openage.cabextract.cab.CABFolderStream.close</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Multiprocessing-based pool of SLP converter processes. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1605">
+        <label>openage.convert.slp_converter_pool.SLPConverterPool</label>
+        <link refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/slp_converter_pool.py" bodystart="31" bodyend="132"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0790584c87c48bf95738b2b2f4ca2f14" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a23af83e63aa7db225c65bc947cb7ad3c" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a157e465a75a721fa7b2f805ff57c4d5f" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>close</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a0649d9cd9eb94e284420c7a3c734904a" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>convert</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a1f4f313ff0dda07087f2ef915dbb6e6d" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>fake</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a95f6aaad729ef45ec619b83d848ba296" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>idle</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1aa5583e4dd38e36e03dd67f98da7484e0" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>job_mutex</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1ab8cdaf7c309255571f22a4a494543d1a" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>palette</name></member>
+      <member refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a828ee90e56e649ae32451a71388afa02" prot="public" virt="non-virtual"><scope>openage::convert::slp_converter_pool::SLPConverterPool</scope><name>processes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

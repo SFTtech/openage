@@ -1,9 +1,10 @@
 <map id="qtsdl::GuiItemListModel&lt; T &gt;" name="qtsdl::GuiItemListModel&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="141,701,347,852"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="177,575,311,652"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="27,419,195,496"/>
-<area shape="rect" id="node4" href="$classqtsdl_1_1_persistent_core_holder.xhtml" title=" " alt="" coords="20,169,201,305"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_persistent_core_holder_base.xhtml" title=" " alt="" coords="5,5,216,97"/>
-<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="219,389,445,525"/>
-<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="240,147,424,327"/>
+<area shape="rect" id="node1" title=" " alt="" coords="126,885,333,1036"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_gui_item.xhtml" title=" " alt="" coords="162,759,297,836"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_gui_item_origin.xhtml" title=" " alt="" coords="12,603,180,680"/>
+<area shape="rect" id="node4" href="$classqtsdl_1_1_persistent_core_holder.xhtml" title=" " alt="" coords="5,353,187,489"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_persistent_core_holder_base.xhtml" title=" " alt="" coords="13,5,224,97"/>
+<area shape="rect" id="node6" href="$classqtsdl_1_1_persistent_core_holder.xhtml" title=" " alt="" coords="113,147,325,253"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="205,573,430,709"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="225,331,409,511"/>
 </map>

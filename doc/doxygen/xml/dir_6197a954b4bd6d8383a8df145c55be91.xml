@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_6197a954b4bd6d8383a8df145c55be91" kind="dir">
-    <compoundname>libopenage/event/demo</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo</compoundname>
     <innerfile refid="aicontroller_8cpp">aicontroller.cpp</innerfile>
     <innerfile refid="aicontroller_8h">aicontroller.h</innerfile>
     <innerfile refid="gamestate_8cpp">gamestate.cpp</innerfile>
@@ -16,6 +16,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/event/demo/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/"/>
   </compounddef>
 </doxygen>

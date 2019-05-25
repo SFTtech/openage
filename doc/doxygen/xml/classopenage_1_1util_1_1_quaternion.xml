@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="33" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1util_1_1_quaternion_1abf0a818d7e5e3a592f6e25bb56a18a15" prot="public" static="no">
         <type>T</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="34" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="36" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -65,7 +65,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="432" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" compoundref="quaternion_8h" startline="251" endline="258">openage::util::Quaternion&lt; T &gt;::equals_number</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" compoundref="quaternion_8h" startline="311" endline="321">openage::util::Quaternion&lt; T &gt;::operator *</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" compoundref="quaternion_8h" startline="353" endline="360">openage::util::Quaternion&lt; T &gt;::operator *=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" compoundref="quaternion_8h" startline="407" endline="409">openage::util::Quaternion&lt; T &gt;::operator -</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" compoundref="quaternion_8h" startline="338" endline="345">openage::util::Quaternion&lt; T &gt;::operator -=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" compoundref="quaternion_8h" startline="323" endline="330">openage::util::Quaternion&lt; T &gt;::operator+=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" compoundref="quaternion_8h" startline="392" endline="399">openage::util::Quaternion&lt; T &gt;::operator/=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" compoundref="quaternion_8h" startline="411" endline="416">openage::util::Quaternion&lt; T &gt;::operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ad7ffd5d2422d78537a4b4a530d280354" compoundref="quaternion_8h" startline="38" endline="40">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" compoundref="quaternion_8h" startline="282" endline="306">openage::util::Quaternion&lt; T &gt;::to_matrix</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" prot="protected" static="no" mutable="no">
         <type>T</type>
@@ -78,7 +89,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="432" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" compoundref="quaternion_8h" startline="225" endline="229">openage::util::Quaternion&lt; T &gt;::conjugate</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" compoundref="quaternion_8h" startline="251" endline="258">openage::util::Quaternion&lt; T &gt;::equals_number</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" compoundref="quaternion_8h" startline="311" endline="321">openage::util::Quaternion&lt; T &gt;::operator *</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" compoundref="quaternion_8h" startline="353" endline="360">openage::util::Quaternion&lt; T &gt;::operator *=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" compoundref="quaternion_8h" startline="407" endline="409">openage::util::Quaternion&lt; T &gt;::operator -</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" compoundref="quaternion_8h" startline="338" endline="345">openage::util::Quaternion&lt; T &gt;::operator -=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" compoundref="quaternion_8h" startline="323" endline="330">openage::util::Quaternion&lt; T &gt;::operator+=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" compoundref="quaternion_8h" startline="392" endline="399">openage::util::Quaternion&lt; T &gt;::operator/=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" compoundref="quaternion_8h" startline="411" endline="416">openage::util::Quaternion&lt; T &gt;::operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" compoundref="quaternion_8h" startline="66" endline="133">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" compoundref="quaternion_8h" startline="282" endline="306">openage::util::Quaternion&lt; T &gt;::to_matrix</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" prot="protected" static="no" mutable="no">
         <type>T</type>
@@ -91,7 +114,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="432" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" compoundref="quaternion_8h" startline="225" endline="229">openage::util::Quaternion&lt; T &gt;::conjugate</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" compoundref="quaternion_8h" startline="251" endline="258">openage::util::Quaternion&lt; T &gt;::equals_number</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" compoundref="quaternion_8h" startline="311" endline="321">openage::util::Quaternion&lt; T &gt;::operator *</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" compoundref="quaternion_8h" startline="353" endline="360">openage::util::Quaternion&lt; T &gt;::operator *=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" compoundref="quaternion_8h" startline="407" endline="409">openage::util::Quaternion&lt; T &gt;::operator -</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" compoundref="quaternion_8h" startline="338" endline="345">openage::util::Quaternion&lt; T &gt;::operator -=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" compoundref="quaternion_8h" startline="323" endline="330">openage::util::Quaternion&lt; T &gt;::operator+=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" compoundref="quaternion_8h" startline="392" endline="399">openage::util::Quaternion&lt; T &gt;::operator/=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" compoundref="quaternion_8h" startline="411" endline="416">openage::util::Quaternion&lt; T &gt;::operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" compoundref="quaternion_8h" startline="66" endline="133">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" compoundref="quaternion_8h" startline="282" endline="306">openage::util::Quaternion&lt; T &gt;::to_matrix</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" prot="protected" static="no" mutable="no">
         <type>T</type>
@@ -104,7 +139,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="432" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" compoundref="quaternion_8h" startline="225" endline="229">openage::util::Quaternion&lt; T &gt;::conjugate</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" compoundref="quaternion_8h" startline="251" endline="258">openage::util::Quaternion&lt; T &gt;::equals_number</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" compoundref="quaternion_8h" startline="311" endline="321">openage::util::Quaternion&lt; T &gt;::operator *</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" compoundref="quaternion_8h" startline="353" endline="360">openage::util::Quaternion&lt; T &gt;::operator *=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" compoundref="quaternion_8h" startline="407" endline="409">openage::util::Quaternion&lt; T &gt;::operator -</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" compoundref="quaternion_8h" startline="338" endline="345">openage::util::Quaternion&lt; T &gt;::operator -=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" compoundref="quaternion_8h" startline="323" endline="330">openage::util::Quaternion&lt; T &gt;::operator+=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" compoundref="quaternion_8h" startline="392" endline="399">openage::util::Quaternion&lt; T &gt;::operator/=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" compoundref="quaternion_8h" startline="411" endline="416">openage::util::Quaternion&lt; T &gt;::operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" compoundref="quaternion_8h" startline="66" endline="133">openage::util::Quaternion&lt; T &gt;::Quaternion</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" compoundref="quaternion_8h" startline="282" endline="306">openage::util::Quaternion&lt; T &gt;::to_matrix</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -135,7 +182,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="38" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="38" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="38" bodyend="40"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af9cc9992551fb7749bf9023ac1f00c56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -149,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="45" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="45" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -178,7 +226,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="66" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="66" bodyend="133"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="66" bodyend="133"/>
+        <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
+        <references refid="classopenage_1_1util_1_1_matrix_1ae8e23f59ac0793b10d8487abac1e2edb" compoundref="matrix_8h" startline="221" endline="229">openage::util::Matrix&lt; M, N, T &gt;::trace</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a70decb0640b721a21f798ae5ca4ece79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -195,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="135" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="135" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae6b1c9f9107c13dfe7e86172a1cb1d97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -212,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="136" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="136" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a92a28f0852715a3b4b640586d4cc59bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> &amp;</type>
@@ -229,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="137" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="137" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a734d68558d547c8963b614ce85caefa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> &amp;</type>
@@ -246,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="138" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="138" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1acdd9fea910d2d4570f8f50fdb8dd809b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -259,7 +313,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="140" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="140" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -277,7 +331,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="166" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="166" bodyend="168"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="166" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="166" bodyend="168"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" compoundref="quaternion_8h" startline="243" endline="246">openage::util::Quaternion&lt; T &gt;::equals</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" compoundref="quaternion_8h" startline="264" endline="269">openage::util::Quaternion&lt; T &gt;::equals_rad</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" compoundref="quaternion_8h" startline="202" endline="210">openage::util::Quaternion&lt; T &gt;::inverse</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" compoundref="quaternion_8h" startline="173" endline="175">openage::util::Quaternion&lt; T &gt;::norm</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -291,7 +353,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="173" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="173" bodyend="175"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="173" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="173" bodyend="175"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</references>
+        <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a1ea971d2f39920e062b0b91971296b65" compoundref="quaternion_8h" startline="180" endline="184">openage::util::Quaternion&lt; T &gt;::normalize</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a1ea971d2f39920e062b0b91971296b65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -305,7 +370,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="180" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="180" bodyend="184"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="180" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="180" bodyend="184"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" compoundref="quaternion_8h" startline="173" endline="175">openage::util::Quaternion&lt; T &gt;::norm</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" compoundref="quaternion_8h" startline="189" endline="193">openage::util::Quaternion&lt; T &gt;::normalized</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -319,7 +386,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="189" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="189" bodyend="193"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="189" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="189" bodyend="193"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a1ea971d2f39920e062b0b91971296b65" compoundref="quaternion_8h" startline="180" endline="184">openage::util::Quaternion&lt; T &gt;::normalize</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -334,7 +403,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="202" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="202" bodyend="210"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="202" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="202" bodyend="210"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" compoundref="quaternion_8h" startline="234" endline="238">openage::util::Quaternion&lt; T &gt;::conjugated</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" compoundref="quaternion_8h" startline="215" endline="219">openage::util::Quaternion&lt; T &gt;::inversed</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -348,7 +422,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="215" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="215" bodyend="219"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="215" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="215" bodyend="219"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" compoundref="quaternion_8h" startline="202" endline="210">openage::util::Quaternion&lt; T &gt;::inverse</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -362,7 +438,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="225" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="225" bodyend="229"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="225" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="225" bodyend="229"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" compoundref="quaternion_8h" startline="234" endline="238">openage::util::Quaternion&lt; T &gt;::conjugated</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -376,7 +456,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="234" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="234" bodyend="238"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="234" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="234" bodyend="238"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" compoundref="quaternion_8h" startline="225" endline="229">openage::util::Quaternion&lt; T &gt;::conjugate</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" compoundref="quaternion_8h" startline="202" endline="210">openage::util::Quaternion&lt; T &gt;::inverse</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -399,7 +481,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="243" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="243" bodyend="246"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="243" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="243" bodyend="246"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -422,7 +506,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="251" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="251" bodyend="258"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="251" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="251" bodyend="258"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -445,7 +534,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="264" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="264" bodyend="269"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="264" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="264" bodyend="269"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" compoundref="quaternion_8h" startline="166" endline="168">openage::util::Quaternion&lt; T &gt;::dot</references>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" compoundref="quaternion_8h" startline="275" endline="277">openage::util::Quaternion&lt; T &gt;::equals_deg</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -468,7 +561,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="275" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="275" bodyend="277"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="275" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="275" bodyend="277"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" compoundref="quaternion_8h" startline="264" endline="269">openage::util::Quaternion&lt; T &gt;::equals_rad</references>
+        <references refid="namespaceopenage_1_1math_1a053cbd823bc5508663aa2f4b3e47e1ef" compoundref="math__constants_8h" startline="23">openage::math::RADSPERDEG</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1util_1a748106aeb16275c1ebf6f0f9276381cd" kindref="member">Matrix3t</ref>&lt; T &gt;</type>
@@ -482,7 +578,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="282" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="282" bodyend="306"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="282" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="282" bodyend="306"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" kindref="member">Vector3t</ref>&lt; T &gt;</type>
@@ -500,7 +600,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="311" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="311" bodyend="321"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="311" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="311" bodyend="321"/>
+        <references refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" compoundref="vector_8h" startline="177" endline="183">openage::util::Vector&lt; N, T &gt;::cross_product</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
@@ -517,7 +622,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="323" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="323" bodyend="330"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="323" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="323" bodyend="330"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ac2ba30736d9087f243278b22dbb23521" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -534,7 +643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="332" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="332" bodyend="336"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="332" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="332" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
@@ -551,7 +660,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="338" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="338" bodyend="345"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="338" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="338" bodyend="345"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a0b3df71d51ed01ed70243897660f4f61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -568,7 +681,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="347" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="347" bodyend="351"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="347" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="347" bodyend="351"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
@@ -585,7 +698,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="353" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="353" bodyend="360"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="353" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="353" bodyend="360"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a898cb94a06b06ef685cb20646ac5b910" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -602,7 +719,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="362" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="362" bodyend="366"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="362" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="362" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a26bf15925240d4accfce99c6cf88d940" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
@@ -619,7 +736,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="368" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="368" bodyend="384"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="368" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="368" bodyend="384"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a8e51a16d5804b8ecf45c212bbd99b756" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -636,7 +757,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="386" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="386" bodyend="390"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="386" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="386" bodyend="390"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
@@ -653,7 +774,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="392" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="392" bodyend="399"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="392" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="392" bodyend="399"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a36bc98ccdf1b9a5a264f10d77211fcad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -670,7 +795,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="401" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="401" bodyend="405"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="401" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="401" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -683,7 +808,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="407" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="407" bodyend="409"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="407" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="407" bodyend="409"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -700,7 +829,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="411" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="411" bodyend="416"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="411" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="411" bodyend="416"/>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::w</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::x</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::y</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" compoundref="quaternion_8h" startline="432">openage::util::Quaternion&lt; T &gt;::z</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a8bae69e2874d87ae47e4b8ef4ffd121a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -717,7 +850,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="418" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="418" bodyend="420"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="418" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="418" bodyend="420"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -741,7 +874,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="145" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="145" bodyend="154"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="145" bodyend="154"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" compoundref="quaternion_8h" startline="159" endline="161">openage::util::Quaternion&lt; T &gt;::from_deg</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
@@ -763,7 +898,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="159" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="159" bodyend="161"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="159" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="159" bodyend="161"/>
+        <references refid="namespaceopenage_1_1util_1_1math_1a790f58dbcc1c954e8eb01698a858bf16" compoundref="math_8py" startline="16">openage.util.math.DEGSPERRAD</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" compoundref="quaternion_8h" startline="145" endline="154">openage::util::Quaternion&lt; T &gt;::from_rad</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" compoundref="quaternion__test_8cpp" startline="16" endline="250">openage::util::tests::quaternion</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -786,7 +924,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion.h" line="422" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="422" bodyend="426"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="422" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="422" bodyend="426"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -798,13 +936,13 @@
 <para>Also: From <ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> to <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref> and Back J.M.P. van Waveren, id Software, 2005 </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3818">
+      <node id="6010">
         <label>T</label>
       </node>
-      <node id="3817">
+      <node id="6009">
         <label>openage::util::Quaternion&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_quaternion"/>
-        <childnode refid="3818" relation="usage">
+        <childnode refid="6010" relation="usage">
           <edgelabel>#x</edgelabel>
           <edgelabel>#y</edgelabel>
           <edgelabel>#z</edgelabel>
@@ -812,7 +950,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/quaternion.h" line="31" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="31" bodyend="433"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h" bodystart="31" bodyend="433"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>conjugate</name></member>
       <member refid="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>conjugated</name></member>

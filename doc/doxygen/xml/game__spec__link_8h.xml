@@ -7,9 +7,9 @@
     <includes local="no">QQmlParserStatus</includes>
     <includes refid="gui__item_8h" local="yes">guisys/link/gui_item.h</includes>
     <includes refid="game__spec_8h" local="yes">../gamestate/game_spec.h</includes>
-    <includedby refid="game__creator_8cpp" local="yes">libopenage/gui/game_creator.cpp</includedby>
-    <includedby refid="game__spec__link_8cpp" local="yes">libopenage/gui/game_spec_link.cpp</includedby>
-    <includedby refid="gui__image__provider__link_8cpp" local="yes">libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
+    <includedby refid="game__creator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</includedby>
+    <includedby refid="game__spec__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</includedby>
+    <includedby refid="gui__image__provider__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
     <incdepgraph>
       <node id="12460">
         <label>list</label>
@@ -38,7 +38,7 @@
         </childnode>
       </node>
       <node id="12416">
-        <label>libopenage/gui/game_spec_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.h</label>
         <link refid="game__spec__link_8h"/>
         <childnode refid="12417" relation="include">
         </childnode>
@@ -729,11 +729,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12512">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="12509">
-        <label>libopenage/gui/game_spec_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.h</label>
         <link refid="game__spec__link_8h"/>
         <childnode refid="12510" relation="include">
         </childnode>
@@ -743,11 +743,11 @@
         </childnode>
       </node>
       <node id="12510">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="12511">
-        <label>libopenage/gui/game_spec_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.cpp</label>
         <link refid="game__spec__link_8cpp"/>
       </node>
     </invincdepgraph>
@@ -807,10 +807,10 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_INTERFACES(QQmlParserStatus)</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_ENUMS(<ref refid="classopenage_1_1gui_1_1_game_spec_link_1aebf4b00b0248dcf73f3d7807c26457e1" kindref="member">State</ref>)</highlight></codeline>
-<codeline lineno="46" refid="classopenage_1_1gui_1_1_game_spec_link_1a9e97d93edcd1587dccb0b7b831620a1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_game_spec_link_1aebf4b00b0248dcf73f3d7807c26457e1" kindref="member">State</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a9e97d93edcd1587dccb0b7b831620a1f" kindref="member">state</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a7324d1d41b9e0941bc81aa920237b271" kindref="member">get_state</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a5ce9bc949df52b349d8c54c2f34e2f4b" kindref="member">state_changed</ref>)</highlight></codeline>
-<codeline lineno="47" refid="classopenage_1_1gui_1_1_game_spec_link_1a1b9f6b78a5300a0fb18ad91a41e969e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a1b9f6b78a5300a0fb18ad91a41e969e9" kindref="member">active</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a3daa0abf224f1d16484b5ca75102936c" kindref="member">get_active</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a65d2c73c99d6724ead9ca41556253c56" kindref="member">set_active</ref>)</highlight></codeline>
-<codeline lineno="48" refid="classopenage_1_1gui_1_1_game_spec_link_1a2090dea20c2a2670d3a9a9682a9a4f04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_asset_manager_link" kindref="compound">AssetManagerLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a2090dea20c2a2670d3a9a9682a9a4f04" kindref="member">assetManager</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1af6c23d1668e71bc9f8e6d89c254e72d9" kindref="member">get_asset_manager</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1acee4b3764eaa0e07144e164b8b7bdca0" kindref="member">set_asset_manager</ref>)</highlight></codeline>
-<codeline lineno="49" refid="classopenage_1_1gui_1_1_game_spec_link_1a194718e2453c0dee8309a14e1fa6022c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a194718e2453c0dee8309a14e1fa6022c" kindref="member">terrainIdCount</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a3cb29a1d188c9851280c49dfbc438ba4" kindref="member">get_terrain_id_count</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a78013d553db1c5817ccadf678af438a9" kindref="member">terrain_id_count_changed</ref>)</highlight></codeline>
+<codeline lineno="46" refid="classopenage_1_1gui_1_1_game_spec_link_1a9e97d93edcd1587dccb0b7b831620a1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_game_spec_link_1aebf4b00b0248dcf73f3d7807c26457e1" kindref="member">State</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a9e97d93edcd1587dccb0b7b831620a1f" kindref="member">state</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a7324d1d41b9e0941bc81aa920237b271" kindref="member">get_state</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a5ce9bc949df52b349d8c54c2f34e2f4b" kindref="member">state_changed</ref>)</highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1gui_1_1_game_spec_link_1a1b9f6b78a5300a0fb18ad91a41e969e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a1b9f6b78a5300a0fb18ad91a41e969e9" kindref="member">active</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a3daa0abf224f1d16484b5ca75102936c" kindref="member">get_active</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a65d2c73c99d6724ead9ca41556253c56" kindref="member">set_active</ref>)</highlight></codeline>
+<codeline lineno="48" refid="classopenage_1_1gui_1_1_game_spec_link_1a2090dea20c2a2670d3a9a9682a9a4f04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_asset_manager_link" kindref="compound">AssetManagerLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a2090dea20c2a2670d3a9a9682a9a4f04" kindref="member">assetManager</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1af6c23d1668e71bc9f8e6d89c254e72d9" kindref="member">get_asset_manager</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1acee4b3764eaa0e07144e164b8b7bdca0" kindref="member">set_asset_manager</ref>)</highlight></codeline>
+<codeline lineno="49" refid="classopenage_1_1gui_1_1_game_spec_link_1a194718e2453c0dee8309a14e1fa6022c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a194718e2453c0dee8309a14e1fa6022c" kindref="member">terrainIdCount</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a3cb29a1d188c9851280c49dfbc438ba4" kindref="member">get_terrain_id_count</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link_1a78013d553db1c5817ccadf678af438a9" kindref="member">terrain_id_count_changed</ref>)</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>explicit<sp/><ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">GameSpecLink</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -863,6 +863,6 @@
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal">Q_DECLARE_METATYPE(std::shared_ptr&lt;openage::GameSpec&gt;)</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_spec_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_spec_link.h"/>
   </compounddef>
 </doxygen>

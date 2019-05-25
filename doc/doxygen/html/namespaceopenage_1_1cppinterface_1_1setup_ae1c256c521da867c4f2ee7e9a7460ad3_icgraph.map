@@ -1,0 +1,6 @@
+<map id="openage.cppinterface.setup.setup" name="openage.cppinterface.setup.setup">
+<area shape="rect" id="node1" title="After a call to setup(), the C++ interface is in a usable state." alt="" coords="508,31,725,57"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1main.xhtml#ab4e998cdda52db3b3cae6efbcd2eda23" title="CLI entry point." alt="" coords="256,5,436,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1main.xhtml#a346b6762051aaadb5cc302e1adbf5f1e" title="Processes the given args, detecting errors." alt="" coords="232,56,460,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1testing_1_1main.xhtml#a22daa2dd4990bc8d016d850a9d9fc5fb" title="CLI main method." alt="" coords="5,56,184,83"/>
+</map>

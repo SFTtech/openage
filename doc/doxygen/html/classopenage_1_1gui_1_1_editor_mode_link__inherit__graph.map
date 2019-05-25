@@ -1,8 +1,15 @@
 <map id="openage::gui::EditorModeLink" name="openage::gui::EditorModeLink">
-<area shape="rect" id="node1" title=" " alt="" coords="103,601,308,928"/>
-<area shape="rect" id="node2" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="114,447,297,553"/>
-<area shape="rect" id="node3" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="5,248,192,399"/>
-<area shape="rect" id="node4" title=" " alt="" coords="40,64,157,141"/>
-<area shape="rect" id="node5" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="216,248,411,399"/>
-<area shape="rect" id="node6" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="224,5,403,200"/>
+<area shape="rect" id="node1" title=" " alt="" coords="307,1103,512,1429"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="318,947,501,1053"/>
+<area shape="rect" id="node3" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="121,719,308,869"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,542,123,619"/>
+<area shape="rect" id="node5" href="$classqtsdl_1_1_shadow.xhtml" title=" " alt="" coords="147,513,282,649"/>
+<area shape="rect" id="node11" href="$classqtsdl_1_1_inherits.xhtml" title=" " alt="" coords="335,748,483,840"/>
+<area shape="rect" id="node6" title=" " alt="" coords="195,307,234,384"/>
+<area shape="rect" id="node7" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="557,505,752,656"/>
+<area shape="rect" id="node8" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="732,248,911,443"/>
+<area shape="rect" id="node9" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="503,5,687,185"/>
+<area shape="rect" id="node10" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="482,277,707,413"/>
+<area shape="rect" id="node13" href="$classqtsdl_1_1_gui_item_methods.xhtml" title=" " alt="" coords="271,255,457,435"/>
+<area shape="rect" id="node12" href="$classqtsdl_1_1_gui_item_core_instantiator.xhtml" title=" " alt="" coords="307,513,533,649"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiSeparateRenderingContext Class Reference</title>
+<title>openage: qtsdl::GuiSeparateRenderingContext Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_separate_rendering_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiSeparateRenderingContext:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context__inherit__graph.svg" width="236" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiSeparateRenderingContext:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context__inherit__graph.svg" width="236" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiSeparateRenderingContext:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context__coll__graph.svg" width="236" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiSeparateRenderingContext:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context__coll__graph.svg" width="236" height="360"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -173,7 +176,16 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00056">56</a> of file <a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    :</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    CtxExtractionMode{} {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    QVariant handle;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::tie(handle, this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a7f7ecec970e468a6026f8797e8b302a5">make_current_back</a>) = <a class="code" href="namespaceqtsdl.xhtml#a4932b95840fb2a53ea19d235b68dc6c8">extract_native_context_and_switchback_func</a>(window);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (handle.isValid()) {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>.setNativeHandle(handle);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>.create();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        assert(this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>.isValid());</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">auto</span> context_debug_parameters = <a class="code" href="namespaceqtsdl.xhtml#ac53ee23059783401c6e7bcdfc1dfd314">get_current_opengl_debug_parameters</a>(this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.setFormat(this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>.format());</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.setShareContext(&amp;this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.create();</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        assert(this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.isValid());</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        assert(!(this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">main_ctx</a>.format().options() ^ this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.format().options()).testFlag(QSurfaceFormat::DebugContext));</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#aba9c972636ee8f945c8b662b74424f81">offscreen_surface</a>.setFormat(this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.format());</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#aba9c972636ee8f945c8b662b74424f81">offscreen_surface</a>.create();</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f">pre_render</a>();</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="namespaceqtsdl.xhtml#ab9d9e0ee6419f87d80c1ed0067c3c08f">apply_opengl_debug_parameters</a>(context_debug_parameters, this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>);</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae">post_render</a>();</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">throw</span> CtxExtractionException(<span class="stringliteral">&quot;creating separate context for GUI failed&quot;</span>);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a7f7ecec970e468a6026f8797e8b302a5"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a7f7ecec970e468a6026f8797e8b302a5">qtsdl::GuiSeparateRenderingContext::make_current_back</a></div><div class="ttdeci">std::function&lt; void()&gt; make_current_back</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00086">gui_ctx_setup.h:86</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a47ae13e05fbce6703f7b3329512b5a5f"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f">qtsdl::GuiSeparateRenderingContext::pre_render</a></div><div class="ttdeci">virtual void pre_render() override</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8cpp_source.xhtml#l00094">gui_ctx_setup.cpp:94</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a245019d1e4a70f31263d0f38ea04e584"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a245019d1e4a70f31263d0f38ea04e584">qtsdl::GuiSeparateRenderingContext::main_ctx</a></div><div class="ttdeci">QOpenGLContext main_ctx</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00076">gui_ctx_setup.h:76</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_ab9d9e0ee6419f87d80c1ed0067c3c08f"><div class="ttname"><a href="namespaceqtsdl.xhtml#ab9d9e0ee6419f87d80c1ed0067c3c08f">qtsdl::apply_opengl_debug_parameters</a></div><div class="ttdeci">void apply_opengl_debug_parameters(gl_debug_parameters params, QOpenGLContext &amp;current_dest_context)</div><div class="ttdef"><b>Definition:</b> <a href="opengl__debug__logger_8cpp_source.xhtml#l00030">opengl_debug_logger.cpp:30</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_ad60bc0dd243b8c3ab105f33cdd605dae"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae">qtsdl::GuiSeparateRenderingContext::post_render</a></div><div class="ttdeci">virtual void post_render() override</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8cpp_source.xhtml#l00101">gui_ctx_setup.cpp:101</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_ctx_extraction_mode_xhtml_aed1505f12fb50b3792b36213210a6c74"><div class="ttname"><a href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">qtsdl::CtxExtractionMode::ctx</a></div><div class="ttdeci">QOpenGLContext ctx</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00047">gui_ctx_setup.h:47</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_a4932b95840fb2a53ea19d235b68dc6c8"><div class="ttname"><a href="namespaceqtsdl.xhtml#a4932b95840fb2a53ea19d235b68dc6c8">qtsdl::extract_native_context_and_switchback_func</a></div><div class="ttdeci">std::tuple&lt; QVariant, std::function&lt; void()&gt; &gt; extract_native_context_and_switchback_func(SDL_Window *window)</div><div class="ttdef"><b>Definition:</b> <a href="context__extraction__cocoa_8mm_source.xhtml#l00035">context_extraction_cocoa.mm:35</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_ac53ee23059783401c6e7bcdfc1dfd314"><div class="ttname"><a href="namespaceqtsdl.xhtml#ac53ee23059783401c6e7bcdfc1dfd314">qtsdl::get_current_opengl_debug_parameters</a></div><div class="ttdeci">gl_debug_parameters get_current_opengl_debug_parameters(const QOpenGLContext &amp;current_source_context)</div><div class="ttdef"><b>Definition:</b> <a href="opengl__debug__logger_8cpp_source.xhtml#l00018">opengl_debug_logger.cpp:18</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_aba9c972636ee8f945c8b662b74424f81"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#aba9c972636ee8f945c8b662b74424f81">qtsdl::GuiSeparateRenderingContext::offscreen_surface</a></div><div class="ttdeci">QOffscreenSurface offscreen_surface</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00091">gui_ctx_setup.h:91</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8b03edac1a66834ade0619cb8234f45c"></a>
@@ -200,6 +212,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00088">88</a> of file <a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                          {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f">pre_render</a>();</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a6cb67f37a980f7b7ed898f58a451bdbc">ctx_logger</a>.reset();</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae">post_render</a>();</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a47ae13e05fbce6703f7b3329512b5a5f"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a47ae13e05fbce6703f7b3329512b5a5f">qtsdl::GuiSeparateRenderingContext::pre_render</a></div><div class="ttdeci">virtual void pre_render() override</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8cpp_source.xhtml#l00094">gui_ctx_setup.cpp:94</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a6cb67f37a980f7b7ed898f58a451bdbc"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a6cb67f37a980f7b7ed898f58a451bdbc">qtsdl::GuiSeparateRenderingContext::ctx_logger</a></div><div class="ttdeci">std::unique_ptr&lt; QOpenGLDebugLogger &gt; ctx_logger</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00081">gui_ctx_setup.h:81</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_ad60bc0dd243b8c3ab105f33cdd605dae"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#ad60bc0dd243b8c3ab105f33cdd605dae">qtsdl::GuiSeparateRenderingContext::post_render</a></div><div class="ttdeci">virtual void post_render() override</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8cpp_source.xhtml#l00101">gui_ctx_setup.cpp:101</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__ctx__setup_8h_source.xhtml#l00081">ctx_logger</a>, <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00101">post_render()</a>, and <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00094">pre_render()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context_a8b03edac1a66834ade0619cb8234f45c_cgraph.svg" width="506" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -231,6 +256,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#a314f77f4b5e33b76316e4184b4c4f505">qtsdl::CtxExtractionMode</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00101">101</a> of file <a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                              {</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a7f7ecec970e468a6026f8797e8b302a5">make_current_back</a>();</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_separate_rendering_context_xhtml_a7f7ecec970e468a6026f8797e8b302a5"><div class="ttname"><a href="classqtsdl_1_1_gui_separate_rendering_context.xhtml#a7f7ecec970e468a6026f8797e8b302a5">qtsdl::GuiSeparateRenderingContext::make_current_back</a></div><div class="ttdeci">std::function&lt; void()&gt; make_current_back</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00086">gui_ctx_setup.h:86</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__ctx__setup_8h_source.xhtml#l00086">make_current_back</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00088">~GuiSeparateRenderingContext()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context_ad60bc0dd243b8c3ab105f33cdd605dae_icgraph.svg" width="506" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -261,6 +299,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#a5a078af4f1b11cf1091496bfc8559b0c">qtsdl::CtxExtractionMode</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00094">94</a> of file <a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                             {</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">ctx</a>.makeCurrent(&amp;this-&gt;offscreen_surface)) {</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        assert(<span class="keyword">false</span>);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span>;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_ctx_extraction_mode_xhtml_aed1505f12fb50b3792b36213210a6c74"><div class="ttname"><a href="classqtsdl_1_1_ctx_extraction_mode.xhtml#aed1505f12fb50b3792b36213210a6c74">qtsdl::CtxExtractionMode::ctx</a></div><div class="ttdeci">QOpenGLContext ctx</div><div class="ttdef"><b>Definition:</b> <a href="gui__ctx__setup_8h_source.xhtml#l00047">gui_ctx_setup.h:47</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__ctx__setup_8h_source.xhtml#l00047">qtsdl::CtxExtractionMode::ctx</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00088">~GuiSeparateRenderingContext()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_separate_rendering_context_a47ae13e05fbce6703f7b3329512b5a5f_icgraph.svg" width="506" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -287,6 +338,8 @@ Additional Inherited Members</h2></td></tr>
 <p>GL debug logger of the GL context of the GUI </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8h_source.xhtml#l00081">81</a> of file <a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00088">~GuiSeparateRenderingContext()</a>.</p>
 
 </div>
 </div>
@@ -338,6 +391,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__ctx__setup_8h_source.xhtml#l00086">86</a> of file <a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__ctx__setup_8cpp_source.xhtml#l00101">post_render()</a>.</p>
+
 </div>
 </div>
 <a id="aba9c972636ee8f945c8b662b74424f81"></a>
@@ -366,8 +421,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a></li>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__ctx__setup_8h_source.xhtml">gui_ctx_setup.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__ctx__setup_8cpp_source.xhtml">gui_ctx_setup.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

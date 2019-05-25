@@ -1,0 +1,5 @@
+<map id="openage.codegen.codegen.postprocess_write" name="openage.codegen.codegen.postprocess_write">
+<area shape="rect" id="node1" title="Post&#45;processes a single write operation, as intercepted during codegen." alt="" coords="5,35,257,76"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1codegen_1_1codegen.xhtml#a7cce911eb4c73e57753d1a055e95549b" title="Yields the lines for the automatically&#45;added file header." alt="" coords="305,5,504,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" title=" " alt="" coords="341,71,469,98"/>
+</map>

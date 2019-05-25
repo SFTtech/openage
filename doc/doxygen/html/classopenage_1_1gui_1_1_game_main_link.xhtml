@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::gui::GameMainLink Class Reference</title>
+<title>openage: openage::gui::GameMainLink Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -102,15 +103,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1gui_1_1_game_main_link
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::gui::GameMainLink:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::gui::GameMainLink:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::gui::GameMainLink:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::gui::GameMainLink:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
@@ -256,7 +261,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8h_source.xhtml#l00047">47</a> of file <a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                     {</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        Null, Running</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -285,7 +290,12 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    :</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_item_q_object.xhtml#a9381292e5dbb61f284d6a90d39e29912">GuiItemQObject</a>{parent},</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    QQmlParserStatus{},</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_item.xhtml#a3d22c3629a4de170f646540b319da3c3">GuiItem</a>{<span class="keyword">this</span>},</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a>{},</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a050a963e6618414936fc14cecd8deef4">active</a>{},</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>{} {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    Q_UNUSED(registration);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a4ce2d720a2bf50f1f5e1009d7b2dad9f"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">openage::gui::GameMainLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00041">game_main_link.h:41</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_xhtml_a3d22c3629a4de170f646540b319da3c3"><div class="ttname"><a href="classqtsdl_1_1_gui_item.xhtml#a3d22c3629a4de170f646540b319da3c3">qtsdl::GuiItem&lt; GameMainLink &gt;::GuiItem</a></div><div class="ttdeci">GuiItem(GuiItemBase *item_base)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00317">gui_item.h:317</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_aa5c0e0b86099726d69cce45b070c0215"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">openage::gui::GameMainLink::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00040">game_main_link.h:40</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_q_object_xhtml_a9381292e5dbb61f284d6a90d39e29912"><div class="ttname"><a href="classqtsdl_1_1_gui_item_q_object.xhtml#a9381292e5dbb61f284d6a90d39e29912">qtsdl::GuiItemQObject::GuiItemQObject</a></div><div class="ttdeci">GuiItemQObject(QObject *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8cpp_source.xhtml#l00014">gui_item.cpp:14</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a050a963e6618414936fc14cecd8deef4"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a050a963e6618414936fc14cecd8deef4">openage::gui::GameMainLink::active</a></div><div class="ttdeci">bool active</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00070">game_main_link.h:70</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4a599e25b939a79c9e8248b7970e0aab"></a>
@@ -312,7 +322,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00028">28</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                            {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -340,7 +350,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                              {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aa4158681e6de3c94f5ec19200bb68ee9"></a>
@@ -359,6 +369,17 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                         {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameMainHandle *_this) {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        _this-&gt;clear();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    };</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">i</a>(f);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ac54e8509493e71387cc423d3b594c774"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::i</a></div><div class="ttdeci">void i(F f, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00182">gui_item.h:182</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::i()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_aa4158681e6de3c94f5ec19200bb68ee9_cgraph.svg" width="403" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -386,6 +407,17 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00038">38</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                     {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameMainHandle *_this) {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        _this-&gt;announce_running();</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">i</a>(f);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ac54e8509493e71387cc423d3b594c774"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ac54e8509493e71387cc423d3b594c774">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::i</a></div><div class="ttdeci">void i(F f, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00182">gui_item.h:182</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__item_8h_source.xhtml#l00182">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::i()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_a1c2bf718b018ba73900aae7e93590496_cgraph.svg" width="403" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -405,6 +437,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                           {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a4ce2d720a2bf50f1f5e1009d7b2dad9f"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">openage::gui::GameMainLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00041">game_main_link.h:41</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main__link_8h_source.xhtml#l00041">engine</a>.</p>
 
 </div>
 </div>
@@ -424,6 +459,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_aa5c0e0b86099726d69cce45b070c0215"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">openage::gui::GameMainLink::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00040">game_main_link.h:40</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main__link_8h_source.xhtml#l00040">state</a>.</p>
 
 </div>
 </div>
@@ -453,6 +491,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classqtsdl_1_1_gui_item_base.xhtml#aaa15e915bd7009ac4a332aa08d3e554f">qtsdl::GuiItemBase</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00034">34</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                   {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    QObject::connect(&amp;<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(<span class="keyword">this</span>)-&gt;gui_signals, &amp;<a class="code" href="classopenage_1_1_game_main_signals.xhtml#a9394777bfabb0220f14b18173e32fb5e">GameMainSignals::game_running</a>, <span class="keyword">this</span>, &amp;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa925b45aaa6c1928deea20369e60c907">GameMainLink::on_game_running</a>);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="classopenage_1_1_game_main_signals_xhtml_a9394777bfabb0220f14b18173e32fb5e"><div class="ttname"><a href="classopenage_1_1_game_main_signals.xhtml#a9394777bfabb0220f14b18173e32fb5e">openage::GameMainSignals::game_running</a></div><div class="ttdeci">void game_running(bool running)</div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_aa925b45aaa6c1928deea20369e60c907"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa925b45aaa6c1928deea20369e60c907">openage::gui::GameMainLink::on_game_running</a></div><div class="ttdeci">void on_game_running(bool running)</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8cpp_source.xhtml#l00067">game_main_link.cpp:67</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1_game_main_signals.xhtml#a9394777bfabb0220f14b18173e32fb5e">openage::GameMainSignals::game_running()</a>, <a class="el" href="game__main__link_8cpp_source.xhtml#l00067">on_game_running()</a>, and <a class="el" href="gui__item__link_8h_source.xhtml#l00037">qtsdl::unwrap()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_a360f50de98c75d538bf46a03c3731874_cgraph.svg" width="440" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -481,6 +532,22 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00067">67</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                               {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a> = running ? <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077ba5bda814c4aedb126839228f1a3d92f09">State::Running</a> : <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077babbb93ef26e3c101ff11cdd21cab08a94">State::Null</a>;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a> != <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a>) {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a> = <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">state</a>;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        emit this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#adb9623f074c0891de549cc0fffb866e6">state_changed</a>();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_adb9623f074c0891de549cc0fffb866e6"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#adb9623f074c0891de549cc0fffb866e6">openage::gui::GameMainLink::state_changed</a></div><div class="ttdeci">void state_changed()</div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_aa5c0e0b86099726d69cce45b070c0215"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#aa5c0e0b86099726d69cce45b070c0215">openage::gui::GameMainLink::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00040">game_main_link.h:40</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a09595e0b9d8ecead9ecee7cfce33077babbb93ef26e3c101ff11cdd21cab08a94"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077babbb93ef26e3c101ff11cdd21cab08a94">openage::gui::GameMainLink::State::Null</a></div></div>
+<div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a09595e0b9d8ecead9ecee7cfce33077ba5bda814c4aedb126839228f1a3d92f09"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077ba5bda814c4aedb126839228f1a3d92f09">openage::gui::GameMainLink::State::Running</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077babbb93ef26e3c101ff11cdd21cab08a94">Null</a>, <a class="el" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a09595e0b9d8ecead9ecee7cfce33077ba5bda814c4aedb126839228f1a3d92f09">Running</a>, <a class="el" href="game__main__link_8h_source.xhtml#l00040">state</a>, and <a class="el" href="classopenage_1_1gui_1_1_game_main_link.xhtml#adb9623f074c0891de549cc0fffb866e6">state_changed()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="game__main__link_8cpp_source.xhtml#l00034">on_core_adopted()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_aa925b45aaa6c1928deea20369e60c907_icgraph.svg" width="440" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -501,6 +568,18 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> f = [] (GameMainHandle *_this, Engine *<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>) {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        _this-&gt;set_engine(<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    };</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">s</a>(f, this-&gt;<a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>, <a class="code" href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">engine</a>);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div><div class="ttc" id="classopenage_1_1gui_1_1_game_main_link_xhtml_a4ce2d720a2bf50f1f5e1009d7b2dad9f"><div class="ttname"><a href="classopenage_1_1gui_1_1_game_main_link.xhtml#a4ce2d720a2bf50f1f5e1009d7b2dad9f">openage::gui::GameMainLink::engine</a></div><div class="ttdeci">openage::gui::EngineLink engine</div><div class="ttdef"><b>Definition:</b> <a href="game__main__link_8h_source.xhtml#l00041">game_main_link.h:41</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_ae1736d128156183ad9e760b8a49b3361"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#ae1736d128156183ad9e760b8a49b3361">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::s</a></div><div class="ttdeci">void s(F f, P &amp;p, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00196">gui_item.h:196</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="game__main__link_8h_source.xhtml#l00041">engine</a>, <a class="el" href="gui__item_8h_source.xhtml#l00196">qtsdl::GuiItemMethods&lt; GameMainLink &gt;::s()</a>, and <a class="el" href="game__main_8cpp_source.xhtml#l00080">openage::GameMainHandle::set_engine()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_aa0240c4d6597ebd69b1b09334384daf6_cgraph.svg" width="432" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -526,6 +605,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="reference">Referenced by <a class="el" href="game__main__link_8cpp_source.xhtml#l00067">on_game_running()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1gui_1_1_game_main_link_adb9623f074c0891de549cc0fffb866e6_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -601,6 +690,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8h_source.xhtml#l00041">41</a> of file <a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__main__link_8cpp_source.xhtml#l00049">get_engine()</a>, and <a class="el" href="game__main__link_8cpp_source.xhtml#l00053">set_engine()</a>.</p>
+
 </div>
 </div>
 <a id="aa5c0e0b86099726d69cce45b070c0215"></a>
@@ -625,11 +716,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="game__main__link_8h_source.xhtml#l00040">40</a> of file <a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="game__main__link_8cpp_source.xhtml#l00045">get_state()</a>, and <a class="el" href="game__main__link_8cpp_source.xhtml#l00067">on_game_running()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/<a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a></li>
-<li>libopenage/gui/<a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/<a class="el" href="game__main__link_8h_source.xhtml">game_main_link.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/<a class="el" href="game__main__link_8cpp_source.xhtml">game_main_link.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

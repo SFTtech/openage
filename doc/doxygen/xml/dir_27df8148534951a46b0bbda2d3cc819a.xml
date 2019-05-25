@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_27df8148534951a46b0bbda2d3cc819a" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike</compoundname>
+    <innerfile refid="util_2fslike_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="fslike_2abstract_8py">abstract.py</innerfile>
+    <innerfile refid="directory_8py">directory.py</innerfile>
+    <innerfile refid="filecollection_8py">filecollection.py</innerfile>
+    <innerfile refid="path_8py">path.py</innerfile>
+    <innerfile refid="util_2fslike_2test_8py">test.py</innerfile>
+    <innerfile refid="union_8py">union.py</innerfile>
+    <innerfile refid="wrapper_8py">wrapper.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/"/>
+  </compounddef>
+</doxygen>

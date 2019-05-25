@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="23" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="23" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -32,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="26" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="26" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="26" bodyend="26"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" compoundref="shader__program_8h" startline="83" endline="87">new_uniform_input</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a40d140c46c04de019b5081c5276bf201" compoundref="shader__program_8h" startline="93" endline="96">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -57,7 +59,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="28" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="28" bodyend="30"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="28" bodyend="30"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a83b741d600d5487dae1678b20901bf1b">set_i32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ace920cff0ddac348df64589d5dd65e15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -82,7 +86,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="32" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1ab8c73f6f9a7309f03b6af9fa50fb5a3f">set_u32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ac6549848a570989183b4b4aad8e28760" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -107,7 +113,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="36" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="36" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="36" bodyend="38"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a38e446978eda3822674dd5c00e2004c6">set_f32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ac6f09354128bf60fbc6496e068c0e1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -132,7 +140,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="40" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="40" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="40" bodyend="42"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a02a78a00855ac5db139ef1430408660e">set_f64</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a54f4f8c5b183cee951ba8907a813bcd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -157,7 +167,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="44" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="44" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="44" bodyend="46"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a003661a1e233c8352a6a21f02df46f47">set_v2f32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab9738e5488390ab104453de449ba7444" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -182,7 +194,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="48" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="48" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="48" bodyend="50"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a11f73da7683311faf4689d02e05e684e">set_v3f32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1acf5fbb3328c63da7b645fa08f818c467" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -207,7 +221,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="52" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="52" bodyend="54"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="52" bodyend="54"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a169361a2c5857643e5c8b8890b5e7592">set_v4f32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a87ccfe4e0351057379871371ed0e928a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -232,7 +248,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="56" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="56" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="56" bodyend="58"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a1de758ad1a110cd48a774d88a11582bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -257,7 +275,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="60" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="60" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="60" bodyend="62"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a083cfce2ba6018afe512911c55457fde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -282,7 +302,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="64" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="64" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="64" bodyend="66"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1ae05f6d0029d2c7f2cb796647d5bc988e">set_m4f32</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ad7648faf2a3e82a63a95076d3ed98d33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -310,7 +332,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="69" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="69" bodyend="71"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="69" bodyend="71"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a7ba29dd859811e2c5e6019f6fa962e8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -329,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="74" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="74" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -357,7 +381,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="83" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="83" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="83" bodyend="87"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1af13b539d6a4bc6b66152bdcd53a50815">new_unif_in</references>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" compoundref="shader__program_8h" startline="26" endline="26">update_uniform_input</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a40d140c46c04de019b5081c5276bf201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -397,7 +423,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="93" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="93" bodyend="96"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="93" bodyend="96"/>
+        <references refid="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" compoundref="shader__program_8h" startline="26" endline="26">update_uniform_input</references>
+        <references refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" compoundref="constinit__vector_8cpp" startline="17">val</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ad9c2c7e1dfa281b4109ef966309193b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; size_t, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">resources::vertex_input_t</ref> &gt;</type>
@@ -412,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="104" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="104" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -428,7 +456,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="108" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="108" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" compoundref="shader__program_8h" startline="83" endline="87">new_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a83b741d600d5487dae1678b20901bf1b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -451,7 +480,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="109" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="109" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" compoundref="shader__program_8h" startline="28" endline="30">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab8c73f6f9a7309f03b6af9fa50fb5a3f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -474,7 +504,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="110" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="110" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ace920cff0ddac348df64589d5dd65e15" compoundref="shader__program_8h" startline="32" endline="34">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a38e446978eda3822674dd5c00e2004c6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -497,7 +528,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="111" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="111" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ac6549848a570989183b4b4aad8e28760" compoundref="shader__program_8h" startline="36" endline="38">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a02a78a00855ac5db139ef1430408660e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -520,7 +552,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="112" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="112" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ac6f09354128bf60fbc6496e068c0e1f9" compoundref="shader__program_8h" startline="40" endline="42">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a003661a1e233c8352a6a21f02df46f47" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -543,7 +576,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="113" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="113" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a54f4f8c5b183cee951ba8907a813bcd0" compoundref="shader__program_8h" startline="44" endline="46">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a11f73da7683311faf4689d02e05e684e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -566,7 +600,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="114" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="114" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1ab9738e5488390ab104453de449ba7444" compoundref="shader__program_8h" startline="48" endline="50">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a169361a2c5857643e5c8b8890b5e7592" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -589,7 +624,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="115" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="115" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1acf5fbb3328c63da7b645fa08f818c467" compoundref="shader__program_8h" startline="52" endline="54">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ae05f6d0029d2c7f2cb796647d5bc988e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -612,7 +648,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="116" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="116" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a083cfce2ba6018afe512911c55457fde" compoundref="shader__program_8h" startline="64" endline="66">update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -635,7 +672,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/shader_program.h" line="117" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="117" column="1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a87ccfe4e0351057379871371ed0e928a" compoundref="shader__program_8h" startline="56" endline="58">update_uniform_input</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -643,24 +681,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4145">
+      <node id="4771">
         <label>openage::renderer::ShaderProgram</label>
         <link refid="classopenage_1_1renderer_1_1_shader_program"/>
       </node>
-      <node id="4146">
+      <node id="4772">
         <label>openage::renderer::opengl::GlShaderProgram</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program"/>
-        <childnode refid="4145" relation="public-inheritance">
+        <childnode refid="4771" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4147">
+      <node id="4773">
         <label>openage::renderer::ShaderProgram</label>
         <link refid="classopenage_1_1renderer_1_1_shader_program"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/shader_program.h" line="21" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="21" bodyend="118"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/shader_program.h" bodystart="21" bodyend="118"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_shader_program_1a7ba29dd859811e2c5e6019f6fa962e8f" prot="public" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>has_uniform</name></member>
       <member refid="classopenage_1_1renderer_1_1_shader_program_1af13b539d6a4bc6b66152bdcd53a50815" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>new_unif_in</name></member>

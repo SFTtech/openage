@@ -27,7 +27,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/shader_program.h" line="16" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="16" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" bodystart="16" bodyend="25"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1">openage::renderer::resources::fragment</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7baed7daeb157cd9b31e53896ad3c771a26">openage::renderer::resources::geometry</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba7dd430baa39d2873520d0338acb98741">openage::renderer::resources::tesselation_control</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7bad711cc63370ae664a464b9efd08f6248">openage::renderer::resources::tesselation_evaluation</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a">openage::renderer::resources::vertex</references>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1ae0f545bd5e4a653736cd26350762497e" compoundref="vulkan_2shader__program_8h" startline="32" endline="61">openage::renderer::vulkan::VlkShaderProgram::VlkShaderProgram</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>VKAPI_ATTR VkBool32 VKAPI_CALL</type>
@@ -66,7 +74,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.cpp" line="22" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="22" bodyend="35"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="22" bodyend="35"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" kindref="compound">vlk_capabilities</ref></type>
@@ -80,13 +92,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.cpp" line="39" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="39" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="39" bodyend="78"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" compoundref="windowvk_8h" startline="25">openage::renderer::vulkan::vlk_capabilities::extensions</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" compoundref="windowvk_8h" startline="22">openage::renderer::vulkan::vlk_capabilities::layers</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" compoundref="util_8h" startline="11" endline="18">vk_do_ritual</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/vulkan/graphics_device.cpp" line="15" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.cpp" line="15" column="1"/>
   </compounddef>
 </doxygen>

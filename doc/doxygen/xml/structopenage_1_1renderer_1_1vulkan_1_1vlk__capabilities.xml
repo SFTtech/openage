@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" compoundref="windowvk_8cpp" startline="39" endline="78">openage::renderer::vulkan::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" prot="public" static="no" mutable="no">
         <type>std::set&lt; std::string &gt;</type>
@@ -30,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" compoundref="windowvk_8cpp" startline="39" endline="78">openage::renderer::vulkan::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,12 +42,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4944">
+      <node id="4807">
         <label>openage::renderer::vulkan::vlk_capabilities</label>
         <link refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/windowvk.h" line="20" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="20" bodyend="26"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="20" bodyend="26"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::vlk_capabilities</scope><name>extensions</name></member>
       <member refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::vlk_capabilities</scope><name>layers</name></member>

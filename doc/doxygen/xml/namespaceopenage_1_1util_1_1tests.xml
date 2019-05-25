@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.cpp" line="12" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp" bodystart="12" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1util_1_1tests_1_1testenum_1a710bdc0435bf9ead133a05fdbf7c092e" compoundref="enum__test_8cpp" startline="13" endline="13">openage::util::tests::testenum::testenum</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" prot="public" static="yes" mutable="no">
         <type>const std::array&lt; uint8_t, 16 &gt;</type>
@@ -34,7 +35,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash_test.cpp" line="15" column="1" bodyfile="libopenage/util/hash_test.cpp" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash_test.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash_test.cpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" compoundref="hash__test_8cpp" startline="21" endline="66">siphash</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -49,7 +51,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.cpp" line="55" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="55" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" bodystart="55" bodyend="80"/>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" compoundref="constinit__vector_8h" startline="50" endline="74">openage::util::ConstInitVector&lt; T &gt;::push_back</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" compoundref="constinit__vector_8h" startline="89" endline="91">openage::util::ConstInitVector&lt; T &gt;::size</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -62,7 +67,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.cpp" line="15" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="15" bodyend="45"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp" bodystart="15" bodyend="45"/>
+        <references refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" compoundref="enum__test_8h" startline="48">openage::util::tests::testenum::bar</references>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">openage::util::FString::buffer</references>
+        <references refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" compoundref="enum__test_8h" startline="47">openage::util::tests::testenum::foo</references>
+        <references refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" compoundref="stringformatter_8h" startline="312" endline="315">openage::util::FString::reset</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -75,7 +86,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fixed_point_test.cpp" line="15" column="1" bodyfile="libopenage/util/fixed_point_test.cpp" bodystart="15" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fixed_point_test.cpp" bodystart="15" bodyend="100"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_double</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" compoundref="fixed__point_8h" startline="185" endline="187">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_float</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" compoundref="fixed__point_8h" startline="178" endline="180">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_int</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" compoundref="fixed__point_8h" startline="286" endline="296">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_fractional_part</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" compoundref="fixed__point_8h" startline="234" endline="236">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</references>
+        <references refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" compoundref="fixed__point_8h" startline="498" endline="500">std::hypot</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <references refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" compoundref="stringformatter_8h" startline="312" endline="315">openage::util::FString::reset</references>
+        <references refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" compoundref="fixed__point_8h" startline="470" endline="472">std::sqrt</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <references refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" compoundref="testing_8h" startline="68">TESTEQUALS_FLOAT</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" compoundref="fixed__point_8h" startline="252" endline="254">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_float</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a12dc86de2b985fdaff044ed9ab38e453" compoundref="fixed__point_8h" startline="241" endline="243">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_int</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -88,7 +115,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash_test.cpp" line="21" column="1" bodyfile="libopenage/util/hash_test.cpp" bodystart="21" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash_test.cpp" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash_test.cpp" bodystart="21" bodyend="66"/>
+        <references refid="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" compoundref="hash__test_8cpp" startline="15">test_key</references>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a196e215960939e55ac626c9c75a451e0" compoundref="rng_8cpp" startline="58" endline="75">openage::rng::RNG::seed</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1ab1596e1f3cfa6d6c8554e6a539731687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -101,7 +131,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.cpp" line="20" column="1" bodyfile="libopenage/util/init.cpp" bodystart="20" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp" bodystart="20" bodyend="40"/>
+        <references refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" compoundref="testing_8h" startline="49">TESTEQUALS</references>
+        <referencedby refid="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" compoundref="event_2demo_2main_8cpp" startline="42" endline="206">openage::event::demo::curvepong</referencedby>
+        <referencedby refid="classopenage_1_1options_1_1_var_1af769e8f2fe94158c85c15ab60030ed06" compoundref="options_8h" startline="269" endline="274">openage::options::Var&lt; bool &gt;::Var</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -114,7 +147,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/matrix_test.cpp" line="12" column="1" bodyfile="libopenage/util/matrix_test.cpp" bodystart="12" bodyend="101"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/matrix_test.cpp" bodystart="12" bodyend="101"/>
+        <references refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" compoundref="testing_8h" startline="68">TESTEQUALS_FLOAT</references>
+        <references refid="classopenage_1_1util_1_1_matrix_1a4950945a55363fd77668b983001d55b5" compoundref="matrix_8h" startline="193" endline="201">openage::util::Matrix&lt; M, N, T &gt;::transpose</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +162,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc_test.cpp" line="13" column="1" bodyfile="libopenage/util/misc_test.cpp" bodystart="13" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc_test.cpp" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc_test.cpp" bodystart="13" bodyend="78"/>
+        <references refid="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" compoundref="misc_8h" startline="222" endline="232">openage::util::array64_to_array8</references>
+        <references refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" compoundref="misc_8h" startline="190" endline="204">openage::util::array8_to_array64</references>
+        <references refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">openage::util::array8_to_uint64</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <references refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">openage::util::uint64_to_array8</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -140,7 +180,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/quaternion_test.cpp" line="16" column="1" bodyfile="libopenage/util/quaternion_test.cpp" bodystart="16" bodyend="250"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp" bodystart="16" bodyend="250"/>
+        <references refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" compoundref="vector_8h" startline="60" endline="68">openage::util::Vector&lt; N, T &gt;::equals</references>
+        <references refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" compoundref="matrix_8h" startline="89" endline="98">openage::util::Matrix&lt; M, N, T &gt;::equals</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" compoundref="quaternion_8h" startline="243" endline="246">openage::util::Quaternion&lt; T &gt;::equals</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" compoundref="quaternion_8h" startline="275" endline="277">openage::util::Quaternion&lt; T &gt;::equals_deg</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" compoundref="quaternion_8h" startline="264" endline="269">openage::util::Quaternion&lt; T &gt;::equals_rad</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" compoundref="quaternion_8h" startline="159" endline="161">openage::util::Quaternion&lt; T &gt;::from_deg</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" compoundref="quaternion_8h" startline="145" endline="154">openage::util::Quaternion&lt; T &gt;::from_rad</references>
+        <references refid="classopenage_1_1util_1_1_matrix_1a0ba437147db630d1ca901f870764a024" compoundref="matrix_8h" startline="76" endline="84">openage::util::Matrix&lt; M, N, T &gt;::identity</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" compoundref="quaternion_8h" startline="215" endline="219">openage::util::Quaternion&lt; T &gt;::inversed</references>
+        <references refid="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" compoundref="quaternion_8h" startline="189" endline="193">openage::util::Quaternion&lt; T &gt;::normalized</references>
+        <references refid="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" compoundref="math__constants_8h" startline="15">openage::math::PI</references>
+        <references refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" compoundref="testing_8h" startline="68">TESTEQUALS_FLOAT</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -153,13 +207,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/vector_test.cpp" line="11" column="1" bodyfile="libopenage/util/vector_test.cpp" bodystart="11" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/vector_test.cpp" bodystart="11" bodyend="59"/>
+        <references refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" compoundref="vector_8h" startline="177" endline="183">openage::util::Vector&lt; N, T &gt;::cross_product</references>
+        <references refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" compoundref="vector_8h" startline="149" endline="155">openage::util::Vector&lt; N, T &gt;::dot</references>
+        <references refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" compoundref="vector_8h" startline="60" endline="68">openage::util::Vector&lt; N, T &gt;::equals</references>
+        <references refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" compoundref="testing_8h" startline="68">TESTEQUALS_FLOAT</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/constinit_vector.cpp" line="9" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" line="9" column="1"/>
   </compounddef>
 </doxygen>

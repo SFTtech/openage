@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::curve::Continuous&lt; T &gt; Class Template Reference</title>
+<title>openage: openage::curve::Continuous&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1curve_1_1_continuous.x
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="continuous_8h_source.xhtml">continuous.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::curve::Continuous&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::curve::Continuous&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::curve::Continuous&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::curve::Continuous&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -196,11 +199,35 @@ template&lt;typename T &gt; </div>
 <p>Implements <a class="el" href="classopenage_1_1curve_1_1_value_container.xhtml#af35f74af0eb47d6c852c5b8f8f83ae60">openage::curve::ValueContainer&lt; T &gt;</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="continuous_8h_source.xhtml#l00032">32</a> of file <a class="el" href="continuous_8h_source.xhtml">continuous.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                             {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;e = this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.last(time, this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a>);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a> = e;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">auto</span> nxt = e;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ++nxt;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">time_t</a> diff_time = 0;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">auto</span> offset = time - e-&gt;time;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// If we do not have a next (buffer underrun!!) we assign values</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (nxt == this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.end()) {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// log::log(WARN &lt;&lt; &quot;Continuous buffer underrun. This might be bad! Assuming constant.&quot;);</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        diff_time = nxt-&gt;time - e-&gt;time;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (nxt == this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.end() <span class="comment">// use the last curve value</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        || offset == 0               <span class="comment">// values equal -&gt; don&#39;t need to interpolate</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        || diff_time == 0) {         <span class="comment">// values at the same time -&gt; division-by-zero-error</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> e-&gt;value;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// Interpolation between time(now) and time(next) that has elapsed</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">double</span> elapsed_frac = offset.<a class="code" href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554">to_double</a>() / diff_time.to_double();</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> e-&gt;value + (nxt-&gt;value - e-&gt;value) * elapsed_frac;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div><div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_a565150e1c3965878953bca2afa1c1ad2"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">openage::curve::ValueContainer::container</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt; container</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00048">value_container.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_af307dc2d35246999cea18dfb1d478be9"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">openage::curve::ValueContainer::last_element</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt;::KeyframeIterator last_element</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00058">value_container.h:58</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_xhtml_af909cf1de79df6389fd9431b7424b48a"><div class="ttname"><a href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">openage::curve::time_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, 16 &gt; time_t</div><div class="ttdef"><b>Definition:</b> <a href="curve_8h_source.xhtml#l00016">curve.h:16</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_fixed_point_xhtml_a3d55d1b8ecdb0fd4ff8e7e3da2598554"><div class="ttname"><a href="classopenage_1_1util_1_1_fixed_point.xhtml#a3d55d1b8ecdb0fd4ff8e7e3da2598554">openage::util::FixedPoint::to_double</a></div><div class="ttdeci">constexpr double to_double() const</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00263">fixed_point.h:263</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="container_8cpp_source.xhtml#l00205">openage::curve::tests::container()</a>, and <a class="el" href="fixed__point_8h_source.xhtml#l00263">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="curve__types_8cpp_source.xhtml#l00014">openage::curve::tests::curve_types()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous_a2af59e706890b3ed70d0059ba1ae766e_cgraph.svg" width="100%" height="583"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_continuous_a2af59e706890b3ed70d0059ba1ae766e_icgraph.svg" width="414" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/curve/<a class="el" href="continuous_8h_source.xhtml">continuous.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/<a class="el" href="continuous_8h_source.xhtml">continuous.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

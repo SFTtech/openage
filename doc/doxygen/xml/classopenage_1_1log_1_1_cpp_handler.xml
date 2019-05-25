@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1log_1_1_cpp_handler" kind="class" language="Python" prot="public">
+    <compoundname>openage::log::CppHandler</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Handler</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1_cpp_handler_1ac48f1b2538eb438fb03b3a5f782195bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.CppHandler.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_cpp_handler_1a929f8210f951b31fbe45c0e976800b6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.CppHandler.setLevel</definition>
+        <argsstring>(self, level)</argsstring>
+        <name>setLevel</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
+          <defname>level</defname>
+        </param>
+        <briefdescription>
+<para>sets the log level </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="29" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_cpp_handler_1a8606ee97c7c0781c559046816117ece3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.log.CppHandler.emit</definition>
+        <argsstring>(self, record)</argsstring>
+        <name>emit</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>record</type>
+          <defname>record</defname>
+        </param>
+        <briefdescription>
+<para>logs a message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="38" bodyend="49"/>
+        <references refid="namespaceopenage_1_1log_1a37a9ba75ed4a75173bfe7c3a77345a7d" compoundref="log_2____init_____8py" startline="54" endline="63">openage::log.level_colorcode</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classopenage_1_1log_1_1_cpp_handler" kindref="compound">CppHandler</ref> calls into the CPP logging system if the library has been loaded. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3976">
+        <label>openage.log.CppHandler</label>
+        <link refid="classopenage_1_1log_1_1_cpp_handler"/>
+        <childnode refid="3977" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3977">
+        <label>Handler</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3978">
+        <label>openage.log.CppHandler</label>
+        <link refid="classopenage_1_1log_1_1_cpp_handler"/>
+        <childnode refid="3979" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3979">
+        <label>Handler</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/log/__init__.py" bodystart="24" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1log_1_1_cpp_handler_1ac48f1b2538eb438fb03b3a5f782195bc" prot="public" virt="non-virtual"><scope>openage::log::CppHandler</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1log_1_1_cpp_handler_1a8606ee97c7c0781c559046816117ece3" prot="public" virt="non-virtual"><scope>openage::log::CppHandler</scope><name>emit</name></member>
+      <member refid="classopenage_1_1log_1_1_cpp_handler_1a929f8210f951b31fbe45c0e976800b6f" prot="public" virt="non-virtual"><scope>openage::log::CppHandler</scope><name>setLevel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

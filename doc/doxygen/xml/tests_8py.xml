@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="tests_8py" kind="file" language="Python">
+    <compoundname>tests.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1log_1_1tests">openage::log::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">#<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Testing<sp/>code<sp/>for<sp/>the<sp/>openage.log<sp/>package.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>argparse</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>multiprocessing.pool<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ThreadPool</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>spam,<sp/>dbg,<sp/>info,<sp/>warn,<sp/>err,<sp/>crit,<sp/>\</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>set_loglevel,<sp/>ENV_VERBOSITY,<sp/>verbosity_to_level</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" kindref="member">demo</ref>(args):</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Demonstrates<sp/>the<sp/>Python<sp/>logging<sp/>facility.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1log_1_1tests_1a9ca6bf494467589807a56e954b8b3bb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cli<sp/>=<sp/>argparse.ArgumentParser()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;--verbose&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-v&quot;</highlight><highlight class="normal">,<sp/>action=</highlight><highlight class="stringliteral">&apos;count&apos;</highlight><highlight class="normal">,<sp/>default=ENV_VERBOSITY)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;--quiet&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-q&quot;</highlight><highlight class="normal">,<sp/>action=</highlight><highlight class="stringliteral">&apos;count&apos;</highlight><highlight class="normal">,<sp/>default=0)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>=<sp/>cli.parse_args(args)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>level<sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a10c8ba63b955b0c97dc3b3323f73a4b2" kindref="member">verbosity_to_level</ref>(args.verbose<sp/>-<sp/>args.quiet)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;new<sp/>log<sp/>level:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>level)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>old_level<sp/>=<sp/><ref refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" kindref="member">set_loglevel</ref>(level)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;old<sp/>level<sp/>was:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>old_level)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;printing<sp/>some<sp/>messages<sp/>with<sp/>different<sp/>log<sp/>levels&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" kindref="member">spam</ref>(</highlight><highlight class="stringliteral">&quot;rofl&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>(</highlight><highlight class="stringliteral">&quot;wtf?&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" kindref="member">warn</ref>(</highlight><highlight class="stringliteral">&quot;WARNING!!!!&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>(</highlight><highlight class="stringliteral">&quot;that<sp/>didn&apos;t<sp/>go<sp/>so<sp/>well&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" kindref="member">crit</ref>(</highlight><highlight class="stringliteral">&quot;pretty<sp/>critical,<sp/>huh?&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;restoring<sp/>old<sp/>loglevel&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a78bab1bc2016bebde4ef3cde06936702" kindref="member">set_loglevel</ref>(old_level)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;old<sp/>loglevel<sp/>restored&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;running<sp/>some<sp/>threaded<sp/>stuff&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>pool<sp/>=<sp/>ThreadPool()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>i<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>range(8):</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pool.apply_async(info,<sp/>(</highlight><highlight class="stringliteral">&quot;async<sp/>message<sp/>#%s&quot;</highlight><highlight class="normal">,<sp/>i))</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>pool.close()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>pool.join()</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/log/tests.py"/>
+  </compounddef>
+</doxygen>

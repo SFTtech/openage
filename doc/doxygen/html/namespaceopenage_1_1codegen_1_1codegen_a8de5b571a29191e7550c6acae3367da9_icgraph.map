@@ -1,0 +1,5 @@
+<map id="openage.codegen.codegen.get_codegen_depends" name="openage.codegen.codegen.get_codegen_depends">
+<area shape="rect" id="node1" title="Yields all codegen dependencies." alt="" coords="520,5,719,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1codegen_1_1codegen.xhtml#ae7b44d30354970dff216b8f5d58fdd02" title=" " alt="" coords="241,13,472,39"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1codegen_1_1main.xhtml#a02b4f54f6bbc4cef5a3872eb60d639a6" title="Codegen CLI entry point." alt="" coords="5,13,193,39"/>
+</map>

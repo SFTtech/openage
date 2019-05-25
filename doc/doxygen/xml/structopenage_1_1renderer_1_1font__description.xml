@@ -16,7 +16,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="53" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="53" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="53" bodyend="-1"/>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" compoundref="font_8cpp" startline="16" endline="28">font_description</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" compoundref="renderer_2font_2tests_8cpp" startline="29" endline="57">openage::renderer::tests::font_test_font_description</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" compoundref="font_8cpp" startline="111" endline="125">openage::renderer::Font::initialize</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" compoundref="font_8h" startline="201" endline="206">std::hash&lt; openage::renderer::font_description &gt;::operator()</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" compoundref="font_8cpp" startline="36" endline="46">operator=</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" compoundref="font_8cpp" startline="58" endline="64">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -30,7 +36,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="54" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="54" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="54" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1a9b6afa901b4a5a7b433aa014ce4b6929" compoundref="font_8cpp" startline="30" endline="34">font_description</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" compoundref="font_8cpp" startline="111" endline="125">openage::renderer::Font::initialize</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" compoundref="font_8h" startline="201" endline="206">std::hash&lt; openage::renderer::font_description &gt;::operator()</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" compoundref="font_8cpp" startline="36" endline="46">operator=</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" compoundref="font_8cpp" startline="58" endline="64">operator==</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref></type>
@@ -44,7 +60,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="55" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="55" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1a233b952107a09f725a9c2dac55874819" compoundref="font_8cpp" startline="70" endline="82">openage::renderer::get_hb_font_direction</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" compoundref="font_8cpp" startline="36" endline="46">operator=</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" compoundref="font_8cpp" startline="58" endline="64">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -58,7 +77,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="56" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="56" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" compoundref="renderer_2font_2tests_8cpp" startline="29" endline="57">openage::renderer::tests::font_test_font_description</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1a9a3fdbe0aa35e12ed4279f4c183977d4" compoundref="font_8cpp" startline="84" endline="86">openage::renderer::get_hb_font_language</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" compoundref="font_8cpp" startline="36" endline="46">operator=</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" compoundref="font_8cpp" startline="58" endline="64">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -72,7 +95,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="57" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="57" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1ab2140e3e546fd699e5d7f52ca03fd8eb" compoundref="font_8cpp" startline="88" endline="90">openage::renderer::get_hb_font_script</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" compoundref="font_8cpp" startline="36" endline="46">operator=</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" compoundref="font_8cpp" startline="58" endline="64">operator==</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -153,7 +179,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="68" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="16" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="16" bodyend="28"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">font_file</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1a9b6afa901b4a5a7b433aa014ce4b6929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -206,7 +233,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="83" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="30" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="30" bodyend="34"/>
+        <references refid="classopenage_1_1renderer_1_1_font_manager_1a18b41a56c570436c58435866c0a42faa" compoundref="font__manager_8cpp" startline="14" endline="47">openage::renderer::FontManager::get_font_filename</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">size</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ada904c63747e9a67fb9c96e1d5deb936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -223,7 +252,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="85" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="48" bodyend="56"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="48" bodyend="56"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">font_file</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
@@ -240,7 +270,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="87" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="36" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="36" bodyend="46"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" compoundref="font_8h" startline="55">direction</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">font_file</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" compoundref="font_8h" startline="56">language</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" compoundref="font_8h" startline="57">script</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">size</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -257,7 +292,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="89" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="58" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="58" bodyend="64"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" compoundref="font_8h" startline="55">direction</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">font_file</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" compoundref="font_8h" startline="56">language</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" compoundref="font_8h" startline="57">script</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" compoundref="font_8h" startline="54">size</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1a45b83b3fdb4f1492dec92ab44847ae01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -274,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/font.h" line="91" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="66" bodyend="68"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp" bodystart="66" bodyend="68"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -284,12 +324,12 @@
 <para>An instance of <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> is capable of uniquely distinguishing a font. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1506">
+      <node id="4631">
         <label>openage::renderer::font_description</label>
         <link refid="structopenage_1_1renderer_1_1font__description"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/font/font.h" line="52" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="52" bodyend="93"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h" bodystart="52" bodyend="93"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>direction</name></member>
       <member refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>font_description</name></member>

@@ -3,13 +3,13 @@
   <compounddef id="game__saver_8h" kind="file" language="C++">
     <compoundname>game_saver.h</compoundname>
     <includes local="no">QObject</includes>
-    <includedby refid="game__saver_8cpp" local="yes">libopenage/gui/game_saver.cpp</includedby>
+    <includedby refid="game__saver_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</includedby>
     <incdepgraph>
       <node id="12316">
         <label>QObject</label>
       </node>
       <node id="12315">
-        <label>libopenage/gui/game_saver.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h</label>
         <link refid="game__saver_8h"/>
         <childnode refid="12316" relation="include">
         </childnode>
@@ -17,11 +17,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12318">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
       <node id="12317">
-        <label>libopenage/gui/game_saver.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h</label>
         <link refid="game__saver_8h"/>
         <childnode refid="12318" relation="include">
         </childnode>
@@ -52,7 +52,7 @@
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_ENUMS(State)</highlight></codeline>
-<codeline lineno="17" refid="classopenage_1_1gui_1_1_game_saver_1a4baa60509028d3412acf1f5716126001" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a4baa60509028d3412acf1f5716126001" kindref="member">errorString</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1af45b713178a6c330e37c4b0f43bfcbbf" kindref="member">get_error_string</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1ab12ca5a2e5461978a29cf177f0d5efec" kindref="member">error_string_changed</ref>)</highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1gui_1_1_game_saver_1a4baa60509028d3412acf1f5716126001" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QString<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a4baa60509028d3412acf1f5716126001" kindref="member">errorString</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1af45b713178a6c330e37c4b0f43bfcbbf" kindref="member">get_error_string</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1ab12ca5a2e5461978a29cf177f0d5efec" kindref="member">error_string_changed</ref>)</highlight></codeline>
 <codeline lineno="18" refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_game_main_link" kindref="compound">GameMainLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" kindref="member">game</ref><sp/>MEMBER<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" kindref="member">game</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a777169c727b2cae2e37cb144464fe14f" kindref="member">game_changed</ref>)</highlight></codeline>
 <codeline lineno="19" refid="classopenage_1_1gui_1_1_game_saver_1a767dc953fc333130ea3736eb1399c45a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage" kindref="compound">openage</ref>::gui::<ref refid="classopenage_1_1gui_1_1_generator_link" kindref="compound">GeneratorLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a767dc953fc333130ea3736eb1399c45a" kindref="member">generatorParameters</ref><sp/>MEMBER<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a6fc1d8d4c28f24d58df098f26f4238ba" kindref="member">generator_parameters</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a1002d066b22fd37f5a55e6cd8a8063e4" kindref="member">generator_parameters_changed</ref>)</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
@@ -89,6 +89,6 @@
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/game_saver.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.h"/>
   </compounddef>
 </doxygen>

@@ -35,7 +35,7 @@
         <label>QQuickImageProvider</label>
       </node>
       <node id="12848">
-        <label>libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</label>
         <link refid="qml__engine__with__singleton__items__info_8cpp"/>
         <childnode refid="12849" relation="include">
         </childnode>
@@ -101,6 +101,6 @@
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp"/>
   </compounddef>
 </doxygen>

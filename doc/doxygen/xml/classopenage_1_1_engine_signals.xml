@@ -20,7 +20,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="71" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="71" column="1"/>
+        <referencedby refid="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" compoundref="engine_8cpp" startline="519" endline="523">openage::Engine::announce_global_binds</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -29,28 +30,28 @@
 <para>Qt signals for the engine. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1378">
+      <node id="2138">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="1379" relation="public-inheritance">
+        <childnode refid="2139" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1379">
+      <node id="2139">
         <label>QObject</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1380">
+      <node id="2140">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="1381" relation="public-inheritance">
+        <childnode refid="2141" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1381">
+      <node id="2141">
         <label>QObject</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/engine.h" line="66" column="1" bodyfile="libopenage/engine.h" bodystart="66" bodyend="72"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="66" bodyend="72"/>
     <listofallmembers>
       <member refid="classopenage_1_1_engine_signals_1a29e0341281c27dfa4fce142ffbe388a6" prot="public" virt="non-virtual"><scope>openage::EngineSignals</scope><name>global_binds_changed</name></member>
     </listofallmembers>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::curve::Discrete&lt; T &gt; Class Template Reference</title>
+<title>openage: openage::curve::Discrete&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1curve_1_1_discrete.xht
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="discrete_8h_source.xhtml">discrete.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::curve::Discrete&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::curve::Discrete&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::curve::Discrete&lt; T &gt;:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::curve::Discrete&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -200,6 +203,28 @@ template&lt;typename T &gt; </div>
 <p>Implements <a class="el" href="classopenage_1_1curve_1_1_value_container.xhtml#af35f74af0eb47d6c852c5b8f8f83ae60">openage::curve::ValueContainer&lt; T &gt;</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="discrete_8h_source.xhtml#l00045">45</a> of file <a class="el" href="discrete_8h_source.xhtml">discrete.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                           {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> e = this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.last(time, this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a>);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a> = e;   <span class="comment">// TODO if Caching?</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> e-&gt;value;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_a565150e1c3965878953bca2afa1c1ad2"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">openage::curve::ValueContainer::container</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt; container</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00048">value_container.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_af307dc2d35246999cea18dfb1d478be9"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">openage::curve::ValueContainer::last_element</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt;::KeyframeIterator last_element</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00058">value_container.h:58</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="container_8cpp_source.xhtml#l00205">openage::curve::tests::container()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="curve__types_8cpp_source.xhtml#l00014">openage::curve::tests::curve_types()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete_ab4746bae3f4c7d01312e530b0e5150d5_cgraph.svg" width="100%" height="583"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete_ab4746bae3f4c7d01312e530b0e5150d5_icgraph.svg" width="396" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -223,6 +248,18 @@ template&lt;typename T &gt; </div>
 <p>Return, if existing, the time and value of keyframe with time &lt; t </p>
 
 <p class="definition">Definition at line <a class="el" href="discrete_8h_source.xhtml#l00061">61</a> of file <a class="el" href="discrete_8h_source.xhtml">discrete.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                                                  {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">auto</span> e = this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.last(time, this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a>);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a> = e;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// if we&#39;re not at the container head</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// go back one entry.</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (e == std::begin(this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>)) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> {};</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    e--;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> std::make_pair(e-&gt;time, e-&gt;value);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div><div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_a565150e1c3965878953bca2afa1c1ad2"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">openage::curve::ValueContainer::container</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt; container</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00048">value_container.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_af307dc2d35246999cea18dfb1d478be9"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">openage::curve::ValueContainer::last_element</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt;::KeyframeIterator last_element</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00058">value_container.h:58</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="container_8cpp_source.xhtml#l00205">openage::curve::tests::container()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete_a9be982a0d41cb6b5f2968aafcf147c82_cgraph.svg" width="100%" height="583"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -246,11 +283,23 @@ template&lt;typename T &gt; </div>
 <p>Return the last time and keyframe with time &lt;= t. </p>
 
 <p class="definition">Definition at line <a class="el" href="discrete_8h_source.xhtml#l00053">53</a> of file <a class="el" href="discrete_8h_source.xhtml">discrete.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                                 {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">auto</span> e = this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">container</a>.last(time, this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a>);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">last_element</a> = e;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> std::make_pair(e-&gt;time, e-&gt;value);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_a565150e1c3965878953bca2afa1c1ad2"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#a565150e1c3965878953bca2afa1c1ad2">openage::curve::ValueContainer::container</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt; container</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00048">value_container.h:48</a></div></div>
+<div class="ttc" id="classopenage_1_1curve_1_1_value_container_xhtml_af307dc2d35246999cea18dfb1d478be9"><div class="ttname"><a href="classopenage_1_1curve_1_1_value_container.xhtml#af307dc2d35246999cea18dfb1d478be9">openage::curve::ValueContainer::last_element</a></div><div class="ttdeci">KeyframeContainer&lt; T &gt;::KeyframeIterator last_element</div><div class="ttdef"><b>Definition:</b> <a href="value__container_8h_source.xhtml#l00058">value_container.h:58</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="container_8cpp_source.xhtml#l00205">openage::curve::tests::container()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1curve_1_1_discrete_a4b2bddacdb81de7e9d1f207ca7cd15c2_cgraph.svg" width="100%" height="583"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/curve/<a class="el" href="discrete_8h_source.xhtml">discrete.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/<a class="el" href="discrete_8h_source.xhtml">discrete.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

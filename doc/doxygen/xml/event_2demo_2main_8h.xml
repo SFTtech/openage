@@ -3,10 +3,10 @@
   <compounddef id="event_2demo_2main_8h" kind="file" language="C++">
     <compoundname>main.h</compoundname>
     <includes refid="compiler_8h" local="yes">../../util/compiler.h</includes>
-    <includedby refid="event_2demo_2main_8cpp" local="yes">libopenage/event/demo/main.cpp</includedby>
+    <includedby refid="event_2demo_2main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</includedby>
     <incdepgraph>
       <node id="7241">
-        <label>libopenage/event/demo/main.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.h</label>
         <link refid="event_2demo_2main_8h"/>
         <childnode refid="7242" relation="include">
         </childnode>
@@ -36,13 +36,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="7246">
-        <label>libopenage/event/demo/main.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.h</label>
         <link refid="event_2demo_2main_8h"/>
         <childnode refid="7247" relation="include">
         </childnode>
       </node>
       <node id="7247">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
     </invincdepgraph>
@@ -70,6 +70,6 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event::demo</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/main.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.h"/>
   </compounddef>
 </doxygen>

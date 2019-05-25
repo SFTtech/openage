@@ -1,0 +1,21 @@
+<map id="openage::BuildingProducer::make_annex" name="openage::BuildingProducer::make_annex">
+<area shape="rect" id="node1" title=" " alt="" coords="5,155,183,196"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_terrain_object.xhtml#a95d5633a7448be10a5e6274351aac959" title=" " alt="" coords="240,5,396,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain_object.xhtml#a1e5c4905f3a581bb96600eef9ca09a0a" title=" " alt="" coords="240,71,396,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_player.xhtml#a67c7f6853d4be5c38d2456169af3d5a1" title=" " alt="" coords="231,137,405,163"/>
+<area shape="rect" id="node7" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="657,166,848,193"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_terrain_object.xhtml#a227f50f827d1ae7791f06e323c581bbd" title=" " alt="" coords="240,260,396,301"/>
+<area shape="rect" id="node19" href="$namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36" title="warning message" alt="" coords="257,326,379,353"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="471,86,592,113"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="473,137,589,163"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="679,79,826,120"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="925,93,1064,135"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="909,159,1081,200"/>
+<area shape="rect" id="node10" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="896,225,1093,251"/>
+<area shape="rect" id="node13" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="476,238,587,265"/>
+<area shape="rect" id="node14" href="$namespaceopenage.xhtml#a3a0d4d7c2bc234c442c13758d306f60c" title=" " alt="" coords="471,289,591,315"/>
+<area shape="rect" id="node15" href="$classopenage_1_1_terrain_object.xhtml#a170289794bdd31d673ffb3aca873bb1d" title=" " alt="" coords="453,340,609,381"/>
+<area shape="rect" id="node16" href="$classopenage_1_1_terrain_chunk.xhtml#af163db3fba4ae99206de76666f8424df" title=" " alt="" coords="454,405,609,447"/>
+<area shape="rect" id="node17" href="$structopenage_1_1coord_1_1tile.xhtml#ab4811e492cabe885d33e85df51ceff83" title=" " alt="" coords="683,405,822,447"/>
+<area shape="rect" id="node18" href="$namespaceopenage_1_1util.xhtml#a7e483e123bf554b630319eb3dd012c02" title=" " alt="" coords="930,413,1059,439"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="openage::renderer::resources::MeshData::make_quad" name="openage::renderer::resources::MeshData::make_quad">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1resources_1_1_mesh_data.xhtml#a8d18f2be596595fed8762920ca9bd7ec" title="Tries to load the mesh data from the specified file." alt="" coords="200,5,347,61"/>
+</map>

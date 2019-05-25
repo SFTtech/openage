@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.h" line="43" column="1" bodyfile="libopenage/error/stackanalyzer.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" compoundref="stackanalyzer_8cpp" startline="305" endline="317">trim_to_current_stack_frame</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -33,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.h" line="32" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="32" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46,7 +47,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.h" line="38" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="222" bodyend="258"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" bodystart="222" bodyend="258"/>
+        <references refid="namespaceopenage_1_1error_1af4d473d062c43372ff4db76ff90d212b" compoundref="stackanalyzer_8cpp" startline="25">openage::error::base_skip_frames</references>
+        <references refid="namespaceopenage_1_1error_1ae3d9c89190667cb25a58f4946755cd7c" compoundref="stackanalyzer_8cpp" startline="19">openage::error::skip_entry_frames</references>
+        <referencedby refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" compoundref="error_2handlers_8cpp" startline="69" endline="104">openage::error::terminate_handler</referencedby>
+        <referencedby refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" compoundref="stackanalyzer_8cpp" startline="305" endline="317">trim_to_current_stack_frame</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -88,7 +93,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.h" line="46" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="268" bodyend="293"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" bodystart="268" bodyend="293"/>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1ad78e77b48944f5a063d51ab4ef9558fc" compoundref="backtrace_8h" startline="35">openage::error::backtrace_symbol::filename</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a0c86f0d485e213632b187f92a41af855" compoundref="backtrace_8h" startline="37">openage::error::backtrace_symbol::functionname</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a4397241806d661bcc788a840b4e76492" compoundref="backtrace_8h" startline="36">openage::error::backtrace_symbol::lineno</references>
+        <references refid="structopenage_1_1error_1_1backtrace__symbol_1a5d15b8690b9644243452f21449e00fa2" compoundref="backtrace_8h" startline="38">openage::error::backtrace_symbol::pc</references>
+        <references refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" compoundref="compiler_8cpp" startline="98" endline="133">openage::util::symbol_name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -105,7 +115,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/error/stackanalyzer.h" line="48" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="305" bodyend="317"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp" bodystart="305" bodyend="317"/>
+        <references refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" compoundref="stackanalyzer_8cpp" startline="222" endline="258">analyze</references>
+        <references refid="classopenage_1_1error_1_1_stack_analyzer_1a6ff702e8c60bc0f7aa6ab908e85cde07" compoundref="stackanalyzer_8h" startline="43">stack_addrs</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -118,30 +130,30 @@
 <para>The implementation of <ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze()</ref> and <ref refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" kindref="member">get_symbols()</ref> may use all sorts of analyzers, depending on what&apos;s available on the platform. The quality of the resolved symbol names may vary accordingly. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4264">
+      <node id="2165">
         <label>openage::error::Backtrace</label>
         <link refid="classopenage_1_1error_1_1_backtrace"/>
       </node>
-      <node id="4263">
+      <node id="2164">
         <label>openage::error::StackAnalyzer</label>
         <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
-        <childnode refid="4264" relation="public-inheritance">
+        <childnode refid="2165" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4266">
+      <node id="2167">
         <label>openage::error::Backtrace</label>
         <link refid="classopenage_1_1error_1_1_backtrace"/>
       </node>
-      <node id="4265">
+      <node id="2166">
         <label>openage::error::StackAnalyzer</label>
         <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
-        <childnode refid="4266" relation="public-inheritance">
+        <childnode refid="2167" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/error/stackanalyzer.h" line="27" column="1" bodyfile="libopenage/error/stackanalyzer.h" bodystart="27" bodyend="49"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.h" bodystart="27" bodyend="49"/>
     <listofallmembers>
       <member refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" prot="public" virt="non-virtual"><scope>openage::error::StackAnalyzer</scope><name>analyze</name></member>
       <member refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" prot="public" virt="virtual"><scope>openage::error::StackAnalyzer</scope><name>get_symbols</name></member>

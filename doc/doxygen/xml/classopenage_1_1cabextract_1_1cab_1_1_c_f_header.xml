@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header" kind="class" language="Python" prot="public">
+    <compoundname>openage::cabextract::cab::CFHeader</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1struct_1_1_named_struct" prot="public" virt="non-virtual">openage.util.struct.NamedStruct</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a0fae2802d1d6210f754dc967ed76983b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::endianness</definition>
+        <argsstring></argsstring>
+        <name>endianness</name>
+        <initializer>=  &quot;&lt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a46b220c68b55e2db7fd1add95da3723b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::signature</definition>
+        <argsstring></argsstring>
+        <name>signature</name>
+        <initializer>=  &quot;4s&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="57" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1entry__parser_1_1_parser_template_1ad12901daa5d9f3b804a5f4ab0aa89e57" compoundref="entry__parser_8py" startline="58" endline="60">openage.convert.dataformat.entry_parser.ParserTemplate.get_signature</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ad336dbf8a6abf1ffce789c055fac8792" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::reserved1</definition>
+        <argsstring></argsstring>
+        <name>reserved1</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1aa072a82c5202e59b399142007742fd7e" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::cbCabinet</definition>
+        <argsstring></argsstring>
+        <name>cbCabinet</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a83d5ef7772ef263b0dceaa5f0bc96f4a" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::reserved2</definition>
+        <argsstring></argsstring>
+        <name>reserved2</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a5da4685a1cfdfb6e6887bb4fefe27b88" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::coffFiles</definition>
+        <argsstring></argsstring>
+        <name>coffFiles</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a9ac1adf5ddd511ffde4044e874dc52c8" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::reserved3</definition>
+        <argsstring></argsstring>
+        <name>reserved3</name>
+        <initializer>=  &quot;I&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1af9b2b9ce4c2b3a2c960ff510a588dabd" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::versionMinor</definition>
+        <argsstring></argsstring>
+        <name>versionMinor</name>
+        <initializer>=  &quot;B&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a0ac18ae0b6533c8aa926043d66f62677" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::versionMajor</definition>
+        <argsstring></argsstring>
+        <name>versionMajor</name>
+        <initializer>=  &quot;B&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a8953e398dcd0bfc451afdf38f19aeb65" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::cFolders</definition>
+        <argsstring></argsstring>
+        <name>cFolders</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1afa70dbd6bce77e5d48a31bb6bc61f172" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::cFiles</definition>
+        <argsstring></argsstring>
+        <name>cFiles</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ae6ffe2c9274913f226753946e196db10" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <initializer>=  <ref refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_flags" kindref="compound">CFHeaderFlags</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a42ecb54854e072dcb7c2f136390f3f5b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::setID</definition>
+        <argsstring></argsstring>
+        <name>setID</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a6591f3ad7aceb3d102dcf065709f8d41" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.cabextract.cab.CFHeader::iCabinet</definition>
+        <argsstring></argsstring>
+        <name>iCabinet</name>
+        <initializer>=  &quot;H&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a8eeeaffb6cfb06eda4ecef177a003e85" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::reserved_data</definition>
+        <argsstring></argsstring>
+        <name>reserved_data</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="72" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1afa3c8a76c610152c79a2d5fcd490e887" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::reserved</definition>
+        <argsstring></argsstring>
+        <name>reserved</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_data_1aed8c16e72562ec22867cd4bb429136bb" compoundref="cab_8py" startline="199" endline="215">openage.cabextract.cab.CFData.verify_checksum</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ab320cc56c3342de4f3e560181f894b3a" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::prev_cab</definition>
+        <argsstring></argsstring>
+        <name>prev_cab</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="78" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a4f3dbfb81fd4057009b154f5e8702bbd" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::prev_disk</definition>
+        <argsstring></argsstring>
+        <name>prev_disk</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1aae31e7f0e1e879815bb6a3c253cc87c3" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::next_cab</definition>
+        <argsstring></argsstring>
+        <name>next_cab</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a83c3a4398357347ce07c1a9206edd992" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.cabextract.cab.CFHeader::next_disk</definition>
+        <argsstring></argsstring>
+        <name>next_disk</name>
+        <initializer>=  None</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Global CAB file header; found at the very beginning of the file. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="733">
+        <label>type</label>
+      </node>
+      <node id="732">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="733" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="729">
+        <label>openage.cabextract.cab.CFHeader</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header"/>
+        <childnode refid="730" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="730">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="731" relation="public-inheritance">
+        </childnode>
+        <childnode refid="732" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="731">
+        <label>metaclass</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="738">
+        <label>type</label>
+      </node>
+      <node id="737">
+        <label>openage.util.struct.NamedStructMeta</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta"/>
+        <childnode refid="738" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="734">
+        <label>openage.cabextract.cab.CFHeader</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header"/>
+        <childnode refid="735" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="735">
+        <label>openage.util.struct.NamedStruct</label>
+        <link refid="classopenage_1_1util_1_1struct_1_1_named_struct"/>
+        <childnode refid="736" relation="public-inheritance">
+        </childnode>
+        <childnode refid="737" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="736">
+        <label>metaclass</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/cab.py" bodystart="51" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a5ed8305cdd2a46d36d6156459a31269d" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a73bebaa3ad9fc8839af4f542b842e61c" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a320fc3010de09ada87f68bae82190c91" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__iter__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a111c24deaf6b643f014cb8e33f770ea4" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__len__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1aa17dd52088b8ff6e9bf08cd1e49fc671" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__new__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_meta_1adb57ffcf006000dc05afd73cbc545736" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__prepare__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a9cdd6f3d9b9ba4ab07beb41d5021b83e" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ad7a89792617e8271fe2b025116d10794" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1abe42962b06b44bf3b9f3ebbbdde85f5c" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>as_dict</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1aa072a82c5202e59b399142007742fd7e" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>cbCabinet</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1afa70dbd6bce77e5d48a31bb6bc61f172" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>cFiles</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a8953e398dcd0bfc451afdf38f19aeb65" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>cFolders</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a5da4685a1cfdfb6e6887bb4fefe27b88" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>coffFiles</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a0fae2802d1d6210f754dc967ed76983b" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>endianness</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ae6ffe2c9274913f226753946e196db10" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>flags</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a39ddc44b3cc3611acd3ec7e4ee49abf9" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>from_nullbytes</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a6591f3ad7aceb3d102dcf065709f8d41" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>iCabinet</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1aae31e7f0e1e879815bb6a3c253cc87c3" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>next_cab</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a83c3a4398357347ce07c1a9206edd992" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>next_disk</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ab320cc56c3342de4f3e560181f894b3a" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>prev_cab</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a4f3dbfb81fd4057009b154f5e8702bbd" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>prev_disk</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a10cfd96f5d25886cfe84b8fe739f1deb" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>read</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1afa3c8a76c610152c79a2d5fcd490e887" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>reserved</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1ad336dbf8a6abf1ffce789c055fac8792" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>reserved1</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a83d5ef7772ef263b0dceaa5f0bc96f4a" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>reserved2</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a9ac1adf5ddd511ffde4044e874dc52c8" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>reserved3</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a8eeeaffb6cfb06eda4ecef177a003e85" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>reserved_data</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a42ecb54854e072dcb7c2f136390f3f5b" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>setID</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a46b220c68b55e2db7fd1add95da3723b" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>signature</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1ac1af4243315e2a57dbff45d484820451" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1struct_1_1_named_struct_1a7704f79ea7d43f2aeb5b28dcce79fdc8" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>unpack</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1a0ac18ae0b6533c8aa926043d66f62677" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>versionMajor</name></member>
+      <member refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_header_1af9b2b9ce4c2b3a2c960ff510a588dabd" prot="public" virt="non-virtual"><scope>openage::cabextract::cab::CFHeader</scope><name>versionMinor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

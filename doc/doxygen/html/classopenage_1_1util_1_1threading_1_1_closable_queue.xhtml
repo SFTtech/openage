@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.threading.ClosableQueue Class Reference</title>
+<title>openage: openage.util.threading.ClosableQueue Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1threading_1_1_
 
 <p>For use in concurrent_chain.  
  <a href="classopenage_1_1util_1_1threading_1_1_closable_queue.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.util.threading.ClosableQueue:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue__inherit__graph.svg" width="214" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.threading.ClosableQueue:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue__inherit__graph.svg" width="214" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.threading.ClosableQueue:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue__coll__graph.svg" width="214" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.threading.ClosableQueue:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue__coll__graph.svg" width="214" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -152,7 +155,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00062">62</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        self.closed = <span class="keyword">False</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        self.close_reason = <span class="keywordtype">None</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">def </span>put(self, item, block=True, timeout=None):</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        self.raise_if_closed()</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -183,6 +186,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00075">75</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            self.closed = <span class="keyword">True</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            self.close_reason = reason</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">def </span>raise_if_closed(self):</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="threading_8py_source.xhtml#l00065">openage.util.threading.ClosableQueue.close_reason</a>, <a class="el" href="filelike_2abstract_8py_source.xhtml#l00025">openage.util.filelike.abstract.FileLikeObject.closed</a>, <a class="el" href="threading_8py_source.xhtml#l00064">openage.util.threading.ClosableQueue.closed</a>, <a class="el" href="stream_8py_source.xhtml#l00094">openage.util.filelike.stream.StreamSeekBuffer.closed</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00099">openage.cabextract.lzxdstream.LZXDStream.closed</a>, <a class="el" href="fifo_8py_source.xhtml#l00120">openage.util.filelike.fifo.FIFO.closed</a>, <a class="el" href="stream_8py_source.xhtml#l00153">openage.util.filelike.stream.StreamFragment.closed</a>, <a class="el" href="cab_8py_source.xhtml#l00551">openage.cabextract.cab.CABFolderStream.closed</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">shared_ptr&lt; chunk_info_t &gt;.mutex</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;.mutex</a>, and <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">openage::datastructure::ConcurrentQueue&lt; T &gt;.mutex</a>.</p>
 
 </div>
 </div>
@@ -225,6 +230,16 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00067">67</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        super().put(item, block, timeout)</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">def </span>close(self, reason=None):</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue_a7c932a9c234802819392d7d81885192f_cgraph.svg" width="464" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -245,6 +260,18 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00084">84</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> self.closed:</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">raise</span> RuntimeError(self.close_reason)</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">class </span>GeneratorEvent(Enum):</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">    For use by concurrent_chain.</span></div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">    Represents any event that a generator may cause.</span></div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    VALUE = 0</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="threading_8py_source.xhtml#l00065">openage.util.threading.ClosableQueue.close_reason</a>, <a class="el" href="filelike_2abstract_8py_source.xhtml#l00025">openage.util.filelike.abstract.FileLikeObject.closed</a>, <a class="el" href="threading_8py_source.xhtml#l00064">openage.util.threading.ClosableQueue.closed</a>, <a class="el" href="stream_8py_source.xhtml#l00094">openage.util.filelike.stream.StreamSeekBuffer.closed</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00099">openage.cabextract.lzxdstream.LZXDStream.closed</a>, <a class="el" href="fifo_8py_source.xhtml#l00120">openage.util.filelike.fifo.FIFO.closed</a>, <a class="el" href="stream_8py_source.xhtml#l00153">openage.util.filelike.stream.StreamFragment.closed</a>, <a class="el" href="cab_8py_source.xhtml#l00551">openage.cabextract.cab.CABFolderStream.closed</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">shared_ptr&lt; chunk_info_t &gt;.mutex</a>, <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;.mutex</a>, and <a class="el" href="concurrent__queue_8h_source.xhtml#l00082">openage::datastructure::ConcurrentQueue&lt; T &gt;.mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00067">openage.util.threading.ClosableQueue.put()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1threading_1_1_closable_queue_a94efea86c7c77550eae76db99d8d5ebf_icgraph.svg" width="464" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -263,6 +290,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00065">65</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
+
 </div>
 </div>
 <a id="a4e563df7730cc31695251559626fbb15"></a>
@@ -279,10 +308,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="threading_8py_source.xhtml#l00064">64</a> of file <a class="el" href="threading_8py_source.xhtml">threading.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/<a class="el" href="threading_8py_source.xhtml">threading.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/<a class="el" href="threading_8py_source.xhtml">threading.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

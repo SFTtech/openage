@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_50129a17799df7b67570c4983a7bc841" kind="dir">
-    <compoundname>libopenage/renderer/opengl</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl</compoundname>
     <innerfile refid="buffer_8cpp">buffer.cpp</innerfile>
     <innerfile refid="buffer_8h">buffer.h</innerfile>
     <innerfile refid="context_8cpp">context.cpp</innerfile>
@@ -34,6 +34,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/opengl/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/"/>
   </compounddef>
 </doxygen>

@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_cbf204bd148c4f3791294990ca88307d" kind="dir">
-    <compoundname>libopenage/gui/integration</compoundname>
-    <innerdir refid="dir_74f47b28f54343cfb7dc57764ed3695d">libopenage/gui/integration/private</innerdir>
-    <innerdir refid="dir_5a0940e64a0a044ca33530282d463457">libopenage/gui/integration/public</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration</compoundname>
+    <innerdir refid="dir_74f47b28f54343cfb7dc57764ed3695d">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private</innerdir>
+    <innerdir refid="dir_5a0940e64a0a044ca33530282d463457">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/integration/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/"/>
   </compounddef>
 </doxygen>

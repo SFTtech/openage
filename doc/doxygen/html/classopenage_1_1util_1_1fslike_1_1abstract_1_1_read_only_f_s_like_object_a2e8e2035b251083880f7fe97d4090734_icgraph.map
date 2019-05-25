@@ -1,0 +1,10 @@
+<map id="openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error" name="openage.util.fslike.abstract.ReadOnlyFSLikeObject.read_only_error">
+<area shape="rect" id="node1" title="Helper method to be called from all other methods." alt="" coords="467,162,653,218"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a599de6a44e07de7953d470a52e73b5dd" title="Shall ensure that the directory exists." alt="" coords="215,5,416,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#ab8029eaad6e6319c24ab0cc751c5d616" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="212,71,419,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a4c0b6210f50093741463c86a97ae0002" title="Shall rename a file or directory to the target name." alt="" coords="213,136,418,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a050c6a9d4ffd3567d3632a11bacd8d75" title="Shall remove an empty directory." alt="" coords="220,201,411,243"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#ac2dca332d04bf264b617d7f10f50a3f7" title="Shall create the file or update its timestamp." alt="" coords="218,267,413,308"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object.xhtml#a5a792df23924bd36958b23922df5c3f9" title="Shall remove a single file." alt="" coords="217,332,413,373"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a54ddfaca7c17c046c0a7472bb6af3d76" title="Recursively deletes this file or directory." alt="" coords="5,267,164,308"/>
+</map>

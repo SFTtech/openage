@@ -1,0 +1,11 @@
+<map id="openage::UnitTexture::UnitTexture" name="openage::UnitTexture::UnitTexture">
+<area shape="rect" id="node1" title=" " alt="" coords="5,23,151,65"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_game_spec.xhtml#aa1f8784ca6aab9da489457d22b386443" title=" " alt="" coords="199,23,351,65"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="401,5,518,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="399,56,520,83"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="590,19,737,61"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="568,85,759,112"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="836,13,975,54"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="819,78,991,119"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="807,144,1004,171"/>
+</map>

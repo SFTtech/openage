@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::members::ContinueReadMember</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.NumberMember</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a054611a40251cc8115d922bfc6bdbf2d" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.ContinueReadMember::Result</definition>
+        <argsstring></argsstring>
+        <name>Result</name>
+        <initializer>=  <ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result" kindref="compound">ContinueReadMemberResult</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="350" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="350" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1aaa0982c5a278043f631a41329ed39aab" compoundref="members_8py" startline="352" endline="357">openage.convert.dataformat.members.ContinueReadMember.entry_hook</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1af495eeb0589a107c03a789b9b59a37c8" compoundref="members_8py" startline="361" endline="383">openage.convert.dataformat.members.ContinueReadMember.get_parsers</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1aaa0982c5a278043f631a41329ed39aab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ContinueReadMember.entry_hook</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>entry_hook</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a1d8cd7ab645eb4e99a36a3627021111f">entry_hook</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>allows the data member class to modify the input data </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   is used e.g. for the number =&gt; enum lookup
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="352" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="352" bodyend="357"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a054611a40251cc8115d922bfc6bdbf2d" compoundref="members_8py" startline="350">openage.convert.dataformat.members.ContinueReadMember.Result</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a2ed4737fd7575a73126f92488ea97753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ContinueReadMember.get_empty_value</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_empty_value</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aac3076daf9912b2241f0651797a8a506">get_empty_value</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>when this data field is not filled, use the returned value instead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="358" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="358" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1af495eeb0589a107c03a789b9b59a37c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ContinueReadMember.get_parsers</definition>
+        <argsstring>(self, idx, member)</argsstring>
+        <name>get_parsers</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1af99a4c7a2f6bae6c07dfa914831eb8c2">get_parsers</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>idx</type>
+          <defname>idx</defname>
+        </param>
+        <param>
+          <type>member</type>
+          <defname>member</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="361" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="361" bodyend="383"/>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a5e3a7c5e8aeddbd762f9a158f9bc5aab" compoundref="util_8py" startline="128" endline="138">openage.convert.dataformat.util.determine_headers</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a054611a40251cc8115d922bfc6bdbf2d" compoundref="members_8py" startline="350">openage.convert.dataformat.members.ContinueReadMember.Result</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1038">
+        <label>openage.convert.dataformat.members.ContinueReadMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member"/>
+        <childnode refid="1039" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1039">
+        <label>openage.convert.dataformat.members.NumberMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member"/>
+        <childnode refid="1040" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1040">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1041">
+        <label>openage.convert.dataformat.members.ContinueReadMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member"/>
+        <childnode refid="1042" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1042">
+        <label>openage.convert.dataformat.members.NumberMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member"/>
+        <childnode refid="1043" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1043">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="348" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="348" bodyend="384"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a460fd49b84ff2ba62e3c67418486f8ca" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1af93da463756c79f7fb06eb46898fd6c5" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DataMember."><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1acebacec44c129380eab30beb999434eb" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ade5ee2745546cc6f70341b34958900cf" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>do_raw_read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1aaa0982c5a278043f631a41329ed39aab" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>entry_hook</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a21171b4018d202687aff259ac8bdedb4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a27b0a04796782524796716eed105a9a4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a2ed4737fd7575a73126f92488ea97753" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_empty_value</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1ae1554def5866507bb2a22a7e8eb1812e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a5020d135379031c1726d24343ab23310" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1af495eeb0589a107c03a789b9b59a37c8" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_parsers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_struct_entries</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aa4968dab9239c251b3415aefcfa53ae1" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>get_typerefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a304aadf38378a06b99c4398303928dbd" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a560151f3ad460070c406eaeddb3d46ec" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>number_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1affbdd39c2c544f82875f65ed1837840b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_1a054611a40251cc8115d922bfc6bdbf2d" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>Result</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member_1a8a80cc8cc673dbfc246312409daa426f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>type_scan_lookup</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a8cc54e765c92a42b17dbe2786cfdef08" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMember</scope><name>verify_read_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

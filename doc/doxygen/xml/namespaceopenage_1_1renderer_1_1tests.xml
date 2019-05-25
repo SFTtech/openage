@@ -14,7 +14,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/tests.cpp" line="12" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="12" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" bodystart="12" bodyend="23"/>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" compoundref="renderer_2font_2tests_8cpp" startline="25" endline="27">font_manager</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" compoundref="renderer_2font_2tests_8cpp" startline="25" endline="27">font_manager</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -27,7 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/tests.cpp" line="25" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="25" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" bodystart="25" bodyend="27"/>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" compoundref="renderer_2font_2tests_8cpp" startline="12" endline="23">font_manager_test_get_font</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" compoundref="renderer_2font_2tests_8cpp" startline="12" endline="23">font_manager_test_get_font</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -40,7 +45,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/tests.cpp" line="29" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="29" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" bodystart="29" bodyend="57"/>
+        <references refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" compoundref="font_8h" startline="53">openage::renderer::font_description::font_file</references>
+        <references refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" compoundref="font_8h" startline="56">openage::renderer::font_description::language</references>
+        <references refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1">openage::renderer::left_to_right</references>
+        <references refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a74ecbc5c277e2952aac1ac167699d74c">openage::renderer::right_to_left</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" compoundref="renderer_2font_2tests_8cpp" startline="59" endline="61">font</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -53,7 +64,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/font/tests.cpp" line="59" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="59" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" bodystart="59" bodyend="61"/>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" compoundref="renderer_2font_2tests_8cpp" startline="29" endline="57">font_test_font_description</references>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" compoundref="glyph__atlas_8cpp" startline="81" endline="91">openage::renderer::GlyphAtlas::get</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" compoundref="glyph__atlas_8cpp" startline="93" endline="98">openage::renderer::GlyphAtlas::get_cache_key</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_font_manager_1ae84aeac58608733bb241bd015bed3dc3" compoundref="font__manager_8cpp" startline="66" endline="79">openage::renderer::FontManager::get_font</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">openage::Engine::render_text</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" compoundref="text_8cpp" startline="69" endline="76">openage::renderer::TextRenderer::set_font</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -70,7 +88,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/tests.cpp" line="33" column="1" bodyfile="libopenage/renderer/tests.cpp" bodystart="33" bodyend="278"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp" bodystart="33" bodyend="278"/>
+        <references refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" compoundref="window_8cpp" startline="20" endline="22">openage::renderer::Window::add_mouse_button_callback</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" compoundref="window_8cpp" startline="32" endline="34">openage::renderer::Window::add_resize_callback</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a22414f75ba491ef266e3453259825a50" compoundref="context_8cpp" startline="158" endline="208">openage::renderer::opengl::GlContext::check_error</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70">openage::renderer::resources::depth24</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1">openage::renderer::resources::fragment</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1a1bf53e4db756c04ed522a975573b36a6" compoundref="window_8cpp" startline="12" endline="14">openage::renderer::Window::get_size</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6">openage::renderer::resources::glsl</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" compoundref="mesh__data_8cpp" startline="123" endline="131">openage::renderer::resources::MeshData::make_quad</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a45268949d2510860b3643bb7779f521b" compoundref="opengl_2window_8cpp" startline="93" endline="95">openage::renderer::opengl::GlWindow::make_renderer</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea939e20bb21f297a3c7be5d44d77904f5">openage::renderer::resources::r32ui</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" compoundref="texture__data_8h" startline="47" endline="58">openage::renderer::resources::Texture2dData::read_pixel</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a">openage::renderer::resources::rgba8</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1a8fa5671d7e11d9797cd19d4258ddc69b" compoundref="window_8cpp" startline="16" endline="18">openage::renderer::Window::should_close</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" compoundref="opengl_2window_8cpp" startline="58" endline="91">openage::renderer::opengl::GlWindow::update</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a">openage::renderer::resources::vertex</references>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1tests_1ac2256044717a0f7f7aafbb1f2be3a1eb" compoundref="renderer_2tests_8cpp" startline="280" endline="290">renderer_demo</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1ac2256044717a0f7f7aafbb1f2be3a1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -91,13 +127,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/tests.cpp" line="280" column="1" bodyfile="libopenage/renderer/tests.cpp" bodystart="280" bodyend="290"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp" line="280" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp" bodystart="280" bodyend="290"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" compoundref="renderer_2tests_8cpp" startline="33" endline="278">renderer_demo_0</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/font/tests.cpp" line="10" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp" line="10" column="1"/>
   </compounddef>
 </doxygen>

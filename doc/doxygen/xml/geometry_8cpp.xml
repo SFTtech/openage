@@ -18,7 +18,7 @@
         <label>cstdint</label>
       </node>
       <node id="20707">
-        <label>libopenage/renderer/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/geometry.cpp</label>
         <link refid="geometry_8cpp"/>
         <childnode refid="20708" relation="include">
         </childnode>
@@ -58,6 +58,6 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/geometry.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/geometry.cpp"/>
   </compounddef>
 </doxygen>

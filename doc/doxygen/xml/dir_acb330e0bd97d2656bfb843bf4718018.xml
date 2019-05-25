@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_acb330e0bd97d2656bfb843bf4718018" kind="dir">
-    <compoundname>libopenage/gui/guisys</compoundname>
-    <innerdir refid="dir_33953da122726b9905cb02c38c71bd0c">libopenage/gui/guisys/link</innerdir>
-    <innerdir refid="dir_78b5e0a243888fb9785f340b050804d7">libopenage/gui/guisys/private</innerdir>
-    <innerdir refid="dir_ee52762a54ed24851c9ca23cf72f1a00">libopenage/gui/guisys/public</innerdir>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys</compoundname>
+    <innerdir refid="dir_33953da122726b9905cb02c38c71bd0c">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link</innerdir>
+    <innerdir refid="dir_78b5e0a243888fb9785f340b050804d7">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private</innerdir>
+    <innerdir refid="dir_ee52762a54ed24851c9ca23cf72f1a00">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/guisys/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/"/>
   </compounddef>
 </doxygen>

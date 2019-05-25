@@ -1,0 +1,6 @@
+<map id="openage::coord::phys3_delta::length" name="openage::coord::phys3_delta::length">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1math.xhtml#a29c55215e73408c49f2654261fd73d8e" title=" " alt="" coords="208,13,363,39"/>
+<area shape="rect" id="node3" href="$namespacestd.xhtml#a0fc492a11cf74e80f976b24bea2a2eb2" title=" " alt="" coords="411,13,481,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#ae963a0d669b00ec8a65da1bf0041172a" title=" " alt="" coords="529,5,696,47"/>
+</map>

@@ -15,7 +15,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="95" column="1" bodyfile="libopenage/input/event.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" compoundref="input_2event_8cpp" startline="17" endline="28">get_classes</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">openage::input::Event::info</referencedby>
+        <referencedby refid="structopenage_1_1input_1_1class__code__hash_1acd9ef6acf60719e804ff6a488ac9e3c9" compoundref="input_2event_8cpp" startline="104" endline="107">openage::input::class_code_hash::operator()</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a1d09cb9758cee29027f1ddfea81cf1ac" compoundref="input_2event_8cpp" startline="41" endline="43">openage::input::operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" prot="public" static="no" mutable="no">
         <type>const <ref refid="namespaceopenage_1_1input_1aae287ba8846c11563c4b17a98e220b54" kindref="member">code_t</ref></type>
@@ -28,7 +32,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="96" column="1" bodyfile="libopenage/input/event.h" bodystart="96" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1input_1_1_event_1a99740091e0cdf50a32f93b70967df361" compoundref="input_2event_8cpp" startline="59" endline="61">openage::input::Event::as_char</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" compoundref="input_2event_8cpp" startline="69" endline="81">openage::input::Event::info</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1a2f44a9836b240db76767fe04584a36b4" compoundref="input__manager_8cpp" startline="110" endline="124">openage::input::InputManager::key_bind_to_string</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" compoundref="input__manager_8cpp" startline="126" endline="128">openage::input::InputManager::mouse_bind_to_string</referencedby>
+        <referencedby refid="structopenage_1_1input_1_1class__code__hash_1acd9ef6acf60719e804ff6a488ac9e3c9" compoundref="input_2event_8cpp" startline="104" endline="107">openage::input::class_code_hash::operator()</referencedby>
+        <referencedby refid="namespaceopenage_1_1input_1a1d09cb9758cee29027f1ddfea81cf1ac" compoundref="input_2event_8cpp" startline="41" endline="43">openage::input::operator==</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1ae8d78a246ac5d178588ef79b9e380b89" compoundref="input__manager_8cpp" startline="130" endline="140">openage::input::InputManager::wheel_bind_to_string</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="87" column="1" bodyfile="libopenage/input/event.cpp" bodystart="10" bodyend="14"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="10" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref> &gt;</type>
@@ -65,7 +76,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="92" column="1" bodyfile="libopenage/input/event.cpp" bodystart="17" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="17" bodyend="28"/>
+        <references refid="classopenage_1_1input_1_1_class_code_1abff7aa73f0e6abab9fe2cf91e524cc66" compoundref="input_2event_8h" startline="95">eclass</references>
+        <references refid="namespaceopenage_1_1input_1ad9e6713c5f62a1f050142ffd4993cc7e" compoundref="input_2event_8h" startline="45">openage::input::event_base</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" compoundref="input__context_8cpp" startline="46" endline="74">openage::input::InputContext::execute_if_bound</referencedby>
+        <referencedby refid="classopenage_1_1input_1_1_class_code_1a164160fc35b66ea9f4bf6ba5211c48e5" compoundref="input_2event_8cpp" startline="31" endline="38">has_class</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1input_1_1_class_code_1a164160fc35b66ea9f4bf6ba5211c48e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -82,7 +98,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="93" column="1" bodyfile="libopenage/input/event.cpp" bodystart="31" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="31" bodyend="38"/>
+        <references refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" compoundref="input_2event_8cpp" startline="17" endline="28">get_classes</references>
+        <referencedby refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" compoundref="input__manager_8cpp" startline="178" endline="185">openage::input::InputManager::ignored</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -91,12 +109,12 @@
 <para>base event type containing event class and event code </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="774">
+      <node id="3828">
         <label>openage::input::ClassCode</label>
         <link refid="classopenage_1_1input_1_1_class_code"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/input/event.h" line="85" column="1" bodyfile="libopenage/input/event.h" bodystart="85" bodyend="97"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="85" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" bodystart="85" bodyend="97"/>
     <listofallmembers>
       <member refid="classopenage_1_1input_1_1_class_code_1a4715bc6a7c5f00d71e5b0869283e480b" prot="public" virt="non-virtual"><scope>openage::input::ClassCode</scope><name>ClassCode</name></member>
       <member refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" prot="public" virt="non-virtual"><scope>openage::input::ClassCode</scope><name>code</name></member>

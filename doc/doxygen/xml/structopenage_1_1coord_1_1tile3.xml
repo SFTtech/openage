@@ -16,7 +16,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/tile.h" line="59" column="1" bodyfile="libopenage/coord/tile.h" bodystart="59" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" bodystart="59" bodyend="61"/>
+        <referencedby refid="classopenage_1_1_square_object_1a0deacb1dd962cd1729e6765e8dea01de" compoundref="terrain__object_8cpp" startline="336" endline="345">openage::SquareObject::contains</referencedby>
+        <referencedby refid="namespaceopenage_1a8d7d58d26d71e7447de628441782a751" compoundref="terrain__search_8cpp" startline="33" endline="54">openage::find_in_radius</referencedby>
+        <referencedby refid="namespaceopenage_1abf30260a65f6b06163a5dad881836523" compoundref="terrain__search_8cpp" startline="11" endline="31">openage::find_near</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" compoundref="terrain__object_8cpp" startline="398" endline="413">openage::RadialObject::get_range</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" compoundref="tile_8cpp" startline="31" endline="33">to_phys2</referencedby>
+        <referencedby refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" compoundref="phys_8cpp" startline="106" endline="108">openage::coord::phys3::to_tile</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_action_1a5be4d6d237bbb52a036d368af97956b6" compoundref="unit_2action_8cpp" startline="1343" endline="1374">openage::ProjectileAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys2" kindref="compound">phys2</ref></type>
@@ -29,7 +36,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/tile.h" line="63" column="1" bodyfile="libopenage/coord/tile.cpp" bodystart="31" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="31" bodyend="33"/>
+        <references refid="structopenage_1_1coord_1_1tile_1a26e7ddc05f99069e9df2f35f3338d037" compoundref="tile_8cpp" startline="21" endline="23">openage::coord::tile::to_phys2</references>
+        <references refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" compoundref="tile_8h" startline="59" endline="61">to_tile</references>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
@@ -42,7 +51,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/tile.h" line="64" column="1" bodyfile="libopenage/coord/tile.cpp" bodystart="36" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.cpp" bodystart="36" bodyend="42"/>
+        <referencedby refid="structopenage_1_1coord_1_1tile_1ac306cc74c14e094567447277327b389a" compoundref="tile_8cpp" startline="26" endline="28">openage::coord::tile::to_phys3</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,28 +60,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4486">
+      <node id="1768">
         <label>openage::coord::tile3</label>
         <link refid="structopenage_1_1coord_1_1tile3"/>
-        <childnode refid="4487" relation="public-inheritance">
+        <childnode refid="1769" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4487">
+      <node id="1769">
         <label>CoordNeSeUpAbsolute&lt; tile_t, tile3, tile3_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4488">
+      <node id="1770">
         <label>openage::coord::tile3</label>
         <link refid="structopenage_1_1coord_1_1tile3"/>
-        <childnode refid="4489" relation="public-inheritance">
+        <childnode refid="1771" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4489">
+      <node id="1771">
         <label>CoordNeSeUpAbsolute&lt; tile_t, tile3, tile3_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/tile.h" line="55" column="1" bodyfile="libopenage/coord/tile.h" bodystart="55" bodyend="65"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/tile.h" bodystart="55" bodyend="65"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" prot="public" virt="non-virtual"><scope>openage::coord::tile3</scope><name>to_phys2</name></member>
       <member refid="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" prot="public" virt="non-virtual"><scope>openage::coord::tile3</scope><name>to_phys3</name></member>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::input::ActionManager Class Reference</title>
+<title>openage: openage::input::ActionManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1input_1_1_action_manag
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="input_2action_8h_source.xhtml">action.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::input::ActionManager:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::input::ActionManager:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -166,6 +168,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8cpp_source.xhtml#l00104">104</a> of file <a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    :</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">input_manager</a>{<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">input_manager</a>},</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2c664814e0ae1cb76108a7b4ece1c988">cvar_manager</a>{<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2c664814e0ae1cb76108a7b4ece1c988">cvar_manager</a>} {</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a">create</a>(<span class="stringliteral">&quot;UNDEFINED&quot;</span>);</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;type : DEFAULT_ACTIONS) {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a">create</a>(type);</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;} <span class="comment">// anonymous namespace</span></div><div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a2c664814e0ae1cb76108a7b4ece1c988"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a2c664814e0ae1cb76108a7b4ece1c988">openage::input::ActionManager::cvar_manager</a></div><div class="ttdeci">cvar::CVarManager *const cvar_manager</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00055">action.h:55</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a172292484fa92f4c391479d6e656808a"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a">openage::input::ActionManager::create</a></div><div class="ttdeci">bool create(const std::string &amp;type)</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8cpp_source.xhtml#l00117">action.cpp:117</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a65f3385ebda802a0c4f1a1e89f18d484"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">openage::input::ActionManager::input_manager</a></div><div class="ttdeci">InputManager *const input_manager</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00054">action.h:54</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="input_2action_8h_source.xhtml#l00054">input_manager</a>.</p>
 
 </div>
 </div>
@@ -195,6 +202,28 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8cpp_source.xhtml#l00117">117</a> of file <a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                                {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>.find(type) != this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>.end()) {</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">// that action is already in the list. fail.</span></div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="comment">// TODO: throw an exception instead?</span></div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment">// for now, just print a warning log message</span></div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a271d8f7f52be750e5c744a394ec71344">WARN</a> &lt;&lt; <span class="stringliteral">&quot;can not create action &quot;</span></div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                  &lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">util::repr</a>(type) &lt;&lt; <span class="stringliteral">&quot;: already exists&quot;</span>);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="namespaceopenage_1_1input.xhtml#afc78129c41b8dce77d2b9c52d7619d74">action_t</a> action_id = this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a80b0b1c5bd381d79459958c15c4f0983">next_action_id</a>++;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2278ba8f1edd88616de83b020147e13c">reverse_map</a>[action_id] = type;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>[type] = action_id;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// and the corresponding cvar, which modifies the action bindings</span></div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// TODO: this has nothing to do with the actionmanager!</span></div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">//       remove the cvarmanager-access here!</span></div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2c664814e0ae1cb76108a7b4ece1c988">cvar_manager</a>-&gt;<a class="code" href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a093074d20bdce055fac654ba01733f36">create</a>(type, std::make_pair(</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment">// the cvar&#39;s getter</span></div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        [type, <span class="keyword">this</span>]() {</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">input_manager</a>-&gt;<a class="code" href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011">get_bind</a>(type);</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        },</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// the cvar&#39;s setter</span></div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        [type, <span class="keyword">this</span>](<span class="keyword">const</span> std::string &amp;value) {</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">input_manager</a>-&gt;<a class="code" href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d">set_bind</a>(value.c_str(), type);</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    ));</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_input_manager_xhtml_af93e6ca8bded1892c1c9d83332468e2d"><div class="ttname"><a href="classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d">openage::input::InputManager::set_bind</a></div><div class="ttdeci">bool set_bind(const std::string &amp;bind_str, const std::string action)</div><div class="ttdef"><b>Definition:</b> <a href="input__manager_8cpp_source.xhtml#l00088">input_manager.cpp:88</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a2278ba8f1edd88616de83b020147e13c"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a2278ba8f1edd88616de83b020147e13c">openage::input::ActionManager::reverse_map</a></div><div class="ttdeci">std::unordered_map&lt; action_t, std::string &gt; reverse_map</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00052">action.h:52</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a2c664814e0ae1cb76108a7b4ece1c988"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a2c664814e0ae1cb76108a7b4ece1c988">openage::input::ActionManager::cvar_manager</a></div><div class="ttdeci">cvar::CVarManager *const cvar_manager</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00055">action.h:55</a></div></div>
+<div class="ttc" id="classopenage_1_1cvar_1_1_c_var_manager_xhtml_a093074d20bdce055fac654ba01733f36"><div class="ttname"><a href="classopenage_1_1cvar_1_1_c_var_manager.xhtml#a093074d20bdce055fac654ba01733f36">openage::cvar::CVarManager::create</a></div><div class="ttdeci">bool create(const std::string &amp;name, const std::pair&lt; get_func, set_func &gt; &amp;accessors)</div><div class="ttdef"><b>Definition:</b> <a href="cvar_8cpp_source.xhtml#l00016">cvar.cpp:16</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_input_manager_xhtml_a368dbccb090d17ca142b1bfde0763011"><div class="ttname"><a href="classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011">openage::input::InputManager::get_bind</a></div><div class="ttdeci">std::string get_bind(const std::string &amp;action)</div><div class="ttdef"><b>Definition:</b> <a href="input__manager_8cpp_source.xhtml#l00066">input_manager.cpp:66</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1input_xhtml_afc78129c41b8dce77d2b9c52d7619d74"><div class="ttname"><a href="namespaceopenage_1_1input.xhtml#afc78129c41b8dce77d2b9c52d7619d74">openage::input::action_t</a></div><div class="ttdeci">unsigned int action_t</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00027">action.h:27</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a271d8f7f52be750e5c744a394ec71344"><div class="ttname"><a href="message_8h.xhtml#a271d8f7f52be750e5c744a394ec71344">WARN</a></div><div class="ttdeci">#define WARN</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00178">message.h:178</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_aca4e1790866a8accadc1221a4bb7a3f2"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">openage::input::ActionManager::actions</a></div><div class="ttdeci">std::unordered_map&lt; std::string, action_t &gt; actions</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00050">action.h:50</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a80b0b1c5bd381d79459958c15c4f0983"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a80b0b1c5bd381d79459958c15c4f0983">openage::input::ActionManager::next_action_id</a></div><div class="ttdeci">action_t next_action_id</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00058">action.h:58</a></div></div>
+<div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a65f3385ebda802a0c4f1a1e89f18d484"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a65f3385ebda802a0c4f1a1e89f18d484">openage::input::ActionManager::input_manager</a></div><div class="ttdeci">InputManager *const input_manager</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00054">action.h:54</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="input_2action_8h_source.xhtml#l00050">actions</a>, <a class="el" href="cvar_8cpp_source.xhtml#l00016">openage::cvar::CVarManager::create()</a>, <a class="el" href="input_2action_8h_source.xhtml#l00055">cvar_manager</a>, <a class="el" href="input__manager_8cpp_source.xhtml#l00066">openage::input::InputManager::get_bind()</a>, <a class="el" href="input_2action_8h_source.xhtml#l00054">input_manager</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, <a class="el" href="input_2action_8h_source.xhtml#l00058">next_action_id</a>, <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util::repr()</a>, <a class="el" href="input_2action_8h_source.xhtml#l00052">reverse_map</a>, <a class="el" href="input__manager_8cpp_source.xhtml#l00088">openage::input::InputManager::set_bind()</a>, and <a class="el" href="message_8h_source.xhtml#l00178">WARN</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager_a172292484fa92f4c391479d6e656808a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -215,6 +244,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8cpp_source.xhtml#l00150">150</a> of file <a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                                 {</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>.find(type);</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">if</span> (it != this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>.end()) {</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">actions</a>.at(<span class="stringliteral">&quot;UNDEFINED&quot;</span>);</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_aca4e1790866a8accadc1221a4bb7a3f2"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#aca4e1790866a8accadc1221a4bb7a3f2">openage::input::ActionManager::actions</a></div><div class="ttdeci">std::unordered_map&lt; std::string, action_t &gt; actions</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00050">action.h:50</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="input_2action_8h_source.xhtml#l00050">actions</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="input__manager_8cpp_source.xhtml#l00066">openage::input::InputManager::get_bind()</a>, <a class="el" href="input_2action_8cpp_source.xhtml#l00170">is()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00069">openage::ActionModeSignals::on_action()</a>, and <a class="el" href="input__manager_8cpp_source.xhtml#l00088">openage::input::InputManager::set_bind()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager_a743f9d44332f84adb3eca195732ed09d_icgraph.svg" width="100%" height="448"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -235,6 +277,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8cpp_source.xhtml#l00160">160</a> of file <a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                                       {</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2278ba8f1edd88616de83b020147e13c">reverse_map</a>.find(action);</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (it != this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a2278ba8f1edd88616de83b020147e13c">reverse_map</a>.end()) {</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">return</span> it-&gt;second;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNDEFINED&quot;</span>;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a2278ba8f1edd88616de83b020147e13c"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a2278ba8f1edd88616de83b020147e13c">openage::input::ActionManager::reverse_map</a></div><div class="ttdeci">std::unordered_map&lt; action_t, std::string &gt; reverse_map</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8h_source.xhtml#l00052">action.h:52</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="input_2action_8h_source.xhtml#l00052">reverse_map</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="input__manager_8cpp_source.xhtml#l00384">openage::input::InputManager::active_binds()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager_a44e53d5edb2092424df17b709b743358_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -265,6 +320,27 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8cpp_source.xhtml#l00170">170</a> of file <a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                                                   {</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1input_1_1_action_manager.xhtml#a743f9d44332f84adb3eca195732ed09d">get</a>(type) == action;</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div><div class="ttc" id="classopenage_1_1input_1_1_action_manager_xhtml_a743f9d44332f84adb3eca195732ed09d"><div class="ttname"><a href="classopenage_1_1input_1_1_action_manager.xhtml#a743f9d44332f84adb3eca195732ed09d">openage::input::ActionManager::get</a></div><div class="ttdeci">action_t get(const std::string &amp;type)</div><div class="ttdef"><b>Definition:</b> <a href="input_2action_8cpp_source.xhtml#l00150">action.cpp:150</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="input_2action_8cpp_source.xhtml#l00150">get()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="input__manager_8cpp_source.xhtml#l00066">openage::input::InputManager::get_bind()</a>, and <a class="el" href="input__manager_8cpp_source.xhtml#l00088">openage::input::InputManager::set_bind()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager_a252869fbc85be3b450eb290794352ba4_cgraph.svg" width="507" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1input_1_1_action_manager_a252869fbc85be3b450eb290794352ba4_icgraph.svg" width="100%" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -291,6 +367,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8h_source.xhtml#l00050">50</a> of file <a class="el" href="input_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="input_2action_8cpp_source.xhtml#l00117">create()</a>, and <a class="el" href="input_2action_8cpp_source.xhtml#l00150">get()</a>.</p>
+
 </div>
 </div>
 <a id="a2c664814e0ae1cb76108a7b4ece1c988"></a>
@@ -314,6 +392,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8h_source.xhtml#l00055">55</a> of file <a class="el" href="input_2action_8h_source.xhtml">action.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="input_2action_8cpp_source.xhtml#l00117">create()</a>.</p>
 
 </div>
 </div>
@@ -339,6 +419,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8h_source.xhtml#l00054">54</a> of file <a class="el" href="input_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="input_2action_8cpp_source.xhtml#l00104">ActionManager()</a>, and <a class="el" href="input_2action_8cpp_source.xhtml#l00117">create()</a>.</p>
+
 </div>
 </div>
 <a id="a80b0b1c5bd381d79459958c15c4f0983"></a>
@@ -362,6 +444,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8h_source.xhtml#l00058">58</a> of file <a class="el" href="input_2action_8h_source.xhtml">action.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="input_2action_8cpp_source.xhtml#l00117">create()</a>.</p>
 
 </div>
 </div>
@@ -387,11 +471,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="input_2action_8h_source.xhtml#l00052">52</a> of file <a class="el" href="input_2action_8h_source.xhtml">action.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="input_2action_8cpp_source.xhtml#l00117">create()</a>, and <a class="el" href="input_2action_8cpp_source.xhtml#l00160">get_name()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/input/<a class="el" href="input_2action_8h_source.xhtml">action.h</a></li>
-<li>libopenage/input/<a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/<a class="el" href="input_2action_8h_source.xhtml">action.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/<a class="el" href="input_2action_8cpp_source.xhtml">action.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

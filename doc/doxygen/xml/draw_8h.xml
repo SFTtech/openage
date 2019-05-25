@@ -2,12 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="draw_8h" kind="file" language="C++">
     <compoundname>draw.h</compoundname>
-    <includedby refid="console_8cpp" local="yes">libopenage/console/console.cpp</includedby>
-    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
-    <includedby refid="console_2tests_8cpp" local="yes">libopenage/console/tests.cpp</includedby>
+    <includedby refid="console_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</includedby>
+    <includedby refid="draw_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</includedby>
+    <includedby refid="console_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</includedby>
     <invincdepgraph>
       <node id="2811">
-        <label>libopenage/console/draw.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.h</label>
         <link refid="draw_8h"/>
         <childnode refid="2812" relation="include">
         </childnode>
@@ -17,15 +17,15 @@
         </childnode>
       </node>
       <node id="2812">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="2813">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="2814">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -64,6 +64,6 @@
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::console::draw</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/console/draw.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.h"/>
   </compounddef>
 </doxygen>

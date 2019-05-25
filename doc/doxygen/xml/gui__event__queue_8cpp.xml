@@ -20,7 +20,7 @@
         </childnode>
       </node>
       <node id="13501">
-        <label>libopenage/gui/guisys/public/gui_event_queue.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_event_queue.cpp</label>
         <link refid="gui__event__queue_8cpp"/>
         <childnode refid="13502" relation="include">
         </childnode>
@@ -65,6 +65,6 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_event_queue.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_event_queue.cpp"/>
   </compounddef>
 </doxygen>

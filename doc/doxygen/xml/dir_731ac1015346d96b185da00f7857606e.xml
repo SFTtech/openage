@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_731ac1015346d96b185da00f7857606e" kind="dir">
-    <compoundname>libopenage/audio</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio</compoundname>
     <innerfile refid="audio__manager_8cpp">audio_manager.cpp</innerfile>
     <innerfile refid="audio__manager_8h">audio_manager.h</innerfile>
     <innerfile refid="category_8cpp">category.cpp</innerfile>
@@ -38,6 +38,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/audio/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1opus_1_1demo" kind="namespace" language="Python">
+    <compoundname>openage::convert::opus::demo</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1opus_1_1demo_1ae0391ea8f0edf327a1f80b107ef7b68e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.opus.demo.convert</definition>
+        <argsstring>(args)</argsstring>
+        <name>convert</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <briefdescription>
+<para>Demonstrates the usage of the opusenc module. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus/demo.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus/demo.py" bodystart="16" bodyend="52"/>
+        <references refid="namespaceopenage_1_1log_1ae8a0cc74a7c0fa3c022264b99797dfbf" compoundref="log_2____init_____8py" startline="129" endline="132">openage::log.crit</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus/demo.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

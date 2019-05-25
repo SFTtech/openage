@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="35" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="21" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
@@ -38,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="36" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="51" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="51" bodyend="57"/>
+        <referencedby refid="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" compoundref="terrain__object_8cpp" startline="469" endline="484">openage::building_center</referencedby>
       </memberdef>
       <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -55,7 +56,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/phys.h" line="38" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="46" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.cpp" bodystart="46" bodyend="48"/>
+        <referencedby refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" compoundref="terrain__object_8cpp" startline="426" endline="428">openage::RadialObject::contains</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" compoundref="terrain__object_8cpp" startline="415" endline="420">openage::RadialObject::from_edge</referencedby>
+        <referencedby refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" compoundref="terrain__object_8cpp" startline="430" endline="438">openage::RadialObject::intersects</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -63,28 +67,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3650">
+      <node id="1740">
         <label>openage::coord::phys2</label>
         <link refid="structopenage_1_1coord_1_1phys2"/>
-        <childnode refid="3651" relation="public-inheritance">
+        <childnode refid="1741" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3651">
+      <node id="1741">
         <label>CoordNeSeAbsolute&lt; phys_t, phys2, phys2_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3652">
+      <node id="1742">
         <label>openage::coord::phys2</label>
         <link refid="structopenage_1_1coord_1_1phys2"/>
-        <childnode refid="3653" relation="public-inheritance">
+        <childnode refid="1743" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3653">
+      <node id="1743">
         <label>CoordNeSeAbsolute&lt; phys_t, phys2, phys2_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/phys.h" line="32" column="1" bodyfile="libopenage/coord/phys.h" bodystart="32" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/phys.h" bodystart="32" bodyend="39"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" prot="public" virt="non-virtual"><scope>openage::coord::phys2</scope><name>distance</name></member>
       <member refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" prot="public" virt="non-virtual"><scope>openage::coord::phys2</scope><name>to_phys3</name></member>

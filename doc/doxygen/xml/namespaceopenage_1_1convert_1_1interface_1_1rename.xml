@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1interface_1_1rename" kind="namespace" language="Python">
+    <compoundname>openage::convert::interface::rename</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1interface_1_1rename_1a045e4e1a64322c77bfee10f24e8613e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.rename.hud_rename</definition>
+        <argsstring>(filepath)</argsstring>
+        <name>hud_rename</name>
+        <param>
+          <type>filepath</type>
+          <defname>filepath</defname>
+        </param>
+        <briefdescription>
+<para>Renaming interface assets and splitting into directories. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/rename.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/rename.py" bodystart="14" bodyend="24"/>
+        <references refid="namespaceopenage_1_1convert_1_1interface_1_1rename_1ac64b3950e30561002141b4459599afb0" compoundref="rename_8py" startline="28" endline="34">openage.convert.interface.rename.asset_rename</references>
+        <references refid="namespaceopenage_1_1convert_1_1interface_1_1hardcoded_1a5269bff8c865ba582e87918dd9e28d0d" compoundref="hardcoded_8py" startline="55" endline="58">openage.convert.interface.hardcoded.ingame_hud_background_index</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1a7d1272350acf362f78ea6e0373880c59" compoundref="driver_8py" startline="349" endline="385">openage.convert.driver.convert_slp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1interface_1_1rename_1ac64b3950e30561002141b4459599afb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.interface.rename.asset_rename</definition>
+        <argsstring>(filepath)</argsstring>
+        <name>asset_rename</name>
+        <param>
+          <type>filepath</type>
+          <defname>filepath</defname>
+        </param>
+        <briefdescription>
+<para>Rename a slp asset path by the lookup map above. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/rename.py" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/rename.py" bodystart="28" bodyend="34"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1interface_1_1rename_1a045e4e1a64322c77bfee10f24e8613e7" compoundref="rename_8py" startline="14" endline="24">openage.convert.interface.rename.hud_rename</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface/rename.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

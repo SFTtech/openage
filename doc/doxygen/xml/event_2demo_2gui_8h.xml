@@ -3,11 +3,11 @@
   <compounddef id="event_2demo_2gui_8h" kind="file" language="C++">
     <compoundname>gui.h</compoundname>
     <includes local="yes">config.h</includes>
-    <includedby refid="event_2demo_2gui_8cpp" local="yes">libopenage/event/demo/gui.cpp</includedby>
-    <includedby refid="event_2demo_2main_8cpp" local="yes">libopenage/event/demo/main.cpp</includedby>
+    <includedby refid="event_2demo_2gui_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.cpp</includedby>
+    <includedby refid="event_2demo_2main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</includedby>
     <incdepgraph>
       <node id="6941">
-        <label>libopenage/event/demo/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.h</label>
         <link refid="event_2demo_2gui_8h"/>
         <childnode refid="6942" relation="include">
         </childnode>
@@ -18,15 +18,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="6944">
-        <label>libopenage/event/demo/gui.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.cpp</label>
         <link refid="event_2demo_2gui_8cpp"/>
       </node>
       <node id="6945">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="6943">
-        <label>libopenage/event/demo/gui.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.h</label>
         <link refid="event_2demo_2gui_8h"/>
         <childnode refid="6944" relation="include">
         </childnode>
@@ -85,6 +85,6 @@
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/demo/gui.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gui.h"/>
   </compounddef>
 </doxygen>

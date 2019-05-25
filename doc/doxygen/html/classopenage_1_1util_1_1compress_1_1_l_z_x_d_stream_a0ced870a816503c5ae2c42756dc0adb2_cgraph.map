@@ -1,0 +1,6 @@
+<map id="openage::util::compress::LZXDStream::decode_symbol_from_aligned_block" name="openage::util::compress::LZXDStream::decode_symbol_from_aligned_block">
+<area shape="rect" id="node1" title=" " alt="" coords="5,49,207,105"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="286,5,397,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1compress_1_1_bit_stream.xhtml#af4522bbae0ee989e1f5b45606fb2e673" title=" " alt="" coords="261,57,422,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1compress_1_1_huffman_table.xhtml#ae6b32648570816ac41436130bd87f3be" title=" " alt="" coords="255,122,428,163"/>
+</map>

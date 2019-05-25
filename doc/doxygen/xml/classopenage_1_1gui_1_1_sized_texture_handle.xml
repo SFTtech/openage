@@ -16,7 +16,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="23" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1add5a3f3759d00eaee5c849283a69d3e5" compoundref="bytequeue_8py" startline="43" endline="45">openage.util.bytequeue.ByteQueue.__len__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2d6e17c9eeb4c6bcd36887a46bd2d42b" compoundref="bytequeue_8py" startline="49" endline="55">openage.util.bytequeue.ByteQueue.append</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a8370a1c154c51bf30698d4dd176e95a3" compoundref="stream_8py" startline="149" endline="151">openage.util.filelike.stream.StreamFragment.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1bytequeue_1_1_byte_queue_1a2f49ba3b91b8c7c37446dcd6e8c7b316" compoundref="bytequeue_8py" startline="59" endline="89">openage.util.bytequeue.ByteQueue.popleft</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_sized_texture_handle_1a4c07e7e899c17925e33fda0834b6cc2f" compoundref="gui__texture__handle_8cpp" startline="18" endline="22">SizedTextureHandle</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" compoundref="gui__texture__handle_8cpp" startline="28" endline="30">openage::gui::textureSize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="12" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="12" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_sized_texture_handle_1a4c07e7e899c17925e33fda0834b6cc2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +59,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="18" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="18" bodyend="22"/>
+        <references refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" compoundref="gui__texture__handle_8h" startline="23">size</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,44 +68,44 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4178">
+      <node id="3690">
         <label>openage::gui::TextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_texture_handle"/>
       </node>
-      <node id="4177">
+      <node id="3689">
         <label>openage::gui::SizedTextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
-        <childnode refid="4178" relation="public-inheritance">
+        <childnode refid="3690" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4182">
+      <node id="3694">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="4180">
+      <node id="3692">
         <label>openage::gui::TextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_texture_handle"/>
-        <childnode refid="4181" relation="usage">
+        <childnode refid="3693" relation="usage">
           <edgelabel>+texture</edgelabel>
         </childnode>
       </node>
-      <node id="4181">
+      <node id="3693">
         <label>openage::Texture</label>
         <link refid="classopenage_1_1_texture"/>
-        <childnode refid="4182" relation="usage">
+        <childnode refid="3694" relation="usage">
           <edgelabel>-filename</edgelabel>
         </childnode>
       </node>
-      <node id="4179">
+      <node id="3691">
         <label>openage::gui::SizedTextureHandle</label>
         <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
-        <childnode refid="4180" relation="public-inheritance">
+        <childnode refid="3692" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="19" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="19" bodyend="24"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_texture_handle.h" bodystart="19" bodyend="24"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>size</name></member>
       <member refid="classopenage_1_1gui_1_1_sized_texture_handle_1ada6a4added07890f41b4fbbba74e05dc" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>SizedTextureHandle</name></member>

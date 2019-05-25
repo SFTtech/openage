@@ -1,0 +1,4 @@
+<map id="openage::renderer::resources::Texture2dInfo::get_subtexture" name="openage::renderer::resources::Texture2dInfo::get_subtexture">
+<area shape="rect" id="node1" title="Returns the coordinates of the subtexture with the given ID." alt="" coords="5,5,169,61"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="217,20,328,47"/>
+</map>

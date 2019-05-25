@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/shader.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" compoundref="renderer_2opengl_2shader_8cpp" startline="54" endline="56">get_type</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader.h" line="17" column="1" bodyfile="libopenage/renderer/opengl/shader.cpp" bodystart="20" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp" bodystart="20" bodyend="52"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" compoundref="simple__object_8h" startline="41">openage::renderer::opengl::GlSimpleObject::handle</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>GLenum</type>
@@ -51,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader.h" line="20" column="1" bodyfile="libopenage/renderer/opengl/shader.cpp" bodystart="54" bodyend="56"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.cpp" bodystart="54" bodyend="56"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1a6996be5a5f1b2ea8c38a19944331c273" compoundref="renderer_2opengl_2shader_8h" startline="24">type</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,30 +63,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2411">
+      <node id="4687">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2410">
+      <node id="4686">
         <label>openage::renderer::opengl::GlShader</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader"/>
-        <childnode refid="2411" relation="public-inheritance">
+        <childnode refid="4687" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2413">
+      <node id="4689">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2412">
+      <node id="4688">
         <label>openage::renderer::opengl::GlShader</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader"/>
-        <childnode refid="2413" relation="public-inheritance">
+        <childnode refid="4689" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/shader.h" line="14" column="1" bodyfile="libopenage/renderer/opengl/shader.h" bodystart="14" bodyend="25"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader.h" bodystart="14" bodyend="25"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>delete_fun</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>get_handle</name></member>

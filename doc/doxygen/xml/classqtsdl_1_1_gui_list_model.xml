@@ -19,7 +19,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="38" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1ac1efa21889a4cc3539c2e02d7e605016" compoundref="gui__list__model_8cpp" startline="52" endline="68">data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0fcf1a7012f76c251b31eb760ef911ee" compoundref="members_8py" startline="473" endline="480">openage.convert.dataformat.members.EnumMember.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" compoundref="members_8py" startline="394" endline="427">openage.convert.dataformat.members.EnumMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" compoundref="members_8py" startline="446" endline="472">openage.convert.dataformat.members.EnumMember.get_snippets</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1af824d1dbf7e1cf3b5575c7259269d609" compoundref="gui__list__model_8cpp" startline="23" endline="42">on_property_changed</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1afec43184609ce9ce8975c9e9aa983cfe" compoundref="gui__list__model_8cpp" startline="44" endline="46">rowCount</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" compoundref="gui__list__model_8cpp" startline="17" endline="21">set</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" compoundref="gui__list__model_8cpp" startline="70" endline="78">setData</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2bc739bc4cd27300bb2f88e78887a22f" compoundref="members_8py" startline="437" endline="439">openage.convert.dataformat.members.EnumMember.validate_value</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -39,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="21" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_list_model_1abb32032b168269f94df6120f96a60e33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -52,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="22" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="14" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="14" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -69,7 +78,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="24" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="17" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="17" bodyend="21"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">values</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-slot">
@@ -92,7 +102,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="27" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="23" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="23" bodyend="42"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">values</references>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a0e965b2d5161f95e8118b197ac2f0f42" compoundref="gui__item__list__model_8h" startline="45" endline="50">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_to_gui_propagation</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -115,7 +127,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="30" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="30" column="1"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_list_model_1a2d423aeb58ef3a7faf28b153fe35cacc" compoundref="gui__item__list__model_8h" startline="35" endline="43">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_from_gui_propagation</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" compoundref="gui__list__model_8cpp" startline="70" endline="78">setData</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -133,7 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="33" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="44" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="44" bodyend="46"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">values</references>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_list_model_1af26ee16e1227eb9e9441fc91d2de811e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Qt::ItemFlags</type>
@@ -150,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="34" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="48" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="48" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_list_model_1ac1efa21889a4cc3539c2e02d7e605016" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QVariant</type>
@@ -172,7 +187,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="35" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="52" bodyend="68"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="52" bodyend="68"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">values</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -198,7 +215,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_list_model.h" line="36" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="70" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp" bodystart="70" bodyend="78"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e">changed_from_gui</references>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">values</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -207,82 +226,82 @@
 <para>Adapts core that uses a property map to QAbstractListModel interface. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2723">
+      <node id="6435">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="2722">
+      <node id="6434">
         <label>qtsdl::DeferredInitialConstantPropertyValues</label>
         <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
       </node>
-      <node id="2721">
+      <node id="6433">
         <label>qtsdl::GuiItemBase</label>
         <link refid="classqtsdl_1_1_gui_item_base"/>
-        <childnode refid="2722" relation="public-inheritance">
+        <childnode refid="6434" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2719">
+      <node id="6431">
         <label>qtsdl::GuiListModel</label>
         <link refid="classqtsdl_1_1_gui_list_model"/>
-        <childnode refid="2720" relation="public-inheritance">
+        <childnode refid="6432" relation="public-inheritance">
         </childnode>
-        <childnode refid="2721" relation="public-inheritance">
+        <childnode refid="6433" relation="public-inheritance">
         </childnode>
-        <childnode refid="2723" relation="public-inheritance">
+        <childnode refid="6435" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2720">
+      <node id="6432">
         <label>QAbstractListModel</label>
       </node>
-      <node id="2724">
+      <node id="6436">
         <label>openage::gui::GeneratorLink</label>
         <link refid="classopenage_1_1gui_1_1_generator_link"/>
-        <childnode refid="2719" relation="public-inheritance">
+        <childnode refid="6431" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2731">
+      <node id="6443">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="2730">
+      <node id="6442">
         <label>QObject</label>
       </node>
-      <node id="2728">
+      <node id="6440">
         <label>qtsdl::DeferredInitialConstantPropertyValues</label>
         <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
       </node>
-      <node id="2727">
+      <node id="6439">
         <label>qtsdl::GuiItemBase</label>
         <link refid="classqtsdl_1_1_gui_item_base"/>
-        <childnode refid="2728" relation="public-inheritance">
+        <childnode refid="6440" relation="public-inheritance">
         </childnode>
-        <childnode refid="2729" relation="usage">
+        <childnode refid="6441" relation="usage">
           <edgelabel>#game_logic_caller</edgelabel>
         </childnode>
       </node>
-      <node id="2725">
+      <node id="6437">
         <label>qtsdl::GuiListModel</label>
         <link refid="classqtsdl_1_1_gui_list_model"/>
-        <childnode refid="2726" relation="public-inheritance">
+        <childnode refid="6438" relation="public-inheritance">
         </childnode>
-        <childnode refid="2727" relation="public-inheritance">
+        <childnode refid="6439" relation="public-inheritance">
         </childnode>
-        <childnode refid="2731" relation="public-inheritance">
+        <childnode refid="6443" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2726">
+      <node id="6438">
         <label>QAbstractListModel</label>
       </node>
-      <node id="2729">
+      <node id="6441">
         <label>qtsdl::GameLogicCaller</label>
         <link refid="classqtsdl_1_1_game_logic_caller"/>
-        <childnode refid="2730" relation="public-inheritance">
+        <childnode refid="6442" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_list_model.h" line="17" column="1" bodyfile="libopenage/gui/guisys/link/gui_list_model.h" bodystart="17" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.h" bodystart="17" bodyend="39"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>qtsdl::GuiListModel</scope><name>apply_static_properties</name></member>
       <member refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e" prot="public" virt="non-virtual"><scope>qtsdl::GuiListModel</scope><name>changed_from_gui</name></member>

@@ -18,7 +18,7 @@
         <label>functional</label>
       </node>
       <node id="28707">
-        <label>libopenage/util/enum_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp</label>
         <link refid="enum__test_8cpp"/>
         <childnode refid="28708" relation="include">
         </childnode>
@@ -260,6 +260,6 @@
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/enum_test.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp"/>
   </compounddef>
 </doxygen>

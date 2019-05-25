@@ -1,0 +1,13 @@
+<map id="openage::console::draw::to_opengl" name="openage::console::draw::to_opengl">
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,164,211"/>
+<area shape="rect" id="node2" href="$classopenage_1_1console_1_1_buf.xhtml#ad54e6fb8e82e15a085cae30d3646d7b7" title=" " alt="" coords="213,5,364,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1renderer_1_1_font.xhtml#a20d9c92be7d85c08a3877b476f479440" title=" " alt="" coords="221,71,356,112"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1timing.xhtml#a7d40886347e44f74660d8f9f00b24b95" title=" " alt="" coords="219,136,359,177"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_engine.xhtml#a5684ab06d65ff2afe5e3b8551809d668" title=" " alt="" coords="216,201,361,243"/>
+<area shape="rect" id="node8" href="$classopenage_1_1renderer_1_1_text_renderer.xhtml#aa13c06f0e7bc0b5f09f8adcd399f6676" title=" " alt="" coords="212,267,365,308"/>
+<area shape="rect" id="node11" href="$namespaceopenage_1_1util.xhtml#aed7ef0b5ccf0d22a6329396d9a59f671" title=" " alt="" coords="226,332,351,373"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="413,13,607,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="660,13,787,39"/>
+<area shape="rect" id="node9" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c" title=" " alt="" coords="443,267,577,308"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a4d5611a559a9c63bcb0865c8a0829d4a" title=" " alt="" coords="655,259,792,315"/>
+</map>

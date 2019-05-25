@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="58" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_1a5ea8724d1225c10d15d26f1e1ff384c9" prot="public" static="no" mutable="no">
         <type>GLuint</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/shader_program.h" line="61" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="61" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,12 +37,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2444">
+      <node id="4699">
         <label>openage::renderer::opengl::GlShaderProgram::GlUniform</label>
         <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/shader_program.h" line="57" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="57" bodyend="62"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h" bodystart="57" bodyend="62"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_1a5ea8724d1225c10d15d26f1e1ff384c9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlUniform</scope><name>location</name></member>
       <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_1a5289094df5ddba285e5b4a5635366f2d" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlUniform</scope><name>type</name></member>

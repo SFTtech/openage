@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/file_logsink.h" line="20" column="1" bodyfile="libopenage/log/file_logsink.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1log_1_1_file_sink_1aeb605bdf22b40dd2f2df0344d5c4e7cc" compoundref="file__logsink_8cpp" startline="20" endline="28">output_log_message</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -39,7 +40,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/file_logsink.h" line="15" column="1" bodyfile="libopenage/log/file_logsink.cpp" bodystart="15" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp" bodystart="15" bodyend="17"/>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -62,7 +64,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/file_logsink.h" line="18" column="1" bodyfile="libopenage/log/file_logsink.cpp" bodystart="20" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.cpp" bodystart="20" bodyend="28"/>
+        <references refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" compoundref="message_8h" startline="63">openage::log::message::filename</references>
+        <references refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" compoundref="message_8h" startline="73">openage::log::message::functionname</references>
+        <references refid="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" compoundref="message_8h" startline="68">openage::log::message::lineno</references>
+        <references refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc">openage::log::LogSource::logsource_name</references>
+        <references refid="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" compoundref="message_8h" startline="78">openage::log::message::lvl</references>
+        <references refid="classopenage_1_1log_1_1_file_sink_1a10e3d3fc994524a203be0fd537a359ad" compoundref="file__logsink_8h" startline="20">outfile</references>
+        <references refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" compoundref="message_8h" startline="58">openage::log::message::text</references>
+        <references refid="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" compoundref="message_8h" startline="83">openage::log::message::thread_id</references>
+        <references refid="structopenage_1_1log_1_1message_1ad4a1ced68cb228cfb824b5d185be726d" compoundref="message_8h" startline="88">openage::log::message::timestamp</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,59 +81,85 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1490">
+      <node id="3981">
         <label>openage::log::LogSink</label>
         <link refid="classopenage_1_1log_1_1_log_sink"/>
       </node>
-      <node id="1489">
+      <node id="3980">
         <label>openage::log::FileSink</label>
         <link refid="classopenage_1_1log_1_1_file_sink"/>
-        <childnode refid="1490" relation="public-inheritance">
+        <childnode refid="3981" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1492">
+      <node id="3988">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="3989" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="3989">
+        <label>NumericType</label>
+      </node>
+      <node id="3983">
         <label>openage::log::LogSink</label>
         <link refid="classopenage_1_1log_1_1_log_sink"/>
-        <childnode refid="1493" relation="usage">
+        <childnode refid="3984" relation="usage">
           <edgelabel>-loglevel</edgelabel>
         </childnode>
       </node>
-      <node id="1496">
+      <node id="3987">
         <label>openage::util::EnumValue&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="3988" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="1494">
+      <node id="3985">
         <label>openage::util::Enum&lt; level_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="1495" relation="usage">
+        <childnode refid="3986" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
+        <childnode refid="3990" relation="template-instance">
+          <edgelabel>&lt; level_value &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="1493">
+      <node id="3984">
         <label>openage::log::level</label>
         <link refid="structopenage_1_1log_1_1level"/>
-        <childnode refid="1494" relation="public-inheritance">
+        <childnode refid="3985" relation="public-inheritance">
         </childnode>
-        <childnode refid="1495" relation="usage">
+        <childnode refid="3986" relation="usage">
           <edgelabel>+NOOPTIMIZE</edgelabel>
         </childnode>
       </node>
-      <node id="1491">
-        <label>openage::log::FileSink</label>
-        <link refid="classopenage_1_1log_1_1_file_sink"/>
-        <childnode refid="1492" relation="public-inheritance">
+      <node id="3990">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="3991" relation="usage">
+          <edgelabel>#value</edgelabel>
         </childnode>
       </node>
-      <node id="1495">
+      <node id="3982">
+        <label>openage::log::FileSink</label>
+        <link refid="classopenage_1_1log_1_1_file_sink"/>
+        <childnode refid="3983" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3991">
+        <label>DerivedType</label>
+      </node>
+      <node id="3986">
         <label>openage::log::level_value</label>
         <link refid="structopenage_1_1log_1_1level__value"/>
-        <childnode refid="1496" relation="public-inheritance">
+        <childnode refid="3987" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/file_logsink.h" line="13" column="1" bodyfile="libopenage/log/file_logsink.h" bodystart="13" bodyend="21"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/file_logsink.h" bodystart="13" bodyend="21"/>
     <listofallmembers>
       <member refid="classopenage_1_1log_1_1_file_sink_1abd2787a6c2616899f61d17814ad65a67" prot="public" virt="non-virtual"><scope>openage::log::FileSink</scope><name>FileSink</name></member>
       <member refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" prot="public" virt="non-virtual"><scope>openage::log::FileSink</scope><name>LogSink</name></member>

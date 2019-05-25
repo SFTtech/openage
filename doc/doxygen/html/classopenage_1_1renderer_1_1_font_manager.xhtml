@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::FontManager Class Reference</title>
+<title>openage: openage::renderer::FontManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1_font_mana
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="font__manager_8h_source.xhtml">font_manager.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::FontManager:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager__coll__graph.svg" width="154" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::FontManager:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager__coll__graph.svg" width="154" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -150,7 +152,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                         {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Empty</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a66a311fb4bf5851ec5a44209ea1b6ce2"></a>
@@ -169,7 +171,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00053">53</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                          {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Empty</span></div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -216,6 +218,18 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The pointer to font instance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                                                    {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::string font_filename = <a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#a18b41a56c570436c58435866c0a42faa">FontManager::get_font_filename</a>(family, style);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#a099c7a53ec483208d26f1d33c52dcbef">get_font</a>(font_filename.c_str(), size);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_font_manager_xhtml_a18b41a56c570436c58435866c0a42faa"><div class="ttname"><a href="classopenage_1_1renderer_1_1_font_manager.xhtml#a18b41a56c570436c58435866c0a42faa">openage::renderer::FontManager::get_font_filename</a></div><div class="ttdeci">static std::string get_font_filename(const char *family, const char *style)</div><div class="ttdef"><b>Definition:</b> <a href="font__manager_8cpp_source.xhtml#l00014">font_manager.cpp:14</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_font_manager_xhtml_a099c7a53ec483208d26f1d33c52dcbef"><div class="ttname"><a href="classopenage_1_1renderer_1_1_font_manager.xhtml#a099c7a53ec483208d26f1d33c52dcbef">openage::renderer::FontManager::get_font</a></div><div class="ttdeci">Font * get_font(const char *family, const char *style, unsigned int size)</div><div class="ttdef"><b>Definition:</b> <a href="font__manager_8cpp_source.xhtml#l00061">font_manager.cpp:61</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="font__manager_8cpp_source.xhtml#l00014">get_font_filename()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager_a099c7a53ec483208d26f1d33c52dcbef_cgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -255,6 +269,19 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The pointer to font instance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00066">66</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                    {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Check if the font was already created</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    font_description fd{font_file, size};</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">size_t</span> key = std::hash&lt;font_description&gt;()(fd);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">auto</span> it = this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#ae632f6de94d4ebc7ffcf4acc80f90261">fonts</a>.find(key);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (it != this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#ae632f6de94d4ebc7ffcf4acc80f90261">fonts</a>.end()) {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> it-&gt;second.get();</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Create a new font</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::unique_ptr&lt;Font&gt; <a class="code" href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">font</a> = std::make_unique&lt;Font&gt;(<span class="keyword">this</span>, fd);</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">auto</span> inserted = this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#ae632f6de94d4ebc7ffcf4acc80f90261">fonts</a>.emplace(key, <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(<a class="code" href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">font</a>));</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> inserted.first-&gt;second.get();</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div><div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_font_manager_xhtml_ae632f6de94d4ebc7ffcf4acc80f90261"><div class="ttname"><a href="classopenage_1_1renderer_1_1_font_manager.xhtml#ae632f6de94d4ebc7ffcf4acc80f90261">openage::renderer::FontManager::fonts</a></div><div class="ttdeci">std::unordered_map&lt; size_t, std::unique_ptr&lt; Font &gt; &gt; fonts</div><div class="ttdef"><b>Definition:</b> <a href="font__manager_8h_source.xhtml#l00090">font_manager.h:90</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_1_1tests_xhtml_aa4bbd5ddb9f2591224c8b05fff9d945c"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1tests.xhtml#aa4bbd5ddb9f2591224c8b05fff9d945c">openage::renderer::tests::font</a></div><div class="ttdeci">void font()</div><div class="ttdef"><b>Definition:</b> <a href="renderer_2font_2tests_8cpp_source.xhtml#l00059">tests.cpp:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="renderer_2font_2tests_8cpp_source.xhtml#l00059">openage::renderer::tests::font()</a>, <a class="el" href="font__manager_8h_source.xhtml#l00090">fonts</a>, and <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager_ae84aeac58608733bb241bd015bed3dc3_cgraph.svg" width="531" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -302,6 +329,29 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The path to font's file. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00014">14</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                                                              {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// Initialize fontconfig</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (!FcInit()) {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;Failed to initialize fontconfig.&quot;</span>};</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    FcPattern *font_pattern = FcPatternBuild(<span class="keyword">nullptr</span>, FC_FAMILY, FcTypeString, family, <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    FcPatternBuild(font_pattern, FC_STYLE, FcTypeString, style, <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    FcChar8 *query_string = FcNameUnparse(font_pattern);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a> &lt;&lt; <span class="stringliteral">&quot;Font queried: &quot;</span> &lt;&lt; query_string);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    free(query_string);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// tell fontconfig to find the best match</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    FcResult font_match_result;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    FcPattern *font_match = FcFontMatch(<span class="keyword">nullptr</span>, font_pattern, &amp;font_match_result);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// get attibute FC_FILE (= filename) of best-matched font</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    FcChar8 *font_filename_tmp;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (FcPatternGetString(font_match, FC_FILE, 0, &amp;font_filename_tmp) != FcResultMatch) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a> &lt;&lt; <span class="stringliteral">&quot;Fontconfig could not provide font &quot;</span> &lt;&lt; family &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; style);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string font_filename{reinterpret_cast&lt;char *&gt;(font_filename_tmp)};</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a> &lt;&lt; <span class="stringliteral">&quot;Font file: &quot;</span> &lt;&lt; font_filename);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// deinitialize fontconfig.</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    FcPatternDestroy(font_match);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    FcPatternDestroy(font_pattern);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    FcFini();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> font_filename;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a735563036dced0b7d6cc98f97ea4978b"><div class="ttname"><a href="message_8h.xhtml#a735563036dced0b7d6cc98f97ea4978b">ERR</a></div><div class="ttdeci">#define ERR</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00179">message.h:179</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a49606be7356624568932ec81c0d429f4"><div class="ttname"><a href="message_8h.xhtml#a49606be7356624568932ec81c0d429f4">DBG</a></div><div class="ttdeci">#define DBG</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00176">message.h:176</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="message_8h_source.xhtml#l00176">DBG</a>, <a class="el" href="message_8h_source.xhtml#l00179">ERR</a>, and <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="font_8cpp_source.xhtml#l00030">openage::renderer::font_description::font_description()</a>, and <a class="el" href="font__manager_8cpp_source.xhtml#l00061">get_font()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager_a18b41a56c570436c58435866c0a42faa_cgraph.svg" width="100%" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1_font_manager_a18b41a56c570436c58435866c0a42faa_icgraph.svg" width="363" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -322,6 +372,10 @@ Private Attributes</h2></td></tr>
 <p>Get the freetype library instance. </p>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                       {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1_font_manager.xhtml#a9f0694d6e8513ffa6cacfca03bf39344">library</a>.<a class="code" href="classopenage_1_1renderer_1_1_free_type_library.xhtml#a2d87d4a6d52325b7009f7e77a66f1f3c">ft_library</a>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1_font_manager_xhtml_a9f0694d6e8513ffa6cacfca03bf39344"><div class="ttname"><a href="classopenage_1_1renderer_1_1_font_manager.xhtml#a9f0694d6e8513ffa6cacfca03bf39344">openage::renderer::FontManager::library</a></div><div class="ttdeci">FreeTypeLibrary library</div><div class="ttdef"><b>Definition:</b> <a href="font__manager_8h_source.xhtml#l00087">font_manager.h:87</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1_free_type_library_xhtml_a2d87d4a6d52325b7009f7e77a66f1f3c"><div class="ttname"><a href="classopenage_1_1renderer_1_1_free_type_library.xhtml#a2d87d4a6d52325b7009f7e77a66f1f3c">openage::renderer::FreeTypeLibrary::ft_library</a></div><div class="ttdeci">FT_Library ft_library</div><div class="ttdef"><b>Definition:</b> <a href="font__manager_8h_source.xhtml#l00019">font_manager.h:19</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="font__manager_8h_source.xhtml#l00019">openage::renderer::FreeTypeLibrary::ft_library</a>, and <a class="el" href="font__manager_8h_source.xhtml#l00087">library</a>.</p>
 
 </div>
 </div>
@@ -348,6 +402,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8h_source.xhtml#l00090">90</a> of file <a class="el" href="font__manager_8h_source.xhtml">font_manager.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="font__manager_8cpp_source.xhtml#l00066">get_font()</a>.</p>
+
 </div>
 </div>
 <a id="a9f0694d6e8513ffa6cacfca03bf39344"></a>
@@ -372,11 +428,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="font__manager_8h_source.xhtml#l00087">87</a> of file <a class="el" href="font__manager_8h_source.xhtml">font_manager.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="font__manager_8cpp_source.xhtml#l00057">get_ft_library()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/renderer/font/<a class="el" href="font__manager_8h_source.xhtml">font_manager.h</a></li>
-<li>libopenage/renderer/font/<a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/<a class="el" href="font__manager_8h_source.xhtml">font_manager.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/<a class="el" href="font__manager_8cpp_source.xhtml">font_manager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

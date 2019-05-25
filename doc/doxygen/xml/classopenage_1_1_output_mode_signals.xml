@@ -21,7 +21,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="42" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="42" column="1"/>
+        <referencedby refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191" compoundref="game__control_8cpp" startline="30" endline="34">openage::OutputMode::announce</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_output_mode_link_1a075e25acd5ad18242e42fb428c3c8b09" compoundref="game__control__link_8cpp" startline="73" endline="83">openage::gui::OutputModeLink::on_core_adopted</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classopenage_1_1_output_mode_signals_1a6a7461c5308d407e9e2284efa3c7f90d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -39,7 +41,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/game_control.h" line="48" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="48" column="1"/>
+        <referencedby refid="classopenage_1_1_output_mode_1aafb84951c6575c14b5517312c5cfe191" compoundref="game__control_8cpp" startline="30" endline="34">openage::OutputMode::announce</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_output_mode_link_1a075e25acd5ad18242e42fb428c3c8b09" compoundref="game__control__link_8cpp" startline="73" endline="83">openage::gui::OutputModeLink::on_core_adopted</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -48,28 +52,28 @@
 <para>Signals for a gui mode. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3575">
+      <node id="4415">
         <label>QObject</label>
       </node>
-      <node id="3574">
+      <node id="4414">
         <label>openage::OutputModeSignals</label>
         <link refid="classopenage_1_1_output_mode_signals"/>
-        <childnode refid="3575" relation="public-inheritance">
+        <childnode refid="4415" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3577">
+      <node id="4417">
         <label>QObject</label>
       </node>
-      <node id="3576">
+      <node id="4416">
         <label>openage::OutputModeSignals</label>
         <link refid="classopenage_1_1_output_mode_signals"/>
-        <childnode refid="3577" relation="public-inheritance">
+        <childnode refid="4417" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/game_control.h" line="33" column="1" bodyfile="libopenage/game_control.h" bodystart="33" bodyend="49"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_control.h" bodystart="33" bodyend="49"/>
     <listofallmembers>
       <member refid="classopenage_1_1_output_mode_signals_1a5789bb37fcce9236340a67c62124efe4" prot="public" virt="non-virtual"><scope>openage::OutputModeSignals</scope><name>announced</name></member>
       <member refid="classopenage_1_1_output_mode_signals_1a6a7461c5308d407e9e2284efa3c7f90d" prot="public" virt="non-virtual"><scope>openage::OutputModeSignals</scope><name>binds_changed</name></member>

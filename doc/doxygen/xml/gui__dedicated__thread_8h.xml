@@ -6,10 +6,10 @@
     <includes local="no">mutex</includes>
     <includes local="no">memory</includes>
     <includes local="no">condition_variable</includes>
-    <includedby refid="gui__dedicated__thread_8cpp" local="yes">libopenage/gui/guisys/private/gui_dedicated_thread.cpp</includedby>
+    <includedby refid="gui__dedicated__thread_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp</includedby>
     <incdepgraph>
       <node id="13026">
-        <label>libopenage/gui/guisys/private/gui_dedicated_thread.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h</label>
         <link refid="gui__dedicated__thread_8h"/>
         <childnode refid="13027" relation="include">
         </childnode>
@@ -35,13 +35,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13031">
-        <label>libopenage/gui/guisys/private/gui_dedicated_thread.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h</label>
         <link refid="gui__dedicated__thread_8h"/>
         <childnode refid="13032" relation="include">
         </childnode>
       </node>
       <node id="13032">
-        <label>libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
         <link refid="gui__dedicated__thread_8cpp"/>
       </node>
     </invincdepgraph>
@@ -83,6 +83,6 @@
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.h"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,17 @@
+<map id="openage::util::Path::is_file" name="openage::util::Path::is_file">
+<area shape="rect" id="node1" title=" " alt="" coords="889,156,1020,197"/>
+<area shape="rect" id="node2" href="$classopenage_1_1audio_1_1_resource.xhtml#a01dfa61156a48fe06ea5e3c22978f378" title=" " alt="" coords="664,5,837,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_game_spec.xhtml#a979c8104ad4832b1912e703f19558bc9" title=" " alt="" coords="205,31,357,72"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#abc5969fa041b778d0906a452d45f9d0c" title="Test if the parts are a file or a directory." alt="" coords="660,188,841,229"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_path.xhtml#ad250b77528d7feb294ead2006da92b4f" title=" " alt="" coords="685,253,816,295"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_asset_manager.xhtml#aae3415abc6b2ba91c70ba2f0c9343436" title=" " alt="" coords="669,123,832,164"/>
+<area shape="rect" id="node14" href="$namespaceopenage_1_1audio.xhtml#a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" title=" " alt="" coords="677,319,824,360"/>
+<area shape="rect" id="node3" href="$classopenage_1_1audio_1_1_audio_manager.xhtml#a7d1dc28dded852d3eadf34771ee8f6b0" title=" " alt="" coords="408,5,609,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_game_spec.xhtml#a4de64c8c4a5463dc086f082659147b02" title=" " alt="" coords="5,96,157,137"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#af30b34d88a17e5d1d7e99046da0490f5" title=" " alt="" coords="418,188,599,229"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a2a1dc81a2a3a2fa3cf9beea3c99fb9be" title=" " alt="" coords="419,253,598,295"/>
+<area shape="rect" id="node11" href="$classopenage_1_1_asset_manager.xhtml#a14ab6ac2616460d50bd789bf8bdd52eb" title=" " alt="" coords="427,123,590,164"/>
+<area shape="rect" id="node12" href="$classopenage_1_1_game_spec.xhtml#a0d9bb7cf5c16889a6eab13c714b39ae1" title=" " alt="" coords="205,96,357,137"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_game_spec.xhtml#a6f6bbcfb3a4dd8586bbed00f62054bf1" title=" " alt="" coords="205,161,357,203"/>
+<area shape="rect" id="node15" href="$classopenage_1_1audio_1_1_opus_in_memory_loader.xhtml#afd535fc99780b2823cdd38c8dfc03f5d" title=" " alt="" coords="405,319,612,360"/>
+</map>

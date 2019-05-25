@@ -1,0 +1,4 @@
+<map id="openage::renderer::opengl::find_capabilities" name="openage::renderer::opengl::find_capabilities">
+<area shape="rect" id="node1" title="Finds out the supported graphics functions and OpenGL version of the device." alt="" coords="5,5,165,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="213,13,324,39"/>
+</map>

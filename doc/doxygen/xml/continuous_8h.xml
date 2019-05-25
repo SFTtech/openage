@@ -5,10 +5,10 @@
     <includes local="no">type_traits</includes>
     <includes refid="value__container_8h" local="yes">value_container.h</includes>
     <includes refid="log_8h" local="yes">../log/log.h</includes>
-    <includedby refid="continuous_8cpp" local="yes">libopenage/curve/continuous.cpp</includedby>
-    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
-    <includedby refid="curve__types_8cpp" local="yes">libopenage/curve/tests/curve_types.cpp</includedby>
-    <includedby refid="gamestate_8h" local="yes">libopenage/event/demo/gamestate.h</includedby>
+    <includedby refid="continuous_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp</includedby>
+    <includedby refid="container_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</includedby>
+    <includedby refid="curve__types_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</includedby>
+    <includedby refid="gamestate_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</includedby>
     <incdepgraph>
       <node id="4488">
         <label>list</label>
@@ -213,7 +213,7 @@
         <label>ostream</label>
       </node>
       <node id="4451">
-        <label>libopenage/curve/continuous.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h</label>
         <link refid="continuous_8h"/>
         <childnode refid="4452" relation="include">
         </childnode>
@@ -425,23 +425,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="4513">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="4508">
-        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/curve_types.cpp</label>
         <link refid="curve__types_8cpp"/>
       </node>
       <node id="4515">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="4511">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="4514">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="4512" relation="include">
         </childnode>
@@ -449,7 +449,7 @@
         </childnode>
       </node>
       <node id="4505">
-        <label>libopenage/curve/continuous.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h</label>
         <link refid="continuous_8h"/>
         <childnode refid="4506" relation="include">
         </childnode>
@@ -461,11 +461,11 @@
         </childnode>
       </node>
       <node id="4512">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="4510">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="4511" relation="include">
         </childnode>
@@ -473,7 +473,7 @@
         </childnode>
       </node>
       <node id="4509">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="4510" relation="include">
         </childnode>
@@ -485,11 +485,11 @@
         </childnode>
       </node>
       <node id="4507">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
       </node>
       <node id="4506">
-        <label>libopenage/curve/continuous.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.cpp</label>
         <link refid="continuous_8cpp"/>
       </node>
     </invincdepgraph>
@@ -556,6 +556,6 @@
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/continuous.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/continuous.h"/>
   </compounddef>
 </doxygen>

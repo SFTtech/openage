@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fslike_1_1test" kind="namespace" language="Python">
+    <compoundname>openage::util::fslike::test</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1abdc25f4997b11676ec4700a8cb2b100b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.test_path</definition>
+        <argsstring>(root_path, root_dir)</argsstring>
+        <name>test_path</name>
+        <param>
+          <type>root_path</type>
+          <defname>root_path</defname>
+        </param>
+        <param>
+          <type>root_dir</type>
+          <defname>root_dir</defname>
+        </param>
+        <briefdescription>
+<para>Test basic functionality of fslike.Path. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="23" bodyend="44"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" compoundref="util_2fslike_2test_8py" startline="227" endline="250">openage.util.fslike.test.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.test_union</definition>
+        <argsstring>(root_path, root_dir)</argsstring>
+        <name>test_union</name>
+        <param>
+          <type>root_path</type>
+          <defname>root_path</defname>
+        </param>
+        <param>
+          <type>root_dir</type>
+          <defname>root_dir</defname>
+        </param>
+        <briefdescription>
+<para>Union functionality testing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Procedure</title><para>create and write a file in r create union with w and r mount. r is readonly. read file, should be from r. write file, whould go to w. read file, should be from w. unmount w, file content should be from r again. unmount r, union should be empty now. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="57" bodyend="133"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a1e253d6f2b396e2a0162c7b1c8ab36d9" compoundref="testing_8py" startline="61" endline="73">openage.testing.testing.assert_raises</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" compoundref="util_2fslike_2test_8py" startline="227" endline="250">openage.util.fslike.test.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1a3570d988a38ccde1cdadbab30edada49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.is_filesystem_case_sensitive</definition>
+        <argsstring>()</argsstring>
+        <name>is_filesystem_case_sensitive</name>
+        <briefdescription>
+<para>Utility function to verify if filesystem is case-sensitive. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="137" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="137" bodyend="148"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a2cb9e1c2163a7d9dcb6be195cdf17065" compoundref="util_2fslike_2test_8py" startline="149" endline="190">openage.util.fslike.test.test_case_ignoring</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1a2cb9e1c2163a7d9dcb6be195cdf17065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.test_case_ignoring</definition>
+        <argsstring>(root_path, root_dir)</argsstring>
+        <name>test_case_ignoring</name>
+        <param>
+          <type>root_path</type>
+          <defname>root_path</defname>
+        </param>
+        <param>
+          <type>root_dir</type>
+          <defname>root_dir</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="149" bodyend="190"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a3570d988a38ccde1cdadbab30edada49" compoundref="util_2fslike_2test_8py" startline="137" endline="148">openage.util.fslike.test.is_filesystem_case_sensitive</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" compoundref="util_2fslike_2test_8py" startline="227" endline="250">openage.util.fslike.test.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1a42f102b9063e2b2d0938d8ccf1d03e59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.test_append</definition>
+        <argsstring>(root_path)</argsstring>
+        <name>test_append</name>
+        <param>
+          <type>root_path</type>
+          <defname>root_path</defname>
+        </param>
+        <briefdescription>
+<para>Test the content append modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="194" bodyend="223"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" compoundref="util_2fslike_2test_8py" startline="227" endline="250">openage.util.fslike.test.test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1fslike_1_1test_1ab7e67abca763ba5d40533133b92cfde4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.test.test</definition>
+        <argsstring>()</argsstring>
+        <name>test</name>
+        <briefdescription>
+<para>Perform functionality tests for the filesystem abstraction interface. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="227" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" bodystart="227" bodyend="250"/>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1a2800c6619c18337197b7ad519bbad072" compoundref="testing_8py" startline="25" endline="43">openage.testing.testing.assert_value</references>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a42f102b9063e2b2d0938d8ccf1d03e59" compoundref="util_2fslike_2test_8py" startline="194" endline="223">openage.util.fslike.test.test_append</references>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1_1test_1a2cb9e1c2163a7d9dcb6be195cdf17065" compoundref="util_2fslike_2test_8py" startline="149" endline="190">openage.util.fslike.test.test_case_ignoring</references>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1_1test_1abdc25f4997b11676ec4700a8cb2b100b" compoundref="util_2fslike_2test_8py" startline="23" endline="44">openage.util.fslike.test.test_path</references>
+        <references refid="namespaceopenage_1_1util_1_1fslike_1_1test_1acb02a5c9b3b2064338f1e207ea4491cb" compoundref="util_2fslike_2test_8py" startline="57" endline="133">openage.util.fslike.test.test_union</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/test.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_74f47b28f54343cfb7dc57764ed3695d" kind="dir">
-    <compoundname>libopenage/gui/integration/private</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private</compoundname>
     <innerfile refid="gui__filled__texture__handles_8cpp">gui_filled_texture_handles.cpp</innerfile>
     <innerfile refid="gui__filled__texture__handles_8h">gui_filled_texture_handles.h</innerfile>
     <innerfile refid="gui__game__spec__image__provider__by__filename__impl_8cpp">gui_game_spec_image_provider_by_filename_impl.cpp</innerfile>
@@ -32,6 +32,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/integration/private/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/"/>
   </compounddef>
 </doxygen>

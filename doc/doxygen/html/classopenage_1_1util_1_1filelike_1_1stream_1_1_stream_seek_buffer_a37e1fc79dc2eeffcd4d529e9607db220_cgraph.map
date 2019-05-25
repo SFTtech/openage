@@ -1,0 +1,8 @@
+<map id="openage.util.filelike.stream.StreamSeekBuffer.read" name="openage.util.filelike.stream.StreamSeekBuffer.read">
+<area shape="rect" id="node1" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="5,63,185,104"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a" title="clamps val to be at least minval, and at most maxval." alt="" coords="233,45,397,71"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="445,95,640,122"/>
+<area shape="rect" id="node3" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="508,45,577,71"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="688,5,855,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="688,71,855,112"/>
+</map>

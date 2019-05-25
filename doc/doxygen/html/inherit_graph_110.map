@@ -1,5 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,42,100,69"/>
-<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_standalone_subtexture.xhtml" title=" " alt="" coords="148,5,337,47"/>
-<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_texture.xhtml" title=" " alt="" coords="159,71,326,98"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,159,39"/>
+<area shape="rect" id="node2" href="$classopenage_1_1gui_1_1_gui_texture_factory.xhtml" title=" " alt="" coords="207,5,373,47"/>
 </map>

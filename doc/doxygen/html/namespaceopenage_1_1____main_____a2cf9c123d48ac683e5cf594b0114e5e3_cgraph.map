@@ -1,0 +1,12 @@
+<map id="openage.__main__.main" name="openage.__main__.main">
+<area shape="rect" id="node1" title="Top&#45;level argparsing; invokes subparser for all submodules." alt="" coords="5,71,168,98"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1codegen_1_1main.xhtml#a0e9029131438ddadc195b01c7b3b20a8" title="Codegen&#45;specific CLI." alt="" coords="216,5,393,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a78bab1bc2016bebde4ef3cde06936702" title="sets the log level" alt="" coords="223,71,386,98"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a10c8ba63b955b0c97dc3b3323f73a4b2" title="Translates an integer verbosity to a log level." alt="" coords="231,123,378,164"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a2b8905069877587c7f8624a11d524bbc" title="gets the log level" alt="" coords="442,71,605,98"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a" title="clamps val to be at least minval, and at most maxval." alt="" coords="441,130,605,157"/>
+<area shape="rect" id="node7" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="716,105,785,131"/>
+<area shape="rect" id="node10" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="653,155,848,182"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="896,64,1063,105"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="896,129,1063,171"/>
+</map>

@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.h" line="65" column="1" bodyfile="libopenage/util/hash.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" compoundref="hash_8cpp" startline="107" endline="109">digest</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" compoundref="hash_8cpp" startline="23" endline="28">set_key</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" compoundref="hash_8cpp" startline="18" endline="20">Siphash</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +48,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.h" line="29" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="18" bodyend="20"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="18" bodyend="20"/>
+        <references refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" compoundref="hash_8h" startline="65">key</references>
+        <references refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" compoundref="hash_8cpp" startline="23" endline="28">set_key</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> &amp;</type>
@@ -74,7 +79,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.h" line="37" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="23" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="23" bodyend="28"/>
+        <references refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" compoundref="misc_8h" startline="111" endline="129">openage::util::array8_to_uint64</references>
+        <references refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" compoundref="hash_8h" startline="65">key</references>
+        <referencedby refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" compoundref="hash_8cpp" startline="18" endline="20">Siphash</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -115,7 +123,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.h" line="46" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="107" bodyend="109"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="107" bodyend="109"/>
+        <references refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">openage::util::hash</references>
+        <references refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" compoundref="hash_8h" startline="65">key</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -146,7 +156,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/hash.h" line="58" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="112" bodyend="115"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.cpp" bodystart="112" bodyend="115"/>
+        <references refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">openage::util::hash</references>
+        <references refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" compoundref="hash_8h" startline="65">key</references>
+        <references refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" compoundref="misc_8h" startline="145" endline="159">openage::util::uint64_to_array8</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,12 +169,12 @@
 <para><ulink url="https://131002.net/siphash/">https://131002.net/siphash/</ulink> </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4176">
+      <node id="6015">
         <label>openage::util::Siphash</label>
         <link refid="classopenage_1_1util_1_1_siphash"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/hash.h" line="23" column="1" bodyfile="libopenage/util/hash.h" bodystart="23" bodyend="66"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/hash.h" bodystart="23" bodyend="66"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>digest</name></member>
       <member refid="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>digest</name></member>

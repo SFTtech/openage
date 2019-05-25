@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="66" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="66" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" compoundref="gamestate_2resource_8h" startline="76" endline="82">openage::ClassicResources::ClassicResources</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" prot="public" static="yes" mutable="no">
         <type>const int</type>
@@ -31,7 +32,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="67" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="67" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" compoundref="gamestate_2resource_8h" startline="76" endline="82">openage::ClassicResources::ClassicResources</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_resources_1a945eff3d7ffb4da7c2edba3c92bcd86a" prot="public" static="yes" mutable="no">
         <type>const int</type>
@@ -45,7 +47,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="68" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" compoundref="gamestate_2resource_8h" startline="76" endline="82">openage::ClassicResources::ClassicResources</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_resources_1a5dd4addc058637a117d8a5a23ef64d29" prot="public" static="yes" mutable="no">
         <type>const int</type>
@@ -59,7 +62,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="69" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="69" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="69" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" compoundref="gamestate_2resource_8h" startline="76" endline="82">openage::ClassicResources::ClassicResources</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="57" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="57" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resources_1abec1193935e5d41c0306402394bae78f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>unsigned int</type>
@@ -88,7 +92,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="59" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="59" column="1"/>
+        <referencedby refid="classopenage_1_1_resource_bundle_1a9aed45067a845a35390dab904a02b6a9" compoundref="gamestate_2resource_8cpp" startline="20" endline="23">openage::ResourceBundle::ResourceBundle</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resources_1acb1b42c34ac0a283335675ad02f634e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const <ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
@@ -106,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="61" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="61" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_resources_1aef4b5371e4af7c303ca4d87d5970280c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
@@ -119,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/resource.h" line="63" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="11" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="63" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.cpp" bodystart="11" bodyend="13"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -130,24 +135,24 @@
 <para>The static variables wood, food, gold, stone are the ids of the representing resource. Any extension of <ref refid="classopenage_1_1_resources" kindref="compound">Resources</ref> must use this ids as they are an engine dependency (at the moment). </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4112">
+      <node id="5028">
         <label>openage::ClassicResources</label>
         <link refid="classopenage_1_1_classic_resources"/>
-        <childnode refid="4111" relation="public-inheritance">
+        <childnode refid="5027" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4111">
+      <node id="5027">
         <label>openage::Resources</label>
         <link refid="classopenage_1_1_resources"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4113">
+      <node id="5029">
         <label>openage::Resources</label>
         <link refid="classopenage_1_1_resources"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/resource.h" line="54" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="54" bodyend="71"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.h" bodystart="54" bodyend="71"/>
     <listofallmembers>
       <member refid="classopenage_1_1_resources_1aef4b5371e4af7c303ca4d87d5970280c" prot="public" virt="non-virtual"><scope>openage::Resources</scope><name>create_bundle</name></member>
       <member refid="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" prot="public" virt="non-virtual"><scope>openage::Resources</scope><name>food</name></member>

@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1stringresource_1_1_string_resource" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::stringresource::StringResource</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exportable</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ae27dc7c64bf6f4e809e4d9f7f382c850" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.stringresource.StringResource::name_struct</definition>
+        <argsstring></argsstring>
+        <name>name_struct</name>
+        <initializer>=  &quot;string_resource&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a0cebd404e6699617d19d2fef99a6843b" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.stringresource.StringResource::name_struct_file</definition>
+        <argsstring></argsstring>
+        <name>name_struct_file</name>
+        <initializer>=  &quot;string_resource&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a29b70717309e904f5e5e4bc9fa390e06" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.stringresource.StringResource::struct_description</definition>
+        <argsstring></argsstring>
+        <name>struct_description</name>
+        <initializer>=  &quot;string id/language to text mapping,&quot;\</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a0acb5f3af7e168ab815ab95844e681e2" prot="public" static="yes" mutable="no">
+        <type>tuple</type>
+        <definition>tuple openage.convert.stringresource.StringResource::data_format</definition>
+        <argsstring></argsstring>
+        <name>data_format</name>
+        <initializer>=  (
+        (True, &quot;id&quot;,   &quot;int32_t&quot;),
+        (True, &quot;lang&quot;, &quot;char[16]&quot;),
+        (True, &quot;text&quot;, &quot;std::string&quot;),
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ad16c320e06dfe507052997f9478bfa21" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.stringresource.StringResource::strings</definition>
+        <argsstring></argsstring>
+        <name>strings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a4534f9e425147656e2c2669608b29127" compoundref="stringresource_8py" startline="35" endline="49">openage.convert.stringresource.StringResource.dump</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a9a5cb6827440f531c1760e711c13a652" compoundref="stringresource_8py" startline="31" endline="34">openage.convert.stringresource.StringResource.fill_from</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a09d9b592e139e34913dba5f72983694b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.stringresource.StringResource.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a9a5cb6827440f531c1760e711c13a652" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.stringresource.StringResource.fill_from</definition>
+        <argsstring>(self, stringtable)</argsstring>
+        <name>fill_from</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>stringtable</type>
+          <defname>stringtable</defname>
+        </param>
+        <briefdescription>
+<para>stringtable is a dict {langcode: {id: string}} </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="31" bodyend="34"/>
+        <references refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ad16c320e06dfe507052997f9478bfa21" compoundref="stringresource_8py" startline="26">openage.convert.stringresource.StringResource.strings</references>
+        <references refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1ab80b54aa5dee4c507a91cc605b8ab4e0" compoundref="peresource_8py" startline="155">openage.convert.peresource.PEResources.strings</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a4534f9e425147656e2c2669608b29127" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.stringresource.StringResource.dump</definition>
+        <argsstring>(self, filename)</argsstring>
+        <name>dump</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>filename</type>
+          <defname>filename</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="35" bodyend="49"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ad16c320e06dfe507052997f9478bfa21" compoundref="stringresource_8py" startline="26">openage.convert.stringresource.StringResource.strings</references>
+        <references refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1ab80b54aa5dee4c507a91cc605b8ab4e0" compoundref="peresource_8py" startline="155">openage.convert.peresource.PEResources.strings</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1aa99fb664ebbef40b59e73e3ce335e8c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.stringresource.StringResource.structs</definition>
+        <argsstring>(cls)</argsstring>
+        <name>structs</name>
+        <param>
+          <type>cls</type>
+          <defname>cls</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="51" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1607">
+        <label>Exportable</label>
+      </node>
+      <node id="1606">
+        <label>openage.convert.stringresource.StringResource</label>
+        <link refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource"/>
+        <childnode refid="1607" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1609">
+        <label>Exportable</label>
+      </node>
+      <node id="1608">
+        <label>openage.convert.stringresource.StringResource</label>
+        <link refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource"/>
+        <childnode refid="1609" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/stringresource.py" bodystart="12" bodyend="53"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a09d9b592e139e34913dba5f72983694b" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a0acb5f3af7e168ab815ab95844e681e2" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>data_format</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a4534f9e425147656e2c2669608b29127" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>dump</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a9a5cb6827440f531c1760e711c13a652" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>fill_from</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ae27dc7c64bf6f4e809e4d9f7f382c850" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>name_struct</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a0cebd404e6699617d19d2fef99a6843b" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>name_struct_file</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1ad16c320e06dfe507052997f9478bfa21" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>strings</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1a29b70717309e904f5e5e4bc9fa390e06" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>struct_description</name></member>
+      <member refid="classopenage_1_1convert_1_1stringresource_1_1_string_resource_1aa99fb664ebbef40b59e73e3ce335e8c0" prot="public" virt="non-virtual"><scope>openage::convert::stringresource::StringResource</scope><name>structs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

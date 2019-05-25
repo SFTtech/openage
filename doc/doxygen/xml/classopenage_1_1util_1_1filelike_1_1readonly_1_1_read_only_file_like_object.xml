@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::filelike::readonly::ReadOnlyFileLikeObject</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.abstract.FileLikeObject</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream" prot="public" virt="non-virtual">openage.cabextract.lzxdstream.LZXDStream</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object" prot="public" virt="non-virtual">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.ReadOnlyFileLikeObject.flush</definition>
+        <argsstring>(self)</argsstring>
+        <name>flush</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1af0f454daf7adab7c0dbbe38f3ec8dedb">flush</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.ReadOnlyFileLikeObject.readable</definition>
+        <argsstring>(self)</argsstring>
+        <name>readable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a921de3bfb2d8bcaae526bd93347d4764">readable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" kindref="member">read()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.ReadOnlyFileLikeObject.write</definition>
+        <argsstring>(self, data)</argsstring>
+        <name>write</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a118b6ae6f4476f578a6cee666adc02cb">write</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Writes all of data to the file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Shall raise UnsupportedOperation for read-only object.
+
+   There is no return value.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.filelike.readonly.ReadOnlyFileLikeObject.writable</definition>
+        <argsstring>(self)</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a08761f78387658db85dc2f1137cb3db6">writable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns True if <ref refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" kindref="member">write()</ref> is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="37" bodyend="40"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5769">
+        <label>openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object"/>
+        <childnode refid="5765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5771">
+        <label>openage.util.filelike.stream.StreamFragment</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment"/>
+        <childnode refid="5769" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5772">
+        <label>openage.util.filelike.stream.StreamSeekBuffer</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer"/>
+        <childnode refid="5769" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5770">
+        <label>openage.cabextract.cab.CABFolderStream</label>
+        <link refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream"/>
+        <childnode refid="5769" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5768">
+        <label>openage.cabextract.lzxdstream.LZXDStream</label>
+        <link refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream"/>
+        <childnode refid="5765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5767">
+        <label>ABC</label>
+      </node>
+      <node id="5765">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5766" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5766">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5767" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5775">
+        <label>ABC</label>
+      </node>
+      <node id="5773">
+        <label>openage.util.filelike.readonly.ReadOnlyFileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object"/>
+        <childnode refid="5774" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5774">
+        <label>openage.util.filelike.abstract.FileLikeObject</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object"/>
+        <childnode refid="5775" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/readonly.py" bodystart="21" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1aa2e2ad89db5258427a4818722cd03fb4" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>__enter__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>__exit__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad1e8617a5d0fedd8596e6bb8ad5a6bb2" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a007c0eefc1bd3165112c787fb5e70f75" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1ac7424537e476fc41eade8546cc20db33" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a402459217e8204b8242829b019ad85a7" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a74f8e05ed5480518188044084cc0e902" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a6e0d6ec68d9be25cc8c7b047721b4464" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ad255ffd40c48e6610e464d5c3c43b2fb" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>seek_helper</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a72fc53b76ba8da3a41cd61647dbaae6e" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a0ad9d642b58e227e95d4c03b49b57d0b" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1a517dff372fc551f0c8345aa457e637b3" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_read_only_file_like_object_1acbe3be9324cf2cbc6ddd684774ab6749" prot="public" virt="non-virtual"><scope>openage::util::filelike::readonly::ReadOnlyFileLikeObject</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

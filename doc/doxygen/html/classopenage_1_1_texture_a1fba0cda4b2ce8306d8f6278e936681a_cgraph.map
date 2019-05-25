@@ -1,0 +1,20 @@
+<map id="openage::Texture::load" name="openage::Texture::load">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,160,133"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="221,5,338,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="224,56,335,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="219,107,340,133"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1_path.xhtml#a4ca4da6e9e2d8adadb02373ff2be8ebe" title=" " alt="" coords="208,158,351,199"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1_path.xhtml#aa7993e64af5227c5949074566deadbf6" title=" " alt="" coords="214,289,345,330"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="421,41,567,82"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="399,107,589,133"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="667,34,805,75"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="650,99,822,141"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="637,165,835,192"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_path.xhtml#a919083912ceb465d8b3c28e4766161fe" title=" " alt="" coords="417,158,571,199"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1_path.xhtml#a1175be01a6df63d066ca6f2d3e2c4d3c" title=" " alt="" coords="415,223,573,265"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1_path.xhtml#a6e86298c20b5fd4596b791de4115b8b9" title=" " alt="" coords="429,289,559,330"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1_path.xhtml#afed5e82e9f515fc2d8e2cdc291edebca" title=" " alt="" coords="429,354,559,395"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1_path.xhtml#a3fc6528c66f6d83e122e753f73511a3d" title=" " alt="" coords="671,233,801,274"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1_path.xhtml#a21fb5a34dad3027d7c9fca721211a258" title=" " alt="" coords="883,262,1013,303"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1_path.xhtml#a20819ad3bd985841f0538e3adac52cf6" title=" " alt="" coords="671,354,801,395"/>
+</map>

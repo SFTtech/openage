@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="119" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="119" bodyend="121"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a031ec32c576b33298fdb75dee692de8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="123" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="123" bodyend="135"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="123" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="123" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -74,7 +74,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="138" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="138" bodyend="213"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="138" bodyend="213"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" compoundref="physics_8cpp" startline="489" endline="495">openage::event::demo::Physics::reset</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
@@ -128,7 +135,15 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/demo/physics.cpp" line="215" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="215" bodyend="262"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="215" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="215" bodyend="262"/>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" compoundref="fixed__point_8h" startline="192" endline="194">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -136,42 +151,42 @@ If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="556">
+      <node id="2170">
         <label>openage::event::demo::BallReflectPanel</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
-        <childnode refid="557" relation="public-inheritance">
+        <childnode refid="2171" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="558">
+      <node id="2172">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="557">
+      <node id="2171">
         <label>openage::event::DependencyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
-        <childnode refid="558" relation="public-inheritance">
+        <childnode refid="2172" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="559">
+      <node id="2173">
         <label>openage::event::demo::BallReflectPanel</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
-        <childnode refid="560" relation="public-inheritance">
+        <childnode refid="2174" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="561">
+      <node id="2175">
         <label>openage::event::EventClass</label>
         <link refid="classopenage_1_1event_1_1_event_class"/>
       </node>
-      <node id="560">
+      <node id="2174">
         <label>openage::event::DependencyEventClass</label>
         <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
-        <childnode refid="561" relation="public-inheritance">
+        <childnode refid="2175" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/demo/physics.cpp" line="117" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="117" bodyend="263"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp" bodystart="117" bodyend="263"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a4ff75fb0a97d1a13c02ed2c148125779" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>BallReflectPanel</name></member>
       <member refid="classopenage_1_1event_1_1_dependency_event_class_1a51e8b8a3e46c9bebecd84b84e8dd049d" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>DependencyEventClass</name></member>

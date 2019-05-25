@@ -7,7 +7,7 @@
     <includes local="no">QAbstractListModel</includes>
     <includes local="no">QMap</includes>
     <includes local="no">QUrl</includes>
-    <includedby refid="actions__list__model_8cpp" local="yes">libopenage/gui/actions_list_model.cpp</includedby>
+    <includedby refid="actions__list__model_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</includedby>
     <incdepgraph>
       <node id="10795">
         <label>list</label>
@@ -139,7 +139,7 @@
         <label>coord_nese.gen.h</label>
       </node>
       <node id="10753">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="10754" relation="include">
         </childnode>
@@ -1091,13 +1091,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="10883">
-        <label>libopenage/gui/actions_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h</label>
         <link refid="actions__list__model_8h"/>
         <childnode refid="10884" relation="include">
         </childnode>
       </node>
       <node id="10884">
-        <label>libopenage/gui/actions_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.cpp</label>
         <link refid="actions__list__model_8cpp"/>
       </node>
     </invincdepgraph>
@@ -1127,9 +1127,9 @@
 <codeline lineno="20" refid="classopenage_1_1gui_1_1_actions_list_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_actions_list_model" kindref="compound">ActionsListModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractListModel<sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" kindref="member">get_active_buttons</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" kindref="member">set_active_buttons</ref>)</highlight></codeline>
-<codeline lineno="24" refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" kindref="member">action_mode</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" kindref="member">get_action_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" kindref="member">set_action_mode</ref>)</highlight></codeline>
-<codeline lineno="25" refid="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QUrl<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" kindref="member">iconsSource</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" kindref="member">get_icons_source</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad84503f513414c76726db8b3def08205" kindref="member">icons_source_changed</ref>)</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" kindref="member">get_active_buttons</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" kindref="member">set_active_buttons</ref>)</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" kindref="member">action_mode</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" kindref="member">get_action_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" kindref="member">set_action_mode</ref>)</highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(QUrl<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" kindref="member">iconsSource</ref><sp/><ref refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" kindref="member">READ</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" kindref="member">get_icons_source</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref><sp/>NOTIFY<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad84503f513414c76726db8b3def08205" kindref="member">icons_source_changed</ref>)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">public:</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model" kindref="compound">ActionsListModel</ref>(QObject<sp/>*parent=</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">);</highlight></codeline>
@@ -1184,6 +1184,6 @@
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/actions_list_model.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/actions_list_model.h"/>
   </compounddef>
 </doxygen>

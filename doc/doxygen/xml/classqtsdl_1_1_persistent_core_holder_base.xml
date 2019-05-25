@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="36" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="36" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="36" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="43" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="43" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,66 +58,87 @@
 <para>Helper to hide the type of the core. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3647">
+      <node id="6545">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3645">
+      <node id="6543">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3642">
+      <node id="6540">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameControlLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; GameControlLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3640">
+      <node id="6538">
         <label>qtsdl::PersistentCoreHolderBase</label>
         <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
       </node>
-      <node id="3641">
+      <node id="6539">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3646">
+      <node id="6544">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; OutputModeLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; OutputModeLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3643">
+      <node id="6541">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameMainLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; GameMainLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3644">
+      <node id="6542">
         <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameSpecLink &gt;::Type &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6546" relation="template-instance">
+          <edgelabel>&lt; typename qtsdl::Unwrap&lt; GameSpecLink &gt;::Type &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="3648">
+      <node id="6546">
         <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_persistent_core_holder"/>
-        <childnode refid="3640" relation="public-inheritance">
+        <childnode refid="6538" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3649">
+      <node id="6547">
         <label>qtsdl::PersistentCoreHolderBase</label>
         <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item.h" line="34" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="34" bodyend="44"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="34" bodyend="44"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a" prot="public" virt="pure-virtual"><scope>qtsdl::PersistentCoreHolderBase</scope><name>adopt_shell</name></member>
       <member refid="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" prot="public" virt="virtual"><scope>qtsdl::PersistentCoreHolderBase</scope><name>~PersistentCoreHolderBase</name></member>

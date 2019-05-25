@@ -9,7 +9,7 @@ var searchData=
   ['deferredinitialconstantpropertyvalues',['DeferredInitialConstantPropertyValues',['../classqtsdl_1_1_deferred_initial_constant_property_values.xhtml',1,'qtsdl']]],
   ['dependencyeventclass',['DependencyEventClass',['../classopenage_1_1event_1_1_dependency_event_class.xhtml',1,'openage::event']]],
   ['dependencyimmediatelyeventclass',['DependencyImmediatelyEventClass',['../classopenage_1_1event_1_1_dependency_immediately_event_class.xhtml',1,'openage::event']]],
-  ['directory',['Directory',['../classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml',1,'openage.util.fslike.directory.Directory'],['../classopenage_1_1util_1_1fslike_1_1_directory.xhtml',1,'openage::util::fslike::Directory']]],
+  ['directory',['Directory',['../classopenage_1_1util_1_1fslike_1_1_directory.xhtml',1,'openage::util::fslike::Directory'],['../classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml',1,'openage.util.fslike.directory.Directory']]],
   ['directorycreator',['DirectoryCreator',['../classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator.xhtml',1,'openage::util::fslike::wrapper']]],
   ['dirty_5frect',['dirty_rect',['../structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect.xhtml',1,'openage::renderer::GlyphAtlas']]],
   ['discardederror',['DiscardedError',['../classopenage_1_1util_1_1bytequeue_1_1_byte_buffer_1_1_discarded_error.xhtml',1,'openage::util::bytequeue::ByteBuffer']]],

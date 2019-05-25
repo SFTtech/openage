@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.cabextract.cab.CABFolderStream Class Reference</title>
+<title>openage: openage.cabextract.cab.CABFolderStream Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -95,17 +96,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1cabextract_1_1cab_1_1_
 <div class="title">openage.cabextract.cab.CABFolderStream Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for openage.cabextract.cab.CABFolderStream:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.cabextract.cab.CABFolderStream:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.cabextract.cab.CABFolderStream:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.cabextract.cab.CABFolderStream:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -230,7 +233,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00432">432</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;</div><div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        self.fileobj = fileobj</div><div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        self.blockcount = blockcount</div><div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        self.blockreserved = blockreserved</div><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div><div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="comment"># positions of the blocks in fileobj. block 0 starts at offset.</span></div><div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        self.blockoffsets = [offset]</div><div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div><div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="comment"># positions in the stream of the start of each block.</span></div><div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        self.streamindex = [0]</div><div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;</div><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keyword">def </span>next_block_size(self, payloadsize):</div><div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -253,6 +256,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a007c0eefc1bd3165112c787fb5e70f75">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00550">550</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        del self.fileobj</div><div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        del self.blockoffsets</div><div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        del self.streamindex</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="filelike_2abstract_8py_source.xhtml#l00113">openage.util.filelike.abstract.FileLikeObject.__exit__()</a>, and <a class="el" href="slp__converter__pool_8py_source.xhtml#l00127">openage.convert.slp_converter_pool.SLPConverterPool.__exit__()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_ae5a7fefaa419877c7b44e69e7451c6f8_icgraph.svg" width="482" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -275,6 +288,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00546">546</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="keywordflow">return</span> -1</div><div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;</div><div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="keyword">def </span>close(self):</div><div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        self.closed = <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="filelike_2abstract_8py_source.xhtml#l00127">openage.util.filelike.abstract.FileLikeObject.seek_helper()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_a22d3c8597d3b8ef507a98145bd623990_icgraph.svg" width="100%" height="439"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -307,6 +330,18 @@ Public Attributes</h2></td></tr>
 <p>adds metadata for the next block </p>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00448">448</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                                 CFData.size() + self.blockreserved +</div><div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                                 payloadsize)</div><div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div><div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        self.streamindex.append(self.streamindex[-1] + payloadsize)</div><div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div><div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keyword">def </span>read_block_data(self, block_id):</div><div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="cab_8py_source.xhtml#l00440">openage.cabextract.cab.CABFolderStream.blockoffsets</a>, <a class="el" href="cab_8py_source.xhtml#l00437">openage.cabextract.cab.CABFolderStream.blockreserved</a>, and <a class="el" href="cab_8py_source.xhtml#l00443">openage.cabextract.cab.CABFolderStream.streamindex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_adc3af5aa923ad52702de79831c669dc3_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -342,6 +377,26 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a74f8e05ed5480518188044084cc0e902">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00543">543</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;</div><div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    <span class="keyword">def </span>get_size(self):</div><div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        del self  <span class="comment"># unused</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="cab_8py_source.xhtml#l00501">openage.cabextract.cab.CABFolderStream.read_blocks()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="exportable_8py_source.xhtml#l00182">openage.convert.dataformat.exportable.Exportable.read()</a>, and <a class="el" href="peresource_8py_source.xhtml#l00138">openage.convert.peresource.StringLiteral.readall()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_aa01e2f0b6657c5c629188cbc3a0e0a57_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_aa01e2f0b6657c5c629188cbc3a0e0a57_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -378,6 +433,27 @@ Public Attributes</h2></td></tr>
    returns the block data.
 </pre> 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00463">463</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">raise</span> EOFError()</div><div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div><div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        <span class="keywordflow">while</span> block_id &gt;= len(self.blockoffsets):</div><div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="comment"># We do not yet know where the block starts. Seek forwards.</span></div><div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div><div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <span class="comment"># read info for the rightmost known block to get its size.</span></div><div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            offset = self.blockoffsets[-1]</div><div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            self.fileobj.seek(self.blockoffsets[-1])</div><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            datablock = CFData.read(self.fileobj)</div><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="comment"># add starting position of next block to metadata.</span></div><div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            self.next_block_size(datablock.cbData)</div><div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;</div><div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="comment"># we now know the starting position of the block.</span></div><div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        offset = self.blockoffsets[block_id]</div><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        self.fileobj.seek(offset)</div><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        datablock = CFData.read(self.fileobj)</div><div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        datablock.reserved = <a class="code" href="namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188">read_guaranteed</a>(self.fileobj, self.blockreserved)</div><div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        datablock.payload = <a class="code" href="namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188">read_guaranteed</a>(self.fileobj, datablock.cbData)</div><div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;</div><div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="comment"># verify the datablock&#39;s checksum.</span></div><div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        datablock.verify_checksum()</div><div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;</div><div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="comment"># add starting data of next block to metadata, if required.</span></div><div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keywordflow">if</span> block_id + 1 == len(self.blockoffsets):</div><div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            self.next_block_size(datablock.cbData)</div><div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;</div><div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="comment"># finally, return the data.</span></div><div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="keywordflow">return</span> datablock.payload</div><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div><div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keyword">def </span>read_blocks(self, size=-1):</div><div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1util_1_1files_xhtml_aa2ba5a14f2468fd0745e07dc84ff2188"><div class="ttname"><a href="namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188">openage::util.files.read_guaranteed</a></div><div class="ttdeci">def read_guaranteed(fileobj, size)</div><div class="ttdef"><b>Definition:</b> <a href="files_8py_source.xhtml#l00015">files.py:15</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="cab_8py_source.xhtml#l00436">openage.cabextract.cab.CABFolderStream.blockcount</a>, <a class="el" href="cab_8py_source.xhtml#l00440">openage.cabextract.cab.CABFolderStream.blockoffsets</a>, <a class="el" href="cab_8py_source.xhtml#l00437">openage.cabextract.cab.CABFolderStream.blockreserved</a>, <a class="el" href="filelike_2python_8h_source.xhtml#l00057">openage::util::filelike::Python.fileobj</a>, <a class="el" href="cab_8py_source.xhtml#l00435">openage.cabextract.cab.CABFolderStream.fileobj</a>, <a class="el" href="cab_8py_source.xhtml#l00448">openage.cabextract.cab.CABFolderStream.next_block_size()</a>, <a class="el" href="files_8py_source.xhtml#l00015">openage.util.files.read_guaranteed()</a>, and <a class="el" href="readonly_8py_source.xhtml#l00055">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.seek()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00501">openage.cabextract.cab.CABFolderStream.read_blocks()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_a455bb79e71a8baa07af00ac680085f6d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_a455bb79e71a8baa07af00ac680085f6d_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -408,6 +484,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00501">501</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            size = INF</div><div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;</div><div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <span class="comment"># use self.streamindex to determine the block id for pos.</span></div><div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        blockid = bisect(self.streamindex, self.pos) - 1</div><div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;</div><div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="comment"># bytes to discard (because we&#39;re still reading data that lie</span></div><div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        <span class="comment"># before self.pos).</span></div><div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        discard = self.pos - self.streamindex[blockid]</div><div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div><div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">while</span> size &gt; 0:</div><div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            <span class="keywordflow">try</span>:</div><div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                block_data = self.read_block_data(blockid)</div><div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">except</span> EOFError:</div><div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                <span class="keywordflow">return</span></div><div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;</div><div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            blockid += 1</div><div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;</div><div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordflow">if</span> discard != 0:</div><div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                <span class="keywordflow">if</span> discard &gt;= len(block_data):</div><div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                    <span class="comment"># we&#39;re actually still seeking through the file,</span></div><div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                    <span class="comment"># reading it block by block, approaching the stream cursor</span></div><div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                    <span class="comment"># position.</span></div><div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;</div><div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    discard -= len(block_data)</div><div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                    <span class="keywordflow">continue</span></div><div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;</div><div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                <span class="keywordflow">else</span>:</div><div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                    <span class="comment"># discard the first few bytes of the block&#39;s data.</span></div><div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                    block_data = block_data[discard:]</div><div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                    discard = 0</div><div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;</div><div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            <span class="keywordflow">if</span> len(block_data) &gt; size:</div><div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                <span class="comment"># less than the entire block was requested.</span></div><div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                block_data = block_data[:size]</div><div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;</div><div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            size -= len(block_data)</div><div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            self.pos += len(block_data)</div><div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;</div><div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            <span class="keywordflow">yield</span> block_data</div><div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;</div><div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    <span class="keyword">def </span>read(self, size=-1):</div><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        <span class="keywordflow">return</span> b<span class="stringliteral">&quot;&quot;</span>.join(self.read_blocks(size))</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="fifo_8py_source.xhtml#l00037">openage.util.filelike.fifo.FIFO.pos</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="readonly_8py_source.xhtml#l00053">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>, <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>, and <a class="el" href="cab_8py_source.xhtml#l00443">openage.cabextract.cab.CABFolderStream.streamindex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00543">openage.cabextract.cab.CABFolderStream.read()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_ad9654069c6554f9859298fa5c1e85b73_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_ad9654069c6554f9859298fa5c1e85b73_icgraph.svg" width="100%" height="379"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -426,6 +522,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00436">436</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>.</p>
+
 </div>
 </div>
 <a id="a93b53ba3420a1c165c283ee91a18dd10"></a>
@@ -441,6 +539,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00440">440</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00448">openage.cabextract.cab.CABFolderStream.next_block_size()</a>, and <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>.</p>
 
 </div>
 </div>
@@ -458,6 +558,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00437">437</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00448">openage.cabextract.cab.CABFolderStream.next_block_size()</a>, and <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>.</p>
+
 </div>
 </div>
 <a id="aa3e35032def0fef5bca09bedb21e96e3"></a>
@@ -473,6 +575,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00551">551</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
 
 </div>
 </div>
@@ -490,6 +594,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00435">435</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="peresource_8py_source.xhtml#l00115">openage.convert.peresource.ResourceLeaf.open()</a>, <a class="el" href="pefile_8py_source.xhtml#l00212">openage.convert.pefile.PEFile.open_section()</a>, <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>, and <a class="el" href="drs_8py_source.xhtml#l00120">openage.convert.drs.DRS.read_tables()</a>.</p>
+
 </div>
 </div>
 <a id="a4ad893fc5e33e9a96874d9a6fd70d8bb"></a>
@@ -506,10 +612,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="cab_8py_source.xhtml#l00443">443</a> of file <a class="el" href="cab_8py_source.xhtml">cab.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00448">openage.cabextract.cab.CABFolderStream.next_block_size()</a>, and <a class="el" href="cab_8py_source.xhtml#l00501">openage.cabextract.cab.CABFolderStream.read_blocks()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/cabextract/<a class="el" href="cab_8py_source.xhtml">cab.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/<a class="el" href="cab_8py_source.xhtml">cab.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

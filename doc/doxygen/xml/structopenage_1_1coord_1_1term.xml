@@ -9,28 +9,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4332">
+      <node id="1757">
         <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
       </node>
-      <node id="4331">
+      <node id="1756">
         <label>openage::coord::term</label>
         <link refid="structopenage_1_1coord_1_1term"/>
-        <childnode refid="4332" relation="public-inheritance">
+        <childnode refid="1757" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4334">
+      <node id="1759">
         <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
       </node>
-      <node id="4333">
+      <node id="1758">
         <label>openage::coord::term</label>
         <link refid="structopenage_1_1coord_1_1term"/>
-        <childnode refid="4334" relation="public-inheritance">
+        <childnode refid="1759" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/term.h" line="22" column="1" bodyfile="libopenage/coord/term.h" bodystart="22" bodyend="24"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h" bodystart="22" bodyend="24"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

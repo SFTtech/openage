@@ -5,7 +5,7 @@
     <includes local="no">algorithm</includes>
     <includes refid="renderer_8h" local="yes">../renderer.h</includes>
     <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
-    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</includedby>
     <incdepgraph>
       <node id="21242">
         <label>graphics_device.h</label>
@@ -38,7 +38,7 @@
         <label>algorithm</label>
       </node>
       <node id="21237">
-        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h</label>
         <link refid="vulkan_2render__target_8h"/>
         <childnode refid="21238" relation="include">
         </childnode>
@@ -53,11 +53,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21246">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
       <node id="21245">
-        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h</label>
         <link refid="vulkan_2render__target_8h"/>
         <childnode refid="21246" relation="include">
         </childnode>
@@ -154,7 +154,7 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;extent<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentExtent;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>choose<sp/>a<sp/>size<sp/>from<sp/>this-&gt;size<sp/>in<sp/>this<sp/>case</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Window<sp/>manager<sp/>does<sp/>not<sp/>provide<sp/>a<sp/>window<sp/>size.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Window<sp/>manager<sp/>does<sp/>not<sp/>provide<sp/>a<sp/>window<sp/>size.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>img_count<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.minImageCount<sp/>+<sp/>1;</highlight></codeline>
@@ -238,6 +238,6 @@
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
 <codeline lineno="166"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/render_target.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/render_target.h"/>
   </compounddef>
 </doxygen>

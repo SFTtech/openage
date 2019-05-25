@@ -17,7 +17,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.h" line="47" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" compoundref="enum__test_8cpp" startline="15" endline="45">openage::util::tests::enum_</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" prot="public" static="yes" mutable="no">
         <type>constexpr <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref></type>
@@ -31,7 +32,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.h" line="48" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="48" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="48" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" compoundref="enum__test_8cpp" startline="15" endline="45">openage::util::tests::enum_</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +48,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/enum_test.h" line="45" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="13" bodyend="13"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.cpp" bodystart="13" bodyend="13"/>
+        <references refid="namespaceopenage_1_1util_1_1tests_1a6f54051ead3baf22b21d6142f78cbbc3" compoundref="enum__test_8cpp" startline="12">openage::util::tests::undefined</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -57,47 +60,80 @@
 <para>testenum foo &quot;::openage::util::tests::testenum::foo&quot; testenum bar &quot;::openage::util::tests::testenum::bar&quot; </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4388">
+      <node id="6093">
         <label>openage::util::tests::testenum</label>
         <link refid="structopenage_1_1util_1_1tests_1_1testenum"/>
-        <childnode refid="4389" relation="public-inheritance">
+        <childnode refid="6094" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4389">
+      <node id="6094">
         <label>openage::util::Enum&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="6095" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6095">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4390">
+      <node id="6096">
         <label>openage::util::tests::testenum</label>
         <link refid="structopenage_1_1util_1_1tests_1_1testenum"/>
-        <childnode refid="4391" relation="public-inheritance">
+        <childnode refid="6097" relation="public-inheritance">
         </childnode>
-        <childnode refid="4392" relation="usage">
+        <childnode refid="6098" relation="usage">
           <edgelabel>+bar</edgelabel>
           <edgelabel>+foo</edgelabel>
         </childnode>
       </node>
-      <node id="4391">
+      <node id="6097">
         <label>openage::util::Enum&lt; testenum_value &gt;</label>
         <link refid="classopenage_1_1util_1_1_enum"/>
-        <childnode refid="4392" relation="usage">
+        <childnode refid="6098" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+        <childnode refid="6102" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6100">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="6101" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="6101">
+        <label>NumericType</label>
+      </node>
+      <node id="6099">
+        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="6100" relation="template-instance">
+          <edgelabel>&lt; testenum_value &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6098">
+        <label>openage::util::tests::testenum_value</label>
+        <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
+        <childnode refid="6099" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6102">
+        <label>openage::util::Enum&lt; DerivedType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="6103" relation="usage">
           <edgelabel>#value</edgelabel>
         </childnode>
       </node>
-      <node id="4393">
-        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
-        <link refid="classopenage_1_1util_1_1_enum_value"/>
-      </node>
-      <node id="4392">
-        <label>openage::util::tests::testenum_value</label>
-        <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
-        <childnode refid="4393" relation="public-inheritance">
-        </childnode>
+      <node id="6103">
+        <label>DerivedType</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/enum_test.h" line="37" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="37" bodyend="49"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/enum_test.h" bodystart="37" bodyend="49"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>bar</name></member>
       <member refid="classopenage_1_1util_1_1_enum_1aaefad1817b0a66a4d80eb90ccf8fa1b7" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>Enum</name></member>

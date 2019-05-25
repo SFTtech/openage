@@ -17,7 +17,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="119" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="119" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="119" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="119" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a8461fbce64d91cb521d76e313ed65662" compoundref="pathfinding_2path_8cpp" startline="61" endline="65">cost_to</referencedby>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a5847aed20e19a4334ce6a7359c7b9720" compoundref="pathfinding_2path_8cpp" startline="83" endline="97">get_neighbors</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4_1a82c375ba3d6cda6123b93c89890b5af1" compoundref="pathfinding_2path_8h" startline="206" endline="211">std::hash&lt; openage::path::Node &amp; &gt;::operator()</referencedby>
+        <referencedby refid="classopenage_1_1path_1_1_node_1afae105c3ca20e09659e66fc6e5dd4eea" compoundref="pathfinding_2path_8cpp" startline="56" endline="58">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1af71eefaa0601bbfbb76bcaed643c18f6" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
@@ -30,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="120" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="120" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1aad8137f68110f1e82ff358e795092675" prot="public" static="no" mutable="no">
         <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref></type>
@@ -43,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="121" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="121" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="121" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1ad37572f2d995a0978c8f860ad5edaa30" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -57,7 +61,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="126" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="126" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="126" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a990b8a7c4344fbe54a96c3b048a3fcbd" compoundref="pathfinding_2path_8cpp" startline="51" endline="53">operator&lt;</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1a665c106823920c92839d263642e22f6b" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -71,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="132" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="132" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="132" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1af2d2958545a3dd1f6bef291342498d49" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -85,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="139" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="139" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="139" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1ad9dd309dc7c4fc593d90c45babe3dcfc" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -100,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="144" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="144" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1a4aaa468b9936616ff99a232b6f1b601e" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -115,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="149" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="149" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="149" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1aed96d0edb4b44cbdcaf958c8cdc98fc6" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -130,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="156" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="156" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="156" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1af30ebda81f962a25f97559049c988d24" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -144,7 +149,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="162" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="162" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="162" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="162" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a8461fbce64d91cb521d76e313ed65662" compoundref="pathfinding_2path_8cpp" startline="61" endline="65">cost_to</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1a795f800f11ccbf7177b3eb65ccaeaff2" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref></type>
@@ -158,7 +164,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="167" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="167" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="167" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a7e0bc44afe4b4dcddd24e947fec677ee" compoundref="pathfinding_2path_8cpp" startline="68" endline="80">generate_backtrace</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1path_1_1_node_1af1c5b7a80d572db9fdfdc220beb0aed8" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1af89a07b90150d0d4606787f0ac202242" kindref="member">heap_t::element_t</ref></type>
@@ -172,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="172" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="172" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="172" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -195,7 +202,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="86" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="18" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="18" bodyend="39"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::direction</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1a64dacb5aaeed97517ffd26217f38ee8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -224,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="87" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="42" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="42" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1a990b8a7c4344fbe54a96c3b048a3fcbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -242,7 +250,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="92" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="51" bodyend="53"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="51" bodyend="53"/>
+        <references refid="classopenage_1_1path_1_1_node_1ad37572f2d995a0978c8f860ad5edaa30" compoundref="pathfinding_2path_8h" startline="126">future_cost</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1afae105c3ca20e09659e66fc6e5dd4eea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -260,7 +269,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="98" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="56" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="56" bodyend="58"/>
+        <references refid="classopenage_1_1path_1_1_node_1ab2a7dc59c9efb7f5baef572bbbb00228" compoundref="pathfinding_2path_8h" startline="119">position</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1a8461fbce64d91cb521d76e313ed65662" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -278,7 +288,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="103" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="61" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="61" bodyend="65"/>
+        <references refid="classopenage_1_1path_1_1_node_1af30ebda81f962a25f97559049c988d24" compoundref="pathfinding_2path_8h" startline="162">factor</references>
+        <references refid="classopenage_1_1path_1_1_node_1ab2a7dc59c9efb7f5baef572bbbb00228" compoundref="pathfinding_2path_8h" startline="119">position</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1a7e0bc44afe4b4dcddd24e947fec677ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref></type>
@@ -292,7 +304,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="108" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="68" bodyend="80"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="68" bodyend="80"/>
+        <references refid="classopenage_1_1path_1_1_node_1a795f800f11ccbf7177b3eb65ccaeaff2" compoundref="pathfinding_2path_8h" startline="167">path_predecessor</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1path_1_1_node_1a5847aed20e19a4334ce6a7359c7b9720" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref> &gt;</type>
@@ -315,7 +328,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="113" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="83" bodyend="97"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="113" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="83" bodyend="97"/>
+        <references refid="namespaceopenage_1_1path_1aec9efa004e47a51d7525a0959ebdfb83" compoundref="pathfinding_2path_8h" startline="65">openage::path::neigh_phys</references>
+        <references refid="classopenage_1_1path_1_1_node_1ab2a7dc59c9efb7f5baef572bbbb00228" compoundref="pathfinding_2path_8h" startline="119">position</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -324,64 +339,64 @@
 <para>One navigation waypoint in a path. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3363">
+      <node id="4421">
         <label>std::enable_shared_from_this&lt; Node &gt;</label>
       </node>
-      <node id="3362">
+      <node id="4420">
         <label>openage::path::Node</label>
         <link refid="classopenage_1_1path_1_1_node"/>
-        <childnode refid="3363" relation="public-inheritance">
+        <childnode refid="4421" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3367">
+      <node id="4425">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="3370">
+      <node id="4428">
         <label>openage::coord::phys3_delta</label>
         <link refid="structopenage_1_1coord_1_1phys3__delta"/>
-        <childnode refid="3371" relation="public-inheritance">
+        <childnode refid="4429" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3366">
+      <node id="4424">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="3367" relation="public-inheritance">
+        <childnode refid="4425" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3369">
+      <node id="4427">
         <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
-      <node id="3368">
+      <node id="4426">
         <label>openage::coord::tile</label>
         <link refid="structopenage_1_1coord_1_1tile"/>
-        <childnode refid="3369" relation="public-inheritance">
+        <childnode refid="4427" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3365">
+      <node id="4423">
         <label>std::enable_shared_from_this&lt; Node &gt;</label>
       </node>
-      <node id="3371">
+      <node id="4429">
         <label>CoordNeSeUpRelative&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="3364">
+      <node id="4422">
         <label>openage::path::Node</label>
         <link refid="classopenage_1_1path_1_1_node"/>
-        <childnode refid="3365" relation="public-inheritance">
+        <childnode refid="4423" relation="public-inheritance">
         </childnode>
-        <childnode refid="3366" relation="usage">
+        <childnode refid="4424" relation="usage">
           <edgelabel>+position</edgelabel>
         </childnode>
-        <childnode refid="3368" relation="usage">
+        <childnode refid="4426" relation="usage">
           <edgelabel>+tile_position</edgelabel>
         </childnode>
-        <childnode refid="3370" relation="usage">
+        <childnode refid="4428" relation="usage">
           <edgelabel>+direction</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/pathfinding/path.h" line="84" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="84" bodyend="173"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="84" bodyend="173"/>
     <listofallmembers>
       <member refid="classopenage_1_1path_1_1_node_1ad9dd309dc7c4fc593d90c45babe3dcfc" prot="public" virt="non-virtual"><scope>openage::path::Node</scope><name>accessible</name></member>
       <member refid="classopenage_1_1path_1_1_node_1a8461fbce64d91cb521d76e313ed65662" prot="public" virt="non-virtual"><scope>openage::path::Node</scope><name>cost_to</name></member>

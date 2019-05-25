@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen_1_1codegen" kind="namespace" language="Python">
+    <compoundname>openage::codegen::codegen</compoundname>
+    <innerclass refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper" prot="public">openage::codegen::codegen::CodegenDirWrapper</innerclass>
+    <innerclass refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_mode" prot="public">openage::codegen::codegen::CodegenMode</innerclass>
+    <innerclass refid="classopenage_1_1codegen_1_1codegen_1_1_write_catcher" prot="public">openage::codegen::codegen::WriteCatcher</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.codegen</definition>
+        <argsstring>(mode, input_dir, output_dir)</argsstring>
+        <name>codegen</name>
+        <param>
+          <type>mode</type>
+          <defname>mode</defname>
+        </param>
+        <param>
+          <type>input_dir</type>
+          <defname>input_dir</defname>
+        </param>
+        <param>
+          <type>output_dir</type>
+          <defname>output_dir</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="118" bodyend="180"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1codegen_1_1listing_1a8178b40ca254e32043552b4b3f13aeeb" compoundref="listing_8py" startline="13" endline="22">openage.codegen.listing.generate_all</references>
+        <references refid="namespaceopenage_1_1codegen_1_1codegen_1a8de5b571a29191e7550c6acae3367da9" compoundref="codegen_8py" startline="207" endline="246">openage.codegen.codegen.get_codegen_depends</references>
+        <references refid="namespaceopenage_1_1codegen_1_1codegen_1a1e6e694be0654b40e778b12ff2334b87" compoundref="codegen_8py" startline="266" endline="294">openage.codegen.codegen.postprocess_write</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1main_1a02b4f54f6bbc4cef5a3872eb60d639a6" compoundref="codegen_2main_8py" startline="110" endline="177">openage.codegen.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1codegen_1a3231dc85f25b4690179432502707a9c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.depend_module_blacklist</definition>
+        <argsstring>()</argsstring>
+        <name>depend_module_blacklist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="181" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="181" bodyend="198"/>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1a8de5b571a29191e7550c6acae3367da9" compoundref="codegen_8py" startline="207" endline="246">openage.codegen.codegen.get_codegen_depends</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1codegen_1a8de5b571a29191e7550c6acae3367da9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.get_codegen_depends</definition>
+        <argsstring>(outputwrapper)</argsstring>
+        <name>get_codegen_depends</name>
+        <param>
+          <type>outputwrapper</type>
+          <defname>outputwrapper</defname>
+        </param>
+        <briefdescription>
+<para>Yields all codegen dependencies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>outputwrapper is the <ref refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper" kindref="compound">CodegenDirWrapper</ref> that was passed to generate_all; it&apos;s used to determine the files that have been read.</para>
+<para>In addition, all imported python modules are yielded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="207" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="207" bodyend="246"/>
+        <references refid="namespaceopenage_1_1codegen_1_1codegen_1a3231dc85f25b4690179432502707a9c2" compoundref="codegen_8py" startline="181" endline="198">openage.codegen.codegen.depend_module_blacklist</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1codegen_1a7cce911eb4c73e57753d1a055e95549b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.get_header_lines</definition>
+        <argsstring>()</argsstring>
+        <name>get_header_lines</name>
+        <briefdescription>
+<para>Yields the lines for the automatically-added file header. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="250" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="250" bodyend="262"/>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1a1e6e694be0654b40e778b12ff2334b87" compoundref="codegen_8py" startline="266" endline="294">openage.codegen.codegen.postprocess_write</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1codegen_1a1e6e694be0654b40e778b12ff2334b87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.codegen.postprocess_write</definition>
+        <argsstring>(parts, data)</argsstring>
+        <name>postprocess_write</name>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <param>
+          <type>data</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Post-processes a single write operation, as intercepted during codegen. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="266" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" bodystart="266" bodyend="294"/>
+        <references refid="namespaceopenage_1_1codegen_1_1codegen_1a7cce911eb4c73e57753d1a055e95549b" compoundref="codegen_8py" startline="250" endline="262">openage.codegen.codegen.get_header_lines</references>
+        <references refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" compoundref="strings_8cpp" startline="136" endline="141">openage::util::split</references>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1codegen_1ae7b44d30354970dff216b8f5d58fdd02" compoundref="codegen_8py" startline="118" endline="180">openage.codegen.codegen.codegen</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/codegen.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

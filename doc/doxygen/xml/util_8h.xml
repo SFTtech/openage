@@ -4,9 +4,9 @@
     <compoundname>util.h</compoundname>
     <includes local="no">vulkan/vulkan.h</includes>
     <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
-    <includedby refid="graphics__device_8cpp" local="yes">libopenage/renderer/vulkan/graphics_device.cpp</includedby>
-    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
-    <includedby refid="windowvk_8cpp" local="yes">libopenage/renderer/vulkan/windowvk.cpp</includedby>
+    <includedby refid="graphics__device_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="windowvk_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</includedby>
     <incdepgraph>
       <node id="23729">
         <label>list</label>
@@ -120,7 +120,7 @@
         <label>typeinfo</label>
       </node>
       <node id="23703">
-        <label>libopenage/renderer/vulkan/util.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h</label>
         <link refid="util_8h"/>
         <childnode refid="23704" relation="include">
         </childnode>
@@ -200,7 +200,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="23734">
-        <label>libopenage/renderer/vulkan/util.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h</label>
         <link refid="util_8h"/>
         <childnode refid="23735" relation="include">
         </childnode>
@@ -210,15 +210,15 @@
         </childnode>
       </node>
       <node id="23736">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
       <node id="23737">
-        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</label>
         <link refid="windowvk_8cpp"/>
       </node>
       <node id="23735">
-        <label>libopenage/renderer/vulkan/graphics_device.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/graphics_device.cpp</label>
         <link refid="graphics__device_8cpp"/>
       </node>
     </invincdepgraph>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/util.h" line="50" column="9" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="50" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" line="50" column="9" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -266,7 +266,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/util.h" line="11" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="11" bodyend="18"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" line="11" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" bodystart="11" bodyend="18"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" compoundref="vulkan_2renderer_8cpp" startline="20" endline="311">openage::renderer::vulkan::VlkRenderer::do_the_thing</referencedby>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" compoundref="windowvk_8cpp" startline="39" endline="78">openage::renderer::vulkan::find_capabilities</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" compoundref="graphics__device_8cpp" startline="17" endline="91">openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" compoundref="vulkan_2render__target_8h" startline="73" endline="148">openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" compoundref="graphics__device_8cpp" startline="93" endline="152">openage::renderer::vulkan::VlkGraphicsDevice::VlkGraphicsDevice</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">openage::renderer::vulkan::VlkWindow::VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="function" id="util_8h_1ad139950708720dce4f6806582d17adc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -301,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/util.h" line="21" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="21" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" bodystart="21" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="util_8h_1a759a7a67d5cd01418b63fca588b38c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -346,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/util.h" line="31" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="31" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" bodystart="31" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="util_8h_1a6e37a1b4f9c78bcf7476f9a4552fce52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -401,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/util.h" line="41" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="41" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h" bodystart="41" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -466,6 +472,6 @@
 <codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
 <codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/util.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/util.h"/>
   </compounddef>
 </doxygen>

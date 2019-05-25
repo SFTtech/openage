@@ -7,10 +7,10 @@
     <includes local="no">string</includes>
     <includes local="no">unordered_map</includes>
     <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
-    <includedby refid="font_8h" local="yes">libopenage/renderer/font/font.h</includedby>
-    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
-    <includedby refid="font__manager_8cpp" local="yes">libopenage/renderer/font/font_manager.cpp</includedby>
-    <includedby refid="renderer_2font_2tests_8cpp" local="yes">libopenage/renderer/font/tests.cpp</includedby>
+    <includedby refid="font_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h</includedby>
+    <includedby refid="engine_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</includedby>
+    <includedby refid="font__manager_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp</includedby>
+    <includedby refid="renderer_2font_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp</includedby>
     <incdepgraph>
       <node id="20600">
         <label>list</label>
@@ -184,7 +184,7 @@
         <label>config.h</label>
       </node>
       <node id="20573">
-        <label>libopenage/renderer/font/font_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h</label>
         <link refid="font__manager_8h"/>
         <childnode refid="20574" relation="include">
         </childnode>
@@ -213,7 +213,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="20606">
-        <label>libopenage/renderer/font/font.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.h</label>
         <link refid="font_8h"/>
         <childnode refid="20607" relation="include">
         </childnode>
@@ -231,11 +231,11 @@
         </childnode>
       </node>
       <node id="20620">
-        <label>libopenage/renderer/font/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/tests.cpp</label>
         <link refid="renderer_2font_2tests_8cpp"/>
       </node>
       <node id="20607">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="20608" relation="include">
         </childnode>
@@ -249,15 +249,15 @@
         </childnode>
       </node>
       <node id="20611">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="20612">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="20614">
-        <label>libopenage/renderer/text.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</label>
         <link refid="text_8h"/>
         <childnode refid="20609" relation="include">
         </childnode>
@@ -269,31 +269,31 @@
         </childnode>
       </node>
       <node id="20608">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="20615">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="20617">
-        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.cpp</label>
         <link refid="glyph__atlas_8cpp"/>
       </node>
       <node id="20618">
-        <label>libopenage/renderer/font/font.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font.cpp</label>
         <link refid="font_8cpp"/>
       </node>
       <node id="20616">
-        <label>libopenage/renderer/text.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp</label>
         <link refid="text_8cpp"/>
       </node>
       <node id="20609">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="20613">
-        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/glyph_atlas.h</label>
         <link refid="glyph__atlas_8h"/>
         <childnode refid="20614" relation="include">
         </childnode>
@@ -301,7 +301,7 @@
         </childnode>
       </node>
       <node id="20605">
-        <label>libopenage/renderer/font/font_manager.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h</label>
         <link refid="font__manager_8h"/>
         <childnode refid="20606" relation="include">
         </childnode>
@@ -313,11 +313,11 @@
         </childnode>
       </node>
       <node id="20619">
-        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.cpp</label>
         <link refid="font__manager_8cpp"/>
       </node>
       <node id="20610">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -353,7 +353,7 @@
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="22" refid="classopenage_1_1renderer_1_1_free_type_library_1a9e8e9ce337ad8d411d6a82f48ca19299" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_free_type_library_1a9e8e9ce337ad8d411d6a82f48ca19299" kindref="member">FreeTypeLibrary</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(FT_Init_FreeType(&amp;this-&gt;ft_library)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>freetype<sp/>library.&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>freetype<sp/>library.&quot;</highlight><highlight class="normal">};</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
@@ -400,6 +400,6 @@
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/font/font_manager.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/font/font_manager.h"/>
   </compounddef>
 </doxygen>

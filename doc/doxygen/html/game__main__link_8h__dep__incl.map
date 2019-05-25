@@ -1,7 +1,7 @@
-<map id="libopenage/gui/game_main_link.h" name="libopenage/gui/game_main_link.h">
-<area shape="rect" id="node1" title=" " alt="" coords="253,5,395,47"/>
-<area shape="rect" id="node2" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="5,95,147,136"/>
-<area shape="rect" id="node3" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="171,95,312,136"/>
-<area shape="rect" id="node4" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="336,95,477,136"/>
-<area shape="rect" id="node5" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="501,95,643,136"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/game_main_link.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/game_main_link.h">
+<area shape="rect" id="node1" title=" " alt="" coords="355,5,564,61"/>
+<area shape="rect" id="node2" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$game__creator_8cpp.xhtml" title=" " alt="" coords="239,109,448,165"/>
+<area shape="rect" id="node4" href="$game__main__link_8cpp.xhtml" title=" " alt="" coords="472,109,681,165"/>
+<area shape="rect" id="node5" href="$game__saver_8cpp.xhtml" title=" " alt="" coords="705,109,915,165"/>
 </map>

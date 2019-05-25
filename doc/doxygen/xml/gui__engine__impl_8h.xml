@@ -6,9 +6,9 @@
     <includes local="no">vector</includes>
     <includes refid="qml__engine__with__singleton__items__info_8h" local="yes">../link/qml_engine_with_singleton_items_info.h</includes>
     <includes refid="recursive__directory__watcher_8h" local="yes">livereload/recursive_directory_watcher.h</includes>
-    <includedby refid="gui__engine__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_engine_impl.cpp</includedby>
-    <includedby refid="gui__subtree__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
-    <includedby refid="gui__engine_8cpp" local="yes">libopenage/gui/guisys/public/gui_engine.cpp</includedby>
+    <includedby refid="gui__engine__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
+    <includedby refid="gui__engine_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp</includedby>
     <incdepgraph>
       <node id="13062">
         <label>../link/qml_engine_with_singleton_items_info.h</label>
@@ -34,7 +34,7 @@
         </childnode>
       </node>
       <node id="13059">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</label>
         <link refid="gui__engine__impl_8h"/>
         <childnode refid="13060" relation="include">
         </childnode>
@@ -76,7 +76,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13070">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h</label>
         <link refid="gui__engine__impl_8h"/>
         <childnode refid="13071" relation="include">
         </childnode>
@@ -86,15 +86,15 @@
         </childnode>
       </node>
       <node id="13073">
-        <label>libopenage/gui/guisys/public/gui_engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp</label>
         <link refid="gui__engine_8cpp"/>
       </node>
       <node id="13072">
-        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
         <link refid="gui__subtree__impl_8cpp"/>
       </node>
       <node id="13071">
-        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
         <link refid="gui__engine__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -160,6 +160,6 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_engine_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_engine_impl.h"/>
   </compounddef>
 </doxygen>

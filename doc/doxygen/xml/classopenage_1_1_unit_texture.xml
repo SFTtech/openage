@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="40" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a1fe7033557f83325f51cf96b9cdeb378" prot="public" static="no" mutable="no">
         <type>const int16_t</type>
@@ -29,7 +29,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="41" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="41" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" prot="public" static="no" mutable="no">
         <type>const unsigned int</type>
@@ -42,7 +43,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="42" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="42" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" prot="public" static="no" mutable="no">
         <type>const unsigned int</type>
@@ -55,7 +58,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="43" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="43" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1af8e4d853e0c6b111b5df9ebe8dc266b6" prot="public" static="no" mutable="no">
         <type>const int16_t</type>
@@ -68,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="44" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ac34ee7ace110e62b81936c8a02bec421" prot="public" static="no" mutable="no">
         <type>const float</type>
@@ -81,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="45" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="45" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1af69c776830224e224867110f6b522cbd" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -95,7 +100,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="51" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ad196a81adcf43745f04514e417bb93fa" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -109,7 +115,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="56" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="56" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -125,7 +132,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="92" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="92" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="92" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a6aa00a6381fb4b555f989f1bfcfd9c7a" compoundref="unit__texture_8cpp" startline="40" endline="42">is_valid</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">sample</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" compoundref="unit__texture_8cpp" startline="44" endline="46">size</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a9ffbd182e533b66d58b6dec274b1968c" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -139,7 +151,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="98" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="98" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -152,7 +165,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="99" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" compoundref="unit__texture_8cpp" startline="151" endline="160">subtexture</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a525921d5d14a1c894b50e96857a5f1a1" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -165,7 +181,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="100" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="100" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="100" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a9e567666c41e6833e544d01d95a59fdd" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -178,7 +195,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="101" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="101" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="101" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="101" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -191,7 +210,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="104" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="104" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="104" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="104" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">sample</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1aa56a7948cc4664b188b54e29a5379419" prot="private" static="no" mutable="no">
         <type>const <ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref> *</type>
@@ -204,7 +226,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="105" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="105" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a12ccd7b2560aee281da63987871aead1" prot="private" static="no" mutable="no">
         <type>std::vector&lt; gamedata::graphic_delta &gt;</type>
@@ -217,7 +241,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="108" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="108" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::pair&lt; std::unique_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt;, <ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">coord::camgame_delta</ref> &gt; &gt;</type>
@@ -230,7 +255,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="111" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="111" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">sample</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -260,7 +288,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="34" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="19" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="19" bodyend="21"/>
+        <references refid="classopenage_1_1_game_spec_1aa1f8784ca6aab9da489457d22b386443" compoundref="game__spec_8cpp" startline="136" endline="142">openage::GameSpec::get_graphic_data</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1af3784fba2f1d4f68b11815ec32533ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -286,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="35" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="23" bodyend="38"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="23" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1a6aa00a6381fb4b555f989f1bfcfd9c7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -300,7 +329,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="61" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="40" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="40" bodyend="42"/>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">initialise</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
@@ -314,7 +345,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="66" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="44" bodyend="46"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="44" bodyend="46"/>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">openage::Texture::h</references>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">openage::Texture::w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -341,7 +375,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="71" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="48" bodyend="60"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="48" bodyend="60"/>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
+        <references refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</references>
+        <references refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" compoundref="unit__texture_8h" startline="111">deltas</references>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">openage::Texture::draw</references>
+        <references refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" compoundref="unit__texture_8h" startline="104">draw_this</references>
+        <references refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" compoundref="texture_8h" startline="45">openage::PLAYERCOLORED</references>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -371,7 +412,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="76" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="62" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="76" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="62" bodyend="74"/>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
+        <references refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</references>
+        <references refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" compoundref="unit__texture_8h" startline="111">deltas</references>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">openage::Texture::draw</references>
+        <references refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" compoundref="unit__texture_8h" startline="104">draw_this</references>
+        <references refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" compoundref="texture_8cpp" startline="431" endline="433">openage::Texture::get_subtexture_count</references>
+        <references refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" compoundref="texture_8h" startline="45">openage::PLAYERCOLORED</references>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -405,7 +454,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="81" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="76" bodyend="110"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="76" bodyend="110"/>
+        <references refid="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" compoundref="unit__texture_8h" startline="43">angle_count</references>
+        <references refid="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" compoundref="unit__texture_8h" startline="99">angles_included</references>
+        <references refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" compoundref="text_8cpp" startline="16">openage::texturefont_shader::color</references>
+        <references refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</references>
+        <references refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" compoundref="unit__texture_8h" startline="111">deltas</references>
+        <references refid="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" compoundref="unit__texture_8cpp" startline="162" endline="175">openage::dir_group</references>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">openage::Texture::draw</references>
+        <references refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" compoundref="unit__texture_8h" startline="104">draw_this</references>
+        <references refid="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" compoundref="unit__texture_8h" startline="42">frame_count</references>
+        <references refid="namespaceopenage_1_1math_1a29c55215e73408c49f2654261fd73d8e" compoundref="math_8h" startline="17" endline="19">openage::math::hypot3</references>
+        <references refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">openage::Sound::play</references>
+        <references refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" compoundref="texture_8h" startline="45">openage::PLAYERCOLORED</references>
+        <references refid="classopenage_1_1_unit_texture_1aa56a7948cc4664b188b54e29a5379419" compoundref="unit__texture_8h" startline="105">sound</references>
+        <references refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" compoundref="unit__texture_8cpp" startline="151" endline="160">subtexture</references>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
+        <references refid="classopenage_1_1_unit_texture_1a9e567666c41e6833e544d01d95a59fdd" compoundref="unit__texture_8h" startline="101">top_frame</references>
+        <references refid="classopenage_1_1_unit_texture_1af69c776830224e224867110f6b522cbd" compoundref="unit__texture_8h" startline="51">use_up_angles</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -423,7 +489,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="86" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="112" bodyend="149"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="112" bodyend="149"/>
+        <references refid="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" compoundref="unit__texture_8h" startline="43">angle_count</references>
+        <references refid="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" compoundref="unit__texture_8h" startline="99">angles_included</references>
+        <references refid="classopenage_1_1_unit_texture_1a525921d5d14a1c894b50e96857a5f1a1" compoundref="unit__texture_8h" startline="100">angles_mirrored</references>
+        <references refid="classopenage_1_1_unit_texture_1a12ccd7b2560aee281da63987871aead1" compoundref="unit__texture_8h" startline="108">delta_id</references>
+        <references refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" compoundref="unit__texture_8h" startline="111">deltas</references>
+        <references refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" compoundref="unit__texture_8h" startline="104">draw_this</references>
+        <references refid="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" compoundref="unit__texture_8h" startline="42">frame_count</references>
+        <references refid="classopenage_1_1_game_spec_1aa1f8784ca6aab9da489457d22b386443" compoundref="game__spec_8cpp" startline="136" endline="142">openage::GameSpec::get_graphic_data</references>
+        <references refid="classopenage_1_1_game_spec_1a1b83c8dcc455fd32056c418a993eb506" compoundref="game__spec_8cpp" startline="125" endline="133">openage::GameSpec::get_sound</references>
+        <references refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" compoundref="texture_8cpp" startline="431" endline="433">openage::Texture::get_subtexture_count</references>
+        <references refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" compoundref="game__spec_8cpp" startline="91" endline="108">openage::GameSpec::get_texture</references>
+        <references refid="classopenage_1_1_unit_texture_1a6aa00a6381fb4b555f989f1bfcfd9c7a" compoundref="unit__texture_8cpp" startline="40" endline="42">is_valid</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="classopenage_1_1_unit_texture_1a9ffbd182e533b66d58b6dec274b1968c" compoundref="unit__texture_8h" startline="98">safe_frame_count</references>
+        <references refid="classopenage_1_1_unit_texture_1aa56a7948cc4664b188b54e29a5379419" compoundref="unit__texture_8h" startline="105">sound</references>
+        <references refid="classopenage_1_1_unit_texture_1a1fe7033557f83325f51cf96b9cdeb378" compoundref="unit__texture_8h" startline="41">sound_id</references>
+        <references refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" compoundref="unit__texture_8h" startline="92">texture</references>
+        <references refid="classopenage_1_1_unit_texture_1a9e567666c41e6833e544d01d95a59fdd" compoundref="unit__texture_8h" startline="101">top_frame</references>
+        <references refid="classopenage_1_1_unit_texture_1ad196a81adcf43745f04514e417bb93fa" compoundref="unit__texture_8h" startline="56">use_deltas</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -451,7 +536,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/unit_texture.h" line="116" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="151" bodyend="160"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.cpp" bodystart="151" bodyend="160"/>
+        <references refid="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" compoundref="unit__texture_8h" startline="99">angles_included</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" compoundref="texture_8cpp" startline="431" endline="433">openage::Texture::get_subtexture_count</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" compoundref="unit__texture_8cpp" startline="76" endline="110">draw</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -462,330 +553,354 @@
 <para>This type can also deal with playing position based game sounds. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4838">
+      <node id="5585">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="4806">
+      <node id="5550">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="4814">
+      <node id="5561">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="4815" relation="public-inheritance">
+        <childnode refid="5562" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4839">
+      <node id="5586">
         <label>openage::coord::camgame_delta</label>
         <link refid="structopenage_1_1coord_1_1camgame__delta"/>
-        <childnode refid="4840" relation="public-inheritance">
+        <childnode refid="5587" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4812">
+      <node id="5556">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4817">
+      <node id="5564">
         <label>openage::ScreenshotManager</label>
         <link refid="classopenage_1_1_screenshot_manager"/>
-        <childnode refid="4818" relation="usage">
+        <childnode refid="5565" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="4819" relation="usage">
+        <childnode refid="5566" relation="usage">
           <edgelabel>+window_size</edgelabel>
         </childnode>
       </node>
-      <node id="4842">
+      <node id="5558">
+        <label>T</label>
+      </node>
+      <node id="5589">
         <label>qtsdl::GuiItemLink</label>
         <link refid="classqtsdl_1_1_gui_item_link"/>
       </node>
-      <node id="4820">
+      <node id="5567">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="4811">
+      <node id="5555">
         <label>openage::util::Variable&lt; bool &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4812" relation="public-inheritance">
+        <childnode refid="5556" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5557" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4815">
+      <node id="5562">
         <label>QObject</label>
       </node>
-      <node id="4816">
+      <node id="5563">
         <label>openage::cvar::CVarManager</label>
         <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
-        <childnode refid="4806" relation="usage">
+        <childnode refid="5550" relation="usage">
           <edgelabel>-path</edgelabel>
         </childnode>
       </node>
-      <node id="4837">
+      <node id="5584">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="4838" relation="public-inheritance">
+        <childnode refid="5585" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4823">
+      <node id="5570">
         <label>openage::util::ExternalProfiler</label>
         <link refid="classopenage_1_1util_1_1_external_profiler"/>
       </node>
-      <node id="4802">
+      <node id="5546">
         <label>openage::UnitTexture</label>
         <link refid="classopenage_1_1_unit_texture"/>
-        <childnode refid="4803" relation="usage">
+        <childnode refid="5547" relation="usage">
           <edgelabel>-sound</edgelabel>
         </childnode>
-        <childnode refid="4844" relation="usage">
+        <childnode refid="5591" relation="usage">
           <edgelabel>-texture</edgelabel>
         </childnode>
       </node>
-      <node id="4809">
+      <node id="5553">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="4809" relation="usage">
+        <childnode refid="5553" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="4835">
+      <node id="5582">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="4836" relation="public-inheritance">
+        <childnode refid="5583" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4831">
+      <node id="5578">
         <label>openage::input::ActionManager</label>
         <link refid="classopenage_1_1input_1_1_action_manager"/>
-        <childnode refid="4816" relation="usage">
+        <childnode refid="5563" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="4824" relation="usage">
+        <childnode refid="5571" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4844">
+      <node id="5591">
         <label>openage::Texture</label>
         <link refid="classopenage_1_1_texture"/>
-        <childnode refid="4806" relation="usage">
+        <childnode refid="5550" relation="usage">
           <edgelabel>-filename</edgelabel>
         </childnode>
       </node>
-      <node id="4833">
+      <node id="5580">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="4819">
+      <node id="5566">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="4820" relation="public-inheritance">
+        <childnode refid="5567" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4804">
+      <node id="5548">
         <label>openage::GameSpec</label>
         <link refid="classopenage_1_1_game_spec"/>
-        <childnode refid="4805" relation="usage">
+        <childnode refid="5549" relation="usage">
           <edgelabel>-assetmanager</edgelabel>
         </childnode>
-        <childnode refid="4843" relation="usage">
+        <childnode refid="5590" relation="usage">
           <edgelabel>-terrain_data</edgelabel>
         </childnode>
       </node>
-      <node id="4830">
+      <node id="5577">
         <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="4826">
-        <label>openage::coord::input</label>
-        <link refid="structopenage_1_1coord_1_1input"/>
-        <childnode refid="4827" relation="public-inheritance">
+      <node id="5559">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="5557" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4840">
+      <node id="5573">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="5574" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5587">
         <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
       </node>
-      <node id="4818">
+      <node id="5565">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
-      <node id="4827">
+      <node id="5574">
         <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="4821">
+      <node id="5568">
         <label>openage::util::FrameCounter</label>
         <link refid="classopenage_1_1util_1_1_frame_counter"/>
-        <childnode refid="4822" relation="usage">
+        <childnode refid="5569" relation="usage">
           <edgelabel>-frame_timer</edgelabel>
         </childnode>
       </node>
-      <node id="4828">
+      <node id="5575">
         <label>openage::input::InputContext</label>
         <link refid="classopenage_1_1input_1_1_input_context"/>
-        <childnode refid="4824" relation="usage">
+        <childnode refid="5571" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4843">
+      <node id="5590">
         <label>openage::terrain_meta</label>
         <link refid="structopenage_1_1terrain__meta"/>
       </node>
-      <node id="4832">
+      <node id="5579">
         <label>openage::gui::EngineQMLInfo</label>
         <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
-        <childnode refid="4833" relation="public-inheritance">
+        <childnode refid="5580" relation="public-inheritance">
         </childnode>
-        <childnode refid="4806" relation="usage">
+        <childnode refid="5550" relation="usage">
           <edgelabel>+asset_dir</edgelabel>
         </childnode>
-        <childnode refid="4807" relation="usage">
+        <childnode refid="5551" relation="usage">
           <edgelabel>+engine</edgelabel>
         </childnode>
       </node>
-      <node id="4841">
+      <node id="5588">
         <label>openage::audio::AudioManager</label>
         <link refid="classopenage_1_1audio_1_1_audio_manager"/>
-        <childnode refid="4818" relation="usage">
+        <childnode refid="5565" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4813">
+      <node id="5560">
         <label>openage::util::Profiler</label>
         <link refid="classopenage_1_1util_1_1_profiler"/>
-        <childnode refid="4807" relation="usage">
+        <childnode refid="5551" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
       </node>
-      <node id="4807">
+      <node id="5551">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="4808" relation="public-inheritance">
+        <childnode refid="5552" relation="public-inheritance">
         </childnode>
-        <childnode refid="4809" relation="public-inheritance">
+        <childnode refid="5553" relation="public-inheritance">
         </childnode>
-        <childnode refid="4810" relation="usage">
+        <childnode refid="5554" relation="usage">
           <edgelabel>+drawing_huds</edgelabel>
           <edgelabel>+drawing_debug_overlay</edgelabel>
         </childnode>
-        <childnode refid="4813" relation="usage">
+        <childnode refid="5560" relation="usage">
           <edgelabel>-profiler</edgelabel>
         </childnode>
-        <childnode refid="4806" relation="usage">
+        <childnode refid="5550" relation="usage">
           <edgelabel>-root_dir</edgelabel>
         </childnode>
-        <childnode refid="4814" relation="usage">
+        <childnode refid="5561" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="4816" relation="usage">
+        <childnode refid="5563" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="4817" relation="usage">
+        <childnode refid="5564" relation="usage">
           <edgelabel>-screenshot_manager</edgelabel>
         </childnode>
-        <childnode refid="4821" relation="usage">
+        <childnode refid="5568" relation="usage">
           <edgelabel>-fps_counter</edgelabel>
         </childnode>
-        <childnode refid="4823" relation="usage">
+        <childnode refid="5570" relation="usage">
           <edgelabel>+external_profiler</edgelabel>
         </childnode>
-        <childnode refid="4824" relation="usage">
+        <childnode refid="5571" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
-        <childnode refid="4832" relation="usage">
+        <childnode refid="5579" relation="usage">
           <edgelabel>-qml_info</edgelabel>
         </childnode>
-        <childnode refid="4834" relation="usage">
+        <childnode refid="5581" relation="usage">
           <edgelabel>+coord</edgelabel>
         </childnode>
-        <childnode refid="4818" relation="usage">
+        <childnode refid="5565" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="4831" relation="usage">
+        <childnode refid="5578" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
-        <childnode refid="4841" relation="usage">
+        <childnode refid="5588" relation="usage">
           <edgelabel>-audio_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4836">
+      <node id="5583">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="4808">
+      <node id="5552">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
-      <node id="4810">
+      <node id="5554">
         <label>openage::options::Var&lt; bool &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="4811" relation="public-inheritance">
+        <childnode refid="5555" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5559" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4829">
+      <node id="5576">
         <label>openage::coord::input_delta</label>
         <link refid="structopenage_1_1coord_1_1input__delta"/>
-        <childnode refid="4830" relation="public-inheritance">
+        <childnode refid="5577" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4822">
+      <node id="5569">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
-      <node id="4825">
+      <node id="5572">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
-      <node id="4803">
+      <node id="5557">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="5556" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5558" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+      <node id="5547">
         <label>openage::Sound</label>
         <link refid="classopenage_1_1_sound"/>
-        <childnode refid="4804" relation="usage">
+        <childnode refid="5548" relation="usage">
           <edgelabel>+game_spec</edgelabel>
         </childnode>
       </node>
-      <node id="4824">
+      <node id="5571">
         <label>openage::input::InputManager</label>
         <link refid="classopenage_1_1input_1_1_input_manager"/>
-        <childnode refid="4825" relation="public-inheritance">
+        <childnode refid="5572" relation="public-inheritance">
         </childnode>
-        <childnode refid="4826" relation="usage">
+        <childnode refid="5573" relation="usage">
           <edgelabel>-mouse_position</edgelabel>
         </childnode>
-        <childnode refid="4828" relation="usage">
+        <childnode refid="5575" relation="usage">
           <edgelabel>-global_context</edgelabel>
         </childnode>
-        <childnode refid="4829" relation="usage">
+        <childnode refid="5576" relation="usage">
           <edgelabel>-mouse_motion</edgelabel>
         </childnode>
-        <childnode refid="4831" relation="usage">
+        <childnode refid="5578" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
       </node>
-      <node id="4805">
+      <node id="5549">
         <label>openage::AssetManager</label>
         <link refid="classopenage_1_1_asset_manager"/>
-        <childnode refid="4806" relation="usage">
+        <childnode refid="5550" relation="usage">
           <edgelabel>-asset_path</edgelabel>
         </childnode>
-        <childnode refid="4807" relation="usage">
+        <childnode refid="5551" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
-        <childnode refid="4842" relation="usage">
+        <childnode refid="5589" relation="usage">
           <edgelabel>+gui_link</edgelabel>
         </childnode>
       </node>
-      <node id="4834">
+      <node id="5581">
         <label>openage::coord::CoordManager</label>
         <link refid="classopenage_1_1coord_1_1_coord_manager"/>
-        <childnode refid="4835" relation="usage">
+        <childnode refid="5582" relation="usage">
           <edgelabel>+camgame_viewport</edgelabel>
           <edgelabel>+camhud_viewport</edgelabel>
         </childnode>
-        <childnode refid="4837" relation="usage">
+        <childnode refid="5584" relation="usage">
           <edgelabel>+camgame_phys</edgelabel>
         </childnode>
-        <childnode refid="4839" relation="usage">
+        <childnode refid="5586" relation="usage">
           <edgelabel>+tile_size</edgelabel>
         </childnode>
-        <childnode refid="4819" relation="usage">
+        <childnode refid="5566" relation="usage">
           <edgelabel>+viewport_size</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/unit_texture.h" line="26" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="26" bodyend="117"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_texture.h" bodystart="26" bodyend="117"/>
     <listofallmembers>
       <member refid="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>angle_count</name></member>
       <member refid="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>angles_included</name></member>

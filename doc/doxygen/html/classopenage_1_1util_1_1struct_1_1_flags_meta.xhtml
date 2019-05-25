@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.struct.FlagsMeta Class Reference</title>
+<title>openage: openage.util.struct.FlagsMeta Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1struct_1_1_fla
 
 <p>Metaclass for <a class="el" href="classopenage_1_1util_1_1struct_1_1_flags.xhtml" title="Designed to be inherited from, similar to Enum.">Flags</a>.  
  <a href="classopenage_1_1util_1_1struct_1_1_flags_meta.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.util.struct.FlagsMeta:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_meta__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.struct.FlagsMeta:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_meta__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.struct.FlagsMeta:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_meta__coll__graph.svg" width="206" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.struct.FlagsMeta:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_meta__coll__graph.svg" width="206" height="214"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -166,11 +169,22 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="struct_8py_source.xhtml#l00222">222</a> of file <a class="el" href="struct_8py_source.xhtml">struct.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">if</span> membername == <span class="stringliteral">&quot;specstr&quot;</span>:</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                specstr_found = <span class="keyword">True</span></div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(value, str):</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    <span class="keywordflow">raise</span> TypeError(</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        <span class="stringliteral">&quot;expected str as value for specstr, &quot;</span></div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                        <span class="stringliteral">&quot;but got &quot;</span> + <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(value))</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <span class="keywordflow">continue</span></div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> callable(value) <span class="keywordflow">or</span> isinstance(value, classmethod):</div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                <span class="keywordflow">continue</span></div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(value, int):</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">raise</span> TypeError(</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    <span class="stringliteral">&quot;expected int as value for flag &quot;</span> + membername + <span class="stringliteral">&quot;, &quot;</span></div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    <span class="stringliteral">&quot;but got &quot;</span> + <a class="code" href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">repr</a>(value))</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            flagvalue = 1 &lt;&lt; value</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            flags[flagvalue] = membername</div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">if</span> flags <span class="keywordflow">and</span> <span class="keywordflow">not</span> specstr_found:</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;expected a &#39;specstr&#39; attribute&quot;</span>)</div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        classdict[<span class="stringliteral">&quot;_flags&quot;</span>] = flags</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordflow">return</span> type.__new__(mcs, name, bases, classdict)</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">class </span>Flags(metaclass=FlagsMeta):</div><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">    Designed to be inherited from, similar to Enum.</span></div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="stringliteral">    Used to generate flag parsers (for boolean flags that</span></div><div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">    are stored in an integer value).</span></div><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral">    Specify the bit numbers of all possible flags as attributes,</span></div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="stringliteral">    e.g.:</span></div><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="stringliteral">    class MyFlags(Flags):</span></div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="stringliteral">        thisflag = 0</span></div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="stringliteral">        thatflag = 1</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1util_xhtml_a7bc4421a5f0f57f3a0aba3f96eb8d19c"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c">openage::util::repr</a></div><div class="ttdeci">std::string repr(const std::string &amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="repr_8cpp_source.xhtml#l00012">repr.cpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="repr_8cpp_source.xhtml#l00012">openage::util.repr()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1struct_1_1_flags_meta_a7f7aa6ac1d715dc74204a215f710794b_cgraph.svg" width="592" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/<a class="el" href="struct_8py_source.xhtml">struct.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/<a class="el" href="struct_8py_source.xhtml">struct.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

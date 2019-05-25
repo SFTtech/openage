@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/abortable_job_state.h" line="24" column="1" bodyfile="libopenage/job/abortable_job_state.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +46,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/abortable_job_state.h" line="27" column="1" bodyfile="libopenage/job/abortable_job_state.h" bodystart="27" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" bodystart="27" bodyend="32"/>
+        <references refid="classopenage_1_1job_1_1_typed_job_state_base_1a830096838fa28692b52e346b3b3e7294" compoundref="typed__job__state__base_8h" startline="35">openage::job::TypedJobStateBase&lt; T &gt;::callback</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_abortable_job_state_1a74f34776b673c208e5ad3ef12778660d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -60,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/abortable_job_state.h" line="35" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" line="35" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -81,7 +82,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/abortable_job_state.h" line="38" column="1" bodyfile="libopenage/job/abortable_job_state.h" bodystart="38" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" bodystart="38" bodyend="47"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -90,42 +92,42 @@
 <para>An abortable job state supports job that can be aborted. This is done by providing two function objects to the job&apos;s function. One is used to check whether the job should be aborted, while the other one aborts the job. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="0">
+      <node id="3872">
         <label>openage::job::AbortableJobState&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_abortable_job_state"/>
-        <childnode refid="1" relation="public-inheritance">
+        <childnode refid="3873" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1">
+      <node id="3873">
         <label>openage::job::TypedJobStateBase&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_typed_job_state_base"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="3874" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="3874">
         <label>openage::job::JobStateBase</label>
         <link refid="classopenage_1_1job_1_1_job_state_base"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
+      <node id="3875">
         <label>openage::job::AbortableJobState&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_abortable_job_state"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="3876" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="3876">
         <label>openage::job::TypedJobStateBase&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_typed_job_state_base"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="3877" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="3877">
         <label>openage::job::JobStateBase</label>
         <link refid="classopenage_1_1job_1_1_job_state_base"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/job/abortable_job_state.h" line="21" column="1" bodyfile="libopenage/job/abortable_job_state.h" bodystart="21" bodyend="48"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/abortable_job_state.h" bodystart="21" bodyend="48"/>
     <listofallmembers>
       <member refid="classopenage_1_1job_1_1_abortable_job_state_1a84df7b62e9bbcf9894e7965e9809c935" prot="public" virt="non-virtual"><scope>openage::job::AbortableJobState</scope><name>AbortableJobState</name></member>
       <member refid="classopenage_1_1job_1_1_typed_job_state_base_1a830096838fa28692b52e346b3b3e7294" prot="public" virt="non-virtual"><scope>openage::job::AbortableJobState</scope><name>callback</name></member>

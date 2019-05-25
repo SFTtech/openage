@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_f8c2790f072062ca31393539e9a4c2e7" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert</compoundname>
+    <innerdir refid="dir_2220708b3a09db22ca7ba5a5fcfaa7ea">C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat</innerdir>
+    <innerdir refid="dir_7f20b896dd0f3b9f204c3a9a88379a15">C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata</innerdir>
+    <innerdir refid="dir_ac3d15e66655c9135fc1c812d506c114">C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded</innerdir>
+    <innerdir refid="dir_fa31cf4f881688b6da6b3c8d8f7416e9">C:/Users/Jameson/Documents/git-projects/openage/openage/convert/interface</innerdir>
+    <innerdir refid="dir_bc0e863516a08e2e925b164a3c40830e">C:/Users/Jameson/Documents/git-projects/openage/openage/convert/opus</innerdir>
+    <innerfile refid="convert_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="binpack_8py">binpack.py</innerfile>
+    <innerfile refid="blendomatic_8py">blendomatic.py</innerfile>
+    <innerfile refid="changelog_8py">changelog.py</innerfile>
+    <innerfile refid="colortable_8py">colortable.py</innerfile>
+    <innerfile refid="driver_8py">driver.py</innerfile>
+    <innerfile refid="drs_8py">drs.py</innerfile>
+    <innerfile refid="fix__data_8py">fix_data.py</innerfile>
+    <innerfile refid="game__versions_8py">game_versions.py</innerfile>
+    <innerfile refid="hdlanguagefile_8py">hdlanguagefile.py</innerfile>
+    <innerfile refid="convert_2main_8py">main.py</innerfile>
+    <innerfile refid="pefile_8py">pefile.py</innerfile>
+    <innerfile refid="peresource_8py">peresource.py</innerfile>
+    <innerfile refid="singlefile_8py">singlefile.py</innerfile>
+    <innerfile refid="slp__converter__pool_8py">slp_converter_pool.py</innerfile>
+    <innerfile refid="stringresource_8py">stringresource.py</innerfile>
+    <innerfile refid="texture_8py">texture.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/"/>
+  </compounddef>
+</doxygen>

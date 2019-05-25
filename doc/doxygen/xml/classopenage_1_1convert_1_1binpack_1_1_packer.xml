@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1binpack_1_1_packer" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::binpack::Packer</compoundname>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer" prot="public" virt="non-virtual">openage.convert.binpack.BinaryTreePacker</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1binpack_1_1_column_packer" prot="public" virt="non-virtual">openage.convert.binpack.ColumnPacker</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1binpack_1_1_row_packer" prot="public" virt="non-virtual">openage.convert.binpack.RowPacker</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.Packer::margin</definition>
+        <argsstring></argsstring>
+        <name>margin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.Packer::mapping</definition>
+        <argsstring></argsstring>
+        <name>mapping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ae48dccc105acdb2ded7629bc1060847c" compoundref="binpack_8py" startline="177" endline="196">openage.convert.binpack.BinaryTreePacker.fit</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" compoundref="binpack_8py" startline="43" endline="46">openage.convert.binpack.Packer.height</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" compoundref="binpack_8py" startline="35" endline="37">openage.convert.binpack.Packer.pos</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a461f1dcbab5392fa90e45f52efe1c36e" compoundref="binpack_8py" startline="173" endline="176">openage.convert.binpack.BinaryTreePacker.pos</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" compoundref="binpack_8py" startline="39" endline="41">openage.convert.binpack.Packer.width</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_1adfd10fb188f5f1bd4336fe574dbe92ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.Packer.__init__</definition>
+        <argsstring>(self, margin)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" kindref="member">margin</ref></type>
+          <defname>margin</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_1ac0edc354fd6c4e1d7396e66e877fc3f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.Packer.pack</definition>
+        <argsstring>(self, blocks)</argsstring>
+        <name>pack</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1binpack_1_1_row_packer_1aef2c5b7c7757e7a65cbd6ff368e8ebfb">pack</reimplementedby>
+        <reimplementedby refid="classopenage_1_1convert_1_1binpack_1_1_column_packer_1a562a27648338ebfbdc76b7daab3307f3">pack</reimplementedby>
+        <reimplementedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1ada535734ec9cd8314c97b931843ee216">pack</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>blocks</type>
+          <defname>blocks</defname>
+        </param>
+        <briefdescription>
+<para>Pack all the blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Each block must have a width and height attribute.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.Packer.pos</definition>
+        <argsstring>(self, block)</argsstring>
+        <name>pos</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_1a461f1dcbab5392fa90e45f52efe1c36e">pos</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="35" bodyend="37"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" compoundref="binpack_8py" startline="25">openage.convert.binpack.Packer.mapping</references>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" compoundref="binpack_8py" startline="43" endline="46">openage.convert.binpack.Packer.height</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" compoundref="binpack_8py" startline="39" endline="41">openage.convert.binpack.Packer.width</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.Packer.width</definition>
+        <argsstring>(self)</argsstring>
+        <name>width</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Gets the total width of the packing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="39" bodyend="41"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" compoundref="binpack_8py" startline="25">openage.convert.binpack.Packer.mapping</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" compoundref="binpack_8py" startline="35" endline="37">openage.convert.binpack.Packer.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.Packer.height</definition>
+        <argsstring>(self)</argsstring>
+        <name>height</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Gets the total height of the packing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="43" bodyend="46"/>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" compoundref="binpack_8py" startline="25">openage.convert.binpack.Packer.mapping</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" compoundref="binpack_8py" startline="35" endline="37">openage.convert.binpack.Packer.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a0fb9ec17369344bb7abbda8312ce8dbe" compoundref="fifo_8py" startline="37">openage.util.filelike.fifo.FIFO.pos</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1ae74a4d495574f0140d51a02814837b7f" compoundref="lzxdstream_8py" startline="51">openage.cabextract.lzxdstream.LZXDStream.pos</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object_1af050a9db86efcd8b06fa90a57c0c7988" compoundref="readonly_8py" startline="53">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <references refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" compoundref="terrain_8h" startline="123">openage::tile_data::pos</references>
+        <references refid="classopenage_1_1_command_1aa1d238d3fc1229439dbebd8fce4bc474" compoundref="command_8h" startline="137">openage::Command::pos</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_f_file_1a255f4e7a8e4b5559a4a6471d8d679483" compoundref="cab_8py" startline="152">openage.cabextract.cab.CFFile.pos</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Packs blocks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="909">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+      <node id="912">
+        <label>openage.convert.binpack.RowPacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_row_packer"/>
+        <childnode refid="909" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="911">
+        <label>openage.convert.binpack.ColumnPacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_column_packer"/>
+        <childnode refid="909" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="910">
+        <label>openage.convert.binpack.BinaryTreePacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer"/>
+        <childnode refid="909" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="913">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="21" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1adfd10fb188f5f1bd4336fe574dbe92ad" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a6e7729bcab167b862bccfe18896d576c" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>mapping</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>margin</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1ac0edc354fd6c4e1d7396e66e877fc3f3" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>pack</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>pos</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" prot="public" virt="non-virtual"><scope>openage::convert::binpack::Packer</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

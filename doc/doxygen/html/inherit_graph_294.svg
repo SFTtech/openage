@@ -9,24 +9,24 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 81)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-81 663,-81 663,4 -4,4"/>
-<!-- Node438 -->
-<g id="node1" class="node"><title>Node438</title>
+<!-- Node117 -->
+<g id="node1" class="node"><title>Node117</title>
 <g id="a_node1"><a xlink:href="classqtsdl_1_1_gui_item_methods.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="0,-38.5 0,-57.5 138,-57.5 138,-38.5 0,-38.5"/>
 <text text-anchor="middle" x="69" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemMethods&lt; T &gt;</text>
 </a>
 </g>
 </g>
-<!-- Node439 -->
-<g id="node2" class="node"><title>Node439</title>
+<!-- Node118 -->
+<g id="node2" class="node"><title>Node118</title>
 <g id="a_node2"><a xlink:href="classqtsdl_1_1_gui_item_core_instantiator.xhtml" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="174,-57.5 174,-76.5 343,-76.5 343,-57.5 174,-57.5"/>
 <text text-anchor="middle" x="258.5" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::GuiItemCoreInstantiator&lt; T &gt;</text>
 </a>
 </g>
 </g>
-<!-- Node438&#45;&gt;Node439 -->
-<g id="edge1" class="edge"><title>Node438&#45;&gt;Node439</title>
+<!-- Node117&#45;&gt;Node118 -->
+<g id="edge1" class="edge"><title>Node117&#45;&gt;Node118</title>
 <path fill="none" stroke="midnightblue" d="M148.424,-55.947C156.873,-56.8031 165.493,-57.6766 173.998,-58.5385"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="148.524,-52.4393 138.222,-54.9132 147.818,-59.4036 148.524,-52.4393"/>
 </g>
@@ -38,8 +38,8 @@
 </a>
 </g>
 </g>
-<!-- Node438&#45;&gt;Node3 -->
-<g id="edge4" class="edge"><title>Node438&#45;&gt;Node3</title>
+<!-- Node117&#45;&gt;Node3 -->
+<g id="edge4" class="edge"><title>Node117&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M148.218,-40.0739C162.084,-38.6688 176.417,-37.2164 189.956,-35.8444"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="147.818,-36.5964 138.222,-41.0868 148.524,-43.5607 147.818,-36.5964"/>
 </g>
@@ -51,8 +51,8 @@
 </a>
 </g>
 </g>
-<!-- Node439&#45;&gt;Node1 -->
-<g id="edge2" class="edge"><title>Node439&#45;&gt;Node1</title>
+<!-- Node118&#45;&gt;Node1 -->
+<g id="edge2" class="edge"><title>Node118&#45;&gt;Node1</title>
 <path fill="none" stroke="midnightblue" d="M312.087,-55.1757C335.913,-49.8184 363.707,-43.5689 386.161,-38.5201"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="311.134,-51.8024 302.146,-57.411 312.67,-58.6319 311.134,-51.8024"/>
 </g>

@@ -4,16 +4,16 @@
     <compoundname>research.h</compoundname>
     <includes local="no">string</includes>
     <includes local="no">memory</includes>
-    <includedby refid="unit_2action_8h" local="yes">libopenage/unit/action.h</includedby>
-    <includedby refid="ability_8cpp" local="yes">libopenage/unit/ability.cpp</includedby>
-    <includedby refid="unit_2action_8cpp" local="yes">libopenage/unit/action.cpp</includedby>
-    <includedby refid="research_8cpp" local="yes">libopenage/unit/research.cpp</includedby>
+    <includedby refid="unit_2action_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</includedby>
+    <includedby refid="ability_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</includedby>
+    <includedby refid="unit_2action_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</includedby>
+    <includedby refid="research_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp</includedby>
     <incdepgraph>
       <node id="26168">
         <label>string</label>
       </node>
       <node id="26167">
-        <label>libopenage/unit/research.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h</label>
         <link refid="research_8h"/>
         <childnode refid="26168" relation="include">
         </childnode>
@@ -26,23 +26,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="26177">
-        <label>libopenage/unit/unit.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit.cpp</label>
         <link refid="unit_8cpp"/>
       </node>
       <node id="26173">
-        <label>libopenage/unit/ability.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/ability.cpp</label>
         <link refid="ability_8cpp"/>
       </node>
       <node id="26175">
-        <label>libopenage/unit/producer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/producer.cpp</label>
         <link refid="producer_8cpp"/>
       </node>
       <node id="26172">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="26170">
-        <label>libopenage/unit/research.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h</label>
         <link refid="research_8h"/>
         <childnode refid="26171" relation="include">
         </childnode>
@@ -54,23 +54,23 @@
         </childnode>
       </node>
       <node id="26178">
-        <label>libopenage/unit/unit_type.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/unit_type.cpp</label>
         <link refid="unit__type_8cpp"/>
       </node>
       <node id="26174">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="26176">
-        <label>libopenage/unit/selection.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/selection.cpp</label>
         <link refid="selection_8cpp"/>
       </node>
       <node id="26179">
-        <label>libopenage/unit/research.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.cpp</label>
         <link refid="research_8cpp"/>
       </node>
       <node id="26171">
-        <label>libopenage/unit/action.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.h</label>
         <link refid="unit_2action_8h"/>
         <childnode refid="26172" relation="include">
         </childnode>
@@ -187,6 +187,6 @@
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/research.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/research.h"/>
   </compounddef>
 </doxygen>

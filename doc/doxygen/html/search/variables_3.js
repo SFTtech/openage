@@ -106,7 +106,7 @@ var searchData=
   ['continued',['continued',['../classopenage_1_1cabextract_1_1cab_1_1_c_f_file.xhtml#a3de5f0c9bb5cbeb91584e12a9acf04bb',1,'openage::cabextract::cab::CFFile']]],
   ['continues',['continues',['../classopenage_1_1cabextract_1_1cab_1_1_c_f_file.xhtml#a452e47b0f3678170ea7c143ad77d5cb3',1,'openage::cabextract::cab::CFFile']]],
   ['coord',['coord',['../classopenage_1_1_engine.xhtml#ad5478f5f2e6dba3a8b4aab3fe828ef3c',1,'openage::Engine']]],
-  ['copyright',['copyright',['../classopenage_1_1convert_1_1drs_1_1_d_r_s_header.xhtml#abd0d8e92edeb0805ddea831344c1116c',1,'openage.convert.drs.DRSHeader.copyright()'],['../namespaceopenage_1_1conf.xhtml#a8a4c8e7da34151b8ecafbd813b90b0b1',1,'openage.conf.copyright()']]],
+  ['copyright',['copyright',['../classopenage_1_1convert_1_1drs_1_1_d_r_s_header.xhtml#abd0d8e92edeb0805ddea831344c1116c',1,'openage::convert::drs::DRSHeader']]],
   ['copyright_5fsize',['COPYRIGHT_SIZE',['../namespaceopenage_1_1convert_1_1drs.xhtml#a1c9d8697261088159f7e4edcce843ab4',1,'openage::convert::drs']]],
   ['core',['core',['../classopenage_1_1gui_1_1_engine_link.xhtml#a674b930676b3807da15227d9a3a7e9e9',1,'openage::gui::EngineLink::core()'],['../classqtsdl_1_1_persistent_core_holder.xhtml#abc03e02b436a9b771b3e35efa5230780',1,'qtsdl::PersistentCoreHolder::core()']]],
   ['cost',['cost',['../classopenage_1_1_repair_action.xhtml#a73b5f8fc4369c53b5230b67a62586114',1,'openage::RepairAction::cost()'],['../classopenage_1_1_unit_type.xhtml#a19960affc865b0f5d5c9aab5524831ee',1,'openage::UnitType::cost()']]],

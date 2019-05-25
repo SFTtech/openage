@@ -16,7 +16,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="318" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="318" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="318" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="318" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" compoundref="enum__test_8cpp" startline="15" endline="45">openage::util::tests::enum_</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1a6781d6f730ba4ec0de006209a4578f06" compoundref="stringformatter_8h" startline="272" endline="274">FString</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1a25e403e8e3ee7462ed20e6fcf33f510a" compoundref="stringformatter_8h" startline="304" endline="306">operator const std::string &amp;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1ad8485cc2e0ece728bfc22c6c8d55b3f5" compoundref="stringformatter_8h" startline="308" endline="310">operator std::string</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1a8034b9b91efab393bfaee00be7267273" compoundref="stringformatter_8h" startline="300" endline="302">operator std::string &amp;</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1a26060a21e2a84090f618139322c53ee3" compoundref="stringformatter_8h" startline="288" endline="291">operator=</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" compoundref="stringformatter_8h" startline="312" endline="315">reset</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="272" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="272" bodyend="274"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="272" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="272" bodyend="274"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a0ee14b9c964e5bcdf909fb877ea99cf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -48,7 +56,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="278" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="278" bodyend="281"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="278" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="278" bodyend="281"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1aa863db7df7b17caa1eba82568ded809e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -65,7 +74,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="283" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="283" bodyend="286"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="283" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="283" bodyend="286"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a26060a21e2a84090f618139322c53ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> &amp;</type>
@@ -82,7 +92,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="288" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="288" bodyend="291"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="288" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="288" bodyend="291"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1ad1df6c4aa6f0bdfa096b596e03803260" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> &amp;</type>
@@ -99,7 +110,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="293" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="293" bodyend="296"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="293" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="293" bodyend="296"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a8034b9b91efab393bfaee00be7267273" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -112,7 +125,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="300" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="300" bodyend="302"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="300" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="300" bodyend="302"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a25e403e8e3ee7462ed20e6fcf33f510a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -125,7 +139,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="304" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="304" bodyend="306"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="304" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="304" bodyend="306"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1ad8485cc2e0ece728bfc22c6c8d55b3f5" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
         <type></type>
@@ -138,7 +153,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="308" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="308" bodyend="310"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="308" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="308" bodyend="310"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -151,7 +168,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/stringformatter.h" line="312" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="312" bodyend="315"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="312" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="312" bodyend="315"/>
+        <references refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" compoundref="stringformatter_8h" startline="318">buffer</references>
+        <references refid="classopenage_1_1util_1_1_string_formatter_1a3007d4045a594b7b18d9936908732cb1" compoundref="stringformatter_8h" startline="217" endline="221">openage::util::StringFormatter&lt; FString &gt;::reset_flags</references>
+        <referencedby refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" compoundref="coord__test_8cpp" startline="36" endline="90">openage::coord::tests::coord</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" compoundref="enum__test_8cpp" startline="15" endline="45">openage::util::tests::enum_</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" compoundref="fixed__point__test_8cpp" startline="15" endline="100">openage::util::tests::fixed_point</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -164,61 +186,78 @@
 <para>std::string stuff() { std::stringstream sstr; sstr &lt;&lt; &quot;test: &quot; &lt;&lt; 5 &lt;&lt; std::cout; return <ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">sstr.str()</ref>; } </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1550">
+      <node id="5941">
         <label>openage::util::FString</label>
         <link refid="classopenage_1_1util_1_1_f_string"/>
-        <childnode refid="1551" relation="public-inheritance">
+        <childnode refid="5942" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1551">
+      <node id="5942">
         <label>openage::util::StringFormatter&lt; FString &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="5943" relation="template-instance">
+          <edgelabel>&lt; FString &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5943">
+        <label>openage::util::StringFormatter&lt; ChildType &gt;</label>
         <link refid="classopenage_1_1util_1_1_string_formatter"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1554">
+      <node id="5946">
         <label>openage::util::CachableOSStream</label>
         <link refid="classopenage_1_1util_1_1_cachable_o_s_stream"/>
-        <childnode refid="1555" relation="usage">
+        <childnode refid="5947" relation="usage">
           <edgelabel>+stream</edgelabel>
         </childnode>
       </node>
-      <node id="1552">
+      <node id="5944">
         <label>openage::util::FString</label>
         <link refid="classopenage_1_1util_1_1_f_string"/>
-        <childnode refid="1553" relation="public-inheritance">
+        <childnode refid="5945" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1555">
+      <node id="5947">
         <label>openage::util::ExternalOStringStream</label>
         <link refid="classopenage_1_1util_1_1_external_o_string_stream"/>
-        <childnode refid="1556" relation="public-inheritance">
+        <childnode refid="5948" relation="public-inheritance">
         </childnode>
-        <childnode refid="1557" relation="usage">
+        <childnode refid="5949" relation="usage">
           <edgelabel>-buf</edgelabel>
         </childnode>
       </node>
-      <node id="1558">
+      <node id="5950">
         <label>std::streambuf</label>
       </node>
-      <node id="1553">
+      <node id="5945">
         <label>openage::util::StringFormatter&lt; FString &gt;</label>
         <link refid="classopenage_1_1util_1_1_string_formatter"/>
-        <childnode refid="1554" relation="usage">
+        <childnode refid="5946" relation="usage">
+          <edgelabel>-stream_ptr</edgelabel>
+        </childnode>
+        <childnode refid="5951" relation="template-instance">
+          <edgelabel>&lt; FString &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="5948">
+        <label>std::ostream</label>
+      </node>
+      <node id="5949">
+        <label>openage::util::ExternalStringBuf</label>
+        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
+        <childnode refid="5950" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5951">
+        <label>openage::util::StringFormatter&lt; ChildType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="5946" relation="usage">
           <edgelabel>-stream_ptr</edgelabel>
         </childnode>
       </node>
-      <node id="1556">
-        <label>std::ostream</label>
-      </node>
-      <node id="1557">
-        <label>openage::util::ExternalStringBuf</label>
-        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
-        <childnode refid="1558" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="libopenage/util/stringformatter.h" line="270" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="270" bodyend="319"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" line="270" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/stringformatter.h" bodystart="270" bodyend="319"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>buffer</name></member>
       <member refid="classopenage_1_1util_1_1_string_formatter_1adee46a55b6f42172045bc199ef0469f0" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>child_type_ref</name></member>

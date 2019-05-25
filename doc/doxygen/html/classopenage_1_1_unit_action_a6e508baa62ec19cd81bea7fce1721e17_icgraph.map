@@ -1,0 +1,5 @@
+<map id="openage::UnitAction::get_attack_range" name="openage::UnitAction::get_attack_range">
+<area shape="rect" id="node1" title=" " alt="" coords="208,39,347,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attack_action.xhtml#ab41b0edfc4a7e4927144b9caa87d7f46" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_heal_action.xhtml#ae6c7160317b9b913429a0afd51a368c2" title=" " alt="" coords="11,71,154,112"/>
+</map>

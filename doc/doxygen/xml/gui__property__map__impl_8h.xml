@@ -3,16 +3,16 @@
   <compounddef id="gui__property__map__impl_8h" kind="file" language="C++">
     <compoundname>gui_property_map_impl.h</compoundname>
     <includes local="no">QObject</includes>
-    <includedby refid="gui__item__list__model_8h" local="yes">libopenage/gui/guisys/link/gui_item_list_model.h</includedby>
-    <includedby refid="generator__link_8cpp" local="yes">libopenage/gui/generator_link.cpp</includedby>
-    <includedby refid="gui__property__map__impl_8cpp" local="yes">libopenage/gui/guisys/link/gui_property_map_impl.cpp</includedby>
-    <includedby refid="gui__property__map_8cpp" local="yes">libopenage/gui/guisys/public/gui_property_map.cpp</includedby>
+    <includedby refid="gui__item__list__model_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h</includedby>
+    <includedby refid="generator__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</includedby>
+    <includedby refid="gui__property__map__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp</includedby>
+    <includedby refid="gui__property__map_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp</includedby>
     <incdepgraph>
       <node id="12818">
         <label>QObject</label>
       </node>
       <node id="12817">
-        <label>libopenage/gui/guisys/link/gui_property_map_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h</label>
         <link refid="gui__property__map__impl_8h"/>
         <childnode refid="12818" relation="include">
         </childnode>
@@ -20,19 +20,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12825">
-        <label>libopenage/gui/guisys/link/gui_property_map_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.cpp</label>
         <link refid="gui__property__map__impl_8cpp"/>
       </node>
       <node id="12824">
-        <label>libopenage/gui/generator_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</label>
         <link refid="generator__link_8cpp"/>
       </node>
       <node id="12822">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="12821">
-        <label>libopenage/gui/generator_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h</label>
         <link refid="generator__link_8h"/>
         <childnode refid="12822" relation="include">
         </childnode>
@@ -42,13 +42,13 @@
         </childnode>
       </node>
       <node id="12820">
-        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item_list_model.h</label>
         <link refid="gui__item__list__model_8h"/>
         <childnode refid="12821" relation="include">
         </childnode>
       </node>
       <node id="12819">
-        <label>libopenage/gui/guisys/link/gui_property_map_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h</label>
         <link refid="gui__property__map__impl_8h"/>
         <childnode refid="12820" relation="include">
         </childnode>
@@ -60,11 +60,11 @@
         </childnode>
       </node>
       <node id="12826">
-        <label>libopenage/gui/guisys/public/gui_property_map.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_property_map.cpp</label>
         <link refid="gui__property__map_8cpp"/>
       </node>
       <node id="12823">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
     </invincdepgraph>
@@ -99,6 +99,6 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/gui_property_map_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_property_map_impl.h"/>
   </compounddef>
 </doxygen>

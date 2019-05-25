@@ -1,0 +1,43 @@
+<map id="openage::util::fslike::Directory::resolve" name="openage::util::fslike::Directory::resolve">
+<area shape="rect" id="node1" title=" " alt="" coords="928,1072,1063,1113"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a2c5d51674da6c9c62ae8753f3a8a6cd0" title=" " alt="" coords="721,136,855,177"/>
+<area shape="rect" id="node10" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#aa05f20e2d1e377421774d2360d54d237" title=" " alt="" coords="258,201,393,243"/>
+<area shape="rect" id="node14" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a4ac25f156e1e61aaf181aeac4a8ed536" title=" " alt="" coords="696,595,880,636"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#aa1f011f4012ff1e02ecfdd5df30b7e84" title=" " alt="" coords="698,660,878,701"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a4b6007750c576514ea97305cd10299b1" title=" " alt="" coords="696,725,880,767"/>
+<area shape="rect" id="node17" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a2cd6e092ef3d99243d60ba7d05ff10c5" title=" " alt="" coords="464,515,648,556"/>
+<area shape="rect" id="node18" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#aaf5c2b924c92a941b7a0bb5044bad272" title=" " alt="" coords="696,791,880,832"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a34049b9a977a33a7173bb90ab96df65f" title=" " alt="" coords="721,856,855,897"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a25898fdc286da3d08b1a8010c96fca6b" title="Shall yield the entry names of the given directory." alt="" coords="696,973,880,1015"/>
+<area shape="rect" id="node21" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a593147786283242dd86370ad6f97e068" title=" " alt="" coords="464,944,648,985"/>
+<area shape="rect" id="node22" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#afcf06147cea96c5b86d105ec9c02af92" title="Shall ensure that the directory exists." alt="" coords="696,1039,880,1080"/>
+<area shape="rect" id="node23" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#ad8d226499167ea30f6e47638ea498987" title=" " alt="" coords="696,1104,880,1145"/>
+<area shape="rect" id="node24" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ac4207abf1b91ac361bba198c58709555" title=" " alt="" coords="721,1169,855,1211"/>
+<area shape="rect" id="node25" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#adc68385f8c0a0bb2e2bef0f10436574d" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;a&#39;&quot;)." alt="" coords="696,1235,880,1276"/>
+<area shape="rect" id="node26" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#af22803a261b1e56ddf1b3046f34c4914" title=" " alt="" coords="720,1300,856,1341"/>
+<area shape="rect" id="node27" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#ad6e7f48b2d5c8f010c9c1088e6341559" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;a+&#39;&quot;)." alt="" coords="696,1365,880,1407"/>
+<area shape="rect" id="node28" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a85129377f5f8b133c45ea585b42b6e4e" title=" " alt="" coords="721,1431,855,1472"/>
+<area shape="rect" id="node29" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a3dfe1315b1f3db58f58c0bcd5febe499" title="Shall return a BufferedReader for the given file (&quot;mode &#39;rb&#39;&quot;)." alt="" coords="696,1496,880,1537"/>
+<area shape="rect" id="node30" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ab5decb9af0d2373df3a4c6acade814e3" title=" " alt="" coords="719,1561,857,1603"/>
+<area shape="rect" id="node31" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a250151bde89bbed4e41d7d203bc10fc4" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;r+&#39;&quot;)." alt="" coords="696,1627,880,1668"/>
+<area shape="rect" id="node32" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a30009d2a2d94139e2688d07b5df1de8a" title=" " alt="" coords="721,1692,855,1733"/>
+<area shape="rect" id="node33" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a99e770abe2bcbff7b472b348de2bf67c" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="696,1757,880,1799"/>
+<area shape="rect" id="node34" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ad63db9e7e3a5f49a93f47d7904f2de33" title=" " alt="" coords="721,1823,855,1864"/>
+<area shape="rect" id="node35" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a3d1559d9fd9d3b3d7b8802b35865b734" title="Shall rename a file or directory to the target name." alt="" coords="696,1888,880,1929"/>
+<area shape="rect" id="node36" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ad25337a6884cc2a497b1f142e4f01225" title=" " alt="" coords="489,580,623,621"/>
+<area shape="rect" id="node37" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a26b80b14c729ade6d012864fc94423d7" title="Shall remove an empty directory." alt="" coords="464,319,648,360"/>
+<area shape="rect" id="node38" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ab5d2482157fe89058a2a763141c4d9e9" title=" " alt="" coords="721,1953,855,1995"/>
+<area shape="rect" id="node39" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#aad6df15589e4b45b0b4ff322c5ae49a2" title="Shall create the file or update its timestamp." alt="" coords="696,2019,880,2060"/>
+<area shape="rect" id="node40" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#aea004e3d87864f6f13e2c5d79fc67d2e" title=" " alt="" coords="489,384,623,425"/>
+<area shape="rect" id="node41" href="$classopenage_1_1util_1_1fslike_1_1directory_1_1_directory.xhtml#a31bd13c783048d9480ee5c3cb1e7687b" title="Shall remove a single file." alt="" coords="464,449,648,491"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a071636c64e89976aaa350083c66b6a4a" title=" " alt="" coords="479,5,633,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a4edc467134f448398dbe7cf5ad4dcc11" title=" " alt="" coords="481,71,631,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#ac5dced8dddac80ad98b3804a64a36af0" title=" " alt="" coords="489,201,623,243"/>
+<area shape="rect" id="node13" href="$classopenage_1_1util_1_1fslike_1_1_directory.xhtml#a36e4b63f3b31b1de2370ebe081484159" title=" " alt="" coords="489,136,623,177"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#abc5969fa041b778d0906a452d45f9d0c" title="Test if the parts are a file or a directory." alt="" coords="235,136,416,177"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a54ddfaca7c17c046c0a7472bb6af3d76" title="Recursively deletes this file or directory." alt="" coords="246,417,405,459"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#af30b34d88a17e5d1d7e99046da0490f5" title=" " alt="" coords="5,71,187,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a2a1dc81a2a3a2fa3cf9beea3c99fb9be" title=" " alt="" coords="7,136,185,177"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object.xhtml#a255427aef3f55eea705114af7d7c107f" title="Returns a new flattened path." alt="" coords="5,201,187,243"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper.xhtml#a9477182385b8db4a3b2874a9360b690f" title="Returns a new flattened path." alt="" coords="7,267,185,308"/>
+</map>

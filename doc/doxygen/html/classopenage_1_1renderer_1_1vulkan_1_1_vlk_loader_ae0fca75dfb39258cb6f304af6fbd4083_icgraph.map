@@ -1,0 +1,4 @@
+<map id="openage::renderer::vulkan::VlkLoader::vkCreateDebugReportCallbackEXT" name="openage::renderer::vulkan::VlkLoader::vkCreateDebugReportCallbackEXT">
+<area shape="rect" id="node1" title="Part of VK_EXT_debug_report, allows setting a callback for debug events." alt="" coords="257,5,440,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_window.xhtml#a21953253160e4583181b0bbb21a56601" title=" " alt="" coords="5,13,209,54"/>
+</map>

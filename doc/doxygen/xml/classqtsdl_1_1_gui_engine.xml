@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_engine.h" line="24" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="24" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_engine.h" line="25" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_engine.h" line="20" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_engine_1a239558965efcb73bf1f69d939b69e0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_engine.h" line="21" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.cpp" bodystart="14" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.cpp" bodystart="14" bodyend="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -81,12 +81,12 @@
 <para>Represents one QML execution environment. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2502">
+      <node id="6188">
         <label>qtsdl::GuiEngine</label>
         <link refid="classqtsdl_1_1_gui_engine"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_engine.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="18" bodyend="26"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_engine.h" bodystart="18" bodyend="26"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_engine_1ab7fa0c6752ac0f0adc5634be593facdf" prot="public" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>GuiEngine</name></member>
       <member refid="classqtsdl_1_1_gui_engine_1abd9b139996c2a4007f6a4352afb1acb8" prot="private" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>GuiEngineImpl</name></member>

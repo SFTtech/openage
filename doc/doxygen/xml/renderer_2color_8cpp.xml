@@ -14,7 +14,7 @@
         <label>cstdint</label>
       </node>
       <node id="20413">
-        <label>libopenage/renderer/color.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp</label>
         <link refid="renderer_2color_8cpp"/>
         <childnode refid="20414" relation="include">
         </childnode>
@@ -62,6 +62,6 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/color.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp"/>
   </compounddef>
 </doxygen>

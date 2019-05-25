@@ -4,8 +4,8 @@
     <compoundname>term.h</compoundname>
     <includes local="yes">coord_xy.gen.h</includes>
     <includes refid="declarations_8h" local="yes">declarations.h</includes>
-    <includedby refid="buf_8h" local="yes">libopenage/console/buf.h</includedby>
-    <includedby refid="term_8cpp" local="yes">libopenage/coord/term.cpp</includedby>
+    <includedby refid="buf_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h</includedby>
+    <includedby refid="term_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.cpp</includedby>
     <incdepgraph>
       <node id="4170">
         <label>list</label>
@@ -72,7 +72,7 @@
         </childnode>
       </node>
       <node id="4134">
-        <label>libopenage/coord/term.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h</label>
         <link refid="term_8h"/>
         <childnode refid="4135" relation="include">
         </childnode>
@@ -270,7 +270,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="4178">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="4179" relation="include">
         </childnode>
@@ -284,7 +284,7 @@
         </childnode>
       </node>
       <node id="4175">
-        <label>libopenage/coord/term.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h</label>
         <link refid="term_8h"/>
         <childnode refid="4176" relation="include">
         </childnode>
@@ -292,23 +292,23 @@
         </childnode>
       </node>
       <node id="4182">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="4177">
-        <label>libopenage/console/buf.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp</label>
         <link refid="buf_8cpp"/>
       </node>
       <node id="4183">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="4179">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="4176">
-        <label>libopenage/console/buf.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h</label>
         <link refid="buf_8h"/>
         <childnode refid="4177" relation="include">
         </childnode>
@@ -320,15 +320,15 @@
         </childnode>
       </node>
       <node id="4180">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="4184">
-        <label>libopenage/coord/term.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.cpp</label>
         <link refid="term_8cpp"/>
       </node>
       <node id="4181">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -370,6 +370,6 @@
 <codeline lineno="27"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coord</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/term.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/term.h"/>
   </compounddef>
 </doxygen>

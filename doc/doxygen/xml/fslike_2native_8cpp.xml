@@ -5,7 +5,7 @@
     <includes refid="fslike_2native_8h" local="yes">native.h</includes>
     <incdepgraph>
       <node id="29663">
-        <label>libopenage/util/fslike/native.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/native.cpp</label>
         <link refid="fslike_2native_8cpp"/>
         <childnode refid="29664" relation="include">
         </childnode>
@@ -34,6 +34,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fslike/native.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/native.cpp"/>
   </compounddef>
 </doxygen>

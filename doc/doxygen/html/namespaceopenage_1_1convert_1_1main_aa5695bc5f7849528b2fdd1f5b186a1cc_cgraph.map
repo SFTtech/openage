@@ -1,0 +1,7 @@
+<map id="openage.convert.main.source_dir_proposals" name="openage.convert.main.source_dir_proposals">
+<area shape="rect" id="node1" title="Yield a list of directory names where an installation might be found." alt="" coords="5,78,196,119"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="289,5,407,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="290,56,406,83"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1main.xhtml#af8a76f3d32546fca995c8f50f164f9b7" title="Remove quotes and escapes from a Wine registry value." alt="" coords="244,107,452,149"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1main.xhtml#aaa17c535c5bc580e7b8eefb2d754e806" title="Turn a Wine file path (C:\xyz) into a local filesystem path (~/.wine/xyz)" alt="" coords="259,173,437,214"/>
+</map>

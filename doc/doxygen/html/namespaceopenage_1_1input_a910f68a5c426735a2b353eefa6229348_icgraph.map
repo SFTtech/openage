@@ -1,0 +1,6 @@
+<map id="openage::input::text_to_event" name="openage::input::text_to_event">
+<area shape="rect" id="node1" title=" " alt="" coords="497,39,635,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1input_1_1tests.xhtml#a0291195ab14d6ffb5dcb8e894ec20972" title=" " alt="" coords="281,5,425,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" title=" " alt="" coords="256,71,449,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a" title=" " alt="" coords="5,71,208,112"/>
+</map>

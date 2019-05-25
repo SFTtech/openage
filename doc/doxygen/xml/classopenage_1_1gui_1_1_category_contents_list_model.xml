@@ -18,7 +18,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1ace808fcd0b7da59a100ce5328622d707" compoundref="header__snippet_8py" startline="32" endline="38">openage.convert.dataformat.header_snippet.HeaderSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a3eb4f0dc98dbea6b9b2bbbcf3b2ac03c" compoundref="header__snippet_8py" startline="29" endline="31">openage.convert.dataformat.header_snippet.HeaderSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a30c5bf023e0ba05e40312c371db72912" compoundref="header__snippet_8py" startline="39" endline="43">openage.convert.dataformat.header_snippet.HeaderSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1header__snippet_1_1_header_snippet_1a11a457d1540ec1a98bd4ffd69e8e288e" compoundref="header__snippet_8py" startline="26" endline="28">openage.convert.dataformat.header_snippet.HeaderSnippet.get_file_name</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" compoundref="category__contents__list__model_8cpp" startline="26" endline="28">get_name</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" compoundref="category__contents__list__model_8cpp" startline="68" endline="71">on_categories_content_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1aa2e0aadf7e45f501bde15a55d21908bc" compoundref="category__contents__list__model_8cpp" startline="60" endline="66">on_category_content_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" compoundref="category__contents__list__model_8cpp" startline="30" endline="36">set_name</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" compoundref="path_8py" startline="291" endline="298">openage.util.fslike.path.Path.stem</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" compoundref="path_8py" startline="274" endline="280">openage.util.fslike.path.Path.suffix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" compoundref="path_8py" startline="283" endline="288">openage.util.fslike.path.Path.suffixes</referencedby>
       </memberdef>
       <memberdef kind="property" id="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
         <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">openage::gui::EditorModeLink</ref></type>
@@ -33,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -48,7 +59,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="47" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1a513e643f243204b845e4e3b91fc93f4c" compoundref="category__contents__list__model_8cpp" startline="83" endline="98">data</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1aa2e0aadf7e45f501bde15a55d21908bc" compoundref="category__contents__list__model_8cpp" startline="60" endline="66">on_category_content_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1af71126666038271219acb2c58a33bdfa" compoundref="category__contents__list__model_8cpp" startline="79" endline="81">rowCount</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref> *</type>
@@ -61,7 +75,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="50" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="50" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" compoundref="category__contents__list__model_8cpp" startline="38" endline="40">get_editor_mode</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" compoundref="category__contents__list__model_8cpp" startline="68" endline="71">on_categories_content_changed</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" compoundref="category__contents__list__model_8cpp" startline="42" endline="58">set_editor_mode</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -81,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="29" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="16" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="16" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a7ec725fd660aa71e604cf245ecde7364" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -94,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="30" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="23" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="23" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>QString</type>
@@ -107,7 +124,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="32" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="26" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="26" bodyend="28"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">name</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -124,7 +142,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="33" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="30" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="30" bodyend="36"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">name</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" compoundref="category__contents__list__model_8cpp" startline="68" endline="71">on_categories_content_changed</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref> *</type>
@@ -137,7 +157,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="35" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="38" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="38" bodyend="40"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" compoundref="category__contents__list__model_8h" startline="50">editor_mode</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -154,7 +175,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="36" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="42" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="42" bodyend="58"/>
+        <references refid="classopenage_1_1gui_1_1_editor_mode_link_1a1024fdd297657de82e85614396b32abe">openage::gui::EditorModeLink::categories_content_changed</references>
+        <references refid="classopenage_1_1gui_1_1_editor_mode_link_1a660c501b90f35f3f6ae650bb3460d657">openage::gui::EditorModeLink::category_content_changed</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" compoundref="category__contents__list__model_8h" startline="50">editor_mode</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" compoundref="category__contents__list__model_8cpp" startline="68" endline="71">on_categories_content_changed</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aa2e0aadf7e45f501bde15a55d21908bc" compoundref="category__contents__list__model_8cpp" startline="60" endline="66">on_category_content_changed</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-slot">
@@ -177,7 +203,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="39" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="60" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="60" bodyend="66"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">name</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1a9f6a30d30825b9bbbeba2ae6f1b7ad7d" compoundref="category__contents__list__model_8h" startline="47">type_and_texture</references>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" compoundref="category__contents__list__model_8cpp" startline="42" endline="58">set_editor_mode</referencedby>
       </memberdef>
       <memberdef kind="slot" id="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -190,7 +219,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="40" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="68" bodyend="71"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="68" bodyend="71"/>
+        <references refid="classopenage_1_1gui_1_1_editor_mode_link_1a4604a1e7eae32183404c1e4f8bf5f808" compoundref="game__control__link_8cpp" startline="210" endline="215">openage::gui::EditorModeLink::announce_category_content</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" compoundref="category__contents__list__model_8h" startline="50">editor_mode</references>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" compoundref="category__contents__list__model_8h" startline="25">name</references>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" compoundref="category__contents__list__model_8cpp" startline="42" endline="58">set_editor_mode</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" compoundref="category__contents__list__model_8cpp" startline="30" endline="36">set_name</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -205,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="43" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="73" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="73" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1af71126666038271219acb2c58a33bdfa" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -221,7 +255,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="44" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="79" bodyend="81"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="79" bodyend="81"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1a9f6a30d30825b9bbbeba2ae6f1b7ad7d" compoundref="category__contents__list__model_8h" startline="47">type_and_texture</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a513e643f243204b845e4e3b91fc93f4c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>QVariant</type>
@@ -243,7 +278,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/category_contents_list_model.h" line="45" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="83" bodyend="98"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.cpp" bodystart="83" bodyend="98"/>
+        <references refid="classopenage_1_1gui_1_1_category_contents_list_model_1a9f6a30d30825b9bbbeba2ae6f1b7ad7d" compoundref="category__contents__list__model_8h" startline="47">type_and_texture</references>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -252,64 +289,119 @@
 <para>Adaptor for the contents of a category of the <ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref>. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="735">
+      <node id="2913">
         <label>openage::gui::CategoryContentsListModel</label>
         <link refid="classopenage_1_1gui_1_1_category_contents_list_model"/>
-        <childnode refid="736" relation="public-inheritance">
+        <childnode refid="2914" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="736">
+      <node id="2914">
         <label>QAbstractListModel</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="741">
+      <node id="2922">
+        <label>T</label>
+      </node>
+      <node id="2919">
         <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="742" relation="public-inheritance">
+        <childnode refid="2920" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2921" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="743">
+      <node id="2921">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="2922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2923">
         <label>qtsdl::GuiItemCoreInstantiator&lt; EditorModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
-        <childnode refid="744" relation="public-inheritance">
+        <childnode refid="2924" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2926" relation="template-instance">
+          <edgelabel>&lt; EditorModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="740">
+      <node id="2927">
+        <label>qtsdl::Inherits&lt; T, P &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="2921" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2928" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2918">
         <label>qtsdl::Inherits&lt; OutputModeLink, EditorModeLink &gt;</label>
         <link refid="classqtsdl_1_1_inherits"/>
-        <childnode refid="741" relation="public-inheritance">
+        <childnode refid="2919" relation="public-inheritance">
         </childnode>
-        <childnode refid="743" relation="public-inheritance">
+        <childnode refid="2923" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2927" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, EditorModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="737">
+      <node id="2925">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2929">
+        <label>qtsdl::GuiItemMethods&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2925" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2915">
         <label>openage::gui::CategoryContentsListModel</label>
         <link refid="classopenage_1_1gui_1_1_category_contents_list_model"/>
-        <childnode refid="738" relation="public-inheritance">
+        <childnode refid="2916" relation="public-inheritance">
         </childnode>
-        <childnode refid="739" relation="usage">
+        <childnode refid="2917" relation="usage">
           <edgelabel>-editor_mode</edgelabel>
         </childnode>
       </node>
-      <node id="739">
-        <label>openage::gui::EditorModeLink</label>
-        <link refid="classopenage_1_1gui_1_1_editor_mode_link"/>
-        <childnode refid="740" relation="public-inheritance">
+      <node id="2926">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2925" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="744">
+      <node id="2928">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; P &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2929" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2926" relation="template-instance">
+          <edgelabel>&lt; P &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="2917">
+        <label>openage::gui::EditorModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_editor_mode_link"/>
+        <childnode refid="2918" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2924">
         <label>qtsdl::GuiItemMethods&lt; EditorModeLink &gt;</label>
         <link refid="classqtsdl_1_1_gui_item_methods"/>
+        <childnode refid="2925" relation="template-instance">
+          <edgelabel>&lt; EditorModeLink &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="738">
+      <node id="2916">
         <label>QAbstractListModel</label>
       </node>
-      <node id="742">
+      <node id="2920">
         <label>OutputModeLink</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/category_contents_list_model.h" line="22" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="22" bodyend="51"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/category_contents_list_model.h" bodystart="22" bodyend="51"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae17fe06e8f18750d104b8c3d4ddb2aeb" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>CategoryContentsListModel</name></member>
       <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a513e643f243204b845e4e3b91fc93f4c" prot="private" virt="virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>data</name></member>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cvar_1_1location" kind="namespace" language="Python">
+    <compoundname>openage::cvar::location</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1cvar_1_1location_1a55d460c893fbe41db12a729492a8eea2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.cvar.location.get_config_path</definition>
+        <argsstring>(custom_cfg_dir=None)</argsstring>
+        <name>get_config_path</name>
+        <param>
+          <type>custom_cfg_dir</type>
+          <defname>custom_cfg_dir</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/location.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/location.py" bodystart="22" bodyend="53"/>
+        <referencedby refid="namespaceopenage_1_1game_1_1main_1ae53287c14640e82b47c8b3af1e85c4ca" compoundref="game_2main_8py" startline="29" endline="81">openage.game.main.main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cvar/location.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

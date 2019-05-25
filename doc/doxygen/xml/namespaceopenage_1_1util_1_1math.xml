@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1math" kind="namespace" language="Python">
+    <compoundname>openage::util::math</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1math_1a9dda60a6d8361890d63fbed29ab9402b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::math.INF</definition>
+        <argsstring></argsstring>
+        <name>INF</name>
+        <initializer>=  float(&quot;+inf&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1math_1a6cdfadca34e6d6f8629fc354c78719d6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::util::math.TAU</definition>
+        <argsstring></argsstring>
+        <name>TAU</name>
+        <initializer>=  2 * math.pi</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1math_1a790f58dbcc1c954e8eb01698a858bf16" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::util::math.DEGSPERRAD</definition>
+        <argsstring></argsstring>
+        <name>DEGSPERRAD</name>
+        <initializer>=  <ref refid="namespaceopenage_1_1util_1_1math_1a6cdfadca34e6d6f8629fc354c78719d6" kindref="member">TAU</ref> / 360</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" compoundref="quaternion_8h" startline="159" endline="161">openage::util::Quaternion&lt; T &gt;::from_deg</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1math_1a7d719fd9d57ba43e020f3443b3fc2c7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.math.clamp</definition>
+        <argsstring>(val, minval, maxval)</argsstring>
+        <name>clamp</name>
+        <param>
+          <type><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref></type>
+          <defname>val</defname>
+        </param>
+        <param>
+          <type>minval</type>
+          <defname>minval</defname>
+        </param>
+        <param>
+          <type>maxval</type>
+          <defname>maxval</defname>
+        </param>
+        <briefdescription>
+<para>clamps val to be at least minval, and at most maxval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><blockquote><para><blockquote><para><blockquote><para>clamp(9, 3, 7) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>7 <blockquote><para><blockquote><para><blockquote><para>clamp(1, 3, 7) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>3 <blockquote><para><blockquote><para><blockquote><para>clamp(5, 3, 7) </para>
+</blockquote></para>
+</blockquote></para>
+</blockquote>5 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" bodystart="29" bodyend="31"/>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" compoundref="fixed__point_8h" startline="475" endline="480">std::min</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a37e1fc79dc2eeffcd4d529e9607db220" compoundref="stream_8py" startline="55" endline="89">openage.util.filelike.stream.StreamSeekBuffer.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a2c451557a21c0bb2481bd4a8da2f6df5" compoundref="stream_8py" startline="130" endline="148">openage.util.filelike.stream.StreamFragment.read</referencedby>
+        <referencedby refid="namespaceopenage_1_1log_1a10c8ba63b955b0c97dc3b3323f73a4b2" compoundref="log_2____init_____8py" startline="136" endline="148">openage::log.verbosity_to_level</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/math.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

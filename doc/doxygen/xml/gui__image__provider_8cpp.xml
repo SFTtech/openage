@@ -22,7 +22,7 @@
         <label>vector</label>
       </node>
       <node id="13517">
-        <label>libopenage/gui/guisys/public/gui_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.cpp</label>
         <link refid="gui__image__provider_8cpp"/>
         <childnode refid="13518" relation="include">
         </childnode>
@@ -68,6 +68,6 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/public/gui_image_provider.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_image_provider.cpp"/>
   </compounddef>
 </doxygen>

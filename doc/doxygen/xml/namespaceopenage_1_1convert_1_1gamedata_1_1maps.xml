@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1maps" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::maps</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map" prot="public">openage::convert::gamedata::maps::Map</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_elevation" prot="public">openage::convert::gamedata::maps::MapElevation</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_info" prot="public">openage::convert::gamedata::maps::MapInfo</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_land" prot="public">openage::convert::gamedata::maps::MapLand</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_terrain" prot="public">openage::convert::gamedata::maps::MapTerrain</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1maps_1_1_map_unit" prot="public">openage::convert::gamedata::maps::MapUnit</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/maps.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

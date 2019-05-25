@@ -1,0 +1,8 @@
+<map id="openage.codegen.cpp_testlist.generate_testlist" name="openage.codegen.cpp_testlist.generate_testlist">
+<area shape="rect" id="node1" title="Generates the test/demo method symbol lookup file from tests_cpp." alt="" coords="5,27,173,69"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="253,5,372,32"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a598be9bf16c59330d7350e0024b2f363" title="Invokes list_targets() with the C++&#45;specific listers." alt="" coords="221,57,404,98"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="452,5,645,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="693,5,820,32"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1testing_1_1list__processor.xhtml#a96f8756c2413d5f3fe509b1532a91967" title=" " alt="" coords="471,57,626,98"/>
+</map>

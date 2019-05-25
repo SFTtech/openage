@@ -1,0 +1,685 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1union_1_1_union" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::union::Union</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object" prot="public" virt="non-virtual">openage.util.fslike.abstract.FSLikeObject</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.union.Union::mounts</definition>
+        <argsstring></argsstring>
+        <name>mounts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ac8aa7e6454da5c8b49a6f5b093467b5f" compoundref="union_8py" startline="39" endline="45">openage.util.fslike.union.Union.__str__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a3c40a53c0f5a5dda751bf21aebbbfc49" compoundref="union_8py" startline="56" endline="73">openage.util.fslike.union.Union.add_mount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a8dd7258127f3bef2f0970c784b775b66" compoundref="union_8py" startline="280" endline="284">openage.util.fslike.union.Union.poll_watches</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad62275f43d1d5ddae7521d9429ae2e3f" compoundref="union_8py" startline="79" endline="96">openage.util.fslike.union.Union.remove_mount</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acf21649f4cbfe94a422d75b5378a2f7c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util::fslike.union.Union::dirstructure</definition>
+        <argsstring></argsstring>
+        <name>dirstructure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a3c40a53c0f5a5dda751bf21aebbbfc49" compoundref="union_8py" startline="56" endline="73">openage.util.fslike.union.Union.add_mount</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a11b1a3c7123d0359f3f8fc51f4af9d40" compoundref="union_8py" startline="250" endline="264">openage.util.fslike.union.Union.is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a260ca9cd43939238415b186f97220452" compoundref="union_8py" startline="138" endline="173">openage.util.fslike.union.Union.list</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a8ed43c8836cdcb83e6022c68a201e855" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="29" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ac8aa7e6454da5c8b49a6f5b093467b5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="39" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="39" bodyend="45"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" compoundref="union_8py" startline="33">openage.util.fslike.union.Union.mounts</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a89a2532669d58766be7270296086b121" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.root</definition>
+        <argsstring>(self)</argsstring>
+        <name>root</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a04bffeae7754d2f18fc374b4c656633e">root</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>Returns a path-like object for the root of this file system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   This is the main interface that is used normally.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a3c40a53c0f5a5dda751bf21aebbbfc49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.add_mount</definition>
+        <argsstring>(self, pathobj, mountpoint, priority)</argsstring>
+        <name>add_mount</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>pathobj</type>
+          <defname>pathobj</defname>
+        </param>
+        <param>
+          <type>mountpoint</type>
+          <defname>mountpoint</defname>
+        </param>
+        <param>
+          <type>priority</type>
+          <defname>priority</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="56" bodyend="73"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acf21649f4cbfe94a422d75b5378a2f7c" compoundref="union_8py" startline="37">openage.util.fslike.union.Union.dirstructure</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" compoundref="union_8py" startline="33">openage.util.fslike.union.Union.mounts</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad62275f43d1d5ddae7521d9429ae2e3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.remove_mount</definition>
+        <argsstring>(self, search_mountpoint, source_pathobj=None)</argsstring>
+        <name>remove_mount</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>search_mountpoint</type>
+          <defname>search_mountpoint</defname>
+        </param>
+        <param>
+          <type>source_pathobj</type>
+          <defname>source_pathobj</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="79" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="79" bodyend="96"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" compoundref="union_8py" startline="33">openage.util.fslike.union.Union.mounts</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.candidate_paths</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>candidate_paths</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Helper method. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Yields path objects from all mounts that match parts, in the order of
+   their priorities.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="103" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="103" bodyend="109"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" compoundref="union_8py" startline="33">openage.util.fslike.union.Union.mounts</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acc8f8159ef03f233586ffba4449cd89a" compoundref="union_8py" startline="174" endline="180">openage.util.fslike.union.Union.filesize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a11b1a3c7123d0359f3f8fc51f4af9d40" compoundref="union_8py" startline="250" endline="264">openage.util.fslike.union.Union.is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a268a3d26f652286a0917a70bf637d710" compoundref="union_8py" startline="243" endline="249">openage.util.fslike.union.Union.is_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a260ca9cd43939238415b186f97220452" compoundref="union_8py" startline="138" endline="173">openage.util.fslike.union.Union.list</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a7af845af1ad7c6fdeb4b246bc802018b" compoundref="union_8py" startline="188" endline="193">openage.util.fslike.union.Union.mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a53d66dd260339405afd52713a981c566" compoundref="union_8py" startline="181" endline="187">openage.util.fslike.union.Union.mtime</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a13e6de81f78a548cbfbb9a9c9f880990" compoundref="union_8py" startline="110" endline="115">openage.util.fslike.union.Union.open_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a1f09a82ec0577beb8c1bcf4cea3c476e" compoundref="union_8py" startline="116" endline="123">openage.util.fslike.union.Union.open_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad171b4126b1ce13ace487d3e5932c8e4" compoundref="union_8py" startline="225" endline="242">openage.util.fslike.union.Union.rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a5b17e82e4997bbf12c4b982b680d89dd" compoundref="union_8py" startline="124" endline="130">openage.util.fslike.union.Union.resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a54d57b95c3da660c411d31ecc2c903c8" compoundref="union_8py" startline="131" endline="137">openage.util.fslike.union.Union.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ae02e2fa23d9e2d669a9643a8fc2feaf4" compoundref="union_8py" startline="194" endline="205">openage.util.fslike.union.Union.rmdir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa97093f892491f850a21f57b3b7396fc" compoundref="union_8py" startline="218" endline="224">openage.util.fslike.union.Union.touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a442fd6e04319b0fa4324fc701ffa3167" compoundref="union_8py" startline="206" endline="217">openage.util.fslike.union.Union.unlink</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a190b7686ea0b21816f667b66fc845c94" compoundref="union_8py" startline="272" endline="279">openage.util.fslike.union.Union.watch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ab579d912b66143e8042f4a6cc4387573" compoundref="union_8py" startline="265" endline="271">openage.util.fslike.union.Union.writable</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a13e6de81f78a548cbfbb9a9c9f880990" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.open_r</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7eb9f9c28532ad799503acfd424dee7c">open_r</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedReader for the given file (&quot;mode &apos;rb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="110" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="110" bodyend="115"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a1f09a82ec0577beb8c1bcf4cea3c476e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.open_w</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a446d488c2bf95097706a467c93c4f973">open_w</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall return a BufferedWriter for the given file (&quot;mode &apos;wb&apos;&quot;). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="116" bodyend="123"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a5b17e82e4997bbf12c4b982b680d89dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.resolve_r</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>resolve_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af30b34d88a17e5d1d7e99046da0490f5">resolve_r</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="124" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="124" bodyend="130"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a54d57b95c3da660c411d31ecc2c903c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.resolve_w</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>resolve_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f">resolve_w</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Returns a new flattened path. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This skips funny mounts in between. <verbatim>   Returns None if the path does not exist or is not writable.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="131" bodyend="137"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a260ca9cd43939238415b186f97220452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.list</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>list</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a81c203eb78e5823ce410f845c1c17aee">list</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall yield the entry names of the given directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="138" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="138" bodyend="173"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acf21649f4cbfe94a422d75b5378a2f7c" compoundref="union_8py" startline="37">openage.util.fslike.union.Union.dirstructure</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acc8f8159ef03f233586ffba4449cd89a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.filesize</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>filesize</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a4d5b4fb1a16c90393da7eda7525c8789">filesize</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="174" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="174" bodyend="180"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a53d66dd260339405afd52713a981c566" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.mtime</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>mtime</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a230d244732d46d5fabcec7638f3757c9">mtime</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="181" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="181" bodyend="187"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a7af845af1ad7c6fdeb4b246bc802018b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.mkdirs</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>mkdirs</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a18afc9774e36ec8e17d67eaad2f7aa69">mkdirs</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall ensure that the directory exists. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="188" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="188" bodyend="193"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ae02e2fa23d9e2d669a9643a8fc2feaf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.rmdir</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>rmdir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a6358bbae487c06aaccc7cbede61a2954">rmdir</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall remove an empty directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="194" bodyend="205"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a442fd6e04319b0fa4324fc701ffa3167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.unlink</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>unlink</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a50009b666fb9e32369df9cadc3fc2de5">unlink</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall remove a single file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="206" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="206" bodyend="217"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa97093f892491f850a21f57b3b7396fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.touch</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>touch</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7010b622bd45a905fa68a8fc8942ced3">touch</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+<para>Shall create the file or update its timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="218" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="218" bodyend="224"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad171b4126b1ce13ace487d3e5932c8e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.rename</definition>
+        <argsstring>(self, srcparts, tgtparts)</argsstring>
+        <name>rename</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a66554d4fda1edd835b6fa692ef16cc5b">rename</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>srcparts</type>
+          <defname>srcparts</defname>
+        </param>
+        <param>
+          <type>tgtparts</type>
+          <defname>tgtparts</defname>
+        </param>
+        <briefdescription>
+<para>Shall rename a file or directory to the target name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="225" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="225" bodyend="242"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a268a3d26f652286a0917a70bf637d710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.is_file</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>is_file</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1af973fe09db18f1f04474fab94da350c5">is_file</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="243" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="243" bodyend="249"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a11b1a3c7123d0359f3f8fc51f4af9d40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.is_dir</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>is_dir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a336d8d1597189253f24703641c7fd436">is_dir</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="250" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="250" bodyend="264"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acf21649f4cbfe94a422d75b5378a2f7c" compoundref="union_8py" startline="37">openage.util.fslike.union.Union.dirstructure</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ab579d912b66143e8042f4a6cc4387573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.writable</definition>
+        <argsstring>(self, parts)</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1aba8782dfa670c2368980eccca0b8c8dc">writable</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="265" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="265" bodyend="271"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a190b7686ea0b21816f667b66fc845c94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.watch</definition>
+        <argsstring>(self, parts, callback)</argsstring>
+        <name>watch</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a531d4b17f9b239772a6de4d315cd9ddf">watch</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parts</type>
+          <defname>parts</defname>
+        </param>
+        <param>
+          <type>callback</type>
+          <defname>callback</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="272" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="272" bodyend="279"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" compoundref="union_8py" startline="103" endline="109">openage.util.fslike.union.Union.candidate_paths</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a8dd7258127f3bef2f0970c784b775b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.union.Union.poll_watches</definition>
+        <argsstring>(self)</argsstring>
+        <name>poll_watches</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a19ace3ca4d2ef770c421e5790968f60a">poll_watches</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="280" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="280" bodyend="284"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" compoundref="union_8py" startline="33">openage.util.fslike.union.Union.mounts</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>FSLikeObject that provides a structure for mounting several path objects. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Unlike in POSIX, mounts may overlap. If multiple mounts match for a directory, those that have a higher priority are preferred. In case of equal priorities, later mounts are preferred. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5890">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5891" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5891">
+        <label>ABC</label>
+      </node>
+      <node id="5889">
+        <label>openage.util.fslike.union.Union</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union"/>
+        <childnode refid="5890" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5893">
+        <label>openage.util.fslike.abstract.FSLikeObject</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object"/>
+        <childnode refid="5894" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5894">
+        <label>ABC</label>
+      </node>
+      <node id="5892">
+        <label>openage.util.fslike.union.Union</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union"/>
+        <childnode refid="5893" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" bodystart="24" bodyend="285"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a8ed43c8836cdcb83e6022c68a201e855" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ac8aa7e6454da5c8b49a6f5b093467b5f" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a3c40a53c0f5a5dda751bf21aebbbfc49" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>add_mount</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa07650df3f22844b7731b2b60c97e202" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>candidate_paths</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acf21649f4cbfe94a422d75b5378a2f7c" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>dirstructure</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1acc8f8159ef03f233586ffba4449cd89a" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a7f9d7aa25e089cfea369bdd7d9683a57" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a11b1a3c7123d0359f3f8fc51f4af9d40" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a268a3d26f652286a0917a70bf637d710" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a260ca9cd43939238415b186f97220452" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a7af845af1ad7c6fdeb4b246bc802018b" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a683cf995ca39bdd6806e51c030274ec4" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>mounts</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a53d66dd260339405afd52713a981c566" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a3a9fb9c9e3f96a98cc679de8e55fc937" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a023d59f227466dafe020f394d5049456" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a13e6de81f78a548cbfbb9a9c9f880990" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a9e6e9458b1150816521cc68bda348c09" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a1f09a82ec0577beb8c1bcf4cea3c476e" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a8dd7258127f3bef2f0970c784b775b66" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>poll_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a53ae3dc0d5327095637653e4d17b638d" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>pretty</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad62275f43d1d5ddae7521d9429ae2e3f" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>remove_mount</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ad171b4126b1ce13ace487d3e5932c8e4" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a5b17e82e4997bbf12c4b982b680d89dd" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a54d57b95c3da660c411d31ecc2c903c8" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ae02e2fa23d9e2d669a9643a8fc2feaf4" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a89a2532669d58766be7270296086b121" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1aa97093f892491f850a21f57b3b7396fc" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a442fd6e04319b0fa4324fc701ffa3167" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1a190b7686ea0b21816f667b66fc845c94" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_1ab579d912b66143e8042f4a6cc4387573" prot="public" virt="non-virtual"><scope>openage::util::fslike::union::Union</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

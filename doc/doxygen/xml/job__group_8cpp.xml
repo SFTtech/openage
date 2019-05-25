@@ -118,7 +118,7 @@
         </childnode>
       </node>
       <node id="16083">
-        <label>libopenage/job/job_group.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_group.cpp</label>
         <link refid="job__group_8cpp"/>
         <childnode refid="16084" relation="include">
         </childnode>
@@ -343,6 +343,6 @@
 <codeline lineno="18"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/job/job_group.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job_group.cpp"/>
   </compounddef>
 </doxygen>

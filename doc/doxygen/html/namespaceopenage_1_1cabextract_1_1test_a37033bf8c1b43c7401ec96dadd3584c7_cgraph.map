@@ -1,0 +1,10 @@
+<map id="openage.cabextract.test.test" name="openage.cabextract.test.test">
+<area shape="rect" id="node1" title="The actual test function; registered in openage.testing.testlist." alt="" coords="5,137,193,163"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1testing_1_1testing.xhtml#a1e253d6f2b396e2a0162c7b1c8ab36d9" title="Context guard that asserts that a certain exception is raised inside." alt="" coords="241,5,439,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#a2800c6619c18337197b7ad519bbad072" title=" " alt="" coords="241,71,439,112"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="729,111,923,138"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1py.xhtml#a58cbca251b8e2118e0a6b9b0b78a7b32" title=" " alt="" coords="525,187,643,214"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#af34db1a313c38a3853b23df18b8501ee" title="Opens the cached test archive file, or downloads it if necessary." alt="" coords="243,239,437,280"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="521,86,647,113"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1cabextract_1_1test.xhtml#acee52df8a2e962b2994d4dc69421093a" title="Opens the cached test archive file." alt="" coords="487,239,681,280"/>
+</map>

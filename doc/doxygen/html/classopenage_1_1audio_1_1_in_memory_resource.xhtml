@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::audio::InMemoryResource Class Reference</title>
+<title>openage: openage::audio::InMemoryResource Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1audio_1_1_in_memory_re
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="in__memory__resource_8h_source.xhtml">in_memory_resource.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::audio::InMemoryResource:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_in_memory_resource__inherit__graph.svg" width="186" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::audio::InMemoryResource:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_in_memory_resource__inherit__graph.svg" width="186" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::audio::InMemoryResource:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_in_memory_resource__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::audio::InMemoryResource:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1audio_1_1_in_memory_resource__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -204,6 +207,13 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="in__memory__resource_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    :</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_resource.xhtml#a85abebc7740a31274aa0510527929479">Resource</a>{<a class="code" href="classopenage_1_1audio_1_1_resource.xhtml#a05e15aae63b9f88794f0831e2f78d2b8">manager</a>, <a class="code" href="classopenage_1_1audio_1_1_resource.xhtml#ab7db7cc389407c6750dd54cb5056d113">category</a>, <span class="keywordtype">id</span>} {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">auto</span> loader = <a class="code" href="classopenage_1_1audio_1_1_in_memory_loader.xhtml#a19344fe6babb4d670c042430ccae8d02">InMemoryLoader::create</a>(path, format);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classopenage_1_1audio_1_1_in_memory_resource.xhtml#a6527ff1643f7916ecdd7020ca2d628fb">buffer</a> = loader-&gt;get_resource();</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_resource_xhtml_ab7db7cc389407c6750dd54cb5056d113"><div class="ttname"><a href="classopenage_1_1audio_1_1_resource.xhtml#ab7db7cc389407c6750dd54cb5056d113">openage::audio::Resource::category</a></div><div class="ttdeci">category_t category</div><div class="ttdef"><b>Definition:</b> <a href="audio_2resource_8h_source.xhtml#l00079">resource.h:79</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_resource_xhtml_a85abebc7740a31274aa0510527929479"><div class="ttname"><a href="classopenage_1_1audio_1_1_resource.xhtml#a85abebc7740a31274aa0510527929479">openage::audio::Resource::Resource</a></div><div class="ttdeci">Resource(AudioManager *manager, category_t category, int id)</div><div class="ttdef"><b>Definition:</b> <a href="audio_2resource_8cpp_source.xhtml#l00015">resource.cpp:15</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_in_memory_resource_xhtml_a6527ff1643f7916ecdd7020ca2d628fb"><div class="ttname"><a href="classopenage_1_1audio_1_1_in_memory_resource.xhtml#a6527ff1643f7916ecdd7020ca2d628fb">openage::audio::InMemoryResource::buffer</a></div><div class="ttdeci">pcm_data_t buffer</div><div class="ttdef"><b>Definition:</b> <a href="in__memory__resource_8h_source.xhtml#l00022">in_memory_resource.h:22</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_in_memory_loader_xhtml_a19344fe6babb4d670c042430ccae8d02"><div class="ttname"><a href="classopenage_1_1audio_1_1_in_memory_loader.xhtml#a19344fe6babb4d670c042430ccae8d02">openage::audio::InMemoryLoader::create</a></div><div class="ttdeci">static std::unique_ptr&lt; InMemoryLoader &gt; create(const util::Path &amp;path, format_t format)</div><div class="ttdef"><b>Definition:</b> <a href="in__memory__loader_8cpp_source.xhtml#l00018">in_memory_loader.cpp:18</a></div></div>
+<div class="ttc" id="classopenage_1_1audio_1_1_resource_xhtml_a05e15aae63b9f88794f0831e2f78d2b8"><div class="ttname"><a href="classopenage_1_1audio_1_1_resource.xhtml#a05e15aae63b9f88794f0831e2f78d2b8">openage::audio::Resource::manager</a></div><div class="ttdeci">AudioManager * manager</div><div class="ttdef"><b>Definition:</b> <a href="audio_2resource_8h_source.xhtml#l00073">resource.h:73</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="audio_2resource_8h_source.xhtml#l00079">openage::audio::Resource::category</a>, and <a class="el" href="audio_2resource_8h_source.xhtml#l00073">openage::audio::Resource::manager</a>.</p>
 
 </div>
 </div>
@@ -279,6 +289,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1audio_1_1_resource.xhtml#a2c01c18ad8bee86abf0ea5e3cfd00ba1">openage::audio::Resource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="in__memory__resource_8cpp_source.xhtml#l00029">29</a> of file <a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                                             {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// if the resource&#39;s end has been reached</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">size_t</span> length = <a class="code" href="classopenage_1_1audio_1_1_in_memory_resource.xhtml#a6527ff1643f7916ecdd7020ca2d628fb">buffer</a>.size();</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (position &gt;= length) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> {<span class="keyword">nullptr</span>, 0};</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> int16_t *buf_pos = &amp;<a class="code" href="classopenage_1_1audio_1_1_in_memory_resource.xhtml#a6527ff1643f7916ecdd7020ca2d628fb">buffer</a>[position];</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (data_length &gt; length - position) {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> {buf_pos, length - position};</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> {buf_pos, data_length};</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classopenage_1_1audio_1_1_in_memory_resource_xhtml_a6527ff1643f7916ecdd7020ca2d628fb"><div class="ttname"><a href="classopenage_1_1audio_1_1_in_memory_resource.xhtml#a6527ff1643f7916ecdd7020ca2d628fb">openage::audio::InMemoryResource::buffer</a></div><div class="ttdeci">pcm_data_t buffer</div><div class="ttdef"><b>Definition:</b> <a href="in__memory__resource_8h_source.xhtml#l00022">in_memory_resource.h:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="in__memory__resource_8h_source.xhtml#l00022">buffer</a>.</p>
 
 </div>
 </div>
@@ -309,7 +322,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1audio_1_1_resource.xhtml#aaa6342dfe81f25de870d35018db5934c">openage::audio::Resource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="in__memory__resource_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aadc80441d22bfd356c36d8dbacc45d64"></a>
@@ -339,7 +352,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1audio_1_1_resource.xhtml#a0ad2666c3d7c85d9ca17a2eb9c7887cb">openage::audio::Resource</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="in__memory__resource_8cpp_source.xhtml#l00023">23</a> of file <a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -366,11 +379,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="in__memory__resource_8h_source.xhtml#l00022">22</a> of file <a class="el" href="in__memory__resource_8h_source.xhtml">in_memory_resource.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="in__memory__resource_8cpp_source.xhtml#l00029">get_data()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/audio/<a class="el" href="in__memory__resource_8h_source.xhtml">in_memory_resource.h</a></li>
-<li>libopenage/audio/<a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="in__memory__resource_8h_source.xhtml">in_memory_resource.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/<a class="el" href="in__memory__resource_8cpp_source.xhtml">in_memory_resource.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

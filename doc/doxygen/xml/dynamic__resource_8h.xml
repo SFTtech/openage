@@ -16,8 +16,8 @@
     <includes refid="job_8h" local="yes">../job/job.h</includes>
     <includes refid="job__group_8h" local="yes">../job/job_group.h</includes>
     <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
-    <includedby refid="dynamic__resource_8cpp" local="yes">libopenage/audio/dynamic_resource.cpp</includedby>
-    <includedby refid="audio_2resource_8cpp" local="yes">libopenage/audio/resource.cpp</includedby>
+    <includedby refid="dynamic__resource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</includedby>
+    <includedby refid="audio_2resource_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</includedby>
     <incdepgraph>
       <node id="635">
         <label>list</label>
@@ -311,7 +311,7 @@
         </childnode>
       </node>
       <node id="596">
-        <label>libopenage/audio/dynamic_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</label>
         <link refid="dynamic__resource_8h"/>
         <childnode refid="597" relation="include">
         </childnode>
@@ -546,15 +546,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="664">
-        <label>libopenage/audio/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/resource.cpp</label>
         <link refid="audio_2resource_8cpp"/>
       </node>
       <node id="663">
-        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.cpp</label>
         <link refid="dynamic__resource_8cpp"/>
       </node>
       <node id="662">
-        <label>libopenage/audio/dynamic_resource.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h</label>
         <link refid="dynamic__resource_8h"/>
         <childnode refid="663" relation="include">
         </childnode>
@@ -670,6 +670,6 @@
 <codeline lineno="147"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/dynamic_resource.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/dynamic_resource.h"/>
   </compounddef>
 </doxygen>

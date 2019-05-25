@@ -1,0 +1,5 @@
+<map id="openage.util.strings.rstrip_once" name="openage.util.strings.rstrip_once">
+<area shape="rect" id="node1" title="Removes substr at the end of string, and raises ValueError on failure." alt="" coords="5,5,208,32"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="256,5,383,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="431,5,624,32"/>
+</map>

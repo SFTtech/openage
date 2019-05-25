@@ -1,0 +1,4 @@
+<map id="openage.util.fslike.filecollection.FileCollection.rmdir" name="openage.util.fslike.filecollection.FileCollection.rmdir">
+<area shape="rect" id="node1" title="Shall remove an empty directory." alt="" coords="5,5,211,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#a236b83a25d5f87c98604b37597c2baf9" title="Fetches the fileentries, subdirentries tuple for the given dir." alt="" coords="259,5,464,47"/>
+</map>

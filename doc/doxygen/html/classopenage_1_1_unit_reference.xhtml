@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::UnitReference Class Reference</title>
+<title>openage: openage::UnitReference Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_unit_reference.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::UnitReference:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_reference__coll__graph.svg" width="171" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::UnitReference:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_reference__coll__graph.svg" width="171" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -142,7 +144,8 @@ Private Attributes</h2></td></tr>
 <p>create an invalid reference </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00026">26</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    :</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a>{<span class="keyword">nullptr</span>} {}</div><div class="ttc" id="classopenage_1_1_unit_reference_xhtml_accccaa53b2f44fcef0f75b5c4e63eb86"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">openage::UnitReference::data</a></div><div class="ttdeci">std::shared_ptr&lt; reference_data &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00068">unit_container.h:68</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a039cf3cb30deba04c2324360744f8944"></a>
@@ -179,7 +182,8 @@ Private Attributes</h2></td></tr>
 <p>create referece by unit id </p>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    :</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a>{std::make_shared&lt;reference_data&gt;(c, <span class="keywordtype">id</span>, u)} {}</div><div class="ttc" id="classopenage_1_1_unit_reference_xhtml_accccaa53b2f44fcef0f75b5c4e63eb86"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">openage::UnitReference::data</a></div><div class="ttdeci">std::shared_ptr&lt; reference_data &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00068">unit_container.h:68</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -199,6 +203,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00042">42</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                               {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">is_valid</a>()) {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">throw</span> Error{<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Unit reference is no longer valid&quot;</span>};</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a>-&gt;unit_ptr;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_a55afff48cc1901715f3c29383969d2ac"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#a55afff48cc1901715f3c29383969d2ac">openage::UnitReference::is_valid</a></div><div class="ttdeci">bool is_valid() const</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8cpp_source.xhtml#l00036">unit_container.cpp:36</a></div></div>
+<div class="ttc" id="classopenage_1_1_unit_reference_xhtml_accccaa53b2f44fcef0f75b5c4e63eb86"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">openage::UnitReference::data</a></div><div class="ttdeci">std::shared_ptr&lt; reference_data &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00068">unit_container.h:68</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00068">data</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00036">is_valid()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">openage::TargetAction::completed()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00411">openage::ActionMode::place_selection()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00726">openage::MoveAction::set_distance()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00715">openage::MoveAction::set_path()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00591">openage::MoveAction::update()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">openage::TargetAction::update_distance()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_reference_a6303ff3facc18acf10aa335ee9d318d8_cgraph.svg" width="406" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_reference_a6303ff3facc18acf10aa335ee9d318d8_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -218,6 +246,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8cpp_source.xhtml#l00036">36</a> of file <a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                   {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a> &amp;&amp;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;           this-&gt;<a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a>-&gt;container-&gt;valid_id(this-&gt;<a class="code" href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">data</a>-&gt;unit_id);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div><div class="ttc" id="classopenage_1_1_unit_reference_xhtml_accccaa53b2f44fcef0f75b5c4e63eb86"><div class="ttname"><a href="classopenage_1_1_unit_reference.xhtml#accccaa53b2f44fcef0f75b5c4e63eb86">openage::UnitReference::data</a></div><div class="ttdeci">std::shared_ptr&lt; reference_data &gt; data</div><div class="ttdef"><b>Definition:</b> <a href="unit__container_8h_source.xhtml#l00068">unit_container.h:68</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="unit__container_8h_source.xhtml#l00068">data</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="unit_2action_8cpp_source.xhtml#l00290">openage::TargetAction::completed()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00689">openage::MoveAction::completed()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00042">get()</a>, <a class="el" href="selection_8cpp_source.xhtml#l00183">openage::UnitSelection::kill_unit()</a>, <a class="el" href="game__control_8cpp_source.xhtml#l00411">openage::ActionMode::place_selection()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00726">openage::MoveAction::set_distance()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00715">openage::MoveAction::set_path()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00329">openage::TargetAction::set_target()</a>, <a class="el" href="unit_2action_8cpp_source.xhtml#l00591">openage::MoveAction::update()</a>, and <a class="el" href="unit_2action_8cpp_source.xhtml#l00303">openage::TargetAction::update_distance()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_unit_reference_a55afff48cc1901715f3c29383969d2ac_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -245,11 +286,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="unit__container_8h_source.xhtml#l00068">68</a> of file <a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="content__snippet_8py_source.xhtml#l00127">openage.convert.dataformat.content_snippet.ContentSnippet::__eq__()</a>, <a class="el" href="struct__snippet_8py_source.xhtml#l00095">openage.convert.dataformat.struct_snippet.StructSnippet::__hash__()</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00096">openage.convert.dataformat.content_snippet.ContentSnippet::__hash__()</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00140">openage.convert.dataformat.content_snippet.ContentSnippet::__repr__()</a>, <a class="el" href="data__definition_8py_source.xhtml#l00129">openage.convert.dataformat.data_definition.DataDefinition::__str__()</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00151">openage.convert.dataformat.content_snippet.ContentSnippet::__str__()</a>, <a class="el" href="data__formatter_8py_source.xhtml#l00127">openage.convert.dataformat.data_formatter.DataFormatter::add_data()</a>, <a class="el" href="data__formatter_8py_source.xhtml#l00170">openage.convert.dataformat.data_formatter.DataFormatter::export()</a>, <a class="el" href="data__definition_8py_source.xhtml#l00037">openage.convert.dataformat.data_definition.DataDefinition::generate_csv()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00042">get()</a>, <a class="el" href="content__snippet_8py_source.xhtml#l00045">openage.convert.dataformat.content_snippet.ContentSnippet::get_data()</a>, <a class="el" href="texture_8py_source.xhtml#l00078">openage.convert.texture.TextureImage::get_data()</a>, <a class="el" href="texture_8py_source.xhtml#l00075">openage.convert.texture.TextureImage::get_pil_image()</a>, <a class="el" href="unit__container_8cpp_source.xhtml#l00036">is_valid()</a>, and <a class="el" href="peresource_8py_source.xhtml#l00168">openage.convert.peresource.PEResources::read_directory()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/unit/<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a></li>
-<li>libopenage/unit/<a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit__container_8h_source.xhtml">unit_container.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/<a class="el" href="unit__container_8cpp_source.xhtml">unit_container.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

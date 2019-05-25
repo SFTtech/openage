@@ -3,9 +3,9 @@
   <compounddef id="gui__game__spec__image__provider__by__filename__impl_8h" kind="file" language="C++">
     <compoundname>gui_game_spec_image_provider_by_filename_impl.h</compoundname>
     <includes refid="gui__game__spec__image__provider__impl_8h" local="yes">gui_game_spec_image_provider_impl.h</includes>
-    <includedby refid="gui__game__spec__image__provider__by__filename__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</includedby>
-    <includedby refid="gui__image__provider__link_8cpp" local="yes">libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
-    <includedby refid="gui__game__spec__image__provider_8cpp" local="yes">libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__filename__impl_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</includedby>
+    <includedby refid="gui__image__provider__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</includedby>
     <incdepgraph>
       <node id="13801">
         <label>functional</label>
@@ -83,7 +83,7 @@
         </childnode>
       </node>
       <node id="13791">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8h"/>
         <childnode refid="13792" relation="include">
         </childnode>
@@ -113,15 +113,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13810">
-        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
         <link refid="gui__image__provider__link_8cpp"/>
       </node>
       <node id="13811">
-        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
         <link refid="gui__game__spec__image__provider_8cpp"/>
       </node>
       <node id="13808">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8h"/>
         <childnode refid="13809" relation="include">
         </childnode>
@@ -131,7 +131,7 @@
         </childnode>
       </node>
       <node id="13809">
-        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
         <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
       </node>
     </invincdepgraph>
@@ -166,6 +166,6 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::struct_snippet::StructSnippet</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet" prot="public" virt="non-virtual">openage.convert.dataformat.content_snippet.ContentSnippet</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a96783bd3f52954c983ebded42fa3fdd6" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::struct_base</definition>
+        <argsstring></argsstring>
+        <name>struct_base</name>
+        <initializer>=  Template()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ab2831b0ab43fe926b3a299487e2c5239" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::data_ready</definition>
+        <argsstring></argsstring>
+        <name>data_ready</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a26a2c5499d2db360a221e613dea6f826" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::struct_name</definition>
+        <argsstring></argsstring>
+        <name>struct_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1affe08a0e25071e429dec78ffad42c441" compoundref="struct__snippet_8py" startline="106" endline="119">openage.convert.dataformat.struct_snippet.StructSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::member_list</definition>
+        <argsstring></argsstring>
+        <name>member_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="37" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ac3b15546f9588a44f28827c3ba379cd4" compoundref="struct__snippet_8py" startline="120" endline="129">openage.convert.dataformat.struct_snippet.StructSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1adb547a3a56f6a5f235ba8e4b13bdee15" compoundref="struct__snippet_8py" startline="75" endline="77">openage.convert.dataformat.struct_snippet.StructSnippet.add_member</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a2c5481f94c22abc0ecf7325482c0ade4" compoundref="struct__snippet_8py" startline="81" endline="83">openage.convert.dataformat.struct_snippet.StructSnippet.add_members</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad3f805acf277de000306b6afc12bcd41" compoundref="struct__snippet_8py" startline="88" endline="94">openage.convert.dataformat.struct_snippet.StructSnippet.generate_content</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a6845c131a059347bc613c0f88fef0957" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::reprtxt</definition>
+        <argsstring></argsstring>
+        <name>reprtxt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a98ec9ed7e8eb75988d8d9c63f011f710" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::members</definition>
+        <argsstring></argsstring>
+        <name>members</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad3f805acf277de000306b6afc12bcd41" compoundref="struct__snippet_8py" startline="88" endline="94">openage.convert.dataformat.struct_snippet.StructSnippet.generate_content</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a241397635a86cabf53dd04457d509f8e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::comment</definition>
+        <argsstring></argsstring>
+        <name>comment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a8b1c287279aabfc29f2c3c960bd46190" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::inheritance</definition>
+        <argsstring></argsstring>
+        <name>inheritance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1af9afb7304ee33a77ffe534b482e981e1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="92" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1abc634b372af6244692d5e4962fe61887" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::file_name</definition>
+        <argsstring></argsstring>
+        <name>file_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a1fcf2725a60f4886183b678bbea8bbc7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::section</definition>
+        <argsstring></argsstring>
+        <name>section</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="115" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa4b5c0fc7c7650302ff9e3e5377bcb7d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::typedefs</definition>
+        <argsstring></argsstring>
+        <name>typedefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="116" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a5ea48b309ab2e8ca2b5fe3252d76a107" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.struct_snippet.StructSnippet::typerefs</definition>
+        <argsstring></argsstring>
+        <name>typerefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa98160eae16885823e81e82837c3ac98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.__init__</definition>
+        <argsstring>(self, file_name, struct_name, comment=None, parents=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1abc634b372af6244692d5e4962fe61887" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a26a2c5499d2db360a221e613dea6f826" kindref="member">struct_name</ref></type>
+          <defname>struct_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a241397635a86cabf53dd04457d509f8e" kindref="member">comment</ref></type>
+          <defname>comment</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>parents</type>
+          <defname>parents</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="29" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aeb577649b003f3729fa026a8df22a603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.set_comment</definition>
+        <argsstring>(self, comment)</argsstring>
+        <name>set_comment</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a241397635a86cabf53dd04457d509f8e" kindref="member">comment</ref></type>
+          <defname>comment</defname>
+        </param>
+        <briefdescription>
+<para>Add a comment to the struct definition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="50" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad949c7ae1a270820b7dd41c3f7adf6a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.set_parents</definition>
+        <argsstring>(self, parent_types)</argsstring>
+        <name>set_parents</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>parent_types</type>
+          <defname>parent_types</defname>
+        </param>
+        <briefdescription>
+<para>Add inheritance partents to the struct definition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="64" bodyend="71"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a1ccf4c662c36928f161e01542110768f" compoundref="content__snippet_8py" startline="31">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1adb547a3a56f6a5f235ba8e4b13bdee15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.add_member</definition>
+        <argsstring>(self, member)</argsstring>
+        <name>add_member</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>member</type>
+          <defname>member</defname>
+        </param>
+        <briefdescription>
+<para>Add a data member to the struct definition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="75" bodyend="77"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" compoundref="struct__snippet_8py" startline="37">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a2c5481f94c22abc0ecf7325482c0ade4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.add_members</definition>
+        <argsstring>(self, members)</argsstring>
+        <name>add_members</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a98ec9ed7e8eb75988d8d9c63f011f710" kindref="member">members</ref></type>
+          <defname>members</defname>
+        </param>
+        <briefdescription>
+<para>Add multiple data members to the struct definition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="81" bodyend="83"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" compoundref="struct__snippet_8py" startline="37">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad3f805acf277de000306b6afc12bcd41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.generate_content</definition>
+        <argsstring>(self)</argsstring>
+        <name>generate_content</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1afc550a2b9cedfe1e91a8852514cc0ecb">generate_content</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="88" bodyend="94"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" compoundref="struct__snippet_8py" startline="37">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a98ec9ed7e8eb75988d8d9c63f011f710" compoundref="struct__snippet_8py" startline="45">openage.convert.dataformat.struct_snippet.StructSnippet.members</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__definition_1_1_struct_definition_1aa0d107c9d094dc7f9000470b7fe27a01" compoundref="struct__definition_8py" startline="56">openage.convert.dataformat.struct_definition.StructDefinition.members</references>
+        <references refid="classopenage_1_1_team_1a90db0a9e2f47e7c2e71491a4f4d514f7" compoundref="team_8h" startline="71">openage::Team::members</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__hash__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169">__hash__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>hash all relevant snippet properties </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="95" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="95" bodyend="105"/>
+        <references refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" compoundref="datastructure_2tests_8h" startline="16">openage::datastructure::tests::heap_elem::data</references>
+        <references refid="structopenage_1_1audio_1_1audio__chunk__t_1a7c743fc27e3431d759716fc0d44bee1c" compoundref="audio_2types_8h" startline="21">openage::audio::audio_chunk_t::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aaeb6d3824f1ff77e825f5c7f75c63e00" compoundref="content__snippet_8py" startline="29">openage.convert.dataformat.content_snippet.ContentSnippet.data</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" compoundref="pairing__heap_8h" startline="48">openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</references>
+        <references refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" compoundref="texture_8h" startline="58">openage::gl_texture_buffer::data</references>
+        <references refid="classopenage_1_1_terrain_chunk_1a8a7bc88cee1e85210f19389eab6794eb" compoundref="terrain__chunk_8h" startline="61">openage::TerrainChunk::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" compoundref="texture__data_8h" startline="68">openage::renderer::resources::Texture2dData::data</references>
+        <references refid="classopenage_1_1_unit_reference_1accccaa53b2f44fcef0f75b5c4e63eb86" compoundref="unit__container_8h" startline="68">openage::UnitReference::data</references>
+        <references refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" compoundref="constinit__vector_8h" startline="94">openage::util::ConstInitVector&lt; T &gt;::data</references>
+        <references refid="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" compoundref="terrain_8h" startline="106">openage::influence_group::data</references>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" compoundref="csv_8h" startline="130">openage::util::CSVCollection::data</references>
+        <references refid="structopenage_1_1tile__draw__data_1abb735fac94699d37947a4456ac4177a9" compoundref="terrain_8h" startline="140">openage::tile_draw_data::data</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" compoundref="mesh__data_8h" startline="140">openage::renderer::resources::MeshData::data</references>
+        <references refid="structopenage_1_1util_1_1csv__subdata_1a4a1a85e2b3d2479aba87d487943cd63a" compoundref="csv_8h" startline="151">openage::util::csv_subdata&lt; lineformat &gt;::data</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" compoundref="hash_8cpp" startline="36" endline="104">openage::util::hash</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" compoundref="struct__snippet_8py" startline="37">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2e9280dd29ab79acaf07fd3a26babc01" compoundref="content__snippet_8py" startline="34">openage.convert.dataformat.content_snippet.ContentSnippet.section</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a26a2c5499d2db360a221e613dea6f826" compoundref="struct__snippet_8py" startline="36">openage.convert.dataformat.struct_snippet.StructSnippet.struct_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aa054fbcc7c933bed74d9056b5553ca19" compoundref="content__snippet_8py" startline="32">openage.convert.dataformat.content_snippet.ContentSnippet.typedefs</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a1ccf4c662c36928f161e01542110768f" compoundref="content__snippet_8py" startline="31">openage.convert.dataformat.content_snippet.ContentSnippet.typerefs</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1affe08a0e25071e429dec78ffad42c441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.__eq__</definition>
+        <argsstring>(self, other)</argsstring>
+        <name>__eq__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084">__eq__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>other</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+<para>equality check for text snippets </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="106" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="106" bodyend="119"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a26a2c5499d2db360a221e613dea6f826" compoundref="struct__snippet_8py" startline="36">openage.convert.dataformat.struct_snippet.StructSnippet.struct_name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ac3b15546f9588a44f28827c3ba379cd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.struct_snippet.StructSnippet.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d">__str__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="120" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="120" bodyend="129"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a071bf2d8c5acdd447c12228cd24db69f" compoundref="content__snippet_8py" startline="43">openage.convert.dataformat.content_snippet.ContentSnippet.data_ready</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" compoundref="struct__snippet_8py" startline="37">openage.convert.dataformat.struct_snippet.StructSnippet.member_list</references>
+        <references refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" compoundref="repr_8cpp" startline="12" endline="33">openage::util::repr</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>text snippet for generating C++ structs. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>it can generate all struct members and inheritance annotations. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1153">
+        <label>openage.convert.dataformat.struct_snippet.StructSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet"/>
+        <childnode refid="1154" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1154">
+        <label>openage.convert.dataformat.content_snippet.ContentSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1155">
+        <label>openage.convert.dataformat.struct_snippet.StructSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet"/>
+        <childnode refid="1156" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1156">
+        <label>openage.convert.dataformat.content_snippet.ContentSnippet</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/struct_snippet.py" bodystart="21" bodyend="129"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1affe08a0e25071e429dec78ffad42c441" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__eq__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__hash__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa98160eae16885823e81e82837c3ac98" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a8f5812c44251f318ece4e3e42ba3ac01" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::content_snippet::ContentSnippet."><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a22298fb54ac07968189e0f917d48250f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__lt__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ac3b15546f9588a44f28827c3ba379cd4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1adb547a3a56f6a5f235ba8e4b13bdee15" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>add_member</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a2c5481f94c22abc0ecf7325482c0ade4" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>add_members</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ae463a515baf512fb39d859990812481f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>add_required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a241397635a86cabf53dd04457d509f8e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>comment</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1af9afb7304ee33a77ffe534b482e981e1" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ab2831b0ab43fe926b3a299487e2c5239" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>data_ready</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1abc634b372af6244692d5e4962fe61887" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad3f805acf277de000306b6afc12bcd41" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>generate_content</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a10e0cd36005a0c8dd477ad85dd52fd34" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>get_required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1ad7eeab04d3902de3968f5bd1fb20e62c" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>includes</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a8b1c287279aabfc29f2c3c960bd46190" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>inheritance</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa2d9774314837fb3461772a303c4545d" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>member_list</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a98ec9ed7e8eb75988d8d9c63f011f710" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>members</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a32cd75db124a10263e5f2ad4dfd1d4d2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>orderby</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a6845c131a059347bc613c0f88fef0957" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>reprtxt</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a9e99bd808996cf7caf085b567948fe8b" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>required_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a1fcf2725a60f4886183b678bbea8bbc7" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>section</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aeb577649b003f3729fa026a8df22a603" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>set_comment</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1ad949c7ae1a270820b7dd41c3f7adf6a2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>set_parents</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a96783bd3f52954c983ebded42fa3fdd6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>struct_base</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a26a2c5499d2db360a221e613dea6f826" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>struct_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1aa4b5c0fc7c7650302ff9e3e5377bcb7d" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>typedefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a5ea48b309ab2e8ca2b5fe3252d76a107" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::struct_snippet::StructSnippet</scope><name>typerefs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

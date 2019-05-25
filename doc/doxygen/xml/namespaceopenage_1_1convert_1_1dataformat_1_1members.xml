@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1dataformat_1_1members" kind="namespace" language="Python">
+    <compoundname>openage::convert::dataformat::members</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_array_member" prot="public">openage::convert::dataformat::members::ArrayMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member" prot="public">openage::convert::dataformat::members::CharArrayMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member" prot="public">openage::convert::dataformat::members::ContinueReadMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result" prot="public">openage::convert::dataformat::members::ContinueReadMemberResult</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member" prot="public">openage::convert::dataformat::members::DataMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member" prot="public">openage::convert::dataformat::members::DynLengthMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member" prot="public">openage::convert::dataformat::members::EnumLookupMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member" prot="public">openage::convert::dataformat::members::EnumMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member" prot="public">openage::convert::dataformat::members::GroupMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members" prot="public">openage::convert::dataformat::members::IncludeMembers</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member" prot="public">openage::convert::dataformat::members::MultisubtypeMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member" prot="public">openage::convert::dataformat::members::NumberMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member" prot="public">openage::convert::dataformat::members::RefMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_string_member" prot="public">openage::convert::dataformat::members::StringMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member" prot="public">openage::convert::dataformat::members::SubdataMember</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member" prot="public">openage::convert::dataformat::members::ZeroMember</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -14,13 +14,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/text_to_event.cpp" line="112" column="1" bodyfile="libopenage/input/text_to_event.cpp" bodystart="112" bodyend="126"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp" bodystart="112" bodyend="126"/>
+        <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a002101f8725e5c78d9f30d87f3fa4c87">openage::input::ALPHA</references>
+        <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a3421ce503e9731d435babad896b7aef8">openage::input::MOUSE_BUTTON</references>
+        <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849ac80e822dfb2e91b477ea25b533fb001d">openage::input::MOUSE_BUTTON_UP</references>
+        <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc">openage::input::MOUSE_WHEEL</references>
+        <references refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a473d7f95e1409a797f859f013fbccaa2">openage::input::NONPRINT</references>
+        <references refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" compoundref="input_2event_8cpp" startline="110" endline="124">openage::input::sdl_mod</references>
+        <references refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" compoundref="testing_8h" startline="34">TESTFAIL</references>
+        <references refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" compoundref="testing_8h" startline="87">TESTTHROWS</references>
+        <references refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" compoundref="text__to__event_8cpp" startline="76" endline="109">openage::input::text_to_event</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/input/text_to_event.cpp" line="111" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/text_to_event.cpp" line="111" column="1"/>
   </compounddef>
 </doxygen>

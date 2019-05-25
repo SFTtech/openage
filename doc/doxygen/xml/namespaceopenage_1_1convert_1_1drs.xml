@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1drs" kind="namespace" language="Python">
+    <compoundname>openage::convert::drs</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1drs_1_1_d_r_s" prot="public">openage::convert::drs::DRS</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_file_info" prot="public">openage::convert::drs::DRSFileInfo</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_header" prot="public">openage::convert::drs::DRSHeader</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_table_info" prot="public">openage::convert::drs::DRSTableInfo</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1drs_1a0b99030f949b655deaccf601d80b76c4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::drs.FILE_VERSION</definition>
+        <argsstring></argsstring>
+        <name>FILE_VERSION</name>
+        <initializer>=  57</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1convert_1_1drs_1a1c9d8697261088159f7e4edcce843ab4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::convert::drs::COPYRIGHT_SIZE</definition>
+        <argsstring></argsstring>
+        <name>COPYRIGHT_SIZE</name>
+        <initializer>=  40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/drs.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

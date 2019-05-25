@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat" kind="namespace" language="Python">
+    <compoundname>openage::convert::gamedata::empiresdat</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat" prot="public">openage::convert::gamedata::empiresdat::EmpiresDat</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1gamedata_1_1empiresdat_1_1_empires_dat_wrapper" prot="public">openage::convert::gamedata::empiresdat::EmpiresDatWrapper</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1gamedata_1_1empiresdat_1a571729db3187f457aefbdb94af2364d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.gamedata.empiresdat.load_gamespec</definition>
+        <argsstring>(fileobj, game_versions, cachefile_name=None, load_cache=False)</argsstring>
+        <name>load_gamespec</name>
+        <param>
+          <type>fileobj</type>
+          <defname>fileobj</defname>
+        </param>
+        <param>
+          <type>game_versions</type>
+          <defname>game_versions</defname>
+        </param>
+        <param>
+          <type>cachefile_name</type>
+          <defname>cachefile_name</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>load_cache</type>
+          <defname>load_cache</defname>
+          <defval>False</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="382" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" bodystart="382" bodyend="424"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" compoundref="log_2____init_____8py" startline="104" endline="107">openage::log.spam</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <referencedby refid="namespaceopenage_1_1convert_1_1driver_1af952f8f82261ef86e5c83facd56758f9" compoundref="driver_8py" startline="81" endline="113">openage.convert.driver.get_gamespec</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/gamedata/empiresdat.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -15,7 +15,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="73" column="1" bodyfile="libopenage/texture.h" bodystart="73" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1ae868f4636be962e32dd7ceb96da2d01c" compoundref="texture_8cpp" startline="421" endline="428">get_subtexture_coordinates</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" compoundref="texture_8cpp" startline="436" endline="440">get_subtexture_size</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" compoundref="texture_8cpp" startline="137" endline="155">make_gl_texture</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" compoundref="unit__texture_8cpp" startline="44" endline="46">openage::UnitTexture::size</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" compoundref="gui__texture__factory_8cpp" startline="27" endline="30">openage::gui::GuiTextureFactory::textureByteCount</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -28,7 +34,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="74" column="1" bodyfile="libopenage/texture.h" bodystart="74" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1ae868f4636be962e32dd7ceb96da2d01c" compoundref="texture_8cpp" startline="421" endline="428">get_subtexture_coordinates</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" compoundref="texture_8cpp" startline="436" endline="440">get_subtexture_size</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" compoundref="texture_8cpp" startline="137" endline="155">make_gl_texture</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" compoundref="unit__texture_8cpp" startline="44" endline="46">openage::UnitTexture::size</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" compoundref="gui__texture__factory_8cpp" startline="27" endline="30">openage::gui::GuiTextureFactory::textureByteCount</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -43,7 +55,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="170" column="1" bodyfile="libopenage/texture.h" bodystart="170" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="170" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="170" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">draw</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" compoundref="texture_8cpp" startline="443" endline="446">get_texture_id</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" compoundref="texture_8cpp" startline="157" endline="170">load_in_glthread</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" compoundref="texture_8cpp" startline="173" endline="176">unload</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" prot="private" static="no" mutable="no">
         <type>std::vector&lt; gamedata::subtexture &gt;</type>
@@ -56,7 +73,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="171" column="1" bodyfile="libopenage/texture.h" bodystart="171" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="171" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="171" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a5b69e4f44b43bb966b8b5030873c1ddd" compoundref="texture_8cpp" startline="190" endline="195">fix_hotspots</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">get_subtexture</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" compoundref="texture_8cpp" startline="431" endline="433">get_subtexture_count</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -69,7 +90,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="172" column="1" bodyfile="libopenage/texture.h" bodystart="172" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="172" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="172" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a245b2f41a0307ea3553fadfbc777bb54" compoundref="texture_8cpp" startline="52" endline="59">Texture</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
@@ -82,7 +105,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="174" column="1" bodyfile="libopenage/texture.h" bodystart="174" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="174" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="174" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">get_subtexture</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -110,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="80" column="1" bodyfile="libopenage/texture.cpp" bodystart="37" bodyend="50"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="37" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a245b2f41a0307ea3553fadfbc777bb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -133,7 +158,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="86" column="1" bodyfile="libopenage/texture.cpp" bodystart="52" bodyend="59"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="52" bodyend="59"/>
+        <references refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" compoundref="texture_8h" startline="172">use_metafile</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1aedb0d8e12aa8cc20d364b12a75045a5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -146,7 +172,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="87" column="1" bodyfile="libopenage/texture.cpp" bodystart="185" bodyend="187"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="87" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="185" bodyend="187"/>
+        <references refid="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" compoundref="texture_8cpp" startline="173" endline="176">unload</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -188,7 +215,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="92" column="1" bodyfile="libopenage/texture.cpp" bodystart="198" bodyend="202"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="92" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="198" bodyend="202"/>
+        <references refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" compoundref="pixel_8cpp" startline="92" endline="95">openage::coord::camhud::to_viewport</references>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a6537758244bbe7b99bda2de4a337fb4d" compoundref="texture_8cpp" startline="205" endline="209">draw</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4" compoundref="game__renderer_8cpp" startline="199" endline="213">openage::GameRenderer::on_draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">openage::UnitTexture::sample</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a6537758244bbe7b99bda2de4a337fb4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -230,7 +263,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="97" column="1" bodyfile="libopenage/texture.cpp" bodystart="205" bodyend="209"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="205" bodyend="209"/>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">draw</references>
+        <references refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" compoundref="pixel_8cpp" startline="45" endline="48">openage::coord::camgame::to_viewport</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a67031aa8a376335fe775cf819b22900c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -272,7 +307,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="102" column="1" bodyfile="libopenage/texture.cpp" bodystart="212" bodyend="216"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="212" bodyend="216"/>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">draw</references>
+        <references refid="structopenage_1_1coord_1_1phys3_1afb7742fe4e2f67064992aed454d75ef2" compoundref="phys_8cpp" startline="96" endline="98">openage::coord::phys3::to_viewport</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1ac79ebb1a99e21faf9ed7faacdf0d68d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -314,7 +351,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="107" column="1" bodyfile="libopenage/texture.cpp" bodystart="219" bodyend="226"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="107" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="219" bodyend="226"/>
+        <references refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" compoundref="texture_8cpp" startline="198" endline="202">draw</references>
+        <references refid="structopenage_1_1coord_1_1tile_1a3f2be2b38a339e563ea0fa96733250ec" compoundref="tile_8cpp" startline="53" endline="57">openage::coord::tile::to_viewport</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -356,7 +395,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="112" column="1" bodyfile="libopenage/texture.cpp" bodystart="229" bodyend="397"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="112" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="229" bodyend="397"/>
+        <references refid="namespaceopenage_1a8f58bd5706ab9adf5f5905a0966d188a" compoundref="texture_8h" startline="46">openage::ALPHAMASKED</references>
+        <references refid="namespaceopenage_1_1alphamask__shader_1a58775bda88577e4b2819a53e55ddd9be" compoundref="texture_8cpp" startline="34">openage::alphamask_shader::base_coord</references>
+        <references refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" compoundref="texture_8h" startline="170">buffer</references>
+        <references refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">get_subtexture</references>
+        <references refid="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" compoundref="texture_8cpp" startline="413" endline="418">get_subtexture_coordinates</references>
+        <references refid="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" compoundref="texture_8cpp" startline="443" endline="446">get_texture_id</references>
+        <references refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" compoundref="texture_8cpp" startline="157" endline="170">load_in_glthread</references>
+        <references refid="namespaceopenage_1_1alphamask__shader_1aadcbcdb078318bc73e55755280dda70b" compoundref="texture_8cpp" startline="34">openage::alphamask_shader::mask_coord</references>
+        <references refid="namespaceopenage_1_1teamcolor__shader_1a34ad1a040b992e6be28c954460c611f8" compoundref="texture_8cpp" startline="29">openage::teamcolor_shader::player_id_var</references>
+        <references refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" compoundref="texture_8h" startline="45">openage::PLAYERCOLORED</references>
+        <references refid="classopenage_1_1shader_1_1_program_1ad0d5148a261f1087eae30c200ea54094" compoundref="program_8h" startline="15">openage::shader::Program::pos_id</references>
+        <references refid="namespaceopenage_1_1texture__shader_1a5b862f8ed8e822e082d52a12511eeec9" compoundref="texture_8cpp" startline="22">openage::texture_shader::program</references>
+        <references refid="namespaceopenage_1_1teamcolor__shader_1a290de9c73d125cfbdbf583ee24cee3c8" compoundref="texture_8cpp" startline="27">openage::teamcolor_shader::program</references>
+        <references refid="namespaceopenage_1_1alphamask__shader_1a91d9794fbedeb8a2ca32f79e13c860e3" compoundref="texture_8cpp" startline="33">openage::alphamask_shader::program</references>
+        <references refid="classopenage_1_1shader_1_1_program_1abfd70a48ce216cf044f558328f8dfa4e" compoundref="program_8cpp" startline="110" endline="112">openage::shader::Program::stopusing</references>
+        <references refid="namespaceopenage_1_1texture__shader_1afc27bd08aad20cadf84d8f39268876af" compoundref="texture_8cpp" startline="23">openage::texture_shader::tex_coord</references>
+        <references refid="namespaceopenage_1_1teamcolor__shader_1a0d006aeb703278468eb6e97c4fca9abe" compoundref="texture_8cpp" startline="28">openage::teamcolor_shader::tex_coord</references>
+        <references refid="classopenage_1_1shader_1_1_program_1ab36b7c92db2a3e3ce76b79e0451b6978" compoundref="program_8cpp" startline="106" endline="108">openage::shader::Program::use</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -370,7 +427,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="117" column="1" bodyfile="libopenage/texture.cpp" bodystart="179" bodyend="182"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="117" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="179" bodyend="182"/>
+        <references refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" compoundref="texture_8cpp" startline="61" endline="135">load</references>
+        <references refid="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" compoundref="texture_8cpp" startline="173" endline="176">unload</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const gamedata::subtexture *</type>
@@ -388,7 +447,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="122" column="1" bodyfile="libopenage/texture.cpp" bodystart="400" bodyend="410"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="122" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="400" bodyend="410"/>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" compoundref="texture_8h" startline="174">filename</references>
+        <references refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" compoundref="texture_8h" startline="171">subtextures</references>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">draw</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" compoundref="texture_8cpp" startline="413" endline="418">get_subtexture_coordinates</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" compoundref="texture_8cpp" startline="436" endline="440">get_subtexture_size</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" compoundref="gui__texture__handle_8cpp" startline="32" endline="41">openage::gui::native_size</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1afee0e8d811d508b6e16ae7ab4cf2c4a3" compoundref="gui__texture_8cpp" startline="103" endline="111">openage::gui::GuiTexture::normalizedTextureSubRect</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1acabd4037e0b47cda554ae353c2c3be3e" compoundref="gui__texture_8cpp" startline="69" endline="101">openage::gui::GuiTexture::removedFromAtlas</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -404,7 +472,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="127" column="1" bodyfile="libopenage/texture.cpp" bodystart="431" bodyend="433"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="127" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="431" bodyend="433"/>
+        <references refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" compoundref="texture_8h" startline="171">subtextures</references>
+        <referencedby refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" compoundref="terrain_8cpp" startline="595" endline="746">openage::Terrain::calculate_masks</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" compoundref="terrain_8cpp" startline="402" endline="465">openage::Terrain::create_tile_advice</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" compoundref="unit__texture_8cpp" startline="112" endline="149">openage::UnitTexture::initialise</referencedby>
+        <referencedby refid="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" compoundref="gui__texture__handle_8cpp" startline="24" endline="26">openage::gui::isAtlasTexture</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" compoundref="unit__texture_8cpp" startline="151" endline="160">openage::UnitTexture::subtexture</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -455,7 +530,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="135" column="1" bodyfile="libopenage/texture.cpp" bodystart="436" bodyend="440"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="135" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="436" bodyend="440"/>
+        <references refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">get_subtexture</references>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">h</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -490,7 +568,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="144" column="1" bodyfile="libopenage/texture.cpp" bodystart="413" bodyend="418"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="413" bodyend="418"/>
+        <references refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" compoundref="texture_8cpp" startline="400" endline="410">get_subtexture</references>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">draw</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1ae868f4636be962e32dd7ceb96da2d01c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -523,7 +603,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="145" column="1" bodyfile="libopenage/texture.cpp" bodystart="421" bodyend="428"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="145" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="421" bodyend="428"/>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">h</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">w</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a5b69e4f44b43bb966b8b5030873c1ddd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -545,7 +627,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="152" column="1" bodyfile="libopenage/texture.cpp" bodystart="190" bodyend="195"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="190" bodyend="195"/>
+        <references refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" compoundref="texture_8h" startline="171">subtextures</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a622e7c5ad0a837004883818ec8f91147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -567,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="157" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="157" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1abc6ca9da94bcd6ada3ada56606ca96dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -581,7 +664,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="162" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="162" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>GLuint</type>
@@ -595,7 +678,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="167" column="1" bodyfile="libopenage/texture.cpp" bodystart="443" bodyend="446"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="167" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="443" bodyend="446"/>
+        <references refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" compoundref="texture_8h" startline="170">buffer</references>
+        <references refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" compoundref="texture_8cpp" startline="157" endline="170">load_in_glthread</references>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">draw</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_texture_1aae0bd80c66326d89472b98043e40ce4f" compoundref="gui__texture_8cpp" startline="113" endline="115">openage::gui::GuiTexture::textureId</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -610,7 +697,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="176" column="1" bodyfile="libopenage/texture.cpp" bodystart="61" bodyend="135"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="176" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="61" bodyend="135"/>
+        <references refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" compoundref="texture_8h" startline="170">buffer</references>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" compoundref="texture_8h" startline="174">filename</references>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">h</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" compoundref="util_2path_8cpp" startline="163" endline="173">openage::util::Path::resolve_native_path</references>
+        <references refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" compoundref="texture_8h" startline="171">subtextures</references>
+        <references refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" compoundref="texture_8h" startline="172">use_metafile</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">w</references>
+        <references refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" compoundref="util_2path_8cpp" startline="323" endline="325">openage::util::Path::with_suffix</references>
+        <referencedby refid="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" compoundref="texture_8cpp" startline="179" endline="182">reload</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -624,7 +724,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="181" column="1" bodyfile="libopenage/texture.cpp" bodystart="157" bodyend="170"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="181" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="157" bodyend="170"/>
+        <references refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" compoundref="texture_8h" startline="170">buffer</references>
+        <references refid="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" compoundref="texture_8cpp" startline="137" endline="155">make_gl_texture</references>
+        <referencedby refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" compoundref="texture_8cpp" startline="229" endline="397">draw</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" compoundref="texture_8cpp" startline="443" endline="446">get_texture_id</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>GLuint</type>
@@ -657,7 +761,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="182" column="1" bodyfile="libopenage/texture.cpp" bodystart="137" bodyend="155"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="182" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="137" bodyend="155"/>
+        <references refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" compoundref="texture_8h" startline="74">h</references>
+        <references refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" compoundref="texture_8h" startline="73">w</references>
+        <referencedby refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" compoundref="texture_8cpp" startline="157" endline="170">load_in_glthread</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -670,7 +777,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/texture.h" line="183" column="1" bodyfile="libopenage/texture.cpp" bodystart="173" bodyend="176"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="183" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.cpp" bodystart="173" bodyend="176"/>
+        <references refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" compoundref="texture_8h" startline="170">buffer</references>
+        <referencedby refid="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" compoundref="texture_8cpp" startline="179" endline="182">reload</referencedby>
+        <referencedby refid="classopenage_1_1_texture_1aedb0d8e12aa8cc20d364b12a75045a5e" compoundref="texture_8cpp" startline="185" endline="187">~Texture</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -681,19 +791,19 @@
 <para>The class supports subtextures, so that one big texture can contain several small images. These are the ones actually to be rendered. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4458">
+      <node id="5253">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="4457">
+      <node id="5252">
         <label>openage::Texture</label>
         <link refid="classopenage_1_1_texture"/>
-        <childnode refid="4458" relation="usage">
+        <childnode refid="5253" relation="usage">
           <edgelabel>-filename</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/texture.h" line="71" column="1" bodyfile="libopenage/texture.h" bodystart="71" bodyend="185"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/texture.h" bodystart="71" bodyend="185"/>
     <listofallmembers>
       <member refid="classopenage_1_1_texture_1a622e7c5ad0a837004883818ec8f91147" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>activate_alphamask</name></member>
       <member refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>buffer</name></member>

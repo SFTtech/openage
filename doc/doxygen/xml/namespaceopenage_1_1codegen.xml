@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen" kind="namespace" language="Python">
+    <compoundname>openage::codegen</compoundname>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1codegen">openage::codegen::codegen</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1coord">openage::codegen::coord</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1cpp__testlist">openage::codegen::cpp_testlist</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1gamespec__structs">openage::codegen::gamespec_structs</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1listing">openage::codegen::listing</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1main">openage::codegen::main</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/__init__.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

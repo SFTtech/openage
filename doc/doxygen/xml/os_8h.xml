@@ -3,14 +3,14 @@
   <compounddef id="os_8h" kind="file" language="C++">
     <compoundname>os.h</compoundname>
     <includes local="no">string</includes>
-    <includedby refid="externalprofiler_8cpp" local="yes">libopenage/util/externalprofiler.cpp</includedby>
-    <includedby refid="os_8cpp" local="yes">libopenage/util/os.cpp</includedby>
+    <includedby refid="externalprofiler_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp</includedby>
+    <includedby refid="os_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</includedby>
     <incdepgraph>
       <node id="31349">
         <label>string</label>
       </node>
       <node id="31348">
-        <label>libopenage/util/os.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.h</label>
         <link refid="os_8h"/>
         <childnode refid="31349" relation="include">
         </childnode>
@@ -18,7 +18,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="31350">
-        <label>libopenage/util/os.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.h</label>
         <link refid="os_8h"/>
         <childnode refid="31351" relation="include">
         </childnode>
@@ -26,11 +26,11 @@
         </childnode>
       </node>
       <node id="31352">
-        <label>libopenage/util/os.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.cpp</label>
         <link refid="os_8cpp"/>
       </node>
       <node id="31351">
-        <label>libopenage/util/externalprofiler.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp</label>
         <link refid="externalprofiler_8cpp"/>
       </node>
     </invincdepgraph>
@@ -60,6 +60,6 @@
 <codeline lineno="29"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>os</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/os.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/os.h"/>
   </compounddef>
 </doxygen>

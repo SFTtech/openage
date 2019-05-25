@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cabextract_1_1lzxdstream" kind="namespace" language="Python">
+    <compoundname>openage::cabextract::lzxdstream</compoundname>
+    <innerclass refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream" prot="public">openage::cabextract::lzxdstream::LZXDStream</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/lzxdstream.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1testing_1_1main" kind="namespace" language="Python">
+    <compoundname>openage::testing::main</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1main_1ad65e95eb8c8bfca61b9df7814aa26ebb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.main.print_test_list</definition>
+        <argsstring>(test_list)</argsstring>
+        <name>print_test_list</name>
+        <param>
+          <type>test_list</type>
+          <defname>test_list</defname>
+        </param>
+        <briefdescription>
+<para>Prints a list of all tests and demos in test_list. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" bodystart="20" bodyend="34"/>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <referencedby refid="namespaceopenage_1_1testing_1_1main_1a22daa2dd4990bc8d016d850a9d9fc5fb" compoundref="testing_2main_8py" startline="114" endline="155">openage.testing.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1main_1a9e28a7e35264fdcf32c0e92bec6df017" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.main.init_subparser</definition>
+        <argsstring>(cli)</argsstring>
+        <name>init_subparser</name>
+        <param>
+          <type>cli</type>
+          <defname>cli</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the subparser for the testing command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" bodystart="36" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1main_1a346b6762051aaadb5cc302e1adbf5f1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.main.process_args</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>process_args</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+<para>Processes the given args, detecting errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" bodystart="55" bodyend="112"/>
+        <references refid="namespaceopenage_1_1testing_1_1list__processor_1a9702d9a71efd1d06569d1488b7c05666" compoundref="list__processor_8py" startline="83" endline="128">openage.testing.list_processor.get_all_targets</references>
+        <references refid="namespaceopenage_1_1cppinterface_1_1setup_1ae1c256c521da867c4f2ee7e9a7460ad3" compoundref="setup_8py" startline="30" endline="59">openage.cppinterface.setup.setup</references>
+        <referencedby refid="namespaceopenage_1_1testing_1_1main_1a22daa2dd4990bc8d016d850a9d9fc5fb" compoundref="testing_2main_8py" startline="114" endline="155">openage.testing.main.main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1testing_1_1main_1a22daa2dd4990bc8d016d850a9d9fc5fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.testing.main.main</definition>
+        <argsstring>(args, error)</argsstring>
+        <name>main</name>
+        <param>
+          <type>args</type>
+          <defname>args</defname>
+        </param>
+        <param>
+          <type>error</type>
+          <defname>error</defname>
+        </param>
+        <briefdescription>
+<para>CLI main method. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" line="114" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" bodystart="114" bodyend="155"/>
+        <references refid="namespaceopenage_1_1test_1a8f98bf82791522f9116e0a3adfd5871a" compoundref="benchmark__test_8cpp" startline="9" endline="12">openage::test::benchmark</references>
+        <references refid="namespaceopenage_1_1util_1_1strings_1a16e727f3dbbdb651bec86f64231a2d54" compoundref="strings_8py" startline="114" endline="118">openage.util.strings.format_progress</references>
+        <references refid="namespaceopenage_1_1testing_1_1main_1ad65e95eb8c8bfca61b9df7814aa26ebb" compoundref="testing_2main_8py" startline="20" endline="34">openage.testing.main.print_test_list</references>
+        <references refid="namespaceopenage_1_1testing_1_1main_1a346b6762051aaadb5cc302e1adbf5f1e" compoundref="testing_2main_8py" startline="55" endline="112">openage.testing.main.process_args</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/testing/main.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

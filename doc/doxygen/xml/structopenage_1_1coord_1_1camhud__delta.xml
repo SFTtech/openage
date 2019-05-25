@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/coord/pixel.h" line="52" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="98" bodyend="100"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.cpp" bodystart="98" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -24,28 +24,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="725">
+      <node id="1702">
         <label>openage::coord::camhud_delta</label>
         <link refid="structopenage_1_1coord_1_1camhud__delta"/>
-        <childnode refid="726" relation="public-inheritance">
+        <childnode refid="1703" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="726">
+      <node id="1703">
         <label>CoordXYRelative&lt; pixel_t, camhud, camhud_delta &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="727">
+      <node id="1704">
         <label>openage::coord::camhud_delta</label>
         <link refid="structopenage_1_1coord_1_1camhud__delta"/>
-        <childnode refid="728" relation="public-inheritance">
+        <childnode refid="1705" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="728">
+      <node id="1705">
         <label>CoordXYRelative&lt; pixel_t, camhud, camhud_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/coord/pixel.h" line="50" column="1" bodyfile="libopenage/coord/pixel.h" bodystart="50" bodyend="53"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/pixel.h" bodystart="50" bodyend="53"/>
     <listofallmembers>
       <member refid="structopenage_1_1coord_1_1camhud__delta_1a93c7d9c5d48bb5b1348b72451f84394b" prot="public" virt="non-virtual"><scope>openage::coord::camhud_delta</scope><name>to_viewport</name></member>
     </listofallmembers>

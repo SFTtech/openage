@@ -1,0 +1,6 @@
+<map id="openage::coord::input::to_phys3" name="openage::coord::input::to_phys3">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,152,112"/>
+<area shape="rect" id="node2" href="$structopenage_1_1coord_1_1viewport.xhtml#ab5b83e1486c0898fcb68f163fe49904f" title=" " alt="" coords="205,5,371,47"/>
+<area shape="rect" id="node3" href="$structopenage_1_1coord_1_1camgame.xhtml#a0b8e17b9f35af0cb50dbd56e8d6ff243" title=" " alt="" coords="200,71,376,112"/>
+<area shape="rect" id="node4" href="$structopenage_1_1coord_1_1input.xhtml#a659ce906cbf0fb7a6224f71a199f2c83" title=" " alt="" coords="215,136,361,177"/>
+</map>

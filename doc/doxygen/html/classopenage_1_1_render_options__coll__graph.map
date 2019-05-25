@@ -1,7 +1,10 @@
 <map id="openage::RenderOptions" name="openage::RenderOptions">
-<area shape="rect" id="node1" title=" " alt="" coords="181,736,347,813"/>
-<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,332,203,659"/>
-<area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="296,449,445,541"/>
-<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="295,161,446,283"/>
-<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="280,5,461,112"/>
+<area shape="rect" id="node1" title=" " alt="" coords="181,932,347,1009"/>
+<area shape="rect" id="node2" href="$classopenage_1_1options_1_1_option_node.xhtml" title=" " alt="" coords="5,528,203,855"/>
+<area shape="rect" id="node3" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="296,645,445,737"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="183,344,334,465"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_variable_base.xhtml" title=" " alt="" coords="168,5,349,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_variable.xhtml" title=" " alt="" coords="299,175,482,281"/>
+<area shape="rect" id="node8" href="$classopenage_1_1options_1_1_var.xhtml" title=" " alt="" coords="358,366,538,443"/>
+<area shape="rect" id="node7" title=" " alt="" coords="374,20,413,97"/>
 </map>

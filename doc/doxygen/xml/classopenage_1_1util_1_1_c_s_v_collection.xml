@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="35" column="1" bodyfile="libopenage/util/csv.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -31,7 +31,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="130" column="1" bodyfile="libopenage/util/csv.h" bodystart="130" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="130" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a08264818a289ac0da53e77168136b084" compoundref="content__snippet_8py" startline="127" endline="139">openage.convert.dataformat.content_snippet.ContentSnippet.__eq__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1struct__snippet_1_1_struct_snippet_1a9e739fd9d74f6571c56fea8df3f70e76" compoundref="struct__snippet_8py" startline="95" endline="105">openage.convert.dataformat.struct_snippet.StructSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1aac51f2cc25a8fd6dd2949923bd704169" compoundref="content__snippet_8py" startline="96" endline="105">openage.convert.dataformat.content_snippet.ContentSnippet.__hash__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a3438f4467204b7b82248f31f1485087a" compoundref="content__snippet_8py" startline="140" endline="150">openage.convert.dataformat.content_snippet.ContentSnippet.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1acf2c82022f9b36751161b85d5b1fc269" compoundref="data__definition_8py" startline="129" endline="135">openage.convert.dataformat.data_definition.DataDefinition.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a2ac6a4c4c3a9f91347f396c3860d868d" compoundref="content__snippet_8py" startline="151" endline="159">openage.convert.dataformat.content_snippet.ContentSnippet.__str__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a6a121fdc6aaa3d511826dbc2f3e8ed11" compoundref="data__formatter_8py" startline="127" endline="164">openage.convert.dataformat.data_formatter.DataFormatter.add_data</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" compoundref="csv_8cpp" startline="16" endline="67">CSVCollection</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__formatter_1_1_data_formatter_1a5dd2ca6f27cffabc611a817c7ad69232" compoundref="data__formatter_8py" startline="170" endline="231">openage.convert.dataformat.data_formatter.DataFormatter.export</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1data__definition_1_1_data_definition_1ad3c5a706c7a408b922b60a0a170c1ea6" compoundref="data__definition_8py" startline="37" endline="128">openage.convert.dataformat.data_definition.DataDefinition.generate_csv</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a61380d9e1a7fb973160e7e6732cad46c" compoundref="content__snippet_8py" startline="45" endline="49">openage.convert.dataformat.content_snippet.ContentSnippet.get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a5c12fced0432b26fbedfe1248eca26a8" compoundref="texture_8py" startline="78" endline="81">openage.convert.texture.TextureImage.get_data</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_c_s_v_collection_1abd8690a2db783f6d55a7ef374f6db782" compoundref="csv_8h" startline="89" endline="127">get_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_image_1a741ac8d5dfe77b4f69dbe433f1c21784" compoundref="texture_8py" startline="75" endline="77">openage.convert.texture.TextureImage.get_pil_image</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_p_e_resources_1a4bd0e2f364021fe2b7645f380723bca0" compoundref="peresource_8py" startline="168" endline="211">openage.convert.peresource.PEResources.read_directory</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +66,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="41" column="1" bodyfile="libopenage/util/csv.cpp" bodystart="16" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.cpp" bodystart="16" bodyend="67"/>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" compoundref="csv_8h" startline="130">data</references>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" compoundref="message_8h" startline="177">INFO</references>
+        <references refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" compoundref="compiler_8h" startline="52">likely</references>
+        <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" compoundref="util_2path_8cpp" startline="111" endline="130">openage::util::Path::open</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1a935638b7068bf067e0f9f9d879806d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -64,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="42" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="42" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -94,7 +117,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="59" column="1" bodyfile="libopenage/util/csv.h" bodystart="59" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="59" bodyend="82"/>
+        <references refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" compoundref="util_2path_8cpp" startline="374" endline="381">openage::util::dirname</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" compoundref="testing_8py" startline="44" endline="47">openage.testing.testing.result</references>
+        <referencedby refid="structopenage_1_1util_1_1csv__subdata_1a24b1327a670ab69e55c089234bdcbfec" compoundref="csv_8h" startline="157" endline="166">openage::util::csv_subdata&lt; lineformat &gt;::read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1abd8690a2db783f6d55a7ef374f6db782" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -117,7 +148,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/csv.h" line="89" column="1" bodyfile="libopenage/util/csv.h" bodystart="89" bodyend="127"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="89" bodyend="127"/>
+        <references refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" compoundref="csv_8h" startline="130">data</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" compoundref="util_2path_8cpp" startline="364" endline="371">openage::util::filename</references>
+        <references refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -127,12 +162,12 @@
 <para>Then, data can be read recursively. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1032">
+      <node id="5690">
         <label>openage::util::CSVCollection</label>
         <link refid="classopenage_1_1util_1_1_c_s_v_collection"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/csv.h" line="28" column="1" bodyfile="libopenage/util/csv.h" bodystart="28" bodyend="131"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/csv.h" bodystart="28" bodyend="131"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_c_s_v_collection_1aef170fc4b2d0f3806bd19a855ab9d3cd" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>csv_file_map_t</name></member>
       <member refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>CSVCollection</name></member>

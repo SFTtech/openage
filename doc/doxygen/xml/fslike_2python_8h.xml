@@ -11,8 +11,8 @@
     <includes refid="fslike_8h" local="yes">fslike.h</includes>
     <includes refid="util_2path_8h" local="yes">../path.h</includes>
     <includes refid="file_8h" local="yes">../file.h</includes>
-    <includedby refid="fslike_2python_8cpp" local="yes">libopenage/util/fslike/python.cpp</includedby>
-    <includedby refid="util_2path_8cpp" local="yes">libopenage/util/path.cpp</includedby>
+    <includedby refid="fslike_2python_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.cpp</includedby>
+    <includedby refid="util_2path_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp</includedby>
     <incdepgraph>
       <node id="29992">
         <label>list</label>
@@ -249,7 +249,7 @@
         <label>cstdlib</label>
       </node>
       <node id="29963">
-        <label>libopenage/util/fslike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.h</label>
         <link refid="fslike_2python_8h"/>
         <childnode refid="29964" relation="include">
         </childnode>
@@ -332,11 +332,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="30007">
-        <label>libopenage/util/path.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/path.cpp</label>
         <link refid="util_2path_8cpp"/>
       </node>
       <node id="30005">
-        <label>libopenage/util/fslike/python.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.h</label>
         <link refid="fslike_2python_8h"/>
         <childnode refid="30006" relation="include">
         </childnode>
@@ -344,7 +344,7 @@
         </childnode>
       </node>
       <node id="30006">
-        <label>libopenage/util/fslike/python.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.cpp</label>
         <link refid="fslike_2python_8cpp"/>
       </node>
     </invincdepgraph>
@@ -490,6 +490,6 @@
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="140"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/fslike/python.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/python.h"/>
   </compounddef>
 </doxygen>

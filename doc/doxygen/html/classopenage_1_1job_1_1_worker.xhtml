@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::job::Worker Class Reference</title>
+<title>openage: openage::job::Worker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,11 +99,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1job_1_1_worker.xhtml',
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="worker_8h_source.xhtml">worker.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::job::Worker:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::job::Worker:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -167,6 +169,10 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new worker with the parent job manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">manager</a>{<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">manager</a>},</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">is_running</a>{<span class="keyword">false</span>} {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ab639eed2b93e58c7393b40103fb3cc5a"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">openage::job::Worker::is_running</a></div><div class="ttdeci">bool is_running</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00028">worker.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ac9734f149754c8bc51b19d6cc57902c0"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">openage::job::Worker::manager</a></div><div class="ttdeci">JobManager * manager</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00025">worker.h:25</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8h_source.xhtml#l00025">manager</a>.</p>
 
 </div>
 </div>
@@ -215,6 +221,20 @@ Private Attributes</h2></td></tr>
 <p>Adds the given job to the internal pending job queue. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                    {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">pending_jobs_mutex</a>};</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">pending_jobs</a>.push(job);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>.unlock();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb">notify</a>();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a6c96492e8ac3a987e0532b0e81685b77"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">openage::job::Worker::pending_jobs_mutex</a></div><div class="ttdeci">std::mutex pending_jobs_mutex</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00034">worker.h:34</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a81131cf6e31018ec29632a6b41a79131"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">openage::job::Worker::pending_jobs</a></div><div class="ttdeci">std::queue&lt; std::shared_ptr&lt; JobStateBase &gt; &gt; pending_jobs</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00037">worker.h:37</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a3a1cffa81bce40320896181ac63205cb"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb">openage::job::Worker::notify</a></div><div class="ttdeci">void notify()</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00041">worker.cpp:41</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="worker_8cpp_source.xhtml#l00041">notify()</a>, <a class="el" href="worker_8h_source.xhtml#l00037">pending_jobs</a>, and <a class="el" href="worker_8h_source.xhtml#l00034">pending_jobs_mutex</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_ace257fda681faf0b5c87e9296da18b7c_cgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -244,6 +264,29 @@ Private Attributes</h2></td></tr>
 <p>Executes the given job and tells the parent job manager, when it has finished. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                         {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">auto</span> should_abort = [<span class="keyword">this</span>]() {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> not this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">is_running</a>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> aborted = job-&gt;execute(should_abort);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// if the job was not aborted, tell the job manager, that the job has</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// finished</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (not aborted) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">manager</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_job_manager.xhtml#a9e5e1a95045cef58acd980ebdabc6285">finish_job</a>(job);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_manager_xhtml_a9e5e1a95045cef58acd980ebdabc6285"><div class="ttname"><a href="classopenage_1_1job_1_1_job_manager.xhtml#a9e5e1a95045cef58acd980ebdabc6285">openage::job::JobManager::finish_job</a></div><div class="ttdeci">void finish_job(std::shared_ptr&lt; JobStateBase &gt; job)</div><div class="ttdef"><b>Definition:</b> <a href="job__manager_8cpp_source.xhtml#l00117">job_manager.cpp:117</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ab639eed2b93e58c7393b40103fb3cc5a"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">openage::job::Worker::is_running</a></div><div class="ttdeci">bool is_running</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00028">worker.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ac9734f149754c8bc51b19d6cc57902c0"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">openage::job::Worker::manager</a></div><div class="ttdeci">JobManager * manager</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00025">worker.h:25</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="job__manager_8cpp_source.xhtml#l00117">openage::job::JobManager::finish_job()</a>, <a class="el" href="worker_8h_source.xhtml#l00028">is_running</a>, and <a class="el" href="worker_8h_source.xhtml#l00025">manager</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a2546565a41969f4bb1d62773239e20c4_cgraph.svg" width="380" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a2546565a41969f4bb1d62773239e20c4_icgraph.svg" width="547" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -264,6 +307,9 @@ Private Attributes</h2></td></tr>
 <p>Joins the internal executing thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                  {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a7248896af6a7ddd2492c3027660c5877">executor</a>-&gt;join();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a7248896af6a7ddd2492c3027660c5877"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a7248896af6a7ddd2492c3027660c5877">openage::job::Worker::executor</a></div><div class="ttdeci">std::unique_ptr&lt; std::thread &gt; executor</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00031">worker.h:31</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8h_source.xhtml#l00031">executor</a>.</p>
 
 </div>
 </div>
@@ -284,6 +330,19 @@ Private Attributes</h2></td></tr>
 <p>Notifies this worker, that new jobs are available. This method is although called from the parent job manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00041">41</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a1f7ff0ab3111361665027316908c2435">jobs_available</a>.notify_all();</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a1f7ff0ab3111361665027316908c2435"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a1f7ff0ab3111361665027316908c2435">openage::job::Worker::jobs_available</a></div><div class="ttdeci">std::condition_variable jobs_available</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00040">worker.h:40</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8h_source.xhtml#l00040">jobs_available</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00033">enqueue()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00025">stop()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a3a1cffa81bce40320896181ac63205cb_icgraph.svg" width="352" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -312,6 +371,35 @@ Private Attributes</h2></td></tr>
 <p>Fetches pending jobs from the parent job manager and from the internal pending job queue and executes them. If no jobs are available the internal execution thread is wait using a condition variable. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00065">65</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                     {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// as long as this worker thread is running repeat all steps</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// lock the local thread queue</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">pending_jobs_mutex</a>};</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// if this thread shall not run any longer, exit the loop</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> (not this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">is_running</a>) {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">return</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// as long as there are no jobs from the local queue or the job manager</span></div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">while</span> (this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">pending_jobs</a>.empty() and not this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">manager</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_job_manager.xhtml#afc81fa6e3be5780014ced15942a48fa2">has_job</a>()) {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="comment">// the thread should wait</span></div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a1f7ff0ab3111361665027316908c2435">jobs_available</a>.wait(<a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">// when the thread is notified, first check if the thread should be</span></div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="comment">// stopped</span></div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (not this-&gt;is_running) {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">return</span>;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// check if there are jobs in the local queue</span></div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (not this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">pending_jobs</a>.empty()) {</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">// fetch the job</span></div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">auto</span> job = this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">pending_jobs</a>.front();</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">pending_jobs</a>.pop();</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="comment">// release the local queue lock</span></div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>.unlock();</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="comment">// and execute the job</span></div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4">execute_job</a>(job);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="comment">// otherwise just unlock the local queue</span></div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>.unlock();</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">// after possibly executing a job from the local queue, check again if</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// the thread should still continue running</span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (not this-&gt;is_running) {</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span>;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">// now try to fetch a job from the job manager</span></div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">auto</span> manager_job = this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">manager</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_job_manager.xhtml#adefba3f5fb9db0931cca54c27ab31041">fetch_job</a>();</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (manager_job.get() != <span class="keyword">nullptr</span>) {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="comment">// and execute it</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4">execute_job</a>(manager_job);</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a2546565a41969f4bb1d62773239e20c4"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a2546565a41969f4bb1d62773239e20c4">openage::job::Worker::execute_job</a></div><div class="ttdeci">void execute_job(std::shared_ptr&lt; JobStateBase &gt; &amp;job)</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00051">worker.cpp:51</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_job_manager_xhtml_adefba3f5fb9db0931cca54c27ab31041"><div class="ttname"><a href="classopenage_1_1job_1_1_job_manager.xhtml#adefba3f5fb9db0931cca54c27ab31041">openage::job::JobManager::fetch_job</a></div><div class="ttdeci">std::shared_ptr&lt; JobStateBase &gt; fetch_job()</div><div class="ttdef"><b>Definition:</b> <a href="job__manager_8cpp_source.xhtml#l00099">job_manager.cpp:99</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ab639eed2b93e58c7393b40103fb3cc5a"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">openage::job::Worker::is_running</a></div><div class="ttdeci">bool is_running</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00028">worker.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a6c96492e8ac3a987e0532b0e81685b77"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">openage::job::Worker::pending_jobs_mutex</a></div><div class="ttdeci">std::mutex pending_jobs_mutex</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00034">worker.h:34</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_job_manager_xhtml_afc81fa6e3be5780014ced15942a48fa2"><div class="ttname"><a href="classopenage_1_1job_1_1_job_manager.xhtml#afc81fa6e3be5780014ced15942a48fa2">openage::job::JobManager::has_job</a></div><div class="ttdeci">bool has_job()</div><div class="ttdef"><b>Definition:</b> <a href="job__manager_8cpp_source.xhtml#l00111">job_manager.cpp:111</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ac9734f149754c8bc51b19d6cc57902c0"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ac9734f149754c8bc51b19d6cc57902c0">openage::job::Worker::manager</a></div><div class="ttdeci">JobManager * manager</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00025">worker.h:25</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a81131cf6e31018ec29632a6b41a79131"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a81131cf6e31018ec29632a6b41a79131">openage::job::Worker::pending_jobs</a></div><div class="ttdeci">std::queue&lt; std::shared_ptr&lt; JobStateBase &gt; &gt; pending_jobs</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00037">worker.h:37</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a1f7ff0ab3111361665027316908c2435"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a1f7ff0ab3111361665027316908c2435">openage::job::Worker::jobs_available</a></div><div class="ttdeci">std::condition_variable jobs_available</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00040">worker.h:40</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8cpp_source.xhtml#l00051">execute_job()</a>, <a class="el" href="job__manager_8cpp_source.xhtml#l00099">openage::job::JobManager::fetch_job()</a>, <a class="el" href="job__manager_8cpp_source.xhtml#l00111">openage::job::JobManager::has_job()</a>, <a class="el" href="worker_8h_source.xhtml#l00028">is_running</a>, <a class="el" href="worker_8h_source.xhtml#l00040">jobs_available</a>, <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="worker_8h_source.xhtml#l00025">manager</a>, <a class="el" href="worker_8h_source.xhtml#l00037">pending_jobs</a>, and <a class="el" href="worker_8h_source.xhtml#l00034">pending_jobs_mutex</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00019">start()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a72be0e0fe2e2fd9fd5d9c994b3d0bdf4_cgraph.svg" width="603" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a72be0e0fe2e2fd9fd5d9c994b3d0bdf4_icgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -332,6 +420,19 @@ Private Attributes</h2></td></tr>
 <p>Starts this worker. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00019">19</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                   {</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">is_running</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a7248896af6a7ddd2492c3027660c5877">executor</a>.reset(<span class="keyword">new</span> std::thread{&amp;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4">Worker::process</a>, <span class="keyword">this</span>});</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ab639eed2b93e58c7393b40103fb3cc5a"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">openage::job::Worker::is_running</a></div><div class="ttdeci">bool is_running</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00028">worker.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a7248896af6a7ddd2492c3027660c5877"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a7248896af6a7ddd2492c3027660c5877">openage::job::Worker::executor</a></div><div class="ttdeci">std::unique_ptr&lt; std::thread &gt; executor</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00031">worker.h:31</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a72be0e0fe2e2fd9fd5d9c994b3d0bdf4"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a72be0e0fe2e2fd9fd5d9c994b3d0bdf4">openage::job::Worker::process</a></div><div class="ttdeci">void process()</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00065">worker.cpp:65</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8h_source.xhtml#l00031">executor</a>, <a class="el" href="worker_8h_source.xhtml#l00028">is_running</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_a3a0d1ce7031d428efce6c42b083ffd05_cgraph.svg" width="100%" height="437"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -352,6 +453,20 @@ Private Attributes</h2></td></tr>
 <p>Stops this worker. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                  {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::unique_lock&lt;std::mutex&gt; <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>{this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">pending_jobs_mutex</a>};</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">is_running</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>.unlock();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb">notify</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_ab639eed2b93e58c7393b40103fb3cc5a"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#ab639eed2b93e58c7393b40103fb3cc5a">openage::job::Worker::is_running</a></div><div class="ttdeci">bool is_running</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00028">worker.h:28</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a6c96492e8ac3a987e0532b0e81685b77"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a6c96492e8ac3a987e0532b0e81685b77">openage::job::Worker::pending_jobs_mutex</a></div><div class="ttdeci">std::mutex pending_jobs_mutex</div><div class="ttdef"><b>Definition:</b> <a href="worker_8h_source.xhtml#l00034">worker.h:34</a></div></div>
+<div class="ttc" id="classopenage_1_1job_1_1_worker_xhtml_a3a1cffa81bce40320896181ac63205cb"><div class="ttname"><a href="classopenage_1_1job_1_1_worker.xhtml#a3a1cffa81bce40320896181ac63205cb">openage::job::Worker::notify</a></div><div class="ttdeci">void notify()</div><div class="ttdef"><b>Definition:</b> <a href="worker_8cpp_source.xhtml#l00041">worker.cpp:41</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="worker_8h_source.xhtml#l00028">is_running</a>, <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>, <a class="el" href="worker_8cpp_source.xhtml#l00041">notify()</a>, and <a class="el" href="worker_8h_source.xhtml#l00034">pending_jobs_mutex</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1job_1_1_worker_ab80cb2f4e936dc069dadf979b90bcfc6_cgraph.svg" width="352" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -379,6 +494,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00031">31</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00046">join()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00019">start()</a>.</p>
+
 </div>
 </div>
 <a id="ab639eed2b93e58c7393b40103fb3cc5a"></a>
@@ -403,6 +520,8 @@ Private Attributes</h2></td></tr>
 <p>Whether this worker thread is still running. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00028">28</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00051">execute_job()</a>, <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>, <a class="el" href="worker_8cpp_source.xhtml#l00019">start()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00025">stop()</a>.</p>
 
 </div>
 </div>
@@ -429,6 +548,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00040">40</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00041">notify()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>.</p>
+
 </div>
 </div>
 <a id="ac9734f149754c8bc51b19d6cc57902c0"></a>
@@ -453,6 +574,8 @@ Private Attributes</h2></td></tr>
 <p>The parent job manager, this worker is fetching jobs from. </p>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00025">25</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00051">execute_job()</a>, <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00012">Worker()</a>.</p>
 
 </div>
 </div>
@@ -479,6 +602,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00037">37</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00033">enqueue()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>.</p>
+
 </div>
 </div>
 <a id="a6c96492e8ac3a987e0532b0e81685b77"></a>
@@ -504,11 +629,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="worker_8h_source.xhtml#l00034">34</a> of file <a class="el" href="worker_8h_source.xhtml">worker.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="worker_8cpp_source.xhtml#l00033">enqueue()</a>, <a class="el" href="worker_8cpp_source.xhtml#l00065">process()</a>, and <a class="el" href="worker_8cpp_source.xhtml#l00025">stop()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/job/<a class="el" href="worker_8h_source.xhtml">worker.h</a></li>
-<li>libopenage/job/<a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/<a class="el" href="worker_8h_source.xhtml">worker.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/<a class="el" href="worker_8cpp_source.xhtml">worker.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::members::EnumMember</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.RefMember</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.EnumLookupMember</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.EnumMember::values</definition>
+        <argsstring></argsstring>
+        <name>values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="391" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="391" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0fcf1a7012f76c251b31eb760ef911ee" compoundref="members_8py" startline="473" endline="480">openage.convert.dataformat.members.EnumMember.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" compoundref="members_8py" startline="394" endline="427">openage.convert.dataformat.members.EnumMember.get_parsers</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" compoundref="members_8py" startline="446" endline="472">openage.convert.dataformat.members.EnumMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2bc739bc4cd27300bb2f88e78887a22f" compoundref="members_8py" startline="437" endline="439">openage.convert.dataformat.members.EnumMember.validate_value</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2a395ed6e913992a82b54b4724780b00" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.EnumMember::resolved</definition>
+        <argsstring></argsstring>
+        <name>resolved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="392" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="392" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a34b3fdd1960ae5d860dbba463d5fe55e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.__init__</definition>
+        <argsstring>(self, type_name, values, file_name=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" kindref="member">type_name</ref></type>
+          <defname>type_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" kindref="member">values</ref></type>
+          <defname>values</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="389" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="389" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.get_parsers</definition>
+        <argsstring>(self, idx, member)</argsstring>
+        <name>get_parsers</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a713d93efed62b806731cfe52ddf39fc4">get_parsers</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>idx</type>
+          <defname>idx</defname>
+        </param>
+        <param>
+          <type>member</type>
+          <defname>member</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="394" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="394" bodyend="427"/>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a5e3a7c5e8aeddbd762f9a158f9bc5aab" compoundref="util_8py" startline="128" endline="138">openage.convert.dataformat.util.determine_headers</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">qtsdl::GuiListModel::values</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" compoundref="members_8py" startline="391">openage.convert.dataformat.members.EnumMember.values</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a12f56e75f97144d787c390bfb236e6f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.get_headers</definition>
+        <argsstring>(self, output_target)</argsstring>
+        <name>get_headers</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a0c802d0e74f4506b9fbc83f45382e42b">get_headers</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>output_target</type>
+          <defname>output_target</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="428" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="428" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a389a1dcae4781387c6e38f14e907f21f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.get_typerefs</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_typerefs</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aa4968dab9239c251b3415aefcfa53ae1">get_typerefs</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="431" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="431" bodyend="433"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aca753aded701699bfd78a4c16e01ca67" compoundref="members_8py" startline="53" endline="55">openage.convert.dataformat.members.DataMember.get_effective_type</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1ae02ebc753e219e6084c6cdbf2a1fcdd2" compoundref="exportable_8py" startline="483" endline="485">openage.convert.dataformat.exportable.Exportable.get_effective_type</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0252612eeda42f3c7553ea1b1e1212f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.get_effective_type</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_effective_type</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aca753aded701699bfd78a4c16e01ca67">get_effective_type</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="434" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="434" bodyend="436"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2bc739bc4cd27300bb2f88e78887a22f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.validate_value</definition>
+        <argsstring>(self, value)</argsstring>
+        <name>validate_value</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>value</type>
+          <defname>value</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="437" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="437" bodyend="439"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">qtsdl::GuiListModel::values</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" compoundref="members_8py" startline="391">openage.convert.dataformat.members.EnumMember.values</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.get_snippets</definition>
+        <argsstring>(self, file_name, format_)</argsstring>
+        <name>get_snippets</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+        </param>
+        <param>
+          <type>format_</type>
+          <defname>format_</defname>
+        </param>
+        <briefdescription>
+<para>generate enum snippets from given data </para>
+        </briefdescription>
+        <detaileddescription>
+<para>input <ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member" kindref="compound">EnumMember</ref> output ContentSnippet </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="446" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="446" bodyend="472"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" compoundref="members_8py" startline="240">openage.convert.dataformat.members.RefMember.file_name</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">qtsdl::GuiListModel::values</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" compoundref="members_8py" startline="391">openage.convert.dataformat.members.EnumMember.values</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0fcf1a7012f76c251b31eb760ef911ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.format_hash</definition>
+        <argsstring>(self, hasher)</argsstring>
+        <name>format_hash</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1ab1259c0fbb6ecce62302f086c5167396">format_hash</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>hasher</type>
+          <defname>hasher</defname>
+        </param>
+        <briefdescription>
+<para>hash these member&apos;s settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   used to determine data format changes.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="473" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="473" bodyend="480"/>
+        <references refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" compoundref="gui__list__model_8h" startline="38">qtsdl::GuiListModel::values</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" compoundref="members_8py" startline="391">openage.convert.dataformat.members.EnumMember.values</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a15f292c4683ba4337a33bd52c0581f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.EnumMember.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1add7272a1e3cc7a7b510a23541d0c48bb">__repr__</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="481" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="481" bodyend="484"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>this struct member/data column is a enum. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1081">
+        <label>openage.convert.dataformat.members.EnumMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member"/>
+        <childnode refid="1082" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1083">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+      <node id="1084">
+        <label>openage.convert.dataformat.members.EnumLookupMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member"/>
+        <childnode refid="1081" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1082">
+        <label>openage.convert.dataformat.members.RefMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member"/>
+        <childnode refid="1083" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1085">
+        <label>openage.convert.dataformat.members.EnumMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member"/>
+        <childnode refid="1086" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1087">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+      <node id="1086">
+        <label>openage.convert.dataformat.members.RefMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member"/>
+        <childnode refid="1087" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="387" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="387" bodyend="485"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a34b3fdd1960ae5d860dbba463d5fe55e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1ad33cc8d2074cba7148a9e10a35ec1c49" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::EnumMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1af93da463756c79f7fb06eb46898fd6c5" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DataMember."><scope>openage::convert::dataformat::members::EnumMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a15f292c4683ba4337a33bd52c0581f70" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ade5ee2745546cc6f70341b34958900cf" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>do_raw_read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a1d8cd7ab645eb4e99a36a3627021111f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>entry_hook</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0fcf1a7012f76c251b31eb760ef911ee" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a0252612eeda42f3c7553ea1b1e1212f9" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aac3076daf9912b2241f0651797a8a506" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_empty_value</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a12f56e75f97144d787c390bfb236e6f6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a5020d135379031c1726d24343ab23310" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a815464eef9720becdee8f954d2134989" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_parsers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a274e331b508216591106df9b98644854" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_struct_entries</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a389a1dcae4781387c6e38f14e907f21f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>get_typerefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a304aadf38378a06b99c4398303928dbd" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ae88ae33e707c5877b61b8598c78a7926" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2a395ed6e913992a82b54b4724780b00" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>resolved</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>type_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a2bc739bc4cd27300bb2f88e78887a22f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>validate_value</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member_1a45cc26b2b43c5cda5c617f01632f26c2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>values</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a8cc54e765c92a42b17dbe2786cfdef08" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::EnumMember</scope><name>verify_read_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

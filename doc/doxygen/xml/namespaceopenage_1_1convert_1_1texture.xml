@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1convert_1_1texture" kind="namespace" language="Python">
+    <compoundname>openage::convert::texture</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1texture_1_1_texture" prot="public">openage::convert::texture::Texture</innerclass>
+    <innerclass refid="classopenage_1_1convert_1_1texture_1_1_texture_image" prot="public">openage::convert::texture::TextureImage</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1texture_1a0fee08e92bb6bd623d2a15d56af23aed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.subtexture_meta</definition>
+        <argsstring>(tx, ty, hx, hy, cx, cy)</argsstring>
+        <name>subtexture_meta</name>
+        <param>
+          <type>tx</type>
+          <defname>tx</defname>
+        </param>
+        <param>
+          <type>ty</type>
+          <defname>ty</defname>
+        </param>
+        <param>
+          <type>hx</type>
+          <defname>hx</defname>
+        </param>
+        <param>
+          <type>hy</type>
+          <defname>hy</defname>
+        </param>
+        <param>
+          <type>cx</type>
+          <defname>cx</defname>
+        </param>
+        <param>
+          <type>cy</type>
+          <defname>cy</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="33" bodyend="45"/>
+        <referencedby refid="namespaceopenage_1_1convert_1_1texture_1af986c2ec331f19840f4dc1eee51a5961" compoundref="texture_8py" startline="210" endline="260">openage.convert.texture.merge_frames</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1convert_1_1texture_1af986c2ec331f19840f4dc1eee51a5961" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.texture.merge_frames</definition>
+        <argsstring>(frames)</argsstring>
+        <name>merge_frames</name>
+        <param>
+          <type>frames</type>
+          <defname>frames</defname>
+        </param>
+        <briefdescription>
+<para>merge all given frames of this slp to a single image file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>frames = [<ref refid="classopenage_1_1convert_1_1texture_1_1_texture_image" kindref="compound">TextureImage</ref>, ...]</para>
+<para>returns = <ref refid="classopenage_1_1convert_1_1texture_1_1_texture_image" kindref="compound">TextureImage</ref>, (width, height), [drawn_frames_meta] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="210" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" bodystart="210" bodyend="260"/>
+        <references refid="namespaceopenage_1_1log_1a173fdf777356d529586708570ee36be4" compoundref="log_2____init_____8py" startline="104" endline="107">openage::log.spam</references>
+        <references refid="namespaceopenage_1_1convert_1_1texture_1a0fee08e92bb6bd623d2a15d56af23aed" compoundref="texture_8py" startline="33" endline="45">openage.convert.texture.subtexture_meta</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1ad67d62c0af627d1b83389ed9dc09b213" compoundref="texture_8py" startline="106" endline="139">openage.convert.texture.Texture.__init__</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/texture.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

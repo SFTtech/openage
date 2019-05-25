@@ -16,7 +16,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="57" column="1" bodyfile="libopenage/util/filelike/python.h" bodystart="57" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" bodystart="57" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" compoundref="filelike_2python_8cpp" startline="60" endline="62">close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" compoundref="filelike_2python_8cpp" startline="65" endline="67">flush</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" compoundref="filelike_2python_8cpp" startline="80" endline="82">get_py_fileobj</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" compoundref="filelike_2python_8cpp" startline="70" endline="72">get_size</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_resource_leaf_1aab2f9c67bf2e32d12e6199053c0bf429" compoundref="peresource_8py" startline="115" endline="119">openage.convert.peresource.ResourceLeaf.open</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1pefile_1_1_p_e_file_1a22a79a0ca48b40b172ad7200649dffde" compoundref="pefile_8py" startline="212" endline="222">openage.convert.pefile.PEFile.open_section</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ad969c124846fa875d04b292129a30e35" compoundref="filelike_2python_8cpp" startline="12" endline="14">Python</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" compoundref="filelike_2python_8cpp" startline="17" endline="19">read</referencedby>
+        <referencedby refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1a455bb79e71a8baa07af00ac680085f6d" compoundref="cab_8py" startline="463" endline="494">openage.cabextract.cab.CABFolderStream.read_block_data</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1drs_1_1_d_r_s_1ad2594ba2dd37d225f1a0f8b86df15c9a" compoundref="drs_8py" startline="120" endline="132">openage.convert.drs.DRS.read_tables</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" compoundref="filelike_2python_8cpp" startline="22" endline="24">read_to</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" compoundref="filelike_2python_8cpp" startline="27" endline="29">readable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" compoundref="filelike_2python_8cpp" startline="85" endline="88">repr</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" compoundref="filelike_2python_8cpp" startline="42" endline="47">seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" compoundref="filelike_2python_8cpp" startline="50" endline="52">seekable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" compoundref="filelike_2python_8cpp" startline="55" endline="57">tell</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" compoundref="filelike_2python_8cpp" startline="37" endline="39">writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" compoundref="filelike_2python_8cpp" startline="32" endline="34">write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +53,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="33" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="12" bodyend="14"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="12" bodyend="14"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -53,7 +72,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="35" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="17" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="17" bodyend="19"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" compoundref="filelike_2python_8cpp" startline="91">openage::util::filelike::pyx_file_read</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable_1aadb76e27d69a7a94abc320498c316efe" compoundref="exportable_8py" startline="182" endline="399">openage.convert.dataformat.exportable.Exportable.read</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1afe54133fe4a7d4cb75352a250a11a024" compoundref="peresource_8py" startline="138" endline="143">openage.convert.peresource.StringLiteral.readall</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -75,7 +99,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="36" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="22" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="22" bodyend="24"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" compoundref="filelike_2python_8cpp" startline="92">openage::util::filelike::pyx_file_read_to</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -89,7 +116,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="38" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="27" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="27" bodyend="29"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" compoundref="filelike_2python_8cpp" startline="93">openage::util::filelike::pyx_file_readable</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -107,7 +136,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="40" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="32" bodyend="34"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="32" bodyend="34"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" compoundref="filelike_2python_8cpp" startline="94">openage::util::filelike::pyx_file_write</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -121,7 +152,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="42" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="37" bodyend="39"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="42" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="37" bodyend="39"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" compoundref="filelike_2python_8cpp" startline="95">openage::util::filelike::pyx_file_writable</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -144,7 +179,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="44" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="42" bodyend="47"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="42" bodyend="47"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" compoundref="filelike_2python_8cpp" startline="96">openage::util::filelike::pyx_file_seek</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -158,7 +195,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="45" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="50" bodyend="52"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="45" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="50" bodyend="52"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" compoundref="filelike_2python_8cpp" startline="97">openage::util::filelike::pyx_file_seekable</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>size_t</type>
@@ -172,7 +211,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="46" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="55" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="55" bodyend="57"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" compoundref="filelike_2python_8cpp" startline="98">openage::util::filelike::pyx_file_tell</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -186,7 +228,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="47" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="60" bodyend="62"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="60" bodyend="62"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" compoundref="filelike_2python_8cpp" startline="99">openage::util::filelike::pyx_file_close</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1ac1d75f370298fb63d2a57b60b334fc34" compoundref="filelike_2abstract_8py" startline="113" endline="117">openage.util.filelike.abstract.FileLikeObject.__exit__</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool_1a39703847165efd7f5527553633bd9e91" compoundref="slp__converter__pool_8py" startline="127" endline="131">openage.convert.slp_converter_pool.SLPConverterPool.__exit__</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -200,7 +246,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="48" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="65" bodyend="67"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="48" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="65" bodyend="67"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" compoundref="filelike_2python_8cpp" startline="100">openage::util::filelike::pyx_file_flush</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>ssize_t</type>
@@ -214,7 +262,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="49" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="70" bodyend="72"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="70" bodyend="72"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
+        <references refid="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" compoundref="filelike_2python_8cpp" startline="101">openage::util::filelike::pyx_file_size</references>
+        <referencedby refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a248471b44bfea2faad6d97d9dd07eb00" compoundref="filelike_2abstract_8py" startline="127" endline="146">openage.util.filelike.abstract.FileLikeObject.seek_helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -228,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="51" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="75" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="51" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref> <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref> &amp;</type>
@@ -241,7 +292,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="52" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="80" bodyend="82"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::ostream &amp;</type>
@@ -259,7 +311,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/filelike/python.h" line="54" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="85" bodyend="88"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.cpp" bodystart="85" bodyend="88"/>
+        <references refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" compoundref="filelike_2python_8h" startline="57">fileobj</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -269,30 +322,30 @@
 <para>pxd: cppclass <ref refid="classopenage_1_1util_1_1filelike_1_1_python" kindref="compound">Python</ref>: PyObj &amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" kindref="member">get_py_fileobj()</ref> except + </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3802">
+      <node id="5751">
         <label>openage::util::filelike::FileLike</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
       </node>
-      <node id="3801">
+      <node id="5750">
         <label>openage::util::filelike::Python</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_python"/>
-        <childnode refid="3802" relation="public-inheritance">
+        <childnode refid="5751" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3804">
+      <node id="5753">
         <label>openage::util::filelike::FileLike</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
       </node>
-      <node id="3803">
+      <node id="5752">
         <label>openage::util::filelike::Python</label>
         <link refid="classopenage_1_1util_1_1filelike_1_1_python"/>
-        <childnode refid="3804" relation="public-inheritance">
+        <childnode refid="5753" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/filelike/python.h" line="31" column="1" bodyfile="libopenage/util/filelike/python.h" bodystart="31" bodyend="58"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/filelike/python.h" bodystart="31" bodyend="58"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>close</name></member>
       <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>FileLike</name></member>

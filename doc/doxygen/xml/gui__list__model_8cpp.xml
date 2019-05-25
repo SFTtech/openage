@@ -12,7 +12,7 @@
         <label>QObject</label>
       </node>
       <node id="12761">
-        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp</label>
         <link refid="gui__list__model_8cpp"/>
         <childnode refid="12762" relation="include">
         </childnode>
@@ -217,6 +217,6 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/link/gui_list_model.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_list_model.cpp"/>
   </compounddef>
 </doxygen>

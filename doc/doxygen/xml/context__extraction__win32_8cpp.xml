@@ -34,7 +34,7 @@
         <label>cassert</label>
       </node>
       <node id="13439">
-        <label>libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</label>
         <link refid="context__extraction__win32_8cpp"/>
         <childnode refid="13440" relation="include">
         </childnode>
@@ -119,6 +119,6 @@
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp"/>
   </compounddef>
 </doxygen>

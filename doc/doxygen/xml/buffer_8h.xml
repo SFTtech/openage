@@ -3,9 +3,9 @@
   <compounddef id="buffer_8h" kind="file" language="C++">
     <compoundname>buffer.h</compoundname>
     <includes refid="simple__object_8h" local="yes">simple_object.h</includes>
-    <includedby refid="buffer_8cpp" local="yes">libopenage/renderer/opengl/buffer.cpp</includedby>
-    <includedby refid="opengl_2geometry_8h" local="yes">libopenage/renderer/opengl/geometry.h</includedby>
-    <includedby refid="vertex__array_8h" local="yes">libopenage/renderer/opengl/vertex_array.h</includedby>
+    <includedby refid="buffer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp</includedby>
+    <includedby refid="opengl_2geometry_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h</includedby>
+    <includedby refid="vertex__array_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.h</includedby>
     <incdepgraph>
       <node id="20880">
         <label>functional</label>
@@ -27,7 +27,7 @@
         </childnode>
       </node>
       <node id="20877">
-        <label>libopenage/renderer/opengl/buffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h</label>
         <link refid="buffer_8h"/>
         <childnode refid="20878" relation="include">
         </childnode>
@@ -35,7 +35,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="20886">
-        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</label>
         <link refid="opengl_2shader__program_8h"/>
         <childnode refid="20887" relation="include">
         </childnode>
@@ -45,23 +45,23 @@
         </childnode>
       </node>
       <node id="20888">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="20889">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="20883">
-        <label>libopenage/renderer/opengl/buffer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.cpp</label>
         <link refid="buffer_8cpp"/>
       </node>
       <node id="20892">
-        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.cpp</label>
         <link refid="vertex__array_8cpp"/>
       </node>
       <node id="20891">
-        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.h</label>
         <link refid="vertex__array_8h"/>
         <childnode refid="20884" relation="include">
         </childnode>
@@ -69,7 +69,7 @@
         </childnode>
       </node>
       <node id="20884">
-        <label>libopenage/renderer/opengl/geometry.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.h</label>
         <link refid="opengl_2geometry_8h"/>
         <childnode refid="20885" relation="include">
         </childnode>
@@ -81,15 +81,15 @@
         </childnode>
       </node>
       <node id="20890">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="20885">
-        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/geometry.cpp</label>
         <link refid="opengl_2geometry_8cpp"/>
       </node>
       <node id="20882">
-        <label>libopenage/renderer/opengl/buffer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h</label>
         <link refid="buffer_8h"/>
         <childnode refid="20883" relation="include">
         </childnode>
@@ -99,7 +99,7 @@
         </childnode>
       </node>
       <node id="20887">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="20888" relation="include">
         </childnode>
@@ -145,6 +145,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/buffer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/buffer.h"/>
   </compounddef>
 </doxygen>

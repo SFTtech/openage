@@ -52,7 +52,7 @@
         </childnode>
       </node>
       <node id="5075">
-        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map_filter_iterator.cpp</label>
         <link refid="map__filter__iterator_8cpp"/>
         <childnode refid="5076" relation="include">
         </childnode>
@@ -298,6 +298,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/map_filter_iterator.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/map_filter_iterator.cpp"/>
   </compounddef>
 </doxygen>

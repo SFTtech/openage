@@ -385,7 +385,7 @@
         <label>../gamedata/gamedata.gen.h</label>
       </node>
       <node id="8586">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
         <childnode refid="8587" relation="include">
         </childnode>
@@ -1855,13 +1855,13 @@
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>global_input_context.bind(action.get(</highlight><highlight class="stringliteral">&quot;TOGGLE_UNIT_DEBUG&quot;</highlight><highlight class="normal">),<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>input::action_arg_t<sp/>&amp;)<sp/>{</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;settings.draw_debug.value<sp/>=<sp/>!this-&gt;settings.draw_debug.value;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Toggle<sp/>debug<sp/>grid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Toggle<sp/>debug<sp/>grid&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>remove<sp/>this<sp/>hack,<sp/>use<sp/>render<sp/>settings<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_action_1a0a84fac6b39ee42340f67905dd631956" kindref="member">UnitAction::show_debug</ref><sp/>=<sp/>!<ref refid="classopenage_1_1_unit_action_1a0a84fac6b39ee42340f67905dd631956" kindref="member">UnitAction::show_debug</ref>;</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loaded<sp/>Renderer&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loaded<sp/>Renderer&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="186"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188" refid="classopenage_1_1_game_renderer_1a83040812fefc420ba1b9c55bcd29b52c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_game_renderer_1a83040812fefc420ba1b9c55bcd29b52c" kindref="member">GameRenderer::~GameRenderer</ref>()<sp/>{</highlight></codeline>
@@ -1901,6 +1901,6 @@
 <codeline lineno="222"><highlight class="normal"></highlight></codeline>
 <codeline lineno="223"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/game_renderer.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fslike_1_1abstract" kind="namespace" language="Python">
+    <compoundname>openage::util::fslike::abstract</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object" prot="public">openage::util::fslike::abstract::FSLikeObject</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_read_only_f_s_like_object" prot="public">openage::util::fslike::abstract::ReadOnlyFSLikeObject</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/abstract.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

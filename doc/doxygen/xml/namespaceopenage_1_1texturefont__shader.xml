@@ -14,7 +14,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="15" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1renderer_1_1opengl_1a870cc53f47bfd0a6398f23667fa2d2e3" compoundref="shader__program_8cpp" startline="22" endline="48">openage::renderer::opengl::check_program_status</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a83040812fefc420ba1b9c55bcd29b52c" compoundref="game__renderer_8cpp" startline="188" endline="196">openage::GameRenderer::~GameRenderer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -27,7 +30,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="16" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" compoundref="terrain_8cpp" startline="402" endline="465">openage::Terrain::create_tile_advice</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_filled_texture_handles_1a08b5dcae915c7b1cb98cf3763f4b2361" compoundref="gui__filled__texture__handles_8cpp" startline="28" endline="34">openage::gui::GuiFilledTextureHandles::fill_all_handles_with_texture</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -40,7 +45,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="16" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" compoundref="unit__texture_8cpp" startline="62" endline="74">openage::UnitTexture::draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_1af8b821f1e22d782134986784fd94dbe3" compoundref="unit_8cpp" startline="202" endline="222">openage::Unit::draw</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" compoundref="unit__texture_8cpp" startline="48" endline="60">openage::UnitTexture::sample</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" compoundref="text_8cpp" startline="78" endline="85">openage::renderer::TextRenderer::set_color</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" prot="public" static="no" mutable="no">
         <type>GLint</type>
@@ -53,13 +63,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.cpp" line="16" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/renderer/text.cpp" line="14" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp" line="14" column="1"/>
   </compounddef>
 </doxygen>

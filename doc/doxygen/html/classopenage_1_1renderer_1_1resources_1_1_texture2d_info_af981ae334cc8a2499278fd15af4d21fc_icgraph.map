@@ -1,0 +1,4 @@
+<map id="openage::renderer::resources::Texture2dInfo::get_row_alignment" name="openage::renderer::resources::Texture2dInfo::get_row_alignment">
+<area shape="rect" id="node1" title="Returns the alignment of texture rows to byte boundaries." alt="" coords="192,5,356,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d.xhtml#ab2038754e208bb1929a244dbf29f2b6b" title=" " alt="" coords="5,5,144,61"/>
+</map>

@@ -5,9 +5,9 @@
     <includes refid="generator_8h" local="yes">../gamestate/generator.h</includes>
     <includes refid="gui__list__model_8h" local="yes">guisys/link/gui_list_model.h</includes>
     <includes refid="gui__item__list__model_8h" local="yes">guisys/link/gui_item_list_model.h</includes>
-    <includedby refid="game__creator_8cpp" local="yes">libopenage/gui/game_creator.cpp</includedby>
-    <includedby refid="game__saver_8cpp" local="yes">libopenage/gui/game_saver.cpp</includedby>
-    <includedby refid="generator__link_8cpp" local="yes">libopenage/gui/generator_link.cpp</includedby>
+    <includedby refid="game__creator_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</includedby>
+    <includedby refid="game__saver_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</includedby>
+    <includedby refid="generator__link_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</includedby>
     <incdepgraph>
       <node id="12616">
         <label>list</label>
@@ -300,7 +300,7 @@
         </childnode>
       </node>
       <node id="12578">
-        <label>libopenage/gui/generator_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h</label>
         <link refid="generator__link_8h"/>
         <childnode refid="12579" relation="include">
         </childnode>
@@ -428,15 +428,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="12643">
-        <label>libopenage/gui/generator_link.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.cpp</label>
         <link refid="generator__link_8cpp"/>
       </node>
       <node id="12641">
-        <label>libopenage/gui/game_creator.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_creator.cpp</label>
         <link refid="game__creator_8cpp"/>
       </node>
       <node id="12640">
-        <label>libopenage/gui/generator_link.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h</label>
         <link refid="generator__link_8h"/>
         <childnode refid="12641" relation="include">
         </childnode>
@@ -446,7 +446,7 @@
         </childnode>
       </node>
       <node id="12642">
-        <label>libopenage/gui/game_saver.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/game_saver.cpp</label>
         <link refid="game__saver_8cpp"/>
       </node>
     </invincdepgraph>
@@ -502,6 +502,6 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/generator_link.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/generator_link.h"/>
   </compounddef>
 </doxygen>

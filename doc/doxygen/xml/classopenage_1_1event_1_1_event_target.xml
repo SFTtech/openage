@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="26" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="26" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -35,7 +35,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="68" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" compoundref="eventtarget_8cpp" startline="14" endline="61">changes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1abe6736c7ec9aeba96a045c9e517bdf66" compoundref="eventtarget_8h" startline="36" endline="40">EventTarget</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" compoundref="eventtarget_8cpp" startline="64" endline="87">trigger</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_target_1a2de9cc3da197acbc5e108bcb859b6d9e" prot="private" static="no" mutable="no">
         <type>std::list&lt; std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
@@ -49,7 +52,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="71" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="71" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="71" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" compoundref="eventtarget_8cpp" startline="90" endline="92">add_dependent</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" compoundref="eventtarget_8cpp" startline="14" endline="61">changes</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" compoundref="eventtarget_8cpp" startline="94" endline="105">show_dependents</referencedby>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" compoundref="eventtarget_8cpp" startline="64" endline="87">trigger</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1event_1_1_event_target_1a2112570cbc5e48f749db21c88fbdb964" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1event_1_1_event_target_1a10a6498be4aac6daa9c254fbb59cd5cb" kindref="member">single_change_notifier</ref></type>
@@ -62,7 +69,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="73" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="73" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="73" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" compoundref="eventtarget_8cpp" startline="14" endline="61">changes</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -82,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="24" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="24" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_target_1af2ea4d43df8ac5dad62ce41a5a300dca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -95,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="42" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="42" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -113,7 +121,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="47" column="1" bodyfile="libopenage/event/eventtarget.cpp" bodystart="90" bodyend="92"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp" bodystart="90" bodyend="92"/>
+        <references refid="classopenage_1_1event_1_1_event_target_1a2de9cc3da197acbc5e108bcb859b6d9e" compoundref="eventtarget_8h" startline="71">dependents</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +136,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="52" column="1" bodyfile="libopenage/event/eventtarget.cpp" bodystart="94" bodyend="105"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp" bodystart="94" bodyend="105"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1a2de9cc3da197acbc5e108bcb859b6d9e" compoundref="eventtarget_8h" startline="71">dependents</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -153,7 +165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="36" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="36" bodyend="40"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="36" bodyend="40"/>
+        <references refid="classopenage_1_1event_1_1_event_target_1ab3f3bf3292bc7fc3566b48b2bddd86da" compoundref="eventtarget_8h" startline="68">loop</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -171,7 +184,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="59" column="1" bodyfile="libopenage/event/eventtarget.cpp" bodystart="14" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp" bodystart="14" bodyend="61"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188">openage::event::EventClass::DEPENDENCY</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09">openage::event::EventClass::DEPENDENCY_IMMEDIATELY</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1a2de9cc3da197acbc5e108bcb859b6d9e" compoundref="eventtarget_8h" startline="71">dependents</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1ab3f3bf3292bc7fc3566b48b2bddd86da" compoundref="eventtarget_8h" startline="68">loop</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24">openage::event::EventClass::ONCE</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1a2112570cbc5e48f749db21c88fbdb964" compoundref="eventtarget_8h" startline="73">parent_notifier</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555">openage::event::EventClass::REPEAT</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620">openage::event::EventClass::TRIGGER</references>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1aa34202033ff483893bb1f253acea5cb5" compoundref="event_2tests_8cpp" startline="29" endline="32">openage::event::tests::TestState::TestObject::set_number</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -189,7 +213,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/event/eventtarget.h" line="64" column="1" bodyfile="libopenage/event/eventtarget.cpp" bodystart="64" bodyend="87"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.cpp" bodystart="64" bodyend="87"/>
+        <references refid="message_8h_1a49606be7356624568932ec81c0d429f4" compoundref="message_8h" startline="176">DBG</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1a2de9cc3da197acbc5e108bcb859b6d9e" compoundref="eventtarget_8h" startline="71">dependents</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="classopenage_1_1event_1_1_event_target_1ab3f3bf3292bc7fc3566b48b2bddd86da" compoundref="eventtarget_8h" startline="68">loop</references>
+        <references refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620">openage::event::EventClass::TRIGGER</references>
+        <referencedby refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a84664c0a3a47e8029ce2c705229e385b" compoundref="event_2tests_8cpp" startline="38" endline="40">openage::event::tests::TestState::TestObject::test_trigger</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -198,54 +228,54 @@
 <para>Every Object in the gameworld that wants to be targeted by events or as dependency for events, has to implement this class. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1460">
+      <node id="2266">
         <label>openage::curve::Discrete&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_discrete"/>
-        <childnode refid="1458" relation="public-inheritance">
+        <childnode refid="2264" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1463">
+      <node id="2269">
         <label>openage::event::tests::TestState::TestObject</label>
         <link refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object"/>
-        <childnode refid="1457" relation="public-inheritance">
+        <childnode refid="2263" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1461">
+      <node id="2267">
         <label>openage::event::demo::PongBall</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_pong_ball"/>
-        <childnode refid="1457" relation="public-inheritance">
+        <childnode refid="2263" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1462">
+      <node id="2268">
         <label>openage::event::demo::PongPlayer</label>
         <link refid="classopenage_1_1event_1_1demo_1_1_pong_player"/>
-        <childnode refid="1457" relation="public-inheritance">
+        <childnode refid="2263" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1459">
+      <node id="2265">
         <label>openage::curve::Continuous&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_continuous"/>
-        <childnode refid="1458" relation="public-inheritance">
+        <childnode refid="2264" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1457">
+      <node id="2263">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="1458">
+      <node id="2264">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="1457" relation="public-inheritance">
+        <childnode refid="2263" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1464">
+      <node id="2270">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/event/eventtarget.h" line="21" column="1" bodyfile="libopenage/event/eventtarget.h" bodystart="21" bodyend="74"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/eventtarget.h" bodystart="21" bodyend="74"/>
     <listofallmembers>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::event::EventTarget</scope><name>add_dependent</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" virt="non-virtual"><scope>openage::event::EventTarget</scope><name>changes</name></member>

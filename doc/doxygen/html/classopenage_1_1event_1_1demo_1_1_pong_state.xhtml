@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::event::demo::PongState Class Reference</title>
+<title>openage: openage::event::demo::PongState Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,17 +98,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1event_1_1demo_1_1_pong
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gamestate_8h_source.xhtml">gamestate.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::event::demo::PongState:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_pong_state__inherit__graph.svg" width="160" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::event::demo::PongState:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_pong_state__inherit__graph.svg" width="160" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::event::demo::PongState:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_pong_state__coll__graph.svg" width="160" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::event::demo::PongState:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_pong_state__coll__graph.svg" width="160" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -172,7 +175,12 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gamestate_8h_source.xhtml#l00118">118</a> of file <a class="el" href="gamestate_8h_source.xhtml">gamestate.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        :</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="classopenage_1_1event_1_1_state.xhtml#a83f7eab17997e052ac5b1919ddf59798">State</a>{mgr},</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a2d36b8a66e974143b99479cd58233fc7">p1</a>(std::make_shared&lt;PongPlayer&gt;(mgr, 0)),</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#ac8cd7c894256c8afb9019cf6f04a4a94">p2</a>(std::make_shared&lt;PongPlayer&gt;(mgr, 1)),</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a0ac48f8c441752145309c23881e3532a">ball</a>(std::make_shared&lt;PongBall&gt;(mgr, 2)),</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a82c24328ab5817f807e8d060805f7051">enable_gui</a>{<a class="code" href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a82c24328ab5817f807e8d060805f7051">enable_gui</a>}</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#if WITH_NCURSES</span></div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        , gui{gui}</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {}</div><div class="ttc" id="classopenage_1_1event_1_1demo_1_1_pong_state_xhtml_a2d36b8a66e974143b99479cd58233fc7"><div class="ttname"><a href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a2d36b8a66e974143b99479cd58233fc7">openage::event::demo::PongState::p1</a></div><div class="ttdeci">std::shared_ptr&lt; PongPlayer &gt; p1</div><div class="ttdef"><b>Definition:</b> <a href="gamestate_8h_source.xhtml#l00134">gamestate.h:134</a></div></div>
+<div class="ttc" id="classopenage_1_1event_1_1demo_1_1_pong_state_xhtml_a0ac48f8c441752145309c23881e3532a"><div class="ttname"><a href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a0ac48f8c441752145309c23881e3532a">openage::event::demo::PongState::ball</a></div><div class="ttdeci">std::shared_ptr&lt; PongBall &gt; ball</div><div class="ttdef"><b>Definition:</b> <a href="gamestate_8h_source.xhtml#l00136">gamestate.h:136</a></div></div>
+<div class="ttc" id="classopenage_1_1event_1_1demo_1_1_pong_state_xhtml_a82c24328ab5817f807e8d060805f7051"><div class="ttname"><a href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#a82c24328ab5817f807e8d060805f7051">openage::event::demo::PongState::enable_gui</a></div><div class="ttdeci">bool enable_gui</div><div class="ttdef"><b>Definition:</b> <a href="gamestate_8h_source.xhtml#l00139">gamestate.h:139</a></div></div>
+<div class="ttc" id="classopenage_1_1event_1_1_state_xhtml_a83f7eab17997e052ac5b1919ddf59798"><div class="ttname"><a href="classopenage_1_1event_1_1_state.xhtml#a83f7eab17997e052ac5b1919ddf59798">openage::event::State::State</a></div><div class="ttdeci">State(const std::shared_ptr&lt; Loop &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="state_8h_source.xhtml#l00015">state.h:15</a></div></div>
+<div class="ttc" id="classopenage_1_1event_1_1demo_1_1_pong_state_xhtml_ac8cd7c894256c8afb9019cf6f04a4a94"><div class="ttname"><a href="classopenage_1_1event_1_1demo_1_1_pong_state.xhtml#ac8cd7c894256c8afb9019cf6f04a4a94">openage::event::demo::PongState::p2</a></div><div class="ttdeci">std::shared_ptr&lt; PongPlayer &gt; p2</div><div class="ttdef"><b>Definition:</b> <a href="gamestate_8h_source.xhtml#l00135">gamestate.h:135</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -257,7 +265,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/event/demo/<a class="el" href="gamestate_8h_source.xhtml">gamestate.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/<a class="el" href="gamestate_8h_source.xhtml">gamestate.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -197,7 +197,7 @@
         <label>ostream</label>
       </node>
       <node id="4857">
-        <label>libopenage/curve/keyframe_container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.cpp</label>
         <link refid="keyframe__container_8cpp"/>
         <childnode refid="4858" relation="include">
         </childnode>
@@ -420,6 +420,6 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/keyframe_container.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/keyframe_container.cpp"/>
   </compounddef>
 </doxygen>

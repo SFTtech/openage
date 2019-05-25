@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="11" bodyend="14"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="11" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="16" bodyend="17"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="16" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const char *</type>
@@ -46,7 +46,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="22" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="22" column="1"/>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a42715118777dc5a4228e3bed2bb9d5cd" compoundref="gui__game__spec__image__provider__by__id__impl_8cpp" startline="21" endline="49">openage::gui::GuiGameSpecImageProviderByIdImpl::get_texture_handle</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_gui_image_provider_link_1ae433067db623c8643f5ed0103c4d6863" compoundref="gui__image__provider__link_8cpp" startline="66" endline="78">openage::gui::GuiImageProviderLink::provider</referencedby>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="30" endline="35">qtsdl::QmlEngineWithSingletonItemsInfo::~QmlEngineWithSingletonItemsInfo</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -60,7 +63,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="24" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="24" column="1"/>
+        <referencedby refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="30" endline="35">qtsdl::QmlEngineWithSingletonItemsInfo::~QmlEngineWithSingletonItemsInfo</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -79,7 +83,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="19" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="19" bodyend="23"/>
+        <references refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" compoundref="gui__image__provider_8h" startline="19">qtsdl::GuiImageProvider::impl</references>
+        <referencedby refid="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" compoundref="gui__image__provider__impl_8cpp" startline="25" endline="31">take_ownership</referencedby>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt; &gt;</type>
@@ -96,7 +102,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="25" bodyend="31"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="25" bodyend="31"/>
+        <references refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" compoundref="gui__image__provider__impl_8cpp" startline="19" endline="23">take_ownership</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -104,58 +111,58 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2608">
+      <node id="6224">
         <label>openage::gui::GuiGameSpecImageProviderByGraphicIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl"/>
-        <childnode refid="2607" relation="public-inheritance">
+        <childnode refid="6223" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2609">
+      <node id="6225">
         <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
-        <childnode refid="2607" relation="public-inheritance">
+        <childnode refid="6223" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2607">
+      <node id="6223">
         <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
-        <childnode refid="2605" relation="public-inheritance">
+        <childnode refid="6221" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2605">
+      <node id="6221">
         <label>openage::gui::GuiGameSpecImageProviderImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
-        <childnode refid="2603" relation="public-inheritance">
+        <childnode refid="6219" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2603">
+      <node id="6219">
         <label>qtsdl::GuiImageProviderImpl</label>
         <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
-        <childnode refid="2604" relation="public-inheritance">
+        <childnode refid="6220" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2604">
+      <node id="6220">
         <label>QQuickImageProvider</label>
       </node>
-      <node id="2606">
+      <node id="6222">
         <label>openage::gui::GuiGameSpecImageProviderByFilenameImpl</label>
         <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl"/>
-        <childnode refid="2605" relation="public-inheritance">
+        <childnode refid="6221" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2610">
+      <node id="6226">
         <label>qtsdl::GuiImageProviderImpl</label>
         <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
-        <childnode refid="2611" relation="public-inheritance">
+        <childnode refid="6227" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2611">
+      <node id="6227">
         <label>QQuickImageProvider</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="14" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.h" bodystart="14" bodyend="25"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_image_provider_impl.h" bodystart="14" bodyend="25"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" virt="pure-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>get_id</name></member>
       <member refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99" prot="public" virt="pure-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>give_up</name></member>

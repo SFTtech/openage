@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::content_snippet::SectionType</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type_1a9b36247b2db98928215168fb6022dfc7" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.content_snippet.SectionType::section_header</definition>
+        <argsstring></argsstring>
+        <name>section_header</name>
+        <initializer>=  &quot;header&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type_1a2471ab1a137328d75882401e6fd93d5f" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.content_snippet.SectionType::section_body</definition>
+        <argsstring></argsstring>
+        <name>section_body</name>
+        <initializer>=  &quot;body&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="943">
+        <label>openage.convert.dataformat.content_snippet.SectionType</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type"/>
+        <childnode refid="944" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="944">
+        <label>Enum</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="945">
+        <label>openage.convert.dataformat.content_snippet.SectionType</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type"/>
+        <childnode refid="946" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="946">
+        <label>Enum</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/content_snippet.py" bodystart="12" bodyend="17"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type_1a2471ab1a137328d75882401e6fd93d5f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::content_snippet::SectionType</scope><name>section_body</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_section_type_1a9b36247b2db98928215168fb6022dfc7" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::content_snippet::SectionType</scope><name>section_header</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

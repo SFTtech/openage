@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fslike_1_1union" kind="namespace" language="Python">
+    <compoundname>openage::util::fslike::union</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union" prot="public">openage::util::fslike::union::Union</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1union_1_1_union_path" prot="public">openage::util::fslike::union::UnionPath</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/union.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -21,7 +21,7 @@
         </childnode>
       </node>
       <node id="13016">
-        <label>libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
         <link refid="gui__dedicated__thread_8cpp"/>
         <childnode refid="13017" relation="include">
         </childnode>
@@ -152,6 +152,6 @@
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_dedicated_thread.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_dedicated_thread.cpp"/>
   </compounddef>
 </doxygen>

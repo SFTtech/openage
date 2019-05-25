@@ -1,0 +1,5 @@
+<map id="openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo" name="openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo">
+<area shape="rect" id="node1" title=" " alt="" coords="488,5,675,61"/>
+<area shape="rect" id="node2" href="$structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a03e6fa8867f7baf6a41625ce3330fbfb" title="Needed for compatibility reasons, don&#39;t use this directly." alt="" coords="233,13,440,54"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml#a5223d2c9c8019307e1c81e31b9b5124e" title=" " alt="" coords="5,13,185,54"/>
+</map>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="9" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -34,7 +34,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="25" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="14" bodyend="19"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" line="25" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="14" bodyend="19"/>
+        <references refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3">in_game_logic_thread</references>
+        <references refid="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405">in_game_logic_thread_blocking</references>
+        <references refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" compoundref="gui__callback_8cpp" startline="22" endline="24">qtsdl::GuiCallback::process</references>
+        <references refid="classqtsdl_1_1_gui_callback_1a3cfbf34933c59c043267e2ba916dc15f">qtsdl::GuiCallback::process_blocking</references>
+        <referencedby refid="classqtsdl_1_1_gui_item_base_1a0567d09e763a08648aad1675201b75b8" compoundref="gui__item_8h" startline="115" endline="117">qtsdl::GuiItemBase::set_game_logic_callback</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="signal">
@@ -53,7 +58,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="28" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" line="28" column="1"/>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" compoundref="gui__item_8h" startline="217" endline="228">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::assign_while_catching_constant_properies_inits</referencedby>
+        <referencedby refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" compoundref="gui__item_8h" startline="182" endline="189">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::i</referencedby>
+        <referencedby refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" compoundref="game__logic__caller_8cpp" startline="14" endline="19">set_game_logic_callback</referencedby>
       </memberdef>
       <memberdef kind="signal" id="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -70,7 +78,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="29" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" line="29" column="1"/>
+        <referencedby refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" compoundref="game__logic__caller_8cpp" startline="14" endline="19">set_game_logic_callback</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -79,28 +88,28 @@
 <para>Attaches to the GuiCallbackImpl. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1816">
+      <node id="6171">
         <label>QObject</label>
       </node>
-      <node id="1815">
+      <node id="6170">
         <label>qtsdl::GameLogicCaller</label>
         <link refid="classqtsdl_1_1_game_logic_caller"/>
-        <childnode refid="1816" relation="public-inheritance">
+        <childnode refid="6171" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1818">
+      <node id="6173">
         <label>QObject</label>
       </node>
-      <node id="1817">
+      <node id="6172">
         <label>qtsdl::GameLogicCaller</label>
         <link refid="classqtsdl_1_1_game_logic_caller"/>
-        <childnode refid="1818" relation="public-inheritance">
+        <childnode refid="6173" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.h" bodystart="16" bodyend="30"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/game_logic_caller.h" bodystart="16" bodyend="30"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>GameLogicCaller</name></member>
       <member refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>in_game_logic_thread</name></member>

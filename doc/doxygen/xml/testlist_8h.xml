@@ -114,7 +114,7 @@
         </childnode>
       </node>
       <node id="25153">
-        <label>libopenage/testing/testlist.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testlist.h</label>
         <link refid="testlist_8h"/>
         <childnode refid="25154" relation="include">
         </childnode>
@@ -225,6 +225,6 @@
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::testing</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/testing/testlist.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/testing/testlist.h"/>
   </compounddef>
 </doxygen>

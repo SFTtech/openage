@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="71" column="1" bodyfile="libopenage/util/fslike/fslike.cpp" bodystart="12" bodyend="12"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp" bodystart="12" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abb03f19eab3eb3794c6d2fea224880fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="73" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="73" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adcba7ad7135736cf7f7c105ef2a4473d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="75" column="1" bodyfile="libopenage/util/fslike/fslike.cpp" bodystart="14" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp" bodystart="14" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adf2810f95545a0ad3ff943031c2dc5be" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -63,7 +63,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="77" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="77" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" compoundref="fslike_2abstract_8py" startline="77" endline="79">openage.util.fslike.abstract.FSLikeObject.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a5dd908fc01d858dd0ad6d796cfa4caa6" compoundref="fslike_8cpp" startline="19" endline="26">resolve_r</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3482e633a1c66d185899bc827b535500" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -82,7 +84,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="78" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="78" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1abc5969fa041b778d0906a452d45f9d0c" compoundref="fslike_2abstract_8py" startline="77" endline="79">openage.util.fslike.abstract.FSLikeObject.exists</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a5dd908fc01d858dd0ad6d796cfa4caa6" compoundref="fslike_8cpp" startline="19" endline="26">resolve_r</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a881da38b6c5fc9d6e2b11144ee53feb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -101,7 +106,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="79" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="79" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2624d82034fe926a371f978b1d572f93" compoundref="fslike_8cpp" startline="29" endline="36">resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1abstract_1_1_f_s_like_object_1a255427aef3f55eea705114af7d7c107f" compoundref="fslike_2abstract_8py" startline="95" endline="97">openage.util.fslike.abstract.FSLikeObject.resolve_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a9106c192b17224d429822edd0ffd6ecd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref></type>
@@ -120,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="80" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="80" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a0b9f9850507320cc4d3dc4393a4e7195" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -139,7 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="81" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="81" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a28d7d207993972a0b61bf2abef7c8417" compoundref="wrapper_8py" startline="214" endline="217">openage.util.fslike.wrapper.DirectoryCreator.open_w</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abf13ccd935fb36f6d3eb78b296abb3a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -158,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="82" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="82" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a489ac2d07d76709781f16eb2d405f1fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -177,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="83" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="83" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2aded78ac99255c9f770434bbd6d94c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -196,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="84" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="84" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8b0ccf47acfb5ab6755bfce2f791f2b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -215,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="85" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="85" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a4b5616d9717e5301c7a02c0ec817ec4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
@@ -234,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="86" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="86" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a5dd908fc01d858dd0ad6d796cfa4caa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; bool, <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
@@ -252,7 +261,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="90" column="1" bodyfile="libopenage/util/fslike/fslike.cpp" bodystart="19" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="90" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp" bodystart="19" bodyend="26"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3482e633a1c66d185899bc827b535500">is_dir</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adf2810f95545a0ad3ff943031c2dc5be">is_file</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2624d82034fe926a371f978b1d572f93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; bool, <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
@@ -270,7 +281,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="91" column="1" bodyfile="libopenage/util/fslike/fslike.cpp" bodystart="29" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="91" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp" bodystart="29" bodyend="36"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a881da38b6c5fc9d6e2b11144ee53feb4">writable</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a46e98d2f10ea90e0c3bdf10cd7c3a55c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -289,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="92" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="92" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1ac309157d7ca897b70ad1bd2422278a76" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -312,7 +324,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="93" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="93" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a059fb6fed999bf853991bc33ed85f039" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -331,7 +343,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="95" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="95" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a60b98d35f3dd77e2c25bc39bb495c274" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -350,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="96" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="96" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1acf305e89dcfa13a3bfac108943793bfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -369,7 +382,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="97" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="97" column="1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" compoundref="path_8py" startline="229" endline="236">openage.util.fslike.path.Path.removerecursive</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3a5e4bbcf3223072add552c6cbb3cef4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -388,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="99" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="99" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a08ae94dab451787650b27a828ddd6d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>uint64_t</type>
@@ -407,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="100" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="100" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8d65a4b885c3b6669added656e4b9d6f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -421,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="102" column="1" bodyfile="libopenage/util/fslike/fslike.cpp" bodystart="39" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.cpp" bodystart="39" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_f_s_like_1af59ec3100e97086edd094242f700e454" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::ostream &amp;</type>
@@ -439,7 +453,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/fslike/fslike.h" line="104" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="104" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -453,40 +467,40 @@
 <para>bool <ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8d65a4b885c3b6669added656e4b9d6f" kindref="member">is_python_native()</ref> noexcept shared_ptr[<ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">FSLike</ref>] shared_from_this() except + </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1544">
+      <node id="5873">
         <label>openage::util::fslike::FSLike</label>
         <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
-        <childnode refid="1545" relation="public-inheritance">
+        <childnode refid="5874" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1546">
+      <node id="5875">
         <label>openage::util::fslike::Directory</label>
         <link refid="classopenage_1_1util_1_1fslike_1_1_directory"/>
-        <childnode refid="1544" relation="public-inheritance">
+        <childnode refid="5873" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1545">
+      <node id="5874">
         <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
       </node>
-      <node id="1547">
+      <node id="5876">
         <label>openage::util::fslike::Python</label>
         <link refid="classopenage_1_1util_1_1fslike_1_1_python"/>
-        <childnode refid="1544" relation="public-inheritance">
+        <childnode refid="5873" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1548">
+      <node id="5877">
         <label>openage::util::fslike::FSLike</label>
         <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
-        <childnode refid="1549" relation="public-inheritance">
+        <childnode refid="5878" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1549">
+      <node id="5878">
         <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/fslike/fslike.h" line="69" column="1" bodyfile="libopenage/util/fslike/fslike.h" bodystart="69" bodyend="105"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" line="69" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fslike/fslike.h" bodystart="69" bodyend="105"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a360e94675cb97c2efa393d03be02b46c" prot="public" virt="non-virtual"><scope>openage::util::fslike::FSLike</scope><name>FSLike</name></member>
       <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a08ae94dab451787650b27a828ddd6d01" prot="public" virt="pure-virtual"><scope>openage::util::fslike::FSLike</scope><name>get_filesize</name></member>

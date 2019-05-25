@@ -1,0 +1,4 @@
+<map id="openage.convert.dataformat.exportable.Exportable.format_hash" name="openage.convert.dataformat.exportable.Exportable.format_hash">
+<area shape="rect" id="node1" title="provides a deterministic hash of all exported structure members" alt="" coords="5,5,255,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable.xhtml#ac173bb76cce6f538107168c61a427ab9" title="return all members of this exportable (a struct.)" alt="" coords="303,5,552,47"/>
+</map>

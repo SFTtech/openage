@@ -64,7 +64,7 @@
         <label>coord_nese.gen.h</label>
       </node>
       <node id="3370">
-        <label>libopenage/coord/coordmanager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.cpp</label>
         <link refid="coordmanager_8cpp"/>
         <childnode refid="3371" relation="include">
         </childnode>
@@ -329,6 +329,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/coord/coordmanager.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/coord/coordmanager.cpp"/>
   </compounddef>
 </doxygen>

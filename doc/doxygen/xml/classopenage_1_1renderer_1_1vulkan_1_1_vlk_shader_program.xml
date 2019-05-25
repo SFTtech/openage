@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/shader_program.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" line="29" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1a8d4821a2c4a7fd79691680e0130d866a" prot="public" static="no" mutable="no">
         <type>std::vector&lt; VkPipelineShaderStageCreateInfo &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/shader_program.h" line="30" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +51,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/shader_program.h" line="32" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="32" bodyend="61"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" line="32" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" bodystart="32" bodyend="61"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" compoundref="misc_8h" startline="32" endline="40">openage::util::mod</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af">openage::renderer::resources::spirv</references>
+        <references refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" compoundref="gui_2gui_8cpp" startline="155">src</references>
+        <references refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" compoundref="util_8h" startline="50">VK_CALL_CHECKED</references>
+        <references refid="namespaceopenage_1_1renderer_1_1vulkan_1a9a6e2e6f743d06ad5c3102062cb429ce" compoundref="vulkan_2shader__program_8h" startline="16" endline="25">openage::renderer::vulkan::vk_shader_stage</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -59,12 +68,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4958">
+      <node id="4821">
         <label>openage::renderer::vulkan::VlkShaderProgram</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/shader_program.h" line="27" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="27" bodyend="62"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h" bodystart="27" bodyend="62"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1a6777ba321e22c6f0ad1ee1c1ad3b3cf0" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkShaderProgram</scope><name>modules</name></member>
       <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program_1a8d4821a2c4a7fd79691680e0130d866a" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkShaderProgram</scope><name>pipeline_stage_infos</name></member>

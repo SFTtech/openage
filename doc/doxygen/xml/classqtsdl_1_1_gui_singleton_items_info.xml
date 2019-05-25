@@ -10,24 +10,24 @@
 <para>Accessible during creation of any singleton QML item. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2772">
+      <node id="6484">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="2773">
+      <node id="6485">
         <label>openage::gui::EngineQMLInfo</label>
         <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
-        <childnode refid="2772" relation="public-inheritance">
+        <childnode refid="6484" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2774">
+      <node id="6486">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_singleton_items_info.h" line="10" column="1" bodyfile="libopenage/gui/guisys/public/gui_singleton_items_info.h" bodystart="10" bodyend="11"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_singleton_items_info.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_singleton_items_info.h" bodystart="10" bodyend="11"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::util::VariableBase Class Reference</title>
+<title>openage: openage::util::VariableBase Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -96,17 +97,20 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1_variable_base
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="variable_8h_source.xhtml">variable.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for openage::util::VariableBase:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base__inherit__graph.svg" width="368" height="427"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::util::VariableBase:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::util::VariableBase:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base__coll__graph.svg" width="192" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::util::VariableBase:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base__coll__graph.svg" width="192" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -149,7 +153,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="variable_8h_source.xhtml#l00013">13</a> of file <a class="el" href="variable_8h_source.xhtml">variable.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -172,6 +176,26 @@ template&lt;class T &gt; </div>
 <p>returns the stored value throws an exception if the template does not match the set type </p>
 
 <p class="definition">Definition at line <a class="el" href="variable_8h_source.xhtml#l00054">54</a> of file <a class="el" href="variable_8h_source.xhtml">variable.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                 {</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Variable&lt;T&gt; &amp;<span class="keyword">&gt;</span>(*this).get();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="variable_8h_source.xhtml#l00038">openage::util::Variable&lt; T &gt;::get()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="options_8h_source.xhtml#l00090">openage::options::OptionValue::value()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base_a2fc1503a41c5e241e6c2af106115bf82_cgraph.svg" width="443" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base_a2fc1503a41c5e241e6c2af106115bf82_icgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -195,11 +219,31 @@ template&lt;class T , class V &gt; </div>
 <p>sets the type and value </p>
 
 <p class="definition">Definition at line <a class="el" href="variable_8h_source.xhtml#l00059">59</a> of file <a class="el" href="variable_8h_source.xhtml">variable.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                     {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">dynamic_cast&lt;</span>Variable&lt;T&gt; &amp;<span class="keyword">&gt;</span>(*this).set(value);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="variable_8h_source.xhtml#l00042">openage::util::Variable&lt; T &gt;::set()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="options_8h_source.xhtml#l00104">openage::options::OptionValue::set_value()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base_a1acb662ac94f35aed9b2ecd6d3f1ddfe_cgraph.svg" width="443" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1_variable_base_a1acb662ac94f35aed9b2ecd6d3f1ddfe_icgraph.svg" width="432" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/util/<a class="el" href="variable_8h_source.xhtml">variable.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/<a class="el" href="variable_8h_source.xhtml">variable.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

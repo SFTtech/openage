@@ -1,0 +1,6 @@
+<map id="openage::event::demo::PongPlayer::child_changes" name="openage::event::demo::PongPlayer::child_changes">
+<area shape="rect" id="node1" title=" " alt="" coords="5,23,193,65"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1changelog.xhtml#aacfbef73c68f07a70b75e8a01b4d0f99" title="return all changed components since the passed version number." alt="" coords="241,31,473,57"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="525,5,641,32"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a7ca418e1b1fcf210ff91cd25dc8e6a36" title="warning message" alt="" coords="521,56,644,83"/>
+</map>

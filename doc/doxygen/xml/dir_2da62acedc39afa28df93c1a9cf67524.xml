@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="dir_2da62acedc39afa28df93c1a9cf67524" kind="dir">
-    <compoundname>libopenage/unit</compoundname>
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit</compoundname>
     <innerfile refid="ability_8cpp">ability.cpp</innerfile>
     <innerfile refid="ability_8h">ability.h</innerfile>
     <innerfile refid="unit_2action_8cpp">action.cpp</innerfile>
@@ -32,6 +32,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/unit/"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/"/>
   </compounddef>
 </doxygen>

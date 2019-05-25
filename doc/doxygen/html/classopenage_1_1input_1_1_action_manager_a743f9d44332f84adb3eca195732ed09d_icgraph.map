@@ -1,0 +1,9 @@
+<map id="openage::input::ActionManager::get" name="openage::input::ActionManager::get">
+<area shape="rect" id="node1" title=" " alt="" coords="765,74,993,101"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a368dbccb090d17ca142b1bfde0763011" title=" " alt="" coords="256,5,449,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1input_1_1_action_manager.xhtml#a252869fbc85be3b450eb290794352ba4" title=" " alt="" coords="497,49,717,75"/>
+<area shape="rect" id="node5" href="$classopenage_1_1input_1_1_input_manager.xhtml#af93e6ca8bded1892c1c9d83332468e2d" title=" " alt="" coords="256,71,449,112"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_action_mode_signals.xhtml#a400a4674187d1ce007a206c5074390da" title=" " alt="" coords="512,151,703,192"/>
+<area shape="rect" id="node3" href="$classopenage_1_1input_1_1_action_manager.xhtml#a172292484fa92f4c391479d6e656808a" title=" " alt="" coords="5,39,208,80"/>
+<area shape="rect" id="node7" href="$classopenage_1_1gui_1_1_action_mode_link.xhtml#a7f40baae6dc5feed6abebaa5eae2f2d6" title=" " alt="" coords="266,151,439,192"/>
+</map>

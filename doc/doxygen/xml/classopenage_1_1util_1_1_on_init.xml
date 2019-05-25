@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="26" column="1" bodyfile="libopenage/util/init.h" bodystart="26" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="26" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="26" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1aee68c717a9836e70bb40f74329ee376e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="30" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="30" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="34" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="34" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a87cd22b22dfd7501b1b157fe36d8cd97" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="35" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="35" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1aa8ed10ec7ad3387c11ab20f38dae1076" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="37" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="37" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a63903e5182781e8b25233ea2642d99f5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/init.h" line="38" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="38" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -110,12 +110,12 @@
 <para>// anonymous namespace as container for these global objects namespace { <ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">util::OnInit</ref> stuff_to_be_done_on_initialization([]() { do_stuff(1 * 2 + 3); }); } </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3472">
+      <node id="5963">
         <label>openage::util::OnInit</label>
         <link refid="classopenage_1_1util_1_1_on_init"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/init.h" line="24" column="1" bodyfile="libopenage/util/init.h" bodystart="24" bodyend="39"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h" bodystart="24" bodyend="39"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" prot="public" virt="non-virtual"><scope>openage::util::OnInit</scope><name>OnInit</name></member>
       <member refid="classopenage_1_1util_1_1_on_init_1a3eeee4b424c992455890857b303a9402" prot="private" virt="non-virtual"><scope>openage::util::OnInit</scope><name>OnInit</name></member>

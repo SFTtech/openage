@@ -1,8 +1,8 @@
-<map id="libopenage/gui/guisys/private/gui_event_queue_impl.h" name="libopenage/gui/guisys/private/gui_event_queue_impl.h">
-<area shape="rect" id="node1" title=" " alt="" coords="384,5,547,61"/>
-<area shape="rect" id="node2" href="$gui__event__queue__impl_8cpp.xhtml" title=" " alt="" coords="5,109,168,165"/>
-<area shape="rect" id="node3" href="$gui__input__impl_8cpp.xhtml" title=" " alt="" coords="193,117,367,158"/>
-<area shape="rect" id="node4" href="$gui__subtree__impl_8cpp.xhtml" title=" " alt="" coords="392,109,539,165"/>
-<area shape="rect" id="node5" href="$gui__event__queue_8cpp.xhtml" title=" " alt="" coords="563,117,749,158"/>
-<area shape="rect" id="node6" href="$gui__game__spec__image__provider__impl_8cpp.xhtml" title=" " alt="" coords="773,109,973,165"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/private/gui_event_queue_impl.h">
+<area shape="rect" id="node1" title=" " alt="" coords="524,5,733,76"/>
+<area shape="rect" id="node2" href="$gui__event__queue__impl_8cpp.xhtml" title=" " alt="" coords="5,124,215,195"/>
+<area shape="rect" id="node3" href="$gui__input__impl_8cpp.xhtml" title=" " alt="" coords="239,131,477,187"/>
+<area shape="rect" id="node4" href="$gui__subtree__impl_8cpp.xhtml" title=" " alt="" coords="502,131,755,187"/>
+<area shape="rect" id="node5" href="$gui__event__queue_8cpp.xhtml" title=" " alt="" coords="780,124,989,195"/>
+<area shape="rect" id="node6" href="$gui__game__spec__image__provider__impl_8cpp.xhtml" title=" " alt="" coords="1014,124,1259,195"/>
 </map>

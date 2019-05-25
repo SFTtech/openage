@@ -3,11 +3,11 @@
   <compounddef id="heuristics_8h" kind="file" language="C++">
     <compoundname>heuristics.h</compoundname>
     <includes refid="pathfinding_2path_8h" local="yes">path.h</includes>
-    <includedby refid="a__star_8h" local="yes">libopenage/pathfinding/a_star.h</includedby>
-    <includedby refid="a__star_8cpp" local="yes">libopenage/pathfinding/a_star.cpp</includedby>
-    <includedby refid="heuristics_8cpp" local="yes">libopenage/pathfinding/heuristics.cpp</includedby>
-    <includedby refid="pathfinding_2tests_8cpp" local="yes">libopenage/pathfinding/tests.cpp</includedby>
-    <includedby refid="unit_2action_8cpp" local="yes">libopenage/unit/action.cpp</includedby>
+    <includedby refid="a__star_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</includedby>
+    <includedby refid="a__star_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</includedby>
+    <includedby refid="heuristics_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp</includedby>
+    <includedby refid="pathfinding_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</includedby>
+    <includedby refid="unit_2action_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</includedby>
     <incdepgraph>
       <node id="18617">
         <label>list</label>
@@ -300,7 +300,7 @@
         <label>config.h</label>
       </node>
       <node id="18584">
-        <label>libopenage/pathfinding/heuristics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</label>
         <link refid="heuristics_8h"/>
         <childnode refid="18585" relation="include">
         </childnode>
@@ -339,19 +339,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="18636">
-        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp</label>
         <link refid="heuristics_8cpp"/>
       </node>
       <node id="18634">
-        <label>libopenage/pathfinding/a_star.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp</label>
         <link refid="a__star_8cpp"/>
       </node>
       <node id="18635">
-        <label>libopenage/unit/action.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/action.cpp</label>
         <link refid="unit_2action_8cpp"/>
       </node>
       <node id="18633">
-        <label>libopenage/pathfinding/a_star.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.h</label>
         <link refid="a__star_8h"/>
         <childnode refid="18634" relation="include">
         </childnode>
@@ -359,11 +359,11 @@
         </childnode>
       </node>
       <node id="18637">
-        <label>libopenage/pathfinding/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/tests.cpp</label>
         <link refid="pathfinding_2tests_8cpp"/>
       </node>
       <node id="18632">
-        <label>libopenage/pathfinding/heuristics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h</label>
         <link refid="heuristics_8h"/>
         <childnode refid="18633" relation="include">
         </childnode>
@@ -408,6 +408,6 @@
 <codeline lineno="44"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>path</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/pathfinding/heuristics.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h"/>
   </compounddef>
 </doxygen>

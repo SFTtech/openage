@@ -8,8 +8,8 @@
     <includes refid="vector_8h" local="yes">vector.h</includes>
     <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
     <includes refid="log_8h" local="yes">../log/log.h</includes>
-    <includedby refid="quaternion_8cpp" local="yes">libopenage/util/quaternion.cpp</includedby>
-    <includedby refid="quaternion__test_8cpp" local="yes">libopenage/util/quaternion_test.cpp</includedby>
+    <includedby refid="quaternion_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</includedby>
+    <includedby refid="quaternion__test_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp</includedby>
     <incdepgraph>
       <node id="31575">
         <label>list</label>
@@ -64,7 +64,7 @@
         </childnode>
       </node>
       <node id="31545">
-        <label>libopenage/util/quaternion.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="31546" relation="include">
         </childnode>
@@ -268,7 +268,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="31583">
-        <label>libopenage/util/quaternion.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h</label>
         <link refid="quaternion_8h"/>
         <childnode refid="31584" relation="include">
         </childnode>
@@ -276,11 +276,11 @@
         </childnode>
       </node>
       <node id="31585">
-        <label>libopenage/util/quaternion_test.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion_test.cpp</label>
         <link refid="quaternion__test_8cpp"/>
       </node>
       <node id="31584">
-        <label>libopenage/util/quaternion.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.cpp</label>
         <link refid="quaternion_8cpp"/>
       </node>
     </invincdepgraph>
@@ -413,7 +413,7 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="159" refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">from_deg</ref>(T<sp/>deg,<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3t&lt;T&gt;</ref><sp/>axis)<sp/>{</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" kindref="member">this_type::from_rad</ref>(deg<sp/>*<sp/><ref refid="namespaceopenage_1_1math_1a0df5751ac53fb97b63d8639da08b2639" kindref="member">math::DEGSPERRAD</ref>,<sp/>axis);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" kindref="member">this_type::from_rad</ref>(deg<sp/>*<sp/><ref refid="namespaceopenage_1_1util_1_1math_1a790f58dbcc1c954e8eb01698a858bf16" kindref="member">math::DEGSPERRAD</ref>,<sp/>axis);</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
 <codeline lineno="166" refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" kindref="member">dot</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">this_type</ref><sp/>&amp;o)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -442,7 +442,7 @@
 <codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" kindref="member">conjugated</ref>()<sp/>/<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" kindref="member">dot</ref>;</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;tried<sp/>inverting<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;tried<sp/>inverting<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
@@ -470,12 +470,12 @@
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="251" refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" kindref="member">equals_number</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">this_type</ref><sp/>&amp;other,<sp/>T<sp/>eps=<ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" kindref="member">w</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" kindref="member">w</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(result<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" kindref="member">x</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" kindref="member">x</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(result<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" kindref="member">y</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" kindref="member">y</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(result<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" kindref="member">z</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" kindref="member">z</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(result<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" kindref="member">w</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" kindref="member">w</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" kindref="member">x</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" kindref="member">x</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" kindref="member">y</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" kindref="member">y</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" kindref="member">z</ref><sp/>-<sp/>other.<ref refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" kindref="member">z</ref>)<sp/>&lt;<sp/>eps<sp/>or<sp/>(<ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight></codeline>
 <codeline lineno="264" refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" kindref="member">equals_rad</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">this_type</ref><sp/>&amp;other,<sp/>T<sp/>rad_eps=<ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -641,6 +641,6 @@
 <codeline lineno="437"><highlight class="normal"></highlight></codeline>
 <codeline lineno="438"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/quaternion.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/quaternion.h"/>
   </compounddef>
 </doxygen>

@@ -5,7 +5,7 @@
     <includes refid="type__pair_8h" local="yes">type_pair.h</includes>
     <incdepgraph>
       <node id="26415">
-        <label>libopenage/unit/type_pair.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.cpp</label>
         <link refid="type__pair_8cpp"/>
         <childnode refid="26416" relation="include">
         </childnode>
@@ -38,6 +38,6 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/type_pair.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.cpp"/>
   </compounddef>
 </doxygen>

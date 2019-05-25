@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="425" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="425" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="425" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="425" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="416" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="416" bodyend="419"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="416" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="416" bodyend="419"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe">openage::direction</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1ac53cd250cbe66618e55ccd1a2c52ccdf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -52,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="421" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="421" bodyend="423"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="421" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="421" bodyend="423"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,54 +61,54 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="414">
+      <node id="325">
         <label>openage::Attribute&lt; attr_type::direction &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4"/>
-        <childnode refid="415" relation="public-inheritance">
+        <childnode refid="326" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="415">
+      <node id="326">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="416" relation="public-inheritance">
+        <childnode refid="327" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="416">
+      <node id="327">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="420">
+      <node id="331">
         <label>openage::coord::phys3_delta</label>
         <link refid="structopenage_1_1coord_1_1phys3__delta"/>
-        <childnode refid="421" relation="public-inheritance">
+        <childnode refid="332" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="417">
+      <node id="328">
         <label>openage::Attribute&lt; attr_type::direction &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4"/>
-        <childnode refid="418" relation="public-inheritance">
+        <childnode refid="329" relation="public-inheritance">
         </childnode>
-        <childnode refid="420" relation="usage">
+        <childnode refid="331" relation="usage">
           <edgelabel>+unit_dir</edgelabel>
         </childnode>
       </node>
-      <node id="418">
+      <node id="329">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="419" relation="public-inheritance">
+        <childnode refid="330" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="419">
+      <node id="330">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="421">
+      <node id="332">
         <label>CoordNeSeUpRelative&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="414" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="414" bodyend="426"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="414" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="414" bodyend="426"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1a2964f0e4f576f04bcde5f8313947dd8b" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>AttributeContainer</name></member>

@@ -19,7 +19,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/input/event.h" line="144" column="1" bodyfile="libopenage/input/event.cpp" bodystart="89" bodyend="91"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="144" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp" bodystart="89" bodyend="91"/>
+        <references refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" compoundref="input_2event_8h" startline="137">openage::input::Event::cc</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -27,12 +28,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1428">
+      <node id="3835">
         <label>openage::input::event_hash</label>
         <link refid="structopenage_1_1input_1_1event__hash"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/input/event.h" line="143" column="1" bodyfile="libopenage/input/event.h" bodystart="143" bodyend="145"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" line="143" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.h" bodystart="143" bodyend="145"/>
     <listofallmembers>
       <member refid="structopenage_1_1input_1_1event__hash_1ae43e2da46811e0932089a55463be3f43" prot="public" virt="non-virtual"><scope>openage::input::event_hash</scope><name>operator()</name></member>
     </listofallmembers>

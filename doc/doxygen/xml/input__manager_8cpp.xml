@@ -344,7 +344,7 @@
         <label>config.h</label>
       </node>
       <node id="15652">
-        <label>libopenage/input/input_manager.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp</label>
         <link refid="input__manager_8cpp"/>
         <childnode refid="15653" relation="include">
         </childnode>
@@ -779,7 +779,7 @@
 <codeline lineno="383"><highlight class="normal"></highlight></codeline>
 <codeline lineno="384" refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" kindref="member">InputManager::active_binds</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;action_t,<sp/>action_func_t&gt;<sp/>&amp;ctx_actions)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="385"><highlight class="normal"></highlight></codeline>
-<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="387"><highlight class="normal"></highlight></codeline>
 <codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>this<sp/>only<sp/>checks<sp/>the<sp/>by_type<sp/>mappings,<sp/>the<sp/>others<sp/>are<sp/>missing!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;action<sp/>:<sp/>ctx_actions)<sp/>{</highlight></codeline>
@@ -798,10 +798,10 @@
 <codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>get_name<sp/>takes<sp/>O(n)<sp/>time</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>action_type_str<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" kindref="member">get_action_manager</ref>()-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a44e53d5edb2092424df17b709b743358" kindref="member">get_name</ref>(action.first);</highlight></codeline>
 <codeline lineno="404"><highlight class="normal"></highlight></codeline>
-<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(keyboard_key<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>action_type_str);</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.push_back(keyboard_key<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>action_type_str);</highlight></codeline>
 <codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="407"><highlight class="normal"></highlight></codeline>
-<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="409"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="410"><highlight class="normal"></highlight></codeline>
 <codeline lineno="411"><highlight class="normal"></highlight></codeline>
@@ -812,6 +812,6 @@
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>
 <codeline lineno="417"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/input/input_manager.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/input_manager.cpp"/>
   </compounddef>
 </doxygen>

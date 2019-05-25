@@ -1,0 +1,26 @@
+<map id="openage.util.filelike.stream.StreamFragment.read" name="openage.util.filelike.stream.StreamFragment.read">
+<area shape="rect" id="node1" title="Read at most size bytes (less if EOF has been reached)." alt="" coords="5,367,185,408"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a" title="clamps val to be at least minval, and at most maxval." alt="" coords="279,237,443,263"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1filelike_1_1readonly_1_1_pos_saving_read_only_file_like_object.xhtml#a2312775f74be5a112a1ab18f0f581173" title="Seeks to a given position." alt="" coords="233,503,488,544"/>
+<area shape="rect" id="node3" href="$namespacestd.xhtml#a34591a1d8ee5da3f16f56554590d5e16" title=" " alt="" coords="599,78,668,105"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117" title=" " alt="" coords="536,237,731,263"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa01c403263c2142c0ce9ce40cde89066" title=" " alt="" coords="809,5,976,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1_fixed_point.xhtml#affe7a3ec44c6f7ac96312875af742f87" title=" " alt="" coords="809,71,976,112"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a248471b44bfea2faad6d97d9dd07eb00" title="Helper function for use by implementations of seek()." alt="" coords="540,609,727,651"/>
+<area shape="rect" id="node9" href="$classopenage_1_1renderer_1_1_window.xhtml#a1bf53e4db756c04ed522a975573b36a6" title="Returns the dimensions of this window." alt="" coords="825,136,960,177"/>
+<area shape="rect" id="node10" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_buffer.xhtml#a6b6867a9bcc96e5d36923ce98bd7a635" title="The size in bytes of this buffer." alt="" coords="807,201,978,243"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml#ac4dd2bd1f87b66cc3de59abd1672d606" title=" " alt="" coords="823,267,963,308"/>
+<area shape="rect" id="node12" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml#aa2723a9836cd17708e0341691d5ca5dd" title=" " alt="" coords="823,332,963,373"/>
+<area shape="rect" id="node13" href="$classopenage_1_1renderer_1_1resources_1_1_texture2d_info.xhtml#a3bd462432c63a67c1b199c3f717bce50" title=" " alt="" coords="811,398,975,454"/>
+<area shape="rect" id="node14" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#ab3cbec4d52b33409ea1569d92496b50b" title=" " alt="" coords="789,479,997,520"/>
+<area shape="rect" id="node15" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a212820ce88cf538a4099f14f622e569b" title=" " alt="" coords="823,544,963,585"/>
+<area shape="rect" id="node16" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7" title=" " alt="" coords="799,609,986,651"/>
+<area shape="rect" id="node17" href="$classopenage_1_1_terrain_chunk.xhtml#afd204c75d8f3ef28ad07f8ce1ba79894" title=" " alt="" coords="815,675,970,716"/>
+<area shape="rect" id="node18" href="$classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream.xhtml#a22d3c8597d3b8ef507a98145bd623990" title=" " alt="" coords="779,740,1007,781"/>
+<area shape="rect" id="node19" href="$classopenage_1_1util_1_1filelike_1_1_native.xhtml#a3cd357c014b8193cfdaaf48eec32ec1b" title=" " alt="" coords="823,805,963,847"/>
+<area shape="rect" id="node20" href="$classopenage_1_1util_1_1filelike_1_1_python.xhtml#a116cc148489f31270f4f85c8d8ecf1f1" title=" " alt="" coords="823,871,963,912"/>
+<area shape="rect" id="node21" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a0ad9d642b58e227e95d4c03b49b57d0b" title="Returns the current position in the file." alt="" coords="799,936,986,977"/>
+<area shape="rect" id="node22" href="$classopenage_1_1util_1_1filelike_1_1_file_like.xhtml#a30eeb9b647177a0aaf06ca241e347196" title=" " alt="" coords="823,1001,963,1043"/>
+<area shape="rect" id="node23" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#ad60178631fe4c59543351deb02216676" title="Returns the current position in the file." alt="" coords="789,1067,997,1108"/>
+<area shape="rect" id="node24" href="$classopenage_1_1util_1_1_file.xhtml#a27557ca3420295dbe0a09030ea19bd77" title=" " alt="" coords="830,1132,955,1173"/>
+</map>

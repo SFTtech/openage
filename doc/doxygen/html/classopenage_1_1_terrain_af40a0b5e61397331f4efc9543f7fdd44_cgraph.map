@@ -1,0 +1,12 @@
+<map id="openage::Terrain::attach_chunk" name="openage::Terrain::attach_chunk">
+<area shape="rect" id="node1" title=" " alt="" coords="5,86,168,127"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="235,5,352,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_terrain.xhtml#a9ce94c372f7e86310506844b352fb20c" title=" " alt="" coords="221,57,365,98"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f" title=" " alt="" coords="233,123,354,149"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_terrain_chunk.xhtml#ae77efc0ad732593eddaeb1f34a1452ac" title=" " alt="" coords="216,174,371,215"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1log.xhtml#a3fbb0c225d01e222648ec28a43507188" title=" " alt="" coords="441,86,587,127"/>
+<area shape="rect" id="node6" href="$classopenage_1_1log_1_1_log_source.xhtml#a5640099e20af4cd368c767dbcef3a1df" title=" " alt="" coords="419,152,609,179"/>
+<area shape="rect" id="node7" href="$namespaceopenage_1_1log.xhtml#a3d2885be9c3a09b9ff7ee8764b2e5f39" title=" " alt="" coords="687,79,825,121"/>
+<area shape="rect" id="node8" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a2d47416fab12651553b4b58c86fd6f84" title=" " alt="" coords="670,145,842,186"/>
+<area shape="rect" id="node9" href="$classopenage_1_1log_1_1_log_sink_list.xhtml#a8456b84ab55e1fe151c51438c5bfebdd" title=" " alt="" coords="657,211,855,237"/>
+</map>

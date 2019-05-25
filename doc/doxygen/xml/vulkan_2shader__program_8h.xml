@@ -6,7 +6,7 @@
     <includes refid="log_8h" local="yes">../../log/log.h</includes>
     <includes refid="shader__source_8h" local="yes">../resources/shader_source.h</includes>
     <includes refid="shader__program_8h" local="yes">../shader_program.h</includes>
-    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</includedby>
     <incdepgraph>
       <node id="21955">
         <label>list</label>
@@ -157,7 +157,7 @@
         <label>map</label>
       </node>
       <node id="21930">
-        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h</label>
         <link refid="vulkan_2shader__program_8h"/>
         <childnode refid="21931" relation="include">
         </childnode>
@@ -355,13 +355,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21978">
-        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h</label>
         <link refid="vulkan_2shader__program_8h"/>
         <childnode refid="21979" relation="include">
         </childnode>
       </node>
       <node id="21979">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
     </invincdepgraph>
@@ -396,7 +396,7 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba7dd430baa39d2873520d0338acb98741" kindref="member">resources::shader_stage_t::tesselation_control</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7bad711cc63370ae664a464b9efd08f6248" kindref="member">resources::shader_stage_t::tesselation_evaluation</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1" kindref="member">resources::shader_stage_t::fragment</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>VK_SHADER_STAGE_FRAGMENT_BIT;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>shader<sp/>stage.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>shader<sp/>stage.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
@@ -411,7 +411,7 @@
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/><ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref><sp/>:<sp/>srcs)<sp/>{</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_lang()<sp/>!=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af" kindref="member">resources::shader_lang_t::spirv</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>shader<sp/>language<sp/>in<sp/>Vulkan<sp/>shader.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" kindref="member">err</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>shader<sp/>language<sp/>in<sp/>Vulkan<sp/>shader.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkShaderModuleCreateInfo<sp/>cr_shdr<sp/>=<sp/>{};</highlight></codeline>
@@ -433,12 +433,12 @@
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;pipeline_stage_infos.push_back(cr_stage);</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>modules<sp/>for<sp/>Vulkan<sp/>shader&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" kindref="member">dbg</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>modules<sp/>for<sp/>Vulkan<sp/>shader&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/shader_program.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/shader_program.h"/>
   </compounddef>
 </doxygen>

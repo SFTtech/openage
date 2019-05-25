@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="35" column="1" bodyfile="libopenage/curve/queue.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_1af08e78e0f32281f493f714e9e56211fd" prot="public" static="no">
         <type>typename container_t::const_iterator</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="36" column="1" bodyfile="libopenage/curve/queue.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_1aa2bd95142aa49866516f901aece7e7d5" prot="public" static="no">
         <type>typename container_t::const_iterator</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="37" column="1" bodyfile="libopenage/curve/queue.h" bodystart="37" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="37" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -64,7 +64,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="68" column="1" bodyfile="libopenage/curve/queue.h" bodystart="68" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="68" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1curve_1_1_queue_1a87ae2b6fac07d94e9936b70d664cf35c" compoundref="queue_8h" startline="61" endline="65">openage::curve::Queue&lt; T &gt;::dump</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -82,7 +83,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="40" column="1" bodyfile="libopenage/curve/queue.h" bodystart="73" bodyend="75"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="73" bodyend="75"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
@@ -100,7 +102,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="43" column="1" bodyfile="libopenage/curve/queue.h" bodystart="79" bodyend="91"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="79" bodyend="91"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" compoundref="container_8cpp" startline="138" endline="202">openage::curve::tests::test_queue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
@@ -118,7 +123,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="46" column="1" bodyfile="libopenage/curve/queue.h" bodystart="95" bodyend="101"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="95" bodyend="101"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" compoundref="container_8cpp" startline="138" endline="202">openage::curve::tests::test_queue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
@@ -141,7 +149,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="49" column="1" bodyfile="libopenage/curve/queue.h" bodystart="105" bodyend="118"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="49" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="105" bodyend="118"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" compoundref="container_8cpp" startline="138" endline="202">openage::curve::tests::test_queue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1acb732f8f9c5ec59d691d59067fa09d66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -158,7 +168,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="53" column="1" bodyfile="libopenage/curve/queue.h" bodystart="122" bodyend="125"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="122" bodyend="125"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
@@ -179,7 +190,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="55" column="1" bodyfile="libopenage/curve/queue.h" bodystart="129" bodyend="154"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="129" bodyend="154"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <references refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" compoundref="console_2tests_8cpp" startline="31" endline="33">openage::console::tests::max</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" compoundref="container_8cpp" startline="138" endline="202">openage::curve::tests::test_queue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a5ee4f2514bc1ea089a5aa32567ec0195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -192,7 +206,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="57" column="1" bodyfile="libopenage/curve/queue.h" bodystart="158" bodyend="160"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="158" bodyend="160"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1ac48eba75b18f46ba566155cb9a18d478" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -209,7 +224,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="59" column="1" bodyfile="libopenage/curve/queue.h" bodystart="164" bodyend="169"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="164" bodyend="169"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a87ae2b6fac07d94e9936b70d664cf35c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -222,7 +238,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/queue.h" line="61" column="1" bodyfile="libopenage/curve/queue.h" bodystart="61" bodyend="65"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="61" bodyend="65"/>
+        <references refid="classopenage_1_1curve_1_1_queue_1a0d3c32ed29fe967fc04b27b2db69d924" compoundref="queue_8h" startline="68">openage::curve::Queue&lt; T &gt;::container</references>
+        <referencedby refid="classopenage_1_1convert_1_1texture_1_1_texture_1a5ab6d4ff626d130203d59cdafc830f0d" compoundref="texture_8py" startline="166" endline="192">openage.convert.texture.Texture.save</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -231,12 +249,12 @@
 <para>A container that manages events on a timeline. Every event has exactly one time it will happen. This container can be used to store interactions </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3820">
+      <node id="1888">
         <label>openage::curve::Queue&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_queue"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/queue.h" line="19" column="1" bodyfile="libopenage/curve/queue.h" bodystart="19" bodyend="69"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/queue.h" bodystart="19" bodyend="69"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>begin</name></member>
       <member refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>between</name></member>

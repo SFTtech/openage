@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="44" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" compoundref="render__target_8cpp" startline="26" endline="33">bind_read</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" compoundref="render__target_8cpp" startline="17" endline="24">bind_write</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a1421b3d95181c3ea5daf8ba92492aca5" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer" kindref="compound">GlFramebuffer</ref> &gt;</type>
@@ -30,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="47" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" compoundref="render__target_8cpp" startline="26" endline="33">bind_read</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" compoundref="render__target_8cpp" startline="17" endline="24">bind_write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="10" bodyend="11"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp" bodystart="10" bodyend="11"/>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eaebf78b512222fe4dcd14e7d5060a15b0">openage::renderer::opengl::display</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1afc45710e731b96fddd74dd96cab6347d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,7 +69,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="35" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="13" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp" bodystart="13" bodyend="15"/>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eac5e62798e528da9080811018cbb27cd3">openage::renderer::opengl::textures</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -78,7 +84,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="38" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="17" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp" bodystart="17" bodyend="24"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a1421b3d95181c3ea5daf8ba92492aca5" compoundref="opengl_2render__target_8h" startline="47">framebuffer</references>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eac5e62798e528da9080811018cbb27cd3">openage::renderer::opengl::textures</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a81d91ab326c675314d5fe7c284ed186a" compoundref="opengl_2render__target_8h" startline="44">type</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -92,7 +101,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/opengl/render_target.h" line="41" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="26" bodyend="33"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="41" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.cpp" bodystart="26" bodyend="33"/>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a1421b3d95181c3ea5daf8ba92492aca5" compoundref="opengl_2render__target_8h" startline="47">framebuffer</references>
+        <references refid="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eac5e62798e528da9080811018cbb27cd3">openage::renderer::opengl::textures</references>
+        <references refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a81d91ab326c675314d5fe7c284ed186a" compoundref="opengl_2render__target_8h" startline="44">type</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -101,30 +113,30 @@
 <para>Represents an OpenGL target that can be drawn into. It can be either a framebuffer or the display (the window). </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2407">
+      <node id="4683">
         <label>openage::renderer::RenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1_render_target"/>
       </node>
-      <node id="2406">
+      <node id="4682">
         <label>openage::renderer::opengl::GlRenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
-        <childnode refid="2407" relation="public-inheritance">
+        <childnode refid="4683" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2409">
+      <node id="4685">
         <label>openage::renderer::RenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1_render_target"/>
       </node>
-      <node id="2408">
+      <node id="4684">
         <label>openage::renderer::opengl::GlRenderTarget</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
-        <childnode refid="2409" relation="public-inheritance">
+        <childnode refid="4685" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/render_target.h" line="27" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="27" bodyend="48"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" line="27" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/render_target.h" bodystart="27" bodyend="48"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>bind_read</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>bind_write</name></member>

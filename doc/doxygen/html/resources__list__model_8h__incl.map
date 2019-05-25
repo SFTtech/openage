@@ -1,9 +1,9 @@
-<map id="libopenage/gui/resources_list_model.h" name="libopenage/gui/resources_list_model.h">
-<area shape="rect" id="node1" title=" " alt="" coords="86,5,253,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,61,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="85,95,136,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="161,95,298,121"/>
-<area shape="rect" id="node5" href="$gamestate_2resource_8h.xhtml" title=" " alt="" coords="323,95,483,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="319,169,396,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="421,169,475,196"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/resources_list_model.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/resources_list_model.h">
+<area shape="rect" id="node1" title=" " alt="" coords="65,5,274,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,61,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="85,109,136,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="161,109,298,136"/>
+<area shape="rect" id="node5" href="$gamestate_2resource_8h.xhtml" title=" " alt="" coords="323,109,483,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="319,184,396,211"/>
+<area shape="rect" id="node7" title=" " alt="" coords="421,184,475,211"/>
 </map>

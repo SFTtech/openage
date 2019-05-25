@@ -3,13 +3,13 @@
   <compounddef id="context_8h" kind="file" language="C++">
     <compoundname>context.h</compoundname>
     <includes local="no">SDL2/SDL.h</includes>
-    <includedby refid="context_8cpp" local="yes">libopenage/renderer/opengl/context.cpp</includedby>
-    <includedby refid="opengl_2renderer_8h" local="yes">libopenage/renderer/opengl/renderer.h</includedby>
-    <includedby refid="opengl_2shader__program_8h" local="yes">libopenage/renderer/opengl/shader_program.h</includedby>
-    <includedby refid="opengl_2window_8h" local="yes">libopenage/renderer/opengl/window.h</includedby>
+    <includedby refid="context_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp</includedby>
+    <includedby refid="opengl_2renderer_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</includedby>
+    <includedby refid="opengl_2shader__program_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</includedby>
+    <includedby refid="opengl_2window_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h</includedby>
     <incdepgraph>
       <node id="20929">
-        <label>libopenage/renderer/opengl/context.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h</label>
         <link refid="context_8h"/>
         <childnode refid="20930" relation="include">
         </childnode>
@@ -20,11 +20,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="20939">
-        <label>libopenage/renderer/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/tests.cpp</label>
         <link refid="renderer_2tests_8cpp"/>
       </node>
       <node id="20936">
-        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.h</label>
         <link refid="opengl_2shader__program_8h"/>
         <childnode refid="20933" relation="include">
         </childnode>
@@ -34,15 +34,15 @@
         </childnode>
       </node>
       <node id="20934">
-        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.cpp</label>
         <link refid="opengl_2renderer_8cpp"/>
       </node>
       <node id="20935">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="20931">
-        <label>libopenage/renderer/opengl/context.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h</label>
         <link refid="context_8h"/>
         <childnode refid="20932" relation="include">
         </childnode>
@@ -54,11 +54,11 @@
         </childnode>
       </node>
       <node id="20937">
-        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/shader_program.cpp</label>
         <link refid="shader__program_8cpp"/>
       </node>
       <node id="20938">
-        <label>libopenage/renderer/opengl/window.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.h</label>
         <link refid="opengl_2window_8h"/>
         <childnode refid="20935" relation="include">
         </childnode>
@@ -66,11 +66,11 @@
         </childnode>
       </node>
       <node id="20932">
-        <label>libopenage/renderer/opengl/context.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.cpp</label>
         <link refid="context_8cpp"/>
       </node>
       <node id="20933">
-        <label>libopenage/renderer/opengl/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/renderer.h</label>
         <link refid="opengl_2renderer_8h"/>
         <childnode refid="20934" relation="include">
         </childnode>
@@ -136,6 +136,6 @@
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/opengl/context.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/context.h"/>
   </compounddef>
 </doxygen>

@@ -14,7 +14,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="98" column="1" bodyfile="libopenage/renderer/text.h" bodystart="98" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="98" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="98" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" compoundref="text_8cpp" startline="110" endline="234">openage::renderer::TextRenderer::render</referencedby>
+        <referencedby refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a6ca7d6db329efa777b4ca0c50d3540cd" compoundref="text_8h" startline="102" endline="106">text_render_batch</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
@@ -27,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="99" column="1" bodyfile="libopenage/renderer/text.h" bodystart="99" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="99" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1ae04333b7d526b473b0fe99ff8984a376" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" kindref="compound">text_render_batch_pass</ref> &gt;</type>
@@ -40,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="100" column="1" bodyfile="libopenage/renderer/text.h" bodystart="100" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +65,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/text.h" line="102" column="1" bodyfile="libopenage/renderer/text.h" bodystart="102" bodyend="106"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="102" bodyend="106"/>
+        <references refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" compoundref="text_8h" startline="98">font</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -72,33 +75,33 @@
 <para>The set of text draw requests with the same font and color. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4441">
+      <node id="4790">
         <label>openage::renderer::Color</label>
         <link refid="classopenage_1_1renderer_1_1_color"/>
       </node>
-      <node id="4439">
+      <node id="4788">
         <label>openage::renderer::Font</label>
         <link refid="classopenage_1_1renderer_1_1_font"/>
-        <childnode refid="4440" relation="usage">
+        <childnode refid="4789" relation="usage">
           <edgelabel>+description</edgelabel>
         </childnode>
       </node>
-      <node id="4440">
+      <node id="4789">
         <label>openage::renderer::font_description</label>
         <link refid="structopenage_1_1renderer_1_1font__description"/>
       </node>
-      <node id="4438">
+      <node id="4787">
         <label>openage::renderer::TextRenderer::text_render_batch</label>
         <link refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch"/>
-        <childnode refid="4439" relation="usage">
+        <childnode refid="4788" relation="usage">
           <edgelabel>+font</edgelabel>
         </childnode>
-        <childnode refid="4441" relation="usage">
+        <childnode refid="4790" relation="usage">
           <edgelabel>+color</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/text.h" line="97" column="1" bodyfile="libopenage/renderer/text.h" bodystart="97" bodyend="107"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h" bodystart="97" bodyend="107"/>
     <listofallmembers>
       <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>color</name></member>
       <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>font</name></member>

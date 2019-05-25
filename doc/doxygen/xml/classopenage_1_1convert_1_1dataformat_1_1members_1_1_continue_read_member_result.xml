@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::members::ContinueReadMemberResult</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Enum</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1acf024e50374e16529efba2a16f2ac83a" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.members.ContinueReadMemberResult::ABORT</definition>
+        <argsstring></argsstring>
+        <name>ABORT</name>
+        <initializer>=  &quot;data_absent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="337" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1aa55bc013597a377b15959d52f050bd48" prot="public" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string openage.convert.dataformat.members.ContinueReadMemberResult::CONTINUE</definition>
+        <argsstring></argsstring>
+        <name>CONTINUE</name>
+        <initializer>=  &quot;data_exists&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="338" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="338" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.ContinueReadMemberResult.__str__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__str__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="340" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="340" bodyend="347"/>
+        <references refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" compoundref="container_8cpp" startline="17">openage::curve::tests::map_test_element::value</references>
+        <references refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">openage::curve::CurveIterator&lt; val_t, container_t, container_t::const_iterator &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">openage::curve::CurveIterator&lt; val_t, container_t &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">openage::curve::CurveIterator&lt; val_t, container_t, iterator_t &gt;::value</references>
+        <references refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1aa5a9f7f1c755925ed6fb65499089c91c" compoundref="queue_8h" startline="22">openage::curve::Queue&lt; T &gt;::queue_wrapper::value</references>
+        <references refid="structopenage_1_1util_1_1_float_fixed_1a866af455be6117ec8d254e36a6c40c36" compoundref="strings_8h" startline="29">openage::util::FloatFixed&lt; decimals, w &gt;::value</references>
+        <references refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" compoundref="map_8h" startline="29">openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element::value</references>
+        <references refid="structopenage_1_1util_1_1_float_fixed_1a866af455be6117ec8d254e36a6c40c36" compoundref="strings_8h" startline="29">FloatFixed&lt; decimals, w &gt;::value</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" compoundref="constexpr__map_8h" startline="43">openage::datastructure::ConstMapEntry&lt; K, V &gt;::value</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" compoundref="constexpr__map_8h" startline="43">ConstMapEntry&lt; K, V &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a4aafd29d89c2084adf6bebe8967ffcf8" compoundref="queue__filter__iterator_8h" startline="46" endline="49">QueueFilterIterator&lt; T, Queue&lt; T &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a4aafd29d89c2084adf6bebe8967ffcf8" compoundref="queue__filter__iterator_8h" startline="46" endline="49">openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">Variable&lt; double &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">Variable&lt; option_list &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">openage::util::Variable&lt; T &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">openage::util::Variable&lt; bool &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">Variable&lt; int &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">Variable&lt; std::string &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" compoundref="map__filter__iterator_8h" startline="51" endline="53">MapFilterIterator&lt; val_t, val_t, UnorderedMap &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" compoundref="map__filter__iterator_8h" startline="51" endline="53">MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" compoundref="map__filter__iterator_8h" startline="51" endline="53">openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" compoundref="map__filter__iterator_8h" startline="51" endline="53">MapFilterIterator&lt; key_t, val_t, UnorderedMap &gt;::value</references>
+        <references refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" compoundref="keyframe__container_8h" startline="52">openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::value</references>
+        <references refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" compoundref="options_8h" startline="90" endline="92">openage::options::OptionValue::value</references>
+        <references refid="classopenage_1_1convert_1_1peresource_1_1_string_literal_1aa1ebb6a1a24b14bebf2ec7544f047743" compoundref="peresource_8py" startline="132">openage.convert.peresource.StringLiteral.value</references>
+        <references refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" compoundref="constexpr__map_8h" startline="147">openage::datastructure::ConstMap&lt; K, V, pos &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_enum_1a8a96b1d10893e34cdb9583ef54a9c556" compoundref="enum_8h" startline="180">openage::util::Enum&lt; level_value &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_enum_1a8a96b1d10893e34cdb9583ef54a9c556" compoundref="enum_8h" startline="180">openage::util::Enum&lt; DerivedType &gt;::value</references>
+        <references refid="classopenage_1_1util_1_1_enum_1a8a96b1d10893e34cdb9583ef54a9c556" compoundref="enum_8h" startline="180">openage::util::Enum&lt; testenum_value &gt;::value</references>
+        <references refid="classopenage_1_1_resource_bundle_1ab483e70a2c807bea9aa02904937aacf7" compoundref="gamestate_2resource_8h" startline="185">openage::ResourceBundle::value</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1045">
+        <label>Enum</label>
+      </node>
+      <node id="1044">
+        <label>openage.convert.dataformat.members.ContinueReadMemberResult</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result"/>
+        <childnode refid="1045" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1047">
+        <label>Enum</label>
+      </node>
+      <node id="1046">
+        <label>openage.convert.dataformat.members.ContinueReadMemberResult</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result"/>
+        <childnode refid="1047" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="336" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="336" bodyend="348"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1a09bac03629c7499554002bc814a9cbc7" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMemberResult</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1acf024e50374e16529efba2a16f2ac83a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMemberResult</scope><name>ABORT</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member_result_1aa55bc013597a377b15959d52f050bd48" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::ContinueReadMemberResult</scope><name>CONTINUE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

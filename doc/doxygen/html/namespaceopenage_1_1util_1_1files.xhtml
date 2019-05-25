@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.files Namespace Reference</title>
+<title>openage: openage.util.files Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -132,6 +133,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="files_8py_source.xhtml#l00015">15</a> of file <a class="el" href="files_8py_source.xhtml">files.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    result = []</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">while</span> remaining:</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        data = fileobj.read(remaining)</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> data:</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">raise</span> EOFError()</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        remaining -= len(data)</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        result.append(data)</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> b<span class="stringliteral">&quot;&quot;</span>.join(result)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">def </span><a class="code" href="namespaceopenage_1_1util_1_1files.xhtml#a648056f11b83f759c99f551f483e9bef">read_nullterminated_string</a>(fileobj, maxlen=255):</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"><div class="ttc" id="namespaceopenage_1_1util_1_1files_xhtml_a648056f11b83f759c99f551f483e9bef"><div class="ttname"><a href="namespaceopenage_1_1util_1_1files.xhtml#a648056f11b83f759c99f551f483e9bef">openage::util.files.read_nullterminated_string</a></div><div class="ttdeci">def read_nullterminated_string(fileobj, maxlen=255)</div><div class="ttdoc">Reads bytes until a null terminator is reached.</div><div class="ttdef"><b>Definition:</b> <a href="files_8py_source.xhtml#l00033">files.py:33</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00229">openage.cabextract.cab.CABFile.__init__()</a>, <a class="el" href="struct_8py_source.xhtml#l00170">openage.util.struct.NamedStruct.read()</a>, <a class="el" href="cab_8py_source.xhtml#l00463">openage.cabextract.cab.CABFolderStream.read_block_data()</a>, <a class="el" href="cab_8py_source.xhtml#l00300">openage.cabextract.cab.CABFile.read_folder_headers()</a>, and <a class="el" href="files_8py_source.xhtml#l00033">openage.util.files.read_nullterminated_string()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1util_1_1files_aa2ba5a14f2468fd0745e07dc84ff2188_icgraph.svg" width="100%" height="528"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -164,6 +176,29 @@ Functions</h2></td></tr>
 <p>Reads bytes until a null terminator is reached. </p>
 
 <p class="definition">Definition at line <a class="el" href="files_8py_source.xhtml#l00033">33</a> of file <a class="el" href="files_8py_source.xhtml">files.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">while</span> <span class="keyword">True</span>:</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        char = ord(<a class="code" href="namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188">read_guaranteed</a>(fileobj, 1))</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> char == 0:</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">break</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            result.append(char)</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> len(result) &gt; maxlen:</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;Null-terminated string too long.&quot;</span>)</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">bytes</a>(result)</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">def </span><a class="code" href="namespaceopenage_1_1util_1_1files.xhtml#aefc9024dcd367647401c6682c2d0d7a5">which</a>(filename):</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">    Like the which (1) tool to get the full path of a command</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">    by looking at the PATH environment variable.</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="ttc" id="namespaceopenage_1_1util_1_1files_xhtml_aa2ba5a14f2468fd0745e07dc84ff2188"><div class="ttname"><a href="namespaceopenage_1_1util_1_1files.xhtml#aa2ba5a14f2468fd0745e07dc84ff2188">openage::util.files.read_guaranteed</a></div><div class="ttdeci">def read_guaranteed(fileobj, size)</div><div class="ttdef"><b>Definition:</b> <a href="files_8py_source.xhtml#l00015">files.py:15</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a5108334e805e942718d59b97160775d1"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a5108334e805e942718d59b97160775d1">openage::py::bytes</a></div><div class="ttdeci">Obj bytes(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00338">pyobject.cpp:338</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_1_1files_xhtml_aefc9024dcd367647401c6682c2d0d7a5"><div class="ttname"><a href="namespaceopenage_1_1util_1_1files.xhtml#aefc9024dcd367647401c6682c2d0d7a5">openage::util.files.which</a></div><div class="ttdeci">def which(filename)</div><div class="ttdef"><b>Definition:</b> <a href="files_8py_source.xhtml#l00054">files.py:54</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pyobject_8cpp_source.xhtml#l00338">openage::py.bytes()</a>, and <a class="el" href="files_8py_source.xhtml#l00015">openage.util.files.read_guaranteed()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cab_8py_source.xhtml#l00229">openage.cabextract.cab.CABFile.__init__()</a>, and <a class="el" href="cab_8py_source.xhtml#l00356">openage.cabextract.cab.CABFile.read_file_headers()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1util_1_1files_a648056f11b83f759c99f551f483e9bef_cgraph.svg" width="100%" height="378"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1util_1_1files_a648056f11b83f759c99f551f483e9bef_icgraph.svg" width="451" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -184,6 +219,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="files_8py_source.xhtml#l00054">54</a> of file <a class="el" href="files_8py_source.xhtml">files.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">def </span><a class="code" href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8">is_executable</a>(fpath):</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">        Test if the given file exists and has an executable bit.</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> os.path.isfile(fpath) <span class="keywordflow">and</span> os.access(fpath, os.X_OK)</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    fpath = os.path.split(filename)[0]</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> fpath:</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> <a class="code" href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8">is_executable</a>(filename):</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> filename</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">else</span>:</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> path <span class="keywordflow">in</span> os.environ[<span class="stringliteral">&quot;PATH&quot;</span>].<a class="code" href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0">split</a>(os.pathsep):</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            path = path.strip(<span class="stringliteral">&#39;&quot;&#39;</span>)</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            exe_file = os.path.join(path, filename)</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> <a class="code" href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8">is_executable</a>(exe_file):</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">return</span> exe_file</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <span class="keywordtype">None</span></div><div class="ttc" id="namespaceopenage_1_1util_xhtml_af74fec80080f6c627e5539bb20493ba0"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0">openage::util::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;txt, char delimiter)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00136">strings.cpp:136</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1subprocess_xhtml_af8b5d87acaf3d044fdd924ef68a1cec8"><div class="ttname"><a href="namespaceopenage_1_1subprocess.xhtml#af8b5d87acaf3d044fdd924ef68a1cec8">openage::subprocess::is_executable</a></div><div class="ttdeci">bool is_executable(const char *filename)</div><div class="ttdef"><b>Definition:</b> <a href="subprocess_8cpp_source.xhtml#l00025">subprocess.cpp:25</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="subprocess_8cpp_source.xhtml#l00025">openage::subprocess.is_executable()</a>, and <a class="el" href="strings_8cpp_source.xhtml#l00136">openage::util.split()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceopenage_1_1util_1_1files_aefc9024dcd367647401c6682c2d0d7a5_cgraph.svg" width="562" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

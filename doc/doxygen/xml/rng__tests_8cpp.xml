@@ -150,7 +150,7 @@
         <label>ciso646</label>
       </node>
       <node id="23862">
-        <label>libopenage/rng/rng_tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng_tests.cpp</label>
         <link refid="rng__tests_8cpp"/>
         <childnode refid="23863" relation="include">
         </childnode>
@@ -448,6 +448,6 @@
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
 <codeline lineno="243"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::rng::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/rng/rng_tests.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/rng/rng_tests.cpp"/>
   </compounddef>
 </doxygen>

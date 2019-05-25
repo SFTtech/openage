@@ -16,7 +16,7 @@
         <label>string</label>
       </node>
       <node id="1933">
-        <label>libopenage/gamestate/resource.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.cpp</label>
         <link refid="gamestate_2resource_8cpp"/>
         <childnode refid="1934" relation="include">
         </childnode>
@@ -250,6 +250,6 @@
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>std</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gamestate/resource.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/resource.cpp"/>
   </compounddef>
 </doxygen>

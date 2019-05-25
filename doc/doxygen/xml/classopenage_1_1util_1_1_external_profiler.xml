@@ -16,7 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="12" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="12" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">show_results</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1a31aa8514ddfaebd7d446cb75a60c3831" prot="public" static="yes" mutable="no">
         <type>const char *const</type>
@@ -30,7 +33,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="13" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">show_results</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -45,7 +49,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="15" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="15" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="15" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">show_results</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -58,7 +65,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="16" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="16" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" compoundref="externalprofiler_8cpp" startline="72" endline="121">show_results</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" compoundref="externalprofiler_8cpp" startline="32" endline="49">start</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" compoundref="externalprofiler_8cpp" startline="52" endline="69">stop</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="10" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="22" bodyend="25"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp" bodystart="22" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -86,7 +96,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="18" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="32" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp" bodystart="32" bodyend="49"/>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" compoundref="externalprofiler_8h" startline="16">can_profile</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" compoundref="externalprofiler_8h" startline="15">currently_profiling</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" compoundref="externalprofiler_8h" startline="12">profiling_filename</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -99,7 +116,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="19" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="52" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp" bodystart="52" bodyend="69"/>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" compoundref="externalprofiler_8h" startline="16">can_profile</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" compoundref="externalprofiler_8h" startline="15">currently_profiling</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" compoundref="externalprofiler_8h" startline="12">profiling_filename</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -112,7 +136,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/externalprofiler.h" line="21" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="72" bodyend="121"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.cpp" bodystart="72" bodyend="121"/>
+        <references refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" compoundref="subprocess_8cpp" startline="72" endline="240">openage::subprocess::call</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" compoundref="externalprofiler_8h" startline="16">can_profile</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" compoundref="externalprofiler_8h" startline="15">currently_profiling</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" compoundref="message_8h" startline="179">ERR</references>
+        <references refid="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" compoundref="os_8cpp" startline="102" endline="124">openage::os::execute_file</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" compoundref="externalprofiler_8h" startline="12">profiling_filename</references>
+        <references refid="classopenage_1_1util_1_1_external_profiler_1a31aa8514ddfaebd7d446cb75a60c3831" compoundref="externalprofiler_8h" startline="13">profiling_pdf_filename</references>
+        <references refid="namespaceopenage_1_1os_1aaa0a892b4d5cf0b41684c5f31c6cf86b" compoundref="os_8cpp" startline="57" endline="100">openage::os::self_exec_filename</references>
+        <references refid="namespaceopenage_1_1log_1a7ca418e1b1fcf210ff91cd25dc8e6a36" compoundref="log_2____init_____8py" startline="119" endline="122">openage::log.warn</references>
+        <references refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" compoundref="subprocess_8cpp" startline="37" endline="70">openage::subprocess::which</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -120,12 +157,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1476">
+      <node id="5712">
         <label>openage::util::ExternalProfiler</label>
         <link refid="classopenage_1_1util_1_1_external_profiler"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/externalprofiler.h" line="8" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="8" bodyend="22"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" line="8" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/externalprofiler.h" bodystart="8" bodyend="22"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>can_profile</name></member>
       <member refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>currently_profiling</name></member>

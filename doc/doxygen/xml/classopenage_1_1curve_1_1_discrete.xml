@@ -29,7 +29,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/discrete.h" line="30" column="1" bodyfile="libopenage/curve/discrete.h" bodystart="45" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" bodystart="45" bodyend="49"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
+        <referencedby refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" compoundref="curve__types_8cpp" startline="14" endline="146">openage::curve::tests::curve_types</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_discrete_1a4b2bddacdb81de7e9d1f207ca7cd15c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, T &gt;</type>
@@ -47,7 +49,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/discrete.h" line="35" column="1" bodyfile="libopenage/curve/discrete.h" bodystart="53" bodyend="57"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" bodystart="53" bodyend="57"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1curve_1_1_discrete_1a9be982a0d41cb6b5f2968aafcf147c82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, T &gt; &gt;</type>
@@ -65,7 +68,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/curve/discrete.h" line="40" column="1" bodyfile="libopenage/curve/discrete.h" bodystart="61" bodyend="73"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" bodystart="61" bodyend="73"/>
+        <references refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" compoundref="container_8cpp" startline="205" endline="209">openage::curve::tests::container</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -74,42 +78,42 @@
 <para>Does not interpolate between values. The template type does only need to implement <computeroutput>operator=</computeroutput> and copy ctor. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1118">
+      <node id="1862">
         <label>openage::curve::Discrete&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_discrete"/>
-        <childnode refid="1119" relation="public-inheritance">
+        <childnode refid="1863" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1120">
+      <node id="1864">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="1119">
+      <node id="1863">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="1120" relation="public-inheritance">
+        <childnode refid="1864" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1121">
+      <node id="1865">
         <label>openage::curve::Discrete&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_discrete"/>
-        <childnode refid="1122" relation="public-inheritance">
+        <childnode refid="1866" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1123">
+      <node id="1867">
         <label>openage::event::EventTarget</label>
         <link refid="classopenage_1_1event_1_1_event_target"/>
       </node>
-      <node id="1122">
+      <node id="1866">
         <label>openage::curve::ValueContainer&lt; T &gt;</label>
         <link refid="classopenage_1_1curve_1_1_value_container"/>
-        <childnode refid="1123" relation="public-inheritance">
+        <childnode refid="1867" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/curve/discrete.h" line="18" column="1" bodyfile="libopenage/curve/discrete.h" bodystart="18" bodyend="41"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/discrete.h" bodystart="18" bodyend="41"/>
     <listofallmembers>
       <member refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" virt="non-virtual"><scope>openage::curve::Discrete</scope><name>_id</name></member>
       <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::curve::Discrete</scope><name>add_dependent</name></member>

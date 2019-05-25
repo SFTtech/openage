@@ -461,7 +461,7 @@
         <link refid="variable_8h"/>
       </node>
       <node id="7074">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
         <childnode refid="7075" relation="include">
         </childnode>
@@ -1563,7 +1563,7 @@
 <codeline lineno="22"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>main<sp/>entry<sp/>point<sp/>to<sp/>the<sp/>C++<sp/>part.</highlight></codeline>
 <codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" kindref="member">run_game</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref><sp/>&amp;args)<sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;launching<sp/>engine<sp/>with<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>args.<ref refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" kindref="member">root_path</ref></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>fps<sp/>limit<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -1588,7 +1588,7 @@
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>console.<ref refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" kindref="member">load_colors</ref>(termcolors);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>console.register_to_engine();</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info).fmt(</highlight><highlight class="stringliteral">&quot;Loading<sp/>time<sp/>[engine]:<sp/>%5.3f<sp/>s&quot;</highlight><highlight class="normal">,<sp/>timer.<ref refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" kindref="member">getval</ref>()<sp/>/<sp/>1.0e9));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>).fmt(</highlight><highlight class="stringliteral">&quot;Loading<sp/>time<sp/>[engine]:<sp/>%5.3f<sp/>s&quot;</highlight><highlight class="normal">,<sp/>timer.<ref refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" kindref="member">getval</ref>()<sp/>/<sp/>1.0e9));</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>timer.<ref refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" kindref="member">start</ref>();</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
@@ -1596,7 +1596,7 @@
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>components<sp/>that<sp/>use<sp/>the<sp/>engine.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_game_renderer" kindref="compound">GameRenderer</ref><sp/>renderer{&amp;engine};</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info).fmt(</highlight><highlight class="stringliteral">&quot;Loading<sp/>time<sp/><sp/><sp/>[game]:<sp/>%5.3f<sp/>s&quot;</highlight><highlight class="normal">,<sp/>timer.<ref refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" kindref="member">getval</ref>()<sp/>/<sp/>1.0e9));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>).fmt(</highlight><highlight class="stringliteral">&quot;Loading<sp/>time<sp/><sp/><sp/>[game]:<sp/>%5.3f<sp/>s&quot;</highlight><highlight class="normal">,<sp/>timer.<ref refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" kindref="member">getval</ref>()<sp/>/<sp/>1.0e9));</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>run<sp/>main<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>engine.run();</highlight></codeline>
@@ -1609,6 +1609,6 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/main.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp"/>
   </compounddef>
 </doxygen>

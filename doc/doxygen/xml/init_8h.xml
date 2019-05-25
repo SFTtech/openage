@@ -3,15 +3,15 @@
   <compounddef id="init_8h" kind="file" language="C++">
     <compoundname>init.h</compoundname>
     <includes local="no">functional</includes>
-    <includedby refid="error_2handlers_8cpp" local="yes">libopenage/error/handlers.cpp</includedby>
-    <includedby refid="stackanalyzer_8cpp" local="yes">libopenage/error/stackanalyzer.cpp</includedby>
-    <includedby refid="init_8cpp" local="yes">libopenage/util/init.cpp</includedby>
+    <includedby refid="error_2handlers_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</includedby>
+    <includedby refid="stackanalyzer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</includedby>
+    <includedby refid="init_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp</includedby>
     <incdepgraph>
       <node id="30669">
         <label>functional</label>
       </node>
       <node id="30668">
-        <label>libopenage/util/init.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h</label>
         <link refid="init_8h"/>
         <childnode refid="30669" relation="include">
         </childnode>
@@ -19,19 +19,19 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="30673">
-        <label>libopenage/util/init.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.cpp</label>
         <link refid="init_8cpp"/>
       </node>
       <node id="30672">
-        <label>libopenage/error/stackanalyzer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/stackanalyzer.cpp</label>
         <link refid="stackanalyzer_8cpp"/>
       </node>
       <node id="30671">
-        <label>libopenage/error/handlers.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/error/handlers.cpp</label>
         <link refid="error_2handlers_8cpp"/>
       </node>
       <node id="30670">
-        <label>libopenage/util/init.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h</label>
         <link refid="init_8h"/>
         <childnode refid="30671" relation="include">
         </childnode>
@@ -103,6 +103,6 @@
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/init.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/init.h"/>
   </compounddef>
 </doxygen>

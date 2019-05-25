@@ -1,0 +1,5 @@
+<map id="openage::UnitAbility::is_damaged" name="openage::UnitAbility::is_damaged">
+<area shape="rect" id="node1" title=" " alt="" coords="205,39,344,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_repair_ability.xhtml#ace3c32d3f619cdc28abfca9fa684b3e2" title=" " alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_heal_ability.xhtml#a9940045e67d852476cf73aec89895218" title=" " alt="" coords="11,71,152,112"/>
+</map>

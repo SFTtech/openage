@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1codegen_1_1gamespec__structs" kind="namespace" language="Python">
+    <compoundname>openage::codegen::gamespec_structs</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1codegen_1_1gamespec__structs_1a2faab3571b3ad054145c22c81765f653" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.codegen.gamespec_structs.generate_gamespec_structs</definition>
+        <argsstring>(projectdir)</argsstring>
+        <name>generate_gamespec_structs</name>
+        <param>
+          <type>projectdir</type>
+          <defname>projectdir</defname>
+        </param>
+        <briefdescription>
+<para>Header and C++ files for the gamespec structs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/gamespec_structs.py" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/gamespec_structs.py" bodystart="20" bodyend="32"/>
+        <referencedby refid="namespaceopenage_1_1codegen_1_1listing_1a8178b40ca254e32043552b4b3f13aeeb" compoundref="listing_8py" startline="13" endline="22">openage.codegen.listing.generate_all</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/gamespec_structs.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

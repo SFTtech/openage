@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="type__pair_8h" kind="file" language="C++">
     <compoundname>type_pair.h</compoundname>
-    <includedby refid="type__pair_8cpp" local="yes">libopenage/unit/type_pair.cpp</includedby>
+    <includedby refid="type__pair_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.cpp</includedby>
     <invincdepgraph>
       <node id="26420">
-        <label>libopenage/unit/type_pair.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.cpp</label>
         <link refid="type__pair_8cpp"/>
       </node>
       <node id="26419">
-        <label>libopenage/unit/type_pair.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.h</label>
         <link refid="type__pair_8h"/>
         <childnode refid="26420" relation="include">
         </childnode>
@@ -51,6 +51,6 @@
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/unit/type_pair.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/type_pair.h"/>
   </compounddef>
 </doxygen>

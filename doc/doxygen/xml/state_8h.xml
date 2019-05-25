@@ -3,12 +3,12 @@
   <compounddef id="state_8h" kind="file" language="C++">
     <compoundname>state.h</compoundname>
     <includes local="no">memory</includes>
-    <includedby refid="gamestate_8h" local="yes">libopenage/event/demo/gamestate.h</includedby>
-    <includedby refid="state_8cpp" local="yes">libopenage/event/state.cpp</includedby>
-    <includedby refid="event_2tests_8cpp" local="yes">libopenage/event/tests.cpp</includedby>
+    <includedby refid="gamestate_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</includedby>
+    <includedby refid="state_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.cpp</includedby>
+    <includedby refid="event_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp</includedby>
     <incdepgraph>
       <node id="8301">
-        <label>libopenage/event/state.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h</label>
         <link refid="state_8h"/>
         <childnode refid="8302" relation="include">
         </childnode>
@@ -19,23 +19,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="8308">
-        <label>libopenage/event/demo/gamestate.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.cpp</label>
         <link refid="gamestate_8cpp"/>
       </node>
       <node id="8310">
-        <label>libopenage/event/demo/physics.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.cpp</label>
         <link refid="physics_8cpp"/>
       </node>
       <node id="8306">
-        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.cpp</label>
         <link refid="aicontroller_8cpp"/>
       </node>
       <node id="8311">
-        <label>libopenage/event/state.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.cpp</label>
         <link refid="state_8cpp"/>
       </node>
       <node id="8309">
-        <label>libopenage/event/demo/physics.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/physics.h</label>
         <link refid="physics_8h"/>
         <childnode refid="8307" relation="include">
         </childnode>
@@ -43,11 +43,11 @@
         </childnode>
       </node>
       <node id="8307">
-        <label>libopenage/event/demo/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/main.cpp</label>
         <link refid="event_2demo_2main_8cpp"/>
       </node>
       <node id="8305">
-        <label>libopenage/event/demo/aicontroller.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/aicontroller.h</label>
         <link refid="aicontroller_8h"/>
         <childnode refid="8306" relation="include">
         </childnode>
@@ -55,11 +55,11 @@
         </childnode>
       </node>
       <node id="8312">
-        <label>libopenage/event/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/tests.cpp</label>
         <link refid="event_2tests_8cpp"/>
       </node>
       <node id="8303">
-        <label>libopenage/event/state.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h</label>
         <link refid="state_8h"/>
         <childnode refid="8304" relation="include">
         </childnode>
@@ -69,7 +69,7 @@
         </childnode>
       </node>
       <node id="8304">
-        <label>libopenage/event/demo/gamestate.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/gamestate.h</label>
         <link refid="gamestate_8h"/>
         <childnode refid="8305" relation="include">
         </childnode>
@@ -109,6 +109,6 @@
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/event/state.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/state.h"/>
   </compounddef>
 </doxygen>

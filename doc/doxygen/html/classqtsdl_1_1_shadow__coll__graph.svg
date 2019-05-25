@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 200)">
 <title>qtsdl::Shadow&lt; T &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-200 105,-200 105,4 -4,4"/>
-<!-- Node3 -->
-<g id="node1" class="node"><title>Node3</title>
+<!-- Node10 -->
+<g id="node1" class="node"><title>Node10</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-101.5 101,-101.5 101,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="50.5" y="-89.5" font-family="Helvetica,sans-Serif" font-size="10.00">qtsdl::Shadow&lt; T &gt;</text>
@@ -25,8 +25,8 @@
 </a>
 </g>
 </g>
-<!-- Node4 -->
-<g id="node2" class="node"><title>Node4</title>
+<!-- Node11 -->
+<g id="node2" class="node"><title>Node11</title>
 <g id="a_node2"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="36,-138.5 36,-195.5 65,-195.5 65,-138.5 36,-138.5"/>
 <text text-anchor="middle" x="50.5" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00">T</text>
@@ -37,8 +37,8 @@
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node3 -->
-<g id="edge1" class="edge"><title>Node4&#45;&gt;Node3</title>
+<!-- Node11&#45;&gt;Node10 -->
+<g id="edge1" class="edge"><title>Node11&#45;&gt;Node10</title>
 <path fill="none" stroke="midnightblue" d="M50.5,-128.354C50.5,-119.796 50.5,-110.578 50.5,-101.608"/>
 <polygon fill="none" stroke="midnightblue" points="47.0001,-128.404 50.5,-138.404 54.0001,-128.404 47.0001,-128.404"/>
 </g>

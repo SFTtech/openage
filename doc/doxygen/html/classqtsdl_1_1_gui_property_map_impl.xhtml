@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiPropertyMapImpl Class Reference</title>
+<title>openage: qtsdl::GuiPropertyMapImpl Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_property_map_impl.x
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__property__map__impl_8h_source.xhtml">gui_property_map_impl.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiPropertyMapImpl:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_property_map_impl__inherit__graph.svg" width="187" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiPropertyMapImpl:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_property_map_impl__inherit__graph.svg" width="187" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiPropertyMapImpl:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_property_map_impl__coll__graph.svg" width="187" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiPropertyMapImpl:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_property_map_impl__coll__graph.svg" width="187" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
@@ -148,7 +151,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map__impl_8cpp_source.xhtml#l00012">12</a> of file <a class="el" href="gui__property__map__impl_8cpp_source.xhtml">gui_property_map_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    :</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    QObject{} {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="afadd863ae9d3f4b0f8105e7dcb893568"></a>
@@ -175,7 +178,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map__impl_8cpp_source.xhtml#l00017">17</a> of file <a class="el" href="gui__property__map__impl_8cpp_source.xhtml">gui_property_map_impl.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                        {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -204,6 +207,9 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__property__map__impl_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="gui__property__map__impl_8cpp_source.xhtml">gui_property_map_impl.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                        {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span> (e-&gt;type() == QEvent::DynamicPropertyChange) {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">auto</span> property_name = checked_static_cast&lt;QDynamicPropertyChangeEvent*&gt;(e)-&gt;propertyName();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        emit this-&gt;<a class="code" href="classqtsdl_1_1_gui_property_map_impl.xhtml#a2842145dde93db062bfcc6d8ba6e0d90">property_changed</a>(property_name, this-&gt;property(property_name));</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> this-&gt;QObject::event(e);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_property_map_impl_xhtml_a2842145dde93db062bfcc6d8ba6e0d90"><div class="ttname"><a href="classqtsdl_1_1_gui_property_map_impl.xhtml#a2842145dde93db062bfcc6d8ba6e0d90">qtsdl::GuiPropertyMapImpl::property_changed</a></div><div class="ttdeci">void property_changed(const QByteArray &amp;name, const QVariant &amp;value)</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="classqtsdl_1_1_gui_property_map_impl.xhtml#a2842145dde93db062bfcc6d8ba6e0d90">property_changed()</a>.</p>
 
 </div>
 </div>
@@ -241,11 +247,21 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="gui__item__list__model_8h_source.xhtml#l00045">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;::establish_to_gui_propagation()</a>, and <a class="el" href="gui__property__map__impl_8cpp_source.xhtml#l00020">event()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_property_map_impl_a2842145dde93db062bfcc6d8ba6e0d90_icgraph.svg" width="422" height="134"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/guisys/link/<a class="el" href="gui__property__map__impl_8h_source.xhtml">gui_property_map_impl.h</a></li>
-<li>libopenage/gui/guisys/link/<a class="el" href="gui__property__map__impl_8cpp_source.xhtml">gui_property_map_impl.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/<a class="el" href="gui__property__map__impl_8h_source.xhtml">gui_property_map_impl.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/<a class="el" href="gui__property__map__impl_8cpp_source.xhtml">gui_property_map_impl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

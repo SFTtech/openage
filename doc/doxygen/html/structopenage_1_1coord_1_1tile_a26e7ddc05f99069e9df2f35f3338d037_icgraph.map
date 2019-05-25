@@ -1,0 +1,7 @@
+<map id="openage::coord::tile::to_phys2" name="openage::coord::tile::to_phys2">
+<area shape="rect" id="node1" title=" " alt="" coords="212,104,348,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_square_object.xhtml#af43e3d3caa4951b79a5dfee9a4aeee8a" title=" " alt="" coords="5,5,164,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_square_object.xhtml#a6ab34e730282117594441a96e2fb5882" title=" " alt="" coords="5,71,164,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_square_object.xhtml#aaab1452776a2962c6ccb6bf3b55efecf" title=" " alt="" coords="5,136,164,177"/>
+<area shape="rect" id="node5" href="$structopenage_1_1coord_1_1tile3.xhtml#a41375a0a27e652e560f0c0fb66fcc56d" title=" " alt="" coords="13,201,156,243"/>
+</map>

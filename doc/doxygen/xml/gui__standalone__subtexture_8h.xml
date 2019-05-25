@@ -4,11 +4,11 @@
     <compoundname>gui_standalone_subtexture.h</compoundname>
     <includes local="no">QtGui</includes>
     <includes local="no">QSGTexture</includes>
-    <includedby refid="gui__make__standalone__subtexture_8cpp" local="yes">libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</includedby>
-    <includedby refid="gui__standalone__subtexture_8cpp" local="yes">libopenage/gui/integration/private/gui_standalone_subtexture.cpp</includedby>
+    <includedby refid="gui__make__standalone__subtexture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</includedby>
+    <includedby refid="gui__standalone__subtexture_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp</includedby>
     <incdepgraph>
       <node id="14477">
-        <label>libopenage/gui/integration/private/gui_standalone_subtexture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h</label>
         <link refid="gui__standalone__subtexture_8h"/>
         <childnode refid="14478" relation="include">
         </childnode>
@@ -24,11 +24,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="14482">
-        <label>libopenage/gui/integration/private/gui_standalone_subtexture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.cpp</label>
         <link refid="gui__standalone__subtexture_8cpp"/>
       </node>
       <node id="14480">
-        <label>libopenage/gui/integration/private/gui_standalone_subtexture.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h</label>
         <link refid="gui__standalone__subtexture_8h"/>
         <childnode refid="14481" relation="include">
         </childnode>
@@ -36,7 +36,7 @@
         </childnode>
       </node>
       <node id="14481">
-        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</label>
         <link refid="gui__make__standalone__subtexture_8cpp"/>
       </node>
     </invincdepgraph>
@@ -79,6 +79,6 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/integration/private/gui_standalone_subtexture.h"/>
   </compounddef>
 </doxygen>

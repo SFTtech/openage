@@ -3,11 +3,11 @@
   <compounddef id="opengl__debug__logger_8h" kind="file" language="C++">
     <compoundname>opengl_debug_logger.h</compoundname>
     <includes local="no">QOpenGLFunctions</includes>
-    <includedby refid="gui__ctx__setup_8cpp" local="yes">libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
-    <includedby refid="opengl__debug__logger_8cpp" local="yes">libopenage/gui/guisys/private/opengl_debug_logger.cpp</includedby>
+    <includedby refid="gui__ctx__setup_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
+    <includedby refid="opengl__debug__logger_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp</includedby>
     <incdepgraph>
       <node id="13413">
-        <label>libopenage/gui/guisys/private/opengl_debug_logger.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h</label>
         <link refid="opengl__debug__logger_8h"/>
         <childnode refid="13414" relation="include">
         </childnode>
@@ -18,7 +18,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="13415">
-        <label>libopenage/gui/guisys/private/opengl_debug_logger.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h</label>
         <link refid="opengl__debug__logger_8h"/>
         <childnode refid="13416" relation="include">
         </childnode>
@@ -26,11 +26,11 @@
         </childnode>
       </node>
       <node id="13416">
-        <label>libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
         <link refid="gui__ctx__setup_8cpp"/>
       </node>
       <node id="13417">
-        <label>libopenage/gui/guisys/private/opengl_debug_logger.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.cpp</label>
         <link refid="opengl__debug__logger_8cpp"/>
       </node>
     </invincdepgraph>
@@ -64,6 +64,6 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/opengl_debug_logger.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/opengl_debug_logger.h"/>
   </compounddef>
 </doxygen>

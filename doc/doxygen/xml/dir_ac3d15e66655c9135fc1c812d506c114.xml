@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_ac3d15e66655c9135fc1c812d506c114" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded</compoundname>
+    <innerfile refid="convert_2hardcoded_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="langcodes_8py">langcodes.py</innerfile>
+    <innerfile refid="langcodes__hd_8py">langcodes_hd.py</innerfile>
+    <innerfile refid="termcolors_8py">termcolors.py</innerfile>
+    <innerfile refid="terrain__tile__size_8py">terrain_tile_size.py</innerfile>
+    <innerfile refid="hardcoded_2texture_8py">texture.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/"/>
+  </compounddef>
+</doxygen>

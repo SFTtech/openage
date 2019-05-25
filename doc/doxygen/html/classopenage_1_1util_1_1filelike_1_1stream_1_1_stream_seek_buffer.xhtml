@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.util.filelike.stream.StreamSeekBuffer Class Reference</title>
+<title>openage: openage.util.filelike.stream.StreamSeekBuffer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -95,17 +96,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1util_1_1filelike_1_1st
 <div class="title">openage.util.filelike.stream.StreamSeekBuffer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for openage.util.filelike.stream.StreamSeekBuffer:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.util.filelike.stream.StreamSeekBuffer:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.util.filelike.stream.StreamSeekBuffer:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.util.filelike.stream.StreamSeekBuffer:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -217,7 +220,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00038">38</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        self.wrapped = wrappee</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        self.keepbuffered = keepbuffered</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        self.minread = minread</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment"># invariant: len(self.buf) == self.wrapped.tell()</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        self.buf = ByteBuffer()</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">def </span>resetwrappeed(self):</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -240,7 +243,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a007c0eefc1bd3165112c787fb5e70f75">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00093">93</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        del self.buf</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        del self.wrapped</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">class </span>StreamFragment(PosSavingReadOnlyFileLikeObject):</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">    Represents a definite part of an other file-like, read-only seekable</span></div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">    stream.</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">    Constructor arguments:</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="stringliteral">    @param stream</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="stringliteral">        The stream; must implement read(), and seek() with whence=os.SEEK_SET.</span></div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral">        The stream&#39;s cursor is explicitly positioned before each call to</span></div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">        read(); this allows multiple PartialStream objects to use the stream</span></div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">        in parallel.</span></div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral">    @param start</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral">        The first position of the stream that is used in this object.</span></div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="stringliteral">    @param size</span></div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral">        The size of the stream fragment (in bytes).</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a00bc3bad63eccff9e3094d87d8499d3e"></a>
@@ -262,6 +265,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a402459217e8204b8242829b019ad85a7">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00090">90</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">def </span>close(self):</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        self.closed = <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="stream_8py_source.xhtml#l00041">openage.util.filelike.stream.StreamSeekBuffer.wrapped</a>.</p>
 
 </div>
 </div>
@@ -297,6 +302,28 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#a74f8e05ed5480518188044084cc0e902">openage.util.filelike.abstract.FileLikeObject</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00055">55</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            size = INF</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment"># see if we have already discarded the requested data</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> self.buf.hasbeendiscarded(self.pos):</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment"># shit.</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment"># try to reset the stream and start over, hoping that the stream</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment"># actually implements .reset().</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            self.wrapped.reset()</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            self.buf = ByteBuffer()</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment"># see if we need to request some more data from the input stream.</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        needed = self.pos + size - len(self.buf)</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">while</span> needed &gt; 0:</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment"># read at most 64 MiB at once</span></div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment"># read at least self.minread</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            amount = <a class="code" href="namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a">clamp</a>(needed, self.minread, 67108864)</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            data = self.wrapped.read(amount)</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            self.buf.append(data)</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            needed -= len(data)</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            self.buf.discardleft(<a class="code" href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">max</a>(self.keepbuffered, size - needed))</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> len(data) &lt; amount:</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="comment"># wrapped stream has EOFed.</span></div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">break</span></div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        data = self.buf[self.pos: self.pos + size]</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        self.pos += len(data)</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> data</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">def </span>get_size(self):</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> self.wrapped.get_size()</div><div class="ttc" id="namespaceopenage_1_1util_1_1math_xhtml_a7d719fd9d57ba43e020f3443b3fc2c7a"><div class="ttname"><a href="namespaceopenage_1_1util_1_1math.xhtml#a7d719fd9d57ba43e020f3443b3fc2c7a">openage::util.math.clamp</a></div><div class="ttdeci">def clamp(val, minval, maxval)</div><div class="ttdoc">clamps val to be at least minval, and at most maxval.</div><div class="ttdef"><b>Definition:</b> <a href="math_8py_source.xhtml#l00029">math.py:29</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1console_1_1tests_xhtml_a46ebd3333dc9196558ac9aced828d117"><div class="ttname"><a href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">openage::console::tests::max</a></div><div class="ttdeci">int max(int a, int b)</div><div class="ttdef"><b>Definition:</b> <a href="console_2tests_8cpp_source.xhtml#l00031">tests.cpp:31</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="stream_8py_source.xhtml#l00046">openage.util.filelike.stream.StreamSeekBuffer.buf</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00052">openage.cabextract.lzxdstream.LZXDStream.buf</a>, <a class="el" href="externalsstream_8h_source.xhtml#l00059">openage::util::ExternalOStringStream.buf</a>, <a class="el" href="console_8h_source.xhtml#l00071">openage::console::Console.buf</a>, <a class="el" href="math_8py_source.xhtml#l00029">openage.util.math.clamp()</a>, <a class="el" href="stream_8py_source.xhtml#l00042">openage.util.filelike.stream.StreamSeekBuffer.keepbuffered</a>, <a class="el" href="console_2tests_8cpp_source.xhtml#l00031">openage::console::tests.max()</a>, <a class="el" href="stream_8py_source.xhtml#l00043">openage.util.filelike.stream.StreamSeekBuffer.minread</a>, <a class="el" href="fifo_8py_source.xhtml#l00037">openage.util.filelike.fifo.FIFO.pos</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00051">openage.cabextract.lzxdstream.LZXDStream.pos</a>, <a class="el" href="readonly_8py_source.xhtml#l00053">openage.util.filelike.readonly.PosSavingReadOnlyFileLikeObject.pos</a>, <a class="el" href="terrain__object_8h_source.xhtml#l00085">openage::TerrainObject.pos</a>, <a class="el" href="terrain_8h_source.xhtml#l00123">openage::tile_data.pos</a>, <a class="el" href="command_8h_source.xhtml#l00137">openage::Command.pos</a>, <a class="el" href="cab_8py_source.xhtml#l00152">openage.cabextract.cab.CFFile.pos</a>, and <a class="el" href="stream_8py_source.xhtml#l00041">openage.util.filelike.stream.StreamSeekBuffer.wrapped</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="peresource_8py_source.xhtml#l00138">openage.convert.peresource.StringLiteral.readall()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_a37e1fc79dc2eeffcd4d529e9607db220_cgraph.svg" width="100%" height="396"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_a37e1fc79dc2eeffcd4d529e9607db220_icgraph.svg" width="427" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -319,6 +346,8 @@ Public Attributes</h2></td></tr>
 <p>resets the wrappeed object, and clears self.buf. </p>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00051">51</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        self.buf = ByteBuffer()</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">def </span>read(self, size=-1):</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> size &lt; 0:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="stream_8py_source.xhtml#l00046">openage.util.filelike.stream.StreamSeekBuffer.buf</a>, <a class="el" href="lzxdstream_8py_source.xhtml#l00052">openage.cabextract.lzxdstream.LZXDStream.buf</a>, <a class="el" href="externalsstream_8h_source.xhtml#l00059">openage::util::ExternalOStringStream.buf</a>, <a class="el" href="console_8h_source.xhtml#l00071">openage::console::Console.buf</a>, and <a class="el" href="stream_8py_source.xhtml#l00041">openage.util.filelike.stream.StreamSeekBuffer.wrapped</a>.</p>
 
 </div>
 </div>
@@ -337,6 +366,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00046">46</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>, and <a class="el" href="stream_8py_source.xhtml#l00051">openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed()</a>.</p>
+
 </div>
 </div>
 <a id="a2b67f0ce500799215ac4bbd03bf2d14b"></a>
@@ -352,6 +383,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00094">94</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="threading_8py_source.xhtml#l00075">openage.util.threading.ClosableQueue.close()</a>, and <a class="el" href="threading_8py_source.xhtml#l00084">openage.util.threading.ClosableQueue.raise_if_closed()</a>.</p>
 
 </div>
 </div>
@@ -369,6 +402,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00042">42</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>.</p>
+
 </div>
 </div>
 <a id="a0b65d2d40a8c0ef48a461b183893aa13"></a>
@@ -384,6 +419,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00043">43</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>.</p>
 
 </div>
 </div>
@@ -401,10 +438,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="stream_8py_source.xhtml#l00041">41</a> of file <a class="el" href="stream_8py_source.xhtml">stream.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="stream_8py_source.xhtml#l00090">openage.util.filelike.stream.StreamSeekBuffer.get_size()</a>, <a class="el" href="stream_8py_source.xhtml#l00055">openage.util.filelike.stream.StreamSeekBuffer.read()</a>, and <a class="el" href="stream_8py_source.xhtml#l00051">openage.util.filelike.stream.StreamSeekBuffer.resetwrappeed()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/util/filelike/<a class="el" href="stream_8py_source.xhtml">stream.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/util/filelike/<a class="el" href="stream_8py_source.xhtml">stream.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

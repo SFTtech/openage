@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.binpack.BinaryTreePacker Class Reference</title>
+<title>openage: openage.convert.binpack.BinaryTreePacker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1binpack_1_1
 
 <p>Binary tree bin packing strategy.  
  <a href="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.binpack.BinaryTreePacker:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer__inherit__graph.svg" width="180" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.binpack.BinaryTreePacker:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer__inherit__graph.svg" width="180" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.binpack.BinaryTreePacker:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer__coll__graph.svg" width="180" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.binpack.BinaryTreePacker:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer__coll__graph.svg" width="180" height="478"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -204,7 +207,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00160">160</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        self.aspect_ratio = aspect_ratio</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        self.heuristic = heuristic</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        self.root = <span class="keywordtype">None</span></div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">def </span>pack(self, blocks):</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        self.mapping = {}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -247,6 +250,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00197">197</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> (self.find_node(root.right, width, height) <span class="keywordflow">or</span></div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    self.find_node(root.down, width, height))</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">elif</span> width &lt;= root.width <span class="keywordflow">and</span> height &lt;= root.height:</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> root</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">def </span>split_node(self, node, width, height):</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        node.used = <span class="keyword">True</span></div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00197">openage.convert.binpack.BinaryTreePacker.find_node()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00197">openage.convert.binpack.BinaryTreePacker.find_node()</a>, <a class="el" href="binpack_8py_source.xhtml#l00177">openage.convert.binpack.BinaryTreePacker.fit()</a>, <a class="el" href="binpack_8py_source.xhtml#l00243">openage.convert.binpack.BinaryTreePacker.grow_down()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00231">openage.convert.binpack.BinaryTreePacker.grow_right()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_a3bc196b2ae9a97ca5e35fbd0c0d25ca1_cgraph.svg" width="195" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_a3bc196b2ae9a97ca5e35fbd0c0d25ca1_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -277,6 +300,16 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00177">177</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            self.root = PackerNode(0, 0,</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                   block.width + self.margin,</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                   block.height + self.margin)</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        node = self.find_node(self.root,</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                              block.width + self.margin,</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                              block.height + self.margin)</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span> node <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            node = self.split_node(node,</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                   block.width + self.margin,</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                   block.height + self.margin)</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            node = self.grow_node(block.width + self.margin,</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                  block.height + self.margin)</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        self.mapping[block] = node</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">def </span>find_node(self, root, width, height):</div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> root.used:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00197">openage.convert.binpack.BinaryTreePacker.find_node()</a>, <a class="el" href="binpack_8py_source.xhtml#l00212">openage.convert.binpack.BinaryTreePacker.grow_node()</a>, <a class="el" href="binpack_8py_source.xhtml#l00025">openage.convert.binpack.Packer.mapping</a>, <a class="el" href="binpack_8py_source.xhtml#l00024">openage.convert.binpack.Packer.margin</a>, <a class="el" href="gui__subtree__impl_8h_source.xhtml#l00094">qtsdl::GuiSubtreeImpl.root</a>, <a class="el" href="binpack_8py_source.xhtml#l00164">openage.convert.binpack.BinaryTreePacker.root</a>, and <a class="el" href="binpack_8py_source.xhtml#l00204">openage.convert.binpack.BinaryTreePacker.split_node()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_ae48dccc105acdb2ded7629bc1060847c_cgraph.svg" width="100%" height="423"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -313,6 +346,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00243">243</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        self.root = PackerNode(0, 0, old_root.width, old_root.height + height)</div><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        self.root.used = <span class="keyword">True</span></div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        self.root.down = PackerNode(0, old_root.height, old_root.width, height)</div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        self.root.right = old_root</div><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        node = self.find_node(self.root, width, height)</div><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">if</span> node <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">return</span> self.split_node(node, width, height)</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00197">openage.convert.binpack.BinaryTreePacker.find_node()</a>, <a class="el" href="gui__subtree__impl_8h_source.xhtml#l00094">qtsdl::GuiSubtreeImpl.root</a>, <a class="el" href="binpack_8py_source.xhtml#l00164">openage.convert.binpack.BinaryTreePacker.root</a>, and <a class="el" href="binpack_8py_source.xhtml#l00204">openage.convert.binpack.BinaryTreePacker.split_node()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00212">openage.convert.binpack.BinaryTreePacker.grow_node()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_ab2ad7afcbebffd5353e9004157b45644_cgraph.svg" width="440" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_ab2ad7afcbebffd5353e9004157b45644_icgraph.svg" width="660" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -349,6 +402,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00212">212</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        can_grow_right = height &lt;= self.root.height</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keyword">assert</span> can_grow_down <span class="keywordflow">or</span> can_grow_right, <span class="stringliteral">&quot;Bad block ordering heuristic&quot;</span></div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        should_grow_right = ((self.root.height * self.aspect_ratio) &gt;=</div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                             (self.root.width + width))</div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        should_grow_down = ((self.root.width / self.aspect_ratio) &gt;=</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                            (self.root.height + height))</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">if</span> can_grow_right <span class="keywordflow">and</span> should_grow_right:</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> self.grow_right(width, height)</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">elif</span> can_grow_down <span class="keywordflow">and</span> should_grow_down:</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> self.grow_down(width, height)</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">elif</span> can_grow_right:</div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> self.grow_right(width, height)</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">return</span> self.grow_down(width, height)</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keyword">def </span>grow_right(self, width, height):</div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        old_root = self.root</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00162">openage.convert.binpack.BinaryTreePacker.aspect_ratio</a>, <a class="el" href="binpack_8py_source.xhtml#l00243">openage.convert.binpack.BinaryTreePacker.grow_down()</a>, <a class="el" href="binpack_8py_source.xhtml#l00231">openage.convert.binpack.BinaryTreePacker.grow_right()</a>, <a class="el" href="gui__subtree__impl_8h_source.xhtml#l00094">qtsdl::GuiSubtreeImpl.root</a>, and <a class="el" href="binpack_8py_source.xhtml#l00164">openage.convert.binpack.BinaryTreePacker.root</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00177">openage.convert.binpack.BinaryTreePacker.fit()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_a61f11eee28580e8d9f377e2a2a2be97f_cgraph.svg" width="100%" height="406"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_a61f11eee28580e8d9f377e2a2a2be97f_icgraph.svg" width="419" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -385,6 +458,26 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00231">231</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        self.root = PackerNode(0, 0, old_root.width + width, old_root.height)</div><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        self.root.used = <span class="keyword">True</span></div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        self.root.down = old_root</div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        self.root.right = PackerNode(old_root.width, 0, width, old_root.height)</div><div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        node = self.find_node(self.root, width, height)</div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span> node <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">return</span> self.split_node(node, width, height)</div><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">def </span>grow_down(self, width, height):</div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        old_root = self.root</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00197">openage.convert.binpack.BinaryTreePacker.find_node()</a>, <a class="el" href="gui__subtree__impl_8h_source.xhtml#l00094">qtsdl::GuiSubtreeImpl.root</a>, <a class="el" href="binpack_8py_source.xhtml#l00164">openage.convert.binpack.BinaryTreePacker.root</a>, and <a class="el" href="binpack_8py_source.xhtml#l00204">openage.convert.binpack.BinaryTreePacker.split_node()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00212">openage.convert.binpack.BinaryTreePacker.grow_node()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_abf53a5df2edae1fc544296ab05c08ff9_cgraph.svg" width="435" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_abf53a5df2edae1fc544296ab05c08ff9_icgraph.svg" width="655" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -420,7 +513,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#ac0edc354fd6c4e1d7396e66e877fc3f3">openage.convert.binpack.Packer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00166">166</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        self.root = <span class="keywordtype">None</span></div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">for</span> block <span class="keywordflow">in</span> sorted(blocks, key=self.heuristic, reverse=<span class="keyword">True</span>):</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            self.fit(block)</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">def </span>pos(self, block):</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        node = self.mapping[block]</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a461f1dcbab5392fa90e45f52efe1c36e"></a>
@@ -452,6 +545,8 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented from <a class="el" href="classopenage_1_1convert_1_1binpack_1_1_packer.xhtml#a9755eed59f354457fb58dcb946986c81">openage.convert.binpack.Packer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00173">173</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> node.x, node.y</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keyword">def </span>fit(self, block):</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> self.root <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div></div><!-- fragment -->
+<p class="reference">References <a class="el" href="binpack_8py_source.xhtml#l00025">openage.convert.binpack.Packer.mapping</a>.</p>
 
 </div>
 </div>
@@ -494,6 +589,16 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00204">204</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        node.down = PackerNode(node.x, node.y + height,</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                               node.width, node.height - height)</div><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        node.right = PackerNode(node.x + width, node.y,</div><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                node.width - width, height)</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">return</span> node</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keyword">def </span>grow_node(self, width, height):</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        can_grow_down = width &lt;= self.root.width</div></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00177">openage.convert.binpack.BinaryTreePacker.fit()</a>, <a class="el" href="binpack_8py_source.xhtml#l00243">openage.convert.binpack.BinaryTreePacker.grow_down()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00231">openage.convert.binpack.BinaryTreePacker.grow_right()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1binpack_1_1_binary_tree_packer_a32c685bf642e7e1d51c8236da236e7d3_icgraph.svg" width="100%" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -511,6 +616,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00162">162</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00212">openage.convert.binpack.BinaryTreePacker.grow_node()</a>.</p>
 
 </div>
 </div>
@@ -560,10 +667,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="binpack_8py_source.xhtml#l00164">164</a> of file <a class="el" href="binpack_8py_source.xhtml">binpack.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="binpack_8py_source.xhtml#l00177">openage.convert.binpack.BinaryTreePacker.fit()</a>, <a class="el" href="binpack_8py_source.xhtml#l00243">openage.convert.binpack.BinaryTreePacker.grow_down()</a>, <a class="el" href="binpack_8py_source.xhtml#l00212">openage.convert.binpack.BinaryTreePacker.grow_node()</a>, and <a class="el" href="binpack_8py_source.xhtml#l00231">openage.convert.binpack.BinaryTreePacker.grow_right()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/<a class="el" href="binpack_8py_source.xhtml">binpack.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

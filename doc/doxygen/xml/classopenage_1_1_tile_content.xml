@@ -15,7 +15,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="58" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" compoundref="terrain_8cpp" startline="402" endline="465">openage::Terrain::create_tile_advice</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ac5f73cac07115849392bb22598ae8fba" compoundref="terrain_8cpp" startline="64" endline="80">openage::Terrain::fill</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1adf4e2cfb2010657a5384efc6c37a9748" compoundref="terrain_8cpp" startline="467" endline="498">openage::Terrain::get_neighbors</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a4141acb6d3c777a66792c1f02a8678bc" compoundref="game__save_8cpp" startline="61" endline="68">openage::gameio::load_tile_content</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a3dbc6f4b94629a296a514691fb34a470" compoundref="game__save_8cpp" startline="56" endline="59">openage::gameio::save_tile_content</referencedby>
+        <referencedby refid="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" compoundref="generator_8cpp" startline="237" endline="250">openage::Generator::terrain</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> * &gt;</type>
@@ -28,7 +36,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="59" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="59" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a3227b756d3668ec163a3046b308de7cd" compoundref="wrapper_8py" startline="43" endline="49">openage.util.fslike.wrapper.Wrapper.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper_1a2ad3cdde94231847073835b9a40f7063" compoundref="codegen_8py" startline="104" endline="117">openage.codegen.codegen.CodegenDirWrapper.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_write_blocker_1aa092bdb482ed75ce36c9de35d521c600" compoundref="wrapper_8py" startline="134" endline="137">openage.util.fslike.wrapper.WriteBlocker.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_synchronizer_1a19001e4b1481baebbabd0f3adf589e09" compoundref="wrapper_8py" startline="146" endline="155">openage.util.fslike.wrapper.Synchronizer.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aa7329c301654752a9459ba9e4f98dcca" compoundref="wrapper_8py" startline="202" endline="211">openage.util.fslike.wrapper.GuardedFile.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_directory_creator_1a8511f0b4b5b6c3f2ef28dcb8bfae48a1" compoundref="wrapper_8py" startline="218" endline="220">openage.util.fslike.wrapper.DirectoryCreator.__repr__</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a1ee9575f857677c147ca53ebf138bf93" compoundref="wrapper_8py" startline="190" endline="193">openage.util.fslike.wrapper.GuardedFile.close</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ab0736d57ce5014c9caea96125ad87b0d" compoundref="terrain_8cpp" startline="329" endline="399">openage::Terrain::create_draw_advice</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a6cb541f9e3b16e1121023e1c8ba1fe70" compoundref="wrapper_8py" startline="78" endline="81">openage.util.fslike.wrapper.Wrapper.filesize</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aadcfece174ea70aab42cb15c92cf52b1" compoundref="wrapper_8py" startline="194" endline="197">openage.util.fslike.wrapper.GuardedFile.flush</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1ab9756db4c5d984108d5415c4c3adc85d" compoundref="wrapper_8py" startline="198" endline="201">openage.util.fslike.wrapper.GuardedFile.get_size</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a5d5ad2caf60e7d0d1d4f004361b8b27a" compoundref="wrapper_8py" startline="111" endline="114">openage.util.fslike.wrapper.Wrapper.is_dir</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a4847df269f05999c19305c75f1b0cbbb" compoundref="wrapper_8py" startline="107" endline="110">openage.util.fslike.wrapper.Wrapper.is_file</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a69626d7f9fdfa523e90f09ead94c6004" compoundref="wrapper_8py" startline="74" endline="77">openage.util.fslike.wrapper.Wrapper.list</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1af4d52a12bfe44416e5a491f3158d6bcc" compoundref="wrapper_8py" startline="86" endline="89">openage.util.fslike.wrapper.Wrapper.mkdirs</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ae1dd319535e8b540ca76b6cde0c8d494" compoundref="wrapper_8py" startline="82" endline="85">openage.util.fslike.wrapper.Wrapper.mtime</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1aa4d53dc392a6fd6da85ba49625d70478" compoundref="terrain_8cpp" startline="146" endline="162">openage::Terrain::obj_at_point</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2facaf5a386ee358c3aed7fa8ed27ad3" compoundref="wrapper_8py" startline="50" endline="58">openage.util.fslike.wrapper.Wrapper.open_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a75141da804e0ac95bb70d574979f82e5" compoundref="wrapper_8py" startline="59" endline="67">openage.util.fslike.wrapper.Wrapper.open_w</referencedby>
+        <referencedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e" compoundref="producer_8cpp" startline="294" endline="361">openage::ObjectProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3" compoundref="producer_8cpp" startline="682" endline="747">openage::BuildingProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" compoundref="terrain__object_8cpp" startline="71" endline="116">openage::TerrainObject::place</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3" compoundref="producer_8cpp" startline="847" endline="903">openage::ProjectileProducer::place</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ad2fbaf45c3f546ae53762f47e91d7963" compoundref="wrapper_8py" startline="123" endline="127">openage.util.fslike.wrapper.Wrapper.poll_watches</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a2dd2b15fc88ddf138f0a62be183b26b8" compoundref="wrapper_8py" startline="162" endline="165">openage.util.fslike.wrapper.GuardedFile.read</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a968e1af8c9b62b815a4bc702ee931714" compoundref="wrapper_8py" startline="166" endline="169">openage.util.fslike.wrapper.GuardedFile.readable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a7a07a464cb187d6d519b96c61ca80787" compoundref="wrapper_8py" startline="102" endline="106">openage.util.fslike.wrapper.Wrapper.rename</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a2a1dc81a2a3a2fa3cf9beea3c99fb9be" compoundref="wrapper_8py" startline="68" endline="70">openage.util.fslike.wrapper.Wrapper.resolve_r</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a9477182385b8db4a3b2874a9360b690f" compoundref="wrapper_8py" startline="71" endline="73">openage.util.fslike.wrapper.Wrapper.resolve_w</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac8d7bfaa5c37257fddef3bb6eb460934" compoundref="wrapper_8py" startline="90" endline="93">openage.util.fslike.wrapper.Wrapper.rmdir</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1a3dbc6f4b94629a296a514691fb34a470" compoundref="game__save_8cpp" startline="56" endline="59">openage::gameio::save_tile_content</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1aba7f5308abe9e3fbd360a8e568e780d1" compoundref="wrapper_8py" startline="178" endline="181">openage.util.fslike.wrapper.GuardedFile.seek</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a12490137c4995af97ebb161a403258c5" compoundref="wrapper_8py" startline="182" endline="185">openage.util.fslike.wrapper.GuardedFile.seekable</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" compoundref="selection_8cpp" startline="246" endline="270">openage::UnitSelection::select_space</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1af26b8955c2d939c5e2c3c940c62ecdc2" compoundref="wrapper_8py" startline="186" endline="189">openage.util.fslike.wrapper.GuardedFile.tell</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a895ed091db87da418bc712b490f8e0d7" compoundref="wrapper_8py" startline="98" endline="101">openage.util.fslike.wrapper.Wrapper.touch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a62e9309bfb38c4db466bc5154aa73343" compoundref="wrapper_8py" startline="94" endline="97">openage.util.fslike.wrapper.Wrapper.unlink</referencedby>
+        <referencedby refid="classopenage_1_1_projectile_action_1a5be4d6d237bbb52a036d368af97956b6" compoundref="unit_2action_8cpp" startline="1343" endline="1374">openage::ProjectileAction::update</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1a0293a14d06d046394c85f945d2f4b1f9" compoundref="wrapper_8py" startline="119" endline="122">openage.util.fslike.wrapper.Wrapper.watch</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_wrapper_1ac64adc508709d6b51552c65b09f6a9cb" compoundref="wrapper_8py" startline="115" endline="118">openage.util.fslike.wrapper.Wrapper.writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1acbed596f8c057616d085773c3f8c46ee" compoundref="wrapper_8py" startline="174" endline="177">openage.util.fslike.wrapper.GuardedFile.writable</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1wrapper_1_1_guarded_file_1a685f469d34fbd60ad6de1abd3fb3d96a" compoundref="wrapper_8py" startline="170" endline="173">openage.util.fslike.wrapper.GuardedFile.write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -43,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="56" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="25" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp" bodystart="25" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_tile_content_1aa9e037cf0a97b5a1957337f283747968" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -56,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/terrain/terrain.h" line="57" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="29" bodyend="29"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="57" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.cpp" bodystart="29" bodyend="29"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -66,12 +116,12 @@
 <para>this includes the terrain_id (ice, water, grass, ...) and the list of objects which have a bounding box overlapping the tile </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4518">
+      <node id="5273">
         <label>openage::TileContent</label>
         <link refid="classopenage_1_1_tile_content"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/terrain/terrain.h" line="54" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="54" bodyend="60"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" line="54" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/terrain/terrain.h" bodystart="54" bodyend="60"/>
     <listofallmembers>
       <member refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>obj</name></member>
       <member refid="classopenage_1_1_tile_content_1ac370821023f0c2e78ef4ab0c27c7bf09" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>terrain_id</name></member>

@@ -5,7 +5,7 @@
     <includes local="no">algorithm</includes>
     <incdepgraph>
       <node id="27233">
-        <label>libopenage/util/algorithm.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h</label>
         <link refid="algorithm_8h"/>
         <childnode refid="27234" relation="include">
         </childnode>
@@ -53,6 +53,6 @@
 <codeline lineno="36"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>util</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/algorithm.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/algorithm.h"/>
   </compounddef>
 </doxygen>

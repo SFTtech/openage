@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="260" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="260" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="260" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,7 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="248" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="248" bodyend="251"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="248" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="248" bodyend="251"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193">openage::damaged</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4_1a828ded50a9d53355d4bfe9eb8f327090" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -53,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="253" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="253" bodyend="255"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="253" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="253" bodyend="255"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -62,42 +63,42 @@
 <para>The current hitpoints. TODO add last damage taken timestamp </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="408">
+      <node id="319">
         <label>openage::Attribute&lt; attr_type::damaged &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4"/>
-        <childnode refid="409" relation="public-inheritance">
+        <childnode refid="320" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="409">
+      <node id="320">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="410" relation="public-inheritance">
+        <childnode refid="321" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="410">
+      <node id="321">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="411">
+      <node id="322">
         <label>openage::Attribute&lt; attr_type::damaged &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4"/>
-        <childnode refid="412" relation="public-inheritance">
+        <childnode refid="323" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="412">
+      <node id="323">
         <label>openage::UnsharedAttributeContainer</label>
         <link refid="classopenage_1_1_unshared_attribute_container"/>
-        <childnode refid="413" relation="public-inheritance">
+        <childnode refid="324" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="413">
+      <node id="324">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="246" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="246" bodyend="261"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="246" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="246" bodyend="261"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4_1a348d364b473b2850b76d75584b21eac9" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::damaged &gt;</scope><name>Attribute</name></member>
       <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::damaged &gt;</scope><name>AttributeContainer</name></member>

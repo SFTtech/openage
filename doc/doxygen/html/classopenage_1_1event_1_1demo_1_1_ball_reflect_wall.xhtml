@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::event::demo::BallReflectWall Class Reference</title>
+<title>openage: openage::event::demo::BallReflectWall Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -94,17 +95,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1event_1_1demo_1_1_ball
 <div class="title">openage::event::demo::BallReflectWall Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for openage::event::demo::BallReflectWall:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall__inherit__graph.svg" width="200" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage::event::demo::BallReflectWall:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall__inherit__graph.svg" width="200" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage::event::demo::BallReflectWall:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall__coll__graph.svg" width="200" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::event::demo::BallReflectWall:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall__coll__graph.svg" width="200" height="500"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -173,7 +176,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="physics_8cpp_source.xhtml#l00029">29</a> of file <a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;: <a class="code" href="classopenage_1_1event_1_1_dependency_event_class.xhtml#a51e8b8a3e46c9bebecd84b84e8dd049d">DependencyEventClass</a>(<span class="stringliteral">&quot;demo.ball.reflect_wall&quot;</span>) {}</div><div class="ttc" id="classopenage_1_1event_1_1_dependency_event_class_xhtml_a51e8b8a3e46c9bebecd84b84e8dd049d"><div class="ttname"><a href="classopenage_1_1event_1_1_dependency_event_class.xhtml#a51e8b8a3e46c9bebecd84b84e8dd049d">openage::event::DependencyEventClass::DependencyEventClass</a></div><div class="ttdeci">DependencyEventClass(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="eventclass_8cpp_source.xhtml#l00023">eventclass.cpp:23</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -234,6 +238,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#abb3503ac98625390fa0c1a122f14394c">openage::event::EventClass</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="physics_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                       {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">auto</span> positioncurve = std::dynamic_pointer_cast&lt;curve::Continuous&lt;util::Vector2d&gt;&gt;(target);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">auto</span> state = std::dynamic_pointer_cast&lt;PongState&gt;(gstate);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">auto</span> speedcurve = state-&gt;ball-&gt;speed;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// get speed and position to insert new movement keyframe</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">auto</span> <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">speed</a> = speedcurve-&gt;get(now);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">auto</span> pos = positioncurve-&gt;get(now);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">speed</a>[1] *= -1.0;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        state-&gt;ball-&gt;speed-&gt;set_last(now, speed);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        state-&gt;ball-&gt;position-&gt;set_last(now, pos);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (speed[1] == 0) {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">return</span>;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">curve::time_t</a> ty = 0;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (speed[1] &gt; 0) {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            ty = <a class="code" href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">curve::time_t::from_double</a>(</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                (state-&gt;display_boundary[1] - pos[1]) / speed[1]</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            );</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (speed[1] &lt; 0) {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            ty = <a class="code" href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">curve::time_t::from_double</a>(</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                pos[1] / -speed[1]</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            );</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        state-&gt;ball-&gt;position-&gt;set_last(now + ty, pos + (speed * ty.to_double()));</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div><div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::attr_type::speed</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_fixed_point_xhtml_a483c36345c5b597c1626162bc96dc52c"><div class="ttname"><a href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</a></div><div class="ttdeci">static constexpr FixedPoint from_double(double n)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00192">fixed_point.h:192</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_xhtml_af909cf1de79df6389fd9431b7424b48a"><div class="ttname"><a href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">openage::curve::time_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, 16 &gt; time_t</div><div class="ttdef"><b>Definition:</b> <a href="curve_8h_source.xhtml#l00016">curve.h:16</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fixed__point_8h_source.xhtml#l00192">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</a>, and <a class="el" href="fixed__point_8h_source.xhtml#l00263">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_a215ab77e1d0c301cf5ee7c79da4ffd4a_cgraph.svg" width="407" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -291,6 +308,21 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#a0e0d15e8a433ef4a08a5b8a4fccae41b">openage::event::EventClass</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="physics_8cpp_source.xhtml#l00082">82</a> of file <a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                                       {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">auto</span> positioncurve = std::dynamic_pointer_cast&lt;curve::Continuous&lt;util::Vector2d&gt;&gt;(target);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">auto</span> state = std::dynamic_pointer_cast&lt;PongState&gt;(gstate);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">auto</span> <a class="code" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">speed</a> = state-&gt;ball-&gt;speed-&gt;get(now);</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keyword">auto</span> pos = positioncurve-&gt;get(now);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (speed[1] == 0) {</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">std::numeric_limits&lt;curve::time_t&gt;::max</a>();</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">curve::time_t</a> ty = 0;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (speed[1] &gt; 0) {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            ty = <a class="code" href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">curve::time_t::from_double</a>((state-&gt;display_boundary[1] - pos[1]) / speed[1]);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (speed[1] &lt; 0) {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            ty = <a class="code" href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">curve::time_t::from_double</a>(pos[1] / -speed[1]);</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#if WITH_NCURSES</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> (state-&gt;enable_gui) {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            util::FString <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>.fmt(<span class="stringliteral">&quot;WALL TY %f NOW %f, NOWTY %f &quot;</span>,</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    ty.to_double(), now.to_double(), (now + ty).to_double());</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            state-&gt;gui-&gt;log(<a class="code" href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">str</a>);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        };</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> now + ty;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div><div class="ttc" id="namespaceopenage_xhtml_a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153"><div class="ttname"><a href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::attr_type::speed</a></div></div>
+<div class="ttc" id="classopenage_1_1util_1_1_fixed_point_xhtml_a483c36345c5b597c1626162bc96dc52c"><div class="ttname"><a href="classopenage_1_1util_1_1_fixed_point.xhtml#a483c36345c5b597c1626162bc96dc52c">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double</a></div><div class="ttdeci">static constexpr FixedPoint from_double(double n)</div><div class="ttdef"><b>Definition:</b> <a href="fixed__point_8h_source.xhtml#l00192">fixed_point.h:192</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_xhtml_af909cf1de79df6389fd9431b7424b48a"><div class="ttname"><a href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">openage::curve::time_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, 16 &gt; time_t</div><div class="ttdef"><b>Definition:</b> <a href="curve_8h_source.xhtml#l00016">curve.h:16</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1py_xhtml_a4d2bbe46a5d10404c658b54f3b199551"><div class="ttname"><a href="namespaceopenage_1_1py.xhtml#a4d2bbe46a5d10404c658b54f3b199551">openage::py::str</a></div><div class="ttdeci">Obj str(const std::string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="pyobject_8cpp_source.xhtml#l00331">pyobject.cpp:331</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1console_1_1tests_xhtml_a46ebd3333dc9196558ac9aced828d117"><div class="ttname"><a href="namespaceopenage_1_1console_1_1tests.xhtml#a46ebd3333dc9196558ac9aced828d117">openage::console::tests::max</a></div><div class="ttdeci">int max(int a, int b)</div><div class="ttdef"><b>Definition:</b> <a href="console_2tests_8cpp_source.xhtml#l00031">tests.cpp:31</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="fixed__point_8h_source.xhtml#l00192">openage::util::FixedPoint&lt; int64_t, 16 &gt;::from_double()</a>, <a class="el" href="console_2tests_8cpp_source.xhtml#l00031">openage::console::tests::max()</a>, <a class="el" href="namespaceopenage.xhtml#a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153">openage::speed</a>, <a class="el" href="pyobject_8cpp_source.xhtml#l00331">openage::py::str()</a>, and <a class="el" href="fixed__point_8h_source.xhtml#l00263">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_a3e60c155c12ea17e0c149b3eca114f70_cgraph.svg" width="100%" height="465"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -332,11 +364,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Implements <a class="el" href="classopenage_1_1event_1_1_event_class.xhtml#ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e">openage::event::EventClass</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="physics_8cpp_source.xhtml#l00031">31</a> of file <a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                                                  {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">auto</span> state = std::dynamic_pointer_cast&lt;PongState&gt;(gstate);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// FIXME dependency to a full ball object so that any curve</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// triggers a change</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        evnt-&gt;depend_on(state-&gt;ball-&gt;position);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        evnt-&gt;depend_on(state-&gt;ball-&gt;speed);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// TODO add dependency to size of game area</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// FIXME: warn if it&#39;s not a dependency eventclass</span></div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/event/demo/<a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/event/demo/<a class="el" href="physics_8cpp_source.xhtml">physics.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

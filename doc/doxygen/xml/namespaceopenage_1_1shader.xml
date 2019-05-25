@@ -20,13 +20,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/shader/shader.cpp" line="16" column="1" bodyfile="libopenage/shader/shader.cpp" bodystart="16" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/shader/shader.cpp" bodystart="16" bodyend="27"/>
+        <referencedby refid="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" compoundref="shader_2shader_8cpp" startline="29" endline="61">openage::shader::Shader::Shader</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/gui/gui.h" line="23" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/gui.h" line="23" column="1"/>
   </compounddef>
 </doxygen>

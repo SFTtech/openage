@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="langcodes__hd_8py" kind="file" language="Python">
+    <compoundname>langcodes_hd.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1hardcoded_1_1langcodes__hd">openage::convert::hardcoded::langcodes_hd</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1hardcoded_1_1langcodes__hd" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2014-2015<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Translates<sp/>the<sp/>language<sp/>codes,<sp/>as<sp/>used<sp/>by<sp/>HD<sp/>edition,<sp/>to<sp/>the<sp/>proper<sp/>long<sp/>codes</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">that<sp/>are<sp/>used<sp/>by<sp/>the<sp/>PE<sp/>format.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">LANGCODE_MAP_HD<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;br&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;pt_BR&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="10" refid="namespaceopenage_1_1convert_1_1hardcoded_1_1langcodes__hd_1aed8eede6e48aed0a3260f43bc4245771" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;cn&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;zh_CN&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;de&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;de_DE&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;en&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;en_US&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;es&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;es_ES&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;fr&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;fr_FR&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;it&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;it_IT&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;ja&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;ja_JP&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;ko&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;ko_KR&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;nl&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;nl_NL&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;ru&apos;</highlight><highlight class="normal">:<sp/></highlight><highlight class="stringliteral">&apos;ru_RU&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/hardcoded/langcodes_hd.py"/>
+  </compounddef>
+</doxygen>

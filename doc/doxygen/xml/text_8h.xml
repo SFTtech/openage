@@ -9,10 +9,10 @@
     <includes refid="program_8h" local="yes">../shader/program.h</includes>
     <includes refid="renderer_2color_8h" local="yes">color.h</includes>
     <includes refid="glyph__atlas_8h" local="yes">font/glyph_atlas.h</includes>
-    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
-    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
-    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
-    <includedby refid="text_8cpp" local="yes">libopenage/renderer/text.cpp</includedby>
+    <includedby refid="draw_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</includedby>
+    <includedby refid="engine_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</includedby>
+    <includedby refid="text_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp</includedby>
     <incdepgraph>
       <node id="23595">
         <label>list</label>
@@ -215,7 +215,7 @@
         </childnode>
       </node>
       <node id="23557">
-        <label>libopenage/renderer/text.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</label>
         <link refid="text_8h"/>
         <childnode refid="23558" relation="include">
         </childnode>
@@ -372,11 +372,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="23613">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="23610">
-        <label>libopenage/renderer/text.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h</label>
         <link refid="text_8h"/>
         <childnode refid="23611" relation="include">
         </childnode>
@@ -388,15 +388,15 @@
         </childnode>
       </node>
       <node id="23612">
-        <label>libopenage/engine.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp</label>
         <link refid="engine_8cpp"/>
       </node>
       <node id="23614">
-        <label>libopenage/renderer/text.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.cpp</label>
         <link refid="text_8cpp"/>
       </node>
       <node id="23611">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
     </invincdepgraph>
@@ -491,6 +491,6 @@
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/text.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/text.h"/>
   </compounddef>
 </doxygen>

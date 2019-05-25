@@ -6,7 +6,7 @@
     <includes refid="renderer_8h" local="yes">../renderer.h</includes>
     <includes refid="util_2path_8h" local="yes">../../util/path.h</includes>
     <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
-    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</includedby>
     <incdepgraph>
       <node id="21514">
         <label>list</label>
@@ -225,7 +225,7 @@
         <link refid="fslike_2native_8h"/>
       </node>
       <node id="21480">
-        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h</label>
         <link refid="vulkan_2renderer_8h"/>
         <childnode refid="21481" relation="include">
         </childnode>
@@ -319,13 +319,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="21524">
-        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h</label>
         <link refid="vulkan_2renderer_8h"/>
         <childnode refid="21525" relation="include">
         </childnode>
       </node>
       <node id="21525">
-        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.cpp</label>
         <link refid="vulkan_2renderer_8cpp"/>
       </node>
     </invincdepgraph>
@@ -369,6 +369,6 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/vulkan/renderer.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/renderer.h"/>
   </compounddef>
 </doxygen>

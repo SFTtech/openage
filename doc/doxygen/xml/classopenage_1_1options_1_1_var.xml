@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/options.h" line="269" column="1" bodyfile="libopenage/options.h" bodystart="269" bodyend="274"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="269" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="269" bodyend="274"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -44,48 +44,55 @@
 <para>A interaface variable which gets monitored by an option node allowing reflection, while also being directly accessable as a typed member </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4912">
+      <node id="4352">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4910">
+      <node id="4350">
         <label>openage::options::Var&lt; T &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="4911" relation="public-inheritance">
+        <childnode refid="4351" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4911">
+      <node id="4353">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4350" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="4351">
         <label>openage::util::Variable&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4912" relation="public-inheritance">
+        <childnode refid="4352" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4915">
+      <node id="4356">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="4916">
+      <node id="4357">
         <label>T</label>
       </node>
-      <node id="4913">
+      <node id="4354">
         <label>openage::options::Var&lt; T &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="4914" relation="public-inheritance">
+        <childnode refid="4355" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4914">
+      <node id="4355">
         <label>openage::util::Variable&lt; T &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="4915" relation="public-inheritance">
+        <childnode refid="4356" relation="public-inheritance">
         </childnode>
-        <childnode refid="4916" relation="usage">
+        <childnode refid="4357" relation="usage">
           <edgelabel>+value</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/options.h" line="267" column="1" bodyfile="libopenage/options.h" bodystart="267" bodyend="275"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" line="267" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/options.h" bodystart="267" bodyend="275"/>
     <listofallmembers>
       <member refid="classopenage_1_1util_1_1_variable_1aa25af78b5870a920fb9a2ea04173881b" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>get</name></member>
       <member refid="classopenage_1_1util_1_1_variable_1a572624d736175eba6d85c461fe2a430f" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>set</name></member>

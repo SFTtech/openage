@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="cabextract_2____init_____8py" kind="file" language="Python">
+    <compoundname>__init__.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1cabextract">openage::cabextract</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1cabextract" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">This<sp/>package<sp/>contains<sp/>modules<sp/>that<sp/>allow<sp/>extracting<sp/>LZX-compressed<sp/>MSCAB</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">files<sp/>(not<sp/>to<sp/>be<sp/>confused<sp/>with<sp/>InstallShield<sp/>CAB<sp/>files,<sp/>which<sp/>are</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">totally<sp/>different).</highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral">It<sp/>allows<sp/>converting<sp/>media<sp/>directly<sp/>from<sp/>the<sp/>Age<sp/>of<sp/>Empires<sp/>setup<sp/>disk.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/cabextract/__init__.py"/>
+  </compounddef>
+</doxygen>

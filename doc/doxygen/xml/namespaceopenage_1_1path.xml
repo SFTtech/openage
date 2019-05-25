@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.h" line="13" column="1" bodyfile="libopenage/pathfinding/heuristics.h" bodystart="13" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h" line="13" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" prot="public" static="no">
         <type>float</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="30" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" prot="public" static="no">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref> &gt;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="35" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="35" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1path_1a2889597504b5f2d6987d132f1e5682f6" prot="public" static="no">
         <type>std::unordered_map&lt; <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref>, <ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref> &gt;</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="40" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceopenage_1_1path_1a9eb90c4259c8bbf5764d94d9e1710991" prot="public" static="no">
         <type><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">datastructure::PairingHeap</ref>&lt; <ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref>, <ref refid="structopenage_1_1path_1_1compare__node__cost" kindref="compound">compare_node_cost</ref> &gt;</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="55" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="55" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="55" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -92,7 +92,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="60" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="60" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="60" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="60" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" compoundref="unit_2action_8cpp" startline="67" endline="69">openage::UnitAction::adjacent_range</referencedby>
+        <referencedby refid="classopenage_1_1_move_ability_1a1d0ebbdd7b98efa293ebc91287a6dee4" compoundref="ability_8cpp" startline="79" endline="102">openage::MoveAbility::invoke</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">to_point</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespaceopenage_1_1path_1aec9efa004e47a51d7525a0959ebdfb83" prot="public" static="no" mutable="no">
         <type>constexpr <ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref> const</type>
@@ -116,7 +119,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.h" line="65" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1path_1_1_node_1a5847aed20e19a4334ce6a7359c7b9720" compoundref="pathfinding_2path_8cpp" startline="83" endline="97">openage::path::Node::get_neighbors</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -144,7 +148,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/a_star.cpp" line="30" column="1" bodyfile="libopenage/pathfinding/a_star.cpp" bodystart="30" bodyend="41"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" bodystart="30" bodyend="41"/>
+        <references refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">a_star</references>
+        <references refid="namespaceopenage_1_1path_1a18aa96b43da6809c7796eaa4214a3420" compoundref="heuristics_8cpp" startline="24" endline="26">euclidean_cost</references>
+        <references refid="namespaceopenage_1_1path_1a64affc7c4a103a4ffabfd72c454962cf" compoundref="heuristics_8cpp" startline="28" endline="32">euclidean_squared_cost</references>
+        <references refid="namespaceopenage_1_1path_1a7e49ca629b6fed008584d7752dc98e9a" compoundref="pathfinding_2path_8h" startline="60">path_grid_size</references>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" compoundref="fixed__point_8h" startline="252" endline="254">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_float</references>
+        <referencedby refid="classopenage_1_1_move_action_1a4e56fc82672dfaf3c62f846afbd6df69" compoundref="unit_2action_8cpp" startline="715" endline="724">openage::MoveAction::set_path</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref></type>
@@ -170,7 +180,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/a_star.cpp" line="44" column="1" bodyfile="libopenage/pathfinding/a_star.cpp" bodystart="44" bodyend="55"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" bodystart="44" bodyend="55"/>
+        <references refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">a_star</references>
+        <references refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" compoundref="terrain__object_8h" startline="38">openage::tile_range::draw</references>
+        <references refid="classopenage_1_1_terrain_object_1a6ef3514689565c74e503570d0ba7adbb">openage::TerrainObject::from_edge</references>
+        <references refid="classopenage_1_1_terrain_object_1a6b82e5577be0620a320954e13d0f5f08">openage::TerrainObject::min_axis</references>
+        <references refid="classopenage_1_1_terrain_object_1af86e4e2bf2ac48fc1b37cc436a50c5a1" compoundref="terrain__object_8h" startline="119">openage::TerrainObject::passable</references>
+        <references refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" compoundref="terrain__object_8h" startline="85">openage::TerrainObject::pos</references>
+        <referencedby refid="classopenage_1_1_move_action_1a4e56fc82672dfaf3c62f846afbd6df69" compoundref="unit_2action_8cpp" startline="715" endline="724">openage::MoveAction::set_path</referencedby>
+        <referencedby refid="classopenage_1_1_idle_action_1a90d182b9575459830744488f776a2f4e" compoundref="unit_2action_8cpp" startline="464" endline="532">openage::IdleAction::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref></type>
@@ -196,7 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/a_star.cpp" line="58" column="1" bodyfile="libopenage/pathfinding/a_star.cpp" bodystart="58" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" line="58" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" bodystart="58" bodyend="64"/>
+        <references refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">a_star</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref></type>
@@ -261,7 +280,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/a_star.cpp" line="66" column="1" bodyfile="libopenage/pathfinding/a_star.cpp" bodystart="66" bodyend="150"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" line="66" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" bodystart="66" bodyend="150"/>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1ab94d37206816a45bcfe49f8631cc82a9" compoundref="pairing__heap_8h" startline="380" endline="387">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::decrease</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a7a529d5ee64fa5002f6487d3821df5f6" compoundref="pairing__heap_8h" startline="429" endline="431">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::empty</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" compoundref="pathfinding_2path_8cpp" startline="100" endline="115">passable_line</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" compoundref="pairing__heap_8h" startline="236" endline="238">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::pop</references>
+        <references refid="classopenage_1_1datastructure_1_1_pairing_heap_1a75e9e7602b59aeee47a2fd84a10c8f74" compoundref="pairing__heap_8h" startline="217" endline="221">openage::datastructure::PairingHeap&lt; T, compare, heapnode_t &gt;::push</references>
+        <referencedby refid="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" compoundref="a__star_8cpp" startline="58" endline="64">find_nearest</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" compoundref="a__star_8cpp" startline="44" endline="55">to_object</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">to_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a825dde52e9d0fd7fe6fa6970a1ec58e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -285,7 +315,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.cpp" line="12" column="1" bodyfile="libopenage/pathfinding/heuristics.cpp" bodystart="12" bodyend="16"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" bodystart="12" bodyend="16"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a7d47462a02dd8b972acca24d5e05f179" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -309,7 +340,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.cpp" line="18" column="1" bodyfile="libopenage/pathfinding/heuristics.cpp" bodystart="18" bodyend="22"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" bodystart="18" bodyend="22"/>
+        <references refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" compoundref="fixed__point_8h" startline="491" endline="495">std::abs</references>
+        <references refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" compoundref="fixed__point_8h" startline="483" endline="488">std::max</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a18aa96b43da6809c7796eaa4214a3420" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -333,7 +366,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.cpp" line="24" column="1" bodyfile="libopenage/pathfinding/heuristics.cpp" bodystart="24" bodyend="26"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" bodystart="24" bodyend="26"/>
+        <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">to_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a64affc7c4a103a4ffabfd72c454962cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -357,7 +391,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.cpp" line="28" column="1" bodyfile="libopenage/pathfinding/heuristics.cpp" bodystart="28" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.cpp" bodystart="28" bodyend="32"/>
+        <referencedby refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" compoundref="a__star_8cpp" startline="30" endline="41">to_point</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a4dca43db0e959d455ac0d5c7c8cb26fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref></type>
@@ -375,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/heuristics.h" line="42" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/heuristics.h" line="42" column="1"/>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -405,13 +440,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pathfinding/path.cpp" line="100" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="100" bodyend="115"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" line="100" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/path.cpp" bodystart="100" bodyend="115"/>
+        <references refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" compoundref="fixed__point_8h" startline="263" endline="265">openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</references>
+        <referencedby refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" compoundref="a__star_8cpp" startline="66" endline="150">a_star</referencedby>
+        <referencedby refid="namespaceopenage_1_1path_1_1tests_1a22de95f3450a22cac036677b4e01ad63" compoundref="pathfinding_2tests_8cpp" startline="286" endline="300">openage::path::tests::node_passable_line_0</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/pathfinding/a_star.cpp" line="27" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pathfinding/a_star.cpp" line="27" column="1"/>
   </compounddef>
 </doxygen>

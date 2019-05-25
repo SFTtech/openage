@@ -1,9 +1,9 @@
-<map id="libopenage/renderer/font/glyph_atlas.h" name="libopenage/renderer/font/glyph_atlas.h">
-<area shape="rect" id="node1" title=" " alt="" coords="351,5,486,47"/>
-<area shape="rect" id="node2" href="$text_8h.xhtml" title=" " alt="" coords="270,95,405,136"/>
-<area shape="rect" id="node7" href="$glyph__atlas_8cpp.xhtml" title=" " alt="" coords="429,95,571,136"/>
-<area shape="rect" id="node3" href="$draw_8cpp.xhtml" title=" " alt="" coords="5,184,139,225"/>
-<area shape="rect" id="node4" href="$engine_8cpp.xhtml" title=" " alt="" coords="163,191,314,218"/>
-<area shape="rect" id="node5" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="338,191,537,218"/>
-<area shape="rect" id="node6" href="$text_8cpp.xhtml" title=" " alt="" coords="561,184,695,225"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/font/glyph_atlas.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/font/glyph_atlas.h">
+<area shape="rect" id="node1" title=" " alt="" coords="471,5,680,61"/>
+<area shape="rect" id="node2" href="$text_8h.xhtml" title=" " alt="" coords="355,109,564,165"/>
+<area shape="rect" id="node7" href="$glyph__atlas_8cpp.xhtml" title=" " alt="" coords="588,109,797,165"/>
+<area shape="rect" id="node3" href="$draw_8cpp.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node4" href="$engine_8cpp.xhtml" title=" " alt="" coords="239,213,448,269"/>
+<area shape="rect" id="node5" href="$game__renderer_8cpp.xhtml" title=" " alt="" coords="472,213,681,269"/>
+<area shape="rect" id="node6" href="$text_8cpp.xhtml" title=" " alt="" coords="705,213,915,269"/>
 </map>

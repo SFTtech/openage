@@ -9,8 +9,8 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 150)">
 <title>openage::datastructure::ConcurrentQueue&lt; T &gt;</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-150 126,-150 126,4 -4,4"/>
-<!-- Node1 -->
-<g id="node1" class="node"><title>Node1</title>
+<!-- Node2 -->
+<g id="node1" class="node"><title>Node2</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="#bfbfbf" stroke="black" points="0,-0.5 0,-145.5 122,-145.5 122,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::datastructure</text>

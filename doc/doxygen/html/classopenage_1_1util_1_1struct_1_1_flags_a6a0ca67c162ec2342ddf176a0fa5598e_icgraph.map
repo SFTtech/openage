@@ -1,0 +1,6 @@
+<map id="openage.util.struct.Flags.as_dict" name="openage.util.struct.Flags.as_dict">
+<area shape="rect" id="node1" title="Returns a key&#45;value dict for all flags." alt="" coords="491,42,701,69"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml#a9f6a718342072c143f8d66ebf9f5ff53" title=" " alt="" coords="248,5,417,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml#aff72d5cb5a508e186cc5ff6fe122b165" title="Default handler for any unknown bits." alt="" coords="223,71,443,98"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1struct_1_1_flags.xhtml#a3407f22b41e48ab3863a9f593435933e" title=" " alt="" coords="5,64,175,105"/>
+</map>

@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classopenage_1_1renderer_1_1_free_type_library.xhtml" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node1" href="$classopenage_1_1renderer_1_1_geometry.xhtml" title="A class representing geometry to be passed to a draw call." alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_geometry.xhtml" title="The OpenGL class representing geometry to be passed to a draw call." alt="" coords="188,5,327,47"/>
 </map>

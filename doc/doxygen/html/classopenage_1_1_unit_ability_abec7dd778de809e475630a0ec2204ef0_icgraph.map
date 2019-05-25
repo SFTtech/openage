@@ -1,0 +1,5 @@
+<map id="openage::UnitAbility::is_enemy" name="openage::UnitAbility::is_enemy">
+<area shape="rect" id="node1" title=" " alt="" coords="212,39,351,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attack_ability.xhtml#aed325cf408ccfcfc099dfad62aa1dbbd" title=" " alt="" coords="8,5,161,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_convert_ability.xhtml#ab1d57e75684c4f50b285a7d8fbeefadb" title=" " alt="" coords="5,71,164,112"/>
+</map>

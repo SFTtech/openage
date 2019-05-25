@@ -1,0 +1,5 @@
+<map id="openage.convert.slp_converter_pool.SLPConverterPool.close" name="openage.convert.slp_converter_pool.SLPConverterPool.close">
+<area shape="rect" id="node1" title="Closes the converter pool, quitting all the processes." alt="" coords="248,35,443,91"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object.xhtml#ac1d75f370298fb63d2a57b60b334fc34" title=" " alt="" coords="9,5,196,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1convert_1_1slp__converter__pool_1_1_s_l_p_converter_pool.xhtml#a39703847165efd7f5527553633bd9e91" title=" " alt="" coords="5,71,200,127"/>
+</map>

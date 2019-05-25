@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/misc.h" line="290" column="1" bodyfile="libopenage/util/misc.h" bodystart="290" bodyend="298"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="290" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="290" bodyend="298"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,13 +38,26 @@
     <detaileddescription>
 <para>Comparator that returns true if the contained value of the left sharedptr is <computeroutput>&lt;</computeroutput> than the value contained in the right sharedptr. </para>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="6012">
+        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+        <childnode refid="6011" relation="template-instance">
+          <edgelabel>&lt; Event &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="6011">
+        <label>openage::util::SharedPtrLess&lt; T &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+    </inheritancegraph>
     <collaborationgraph>
-      <node id="4172">
+      <node id="6013">
         <label>openage::util::SharedPtrLess&lt; T &gt;</label>
         <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/util/misc.h" line="289" column="1" bodyfile="libopenage/util/misc.h" bodystart="289" bodyend="299"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" line="289" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/misc.h" bodystart="289" bodyend="299"/>
     <listofallmembers>
       <member refid="structopenage_1_1util_1_1_shared_ptr_less_1a2d342306bb66a154d214154377f6ee07" prot="public" virt="non-virtual"><scope>openage::util::SharedPtrLess</scope><name>operator()</name></member>
     </listofallmembers>

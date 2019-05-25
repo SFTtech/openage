@@ -42,7 +42,7 @@
         <label>stdexcept</label>
       </node>
       <node id="28112">
-        <label>libopenage/util/constinit_vector.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp</label>
         <link refid="constinit__vector_8cpp"/>
         <childnode refid="28113" relation="include">
         </childnode>
@@ -226,7 +226,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.cpp" line="17" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="17" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" bodystart="17" bodyend="-1"/>
+        <referencedby refid="namespaceopenage_1_1audio_1a654fb5fc6eaf35a9cd040d670f0fa8ce" compoundref="category_8cpp" startline="13" endline="21">openage::audio::category_t_to_str</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1ac238d5cf0dbb7b5166bbabbe3a1d9e1d" compoundref="format_8cpp" startline="11" endline="19">openage::audio::format_t_to_str</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" compoundref="loader__policy_8cpp" startline="11" endline="17">openage::audio::loader_policy_t_to_str</referencedby>
+        <referencedby refid="structstd_1_1hash_3_01_q_string_01_4_1a4af48f66875105bf664aac0717926e59" compoundref="gui__live__reloader_8h" startline="17" endline="19">std::hash&lt; QString &gt;::operator()</referencedby>
+        <referencedby refid="namespaceopenage_1_1audio_1a3db10b8f65422a7a97adbcdb9d97b398" compoundref="category_8cpp" startline="24" endline="27">openage::audio::operator&lt;&lt;</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" compoundref="rng__tests_8cpp" startline="108" endline="136">openage::rng::tests::real_dist</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" compoundref="profiler_8cpp" startline="23" endline="37">openage::util::Profiler::register_component</referencedby>
+        <referencedby refid="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" compoundref="rng__tests_8cpp" startline="143" endline="170">openage::rng::tests::reproduce</referencedby>
+        <referencedby refid="classopenage_1_1rng_1_1_r_n_g_1a76d8d1e95491447e8b8ed7946ff4c695" compoundref="rng_8cpp" startline="53" endline="55">openage::rng::RNG::seed</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac4f75b2618cef42e6c899fb6a07e0962" compoundref="shader__program_8cpp" startline="424" endline="426">openage::renderer::opengl::GlShaderProgram::set_f32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8" compoundref="shader__program_8cpp" startline="428" endline="431">openage::renderer::opengl::GlShaderProgram::set_f64</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a06cac47db0c579b51be9ac4649dc1c53" compoundref="shader__program_8cpp" startline="416" endline="418">openage::renderer::opengl::GlShaderProgram::set_i32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4849d33ea8bf0da94f320e1f6bc4a0d7" compoundref="shader__program_8cpp" startline="445" endline="447">openage::renderer::opengl::GlShaderProgram::set_m4f32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac57749f4580137a2dea2c7ffa38ce4d6" compoundref="shader__program_8cpp" startline="449" endline="453">openage::renderer::opengl::GlShaderProgram::set_tex</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a0a1f0bc1b71441622f0def25f9f9da75" compoundref="shader__program_8cpp" startline="420" endline="422">openage::renderer::opengl::GlShaderProgram::set_u32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a109abb04920b505341184fc0a313dcbb" compoundref="shader__program_8cpp" startline="387" endline="414">openage::renderer::opengl::GlShaderProgram::set_unif</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9359707c420fd0a161a5896e77a6e550" compoundref="shader__program_8cpp" startline="433" endline="435">openage::renderer::opengl::GlShaderProgram::set_v2f32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a17b135a0127d7a818e166b9affa66bb1" compoundref="shader__program_8cpp" startline="437" endline="439">openage::renderer::opengl::GlShaderProgram::set_v3f32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a506af6aebdc55843bc6f2b60c24276c9" compoundref="shader__program_8cpp" startline="441" endline="443">openage::renderer::opengl::GlShaderProgram::set_v4f32</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" compoundref="shader__program_8h" startline="28" endline="30">openage::renderer::ShaderProgram::update_uniform_input</referencedby>
       </memberdef>
       <memberdef kind="variable" id="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" prot="private" static="no" mutable="no">
         <type>int *</type>
@@ -239,7 +259,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constinit_vector.cpp" line="47" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="47" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" compoundref="generator_8cpp" startline="252" endline="301">openage::Generator::add_units</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1ab4c94527899682bba7316093e447ab71" compoundref="profiler_8cpp" startline="180" endline="185">openage::util::Profiler::duration_to_percentage</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" compoundref="pyobject_8h" startline="246" endline="248">openage::pyinterface::PyObjectRef::get_ref</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a2cc48ccbea18ec579f9ad27a89b1d96a" compoundref="selection_8cpp" startline="183" endline="204">openage::UnitSelection::kill_unit</referencedby>
+        <referencedby refid="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" compoundref="game__save_8cpp" startline="33" endline="54">openage::gameio::load_unit</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" compoundref="selection_8cpp" startline="28" endline="91">openage::UnitSelection::on_drawhud</referencedby>
+        <referencedby refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab037499ba421c3232ae2a09a1d7282ab" compoundref="pyobject_8h" startline="254" endline="256">openage::pyinterface::PyObjectRef::operator()</referencedby>
+        <referencedby refid="namespaceopenage_1_1pyinterface_1a75f2b534b1258ff5d4578f171c3f1caa" compoundref="pyobject_8cpp" startline="261" endline="269">openage::pyinterface::operator&lt;&lt;</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -331,6 +359,6 @@
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/constinit_vector.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constinit_vector.cpp"/>
   </compounddef>
 </doxygen>

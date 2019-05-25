@@ -1,0 +1,6 @@
+<map id="openage::renderer::opengl::GlWindow::get_context" name="openage::renderer::opengl::GlWindow::get_context">
+<area shape="rect" id="node1" title="Return a pointer to this window&#39;s GL context." alt="" coords="620,5,773,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1opengl_1_1_gl_window.xhtml#a45268949d2510860b3643bb7779f521b" title="Creates a renderer which uses the window&#39;s graphics API and targets the window." alt="" coords="405,5,572,61"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#a6f980e5dd40ec0b730e586e2484233d2" title=" " alt="" coords="199,13,357,54"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1renderer_1_1tests.xhtml#ac2256044717a0f7f7aafbb1f2be3a1eb" title=" " alt="" coords="5,13,151,54"/>
+</map>

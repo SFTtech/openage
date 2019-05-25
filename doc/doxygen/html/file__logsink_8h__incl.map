@@ -1,15 +1,15 @@
-<map id="libopenage/log/file_logsink.h" name="libopenage/log/file_logsink.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,131,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,319,77,345"/>
-<area shape="rect" id="node3" title=" " alt="" coords="35,95,101,121"/>
-<area shape="rect" id="node4" href="$logsink_8h.xhtml" title=" " alt="" coords="125,95,200,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="53,169,91,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="116,169,175,196"/>
-<area shape="rect" id="node7" href="$level_8h.xhtml" title=" " alt="" coords="199,169,257,196"/>
-<area shape="rect" id="node8" href="$enum_8h.xhtml" title=" " alt="" coords="156,244,255,271"/>
-<area shape="rect" id="node9" title=" " alt="" coords="123,319,189,345"/>
-<area shape="rect" id="node10" href="$compiler_8h.xhtml" title=" " alt="" coords="213,319,296,345"/>
-<area shape="rect" id="node11" title=" " alt="" coords="136,393,203,420"/>
-<area shape="rect" id="node12" title=" " alt="" coords="227,393,282,420"/>
-<area shape="rect" id="node13" href="$signal_8h.xhtml" title=" " alt="" coords="307,393,373,420"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/log/file_logsink.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/log/file_logsink.h">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,215,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="47,333,119,360"/>
+<area shape="rect" id="node3" title=" " alt="" coords="77,109,143,136"/>
+<area shape="rect" id="node4" href="$logsink_8h.xhtml" title=" " alt="" coords="167,109,242,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="95,184,133,211"/>
+<area shape="rect" id="node6" title=" " alt="" coords="158,184,217,211"/>
+<area shape="rect" id="node7" href="$level_8h.xhtml" title=" " alt="" coords="241,184,299,211"/>
+<area shape="rect" id="node8" href="$enum_8h.xhtml" title=" " alt="" coords="198,259,297,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="165,333,231,360"/>
+<area shape="rect" id="node10" href="$compiler_8h.xhtml" title=" " alt="" coords="255,333,338,360"/>
+<area shape="rect" id="node11" title=" " alt="" coords="178,408,245,435"/>
+<area shape="rect" id="node12" title=" " alt="" coords="269,408,324,435"/>
+<area shape="rect" id="node13" href="$signal_8h.xhtml" title=" " alt="" coords="349,408,415,435"/>
 </map>

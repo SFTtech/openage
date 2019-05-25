@@ -10,30 +10,30 @@
 <para>An OpenGL Vertex Array Object. It represents a mapping between a buffer that contains vertex data and a way for the context to interpret it. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2455">
+      <node id="4735">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2454">
+      <node id="4734">
         <label>openage::renderer::opengl::GlVertexArray</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array"/>
-        <childnode refid="2455" relation="public-inheritance">
+        <childnode refid="4735" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2457">
+      <node id="4737">
         <label>openage::renderer::opengl::GlSimpleObject</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
       </node>
-      <node id="2456">
+      <node id="4736">
         <label>openage::renderer::opengl::GlVertexArray</label>
         <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array"/>
-        <childnode refid="2457" relation="public-inheritance">
+        <childnode refid="4737" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/opengl/vertex_array.h" line="16" column="1" bodyfile="libopenage/renderer/opengl/vertex_array.h" bodystart="16" bodyend="32"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/vertex_array.h" bodystart="16" bodyend="32"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlVertexArray</scope><name>delete_fun</name></member>
       <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlVertexArray</scope><name>get_handle</name></member>

@@ -1,0 +1,5 @@
+<map id="openage::gui::EngineLink::provider" name="openage::gui::EngineLink::provider">
+<area shape="rect" id="node1" title=" " alt="" coords="5,46,173,87"/>
+<area shape="rect" id="node2" href="$classqtsdl_1_1_qml_engine_with_singleton_items_info.xhtml#a75bfac02a613200f587f4f2e5d17ecb1" title=" " alt="" coords="221,5,424,61"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b" title="info message" alt="" coords="265,85,381,112"/>
+</map>

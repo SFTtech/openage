@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::resources::Texture2dSubInfo Struct Reference</title>
+<title>openage: openage::renderer::resources::Texture2dSubInfo Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('structopenage_1_1renderer_1_1resources
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::resources::Texture2dSubInfo:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info__coll__graph.svg" width="198" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::resources::Texture2dSubInfo:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info__coll__graph.svg" width="198" height="220"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -160,6 +162,25 @@ Public Attributes</h2></td></tr>
 <p>Initializes the info from a CSV line containing its members. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="texture__subinfo_8cpp_source.xhtml">texture_subinfo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                                                        {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    constexpr <span class="keywordtype">size_t</span> member_count = 6;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::vector&lt;std::string&gt; buf = <a class="code" href="namespaceopenage_1_1util.xhtml#aa7f8fe5c3426ea9e4968ef9aa21660ae">openage::util::split_escape</a>(</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        line, <span class="charliteral">&#39;,&#39;</span>, member_count</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    );</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> (buf.size() != member_count) {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">throw</span> Error(</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Tokenizing subtexture led to &quot;</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            &lt;&lt; buf.size() &lt;&lt; <span class="stringliteral">&quot; columns (expected &quot;</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            &lt;&lt; member_count &lt;&lt; <span class="stringliteral">&quot;)!&quot;</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        );</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">size_t</span> elems_read = 0;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    elems_read += sscanf(buf[0].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a4d0a8eec81bd5eac58e3c7846100ee78">x</a>);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    elems_read += sscanf(buf[1].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#aeedd2e9b3c6b03efa5d3b0daf37f79d9">y</a>);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    elems_read += sscanf(buf[2].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a594735c3b72fc7c68fd7cdfc489b6714">w</a>);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    elems_read += sscanf(buf[3].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a8de1ca95f9c32bf2c0df4e9010aeb372">h</a>);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    elems_read += sscanf(buf[4].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae209837ea123f60ddf1950e143615e08">cx</a>);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    elems_read += sscanf(buf[5].c_str(), <span class="stringliteral">&quot;%u&quot;</span>, &amp;this-&gt;<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ab98662bcfef07faffc5d01190124b26f">cy</a>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (elems_read != member_count) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Failed to read subtexture members from CSV line.&quot;</span>);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_aa7f8fe5c3426ea9e4968ef9aa21660ae"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#aa7f8fe5c3426ea9e4968ef9aa21660ae">openage::util::split_escape</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split_escape(const std::string &amp;txt, char delim, size_t size_hint)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00144">strings.cpp:144</a></div></div>
+<div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a4d0a8eec81bd5eac58e3c7846100ee78"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a4d0a8eec81bd5eac58e3c7846100ee78">openage::renderer::resources::Texture2dSubInfo::x</a></div><div class="ttdeci">uint32_t x</div><div class="ttdoc">The subtexture position within the atlas.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00020">texture_subinfo.h:20</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_ae209837ea123f60ddf1950e143615e08"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae209837ea123f60ddf1950e143615e08">openage::renderer::resources::Texture2dSubInfo::cx</a></div><div class="ttdeci">uint32_t cx</div><div class="ttdoc">Position of the subtexture's center within the atlas.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00026">texture_subinfo.h:26</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_aeedd2e9b3c6b03efa5d3b0daf37f79d9"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#aeedd2e9b3c6b03efa5d3b0daf37f79d9">openage::renderer::resources::Texture2dSubInfo::y</a></div><div class="ttdeci">uint32_t y</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00020">texture_subinfo.h:20</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_ab98662bcfef07faffc5d01190124b26f"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ab98662bcfef07faffc5d01190124b26f">openage::renderer::resources::Texture2dSubInfo::cy</a></div><div class="ttdeci">uint32_t cy</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00026">texture_subinfo.h:26</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a594735c3b72fc7c68fd7cdfc489b6714"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a594735c3b72fc7c68fd7cdfc489b6714">openage::renderer::resources::Texture2dSubInfo::w</a></div><div class="ttdeci">uint32_t w</div><div class="ttdoc">The subtexture size.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00023">texture_subinfo.h:23</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a8de1ca95f9c32bf2c0df4e9010aeb372"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a8de1ca95f9c32bf2c0df4e9010aeb372">openage::renderer::resources::Texture2dSubInfo::h</a></div><div class="ttdeci">uint32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00023">texture_subinfo.h:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="texture__subinfo_8h_source.xhtml#l00026">cx</a>, <a class="el" href="texture__subinfo_8h_source.xhtml#l00026">cy</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="texture__subinfo_8h_source.xhtml#l00023">h</a>, <a class="el" href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="strings_8cpp_source.xhtml#l00144">openage::util::split_escape()</a>, <a class="el" href="texture__subinfo_8h_source.xhtml#l00023">w</a>, <a class="el" href="texture__subinfo_8h_source.xhtml#l00020">x</a>, and <a class="el" href="texture__subinfo_8h_source.xhtml#l00020">y</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_ad1512b3a27b24f2e1edc45d361b30a3a_cgraph.svg" width="374" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -216,7 +237,13 @@ Public Attributes</h2></td></tr>
 <p>Initializes the info from data. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00038">38</a> of file <a class="el" href="texture__subinfo_8cpp_source.xhtml">texture_subinfo.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    : <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a4d0a8eec81bd5eac58e3c7846100ee78">x</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a4d0a8eec81bd5eac58e3c7846100ee78">x</a>)</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    , <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#aeedd2e9b3c6b03efa5d3b0daf37f79d9">y</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#aeedd2e9b3c6b03efa5d3b0daf37f79d9">y</a>)</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    , <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a594735c3b72fc7c68fd7cdfc489b6714">w</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a594735c3b72fc7c68fd7cdfc489b6714">w</a>)</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    , <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a8de1ca95f9c32bf2c0df4e9010aeb372">h</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a8de1ca95f9c32bf2c0df4e9010aeb372">h</a>)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    , <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae209837ea123f60ddf1950e143615e08">cx</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae209837ea123f60ddf1950e143615e08">cx</a>)</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    , <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ab98662bcfef07faffc5d01190124b26f">cy</a>(<a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ab98662bcfef07faffc5d01190124b26f">cy</a>) {}</div><div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a4d0a8eec81bd5eac58e3c7846100ee78"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a4d0a8eec81bd5eac58e3c7846100ee78">openage::renderer::resources::Texture2dSubInfo::x</a></div><div class="ttdeci">uint32_t x</div><div class="ttdoc">The subtexture position within the atlas.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00020">texture_subinfo.h:20</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_ae209837ea123f60ddf1950e143615e08"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae209837ea123f60ddf1950e143615e08">openage::renderer::resources::Texture2dSubInfo::cx</a></div><div class="ttdeci">uint32_t cx</div><div class="ttdoc">Position of the subtexture's center within the atlas.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00026">texture_subinfo.h:26</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_aeedd2e9b3c6b03efa5d3b0daf37f79d9"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#aeedd2e9b3c6b03efa5d3b0daf37f79d9">openage::renderer::resources::Texture2dSubInfo::y</a></div><div class="ttdeci">uint32_t y</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00020">texture_subinfo.h:20</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_ab98662bcfef07faffc5d01190124b26f"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ab98662bcfef07faffc5d01190124b26f">openage::renderer::resources::Texture2dSubInfo::cy</a></div><div class="ttdeci">uint32_t cy</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00026">texture_subinfo.h:26</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a594735c3b72fc7c68fd7cdfc489b6714"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a594735c3b72fc7c68fd7cdfc489b6714">openage::renderer::resources::Texture2dSubInfo::w</a></div><div class="ttdeci">uint32_t w</div><div class="ttdoc">The subtexture size.</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00023">texture_subinfo.h:23</a></div></div>
+<div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_a8de1ca95f9c32bf2c0df4e9010aeb372"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#a8de1ca95f9c32bf2c0df4e9010aeb372">openage::renderer::resources::Texture2dSubInfo::h</a></div><div class="ttdeci">uint32_t h</div><div class="ttdef"><b>Definition:</b> <a href="texture__subinfo_8h_source.xhtml#l00023">texture_subinfo.h:23</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae47d38e2a8a65d5b1135a33fab9bec4c"></a>
@@ -242,6 +269,16 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00046">fill()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_ae47d38e2a8a65d5b1135a33fab9bec4c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -264,6 +301,27 @@ Public Attributes</h2></td></tr>
 <p>Needed for compatibility reasons, don't use this directly. </p>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="texture__subinfo_8cpp_source.xhtml">texture_subinfo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    *<span class="keyword">this</span> = <a class="code" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae47d38e2a8a65d5b1135a33fab9bec4c">Texture2dSubInfo</a>(line);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> -1;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_xhtml_ae47d38e2a8a65d5b1135a33fab9bec4c"><div class="ttname"><a href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae47d38e2a8a65d5b1135a33fab9bec4c">openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</a></div><div class="ttdeci">Texture2dSubInfo()=default</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474">openage::line</a>, and <a class="el" href="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info.xhtml#ae47d38e2a8a65d5b1135a33fab9bec4c">Texture2dSubInfo()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="colortable_8py_source.xhtml#l00028">openage.convert.colortable.ColorTable::__init__()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_a03e6fa8867f7baf6a41625ce3330fbfb_cgraph.svg" width="452" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_a03e6fa8867f7baf6a41625ce3330fbfb_icgraph.svg" width="446" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -284,6 +342,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00026">26</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
+
 </div>
 </div>
 <a id="ab98662bcfef07faffc5d01190124b26f"></a>
@@ -300,6 +360,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00026">26</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
+
 </div>
 </div>
 <a id="a8de1ca95f9c32bf2c0df4e9010aeb372"></a>
@@ -315,6 +377,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00023">23</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
 
 </div>
 </div>
@@ -334,6 +398,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00023">23</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
+
 </div>
 </div>
 <a id="a4d0a8eec81bd5eac58e3c7846100ee78"></a>
@@ -352,6 +418,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00020">20</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
+
 </div>
 </div>
 <a id="aeedd2e9b3c6b03efa5d3b0daf37f79d9"></a>
@@ -368,11 +436,13 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="texture__subinfo_8h_source.xhtml#l00020">20</a> of file <a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="texture__subinfo_8cpp_source.xhtml#l00010">Texture2dSubInfo()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>libopenage/renderer/resources/<a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a></li>
-<li>libopenage/renderer/resources/<a class="el" href="texture__subinfo_8cpp_source.xhtml">texture_subinfo.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/<a class="el" href="texture__subinfo_8h_source.xhtml">texture_subinfo.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/<a class="el" href="texture__subinfo_8cpp_source.xhtml">texture_subinfo.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

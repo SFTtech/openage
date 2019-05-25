@@ -1,0 +1,16 @@
+<map id="openage::input::InputContext::unregister" name="openage::input::InputContext::unregister">
+<area shape="rect" id="node1" title=" " alt="" coords="929,127,1117,168"/>
+<area shape="rect" id="node2" href="$classopenage_1_1input_1_1_input_manager.xhtml#a469024c2b2ac7769e0fa578c73fde160" title=" " alt="" coords="688,127,881,168"/>
+<area shape="rect" id="node3" href="$classopenage_1_1console_1_1_console.xhtml#a8a86e7fece57c47da16e37633c624ece" title=" " alt="" coords="461,61,640,103"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_action_mode.xhtml#a9c7d1f16c862692b1172079402ac0f18" title=" " alt="" coords="477,127,625,168"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_game_control.xhtml#a1d0f073f844955000861e4c0d08b20e0" title=" " alt="" coords="473,192,628,233"/>
+<area shape="rect" id="node4" href="$classopenage_1_1console_1_1_console.xhtml#a4e0359f0f3cbbf66da045ba1a33ffa57" title=" " alt="" coords="234,5,413,47"/>
+<area shape="rect" id="node5" href="$classopenage_1_1console_1_1_console.xhtml#ab5e30408417ac212bd3f35e50edd3a82" title=" " alt="" coords="6,33,185,75"/>
+<area shape="rect" id="node8" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#aef267067b8bc03f0df3bfdecce515cd6" title=" " alt="" coords="233,125,413,167"/>
+<area shape="rect" id="node10" href="$classopenage_1_1_game_control.xhtml#ad7c9d48df33f8f56ab5686c36648bfa5" title=" " alt="" coords="246,191,401,232"/>
+<area shape="rect" id="node12" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ab9397074dbc2c25f69e718e053572fab" title=" " alt="" coords="233,256,413,297"/>
+<area shape="rect" id="node13" href="$classopenage_1_1_game_control.xhtml#aa44a60840b738c202e328902943d8162" title=" " alt="" coords="246,321,401,363"/>
+<area shape="rect" id="node9" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#ac65023c9d5f785efe775b1dd99111c42" title=" " alt="" coords="5,125,185,167"/>
+<area shape="rect" id="node11" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a0a4bb8a5d7b2e5637d317fe51f02ad5f" title=" " alt="" coords="5,191,185,232"/>
+<area shape="rect" id="node14" href="$classopenage_1_1gui_1_1_game_control_link.xhtml#a54ebef9560dd3607b61083b0f8ecb9ba" title=" " alt="" coords="5,321,185,363"/>
+</map>

@@ -1,11 +1,11 @@
-<map id="libopenage/renderer/opengl/window.h" name="libopenage/renderer/opengl/window.h">
-<area shape="rect" id="node1" title=" " alt="" coords="222,5,357,47"/>
-<area shape="rect" id="node2" href="$window_8h.xhtml" title=" " alt="" coords="145,95,231,121"/>
-<area shape="rect" id="node8" title=" " alt="" coords="256,95,323,121"/>
-<area shape="rect" id="node9" href="$context_8h.xhtml" title=" " alt="" coords="347,95,423,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,169,83,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="119,244,188,271"/>
-<area shape="rect" id="node5" title=" " alt="" coords="229,244,285,271"/>
-<area shape="rect" id="node6" title=" " alt="" coords="321,169,415,196"/>
-<area shape="rect" id="node7" href="$renderer_8h.xhtml" title=" " alt="" coords="157,169,237,196"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/opengl/window.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/renderer/opengl/window.h">
+<area shape="rect" id="node1" title=" " alt="" coords="185,5,394,61"/>
+<area shape="rect" id="node2" href="$window_8h.xhtml" title=" " alt="" coords="145,109,231,136"/>
+<area shape="rect" id="node8" title=" " alt="" coords="256,109,323,136"/>
+<area shape="rect" id="node9" href="$context_8h.xhtml" title=" " alt="" coords="347,109,423,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,184,83,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="119,259,188,285"/>
+<area shape="rect" id="node5" title=" " alt="" coords="229,259,285,285"/>
+<area shape="rect" id="node6" title=" " alt="" coords="321,184,415,211"/>
+<area shape="rect" id="node7" href="$renderer_8h.xhtml" title=" " alt="" coords="157,184,237,211"/>
 </map>

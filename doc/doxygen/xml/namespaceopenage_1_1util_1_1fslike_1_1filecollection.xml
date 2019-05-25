@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fslike_1_1filecollection" kind="namespace" language="Python">
+    <compoundname>openage::util::fslike::filecollection</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection" prot="public">openage::util::fslike::filecollection::FileCollection</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path" prot="public">openage::util::fslike::filecollection::FileCollectionPath</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,7 @@
+<map id="openage::BuildAction::name" name="openage::BuildAction::name">
+<area shape="rect" id="node1" title=" " alt="" coords="419,71,564,112"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#aab5ade46752aa652e414b1c3bac704c1" title="Name without suffix (such that stem + suffix == name)." alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a7b11153f6ef9787c4c583bcf0126ba6a" title="The last suffix of the name of the topmost component (str)." alt="" coords="212,71,371,112"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a912043b2fbd330e3493588f6c6af92b8" title="The suffixes of the name of the topmost component (str list)." alt="" coords="212,136,371,177"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1path_1_1_path.xhtml#a3ab02f8ab30da2c239dc08a5bb463b58" title="Returns path for different suffix (same parent and stem)." alt="" coords="5,5,164,47"/>
+</map>

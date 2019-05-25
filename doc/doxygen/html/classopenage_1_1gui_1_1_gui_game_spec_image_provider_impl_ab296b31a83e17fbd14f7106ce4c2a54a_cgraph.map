@@ -1,0 +1,11 @@
+<map id="openage::gui::GuiGameSpecImageProviderImpl::migrate_to_new_game_spec" name="openage::gui::GuiGameSpecImageProviderImpl::migrate_to_new_game_spec">
+<area shape="rect" id="node1" title=" " alt="" coords="5,24,195,80"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1renderer.xhtml#a00b1f2873c9bbd71a19b3a26bd11d03e" title="Make this vertex array object the current one." alt="" coords="258,5,417,32"/>
+<area shape="rect" id="node3" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#ac4c74475a47396d2e1824d2625e9d666" title=" " alt="" coords="243,56,432,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl.xhtml#a28738ee06bd6ef675a723b0db02433c2" title=" " alt="" coords="480,19,669,75"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1gui.xhtml#a1ed7c99cf0d2a47548927d8d688b0c42" title=" " alt="" coords="503,99,646,141"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1gui.xhtml#a4f415900a4d4e55b09b0be3c2ba60d54" title=" " alt="" coords="717,107,885,133"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_texture.xhtml#aa2ba756d0a2a61a5dada563790e3ceec" title=" " alt="" coords="953,70,1101,111"/>
+<area shape="rect" id="node8" href="$namespaceopenage_1_1gui.xhtml#af717f0e1527d227ea7c4a8e9f34e87b8" title=" " alt="" coords="933,136,1120,163"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_texture.xhtml#a4548b2bc3eb5310a97deee94ab536035" title=" " alt="" coords="1168,129,1316,170"/>
+</map>

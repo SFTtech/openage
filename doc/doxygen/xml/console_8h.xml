@@ -11,11 +11,11 @@
     <includes refid="util_2color_8h" local="yes">../util/color.h</includes>
     <includes refid="font_8h" local="yes">../renderer/font/font.h</includes>
     <includes local="yes">../gamedata/color.gen.h</includes>
-    <includedby refid="console_8cpp" local="yes">libopenage/console/console.cpp</includedby>
-    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
-    <includedby refid="console_2tests_8cpp" local="yes">libopenage/console/tests.cpp</includedby>
-    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
-    <includedby refid="main_8cpp" local="yes">libopenage/main.cpp</includedby>
+    <includedby refid="console_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</includedby>
+    <includedby refid="draw_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</includedby>
+    <includedby refid="console_2tests_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</includedby>
     <incdepgraph>
       <node id="2657">
         <label>../gamedata/color.gen.h</label>
@@ -141,7 +141,7 @@
         </childnode>
       </node>
       <node id="2599">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="2600" relation="include">
         </childnode>
@@ -485,7 +485,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2664">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="2665" relation="include">
         </childnode>
@@ -499,23 +499,23 @@
         </childnode>
       </node>
       <node id="2668">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="2669">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="2665">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="2666">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="2667">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -592,6 +592,6 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::console</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/console/console.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h"/>
   </compounddef>
 </doxygen>

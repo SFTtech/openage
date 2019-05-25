@@ -1,0 +1,8 @@
+<map id="openage::TerrainSearch::next_tile" name="openage::TerrainSearch::next_tile">
+<area shape="rect" id="node1" title=" " alt="" coords="5,64,164,105"/>
+<area shape="rect" id="node2" href="$namespacestd.xhtml#a8058d6b15a78f7a977945ee4d62de903" title=" " alt="" coords="269,13,349,39"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_terrain_search.xhtml#a0db543b44fe51d0f1403bedba1f575a8" title=" " alt="" coords="229,64,388,105"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1testing_1_1testing.xhtml#ac25bf81db406af62d08113ef7ae9fd6e" title=" " alt="" coords="212,130,405,157"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1_fixed_point.xhtml#aa0eb736578910b123ea19652c670daab" title=" " alt="" coords="453,5,620,47"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1util.xhtml#a7bc4421a5f0f57f3a0aba3f96eb8d19c" title=" " alt="" coords="473,130,600,157"/>
+</map>

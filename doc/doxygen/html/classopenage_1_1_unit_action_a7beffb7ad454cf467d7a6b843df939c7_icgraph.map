@@ -1,0 +1,6 @@
+<map id="openage::UnitAction::damage_unit" name="openage::UnitAction::damage_unit">
+<area shape="rect" id="node1" title=" " alt="" coords="427,39,565,80"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_attack_action.xhtml#ae6ce05cd88d0f3000950c6d39421c24c" title=" " alt="" coords="216,5,371,47"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_projectile_action.xhtml#a5be4d6d237bbb52a036d368af97956b6" title=" " alt="" coords="208,71,379,112"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_attack_action.xhtml#af3e4ae03273bd3d6ea4b5a196ce6351c" title=" " alt="" coords="5,5,160,47"/>
+</map>

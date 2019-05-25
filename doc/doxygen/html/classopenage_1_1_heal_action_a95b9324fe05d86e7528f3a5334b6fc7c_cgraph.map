@@ -1,0 +1,11 @@
+<map id="openage::HealAction::update_in_range" name="openage::HealAction::update_in_range">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,148,145"/>
+<area shape="rect" id="node2" href="$classopenage_1_1_unit_action.xhtml#a6cd7405af72dd0cf3994cee74608cf8b" title=" " alt="" coords="202,5,341,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1_interval_timer.xhtml#a3b8556bdc5e8f4c6e00a1d614f6b949b" title=" " alt="" coords="196,71,347,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1_heal_action.xhtml#abae1711c61d9c124d6ab2d1acdc4efeb" title=" " alt="" coords="200,136,343,177"/>
+<area shape="rect" id="node9" href="$classopenage_1_1_interval_timer.xhtml#acb51f379d7d73ad7fff1197f9fa2335b" title=" " alt="" coords="196,201,347,243"/>
+<area shape="rect" id="node5" href="$classopenage_1_1_unit.xhtml#a3e12324401051119f44e212dae1a87ce" title=" " alt="" coords="396,104,524,145"/>
+<area shape="rect" id="node7" href="$classopenage_1_1_unit.xhtml#a6c56a8b7e9856a8e0535cacbe831bae7" title=" " alt="" coords="395,169,525,211"/>
+<area shape="rect" id="node6" href="$classopenage_1_1_attributes.xhtml#a08f927be3be6911e7cf77604f9ead10f" title=" " alt="" coords="575,111,736,138"/>
+<area shape="rect" id="node8" href="$classopenage_1_1_attributes.xhtml#aee38f453ac85b68821958ad74cdd8df5" title=" " alt="" coords="573,177,737,203"/>
+</map>

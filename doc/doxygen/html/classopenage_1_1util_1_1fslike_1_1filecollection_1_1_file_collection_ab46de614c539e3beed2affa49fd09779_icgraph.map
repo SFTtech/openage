@@ -1,0 +1,9 @@
+<map id="openage.util.fslike.filecollection.FileCollection.get_fileentry" name="openage.util.fslike.filecollection.FileCollection.get_fileentry">
+<area shape="rect" id="node1" title="Gets a file entry." alt="" coords="259,169,464,211"/>
+<area shape="rect" id="node2" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#abb7acc5e29787c2826c467ce0111eaca" title=" " alt="" coords="5,5,211,47"/>
+<area shape="rect" id="node3" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#aa67dc8d355a1c053942b3a375fc1985c" title=" " alt="" coords="5,71,211,112"/>
+<area shape="rect" id="node4" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#a732ece4991737e5dd9ea2a4961a899ca" title=" " alt="" coords="5,136,211,177"/>
+<area shape="rect" id="node5" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#aa7aa810fd31b2ab2290b57b3c8c3c123" title="Shall return a BufferedReader for the given file (&quot;mode &#39;rb&#39;&quot;)." alt="" coords="5,201,211,243"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#a4e32318feb8203a576433ef955b3883d" title="Shall return a BufferedWriter for the given file (&quot;mode &#39;wb&#39;&quot;)." alt="" coords="5,267,211,308"/>
+<area shape="rect" id="node7" href="$classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection.xhtml#ab6065913c8c25261d0f71cc222483fb1" title=" " alt="" coords="5,332,211,373"/>
+</map>

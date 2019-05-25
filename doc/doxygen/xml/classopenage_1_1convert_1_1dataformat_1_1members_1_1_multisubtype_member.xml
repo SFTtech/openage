@@ -1,0 +1,492 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::dataformat::members::MultisubtypeMember</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.RefMember</basecompoundref>
+    <basecompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.DynLengthMember</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member" prot="public" virt="non-virtual">openage.convert.dataformat.members.SubdataMember</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ad76bf42f766fba6d160c0a0f2408b7f6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::subtype_definition</definition>
+        <argsstring></argsstring>
+        <name>subtype_definition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="592" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="592" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::class_lookup</definition>
+        <argsstring></argsstring>
+        <name>class_lookup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="595" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="595" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abca0aea22855fc04f42a9c3583f9c7d5" compoundref="members_8py" startline="796" endline="804">openage.convert.dataformat.members.MultisubtypeMember.format_hash</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a6a80ec8145d2bf776c98f7cdc4c0da8e" compoundref="members_8py" startline="631" endline="636">openage.convert.dataformat.members.MultisubtypeMember.get_contained_types</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1a4407b1d4a8039bc8a369a59c52bcbdcc" compoundref="members_8py" startline="866" endline="868">openage.convert.dataformat.members.SubdataMember.get_subdata_type_name</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1af278ba52cb2291334852e0de4ae1c7e5" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::passed_args</definition>
+        <argsstring></argsstring>
+        <name>passed_args</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="598" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="598" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a69612f9b63e76655dc34996cd7d42484" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::ref_to</definition>
+        <argsstring></argsstring>
+        <name>ref_to</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="601" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="601" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a5fe7e102cb5c65e32d043d7a4662e2b8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::offset_to</definition>
+        <argsstring></argsstring>
+        <name>offset_to</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="604" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="604" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae3c02376fcce16d3bc085246f2de847e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::ref_type_params</definition>
+        <argsstring></argsstring>
+        <name>ref_type_params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="607" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="607" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae3bb69b6f958afa092583d2925465598" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.dataformat.members.MultisubtypeMember::resolved</definition>
+        <argsstring></argsstring>
+        <name>resolved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="610" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="610" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abb999586d6c8c77e3eb1c520deda4819" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.__init__</definition>
+        <argsstring>(self, type_name, subtype_definition, class_lookup, length, passed_args=None, ref_to=None, offset_to=None, file_name=None, ref_type_params=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" kindref="member">type_name</ref></type>
+          <defname>type_name</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ad76bf42f766fba6d160c0a0f2408b7f6" kindref="member">subtype_definition</ref></type>
+          <defname>subtype_definition</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" kindref="member">class_lookup</ref></type>
+          <defname>class_lookup</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1ac7543594bde360a9522c095b116066d0" kindref="member">length</ref></type>
+          <defname>length</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1af278ba52cb2291334852e0de4ae1c7e5" kindref="member">passed_args</ref></type>
+          <defname>passed_args</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a69612f9b63e76655dc34996cd7d42484" kindref="member">ref_to</ref></type>
+          <defname>ref_to</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a5fe7e102cb5c65e32d043d7a4662e2b8" kindref="member">offset_to</ref></type>
+          <defname>offset_to</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae3c02376fcce16d3bc085246f2de847e" kindref="member">ref_type_params</ref></type>
+          <defname>ref_type_params</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="585" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="585" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abff2c6510cd43895368ddb3b8e75fa3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_headers</definition>
+        <argsstring>(self, output_target)</argsstring>
+        <name>get_headers</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a0c802d0e74f4506b9fbc83f45382e42b">get_headers</reimplements>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1affdef24b47a64dae69159b0e27b46b65">get_headers</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>output_target</type>
+          <defname>output_target</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="615" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="615" bodyend="624"/>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1abe9d9997e55017fa14737a7603afadba" compoundref="util_8py" startline="71" endline="127">openage.convert.dataformat.util.determine_header</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a27571ee3aea8f88f36ae23140c9e77c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_effective_type</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_effective_type</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aca753aded701699bfd78a4c16e01ca67">get_effective_type</reimplements>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1acef3ec7e71f233ef9820acfb7fa797c6">get_effective_type</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="625" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="625" bodyend="627"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a2b0c3e9b8181b04312a30d3471796acc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_empty_value</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_empty_value</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aac3076daf9912b2241f0651797a8a506">get_empty_value</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+<para>when this data field is not filled, use the returned value instead. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="628" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="628" bodyend="630"/>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a6a80ec8145d2bf776c98f7cdc4c0da8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_contained_types</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_contained_types</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="631" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="631" bodyend="636"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" compoundref="members_8py" startline="595">openage.convert.dataformat.members.MultisubtypeMember.class_lookup</references>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" compoundref="members_8py" startline="663" endline="795">openage.convert.dataformat.members.MultisubtypeMember.get_snippets</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1a008f8bc74d5b8781e661ab9edd07e57c" compoundref="members_8py" startline="834" endline="836">openage.convert.dataformat.members.SubdataMember.get_subtype</referencedby>
+        <referencedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1addde0bcc5fa0ebb0b0a26d4c32a6a68c" compoundref="members_8py" startline="863" endline="865">openage.convert.dataformat.members.SubdataMember.get_typerefs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1add52bbeac462df02499e1942ddca2dc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_parsers</definition>
+        <argsstring>(self, idx, member)</argsstring>
+        <name>get_parsers</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a713d93efed62b806731cfe52ddf39fc4">get_parsers</reimplements>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1a3a82d094d79fb43f8ac33b083a8d53cb">get_parsers</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>idx</type>
+          <defname>idx</defname>
+        </param>
+        <param>
+          <type>member</type>
+          <defname>member</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="637" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="637" bodyend="656"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a567e8cd4638f6d804bb7a4da292b076f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_typerefs</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_typerefs</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1aa4968dab9239c251b3415aefcfa53ae1">get_typerefs</reimplements>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1addde0bcc5fa0ebb0b0a26d4c32a6a68c">get_typerefs</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="657" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="657" bodyend="659"/>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.get_snippets</definition>
+        <argsstring>(self, file_name, format_)</argsstring>
+        <name>get_snippets</name>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1aa1b9333b1bb2ac9110c8adaf1dd13113">get_snippets</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" kindref="member">file_name</ref></type>
+          <defname>file_name</defname>
+        </param>
+        <param>
+          <type>format_</type>
+          <defname>format_</defname>
+        </param>
+        <briefdescription>
+<para>return struct definitions for this type </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="663" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="663" bodyend="795"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" compoundref="members_8py" startline="595">openage.convert.dataformat.members.MultisubtypeMember.class_lookup</references>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1abe9d9997e55017fa14737a7603afadba" compoundref="util_8py" startline="71" endline="127">openage.convert.dataformat.util.determine_header</references>
+        <references refid="namespaceopenage_1_1convert_1_1dataformat_1_1util_1a5e3a7c5e8aeddbd762f9a158f9bc5aab" compoundref="util_8py" startline="128" endline="138">openage.convert.dataformat.util.determine_headers</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1content__snippet_1_1_content_snippet_1a817fc821efa560a318d58428f876e4ab" compoundref="content__snippet_8py" startline="30">openage.convert.dataformat.content_snippet.ContentSnippet.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1generated__file_1_1_generated_file_1a0712668513c20ee009a5f1dfbdd2558a" compoundref="generated__file_8py" startline="80">openage.convert.dataformat.generated_file.GeneratedFile.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" compoundref="members_8py" startline="240">openage.convert.dataformat.members.RefMember.file_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a6a80ec8145d2bf776c98f7cdc4c0da8e" compoundref="members_8py" startline="631" endline="636">openage.convert.dataformat.members.MultisubtypeMember.get_contained_types</references>
+        <references refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" compoundref="pyobject_8cpp" startline="359" endline="363">openage::py::list</references>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abca0aea22855fc04f42a9c3583f9c7d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.format_hash</definition>
+        <argsstring>(self, hasher)</argsstring>
+        <name>format_hash</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a9d61825e531ff63ac842efeb88376e8c">format_hash</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>hasher</type>
+          <defname>hasher</defname>
+        </param>
+        <briefdescription>
+<para>hash these member&apos;s settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   used to determine data format changes.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="796" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="796" bodyend="804"/>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" compoundref="members_8py" startline="595">openage.convert.dataformat.members.MultisubtypeMember.class_lookup</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae0a3a0241b823f90f1bcb74e1619df1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.dataformat.members.MultisubtypeMember.__repr__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__repr__</name>
+        <reimplements refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1add7272a1e3cc7a7b510a23541d0c48bb">__repr__</reimplements>
+        <reimplementedby refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member_1a160732dffbb5935f0b02b26938d2e658">__repr__</reimplementedby>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="805" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="805" bodyend="812"/>
+        <references refid="structopenage_1_1audio_1_1audio__chunk__t_1a7f19af0f743e2b6cb71ee0c9c9cc9b77" compoundref="audio_2types_8h" startline="22">openage::audio::audio_chunk_t::length</references>
+        <references refid="classopenage_1_1audio_1_1_opus_dynamic_loader_1a072f5cfe9e7514325eeb39ebfb8fd1ab" compoundref="opus__dynamic__loader_8h" startline="26">openage::audio::OpusDynamicLoader::length</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a304aadf38378a06b99c4398303928dbd" compoundref="members_8py" startline="27">openage.convert.dataformat.members.DataMember.length</references>
+        <references refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1a8377276ec3801cd8a5bc89f72ac5c590" compoundref="constexpr_8h" startline="50">openage::util::constexpr_::truncated_string_literal::length</references>
+        <references refid="classopenage_1_1_unit_type_meta_1a067a5262896d540af03f855a1fe29cac" compoundref="unit__type_8h" startline="44">openage::UnitTypeMeta::type_name</references>
+        <references refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" compoundref="members_8py" startline="239">openage.convert.dataformat.members.RefMember.type_name</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1103">
+        <label>openage.convert.dataformat.members.SubdataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member"/>
+        <childnode refid="1099" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1102">
+        <label>openage.convert.dataformat.members.DynLengthMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member"/>
+        <childnode refid="1101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1101">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+      <node id="1100">
+        <label>openage.convert.dataformat.members.RefMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member"/>
+        <childnode refid="1101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1099">
+        <label>openage.convert.dataformat.members.MultisubtypeMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member"/>
+        <childnode refid="1100" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1102" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1107">
+        <label>openage.convert.dataformat.members.DynLengthMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member"/>
+        <childnode refid="1106" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1106">
+        <label>openage.convert.dataformat.members.DataMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member"/>
+      </node>
+      <node id="1105">
+        <label>openage.convert.dataformat.members.RefMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member"/>
+        <childnode refid="1106" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1104">
+        <label>openage.convert.dataformat.members.MultisubtypeMember</label>
+        <link refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member"/>
+        <childnode refid="1105" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1107" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" line="583" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/members.py" bodystart="583" bodyend="813"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abb999586d6c8c77e3eb1c520deda4819" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1ad33cc8d2074cba7148a9e10a35ec1c49" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1af93da463756c79f7fb06eb46898fd6c5" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember.openage::convert::dataformat::members::DataMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a76522d7acad4b1da32e90104d216fc6f" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1af93da463756c79f7fb06eb46898fd6c5" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DataMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae0a3a0241b823f90f1bcb74e1619df1f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a6f1a0121b0f92ecc23125c32d92e6dd6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>any_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a50a2a9e4d4dac90934ab7566bc887b05" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>class_lookup</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ade5ee2745546cc6f70341b34958900cf" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>do_raw_read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ade5ee2745546cc6f70341b34958900cf" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>do_raw_read</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a1d8cd7ab645eb4e99a36a3627021111f" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>entry_hook</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a1d8cd7ab645eb4e99a36a3627021111f" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>entry_hook</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a1d97cff933d248254401032a6ef6c9c2" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>file_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abca0aea22855fc04f42a9c3583f9c7d5" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>format_hash</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a6a80ec8145d2bf776c98f7cdc4c0da8e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_contained_types</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a27571ee3aea8f88f36ae23140c9e77c0" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_effective_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a2b0c3e9b8181b04312a30d3471796acc" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_empty_value</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1abff2c6510cd43895368ddb3b8e75fa3a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_headers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a5020d135379031c1726d24343ab23310" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a14ed52f719d6d07a9f4308b6824ae6ec" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1add52bbeac462df02499e1942ddca2dc5" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_parsers</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a81e16d3f5273041083c8497f102803ae" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_snippets</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_struct_entries</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1acfafb0d6702186d2e0b986a40727509f" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_struct_entries</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a567e8cd4638f6d804bb7a4da292b076f" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>get_typerefs</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1a65df1261e8a5c28c98ad325de5c4fdbe" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>is_dynamic_length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a304aadf38378a06b99c4398303928dbd" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member_1ac7543594bde360a9522c095b116066d0" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>length</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a5fe7e102cb5c65e32d043d7a4662e2b8" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>offset_to</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1af278ba52cb2291334852e0de4ae1c7e5" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>passed_args</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ae88ae33e707c5877b61b8598c78a7926" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1ae88ae33e707c5877b61b8598c78a7926" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1a69612f9b63e76655dc34996cd7d42484" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>ref_to</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae3c02376fcce16d3bc085246f2de847e" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>ref_type_params</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ae3bb69b6f958afa092583d2925465598" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>resolved</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member_1ad76bf42f766fba6d160c0a0f2408b7f6" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>subtype_definition</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member_1a8a34bbd9cc41ea7f0abefc895641d28a" prot="public" virt="non-virtual"><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>type_name</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a8cc54e765c92a42b17dbe2786cfdef08" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::RefMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>verify_read_data</name></member>
+      <member refid="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_1a8cc54e765c92a42b17dbe2786cfdef08" prot="public" virt="non-virtual" ambiguityscope="openage::convert::dataformat::members::DynLengthMember."><scope>openage::convert::dataformat::members::MultisubtypeMember</scope><name>verify_read_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

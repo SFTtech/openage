@@ -34,7 +34,7 @@ var searchData=
   ['codegendirwrapper',['CodegenDirWrapper',['../classopenage_1_1codegen_1_1codegen_1_1_codegen_dir_wrapper.xhtml',1,'openage::codegen::codegen']]],
   ['codegenmode',['CodegenMode',['../classopenage_1_1codegen_1_1codegen_1_1_codegen_mode.xhtml',1,'openage::codegen::codegen']]],
   ['col',['col',['../structopenage_1_1util_1_1col.xhtml',1,'openage::util']]],
-  ['color',['color',['../structopenage_1_1util_1_1color.xhtml',1,'openage::util::color'],['../classopenage_1_1renderer_1_1_color.xhtml',1,'openage::renderer::Color']]],
+  ['color',['Color',['../classopenage_1_1renderer_1_1_color.xhtml',1,'openage::renderer::Color'],['../structopenage_1_1util_1_1color.xhtml',1,'openage::util::color']]],
   ['colortable',['ColorTable',['../classopenage_1_1convert_1_1colortable_1_1_color_table.xhtml',1,'openage::convert::colortable']]],
   ['columnpacker',['ColumnPacker',['../classopenage_1_1convert_1_1binpack_1_1_column_packer.xhtml',1,'openage::convert::binpack']]],
   ['command',['Command',['../classopenage_1_1_command.xhtml',1,'openage']]],

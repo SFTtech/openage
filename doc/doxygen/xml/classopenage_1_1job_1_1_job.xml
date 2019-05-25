@@ -21,7 +21,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="31" column="1" bodyfile="libopenage/job/job.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1job_1_1_job_1a625402a18d1d29e348ff2c9a1fc757fb" compoundref="job_8h" startline="71" endline="74">openage::job::Job&lt; T &gt;::Job</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -36,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="80" column="1" bodyfile="libopenage/job/job.h" bodystart="80" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="classopenage_1_1job_1_1_job_1a22d5e96819bc7c0bff8d135a21e67b42" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>
@@ -49,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="81" column="1" bodyfile="libopenage/job/job.h" bodystart="81" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="81" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="38" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="38" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -79,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="44" column="1" bodyfile="libopenage/job/job.h" bodystart="44" bodyend="49"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="44" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
@@ -93,7 +94,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="56" column="1" bodyfile="libopenage/job/job.h" bodystart="56" bodyend="64"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="56" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="56" bodyend="64"/>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -113,7 +116,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/job/job.h" line="71" column="1" bodyfile="libopenage/job/job.h" bodystart="71" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="71" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="71" bodyend="74"/>
+        <references refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" compoundref="job_8h" startline="31">openage::job::Job&lt; T &gt;::state</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -132,12 +136,12 @@
 </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3020">
+      <node id="3879">
         <label>openage::job::Job&lt; T &gt;</label>
         <link refid="classopenage_1_1job_1_1_job"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/job/job.h" line="28" column="1" bodyfile="libopenage/job/job.h" bodystart="28" bodyend="82"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" line="28" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/job/job.h" bodystart="28" bodyend="82"/>
     <listofallmembers>
       <member refid="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" prot="public" virt="non-virtual"><scope>openage::job::Job</scope><name>get_result</name></member>
       <member refid="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" prot="public" virt="non-virtual"><scope>openage::job::Job</scope><name>is_finished</name></member>

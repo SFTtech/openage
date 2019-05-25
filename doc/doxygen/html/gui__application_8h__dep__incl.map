@@ -1,9 +1,9 @@
-<map id="libopenage/gui/guisys/public/gui_application.h" name="libopenage/gui/guisys/public/gui_application.h">
-<area shape="rect" id="node1" title=" " alt="" coords="272,5,433,47"/>
-<area shape="rect" id="node2" href="$gui__application__with__logger_8h.xhtml" title=" " alt="" coords="171,95,340,151"/>
-<area shape="rect" id="node7" href="$gui__application_8cpp.xhtml" title=" " alt="" coords="364,102,539,143"/>
-<area shape="rect" id="node3" href="$gui_2gui_8h.xhtml" title=" " alt="" coords="99,213,236,240"/>
-<area shape="rect" id="node6" href="$gui__application__with__logger_8cpp.xhtml" title=" " alt="" coords="260,199,429,255"/>
-<area shape="rect" id="node4" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,303,156,329"/>
-<area shape="rect" id="node5" href="$gui_2gui_8cpp.xhtml" title=" " alt="" coords="180,303,331,329"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_application.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/gui/guisys/public/gui_application.h">
+<area shape="rect" id="node1" title=" " alt="" coords="367,5,591,61"/>
+<area shape="rect" id="node2" href="$gui__application__with__logger_8h.xhtml" title=" " alt="" coords="231,109,466,180"/>
+<area shape="rect" id="node7" href="$gui__application_8cpp.xhtml" title=" " alt="" coords="491,117,729,173"/>
+<area shape="rect" id="node3" href="$gui_2gui_8h.xhtml" title=" " alt="" coords="121,235,331,291"/>
+<area shape="rect" id="node6" href="$gui__application__with__logger_8cpp.xhtml" title=" " alt="" coords="355,228,590,299"/>
+<area shape="rect" id="node4" href="$engine_8cpp.xhtml" title=" " alt="" coords="5,347,215,403"/>
+<area shape="rect" id="node5" href="$gui_2gui_8cpp.xhtml" title=" " alt="" coords="239,347,448,403"/>
 </map>

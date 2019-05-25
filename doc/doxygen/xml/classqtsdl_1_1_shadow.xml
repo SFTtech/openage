@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="346" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="346" bodyend="349"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="346" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="346" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="351" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="351" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="352" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="352" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_shadow_1a6701a7a35ed1c41d1c0ae2927e4fbc39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="353" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="353" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_shadow_1a77412ce3729150d91b32364e2addbb40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/link/gui_item.h" line="354" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="354" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,34 +102,86 @@
 <para>Shadows inherited member functions. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4151">
+      <node id="6562">
         <label>T</label>
       </node>
-      <node id="4150">
-        <label>qtsdl::Shadow&lt; T &gt;</label>
+      <node id="6570">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="4151" relation="public-inheritance">
+        <childnode refid="6561" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="4152">
+      <node id="6561">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="6562" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6567">
+        <label>openage::gui::CreateModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_create_mode_link"/>
+        <childnode refid="6566" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6564">
+        <label>qtsdl::Inherits&lt; OutputModeLink, EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6563" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, EditorModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6570" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6566">
+        <label>qtsdl::Inherits&lt; OutputModeLink, CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6563" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, CreateModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6570" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6565">
+        <label>openage::gui::EditorModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_editor_mode_link"/>
+        <childnode refid="6564" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6563">
         <label>qtsdl::Inherits&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_inherits"/>
-        <childnode refid="4150" relation="public-inheritance">
+        <childnode refid="6561" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6569">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="6568" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6568">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="6563" relation="template-instance">
+          <edgelabel>&lt; OutputModeLink, ActionModeLink &gt;</edgelabel>
+        </childnode>
+        <childnode refid="6570" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4154">
+      <node id="6572">
         <label>T</label>
       </node>
-      <node id="4153">
+      <node id="6571">
         <label>qtsdl::Shadow&lt; T &gt;</label>
         <link refid="classqtsdl_1_1_shadow"/>
-        <childnode refid="4154" relation="public-inheritance">
+        <childnode refid="6572" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/link/gui_item.h" line="344" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="344" bodyend="355"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" line="344" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/gui_item.h" bodystart="344" bodyend="355"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>get</name></member>
       <member refid="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>i</name></member>

@@ -15,7 +15,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="20" column="1" bodyfile="libopenage/renderer/color.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="20" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1a70f81ed7c2563457d3b0b2bd65b5aaa5" compoundref="renderer_2color_8cpp" startline="17" endline="24">Color</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" compoundref="renderer_2color_8cpp" startline="26" endline="28">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -28,7 +30,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="21" column="1" bodyfile="libopenage/renderer/color.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" compoundref="renderer_2color_8cpp" startline="26" endline="28">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -41,7 +44,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="22" column="1" bodyfile="libopenage/renderer/color.h" bodystart="22" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" compoundref="renderer_2color_8cpp" startline="26" endline="28">operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -54,7 +58,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="23" column="1" bodyfile="libopenage/renderer/color.h" bodystart="23" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="23" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" compoundref="renderer_2color_8cpp" startline="26" endline="28">operator==</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -69,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="12" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="8" bodyend="15"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="12" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp" bodystart="8" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1a70f81ed7c2563457d3b0b2bd65b5aaa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,7 +103,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="14" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="17" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="14" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp" bodystart="17" bodyend="24"/>
+        <references refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" compoundref="renderer_2color_8h" startline="20">r</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -115,7 +121,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="16" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="26" bodyend="28"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="16" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp" bodystart="26" bodyend="28"/>
+        <references refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" compoundref="renderer_2color_8h" startline="23">a</references>
+        <references refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" compoundref="renderer_2color_8h" startline="22">b</references>
+        <references refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" compoundref="renderer_2color_8h" startline="21">g</references>
+        <references refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" compoundref="renderer_2color_8h" startline="20">r</references>
+        <referencedby refid="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" compoundref="renderer_2color_8cpp" startline="30" endline="32">operator!=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -132,7 +143,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/color.h" line="18" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="30" bodyend="32"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.cpp" bodystart="30" bodyend="32"/>
+        <references refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" compoundref="renderer_2color_8cpp" startline="26" endline="28">operator==</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,12 +152,12 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="786">
+      <node id="4626">
         <label>openage::renderer::Color</label>
         <link refid="classopenage_1_1renderer_1_1_color"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/color.h" line="10" column="1" bodyfile="libopenage/renderer/color.h" bodystart="10" bodyend="25"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" line="10" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/color.h" bodystart="10" bodyend="25"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>a</name></member>
       <member refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>b</name></member>

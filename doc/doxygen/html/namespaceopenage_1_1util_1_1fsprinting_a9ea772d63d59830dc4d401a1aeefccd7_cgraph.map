@@ -1,0 +1,5 @@
+<map id="openage.util.fsprinting.colorize_dirname" name="openage.util.fsprinting.colorize_dirname">
+<area shape="rect" id="node1" title="Colorizes the dirname, using the &#39;di&#39; rule from LS_COLORS." alt="" coords="5,27,203,69"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1util_1_1strings.xhtml#a8f24773995264adf47e500b704fa7d42" title="Colorizes string with the given EMCA&#45;48 SGR code." alt="" coords="251,5,435,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util_1_1fsprinting.xhtml#a362ed67b3bcb25c3f351eee931e3ae19" title="Returns a dict of pattern : colorcode, retrieved from LS_COLORS." alt="" coords="257,57,428,98"/>
+</map>

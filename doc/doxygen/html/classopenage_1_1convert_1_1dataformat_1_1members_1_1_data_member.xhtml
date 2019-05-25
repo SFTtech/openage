@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage.convert.dataformat.members.DataMember Class Reference</title>
+<title>openage: openage.convert.dataformat.members.DataMember Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,17 +99,19 @@ $(document).ready(function(){initNavTree('classopenage_1_1convert_1_1dataformat_
 
 <p>member variable of data files and generated structs.  
  <a href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member.xhtml#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for openage.convert.dataformat.members.DataMember:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for openage.convert.dataformat.members.DataMember:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-<div class="dynheader">
-Collaboration diagram for openage.convert.dataformat.members.DataMember:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member__coll__graph.svg" width="254" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage.convert.dataformat.members.DataMember:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member__coll__graph.svg" width="254" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -181,7 +184,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_string_member.xhtml#ab0472a26b67510f4a7bd4b79b48dbc31">openage.convert.dataformat.members.StringMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00026">26</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        self.raw_type = <span class="keywordtype">None</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        self.do_raw_read = <span class="keyword">True</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">def </span>get_parsers(self, idx, member):</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;implement the parser generation for the member type %s&quot;</span> % type(self))</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -204,7 +207,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_array_member.xhtml#a5dc1be9f5fadd1b992d6f76befb07a27">openage.convert.dataformat.members.ArrayMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#a160732dffbb5935f0b02b26938d2e658">openage.convert.dataformat.members.SubdataMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#ae0a3a0241b823f90f1bcb74e1619df1f">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml#a07b4dd518b5b9151d4510d893f8c07e5">openage.convert.dataformat.members.CharArrayMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a15f292c4683ba4337a33bd52c0581f70">openage.convert.dataformat.members.EnumMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml#acebacec44c129380eab30beb999434eb">openage.convert.dataformat.members.NumberMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members.xhtml#a76445c68e5173f4c164a4799134a80e6">openage.convert.dataformat.members.IncludeMembers</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#a49a5bbd442b7928e4818318bce236b63">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00088">88</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">class </span>GroupMember(DataMember):</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">    member that references to another class, pretty much like the SubdataMember,</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">    but with a fixed length of 1.</span></div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">    this is just a reference to a single struct instance.</span></div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a1d8cd7ab645eb4e99a36a3627021111f"></a>
@@ -239,7 +242,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_lookup_member.xhtml#a4d654b6ba05da6a0aba27b9008fa38cb">openage.convert.dataformat.members.EnumLookupMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member.xhtml#aaa0982c5a278043f631a41329ed39aab">openage.convert.dataformat.members.ContinueReadMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00049">49</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> data</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">def </span>get_effective_type(self):</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;return the effective (struct) type of member %s&quot;</span> % type(self))</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a8a084c4ed03611be299ccd6c67cb5e76"></a>
@@ -274,7 +277,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#abca0aea22855fc04f42a9c3583f9c7d5">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a0fcf1a7012f76c251b31eb760ef911ee">openage.convert.dataformat.members.EnumMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml#a21171b4018d202687aff259ac8bdedb4">openage.convert.dataformat.members.NumberMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_ref_member.xhtml#ab1259c0fbb6ecce62302f086c5167396">openage.convert.dataformat.members.RefMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml#a9d61825e531ff63ac842efeb88376e8c">openage.convert.dataformat.members.DynLengthMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#adb2abe13fffd3036ae2d55d30cfe6261">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00085">85</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">def </span>__repr__(self):</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;return short description of the member type %s&quot;</span> % (type(self)))</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aca753aded701699bfd78a4c16e01ca67"></a>
@@ -296,6 +299,16 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#acef3ec7e71f233ef9820acfb7fa797c6">openage.convert.dataformat.members.SubdataMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#a27571ee3aea8f88f36ae23140c9e77c0">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml#a8074ffeba13087d4b26a51ac9ef1fe7e">openage.convert.dataformat.members.CharArrayMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a0252612eeda42f3c7553ea1b1e1212f9">openage.convert.dataformat.members.EnumMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml#a27b0a04796782524796716eed105a9a4">openage.convert.dataformat.members.NumberMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#a9b4645349ec2ef37f3a9d028909c4dbd">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00053">53</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">def </span>get_empty_value(self):</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="members_8py_source.xhtml#l00566">openage.convert.dataformat.members.CharArrayMember.__repr__()</a>, <a class="el" href="members_8py_source.xhtml#l00076">openage.convert.dataformat.members.DataMember.get_struct_entries()</a>, <a class="el" href="members_8py_source.xhtml#l00107">openage.convert.dataformat.members.GroupMember.get_typerefs()</a>, and <a class="el" href="members_8py_source.xhtml#l00431">openage.convert.dataformat.members.EnumMember.get_typerefs()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_aca753aded701699bfd78a4c16e01ca67_icgraph.svg" width="544" height="248"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -320,7 +333,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#a2b0c3e9b8181b04312a30d3471796acc">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml#ad4d5a588c6546557cebceb9b860857f1">openage.convert.dataformat.members.CharArrayMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member.xhtml#a2ed4737fd7575a73126f92488ea97753">openage.convert.dataformat.members.ContinueReadMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00059">59</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">def </span>get_length(self, obj=None):</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        del obj  <span class="comment"># unused</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="a0c802d0e74f4506b9fbc83f45382e42b"></a>
@@ -352,7 +365,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#affdef24b47a64dae69159b0e27b46b65">openage.convert.dataformat.members.SubdataMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#abff2c6510cd43895368ddb3b8e75fa3a">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml#aeaf778094650f419072b942ff8d0dc8e">openage.convert.dataformat.members.CharArrayMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a12f56e75f97144d787c390bfb236e6f6">openage.convert.dataformat.members.EnumMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml#ae1554def5866507bb2a22a7e8eb1812e">openage.convert.dataformat.members.NumberMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#a111b442520faa27b7d3b0ebe1b2b84b5">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00034">34</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">def </span>get_typerefs(self):</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="a5020d135379031c1726d24343ab23310"></a>
@@ -384,6 +397,18 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_dyn_length_member.xhtml#a14ed52f719d6d07a9f4308b6824ae6ec">openage.convert.dataformat.members.DynLengthMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00062">62</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> self.length</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">def </span>verify_read_data(self, obj, data):</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="audio_2types_8h_source.xhtml#l00022">openage::audio::audio_chunk_t.length</a>, <a class="el" href="opus__dynamic__loader_8h_source.xhtml#l00026">openage::audio::OpusDynamicLoader.length</a>, <a class="el" href="members_8py_source.xhtml#l00027">openage.convert.dataformat.members.DataMember.length</a>, and <a class="el" href="constexpr_8h_source.xhtml#l00050">openage::util::constexpr_::truncated_string_literal.length</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="members_8py_source.xhtml#l00523">openage.convert.dataformat.members.CharArrayMember.get_parsers()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_a5020d135379031c1726d24343ab23310_icgraph.svg" width="544" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -422,7 +447,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#a3a82d094d79fb43f8ac33b083a8d53cb">openage.convert.dataformat.members.SubdataMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#add52bbeac462df02499e1942ddca2dc5">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_char_array_member.xhtml#ad63fed30ee3cf877fa333088b1cab269">openage.convert.dataformat.members.CharArrayMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a815464eef9720becdee8f954d2134989">openage.convert.dataformat.members.EnumMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_continue_read_member.xhtml#af495eeb0589a107c03a789b9b59a37c8">openage.convert.dataformat.members.ContinueReadMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_number_member.xhtml#af99a4c7a2f6bae6c07dfa914831eb8c2">openage.convert.dataformat.members.NumberMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_include_members.xhtml#ad56e658097660153550825cd0f8c79c0">openage.convert.dataformat.members.IncludeMembers</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#ad87deb877b828144c6a16df71b0ed1e1">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00031">31</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">def </span>get_headers(self, output_target):</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;return needed headers for %s for a given output target&quot;</span> % type(self))</div></div><!-- fragment -->
 </div>
 </div>
 <a id="acfafb0d6702186d2e0b986a40727509f"></a>
@@ -454,6 +479,16 @@ Public Attributes</h2></td></tr>
 <p>return the lines to put inside the C struct. </p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00076">76</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> [<span class="stringliteral">&quot;%s %s;&quot;</span> % (self.get_effective_type(), member_name)]</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">def </span>format_hash(self, hasher):</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
+<p class="reference">References <a class="el" href="members_8py_source.xhtml#l00053">openage.convert.dataformat.members.DataMember.get_effective_type()</a>, and <a class="el" href="exportable_8py_source.xhtml#l00483">openage.convert.dataformat.exportable.Exportable.get_effective_type()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1convert_1_1dataformat_1_1members_1_1_data_member_acfafb0d6702186d2e0b986a40727509f_cgraph.svg" width="551" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -476,7 +511,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_subdata_member.xhtml#addde0bcc5fa0ebb0b0a26d4c32a6a68c">openage.convert.dataformat.members.SubdataMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_multisubtype_member.xhtml#a567e8cd4638f6d804bb7a4da292b076f">openage.convert.dataformat.members.MultisubtypeMember</a>, <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_enum_member.xhtml#a389a1dcae4781387c6e38f14e907f21f">openage.convert.dataformat.members.EnumMember</a>, and <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_group_member.xhtml#ac0404b086e8c2e7e8ab74c72ad542ba6">openage.convert.dataformat.members.GroupMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00041">41</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">def </span>entry_hook(self, data):</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <a id="a8cc54e765c92a42b17dbe2786cfdef08"></a>
@@ -517,7 +552,7 @@ Public Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classopenage_1_1convert_1_1dataformat_1_1members_1_1_zero_member.xhtml#aa2d18ece0f269df3d8823dfe4ab880bf">openage.convert.dataformat.members.ZeroMember</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00069">69</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">True</span></div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">def </span>get_struct_entries(self, member_name):</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><span class="stringliteral"></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -551,6 +586,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00027">27</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="members_8py_source.xhtml#l00566">openage.convert.dataformat.members.CharArrayMember.__repr__()</a>, <a class="el" href="members_8py_source.xhtml#l00805">openage.convert.dataformat.members.MultisubtypeMember.__repr__()</a>, <a class="el" href="members_8py_source.xhtml#l00869">openage.convert.dataformat.members.SubdataMember.__repr__()</a>, <a class="el" href="members_8py_source.xhtml#l00882">openage.convert.dataformat.members.ArrayMember.__repr__()</a>, <a class="el" href="members_8py_source.xhtml#l00221">openage.convert.dataformat.members.DynLengthMember.format_hash()</a>, <a class="el" href="members_8py_source.xhtml#l00062">openage.convert.dataformat.members.DataMember.get_length()</a>, <a class="el" href="members_8py_source.xhtml#l00173">openage.convert.dataformat.members.DynLengthMember.get_length()</a>, and <a class="el" href="members_8py_source.xhtml#l00206">openage.convert.dataformat.members.DynLengthMember.is_dynamic_length()</a>.</p>
+
 </div>
 </div>
 <a id="ae88ae33e707c5877b61b8598c78a7926"></a>
@@ -567,10 +604,12 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="members_8py_source.xhtml#l00028">28</a> of file <a class="el" href="members_8py_source.xhtml">members.py</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="members_8py_source.xhtml#l00882">openage.convert.dataformat.members.ArrayMember.__repr__()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>openage/convert/dataformat/<a class="el" href="members_8py_source.xhtml">members.py</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/<a class="el" href="members_8py_source.xhtml">members.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

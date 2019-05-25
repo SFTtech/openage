@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::fslike::filecollection::FileCollectionPath</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path" prot="public" virt="non-virtual">openage.util.fslike.path.Path</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a919281129e859f1793cda2a0cc68c498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.filecollection.FileCollectionPath.add_file</definition>
+        <argsstring>(self, open_r=None, open_w=None, filesize=None, mtime=None)</argsstring>
+        <name>add_file</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" kindref="member">open_r</ref></type>
+          <defname>open_r</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" kindref="member">open_w</ref></type>
+          <defname>open_w</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a348a0396369473be6eac75943f19273a" kindref="member">filesize</ref></type>
+          <defname>filesize</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef6342cdad4e9aa57cb9c0b248042c7e" kindref="member">mtime</ref></type>
+          <defname>mtime</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+<para>All parent directories are &apos;created&apos;, if needed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Any arguments may be None, and shall be callable otherwise.
+   If open_r/open_w are None, the file will write-/read-only.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" line="230" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" bodystart="230" bodyend="233"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" compoundref="path_8py" startline="65">openage.util.fslike.path.Path.fsobj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" compoundref="fslike_2python_8h" startline="74">openage::util::fslike::Python::fsobj</references>
+        <references refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" compoundref="util_2path_8h" startline="166">openage::util::Path::fsobj</references>
+        <references refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" compoundref="path_8py" startline="68">openage.util.fslike.path.Path.parts</references>
+        <references refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" compoundref="util_2path_8h" startline="168">openage::util::Path::parts</references>
+        <referencedby refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a092f1eb73e0aa772c214a3e91ef73222" compoundref="filecollection_8py" startline="237" endline="244">openage.util.fslike.filecollection.FileCollectionPath.add_file_from_path</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a092f1eb73e0aa772c214a3e91ef73222" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.fslike.filecollection.FileCollectionPath.add_file_from_path</definition>
+        <argsstring>(self, path)</argsstring>
+        <name>add_file_from_path</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>path</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+<para>Like add_file, but uses a <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> object instead of callables. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" line="237" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" bodystart="237" bodyend="244"/>
+        <references refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a919281129e859f1793cda2a0cc68c498" compoundref="filecollection_8py" startline="230" endline="233">openage.util.fslike.filecollection.FileCollectionPath.add_file</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides an additional method for adding a file at this path. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5870">
+        <label>openage.util.fslike.path.Path</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path"/>
+      </node>
+      <node id="5869">
+        <label>openage.util.fslike.filecollection.FileCollectionPath</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path"/>
+        <childnode refid="5870" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5872">
+        <label>openage.util.fslike.path.Path</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path"/>
+      </node>
+      <node id="5871">
+        <label>openage.util.fslike.filecollection.FileCollectionPath</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path"/>
+        <childnode refid="5872" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" line="223" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/fslike/filecollection.py" bodystart="223" bodyend="244"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a6d3e5ff8c7cff14815681cfc274a54fa" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__eq__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af3d064f84b10f3baca839c4490ff6cd3" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__getitem__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a1c434d2e607908909d1f6150ebe24839" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a250e49c6abb64b66594cad8e7adc8792" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__repr__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74cfcb2ba7bb7d4e897ba831b9f7190a" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__str__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2fe104e5eec859814a5192501d7069d7" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>__truediv__</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a919281129e859f1793cda2a0cc68c498" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>add_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1filecollection_1_1_file_collection_path_1a092f1eb73e0aa772c214a3e91ef73222" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>add_file_from_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3f26683d6ae00c9621fbfdf718748773" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a348a0396369473be6eac75943f19273a" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0f5f4a208fdce13bcf8aa75a2690b9ec" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>fsobj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a92def9ecadd3e44ce9308a04b98660c7" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7aa4c2db5a1b537edfac277335b4ee2c" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a0793e491d4812db33fc0768e5f9c79cd" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>iterdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a74ff93acd2b9f012f04c79b64438a632" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>joinpath</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2c97a612473ab536fe4dc2be187a7e67" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a4cedf04c581121ee8b5504e7a46abcb1" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acb4f6965241230f0254e77b6a74933fc" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>mount</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef6342cdad4e9aa57cb9c0b248042c7e" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae3a270686d78c16980549c5ebd7e8839" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>name</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a230fe30e41e3b2dd7d52150e61eae0d4" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>open</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a34706428ed6a37c8b4e2c1c51b6a0f7c" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1af98927e10cee2c17109712106a06a4ea" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1afef5c9a94242cabc5c4d097ab636c1cb" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>parent</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1acc7476d81b1cfc1fefde31fdc40fdd23" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>parts</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a55b9d625b2ad113a80ce6c88122c8912" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>poll_fs_watches</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a54ddfaca7c17c046c0a7472bb6af3d76" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>removerecursive</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a2a88d48ea00e605c4d97d9a3cbcfed01" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a90158226c7166eca01f78bc52da33774" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>resolve_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a532681cdea4bab8d2d6d4f8ad9f94bae" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>resolve_native_path_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1ae4bb1b804472fc1cd348770aec9db244" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>resolve_native_path_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1abc9109efa3d242497fe929fdc3189519" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aab5ade46752aa652e414b1c3bac704c1" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>stem</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a7b11153f6ef9787c4c583bcf0126ba6a" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>suffix</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a912043b2fbd330e3493588f6c6af92b8" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>suffixes</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1aef7a580dd6fe84570a18f5533a2bfb75" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a576b6588289279434c0b914a528d380c" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a37d1f2685564c84f991482035133f885" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>watch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a52a13083c58dc34e41f3fff8984b8d9b" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>with_name</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a3ab02f8ab30da2c239dc08a5bb463b58" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>with_suffix</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1path_1_1_path_1a327eac2a41d5787ad157d66a3274f489" prot="public" virt="non-virtual"><scope>openage::util::fslike::filecollection::FileCollectionPath</scope><name>writable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

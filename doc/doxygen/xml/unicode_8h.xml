@@ -5,14 +5,14 @@
     <includes local="no">stdint.h</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">string</includes>
-    <includedby refid="buf_8h" local="yes">libopenage/console/buf.h</includedby>
-    <includedby refid="buf_8cpp" local="yes">libopenage/console/buf.cpp</includedby>
-    <includedby refid="console_8cpp" local="yes">libopenage/console/console.cpp</includedby>
-    <includedby refid="fds_8cpp" local="yes">libopenage/util/fds.cpp</includedby>
-    <includedby refid="unicode_8cpp" local="yes">libopenage/util/unicode.cpp</includedby>
+    <includedby refid="buf_8h" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h</includedby>
+    <includedby refid="buf_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp</includedby>
+    <includedby refid="console_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</includedby>
+    <includedby refid="fds_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</includedby>
+    <includedby refid="unicode_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp</includedby>
     <incdepgraph>
       <node id="33091">
-        <label>libopenage/util/unicode.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h</label>
         <link refid="unicode_8h"/>
         <childnode refid="33092" relation="include">
         </childnode>
@@ -33,7 +33,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="33095">
-        <label>libopenage/util/unicode.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h</label>
         <link refid="unicode_8h"/>
         <childnode refid="33096" relation="include">
         </childnode>
@@ -47,11 +47,11 @@
         </childnode>
       </node>
       <node id="33104">
-        <label>libopenage/util/fds.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/fds.cpp</label>
         <link refid="fds_8cpp"/>
       </node>
       <node id="33098">
-        <label>libopenage/console/console.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.h</label>
         <link refid="console_8h"/>
         <childnode refid="33099" relation="include">
         </childnode>
@@ -65,27 +65,27 @@
         </childnode>
       </node>
       <node id="33102">
-        <label>libopenage/game_renderer.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/game_renderer.cpp</label>
         <link refid="game__renderer_8cpp"/>
       </node>
       <node id="33097">
-        <label>libopenage/console/buf.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.cpp</label>
         <link refid="buf_8cpp"/>
       </node>
       <node id="33103">
-        <label>libopenage/main.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
       <node id="33105">
-        <label>libopenage/util/unicode.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.cpp</label>
         <link refid="unicode_8cpp"/>
       </node>
       <node id="33099">
-        <label>libopenage/console/console.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/console.cpp</label>
         <link refid="console_8cpp"/>
       </node>
       <node id="33096">
-        <label>libopenage/console/buf.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/buf.h</label>
         <link refid="buf_8h"/>
         <childnode refid="33097" relation="include">
         </childnode>
@@ -97,11 +97,11 @@
         </childnode>
       </node>
       <node id="33100">
-        <label>libopenage/console/draw.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/draw.cpp</label>
         <link refid="draw_8cpp"/>
       </node>
       <node id="33101">
-        <label>libopenage/console/tests.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/console/tests.cpp</label>
         <link refid="console_2tests_8cpp"/>
       </node>
     </invincdepgraph>
@@ -152,6 +152,6 @@
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/unicode.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/unicode.h"/>
   </compounddef>
 </doxygen>

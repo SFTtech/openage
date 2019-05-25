@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::renderer::resources::VertexInputInfo Class Reference</title>
+<title>openage: openage::renderer::resources::VertexInputInfo Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -97,11 +98,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1renderer_1_1resources_
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::renderer::resources::VertexInputInfo:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info__coll__graph.svg" width="187" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::renderer::resources::VertexInputInfo:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info__coll__graph.svg" width="187" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -189,6 +191,12 @@ Private Attributes</h2></td></tr>
 <p>Initialize an input info for array rendering. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00039">39</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>))</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">layout</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">layout</a>)</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">primitive</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">primitive</a>) {}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_abc3d84a9d1e0aec615037acd32efa4a5"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">openage::renderer::resources::VertexInputInfo::primitive</a></div><div class="ttdeci">vertex_primitive_t primitive</div><div class="ttdoc">The primitive type.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00108">mesh_data.h:108</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_ac512843d39139e54c1d7f94c7ffff2f4"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">openage::renderer::resources::VertexInputInfo::inputs</a></div><div class="ttdeci">std::vector&lt; vertex_input_t &gt; inputs</div><div class="ttdoc">What kind of data the vertices contain and how it is laid out in memory.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00097">mesh_data.h:97</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_a4341539ce916999fff622c87be27c263"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">openage::renderer::resources::VertexInputInfo::layout</a></div><div class="ttdeci">vertex_layout_t layout</div><div class="ttdoc">How the vertices are laid out in the data buffer.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00105">mesh_data.h:105</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>.</p>
 
 </div>
 </div>
@@ -233,6 +241,13 @@ Private Attributes</h2></td></tr>
 <p>Initialize an input info for indexed rendering. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00044">44</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    : <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>(<a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>))</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">layout</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">layout</a>)</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">primitive</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">primitive</a>)</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    , <a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#afbb070a581eb6af7094eb621d14294af">index_type</a>(<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#afbb070a581eb6af7094eb621d14294af">index_type</a>) {}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_abc3d84a9d1e0aec615037acd32efa4a5"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">openage::renderer::resources::VertexInputInfo::primitive</a></div><div class="ttdeci">vertex_primitive_t primitive</div><div class="ttdoc">The primitive type.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00108">mesh_data.h:108</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_ac512843d39139e54c1d7f94c7ffff2f4"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">openage::renderer::resources::VertexInputInfo::inputs</a></div><div class="ttdeci">std::vector&lt; vertex_input_t &gt; inputs</div><div class="ttdoc">What kind of data the vertices contain and how it is laid out in memory.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00097">mesh_data.h:97</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_afbb070a581eb6af7094eb621d14294af"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#afbb070a581eb6af7094eb621d14294af">openage::renderer::resources::VertexInputInfo::index_type</a></div><div class="ttdeci">std::optional&lt; index_t &gt; index_type</div><div class="ttdoc">The type of indices if they exist.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00111">mesh_data.h:111</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_a4341539ce916999fff622c87be27c263"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">openage::renderer::resources::VertexInputInfo::layout</a></div><div class="ttdeci">vertex_layout_t layout</div><div class="ttdoc">How the vertices are laid out in the data buffer.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00105">mesh_data.h:105</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>.</p>
 
 </div>
 </div>
@@ -255,6 +270,21 @@ Private Attributes</h2></td></tr>
 <p>Adds a mesh-&gt;shader input mapping to the info. By default, attributes are mapped one-to-one according to their order in the input vector, e.g. (vec2 pos, vec2 uv) maps into (0: vec2 pos, 1: vec2 uv) in the shader. However, if a shader skips indices in the layout or takes its inputs in a different order, this can be specified using the map. The map entries must have the format (index_in_vector, index_in_shader) and will overwrite the default mapping. If an entry for a given index in the vector is missing, that attribute and its data will be skipped. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                                                    {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> mapping : in_map) {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a>(mapping.first &gt;= this-&gt;inputs.size())) {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">throw</span> Error(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;A shader input mapping is out-of-range, exceeding the available number of attributes.&quot;</span>);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a25777981ba7e0b61f05057aa46d13e2e">shader_input_map</a> = <a class="code" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">std::move</a>(in_map);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_a25777981ba7e0b61f05057aa46d13e2e"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a25777981ba7e0b61f05057aa46d13e2e">openage::renderer::resources::VertexInputInfo::shader_input_map</a></div><div class="ttdeci">std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt; shader_input_map</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00102">mesh_data.h:102</a></div></div>
+<div class="ttc" id="namespaceopenage_xhtml_a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e"><div class="ttname"><a href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::ability_type::move</a></div></div>
+<div class="ttc" id="compiler_8h_xhtml_ac6c45889010c1bd68631771b64f18101"><div class="ttname"><a href="compiler_8h.xhtml#ac6c45889010c1bd68631771b64f18101">unlikely</a></div><div class="ttdeci">#define unlikely(x)</div><div class="ttdef"><b>Definition:</b> <a href="compiler_8h_source.xhtml#l00053">compiler.h:53</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="namespaceopenage.xhtml#a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</a>, <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>, <a class="el" href="mesh__data_8h_source.xhtml#l00102">shader_input_map</a>, and <a class="el" href="compiler_8h_source.xhtml#l00053">unlikely</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_aefd82002b1835beb566cc1d3c13ee46d_cgraph.svg" width="343" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -275,6 +305,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the type of indices used for indexed drawing, which may not be present if array drawing is used. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00084">84</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                           {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#afbb070a581eb6af7094eb621d14294af">index_type</a>;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_afbb070a581eb6af7094eb621d14294af"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#afbb070a581eb6af7094eb621d14294af">openage::renderer::resources::VertexInputInfo::index_type</a></div><div class="ttdeci">std::optional&lt; index_t &gt; index_type</div><div class="ttdoc">The type of indices if they exist.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00111">mesh_data.h:111</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00111">index_type</a>.</p>
 
 </div>
 </div>
@@ -296,6 +329,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the list of per-vertex inputs. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00068">68</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                                   {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_ac512843d39139e54c1d7f94c7ffff2f4"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">openage::renderer::resources::VertexInputInfo::inputs</a></div><div class="ttdeci">std::vector&lt; vertex_input_t &gt; inputs</div><div class="ttdoc">What kind of data the vertices contain and how it is laid out in memory.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00097">mesh_data.h:97</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00097">inputs</a>.</p>
 
 </div>
 </div>
@@ -317,6 +353,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the layout of vertices in memory. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00076">76</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                                  {</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">layout</a>;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_a4341539ce916999fff622c87be27c263"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a4341539ce916999fff622c87be27c263">openage::renderer::resources::VertexInputInfo::layout</a></div><div class="ttdeci">vertex_layout_t layout</div><div class="ttdoc">How the vertices are laid out in the data buffer.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00105">mesh_data.h:105</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00105">layout</a>.</p>
 
 </div>
 </div>
@@ -338,6 +377,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the primitive interpretation mode. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00080">80</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                        {</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">primitive</a>;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_abc3d84a9d1e0aec615037acd32efa4a5"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#abc3d84a9d1e0aec615037acd32efa4a5">openage::renderer::resources::VertexInputInfo::primitive</a></div><div class="ttdeci">vertex_primitive_t primitive</div><div class="ttdoc">The primitive type.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00108">mesh_data.h:108</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00108">primitive</a>.</p>
 
 </div>
 </div>
@@ -359,6 +401,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the shader input map or an empty optional if it's not present. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00072">72</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                                                                 {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a25777981ba7e0b61f05057aa46d13e2e">shader_input_map</a>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_a25777981ba7e0b61f05057aa46d13e2e"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#a25777981ba7e0b61f05057aa46d13e2e">openage::renderer::resources::VertexInputInfo::shader_input_map</a></div><div class="ttdeci">std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt; shader_input_map</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00102">mesh_data.h:102</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00102">shader_input_map</a>.</p>
 
 </div>
 </div>
@@ -380,6 +425,18 @@ Private Attributes</h2></td></tr>
 <p>Returns the size of a single vertex. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                        {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">size_t</span> size = 0;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> in : this-&gt;<a class="code" href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">inputs</a>) {</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        size += <a class="code" href="namespaceopenage_1_1renderer_1_1resources.xhtml#a11c3247d50ab63967293c59f92c47368">vertex_input_size</a>(in);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> size;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div><div class="ttc" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_xhtml_ac512843d39139e54c1d7f94c7ffff2f4"><div class="ttname"><a href="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info.xhtml#ac512843d39139e54c1d7f94c7ffff2f4">openage::renderer::resources::VertexInputInfo::inputs</a></div><div class="ttdeci">std::vector&lt; vertex_input_t &gt; inputs</div><div class="ttdoc">What kind of data the vertices contain and how it is laid out in memory.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8h_source.xhtml#l00097">mesh_data.h:97</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1renderer_1_1resources_xhtml_a11c3247d50ab63967293c59f92c47368"><div class="ttname"><a href="namespaceopenage_1_1renderer_1_1resources.xhtml#a11c3247d50ab63967293c59f92c47368">openage::renderer::resources::vertex_input_size</a></div><div class="ttdeci">size_t vertex_input_size(vertex_input_t in)</div><div class="ttdoc">Returns the size in bytes of a per-vertex input.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__data_8cpp_source.xhtml#l00031">mesh_data.cpp:31</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="mesh__data_8h_source.xhtml#l00097">inputs</a>, and <a class="el" href="mesh__data_8cpp_source.xhtml#l00031">openage::renderer::resources::vertex_input_size()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_a32cc6408584ff4eecd6d43565eed9864_cgraph.svg" width="419" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -408,6 +465,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8h_source.xhtml#l00111">111</a> of file <a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="mesh__data_8cpp_source.xhtml#l00084">get_index_type()</a>.</p>
+
 </div>
 </div>
 <a id="ac512843d39139e54c1d7f94c7ffff2f4"></a>
@@ -433,6 +492,8 @@ Private Attributes</h2></td></tr>
 <p>What kind of data the vertices contain and how it is laid out in memory. </p>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8h_source.xhtml#l00097">97</a> of file <a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mesh__data_8cpp_source.xhtml#l00068">get_inputs()</a>, and <a class="el" href="mesh__data_8cpp_source.xhtml#l00060">vert_size()</a>.</p>
 
 </div>
 </div>
@@ -460,6 +521,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8h_source.xhtml#l00105">105</a> of file <a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="mesh__data_8cpp_source.xhtml#l00076">get_layout()</a>.</p>
+
 </div>
 </div>
 <a id="abc3d84a9d1e0aec615037acd32efa4a5"></a>
@@ -486,6 +549,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8h_source.xhtml#l00108">108</a> of file <a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="mesh__data_8cpp_source.xhtml#l00080">get_primitive()</a>.</p>
+
 </div>
 </div>
 <a id="a25777981ba7e0b61f05057aa46d13e2e"></a>
@@ -511,11 +576,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="mesh__data_8h_source.xhtml#l00102">102</a> of file <a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="mesh__data_8cpp_source.xhtml#l00050">add_shader_input_map()</a>, and <a class="el" href="mesh__data_8cpp_source.xhtml#l00072">get_shader_input_map()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/renderer/resources/<a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a></li>
-<li>libopenage/renderer/resources/<a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/<a class="el" href="mesh__data_8h_source.xhtml">mesh_data.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/<a class="el" href="mesh__data_8cpp_source.xhtml">mesh_data.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

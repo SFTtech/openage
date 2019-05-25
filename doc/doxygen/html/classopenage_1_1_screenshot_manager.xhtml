@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: openage::ScreenshotManager Class Reference</title>
+<title>openage: openage::ScreenshotManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -99,11 +100,12 @@ $(document).ready(function(){initNavTree('classopenage_1_1_screenshot_manager.xh
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for openage::ScreenshotManager:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for openage::ScreenshotManager:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -158,7 +160,9 @@ Private Attributes</h2></td></tr>
 <p>Initializes the screenshot manager with the given job manager. </p>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8cpp_source.xhtml#l00022">22</a> of file <a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    :</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">count</a>{0},</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a24d9434b761a19c8dfe2d0e2a48416ca">job_manager</a>{job_mgr} {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_a8fbe887bb624f7d6a60711ab953aadb4"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">openage::ScreenshotManager::count</a></div><div class="ttdeci">unsigned count</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8h_source.xhtml#l00042">screenshot.h:42</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_a24d9434b761a19c8dfe2d0e2a48416ca"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#a24d9434b761a19c8dfe2d0e2a48416ca">openage::ScreenshotManager::job_manager</a></div><div class="ttdeci">job::JobManager * job_manager</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8h_source.xhtml#l00048">screenshot.h:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab95fb468a5a80196941863fee32ff2f2"></a>
@@ -177,7 +181,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8cpp_source.xhtml#l00029">29</a> of file <a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{}</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -209,6 +213,33 @@ Private Attributes</h2></td></tr>
 <p>To be called by the job manager. Returns true on success, false otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8cpp_source.xhtml#l00065">65</a> of file <a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                             {</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::FILE *fout = NULL;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#abc18a61f4e6b5729e9025de5228e36ac">coord::pixel_t</a> width = size.x,</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                   height = size.y;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">auto</span> warn_fn = [] (png_structp <span class="comment">/*png_ptr*/</span>, png_const_charp message) {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Creating screenshot failed: libpng error: &quot;</span> &lt;&lt; message);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">auto</span> err_fn = [] (png_structp png_ptr, png_const_charp message) {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Creating screenshot failed: libpng error: &quot;</span> &lt;&lt; message);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        longjmp(png_jmpbuf(png_ptr), 1);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    };</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    png_structp png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                  (png_voidp) NULL,</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                  err_fn, warn_fn);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (!png_ptr)</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    png_infop info_ptr = png_create_info_struct(png_ptr);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (!info_ptr) {</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        png_destroy_write_struct(&amp;png_ptr, (png_infopp) NULL);</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (setjmp(png_jmpbuf(png_ptr))) {</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::fclose(fout);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        png_destroy_write_struct(&amp;png_ptr, &amp;info_ptr);</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::string <a class="code" href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">filename</a> = this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#ac4fdd57b37fe1bfae00abc167ccd6bbd">gen_next_filename</a>();</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    fout = std::fopen(<a class="code" href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">filename</a>.c_str(), <span class="stringliteral">&quot;wb&quot;</span>);</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (fout == NULL) {</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        png_destroy_write_struct(&amp;png_ptr, &amp;info_ptr);</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">err</a>) &lt;&lt; <span class="stringliteral">&quot;Could not open &#39;&quot;</span>&lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">filename</a> &lt;&lt; <span class="stringliteral">&quot;&#39;: &quot;</span></div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                 &lt;&lt; std::string(strerror(errno)));</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    png_init_io(png_ptr, fout);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    png_set_IHDR(png_ptr, info_ptr, width, height, 8, PNG_COLOR_TYPE_RGB,</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                 PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                 PNG_FILTER_TYPE_DEFAULT);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// Put image row pointer into info_ptr so that we can use the high-level</span></div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// write interface.</span></div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::vector&lt;png_bytep&gt; row_ptrs;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// Invert rows.</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    row_ptrs.reserve(height);</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= height; i++) {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        row_ptrs.push_back(pxdata.get() + (height - i) * 4 * width);</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    png_set_rows(png_ptr, info_ptr, &amp;row_ptrs[0]);</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">//TODO: print ingame message.</span></div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">log::log</a>(<a class="code" href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a>(<a class="code" href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">info</a>) &lt;&lt; <span class="stringliteral">&quot;Saving screenshot to &#39;&quot;</span> &lt;&lt; <a class="code" href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">filename</a> &lt;&lt; <span class="stringliteral">&quot;&#39;.&quot;</span>);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    png_write_png(png_ptr, info_ptr, PNG_TRANSFORM_STRIP_FILLER_AFTER, NULL);</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::fclose(fout);</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    png_destroy_write_struct(&amp;png_ptr, &amp;info_ptr);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div><div class="ttc" id="message_8h_xhtml_a8adfad4f54eb306fbb8aaa1b159608a5"><div class="ttname"><a href="message_8h.xhtml#a8adfad4f54eb306fbb8aaa1b159608a5">MSG</a></div><div class="ttdeci">#define MSG(LVL)</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.xhtml#l00171">message.h:171</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a325b0901ddb3f2af36f93781b7dd9744"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744">openage::log.err</a></div><div class="ttdeci">def err(msg, *args, **kwargs)</div><div class="ttdoc">error message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00124">__init__.py:124</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1util_xhtml_a664e0be1f5d2f4d1e1a624f6f4a5f0c1"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a664e0be1f5d2f4d1e1a624f6f4a5f0c1">openage::util::filename</a></div><div class="ttdeci">std::string filename(const std::string &amp;fullpath)</div><div class="ttdef"><b>Definition:</b> <a href="util_2path_8cpp_source.xhtml#l00364">path.cpp:364</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_ac4fdd57b37fe1bfae00abc167ccd6bbd"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#ac4fdd57b37fe1bfae00abc167ccd6bbd">openage::ScreenshotManager::gen_next_filename</a></div><div class="ttdeci">std::string gen_next_filename()</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8cpp_source.xhtml#l00032">screenshot.cpp:32</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a0eff614e7d6e818746700ed9d29e583f"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a0eff614e7d6e818746700ed9d29e583f">openage::log::log</a></div><div class="ttdeci">void log(const message &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="log_8cpp_source.xhtml#l00013">log.cpp:13</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_abc18a61f4e6b5729e9025de5228e36ac"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#abc18a61f4e6b5729e9025de5228e36ac">openage::coord::pixel_t</a></div><div class="ttdeci">int32_t pixel_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00040">declarations.h:40</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1log_xhtml_a3f1815b698faf5786fc5e20bcac7704b"><div class="ttname"><a href="namespaceopenage_1_1log.xhtml#a3f1815b698faf5786fc5e20bcac7704b">openage::log.info</a></div><div class="ttdeci">def info(msg, *args, **kwargs)</div><div class="ttdoc">info message</div><div class="ttdef"><b>Definition:</b> <a href="log_2____init_____8py_source.xhtml#l00114">__init__.py:114</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_2____init_____8py_source.xhtml#l00124">openage::log::err()</a>, <a class="el" href="util_2path_8cpp_source.xhtml#l00364">openage::util::filename()</a>, <a class="el" href="screenshot_8cpp_source.xhtml#l00032">gen_next_filename()</a>, <a class="el" href="log_2____init_____8py_source.xhtml#l00114">openage::log::info()</a>, <a class="el" href="log_8cpp_source.xhtml#l00013">openage::log::log()</a>, and <a class="el" href="message_8h_source.xhtml#l00171">MSG</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="screenshot_8cpp_source.xhtml#l00051">save_screenshot()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager_adbb75d33b45dc67e5264b7caa4248ff0_cgraph.svg" width="100%" height="563"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager_adbb75d33b45dc67e5264b7caa4248ff0_icgraph.svg" width="448" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -237,6 +268,30 @@ Private Attributes</h2></td></tr>
 <p>to be called to get the next screenshot filename into the array </p>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8cpp_source.xhtml#l00032">32</a> of file <a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                               {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">std::time_t</a> t = std::time(NULL);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (t == this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#ae6c92d1757aa0e9a49b996ed4fd610fa">last_time</a>) {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">count</a>++;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">count</a> = 0;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#ae6c92d1757aa0e9a49b996ed4fd610fa">last_time</a> = t;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// these two values (32) *must* be the same for safety reasons</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">char</span> timestamp[32];</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::strftime(timestamp, 32, <span class="stringliteral">&quot;%Y-%m-%d_%H-%M-%S&quot;</span>, std::localtime(&amp;t));</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088">util::sformat</a>(<span class="stringliteral">&quot;/tmp/openage_%s_%02d.png&quot;</span>, timestamp, this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">count</a>);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div><div class="ttc" id="namespaceopenage_1_1util_xhtml_a5546877ed3bcad568ab21989a40ec088"><div class="ttname"><a href="namespaceopenage_1_1util.xhtml#a5546877ed3bcad568ab21989a40ec088">openage::util::sformat</a></div><div class="ttdeci">std::string sformat(const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="strings_8cpp_source.xhtml#l00020">strings.cpp:20</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_a8fbe887bb624f7d6a60711ab953aadb4"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#a8fbe887bb624f7d6a60711ab953aadb4">openage::ScreenshotManager::count</a></div><div class="ttdeci">unsigned count</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8h_source.xhtml#l00042">screenshot.h:42</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1curve_xhtml_af909cf1de79df6389fd9431b7424b48a"><div class="ttname"><a href="namespaceopenage_1_1curve.xhtml#af909cf1de79df6389fd9431b7424b48a">openage::curve::time_t</a></div><div class="ttdeci">util::FixedPoint&lt; int64_t, 16 &gt; time_t</div><div class="ttdef"><b>Definition:</b> <a href="curve_8h_source.xhtml#l00016">curve.h:16</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_ae6c92d1757aa0e9a49b996ed4fd610fa"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#ae6c92d1757aa0e9a49b996ed4fd610fa">openage::ScreenshotManager::last_time</a></div><div class="ttdeci">std::time_t last_time</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8h_source.xhtml#l00045">screenshot.h:45</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="screenshot_8h_source.xhtml#l00042">count</a>, <a class="el" href="screenshot_8h_source.xhtml#l00045">last_time</a>, and <a class="el" href="strings_8cpp_source.xhtml#l00020">openage::util::sformat()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="screenshot_8cpp_source.xhtml#l00065">encode_png()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager_ac4fdd57b37fe1bfae00abc167ccd6bbd_cgraph.svg" width="600" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager_ac4fdd57b37fe1bfae00abc167ccd6bbd_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -258,6 +313,20 @@ Private Attributes</h2></td></tr>
 <p>To be called to save a screenshot. </p>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                                {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="namespaceopenage_1_1coord.xhtml#abc18a61f4e6b5729e9025de5228e36ac">coord::pixel_t</a> width = size.x,</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                   height = size.y;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::shared_ptr&lt;uint8_t&gt; pxdata(<span class="keyword">new</span> uint8_t[4*width*height], std::default_delete&lt;uint8_t[]&gt;());</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pxdata.get());</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">auto</span> encode_function = [<span class="keyword">this</span>, pxdata, size] () {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0">encode_png</a>(pxdata, size);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    this-&gt;<a class="code" href="classopenage_1_1_screenshot_manager.xhtml#a24d9434b761a19c8dfe2d0e2a48416ca">job_manager</a>-&gt;<a class="code" href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2">enqueue</a>&lt;<span class="keywordtype">bool</span>&gt;(encode_function);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div><div class="ttc" id="classopenage_1_1job_1_1_job_manager_xhtml_ab12ca59d9b54653a1106a405a23721b2"><div class="ttname"><a href="classopenage_1_1job_1_1_job_manager.xhtml#ab12ca59d9b54653a1106a405a23721b2">openage::job::JobManager::enqueue</a></div><div class="ttdeci">Job&lt; T &gt; enqueue(job_function_t&lt; T &gt; function, callback_function_t&lt; T &gt; callback={})</div><div class="ttdef"><b>Definition:</b> <a href="job__manager_8h_source.xhtml#l00093">job_manager.h:93</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_adbb75d33b45dc67e5264b7caa4248ff0"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#adbb75d33b45dc67e5264b7caa4248ff0">openage::ScreenshotManager::encode_png</a></div><div class="ttdeci">bool encode_png(std::shared_ptr&lt; uint8_t &gt; pxdata, coord::viewport_delta size)</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8cpp_source.xhtml#l00065">screenshot.cpp:65</a></div></div>
+<div class="ttc" id="classopenage_1_1_screenshot_manager_xhtml_a24d9434b761a19c8dfe2d0e2a48416ca"><div class="ttname"><a href="classopenage_1_1_screenshot_manager.xhtml#a24d9434b761a19c8dfe2d0e2a48416ca">openage::ScreenshotManager::job_manager</a></div><div class="ttdeci">job::JobManager * job_manager</div><div class="ttdef"><b>Definition:</b> <a href="screenshot_8h_source.xhtml#l00048">screenshot.h:48</a></div></div>
+<div class="ttc" id="namespaceopenage_1_1coord_xhtml_abc18a61f4e6b5729e9025de5228e36ac"><div class="ttname"><a href="namespaceopenage_1_1coord.xhtml#abc18a61f4e6b5729e9025de5228e36ac">openage::coord::pixel_t</a></div><div class="ttdeci">int32_t pixel_t</div><div class="ttdef"><b>Definition:</b> <a href="declarations_8h_source.xhtml#l00040">declarations.h:40</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="screenshot_8cpp_source.xhtml#l00065">encode_png()</a>, <a class="el" href="job__manager_8h_source.xhtml#l00093">openage::job::JobManager::enqueue()</a>, and <a class="el" href="screenshot_8h_source.xhtml#l00048">job_manager</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classopenage_1_1_screenshot_manager_a810563b379906491c07a5c951cb4f535_cgraph.svg" width="100%" height="563"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -285,6 +354,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8h_source.xhtml#l00042">42</a> of file <a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="screenshot_8cpp_source.xhtml#l00032">gen_next_filename()</a>.</p>
+
 </div>
 </div>
 <a id="a24d9434b761a19c8dfe2d0e2a48416ca"></a>
@@ -309,6 +380,8 @@ Private Attributes</h2></td></tr>
 <p>the job manager this screenshot manager uses </p>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8h_source.xhtml#l00048">48</a> of file <a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="screenshot_8cpp_source.xhtml#l00051">save_screenshot()</a>.</p>
 
 </div>
 </div>
@@ -335,6 +408,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="screenshot_8h_source.xhtml#l00045">45</a> of file <a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="screenshot_8cpp_source.xhtml#l00032">gen_next_filename()</a>.</p>
+
 </div>
 </div>
 <a id="a40b3ce8efd1c2541084ba989334fd2c3"></a>
@@ -355,8 +430,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/<a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a></li>
-<li>libopenage/<a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/<a class="el" href="screenshot_8h_source.xhtml">screenshot.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/<a class="el" href="screenshot_8cpp_source.xhtml">screenshot.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

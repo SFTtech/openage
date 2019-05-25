@@ -2,15 +2,15 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
   <compounddef id="sdl__global_8h" kind="file" language="C++">
     <compoundname>sdl_global.h</compoundname>
-    <includedby refid="opengl_2window_8cpp" local="yes">libopenage/renderer/opengl/window.cpp</includedby>
-    <includedby refid="windowvk_8cpp" local="yes">libopenage/renderer/vulkan/windowvk.cpp</includedby>
+    <includedby refid="opengl_2window_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</includedby>
+    <includedby refid="windowvk_8cpp" local="yes">C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</includedby>
     <invincdepgraph>
       <node id="23499">
-        <label>libopenage/renderer/opengl/window.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/opengl/window.cpp</label>
         <link refid="opengl_2window_8cpp"/>
       </node>
       <node id="23498">
-        <label>libopenage/renderer/sdl_global.h</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.h</label>
         <link refid="sdl__global_8h"/>
         <childnode refid="23499" relation="include">
         </childnode>
@@ -18,7 +18,7 @@
         </childnode>
       </node>
       <node id="23500">
-        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp</label>
         <link refid="windowvk_8cpp"/>
       </node>
     </invincdepgraph>
@@ -41,6 +41,6 @@
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/renderer/sdl_global.h"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/sdl_global.h"/>
   </compounddef>
 </doxygen>

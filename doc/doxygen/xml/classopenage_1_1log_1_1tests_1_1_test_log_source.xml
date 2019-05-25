@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/log/test.cpp" line="21" column="1" bodyfile="libopenage/log/test.cpp" bodystart="21" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="21" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="21" bodyend="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -24,30 +24,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4425">
+      <node id="4096">
         <label>openage::log::tests::TestLogSource</label>
         <link refid="classopenage_1_1log_1_1tests_1_1_test_log_source"/>
-        <childnode refid="4426" relation="public-inheritance">
+        <childnode refid="4097" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4426">
+      <node id="4097">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4427">
+      <node id="4098">
         <label>openage::log::tests::TestLogSource</label>
         <link refid="classopenage_1_1log_1_1tests_1_1_test_log_source"/>
-        <childnode refid="4428" relation="public-inheritance">
+        <childnode refid="4099" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4428">
+      <node id="4099">
         <label>openage::log::LogSource</label>
         <link refid="classopenage_1_1log_1_1_log_source"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/log/test.cpp" line="19" column="1" bodyfile="libopenage/log/test.cpp" bodystart="19" bodyend="24"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" line="19" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/log/test.cpp" bodystart="19" bodyend="24"/>
     <listofallmembers>
       <member refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSource</scope><name>log</name></member>
       <member refid="classopenage_1_1log_1_1_log_source_1ae75ede4764f389add2e8a870584807bb" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSource</scope><name>logger_id</name></member>

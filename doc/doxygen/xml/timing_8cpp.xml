@@ -122,7 +122,7 @@
         </childnode>
       </node>
       <node id="32989">
-        <label>libopenage/util/timing.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp</label>
         <link refid="timing_8cpp"/>
         <childnode refid="32990" relation="include">
         </childnode>
@@ -245,6 +245,6 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::timing</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/util/timing.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/timing.cpp"/>
   </compounddef>
 </doxygen>

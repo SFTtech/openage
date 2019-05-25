@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="cpp__testlist_8py" kind="file" language="Python">
+    <compoundname>cpp_testlist.py</compoundname>
+    <innerclass refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" prot="public">openage::codegen::cpp_testlist::Namespace</innerclass>
+    <innernamespace refid="namespaceopenage_1_1codegen_1_1cpp__testlist">openage::codegen::cpp_testlist</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1codegen_1_1cpp__testlist" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Generates<sp/>code<sp/>for<sp/>C++<sp/>testing,<sp/>mostly<sp/>the<sp/>table<sp/>to<sp/>look<sp/>up<sp/>symbols<sp/>from<sp/>test</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">names.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>collections</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" kindref="compound">Namespace</ref>:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Represents<sp/>a<sp/>C++<sp/>namespace,<sp/>which<sp/>contains<sp/>other<sp/>namespaces<sp/>and<sp/>functions.</highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>gen_prototypes()<sp/>generates<sp/>the<sp/>code<sp/>for<sp/>the<sp/>namespace.</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal">__init__(self):</highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" kindref="member">namespaces</ref><sp/>=<sp/>collections.defaultdict(self.__class__)</highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a87c5ab3e18756c3afc68c0045af377ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" kindref="member">functions</ref><sp/>=<sp/>[]</highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" kindref="member">add_functionname</ref>(self,<sp/>path):</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Adds<sp/>a<sp/>function<sp/>to<sp/>the<sp/>namespace.</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Path<sp/>is<sp/>the<sp/>qualified<sp/>function<sp/>&quot;path&quot;<sp/>(e.g.,<sp/>openage::test::foo)</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>has<sp/>the<sp/>path<sp/>[&quot;openage&quot;,<sp/>&quot;test&quot;,<sp/>&quot;foo&quot;].</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Descends<sp/>recursively,<sp/>creating<sp/>subnamespaces<sp/>as<sp/>required.</highlight></codeline>
+<codeline lineno="29"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(path)<sp/>==<sp/>1:</highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a6c538419921d82646accd71f5046aa2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" kindref="member">functions</ref>.append(path[0])</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subnamespace<sp/>=<sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" kindref="member">namespaces</ref>[path[0]]</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subnamespace.add_functionname(path[1:])</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" kindref="member">gen_prototypes</ref>(self):</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="38"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Generates<sp/>the<sp/>actual<sp/>C++<sp/>code<sp/>for<sp/>this<sp/>namespace,</highlight></codeline>
+<codeline lineno="39"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>including<sp/>all<sp/>sub-namespaces<sp/>and<sp/>function<sp/>prototypes.</highlight></codeline>
+<codeline lineno="40"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>name<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" kindref="member">functions</ref>:</highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1ac0e2f07015b8c1ac935ce0881b0cd231" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;void<sp/>%s();\n&quot;</highlight><highlight class="normal"><sp/>%<sp/>name</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>namespacename,<sp/>namespace<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>sorted(self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" kindref="member">namespaces</ref>.items()):</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;namespace<sp/>%s<sp/>{\n&quot;</highlight><highlight class="normal"><sp/>%<sp/>namespacename</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>line<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>namespace.gen_prototypes():</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/>line</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;}<sp/>//<sp/>%s\n\n&quot;</highlight><highlight class="normal"><sp/>%<sp/>namespacename</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" kindref="member">get_functionnames</ref>(self):</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="52"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Yields<sp/>all<sp/>function<sp/>names<sp/>in<sp/>this<sp/>namespace,</highlight></codeline>
+<codeline lineno="53"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>well<sp/>as<sp/>all<sp/>subnamespaces.</highlight></codeline>
+<codeline lineno="54"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>name<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1a82c7e6c4040805f4a7597378a7703568" kindref="member">functions</ref>:</highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1aef1e011e9312d67db15a834d9714f692" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/>name</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>namespacename,<sp/>namespace<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>sorted(self.<ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace_1abc3f0aa3d6cd7c54e7d481b036d43107" kindref="member">namespaces</ref>.items()):</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>name<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>namespace.get_functionnames():</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">yield</highlight><highlight class="normal"><sp/>namespacename<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;::&quot;</highlight><highlight class="normal"><sp/>+<sp/>name</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" kindref="member">generate_testlist</ref>(projectdir):</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="65"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Generates<sp/>the<sp/>test/demo<sp/>method<sp/>symbol<sp/>lookup<sp/>file<sp/>from<sp/>tests_cpp.</highlight></codeline>
+<codeline lineno="66"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="67"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>projectdir<sp/>is<sp/>a<sp/>util.fslike.path.Path.</highlight></codeline>
+<codeline lineno="68"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>root_namespace<sp/>=<sp/><ref refid="classopenage_1_1codegen_1_1cpp__testlist_1_1_namespace" kindref="compound">Namespace</ref>()</highlight></codeline>
+<codeline lineno="70" refid="namespaceopenage_1_1codegen_1_1cpp__testlist_1af4860c4340a60e6e18ff81453fe1b416" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..testing.list_processor<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>list_targets_cpp</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>testname,<sp/>_,<sp/>_,<sp/>_<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1list__processor_1a598be9bf16c59330d7350e0024b2f363" kindref="member">list_targets_cpp</ref>():</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root_namespace.add_functionname(testname.split(</highlight><highlight class="stringliteral">&apos;::&apos;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>func_prototypes<sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(root_namespace.gen_prototypes())</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>method_mappings<sp/>=<sp/>[</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;{\&quot;%s\&quot;,<sp/>::%s}&quot;</highlight><highlight class="normal"><sp/>%<sp/>(functionname,<sp/>functionname)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>functionname<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>root_namespace.get_functionnames()]</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>tmpl_path<sp/>=<sp/>projectdir.joinpath(</highlight><highlight class="stringliteral">&quot;libopenage/testing/testlist.cpp.template&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>tmpl_path.open()<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>tmpl:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>content<sp/>=<sp/>tmpl.read()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>content<sp/>=<sp/>content.replace(</highlight><highlight class="stringliteral">&apos;FUNCTION_PROTOTYPES&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">.join(func_prototypes))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>content<sp/>=<sp/>content.replace(</highlight><highlight class="stringliteral">&apos;METHOD_MAPPINGS&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;,\n\t&quot;</highlight><highlight class="normal">.join(method_mappings))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>gen_path<sp/>=<sp/>projectdir.joinpath(</highlight><highlight class="stringliteral">&quot;libopenage/testing/testlist.gen.cpp&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">with</highlight><highlight class="normal"><sp/>gen_path.open(</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>gen:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gen.write(content)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/cpp_testlist.py"/>
+  </compounddef>
+</doxygen>

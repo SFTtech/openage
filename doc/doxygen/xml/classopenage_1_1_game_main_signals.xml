@@ -20,7 +20,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gamestate/game_main.h" line="123" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="123" column="1"/>
+        <referencedby refid="classopenage_1_1_game_main_handle_1a7ae88934bf1fc3c90e397441657718d2" compoundref="game__main_8cpp" startline="115" endline="117">openage::GameMainHandle::announce_running</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_game_main_link_1a360f50de98c75d538bf46a03c3731874" compoundref="game__main__link_8cpp" startline="34" endline="36">openage::gui::GameMainLink::on_core_adopted</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1ae6ce3ec10ca18afc9cb7235c88ac7113" compoundref="game__control_8cpp" startline="775" endline="791">openage::GameControl::set_game</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,28 +31,28 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1933">
+      <node id="2503">
         <label>QObject</label>
       </node>
-      <node id="1932">
+      <node id="2502">
         <label>openage::GameMainSignals</label>
         <link refid="classopenage_1_1_game_main_signals"/>
-        <childnode refid="1933" relation="public-inheritance">
+        <childnode refid="2503" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1935">
+      <node id="2505">
         <label>QObject</label>
       </node>
-      <node id="1934">
+      <node id="2504">
         <label>openage::GameMainSignals</label>
         <link refid="classopenage_1_1_game_main_signals"/>
-        <childnode refid="1935" relation="public-inheritance">
+        <childnode refid="2505" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gamestate/game_main.h" line="118" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="118" bodyend="124"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" line="118" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gamestate/game_main.h" bodystart="118" bodyend="124"/>
     <listofallmembers>
       <member refid="classopenage_1_1_game_main_signals_1a9394777bfabb0220f14b18173e32fb5e" prot="public" virt="non-virtual"><scope>openage::GameMainSignals</scope><name>game_running</name></member>
     </listofallmembers>

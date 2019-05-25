@@ -1,11 +1,11 @@
-<map id="libopenage/game_control.h" name="libopenage/game_control.h">
-<area shape="rect" id="node1" title=" " alt="" coords="372,5,549,32"/>
-<area shape="rect" id="node2" href="$game__control_8cpp.xhtml" title=" " alt="" coords="121,87,312,114"/>
-<area shape="rect" id="node3" href="$game__control__link_8h.xhtml" title=" " alt="" coords="337,80,478,121"/>
-<area shape="rect" id="node8" href="$resources__list__model_8cpp.xhtml" title=" " alt="" coords="592,169,759,211"/>
-<area shape="rect" id="node9" href="$main_8cpp.xhtml" title=" " alt="" coords="553,87,694,114"/>
-<area shape="rect" id="node4" href="$actions__list__model_8h.xhtml" title=" " alt="" coords="5,169,156,211"/>
-<area shape="rect" id="node5" href="$actions__list__model_8cpp.xhtml" title=" " alt="" coords="61,259,212,300"/>
-<area shape="rect" id="node6" href="$category__contents__list__model_8cpp.xhtml" title=" " alt="" coords="231,169,402,211"/>
-<area shape="rect" id="node7" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="426,169,567,211"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/game_control.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/game_control.h">
+<area shape="rect" id="node1" title=" " alt="" coords="504,5,713,61"/>
+<area shape="rect" id="node2" href="$game__control_8cpp.xhtml" title=" " alt="" coords="200,109,409,165"/>
+<area shape="rect" id="node3" href="$game__control__link_8h.xhtml" title=" " alt="" coords="433,109,643,165"/>
+<area shape="rect" id="node8" href="$resources__list__model_8cpp.xhtml" title=" " alt="" coords="793,213,1003,269"/>
+<area shape="rect" id="node9" href="$main_8cpp.xhtml" title=" " alt="" coords="719,109,928,165"/>
+<area shape="rect" id="node4" href="$actions__list__model_8h.xhtml" title=" " alt="" coords="5,213,215,269"/>
+<area shape="rect" id="node5" href="$actions__list__model_8cpp.xhtml" title=" " alt="" coords="76,317,285,373"/>
+<area shape="rect" id="node6" href="$category__contents__list__model_8cpp.xhtml" title=" " alt="" coords="290,213,535,269"/>
+<area shape="rect" id="node7" href="$game__control__link_8cpp.xhtml" title=" " alt="" coords="560,213,769,269"/>
 </map>

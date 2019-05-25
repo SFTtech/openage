@@ -1,20 +1,20 @@
-<map id="libopenage/util/stringformatter.cpp" name="libopenage/util/stringformatter.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="318,5,535,32"/>
-<area shape="rect" id="node2" href="$stringformatter_8h.xhtml" title=" " alt="" coords="315,80,431,107"/>
-<area shape="rect" id="node18" title=" " alt="" coords="456,80,507,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="35,155,96,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="387,229,456,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="573,155,656,181"/>
-<area shape="rect" id="node6" href="$compiler_8h.xhtml" title=" " alt="" coords="120,155,235,181"/>
-<area shape="rect" id="node10" href="$externalsstream_8h.xhtml" title=" " alt="" coords="259,155,386,181"/>
-<area shape="rect" id="node12" href="$strings_8h.xhtml" title=" " alt="" coords="477,155,549,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="120,229,187,256"/>
-<area shape="rect" id="node8" title=" " alt="" coords="211,229,266,256"/>
-<area shape="rect" id="node9" href="$signal_8h.xhtml" title=" " alt="" coords="5,229,72,256"/>
-<area shape="rect" id="node11" title=" " alt="" coords="291,229,363,256"/>
-<area shape="rect" id="node13" title=" " alt="" coords="481,229,546,256"/>
-<area shape="rect" id="node14" title=" " alt="" coords="571,229,648,256"/>
-<area shape="rect" id="node15" title=" " alt="" coords="672,229,739,256"/>
-<area shape="rect" id="node16" title=" " alt="" coords="763,229,832,256"/>
-<area shape="rect" id="node17" title=" " alt="" coords="856,229,912,256"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/stringformatter.cpp" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/util/stringformatter.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="322,5,531,61"/>
+<area shape="rect" id="node2" href="$stringformatter_8h.xhtml" title=" " alt="" coords="315,109,431,136"/>
+<area shape="rect" id="node18" title=" " alt="" coords="456,109,507,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="35,184,96,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="387,259,456,285"/>
+<area shape="rect" id="node5" title=" " alt="" coords="573,184,656,211"/>
+<area shape="rect" id="node6" href="$compiler_8h.xhtml" title=" " alt="" coords="120,184,235,211"/>
+<area shape="rect" id="node10" href="$externalsstream_8h.xhtml" title=" " alt="" coords="259,184,386,211"/>
+<area shape="rect" id="node12" href="$strings_8h.xhtml" title=" " alt="" coords="477,184,549,211"/>
+<area shape="rect" id="node7" title=" " alt="" coords="120,259,187,285"/>
+<area shape="rect" id="node8" title=" " alt="" coords="211,259,266,285"/>
+<area shape="rect" id="node9" href="$signal_8h.xhtml" title=" " alt="" coords="5,259,72,285"/>
+<area shape="rect" id="node11" title=" " alt="" coords="291,259,363,285"/>
+<area shape="rect" id="node13" title=" " alt="" coords="481,259,546,285"/>
+<area shape="rect" id="node14" title=" " alt="" coords="571,259,648,285"/>
+<area shape="rect" id="node15" title=" " alt="" coords="672,259,739,285"/>
+<area shape="rect" id="node16" title=" " alt="" coords="763,259,832,285"/>
+<area shape="rect" id="node17" title=" " alt="" coords="856,259,912,285"/>
 </map>

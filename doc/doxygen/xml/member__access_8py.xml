@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="member__access_8py" kind="file" language="Python">
+    <compoundname>member_access.py</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access" prot="public">openage::convert::dataformat::member_access::MemberAccess</innerclass>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access">openage::convert::dataformat::member_access</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">#<sp/>TODO<sp/>pylint:<sp/>disable=C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>enum<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Enum</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">#<sp/>global<sp/>member<sp/>type<sp/>modifiers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access" kindref="compound">MemberAccess</ref>(Enum):</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>pylint<sp/>doesn&apos;t<sp/>understand<sp/>that<sp/>this<sp/>Enum<sp/>doesn&apos;t<sp/>need<sp/>any<sp/>members.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>pylint:<sp/>disable=too-few-public-methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>READ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;binary-read_member&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>READ_EXPORT<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;binary-read-export_member&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a1765e85cbfcc969bf001c2a9247049ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>NOREAD_EXPORT<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;noread-export_member&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a519262966a0b49e5a030eafb9ce42bcf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>READ_UNKNOWN<sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;read-unknown_member&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1a759286c760790e90fd94d0f6f8621391" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1convert_1_1dataformat_1_1member__access_1_1_member_access_1ac890404e0bb2ee3c89fee7a1ed97aca4" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">#<sp/>TODO<sp/>those<sp/>values<sp/>are<sp/>made<sp/>available<sp/>in<sp/>the<sp/>module&apos;s<sp/>global<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">#<sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>legacy<sp/>reasons,<sp/>to<sp/>avoid<sp/>breaking<sp/>other<sp/>modules<sp/>that<sp/>import</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">#<sp/><sp/><sp/><sp/><sp/><sp/>them<sp/>this<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">READ<sp/>=<sp/>MemberAccess.READ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Reads<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">READ_EXPORT<sp/>=<sp/>MemberAccess.READ_EXPORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>Reads<sp/>the<sp/>data<sp/>and<sp/>exports<sp/>it<sp/>to<sp/>a<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a41296c081b2f4abc3b142890f370171a" refkind="member"><highlight class="normal">NOREAD_EXPORT<sp/>=<sp/>MemberAccess.NOREAD_EXPORT</highlight></codeline>
+<codeline lineno="26" refid="namespaceopenage_1_1convert_1_1dataformat_1_1member__access_1a9cf50a3570760360bd1546e74263ea8a" refkind="member"><highlight class="normal">READ_UNKNOWN<sp/>=<sp/>MemberAccess.READ_UNKNOWN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>For<sp/>unknown<sp/>chunks<sp/>of<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/member_access.py"/>
+  </compounddef>
+</doxygen>

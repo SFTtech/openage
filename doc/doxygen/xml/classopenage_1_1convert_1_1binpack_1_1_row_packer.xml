@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1convert_1_1binpack_1_1_row_packer" kind="class" language="Python" prot="public">
+    <compoundname>openage::convert::binpack::RowPacker</compoundname>
+    <basecompoundref refid="classopenage_1_1convert_1_1binpack_1_1_packer" prot="public" virt="non-virtual">openage.convert.binpack.Packer</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1convert_1_1binpack_1_1_row_packer_1a133b67ad00bc29240d6adbca15f41529" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage.convert.binpack.RowPacker::mapping</definition>
+        <argsstring></argsstring>
+        <name>mapping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="53" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1convert_1_1binpack_1_1_row_packer_1aef2c5b7c7757e7a65cbd6ff368e8ebfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.convert.binpack.RowPacker.pack</definition>
+        <argsstring>(self, blocks)</argsstring>
+        <name>pack</name>
+        <reimplements refid="classopenage_1_1convert_1_1binpack_1_1_packer_1ac0edc354fd6c4e1d7396e66e877fc3f3">pack</reimplements>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>blocks</type>
+          <defname>blocks</defname>
+        </param>
+        <briefdescription>
+<para>Pack all the blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>   Each block must have a width and height attribute.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="52" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="52" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Packs blocks into rows, greedily trying to minimize the maximum width. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="917">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+      <node id="916">
+        <label>openage.convert.binpack.RowPacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_row_packer"/>
+        <childnode refid="917" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="919">
+        <label>openage.convert.binpack.Packer</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_packer"/>
+      </node>
+      <node id="918">
+        <label>openage.convert.binpack.RowPacker</label>
+        <link refid="classopenage_1_1convert_1_1binpack_1_1_row_packer"/>
+        <childnode refid="919" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" line="50" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/binpack.py" bodystart="50" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1adfd10fb188f5f1bd4336fe574dbe92ad" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a8916e3ed3816885ba27b052d461ac59e" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>height</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_row_packer_1a133b67ad00bc29240d6adbca15f41529" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>mapping</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1aab5863f0f8c143b5fa635b1dc66cd67f" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>margin</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_row_packer_1aef2c5b7c7757e7a65cbd6ff368e8ebfb" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>pack</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a9755eed59f354457fb58dcb946986c81" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>pos</name></member>
+      <member refid="classopenage_1_1convert_1_1binpack_1_1_packer_1a2975fbf546612145bd425fad338adf24" prot="public" virt="non-virtual"><scope>openage::convert::binpack::RowPacker</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,4 @@
+<map id="openage.cabextract.lzxdstream.LZXDStream.reset" name="openage.cabextract.lzxdstream.LZXDStream.reset">
+<area shape="rect" id="node1" title="Resets the decompressor back to the start of the file." alt="" coords="5,5,213,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream.xhtml#a8fd2e70117fac439af6bc4b7a1b003aa" title="Seeks to a given position." alt="" coords="261,5,469,47"/>
+</map>

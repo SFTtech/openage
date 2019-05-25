@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_50ca7421ab2f3fda9cc13a2d3f2b0d4a" kind="dir">
+    <compoundname>C:/Users/Jameson/Documents/git-projects/openage/openage/codegen</compoundname>
+    <innerfile refid="codegen_2____init_____8py">__init__.py</innerfile>
+    <innerfile refid="codegen_8py">codegen.py</innerfile>
+    <innerfile refid="coord_8py">coord.py</innerfile>
+    <innerfile refid="cpp__testlist_8py">cpp_testlist.py</innerfile>
+    <innerfile refid="gamespec__structs_8py">gamespec_structs.py</innerfile>
+    <innerfile refid="listing_8py">listing.py</innerfile>
+    <innerfile refid="codegen_2main_8py">main.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/codegen/"/>
+  </compounddef>
+</doxygen>

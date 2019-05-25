@@ -1,11 +1,15 @@
 <map id="openage::pyinterface::PyException" name="openage::pyinterface::PyException">
-<area shape="rect" id="node1" title=" " alt="" coords="163,1435,305,1541"/>
-<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_error.xhtml" title=" " alt="" coords="5,1141,185,1335"/>
-<area shape="rect" id="node3" title=" " alt="" coords="25,920,123,997"/>
-<area shape="rect" id="node4" href="$structopenage_1_1log_1_1message.xhtml" title=" " alt="" coords="148,876,333,1041"/>
-<area shape="rect" id="node5" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="176,736,305,813"/>
-<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="339,419,486,687"/>
-<area shape="rect" id="node7" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="217,264,347,356"/>
-<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="197,5,367,215"/>
-<area shape="rect" id="node9" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml" title=" " alt="" coords="209,1104,352,1372"/>
+<area shape="rect" id="node1" title=" " alt="" coords="163,2007,305,2113"/>
+<area shape="rect" id="node2" href="$classopenage_1_1error_1_1_error.xhtml" title=" " alt="" coords="5,1713,185,1907"/>
+<area shape="rect" id="node3" title=" " alt="" coords="25,1492,123,1569"/>
+<area shape="rect" id="node4" href="$structopenage_1_1log_1_1message.xhtml" title=" " alt="" coords="148,1448,333,1613"/>
+<area shape="rect" id="node5" href="$structopenage_1_1log_1_1level.xhtml" title=" " alt="" coords="176,1308,305,1385"/>
+<area shape="rect" id="node6" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="339,991,486,1259"/>
+<area shape="rect" id="node7" href="$structopenage_1_1log_1_1level__value.xhtml" title=" " alt="" coords="160,755,289,847"/>
+<area shape="rect" id="node8" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="139,403,310,612"/>
+<area shape="rect" id="node9" href="$classopenage_1_1util_1_1_enum_value.xhtml" title=" " alt="" coords="125,145,325,340"/>
+<area shape="rect" id="node10" title=" " alt="" coords="175,5,274,83"/>
+<area shape="rect" id="node11" href="$classopenage_1_1util_1_1_enum.xhtml" title=" " alt="" coords="313,675,525,928"/>
+<area shape="rect" id="node12" title=" " alt="" coords="373,469,465,546"/>
+<area shape="rect" id="node13" href="$classopenage_1_1pyinterface_1_1_py_object_ref.xhtml" title=" " alt="" coords="209,1676,352,1944"/>
 </map>

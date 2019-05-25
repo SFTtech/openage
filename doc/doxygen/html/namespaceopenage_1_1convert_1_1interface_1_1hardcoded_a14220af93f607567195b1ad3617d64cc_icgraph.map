@@ -1,0 +1,4 @@
+<map id="openage.convert.interface.hardcoded.is_ingame_hud_background" name="openage.convert.interface.hardcoded.is_ingame_hud_background">
+<area shape="rect" id="node1" title="True if in the hardcoded list of the known ingame hud backgrounds." alt="" coords="264,5,511,47"/>
+<area shape="rect" id="node2" href="$classopenage_1_1convert_1_1interface_1_1cutter_1_1_interface_cutter.xhtml#ad9a6e6566a8ce6f24c07f113cd0a25d4" title="Create subtextures by searching for patterns at hardcoded positions." alt="" coords="5,5,216,47"/>
+</map>

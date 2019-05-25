@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1threading_1_1_closable_queue" kind="class" language="Python" prot="public">
+    <compoundname>openage::util::threading::ClosableQueue</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Queue</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.threading.ClosableQueue::closed</definition>
+        <argsstring></argsstring>
+        <name>closed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="64" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" compoundref="threading_8py" startline="75" endline="79">openage.util.threading.ClosableQueue.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>openage::util.threading.ClosableQueue::close_reason</definition>
+        <argsstring></argsstring>
+        <name>close_reason</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" compoundref="threading_8py" startline="75" endline="79">openage.util.threading.ClosableQueue.close</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a6eb3656c2e710770dd12433d36598384" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.ClosableQueue.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.ClosableQueue.put</definition>
+        <argsstring>(self, item, block=True, timeout=None)</argsstring>
+        <name>put</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>item</type>
+          <defname>item</defname>
+        </param>
+        <param>
+          <type>block</type>
+          <defname>block</defname>
+          <defval>True</defval>
+        </param>
+        <param>
+          <type>timeout</type>
+          <defname>timeout</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="67" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="67" bodyend="70"/>
+        <references refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" compoundref="threading_8py" startline="84" endline="93">openage.util.threading.ClosableQueue.raise_if_closed</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.ClosableQueue.close</definition>
+        <argsstring>(self, reason=None)</argsstring>
+        <name>close</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>reason</type>
+          <defname>reason</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="75" bodyend="79"/>
+        <references refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" compoundref="threading_8py" startline="65">openage.util.threading.ClosableQueue.close_reason</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" compoundref="filelike_2abstract_8py" startline="25">openage.util.filelike.abstract.FileLikeObject.closed</references>
+        <references refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" compoundref="threading_8py" startline="64">openage.util.threading.ClosableQueue.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a2b67f0ce500799215ac4bbd03bf2d14b" compoundref="stream_8py" startline="94">openage.util.filelike.stream.StreamSeekBuffer.closed</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a0a2b0d332332f214f45cf360462aea8b" compoundref="lzxdstream_8py" startline="99">openage.cabextract.lzxdstream.LZXDStream.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a7e7f527351f4e3f9b1eab58e6fae37cd" compoundref="fifo_8py" startline="120">openage.util.filelike.fifo.FIFO.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a6feb49befd79b8cc0f8302f4bba739f9" compoundref="stream_8py" startline="153">openage.util.filelike.stream.StreamFragment.closed</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa3e35032def0fef5bca09bedb21e96e3" compoundref="cab_8py" startline="551">openage.cabextract.cab.CABFolderStream.closed</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">shared_ptr&lt; chunk_info_t &gt;::mutex</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::mutex</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">openage::datastructure::ConcurrentQueue&lt; T &gt;::mutex</references>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def openage.util.threading.ClosableQueue.raise_if_closed</definition>
+        <argsstring>(self)</argsstring>
+        <name>raise_if_closed</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="84" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="84" bodyend="93"/>
+        <references refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" compoundref="threading_8py" startline="65">openage.util.threading.ClosableQueue.close_reason</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1abstract_1_1_file_like_object_1a9c0ceaeccc3aa95e32f6c3a2e26685ae" compoundref="filelike_2abstract_8py" startline="25">openage.util.filelike.abstract.FileLikeObject.closed</references>
+        <references refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" compoundref="threading_8py" startline="64">openage.util.threading.ClosableQueue.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_seek_buffer_1a2b67f0ce500799215ac4bbd03bf2d14b" compoundref="stream_8py" startline="94">openage.util.filelike.stream.StreamSeekBuffer.closed</references>
+        <references refid="classopenage_1_1cabextract_1_1lzxdstream_1_1_l_z_x_d_stream_1a0a2b0d332332f214f45cf360462aea8b" compoundref="lzxdstream_8py" startline="99">openage.cabextract.lzxdstream.LZXDStream.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1fifo_1_1_f_i_f_o_1a7e7f527351f4e3f9b1eab58e6fae37cd" compoundref="fifo_8py" startline="120">openage.util.filelike.fifo.FIFO.closed</references>
+        <references refid="classopenage_1_1util_1_1filelike_1_1stream_1_1_stream_fragment_1a6feb49befd79b8cc0f8302f4bba739f9" compoundref="stream_8py" startline="153">openage.util.filelike.stream.StreamFragment.closed</references>
+        <references refid="classopenage_1_1cabextract_1_1cab_1_1_c_a_b_folder_stream_1aa3e35032def0fef5bca09bedb21e96e3" compoundref="cab_8py" startline="551">openage.cabextract.cab.CABFolderStream.closed</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">shared_ptr&lt; chunk_info_t &gt;::mutex</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;::mutex</references>
+        <references refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" compoundref="concurrent__queue_8h" startline="82">openage::datastructure::ConcurrentQueue&lt; T &gt;::mutex</references>
+        <referencedby refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" compoundref="threading_8py" startline="67" endline="70">openage.util.threading.ClosableQueue.put</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>For use in concurrent_chain. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Behaves like Queue until <ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" kindref="member">close()</ref> has been called. After that, any call to <ref refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" kindref="member">put()</ref> raises RuntimeError. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6112">
+        <label>Queue</label>
+      </node>
+      <node id="6111">
+        <label>openage.util.threading.ClosableQueue</label>
+        <link refid="classopenage_1_1util_1_1threading_1_1_closable_queue"/>
+        <childnode refid="6112" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6114">
+        <label>Queue</label>
+      </node>
+      <node id="6113">
+        <label>openage.util.threading.ClosableQueue</label>
+        <link refid="classopenage_1_1util_1_1threading_1_1_closable_queue"/>
+        <childnode refid="6114" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" line="61" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/openage/util/threading.py" bodystart="61" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a6eb3656c2e710770dd12433d36598384" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>__init__</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a84e871a44b8f1af0616947b0701e54e3" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a842af1896a917755abff64f6a0756ab1" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>close_reason</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a4e563df7730cc31695251559626fbb15" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>closed</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a7c932a9c234802819392d7d81885192f" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>put</name></member>
+      <member refid="classopenage_1_1util_1_1threading_1_1_closable_queue_1a94efea86c7c77550eae76db99d8d5ebf" prot="public" virt="non-virtual"><scope>openage::util::threading::ClosableQueue</scope><name>raise_if_closed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

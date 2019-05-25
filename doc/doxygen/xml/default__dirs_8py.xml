@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="default__dirs_8py" kind="file" language="Python">
+    <compoundname>default_dirs.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1default__dirs">openage::default_dirs</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1default__dirs" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">Code<sp/>for<sp/>locating<sp/>the<sp/>game<sp/>assets.</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral">All<sp/>access<sp/>to<sp/>game<sp/>assets<sp/>should<sp/>happen<sp/>through<sp/>objects<sp/>obtained<sp/>from<sp/>get().</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>pathlib</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>sys</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">#<sp/>TODO:<sp/>use<sp/>os.pathsep<sp/>for<sp/>multipath<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Linux-specific<sp/>dirs<sp/>according<sp/>to<sp/>the<sp/>freedesktop<sp/>basedir<sp/>standard:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">#<sp/>https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">#<sp/>concretely:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_CONFIG_HOME<sp/>=<sp/>$HOME/.config</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_DATA_HOME<sp/>=<sp/>$HOME/.local/share</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_DATA_DIRS<sp/>=<sp/>/usr/local/share/:/usr/share/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_CONFIG_DIRS<sp/>=<sp/>/etc/xdg</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_CACHE_HOME<sp/>=<sp/>$HOME/.cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">#<sp/>$XDG_RUNTIME_DIR<sp/>=<sp/>/run/user/$UID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">#</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">LINUX_DIRS<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;config_home&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_CONFIG_HOME&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;{HOME}/.config&quot;</highlight><highlight class="normal">,<sp/>{</highlight><highlight class="stringliteral">&quot;HOME&quot;</highlight><highlight class="normal">})),</highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1default__dirs_1a1c4ae102b3ee423e04198b68e978f239" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;data_home&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_DATA_HOME&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;{HOME}/.local/share&quot;</highlight><highlight class="normal">,<sp/>{</highlight><highlight class="stringliteral">&quot;HOME&quot;</highlight><highlight class="normal">})),</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;data_dirs&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_DATA_DIRS&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;/usr/local/share/:/usr/share/&quot;</highlight><highlight class="normal">,<sp/>{})),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;config_dirs&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_CONFIG_DIRS&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;/etc/xdg&quot;</highlight><highlight class="normal">,<sp/>{})),</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;cache_home&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_CACHE_HOME&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;{HOME}/.cache&quot;</highlight><highlight class="normal">,<sp/>{</highlight><highlight class="stringliteral">&quot;HOME&quot;</highlight><highlight class="normal">})),</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;runtime_dir&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;XDG_RUNTIME_DIR&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="stringliteral">&quot;/run/user/$UID&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Windows-specific<sp/>paths</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">WINDOWS_DIRS<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;config_home&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;APPDATA&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="40" refid="namespaceopenage_1_1default__dirs_1a92d81c832edfd6119553108bab2d9650" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;data_home&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;APPDATA&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;config_dirs&quot;</highlight><highlight class="normal">:<sp/>(</highlight><highlight class="stringliteral">&quot;ALLUSERSPROFILE&quot;</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keyword">False</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>TODO:<sp/>other<sp/>windows<sp/>paths</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1default__dirs_1a34f22148784ad0f2ac5630ede94f7567" kindref="member">get_dir</ref>(which):</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Returns<sp/>directories<sp/>used<sp/>for<sp/>data<sp/>and<sp/>config<sp/>storage.</highlight></codeline>
+<codeline lineno="49"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>returns<sp/>pathlib.Path</highlight></codeline>
+<codeline lineno="50"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="namespaceopenage_1_1default__dirs_1a34f22148784ad0f2ac5630ede94f7567" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>platform_table<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>sys.platform.startswith(</highlight><highlight class="stringliteral">&quot;linux&quot;</highlight><highlight class="normal">):</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>platform_table<sp/>=<sp/>LINUX_DIRS</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>sys.platform.startswith(</highlight><highlight class="stringliteral">&quot;darwin&quot;</highlight><highlight class="normal">):</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&quot;macOS<sp/>not<sp/>really<sp/>supported&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>sys.platform.startswith(</highlight><highlight class="stringliteral">&quot;win32&quot;</highlight><highlight class="normal">):</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>platform_table<sp/>=<sp/>WINDOWS_DIRS</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&quot;unsupported<sp/>platform:<sp/>&apos;%s&apos;&quot;</highlight><highlight class="normal"><sp/>%<sp/>sys.platform)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>which<sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>platform_table:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>ValueError(</highlight><highlight class="stringliteral">&quot;unknown<sp/>directory<sp/>requested:<sp/>&apos;{}&apos;&quot;</highlight><highlight class="normal">.format(which))</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>fetch<sp/>the<sp/>directory<sp/>template</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>env_var,<sp/>(default_template,<sp/>required_envs)<sp/>=<sp/>platform_table[which]</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>then<sp/>create<sp/>the<sp/>result<sp/>from<sp/>the<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>env_val<sp/>=<sp/>os.environ.get(env_var)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>env_val:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>=<sp/>env_val</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>default_template:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>env_vars<sp/>=<sp/>{var:<sp/>os.environ.get(var)<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>var<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>required_envs}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>all(env_vars.values()):</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>reconstruct<sp/>{},<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;missing<sp/>env<sp/>variables:<sp/>&apos;{}&apos;&quot;</highlight><highlight class="normal">.format(</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>which,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[var<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(var,<sp/>val)<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>env_var.items()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>val<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">].join(</highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path<sp/>=<sp/>default_template.format(**env_vars)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">raise</highlight><highlight class="normal"><sp/>Exception(</highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>find<sp/>&apos;{}&apos;<sp/>in<sp/>environment&quot;</highlight><highlight class="normal">.format(which))</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pathlib.Path(path)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/default_dirs.py"/>
+  </compounddef>
+</doxygen>

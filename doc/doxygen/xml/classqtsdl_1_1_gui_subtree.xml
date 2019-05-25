@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_subtree.h" line="33" column="1" bodyfile="libopenage/gui/guisys/public/gui_subtree.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_subtree.h" line="34" column="1" bodyfile="libopenage/gui/guisys/public/gui_subtree.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_subtree.h" line="24" column="1" bodyfile="libopenage/gui/guisys/public/gui_subtree.cpp" bodystart="9" bodyend="21"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.cpp" bodystart="9" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classqtsdl_1_1_gui_subtree_1ab20b5401839af2c1c476b3c857556bc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/guisys/public/gui_subtree.h" line="30" column="1" bodyfile="libopenage/gui/guisys/public/gui_subtree.cpp" bodystart="23" bodyend="23"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.cpp" bodystart="23" bodyend="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -88,12 +88,12 @@
 <para>rootdir is the qml file root folder which is watched for changes. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2780">
+      <node id="6488">
         <label>qtsdl::GuiSubtree</label>
         <link refid="classqtsdl_1_1_gui_subtree"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/guisys/public/gui_subtree.h" line="22" column="1" bodyfile="libopenage/gui/guisys/public/gui_subtree.h" bodystart="22" bodyend="35"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" line="22" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/public/gui_subtree.h" bodystart="22" bodyend="35"/>
     <listofallmembers>
       <member refid="classqtsdl_1_1_gui_subtree_1ab0d693dd7240b137af4ba6c47cb6362e" prot="public" virt="non-virtual"><scope>qtsdl::GuiSubtree</scope><name>GuiSubtree</name></member>
       <member refid="classqtsdl_1_1_gui_subtree_1a141ca92272c6cc5e6c97ea10b7e9b8e0" prot="private" virt="non-virtual"><scope>qtsdl::GuiSubtree</scope><name>GuiSubtreeImpl</name></member>

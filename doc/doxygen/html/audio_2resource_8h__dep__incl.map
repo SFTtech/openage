@@ -1,10 +1,10 @@
-<map id="libopenage/audio/resource.h" name="libopenage/audio/resource.h">
-<area shape="rect" id="node1" title=" " alt="" coords="303,5,487,32"/>
-<area shape="rect" id="node2" href="$audio__manager_8cpp.xhtml" title=" " alt="" coords="5,80,160,121"/>
-<area shape="rect" id="node3" href="$dynamic__resource_8h.xhtml" title=" " alt="" coords="185,80,357,121"/>
-<area shape="rect" id="node5" href="$audio_2resource_8cpp.xhtml" title=" " alt="" coords="295,177,494,203"/>
-<area shape="rect" id="node6" href="$in__memory__resource_8h.xhtml" title=" " alt="" coords="432,80,576,121"/>
-<area shape="rect" id="node8" href="$sound_8cpp.xhtml" title=" " alt="" coords="601,87,783,114"/>
-<area shape="rect" id="node4" href="$dynamic__resource_8cpp.xhtml" title=" " alt="" coords="99,169,271,211"/>
-<area shape="rect" id="node7" href="$in__memory__resource_8cpp.xhtml" title=" " alt="" coords="518,169,677,211"/>
+<map id="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/resource.h" name="C:/Users/Jameson/Documents/git&#45;projects/openage/libopenage/audio/resource.h">
+<area shape="rect" id="node1" title=" " alt="" coords="381,5,591,61"/>
+<area shape="rect" id="node2" href="$audio__manager_8cpp.xhtml" title=" " alt="" coords="5,109,215,165"/>
+<area shape="rect" id="node3" href="$dynamic__resource_8h.xhtml" title=" " alt="" coords="239,109,448,165"/>
+<area shape="rect" id="node5" href="$audio_2resource_8cpp.xhtml" title=" " alt="" coords="381,213,591,269"/>
+<area shape="rect" id="node6" href="$in__memory__resource_8h.xhtml" title=" " alt="" coords="524,109,733,165"/>
+<area shape="rect" id="node8" href="$sound_8cpp.xhtml" title=" " alt="" coords="757,109,967,165"/>
+<area shape="rect" id="node4" href="$dynamic__resource_8cpp.xhtml" title=" " alt="" coords="148,213,357,269"/>
+<area shape="rect" id="node7" href="$in__memory__resource_8cpp.xhtml" title=" " alt="" coords="615,213,824,269"/>
 </map>

@@ -16,7 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="97" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="97" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="97" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ae8514f8a1d3cbc486739b284e9aa6363" compoundref="mesh__data_8cpp" startline="68" endline="70">get_inputs</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" compoundref="mesh__data_8cpp" startline="60" endline="66">vert_size</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a25777981ba7e0b61f05057aa46d13e2e" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt;</type>
@@ -30,7 +32,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="102" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="102" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="102" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="102" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" compoundref="mesh__data_8cpp" startline="50" endline="58">add_shader_input_map</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aadb7fe23f4de138d41db62cf561dd30f" compoundref="mesh__data_8cpp" startline="72" endline="74">get_shader_input_map</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4341539ce916999fff622c87be27c263" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
@@ -44,7 +48,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="105" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="105" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="105" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ab4e8c28446f4ace83ef39b2e8404213c" compoundref="mesh__data_8cpp" startline="76" endline="78">get_layout</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1abc3d84a9d1e0aec615037acd32efa4a5" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
@@ -58,7 +63,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="108" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="108" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="108" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a5fee3c6c1055d24831ff1d3f70f84ce6" compoundref="mesh__data_8cpp" startline="80" endline="82">get_primitive</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1afbb070a581eb6af7094eb621d14294af" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">index_t</ref> &gt;</type>
@@ -72,7 +78,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="111" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="111" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="111" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac7d92ae6a61fdb107af66136ef469fef" compoundref="mesh__data_8cpp" startline="84" endline="86">get_index_type</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -100,7 +107,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="62" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="39" bodyend="42"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="62" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="39" bodyend="42"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4d8947d3bdc86e93912ef4befc82a8ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -130,7 +138,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="65" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="44" bodyend="48"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="65" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="44" bodyend="48"/>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -148,7 +157,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="74" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="50" bodyend="58"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="74" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="50" bodyend="58"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a25777981ba7e0b61f05057aa46d13e2e" compoundref="mesh__data_8h" startline="102">shader_input_map</references>
+        <references refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" compoundref="compiler_8h" startline="53">unlikely</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ae8514f8a1d3cbc486739b284e9aa6363" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref> &gt; &amp;</type>
@@ -162,7 +176,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="77" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="68" bodyend="70"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="77" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="68" bodyend="70"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac512843d39139e54c1d7f94c7ffff2f4" compoundref="mesh__data_8h" startline="97">inputs</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aadb7fe23f4de138d41db62cf561dd30f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt; const  &amp;</type>
@@ -176,7 +191,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="80" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="72" bodyend="74"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="80" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="72" bodyend="74"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a25777981ba7e0b61f05057aa46d13e2e" compoundref="mesh__data_8h" startline="102">shader_input_map</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ab4e8c28446f4ace83ef39b2e8404213c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
@@ -190,7 +206,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="83" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="76" bodyend="78"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="83" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="76" bodyend="78"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4341539ce916999fff622c87be27c263" compoundref="mesh__data_8h" startline="105">layout</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>size_t</type>
@@ -204,7 +221,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="86" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="60" bodyend="66"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="86" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="60" bodyend="66"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac512843d39139e54c1d7f94c7ffff2f4" compoundref="mesh__data_8h" startline="97">inputs</references>
+        <references refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" compoundref="mesh__data_8cpp" startline="31" endline="33">openage::renderer::resources::vertex_input_size</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a5fee3c6c1055d24831ff1d3f70f84ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
@@ -218,7 +237,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="89" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="80" bodyend="82"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="80" bodyend="82"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1abc3d84a9d1e0aec615037acd32efa4a5" compoundref="mesh__data_8h" startline="108">primitive</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac7d92ae6a61fdb107af66136ef469fef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">index_t</ref> &gt;</type>
@@ -232,7 +252,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/resources/mesh_data.h" line="93" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="84" bodyend="86"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="93" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.cpp" bodystart="84" bodyend="86"/>
+        <references refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1afbb070a581eb6af7094eb621d14294af" compoundref="mesh__data_8h" startline="111">index_type</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -241,12 +262,12 @@
 <para>Information about vertex input data - which components a vertex contains and how vertices are laid out in memory. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4934">
+      <node id="4768">
         <label>openage::renderer::resources::VertexInputInfo</label>
         <link refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info"/>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/resources/mesh_data.h" line="59" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="59" bodyend="112"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/resources/mesh_data.h" bodystart="59" bodyend="112"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>add_shader_input_map</name></member>
       <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac7d92ae6a61fdb107af66136ef469fef" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_index_type</name></member>

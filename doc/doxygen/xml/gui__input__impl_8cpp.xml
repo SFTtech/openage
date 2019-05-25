@@ -78,7 +78,7 @@
         <label>QQuickWindow</label>
       </node>
       <node id="13129">
-        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp</label>
         <link refid="gui__input__impl_8cpp"/>
         <childnode refid="13130" relation="include">
         </childnode>
@@ -334,6 +334,6 @@
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/gui/guisys/private/gui_input_impl.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/gui_input_impl.cpp"/>
   </compounddef>
 </doxygen>

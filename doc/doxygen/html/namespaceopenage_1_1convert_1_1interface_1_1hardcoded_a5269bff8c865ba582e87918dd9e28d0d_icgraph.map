@@ -1,0 +1,8 @@
+<map id="openage.convert.interface.hardcoded.ingame_hud_background_index" name="openage.convert.interface.hardcoded.ingame_hud_background_index">
+<area shape="rect" id="node1" title="Index in the hardcoded list of the known ingame hud backgrounds to match the civ." alt="" coords="1289,5,1568,47"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1convert_1_1interface_1_1rename.xhtml#a045e4e1a64322c77bfee10f24e8613e7" title="Renaming interface assets and splitting into directories." alt="" coords="1000,5,1241,47"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a7d1272350acf362f78ea6e0373880c59" title=" " alt="" coords="733,13,952,39"/>
+<area shape="rect" id="node4" href="$namespaceopenage_1_1convert_1_1driver.xhtml#a43cdddabcdd60c8443967f3b81047bd4" title=" " alt="" coords="491,5,685,47"/>
+<area shape="rect" id="node5" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ad7f7fa271abe4e1c3bc43160e84bc58f" title="Converts the media part." alt="" coords="248,5,443,47"/>
+<area shape="rect" id="node6" href="$namespaceopenage_1_1convert_1_1driver.xhtml#ac0a5dae7195fabd749cffb70a062a647" title=" " alt="" coords="5,13,200,39"/>
+</map>

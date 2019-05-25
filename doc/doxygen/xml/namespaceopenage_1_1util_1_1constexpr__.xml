@@ -24,7 +24,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="17" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="17" bodyend="24"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="17" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="17" bodyend="24"/>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a61c4b546903316ecf379bfe7bd9553f1" compoundref="constexpr_8h" startline="59" endline="69">get_prefix</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr size_t</type>
@@ -42,7 +43,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="30" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="30" bodyend="36"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="30" bodyend="36"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" compoundref="strings_8cpp" startline="64" endline="69">openage::util::copy_string</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a671299bb61bb30cecb3fa42de25333b0" compoundref="constexpr_8h" startline="75" endline="77">create_truncated_string_literal</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a61c4b546903316ecf379bfe7bd9553f1" compoundref="constexpr_8h" startline="59" endline="69">get_prefix</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" compoundref="fds_8cpp" startline="57" endline="59">openage::util::FD::puts</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1abeb6a94572d93a14498661545b8332ec" compoundref="strings_8cpp" startline="72" endline="89">openage::util::rstrip</referencedby>
+        <referencedby refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" compoundref="error_2handlers_8cpp" startline="107" endline="116">openage::error::sigsegv_handler</referencedby>
+        <referencedby refid="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" compoundref="unicode_8cpp" startline="154" endline="165">openage::util::utf8_last_char_size</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1a61c4b546903316ecf379bfe7bd9553f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr <ref refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal" kindref="compound">truncated_string_literal</ref></type>
@@ -65,7 +74,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="59" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="59" bodyend="69"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="59" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="59" bodyend="69"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a7bc24bcb83bbac7bbf75686a8331cd21" compoundref="constexpr_8h" startline="17" endline="24">streq</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">strlen</references>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1a671299bb61bb30cecb3fa42de25333b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr <ref refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal" kindref="compound">truncated_string_literal</ref></type>
@@ -83,7 +95,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="75" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="75" bodyend="77"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="75" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="75" bodyend="77"/>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" compoundref="constexpr_8h" startline="30" endline="36">strlen</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a6a9d0df52733d9d7ae0bcc1bc561e38f" compoundref="constexpr_8h" startline="111" endline="113">strip_prefix</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1aa4f041b85b8ae3df628165f73397d1fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr bool</type>
@@ -105,7 +120,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="82" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="82" bodyend="89"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="82" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="82" bodyend="89"/>
+        <references refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1a8377276ec3801cd8a5bc89f72ac5c590" compoundref="constexpr_8h" startline="50">openage::util::constexpr_::truncated_string_literal::length</references>
+        <references refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1ac55b8849ba71aa1dd2eb6b6b0b97bf0c" compoundref="constexpr_8h" startline="49">openage::util::constexpr_::truncated_string_literal::literal</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1ae2139acfbb2a838e378d0652e23943b8" compoundref="constexpr_8h" startline="97" endline="103">strip_prefix</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1ae2139acfbb2a838e378d0652e23943b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr const char *</type>
@@ -128,7 +147,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="97" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="97" bodyend="103"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="97" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="97" bodyend="103"/>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1aa4f041b85b8ae3df628165f73397d1fa" compoundref="constexpr_8h" startline="82" endline="89">has_prefix</references>
+        <references refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1a8377276ec3801cd8a5bc89f72ac5c590" compoundref="constexpr_8h" startline="50">openage::util::constexpr_::truncated_string_literal::length</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <referencedby refid="namespaceopenage_1_1util_1_1constexpr___1a6a9d0df52733d9d7ae0bcc1bc561e38f" compoundref="constexpr_8h" startline="111" endline="113">strip_prefix</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceopenage_1_1util_1_1constexpr___1a6a9d0df52733d9d7ae0bcc1bc561e38f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>constexpr const char *</type>
@@ -151,13 +174,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/util/constexpr.h" line="111" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="111" bodyend="113"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="111" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" bodystart="111" bodyend="113"/>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1a671299bb61bb30cecb3fa42de25333b0" compoundref="constexpr_8h" startline="75" endline="77">create_truncated_string_literal</references>
+        <references refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" compoundref="pyobject_8cpp" startline="331" endline="335">openage::py::str</references>
+        <references refid="namespaceopenage_1_1util_1_1constexpr___1ae2139acfbb2a838e378d0652e23943b8" compoundref="constexpr_8h" startline="97" endline="103">strip_prefix</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="libopenage/util/constexpr.h" line="12" column="1"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/util/constexpr.h" line="12" column="1"/>
   </compounddef>
 </doxygen>

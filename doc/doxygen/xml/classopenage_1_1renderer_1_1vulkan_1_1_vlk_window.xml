@@ -16,7 +16,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="31" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="31" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" prot="private" static="no" mutable="no">
         <type>VkInstance</type>
@@ -29,7 +30,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="33" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a1a95d6a87cc1e0667957e894045d4ab7" compoundref="windowvk_8cpp" startline="181" endline="183">get_instance</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">VlkWindow</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" compoundref="windowvk_8cpp" startline="173" endline="179">~VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" prot="private" static="no" mutable="no">
         <type>VkSurfaceKHR</type>
@@ -42,7 +46,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="34" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="34" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="34" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a23c9e0ab58c22aea956ff90b4fd8666f" compoundref="windowvk_8cpp" startline="185" endline="187">get_surface</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">VlkWindow</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" compoundref="windowvk_8cpp" startline="173" endline="179">~VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ad0733957d19a25d744d0085538ae2013" prot="private" static="no" mutable="no">
         <type>VkDebugReportCallbackEXT</type>
@@ -55,7 +62,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="36" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="36" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="36" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" compoundref="windowvk_8cpp" startline="173" endline="179">~VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" kindref="compound">VlkLoader</ref></type>
@@ -68,7 +76,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="38" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="38" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="38" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">VlkWindow</referencedby>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" compoundref="windowvk_8cpp" startline="173" endline="179">~VlkWindow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" prot="private" static="no" mutable="no">
         <type>SDL_Window *</type>
@@ -81,7 +91,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="40" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="40" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" compoundref="windowvk_8cpp" startline="80" endline="171">VlkWindow</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -100,7 +111,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="43" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="80" bodyend="171"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="43" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="80" bodyend="171"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a44df2534a2dc9d0826d6650cc54d6af2" compoundref="windowvk_8h" startline="31">capabilities</references>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" compoundref="windowvk_8h" startline="25">openage::renderer::vulkan::vlk_capabilities::extensions</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" compoundref="loader_8cpp" startline="15" endline="22">openage::renderer::vulkan::VlkLoader::init</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" compoundref="windowvk_8h" startline="33">instance</references>
+        <references refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" compoundref="windowvk_8h" startline="22">openage::renderer::vulkan::vlk_capabilities::layers</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" compoundref="windowvk_8h" startline="38">loader</references>
+        <references refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" compoundref="sdl__global_8cpp" startline="56" endline="58">openage::renderer::make_sdl_available</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" compoundref="window_8h" startline="54">openage::renderer::Window::size</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" compoundref="windowvk_8h" startline="34">surface</references>
+        <references refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" compoundref="util_8h" startline="50">VK_CALL_CHECKED</references>
+        <references refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" compoundref="util_8h" startline="11" endline="18">vk_do_ritual</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" compoundref="loader_8cpp" startline="25" endline="40">openage::renderer::vulkan::VlkLoader::vkCreateDebugReportCallbackEXT</references>
+        <references refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" compoundref="windowvk_8cpp" startline="22" endline="35">openage::renderer::vulkan::vlk_debug_cb</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" compoundref="windowvk_8h" startline="40">window</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -113,7 +140,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="44" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="173" bodyend="179"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="44" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="173" bodyend="179"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ad0733957d19a25d744d0085538ae2013" compoundref="windowvk_8h" startline="36">debug_callback</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" compoundref="windowvk_8h" startline="33">instance</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" compoundref="windowvk_8h" startline="38">loader</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" compoundref="windowvk_8h" startline="34">surface</references>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" compoundref="loader_8cpp" startline="42" endline="54">openage::renderer::vulkan::VlkLoader::vkDestroyDebugReportCallbackEXT</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a1a95d6a87cc1e0667957e894045d4ab7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>VkInstance</type>
@@ -126,7 +158,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="46" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="181" bodyend="183"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="46" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="181" bodyend="183"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" compoundref="windowvk_8h" startline="33">instance</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a23c9e0ab58c22aea956ff90b4fd8666f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>VkSurfaceKHR</type>
@@ -139,7 +172,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/renderer/vulkan/windowvk.h" line="47" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="185" bodyend="187"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="47" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.cpp" bodystart="185" bodyend="187"/>
+        <references refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" compoundref="windowvk_8h" startline="34">surface</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -147,44 +181,44 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="4960">
+      <node id="4823">
         <label>openage::renderer::Window</label>
         <link refid="classopenage_1_1renderer_1_1_window"/>
       </node>
-      <node id="4959">
+      <node id="4822">
         <label>openage::renderer::vulkan::VlkWindow</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window"/>
-        <childnode refid="4960" relation="public-inheritance">
+        <childnode refid="4823" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4964">
+      <node id="4827">
         <label>openage::renderer::vulkan::VlkLoader</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader"/>
       </node>
-      <node id="4963">
+      <node id="4826">
         <label>openage::renderer::vulkan::vlk_capabilities</label>
         <link refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities"/>
       </node>
-      <node id="4962">
+      <node id="4825">
         <label>openage::renderer::Window</label>
         <link refid="classopenage_1_1renderer_1_1_window"/>
       </node>
-      <node id="4961">
+      <node id="4824">
         <label>openage::renderer::vulkan::VlkWindow</label>
         <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window"/>
-        <childnode refid="4962" relation="public-inheritance">
+        <childnode refid="4825" relation="public-inheritance">
         </childnode>
-        <childnode refid="4963" relation="usage">
+        <childnode refid="4826" relation="usage">
           <edgelabel>-capabilities</edgelabel>
         </childnode>
-        <childnode refid="4964" relation="usage">
+        <childnode refid="4827" relation="usage">
           <edgelabel>-loader</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/renderer/vulkan/windowvk.h" line="30" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="30" bodyend="48"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/renderer/vulkan/windowvk.h" bodystart="30" bodyend="48"/>
     <listofallmembers>
       <member refid="classopenage_1_1renderer_1_1_window_1a822983220cdde11447b7e66cb9f02178" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkWindow</scope><name>add_key_callback</name></member>
       <member refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkWindow</scope><name>add_mouse_button_callback</name></member>

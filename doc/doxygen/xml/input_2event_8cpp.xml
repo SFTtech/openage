@@ -15,7 +15,7 @@
         <label>unordered_set</label>
       </node>
       <node id="7470">
-        <label>libopenage/input/event.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp</label>
         <link refid="input_2event_8cpp"/>
         <childnode refid="7471" relation="include">
         </childnode>
@@ -70,16 +70,16 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17" refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" refkind="member"><highlight class="normal">std::vector&lt;event_class&gt;<sp/><ref refid="classopenage_1_1input_1_1_class_code_1a5d55c691be6f36279534fbfb91206e11" kindref="member">ClassCode::get_classes</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;event_class&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;event_class&gt;<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>event_base<sp/>to<sp/>traverse<sp/>up<sp/>the<sp/>class<sp/>tree</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref><sp/>ec<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_class_code_1abff7aa73f0e6abab9fe2cf91e524cc66" kindref="member">eclass</ref>;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(ec);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1input_1ad9e6713c5f62a1f050142ffd4993cc7e" kindref="member">event_base</ref>.count(ec)<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ec<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1ad9e6713c5f62a1f050142ffd4993cc7e" kindref="member">event_base</ref>.at(ec);</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(ec);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.push_back(ec);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
@@ -122,17 +122,17 @@
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69" refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" kindref="member">Event::info</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>result;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;[Event:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(static_cast&lt;int&gt;(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1abff7aa73f0e6abab9fe2cf91e524cc66" kindref="member">eclass</ref>));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;[Event:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(static_cast&lt;int&gt;(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1abff7aa73f0e6abab9fe2cf91e524cc66" kindref="member">eclass</ref>));</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" kindref="member">code</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" kindref="member">code</ref>);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_event_1a99740091e0cdf50a32f93b70967df361" kindref="member">as_char</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_event_1a99740091e0cdf50a32f93b70967df361" kindref="member">as_char</ref>();</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.size());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref><sp/>+=<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.size());</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;)]&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
@@ -165,17 +165,17 @@
 <codeline lineno="110" refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" kindref="member">sdl_mod</ref>(SDL_Keymod<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>modifiers<sp/>like<sp/>num<sp/>lock<sp/>and<sp/>caps<sp/>lock</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mod<sp/>=<sp/>static_cast&lt;SDL_Keymod&gt;(mod<sp/>&amp;<sp/>this-&gt;used_keymods);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/>result;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>&amp;<sp/>KMOD_CTRL)<sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a32f7eee2581c72a5561c21df3013a89a" kindref="member">modifier::CTRL</ref>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a32f7eee2581c72a5561c21df3013a89a" kindref="member">modifier::CTRL</ref>);</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>&amp;<sp/>KMOD_SHIFT)<sp/>{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a46afff2b309b8b16a46d812172a9235c" kindref="member">modifier::SHIFT</ref>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a46afff2b309b8b16a46d812172a9235c" kindref="member">modifier::SHIFT</ref>);</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>&amp;<sp/>KMOD_ALT)<sp/>{</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5adfbfc9cc7a235560f04cb1a5faf1ec3e" kindref="member">modifier::ALT</ref>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>.emplace(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5adfbfc9cc7a235560f04cb1a5faf1ec3e" kindref="member">modifier::ALT</ref>);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1_1testing_1ac25bf81db406af62d08113ef7ae9fd6e" kindref="member">result</ref>;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
@@ -223,6 +223,6 @@
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/input/event.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/input/event.cpp"/>
   </compounddef>
 </doxygen>

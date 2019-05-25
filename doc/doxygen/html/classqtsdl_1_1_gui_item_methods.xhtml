@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiItemMethods&lt; T &gt; Class Template Reference</title>
+<title>openage: qtsdl::GuiItemMethods&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -98,15 +99,19 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_item_methods.xhtml'
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for qtsdl::GuiItemMethods&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for qtsdl::GuiItemMethods&lt; T &gt;:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_methods__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiItemMethods&lt; T &gt;:</div>
-<div class="dyncontent">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiItemMethods&lt; T &gt;:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_methods__coll__graph.svg" width="195" height="191"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -174,7 +179,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00148">148</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                              {</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -218,6 +223,18 @@ template&lt;typename F , typename A &gt; </div>
 <p>Static QML properties assignments during the init phase are stored for a batch assignment at the end of the init phase. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00217">217</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                                                      {</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        GuiItemBase *base = checked_static_cast&lt;GuiItemBase*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>));</div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        static_assert_about_unwrapping&lt;F, decltype(unwrap(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>))), decltype(<a class="code" href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">unwrap_if_can</a>(arg))&gt;();</div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span> (base-&gt;init_over)</div><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            emit base-&gt;game_logic_caller.in_game_logic_thread([=] {f(<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)), <a class="code" href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">unwrap_if_can</a>(arg));});</div><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">else</span></div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            base-&gt;static_properties_assignments.push_back([=] {</div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                emit base-&gt;game_logic_caller.in_game_logic_thread([=] {f(<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)), <a class="code" href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">unwrap_if_can</a>(arg));});</div><div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            });</div><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_a83a6e7a16478b7ba6d336c26542afa71"><div class="ttname"><a href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">qtsdl::unwrap_if_can</a></div><div class="ttdeci">P unwrap_if_can(P &amp;p)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00077">gui_item_link.h:77</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__item_8h_source.xhtml#l00196">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::s()</a>, and <a class="el" href="gui__item_8h_source.xhtml#l00207">qtsdl::GuiItemMethods&lt; GameSpecLink &gt;::sf()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_item_methods_a4491ae15b14efd72465173059446b173_icgraph.svg" width="383" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -250,7 +267,7 @@ template&lt;typename U &gt; </div>
 <p>Get core. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00156">156</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                   {</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">if</span> (checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core) {</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            assert(checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core.get()));</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">return</span> checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core.get());</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a7c8977ff5ebdd15a717e677f7109deab"></a>
@@ -282,7 +299,7 @@ template&lt;typename U &gt; </div>
 <p>Get core. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00169">169</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;             {</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span> (checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core) {</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            assert(checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core.get()));</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)-&gt;holder-&gt;core.get());</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ac54e8509493e71387cc423d3b594c774"></a>
@@ -325,7 +342,9 @@ template&lt;typename F , typename ... Args&gt; </div>
 <p>Invoke a function in the logic thread (the thread of the core of this object). </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00182">182</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                 {</div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        GuiItemBase *base = checked_static_cast&lt;GuiItemBase*&gt;(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>));</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        emit base-&gt;game_logic_caller.in_game_logic_thread([=] {</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            static_assert_about_unwrapping&lt;F, decltype(unwrap(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>))), decltype(<a class="code" href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">unwrap_if_can</a>(args))...&gt;();</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            f(<a class="code" href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">unwrap</a>(checked_static_cast&lt;T*&gt;(<span class="keyword">this</span>)), <a class="code" href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">unwrap_if_can</a>(args)...);</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        });</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div><div class="ttc" id="namespaceqtsdl_xhtml_af1666c815e9f0f5791315530fd76b18d"><div class="ttname"><a href="namespaceqtsdl.xhtml#af1666c815e9f0f5791315530fd76b18d">qtsdl::unwrap</a></div><div class="ttdeci">Unwrap&lt; T &gt;::Type * unwrap(T *t)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00037">gui_item_link.h:37</a></div></div>
+<div class="ttc" id="namespaceqtsdl_xhtml_a83a6e7a16478b7ba6d336c26542afa71"><div class="ttname"><a href="namespaceqtsdl.xhtml#a83a6e7a16478b7ba6d336c26542afa71">qtsdl::unwrap_if_can</a></div><div class="ttdeci">P unwrap_if_can(P &amp;p)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item__link_8h_source.xhtml#l00077">gui_item_link.h:77</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae1736d128156183ad9e760b8a49b3361"></a>
@@ -374,7 +393,8 @@ template&lt;typename F , typename P , typename A &gt; </div>
 <p>Set property. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00196">196</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                               {</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> (p != arg) {</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            p = std::forward&lt;A&gt;(arg);</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173">assign_while_catching_constant_properies_inits</a>(f, p);</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_a4491ae15b14efd72465173059446b173"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173">qtsdl::GuiItemMethods::assign_while_catching_constant_properies_inits</a></div><div class="ttdeci">void assign_while_catching_constant_properies_inits(F f, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00217">gui_item.h:217</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adbc7a1a8ccb4aca1bdb9c4797bdd8700"></a>
@@ -423,11 +443,12 @@ template&lt;typename F , typename P , typename A &gt; </div>
 <p>Set property even if it's the same. </p>
 
 <p class="definition">Definition at line <a class="el" href="gui__item_8h_source.xhtml#l00207">207</a> of file <a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a>.</p>
-
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        p = std::forward&lt;A&gt;(arg);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        this-&gt;<a class="code" href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173">assign_while_catching_constant_properies_inits</a>(f, p);</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div><div class="ttc" id="classqtsdl_1_1_gui_item_methods_xhtml_a4491ae15b14efd72465173059446b173"><div class="ttname"><a href="classqtsdl_1_1_gui_item_methods.xhtml#a4491ae15b14efd72465173059446b173">qtsdl::GuiItemMethods::assign_while_catching_constant_properies_inits</a></div><div class="ttdeci">void assign_while_catching_constant_properies_inits(F f, A &amp;&amp;arg)</div><div class="ttdef"><b>Definition:</b> <a href="gui__item_8h_source.xhtml#l00217">gui_item.h:217</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libopenage/gui/guisys/link/<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/link/<a class="el" href="gui__item_8h_source.xhtml">gui_item.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

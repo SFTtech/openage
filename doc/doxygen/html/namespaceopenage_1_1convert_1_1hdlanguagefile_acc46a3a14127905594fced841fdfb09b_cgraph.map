@@ -1,0 +1,5 @@
+<map id="openage.convert.hdlanguagefile.read_hd_language_file" name="openage.convert.hdlanguagefile.read_hd_language_file">
+<area shape="rect" id="node1" title="Takes a file object, and the file&#39;s language code." alt="" coords="5,23,236,65"/>
+<area shape="rect" id="node2" href="$namespaceopenage_1_1log.xhtml#aad3d76b2466dbc4f81552935f2d84faa" title="debug message" alt="" coords="289,5,407,32"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1util.xhtml#af74fec80080f6c627e5539bb20493ba0" title=" " alt="" coords="284,56,412,83"/>
+</map>

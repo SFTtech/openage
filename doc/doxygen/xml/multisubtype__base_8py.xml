@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="multisubtype__base_8py" kind="file" language="Python">
+    <compoundname>multisubtype_base.py</compoundname>
+    <innerclass refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file" prot="public">openage::convert::dataformat::multisubtype_base::MultisubtypeBaseFile</innerclass>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1dataformat_1_1multisubtype__base">openage::convert::dataformat::multisubtype_base</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1dataformat_1_1multisubtype__base" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2014-2015<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">#<sp/>TODO<sp/>pylint:<sp/>disable=C,R</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.exportable<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Exportable</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.member_access<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>NOREAD_EXPORT</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file" kindref="compound">MultisubtypeBaseFile</ref>(<ref refid="classopenage_1_1convert_1_1dataformat_1_1exportable_1_1_exportable" kindref="compound">Exportable</ref>):</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>class<sp/>that<sp/>describes<sp/>the<sp/>format</highlight></codeline>
+<codeline lineno="12"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>for<sp/>the<sp/>base-file<sp/>pointing<sp/>to<sp/>the<sp/>per-subtype<sp/>files.</highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/>name_struct_file<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;util&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>name_struct<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;multisubtype_ref&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1aa0841fd5350b6205b9681a7f737b7dff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>struct_description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;format<sp/>for<sp/>multi-subtype<sp/>references&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a62943dac37dfd864c2ffd5c2ed05dda5" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a43767dfbc83d3b7dded2e08a64074dca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>data_format<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(NOREAD_EXPORT,<sp/></highlight><highlight class="stringliteral">&quot;subtype&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;std::string&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1convert_1_1dataformat_1_1multisubtype__base_1_1_multisubtype_base_file_1a9f8ef8a5e1fdcecf1a75b036625933be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(NOREAD_EXPORT,<sp/></highlight><highlight class="stringliteral">&quot;filename&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;std::string&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/dataformat/multisubtype_base.py"/>
+  </compounddef>
+</doxygen>

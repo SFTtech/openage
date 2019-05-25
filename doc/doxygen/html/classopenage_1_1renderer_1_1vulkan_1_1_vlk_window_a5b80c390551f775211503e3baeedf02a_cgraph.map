@@ -1,0 +1,5 @@
+<map id="openage::renderer::vulkan::VlkWindow::~VlkWindow" name="openage::renderer::vulkan::VlkWindow::~VlkWindow">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,144,61"/>
+<area shape="rect" id="node2" href="$classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader.xhtml#aac68635f78581d8bc631eae1d887313a" title="Part of VK_EXT_debug_report, destroys the debug callback object." alt="" coords="192,5,381,61"/>
+<area shape="rect" id="node3" href="$namespaceopenage_1_1log.xhtml#a325b0901ddb3f2af36f93781b7dd9744" title="error message" alt="" coords="429,20,540,47"/>
+</map>

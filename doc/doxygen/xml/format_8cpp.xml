@@ -18,7 +18,7 @@
         <label>functional</label>
       </node>
       <node id="1143">
-        <label>libopenage/audio/format.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp</label>
         <link refid="format_8cpp"/>
         <childnode refid="1144" relation="include">
         </childnode>
@@ -237,6 +237,6 @@
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/audio/format.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/audio/format.cpp"/>
   </compounddef>
 </doxygen>

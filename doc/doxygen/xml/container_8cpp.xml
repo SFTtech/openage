@@ -480,7 +480,7 @@
         <label>algorithm</label>
       </node>
       <node id="5350">
-        <label>libopenage/curve/tests/container.cpp</label>
+        <label>C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp</label>
         <link refid="container_8cpp"/>
         <childnode refid="5351" relation="include">
         </childnode>
@@ -750,6 +750,6 @@
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
 <codeline lineno="212"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve::tests</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="libopenage/curve/tests/container.cpp"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/curve/tests/container.cpp"/>
   </compounddef>
 </doxygen>

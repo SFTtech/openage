@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="singlefile_8py" kind="file" language="Python">
+    <compoundname>singlefile.py</compoundname>
+    <innernamespace refid="namespaceopenage_1_1convert_1_1singlefile">openage::convert::singlefile</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceopenage_1_1convert_1_1singlefile" refkind="compound"><highlight class="comment">#<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">Convert<sp/>a<sp/>single<sp/>slp<sp/>file<sp/>from<sp/>some<sp/>drs<sp/>archive<sp/>to<sp/>a<sp/>png<sp/>image.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>pathlib<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Path</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.colortable<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ColorTable</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.drs<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>DRS</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.texture<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Texture</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..util.fslike.directory<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Directory</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>..log<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>info</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1singlefile_1a139996d57bd8ce7cc602a0ec9e6dc218" kindref="member">init_subparser</ref>(cli):</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>Initializes<sp/>the<sp/>parser<sp/>for<sp/>convert-specific<sp/>args.<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>argparse</highlight></codeline>
+<codeline lineno="19" refid="namespaceopenage_1_1convert_1_1singlefile_1a139996d57bd8ce7cc602a0ec9e6dc218" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.set_defaults(entrypoint=main)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;--palette&quot;</highlight><highlight class="normal">,<sp/>default=</highlight><highlight class="stringliteral">&quot;50500&quot;</highlight><highlight class="normal">,<sp/>help=</highlight><highlight class="stringliteral">&quot;palette<sp/>number&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;--interfac&quot;</highlight><highlight class="normal">,<sp/>type=argparse.FileType(</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=(</highlight><highlight class="stringliteral">&quot;drs<sp/>archive<sp/>where<sp/>palette<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;is<sp/>contained<sp/>(interfac.drs).<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;If<sp/>not<sp/>set,<sp/>assumed<sp/>to<sp/>be<sp/>in<sp/>same<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;directory<sp/>as<sp/>the<sp/>source<sp/>drs<sp/>archive&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;drs&quot;</highlight><highlight class="normal">,<sp/>type=argparse.FileType(</highlight><highlight class="stringliteral">&apos;rb&apos;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help=(</highlight><highlight class="stringliteral">&quot;drs<sp/>archive<sp/>filename<sp/>that<sp/>contains<sp/>the<sp/>slp<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;e.g.<sp/>path<sp/>~/games/aoe/graphics.drs&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;slp&quot;</highlight><highlight class="normal">,<sp/>help=(</highlight><highlight class="stringliteral">&quot;slp<sp/>filename<sp/>inside<sp/>the<sp/>drs<sp/>archive<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;e.g.<sp/>326.slp&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>cli.add_argument(</highlight><highlight class="stringliteral">&quot;output&quot;</highlight><highlight class="normal">,<sp/>help=</highlight><highlight class="stringliteral">&quot;image<sp/>output<sp/>path<sp/>name&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1convert_1_1singlefile_1a24cbe33666ca577f3d4bcb9ab5235b9f" kindref="member">main</ref>(args,<sp/>error):</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;<sp/>CLI<sp/>entry<sp/>point<sp/>for<sp/>single<sp/>file<sp/>conversions<sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>del<sp/>error<sp/><sp/></highlight><highlight class="comment">#<sp/>unused</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespaceopenage_1_1convert_1_1singlefile_1a24cbe33666ca577f3d4bcb9ab5235b9f" refkind="member"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>drspath<sp/>=<sp/>Path(args.drs.name)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>outputpath<sp/>=<sp/>Path(args.output)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>args.interfac:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>interfacfile<sp/>=<sp/>args.interfac</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>if<sp/>no<sp/>interfac<sp/>was<sp/>given,<sp/>assume</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>the<sp/>same<sp/>path<sp/>of<sp/>the<sp/>drs<sp/>archive.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>interfacfile<sp/>=<sp/>drspath.with_name(</highlight><highlight class="stringliteral">&quot;interfac.drs&quot;</highlight><highlight class="normal">).open(</highlight><highlight class="stringliteral">&quot;rb&quot;</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">#<sp/>pylint:<sp/>disable=no-member</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>here,<sp/>try<sp/>opening<sp/>slps<sp/>from<sp/>interfac<sp/>or<sp/>whereever</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;opening<sp/>slp<sp/>in<sp/>drs<sp/>&apos;%s:%s&apos;...&quot;</highlight><highlight class="normal">,<sp/>drspath,<sp/>args.slp)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>slpfile<sp/>=<sp/><ref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s" kindref="compound">DRS</ref>(args.drs).root[args.slp].open(</highlight><highlight class="stringliteral">&quot;rb&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>import<sp/>here<sp/>to<sp/>prevent<sp/>that<sp/>the<sp/>__main__<sp/>depends<sp/>on<sp/>SLP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>just<sp/>by<sp/>importing<sp/>this<sp/>singlefile.py.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>.slp<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>SLP</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>parse<sp/>the<sp/>slp<sp/>image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;parsing<sp/>slp<sp/>image...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>slpimage<sp/>=<sp/>SLP(slpfile.read())</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>open<sp/>color<sp/>palette</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;opening<sp/>palette<sp/>in<sp/>drs<sp/>&apos;%s:%s.bina&apos;...&quot;</highlight><highlight class="normal">,<sp/>interfacfile.name,<sp/>args.palette)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>palettefile<sp/>=<sp/><ref refid="classopenage_1_1convert_1_1drs_1_1_d_r_s" kindref="compound">DRS</ref>(interfacfile).root[</highlight><highlight class="stringliteral">&quot;%s.bina&quot;</highlight><highlight class="normal"><sp/>%<sp/>args.palette].open(</highlight><highlight class="stringliteral">&quot;rb&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;parsing<sp/>palette<sp/>data...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>palette<sp/>=<sp/><ref refid="classopenage_1_1convert_1_1colortable_1_1_color_table" kindref="compound">ColorTable</ref>(palettefile.read())</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>create<sp/>texture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" kindref="member">info</ref>(</highlight><highlight class="stringliteral">&quot;packing<sp/>texture...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>tex<sp/>=<sp/><ref refid="classopenage_1_1convert_1_1texture_1_1_texture" kindref="compound">Texture</ref>(slpimage,<sp/>palette)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>to<sp/>save<sp/>as<sp/>png:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>tex.save(<ref refid="classopenage_1_1util_1_1fslike_1_1directory_1_1_directory" kindref="compound">Directory</ref>(outputpath.parent).root,<sp/>outputpath.name)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/openage/convert/singlefile.py"/>
+  </compounddef>
+</doxygen>

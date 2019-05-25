@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/main_args_link.h" line="33" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="33" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/main_args_link.h" line="24" column="1" bodyfile="libopenage/gui/main_args_link.cpp" bodystart="22" bodyend="27"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="24" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp" bodystart="22" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1gui_1_1_main_args_link_1acb2c14a5198daecdc30c44aa2e4ddfec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/main_args_link.h" line="25" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="25" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -90,7 +90,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/gui/main_args_link.h" line="30" column="1" bodyfile="libopenage/gui/main_args_link.cpp" bodystart="30" bodyend="37"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="30" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.cpp" bodystart="30" bodyend="37"/>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" compoundref="qml__engine__with__singleton__items__info_8cpp" startline="37" endline="39">qtsdl::QmlEngineWithSingletonItemsInfo::get_singleton_items_info</references>
+        <references refid="namespaceopenage_1_1log_1a3f1815b698faf5786fc5e20bcac7704b" compoundref="log_2____init_____8py" startline="114" endline="117">openage::log.info</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -99,35 +102,35 @@
 <para>Used to make arguments of the game available in QML. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3168">
+      <node id="3637">
         <label>QObject</label>
       </node>
-      <node id="3167">
+      <node id="3636">
         <label>openage::gui::MainArgsLink</label>
         <link refid="classopenage_1_1gui_1_1_main_args_link"/>
-        <childnode refid="3168" relation="public-inheritance">
+        <childnode refid="3637" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3171">
+      <node id="3640">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="3170">
+      <node id="3639">
         <label>QObject</label>
       </node>
-      <node id="3169">
+      <node id="3638">
         <label>openage::gui::MainArgsLink</label>
         <link refid="classopenage_1_1gui_1_1_main_args_link"/>
-        <childnode refid="3170" relation="public-inheritance">
+        <childnode refid="3639" relation="public-inheritance">
         </childnode>
-        <childnode refid="3171" relation="usage">
+        <childnode refid="3640" relation="usage">
           <edgelabel>-asset_dir</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="18" bodyend="34"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/main_args_link.h" bodystart="18" bodyend="34"/>
     <listofallmembers>
       <member refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" prot="private" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>asset_dir</name></member>
       <member refid="classopenage_1_1gui_1_1_main_args_link_1a718d28a7b61d9bef2f95bd932e364c03" prot="public" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>assetDir</name></member>

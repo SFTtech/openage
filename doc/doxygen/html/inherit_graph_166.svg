@@ -11,11 +11,11 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-46 132,-46 132,4 -4,4"/>
 <!-- Node0 -->
 <g id="node1" class="node"><title>Node0</title>
-<g id="a_node1"><a xlink:href="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block.xhtml" target="_top" xlink:title="Represents a uniform block in the shader program.">
+<g id="a_node1"><a xlink:href="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib.xhtml" target="_top" xlink:title="Represents a per&#45;vertex input to the shader program.">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-41.5 128,-41.5 128,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">openage::renderer::</text>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">opengl::GlShaderProgram</text>
-<text text-anchor="middle" x="64" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::GlUniformBlock</text>
+<text text-anchor="middle" x="64" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::GlVertexAttrib</text>
 </a>
 </g>
 </g>

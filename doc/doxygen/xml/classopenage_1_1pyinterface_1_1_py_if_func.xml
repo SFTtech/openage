@@ -28,7 +28,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="409" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="409" bodyend="418"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="409" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="409" bodyend="418"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" compoundref="setup_8cpp" startline="44" endline="60">openage::pyinterface::add_py_if_component</references>
+        <references refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" compoundref="functional_8h" startline="111" endline="121">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::check_fptr</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a1ac0419304a48f6c323317604c117388" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -41,7 +43,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="420" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="420" bodyend="422"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="420" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="420" bodyend="422"/>
+        <references refid="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" compoundref="setup_8cpp" startline="63" endline="70">openage::pyinterface::destroy_py_if_component</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a5472b3b618607a4c2cde42ad9bfb77a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -58,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="420" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="420" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1ae503c2b858422169e2a0ad54b7b44d05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -75,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="420" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="420" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1aa6f654b601f7c6beabcd05796c2b87ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
@@ -92,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="427" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="427" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a584459e86ceee74a5a56619f0d19a0e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
@@ -109,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="428" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="428" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a411242c89ae252742b481bba3d94a4fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -122,7 +125,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/pyinterface/functional.h" line="431" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="431" bodyend="433"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="431" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="431" bodyend="433"/>
+        <references refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" compoundref="functional_8h" startline="248">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;::fptr</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -135,30 +139,44 @@
 <para>ctypedef Func0 PyIfFunc0 ctypedef Func1 PyIfFunc1 ctypedef Func2 PyIfFunc2 ctypedef Func3 PyIfFunc3 ctypedef Func4 PyIfFunc4 ctypedef Func5 PyIfFunc5 </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3796">
+      <node id="4562">
         <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</label>
         <link refid="classopenage_1_1pyinterface_1_1_func"/>
+        <childnode refid="4563" relation="template-instance">
+          <edgelabel>&lt; ReturnType, ArgTypes ... &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="3795">
+      <node id="4561">
         <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
         <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
-        <childnode refid="3796" relation="public-inheritance">
+        <childnode refid="4562" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="4563">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3798">
+      <node id="4565">
         <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</label>
         <link refid="classopenage_1_1pyinterface_1_1_func"/>
-      </node>
-      <node id="3797">
-        <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
-        <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
-        <childnode refid="3798" relation="public-inheritance">
+        <childnode refid="4566" relation="template-instance">
+          <edgelabel>&lt; ReturnType, ArgTypes ... &gt;</edgelabel>
         </childnode>
       </node>
+      <node id="4564">
+        <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
+        <childnode refid="4565" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4566">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+      </node>
     </collaborationgraph>
-    <location file="libopenage/pyinterface/functional.h" line="407" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="407" bodyend="434"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" line="407" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/pyinterface/functional.h" bodystart="407" bodyend="434"/>
     <listofallmembers>
       <member refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind</name></member>
       <member refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind0</name></member>

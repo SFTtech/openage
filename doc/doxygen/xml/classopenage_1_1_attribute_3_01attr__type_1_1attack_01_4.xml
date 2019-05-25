@@ -19,7 +19,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="309" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="309" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="309" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="309" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a75a9acf9af2825a2e24e178004e87066" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -33,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="315" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="315" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="315" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="315" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a48b538131cad93a49810158b5433dd73" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -47,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="320" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="320" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="320" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="320" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1aed199958f9d00408dada7bec38a19529" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -61,7 +62,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="325" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="325" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="325" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="325" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_attack_action_1a1a76ce122961d9e09c526b8d0f2f513f" compoundref="unit_2action_8cpp" startline="1227" endline="1249">openage::AttackAction::fire_projectile</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a883a54db2394710746e8263b913ea732" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1a9b5c147a16053038d4317df642a4723a" kindref="member">typeamount_map</ref></type>
@@ -74,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="327" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="327" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="327" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a4290748a1363b5517643b3d1791e2631" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -88,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="333" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="333" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="333" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="333" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a3329c7fc3447ca0d6558742e01e9aa10" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
@@ -102,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="339" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="339" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="339" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="339" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -133,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="285" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="285" bodyend="287"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="285" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="285" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a5c9d56c5a0b9185df8439d68a69bde0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -177,7 +179,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="289" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="289" bodyend="300"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="289" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="289" bodyend="300"/>
+        <references refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659">openage::attack</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a7536c912ef7e06017e85379840715128" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
@@ -192,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/unit/attribute.h" line="302" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="302" bodyend="304"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="302" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="302" bodyend="304"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -201,152 +204,165 @@
 <para>TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks TODO remove the first constructor and the default values after (keep for now for compatibility) </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="368">
+      <node id="277">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="369" relation="public-inheritance">
+        <childnode refid="278" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="367">
+      <node id="276">
         <label>openage::Attribute&lt; attr_type::attack &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4"/>
-        <childnode refid="368" relation="public-inheritance">
+        <childnode refid="277" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="369">
+      <node id="278">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="371">
+      <node id="280">
         <label>openage::SharedAttributeContainer</label>
         <link refid="classopenage_1_1_shared_attribute_container"/>
-        <childnode refid="372" relation="public-inheritance">
+        <childnode refid="281" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="383">
+      <node id="292">
         <label>openage::TeamScore</label>
         <link refid="classopenage_1_1_team_score"/>
-        <childnode refid="381" relation="public-inheritance">
+        <childnode refid="290" relation="public-inheritance">
         </childnode>
-        <childnode refid="382" relation="usage">
+        <childnode refid="291" relation="usage">
           <edgelabel>-team</edgelabel>
         </childnode>
       </node>
-      <node id="380">
+      <node id="289">
         <label>openage::PlayerScore</label>
         <link refid="classopenage_1_1_player_score"/>
-        <childnode refid="381" relation="public-inheritance">
+        <childnode refid="290" relation="public-inheritance">
         </childnode>
-        <childnode refid="379" relation="usage">
+        <childnode refid="288" relation="usage">
           <edgelabel>-player</edgelabel>
         </childnode>
       </node>
-      <node id="381">
+      <node id="290">
         <label>openage::Score</label>
         <link refid="classopenage_1_1_score"/>
       </node>
-      <node id="373">
+      <node id="282">
         <label>openage::UnitType</label>
         <link refid="classopenage_1_1_unit_type"/>
-        <childnode refid="374" relation="usage">
+        <childnode refid="283" relation="usage">
           <edgelabel>+foundation_size</edgelabel>
         </childnode>
-        <childnode refid="376" relation="usage">
+        <childnode refid="285" relation="usage">
           <edgelabel>+default_attributes</edgelabel>
         </childnode>
-        <childnode refid="377" relation="usage">
+        <childnode refid="286" relation="usage">
           <edgelabel>+cost</edgelabel>
         </childnode>
-        <childnode refid="379" relation="usage">
+        <childnode refid="288" relation="usage">
           <edgelabel>+owner</edgelabel>
         </childnode>
       </node>
-      <node id="382">
+      <node id="291">
         <label>openage::Team</label>
         <link refid="classopenage_1_1_team"/>
-        <childnode refid="383" relation="usage">
+        <childnode refid="292" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
       </node>
-      <node id="370">
+      <node id="297">
+        <label>int_type</label>
+      </node>
+      <node id="279">
         <label>openage::Attribute&lt; attr_type::attack &gt;</label>
         <link refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4"/>
-        <childnode refid="371" relation="public-inheritance">
+        <childnode refid="280" relation="public-inheritance">
         </childnode>
-        <childnode refid="373" relation="usage">
+        <childnode refid="282" relation="usage">
           <edgelabel>+ptype</edgelabel>
         </childnode>
-        <childnode refid="386" relation="usage">
+        <childnode refid="295" relation="usage">
           <edgelabel>+area_of_effect</edgelabel>
           <edgelabel>+max_range</edgelabel>
           <edgelabel>+init_height</edgelabel>
           <edgelabel>+min_range</edgelabel>
         </childnode>
       </node>
-      <node id="385">
+      <node id="296">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="297" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="294">
         <label>openage::Civilisation</label>
         <link refid="classopenage_1_1_civilisation"/>
       </node>
-      <node id="376">
+      <node id="285">
         <label>openage::Attributes</label>
         <link refid="classopenage_1_1_attributes"/>
       </node>
-      <node id="379">
+      <node id="288">
         <label>openage::Player</label>
         <link refid="classopenage_1_1_player"/>
-        <childnode refid="380" relation="usage">
+        <childnode refid="289" relation="usage">
           <edgelabel>+score</edgelabel>
         </childnode>
-        <childnode refid="382" relation="usage">
+        <childnode refid="291" relation="usage">
           <edgelabel>+team</edgelabel>
         </childnode>
-        <childnode refid="378" relation="usage">
+        <childnode refid="287" relation="usage">
           <edgelabel>-resources_capacity</edgelabel>
           <edgelabel>-resources</edgelabel>
         </childnode>
-        <childnode refid="384" relation="usage">
+        <childnode refid="293" relation="usage">
           <edgelabel>+population</edgelabel>
         </childnode>
-        <childnode refid="385" relation="usage">
+        <childnode refid="294" relation="usage">
           <edgelabel>+civ</edgelabel>
         </childnode>
       </node>
-      <node id="374">
+      <node id="283">
         <label>openage::coord::tile_delta</label>
         <link refid="structopenage_1_1coord_1_1tile__delta"/>
-        <childnode refid="375" relation="public-inheritance">
+        <childnode refid="284" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="378">
+      <node id="287">
         <label>openage::ResourceBundle</label>
         <link refid="classopenage_1_1_resource_bundle"/>
       </node>
-      <node id="384">
+      <node id="293">
         <label>openage::PopulationTracker</label>
         <link refid="classopenage_1_1_population_tracker"/>
       </node>
-      <node id="372">
+      <node id="281">
         <label>openage::AttributeContainer</label>
         <link refid="classopenage_1_1_attribute_container"/>
       </node>
-      <node id="377">
+      <node id="286">
         <label>openage::ResourceCost</label>
         <link refid="classopenage_1_1_resource_cost"/>
-        <childnode refid="378" relation="usage">
+        <childnode refid="287" relation="usage">
           <edgelabel>-resources</edgelabel>
         </childnode>
       </node>
-      <node id="386">
+      <node id="295">
         <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
         <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="296" relation="template-instance">
+          <edgelabel>&lt; int64_t, phys_t_radix_pos &gt;</edgelabel>
+        </childnode>
       </node>
-      <node id="375">
+      <node id="284">
         <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="libopenage/unit/attribute.h" line="281" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="281" bodyend="340"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" line="281" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/unit/attribute.h" bodystart="281" bodyend="340"/>
     <listofallmembers>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a3329c7fc3447ca0d6558742e01e9aa10" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>area_of_effect</name></member>
       <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1ac72a82402f58273d35c6365ae211afb7" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>Attribute</name></member>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Openage: qtsdl::GuiDedicatedThread Class Reference</title>
+<title>openage: qtsdl::GuiDedicatedThread Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,9 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="banner.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Openage
+   <div id="projectname">openage
+   &#160;<span id="projectnumber">0.3.1</span>
    </div>
    <div id="projectbrief">Free (as in freedom) open source clone of the Age of Empires II engine</div>
   </td>
@@ -100,11 +101,12 @@ $(document).ready(function(){initNavTree('classqtsdl_1_1_gui_dedicated_thread.xh
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for qtsdl::GuiDedicatedThread:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_dedicated_thread__coll__graph.svg" width="186" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for qtsdl::GuiDedicatedThread:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_dedicated_thread__coll__graph.svg" width="186" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -160,6 +162,9 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml">gui_dedicated_thread.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                        {</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    QCoreApplication::instance()-&gt;quit();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#adb99230c55459bafd54f09ee67b35b28">worker</a>.join();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_adb99230c55459bafd54f09ee67b35b28"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#adb99230c55459bafd54f09ee67b35b28">qtsdl::GuiDedicatedThread::worker</a></div><div class="ttdeci">std::thread worker</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00026">gui_dedicated_thread.h:26</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00026">worker</a>.</p>
 
 </div>
 </div>
@@ -187,6 +192,18 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00020">20</a> of file <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml">gui_dedicated_thread.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    :</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#adb99230c55459bafd54f09ee67b35b28">worker</a>{} {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> gui_started = <span class="keyword">false</span>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::mutex gui_started_guard;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::unique_lock&lt;std::mutex&gt; lck{gui_started_guard};</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::condition_variable proceed_cond;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    this-&gt;<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#adb99230c55459bafd54f09ee67b35b28">worker</a> = std::thread{[&amp;] {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">auto</span> app = <a class="code" href="classqtsdl_1_1_gui_application_impl.xhtml#a308e0db71a4597564981f7d4c0416df8">GuiApplicationImpl::get</a>();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            std::unique_lock&lt;std::mutex&gt; lckInGui{gui_started_guard};</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            gui_started = <span class="keyword">true</span>;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        proceed_cond.notify_one();</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        QCoreApplication::instance()-&gt;exec();</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }};</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    proceed_cond.wait(lck, [&amp;] {<span class="keywordflow">return</span> gui_started;});</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_application_impl_xhtml_a308e0db71a4597564981f7d4c0416df8"><div class="ttname"><a href="classqtsdl_1_1_gui_application_impl.xhtml#a308e0db71a4597564981f7d4c0416df8">qtsdl::GuiApplicationImpl::get</a></div><div class="ttdeci">static std::shared_ptr&lt; GuiApplicationImpl &gt; get()</div><div class="ttdef"><b>Definition:</b> <a href="gui__application__impl_8cpp_source.xhtml#l00015">gui_application_impl.cpp:15</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_adb99230c55459bafd54f09ee67b35b28"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#adb99230c55459bafd54f09ee67b35b28">qtsdl::GuiDedicatedThread::worker</a></div><div class="ttdeci">std::thread worker</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00026">gui_dedicated_thread.h:26</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">get()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_dedicated_thread_a7df4d5c05f49eac41404768088ed38ee_icgraph.svg" width="435" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -215,6 +232,22 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml">gui_dedicated_thread.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                          {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::shared_ptr&lt;GuiDedicatedThread&gt; candidate;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::unique_lock&lt;std::mutex&gt; lck{<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a23c98485b115500bc1f4cef767c15ec4">GuiDedicatedThread::existence_guard</a>};</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a64948a610eb428e9a9ba9603a9466d15">GuiDedicatedThread::destroyed</a>.wait(lck, [&amp;candidate] {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> (candidate = <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a569418caf8eb1698b0563f6382aedf5e">GuiDedicatedThread::instance</a>.<a class="code" href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a>()) || !<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#acb18aaa9962e0f94f007e81c792d071f">GuiDedicatedThread::exists</a>;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    });</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (!candidate) {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a569418caf8eb1698b0563f6382aedf5e">GuiDedicatedThread::instance</a> = candidate = std::shared_ptr&lt;GuiDedicatedThread&gt;{<span class="keyword">new</span> <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a7df4d5c05f49eac41404768088ed38ee">GuiDedicatedThread</a>, [] (<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a7df4d5c05f49eac41404768088ed38ee">GuiDedicatedThread</a> *p) {</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">delete</span> p;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (p) {</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                std::unique_lock&lt;std::mutex&gt; dlck{<a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a23c98485b115500bc1f4cef767c15ec4">GuiDedicatedThread::existence_guard</a>};</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#acb18aaa9962e0f94f007e81c792d071f">GuiDedicatedThread::exists</a> = <span class="keyword">false</span>;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                dlck.unlock();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a64948a610eb428e9a9ba9603a9466d15">GuiDedicatedThread::destroyed</a>.notify_all();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }};</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#acb18aaa9962e0f94f007e81c792d071f">GuiDedicatedThread::exists</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        lck.unlock();</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a64948a610eb428e9a9ba9603a9466d15">GuiDedicatedThread::destroyed</a>.notify_all();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> candidate;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div><div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_a569418caf8eb1698b0563f6382aedf5e"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a569418caf8eb1698b0563f6382aedf5e">qtsdl::GuiDedicatedThread::instance</a></div><div class="ttdeci">static std::weak_ptr&lt; GuiDedicatedThread &gt; instance</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00028">gui_dedicated_thread.h:28</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_a23c98485b115500bc1f4cef767c15ec4"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a23c98485b115500bc1f4cef767c15ec4">qtsdl::GuiDedicatedThread::existence_guard</a></div><div class="ttdeci">static std::mutex existence_guard</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00031">gui_dedicated_thread.h:31</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_a64948a610eb428e9a9ba9603a9466d15"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a64948a610eb428e9a9ba9603a9466d15">qtsdl::GuiDedicatedThread::destroyed</a></div><div class="ttdeci">static std::condition_variable destroyed</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00032">gui_dedicated_thread.h:32</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_acb18aaa9962e0f94f007e81c792d071f"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#acb18aaa9962e0f94f007e81c792d071f">qtsdl::GuiDedicatedThread::exists</a></div><div class="ttdeci">static bool exists</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8h_source.xhtml#l00030">gui_dedicated_thread.h:30</a></div></div>
+<div class="ttc" id="setup_8cpp_xhtml_a8ae9fdb10d60db487571238897882e2b"><div class="ttname"><a href="setup_8cpp.xhtml#a8ae9fdb10d60db487571238897882e2b">lock</a></div><div class="ttdeci">std::mutex lock</div><div class="ttdef"><b>Definition:</b> <a href="setup_8cpp_source.xhtml#l00022">setup.cpp:22</a></div></div>
+<div class="ttc" id="classqtsdl_1_1_gui_dedicated_thread_xhtml_a7df4d5c05f49eac41404768088ed38ee"><div class="ttname"><a href="classqtsdl_1_1_gui_dedicated_thread.xhtml#a7df4d5c05f49eac41404768088ed38ee">qtsdl::GuiDedicatedThread::GuiDedicatedThread</a></div><div class="ttdeci">GuiDedicatedThread()</div><div class="ttdef"><b>Definition:</b> <a href="gui__dedicated__thread_8cpp_source.xhtml#l00020">gui_dedicated_thread.cpp:20</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00032">destroyed</a>, <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00031">existence_guard</a>, <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00030">exists</a>, <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00020">GuiDedicatedThread()</a>, <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00028">instance</a>, and <a class="el" href="setup_8cpp_source.xhtml#l00022">lock</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classqtsdl_1_1_gui_dedicated_thread_a45341ecc344b0f1b31f44e907d2cb5bf_cgraph.svg" width="435" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -241,6 +274,8 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00032">32</a> of file <a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">get()</a>.</p>
+
 </div>
 </div>
 <a id="a23c98485b115500bc1f4cef767c15ec4"></a>
@@ -264,6 +299,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00031">31</a> of file <a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">get()</a>.</p>
 
 </div>
 </div>
@@ -289,6 +326,8 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00030">30</a> of file <a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">get()</a>, <a class="el" href="wrapper_8py_source.xhtml#l00068">openage.util.fslike.wrapper.Wrapper::resolve_r()</a>, and <a class="el" href="fslike_2abstract_8py_source.xhtml#l00087">openage.util.fslike.abstract.FSLikeObject::resolve_r()</a>.</p>
+
 </div>
 </div>
 <a id="a569418caf8eb1698b0563f6382aedf5e"></a>
@@ -312,6 +351,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00028">28</a> of file <a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00051">get()</a>.</p>
 
 </div>
 </div>
@@ -337,11 +378,13 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="gui__dedicated__thread_8h_source.xhtml#l00026">26</a> of file <a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="gui__dedicated__thread_8cpp_source.xhtml#l00046">~GuiDedicatedThread()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a></li>
-<li>libopenage/gui/guisys/private/<a class="el" href="gui__dedicated__thread_8cpp_source.xhtml">gui_dedicated_thread.cpp</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__dedicated__thread_8h_source.xhtml">gui_dedicated_thread.h</a></li>
+<li>C:/Users/Jameson/Documents/git-projects/openage/libopenage/gui/guisys/private/<a class="el" href="gui__dedicated__thread_8cpp_source.xhtml">gui_dedicated_thread.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

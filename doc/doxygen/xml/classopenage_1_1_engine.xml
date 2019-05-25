@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="89" column="1" bodyfile="libopenage/engine.h" bodystart="89" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="89" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -33,7 +33,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="274" column="1" bodyfile="libopenage/engine.h" bodystart="274" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="274" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="274" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" compoundref="engine_8cpp" startline="298" endline="308">run</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" compoundref="engine_8cpp" startline="310" endline="313">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1acaf343ec070a13eb8ba0a8a6ebd491e2" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
@@ -47,7 +50,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="279" column="1" bodyfile="libopenage/engine.h" bodystart="279" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="279" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="279" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" compoundref="profiler_8cpp" startline="194" endline="200">openage::util::Profiler::engine_in_debug_mode</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a013d979bb40340a91030282446285ce5" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
@@ -61,7 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="284" column="1" bodyfile="libopenage/engine.h" bodystart="284" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="284" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="284" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1afb29bb815dbf7880a10e86554e54df1c" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_external_profiler" kindref="compound">util::ExternalProfiler</ref></type>
@@ -75,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="289" column="1" bodyfile="libopenage/engine.h" bodystart="289" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="289" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="289" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref></type>
@@ -89,7 +95,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="294" column="1" bodyfile="libopenage/engine.h" bodystart="294" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="294" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="294" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_unit_1af8b821f1e22d782134986784fd94dbe3" compoundref="unit_8cpp" startline="202" endline="222">openage::Unit::draw</referencedby>
+        <referencedby refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" compoundref="terrain_8cpp" startline="278" endline="327">openage::Terrain::draw</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" compoundref="engine_8cpp" startline="551" endline="560">move_phys_camera</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4" compoundref="game__renderer_8cpp" startline="199" endline="213">openage::GameRenderer::on_draw</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" compoundref="selection_8cpp" startline="28" endline="91">openage::UnitSelection::on_drawhud</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" compoundref="engine_8cpp" startline="242" endline="272">on_resize</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" compoundref="selection_8cpp" startline="246" endline="270">openage::UnitSelection::select_space</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a92b6d5f088aa6e52525d3f0c62ce0b99" prot="public" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_engine_signals" kindref="compound">EngineSignals</ref></type>
@@ -103,7 +123,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="451" column="1" bodyfile="libopenage/engine.h" bodystart="451" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="451" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="451" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" compoundref="engine_8cpp" startline="519" endline="523">announce_global_binds</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a63de744f13a4a799defab0346abc51cf" prot="public" static="no" mutable="no">
         <type>gui::GuiItemLink *</type>
@@ -117,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="456" column="1" bodyfile="libopenage/engine.h" bodystart="456" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="456" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="456" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -134,7 +155,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="313" column="1" bodyfile="libopenage/engine.h" bodystart="313" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="313" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="313" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a1a34f025683f6be30e37154be879c354" compoundref="engine_8cpp" startline="483" endline="485">get_root_dir</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a29cd3713a4e3cf61b20dd640f17f6e6c" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -148,7 +170,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="319" column="1" bodyfile="libopenage/engine.h" bodystart="319" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="319" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="319" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a4d7ffa1833327c7bb76b7d79b75ae13f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref> * &gt;</type>
@@ -162,7 +185,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="325" column="1" bodyfile="libopenage/engine.h" bodystart="325" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="325" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="325" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a73fdf4e650bd81de3414ba5997a9129f" compoundref="engine_8cpp" startline="463" endline="465">register_input_action</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1abc559d76b47fb9cb37d99736bb5ac8e6" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_tick_handler" kindref="compound">TickHandler</ref> * &gt;</type>
@@ -176,7 +201,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="330" column="1" bodyfile="libopenage/engine.h" bodystart="330" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="330" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="330" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a39f0d187a32285eaa2dca377aee8be45" compoundref="engine_8cpp" startline="467" endline="469">register_tick_action</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1ae125d1790d2b600e870907083ac2a5c6" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_draw_handler" kindref="compound">DrawHandler</ref> * &gt;</type>
@@ -190,7 +217,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="336" column="1" bodyfile="libopenage/engine.h" bodystart="336" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="336" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="336" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a32161204054965fa310a15287087e619" compoundref="engine_8cpp" startline="475" endline="477">register_draw_action</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1aa8d4eb6fa73d837178b7873a527b83e3" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_hud_handler" kindref="compound">HudHandler</ref> * &gt;</type>
@@ -204,7 +233,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="342" column="1" bodyfile="libopenage/engine.h" bodystart="342" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="342" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="342" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a28cf66f139dbd94097277d64984154db" compoundref="engine_8cpp" startline="471" endline="473">register_drawhud_action</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1aa8d8b0acb6f9e7895d16a3e936dd9866" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classopenage_1_1_resize_handler" kindref="compound">ResizeHandler</ref> * &gt;</type>
@@ -218,7 +249,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="347" column="1" bodyfile="libopenage/engine.h" bodystart="347" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="347" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="347" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a90a9eb968b51cb8166c058afff334eca" compoundref="engine_8cpp" startline="479" endline="481">register_resize_action</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &gt;</type>
@@ -232,7 +265,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="352" column="1" bodyfile="libopenage/engine.h" bodystart="352" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="352" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="352" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ad14908046077033490111f941fbc408f" compoundref="engine_8cpp" startline="575" endline="578">end_game</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" compoundref="engine_8cpp" startline="487" endline="489">get_game</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a7fc2ea0de672369761ffe6ee251a1bcb" compoundref="engine_8cpp" startline="562" endline="568">start_game</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref></type>
@@ -246,7 +283,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="357" column="1" bodyfile="libopenage/engine.h" bodystart="357" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="357" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="357" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a65102655ef3f9fb0fc8617deb7e80c02" compoundref="engine_8cpp" startline="491" endline="493">get_job_manager</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" compoundref="engine_8cpp" startline="298" endline="308">run</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" compoundref="engine_8cpp" startline="310" endline="313">stop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1aa4133c54d4a25e56795e8635466a2949" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">gui::EngineQMLInfo</ref></type>
@@ -261,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="365" column="1" bodyfile="libopenage/engine.h" bodystart="365" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="365" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_frame_counter" kindref="compound">util::FrameCounter</ref></type>
@@ -275,7 +316,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="370" column="1" bodyfile="libopenage/engine.h" bodystart="370" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="370" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="370" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" compoundref="engine_8cpp" startline="529" endline="531">lastframe_duration_nsec</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a57745886589dafd40bb527f09f97b566" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1_screenshot_manager" kindref="compound">ScreenshotManager</ref></type>
@@ -289,7 +333,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="375" column="1" bodyfile="libopenage/engine.h" bodystart="375" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="375" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="375" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1aa913f604da61a636e6e22561da30256d" compoundref="engine_8cpp" startline="499" endline="501">get_screenshot_manager</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1adc434fd28c47f5f35b3fd5494263346a" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">cvar::CVarManager</ref></type>
@@ -303,7 +348,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="380" column="1" bodyfile="libopenage/engine.h" bodystart="380" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="380" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="380" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ab9a7642ba035448c4a3c22e11ad40646" compoundref="engine_8cpp" startline="507" endline="509">get_cvar_manager</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1ac42c03e7695e4b1204abd0dd5f49c5fc" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">input::ActionManager</ref></type>
@@ -317,7 +363,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="385" column="1" bodyfile="libopenage/engine.h" bodystart="385" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="385" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="385" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ab6233b0bf461be4bb1633cd9f7e7f08b" compoundref="engine_8cpp" startline="503" endline="505">get_action_manager</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a8d07f7c047d94e7406e58de892842ebc" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">audio::AudioManager</ref></type>
@@ -331,7 +378,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="390" column="1" bodyfile="libopenage/engine.h" bodystart="390" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="390" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="390" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ad925a7a6258d1382edd274ee4ceafdbd" compoundref="engine_8cpp" startline="495" endline="497">get_audio_manager</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1aaaf873634221216d4af0488731f64657" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">input::InputManager</ref></type>
@@ -345,7 +393,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="395" column="1" bodyfile="libopenage/engine.h" bodystart="395" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="395" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="395" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">get_input_manager</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1ac2fea2a2baf08cdd24f725bd2931eaa2" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_unit_selection" kindref="compound">UnitSelection</ref> &gt;</type>
@@ -359,7 +408,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="400" column="1" bodyfile="libopenage/engine.h" bodystart="400" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="400" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="400" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ad14908046077033490111f941fbc408f" compoundref="engine_8cpp" startline="575" endline="578">end_game</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a993ef0abb641566f661a99d288ae8e11" compoundref="engine_8cpp" startline="515" endline="517">get_unit_selection</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a5945fa6e3ca0ee33148a5b8c45dcb0c8" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; int, <ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">renderer::Font</ref> * &gt;</type>
@@ -373,7 +424,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="406" column="1" bodyfile="libopenage/engine.h" bodystart="406" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="406" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="406" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">render_text</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a9576c29b225fb2904d496e02dd500448" prot="private" static="no" mutable="no">
         <type>SDL_Window *</type>
@@ -387,7 +439,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="411" column="1" bodyfile="libopenage/engine.h" bodystart="411" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="411" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="411" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" compoundref="engine_8cpp" startline="227" endline="240">~Engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a881b3b503527175508666ec060cd5b75" prot="private" static="no" mutable="no">
         <type>SDL_GLContext</type>
@@ -402,7 +456,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="420" column="1" bodyfile="libopenage/engine.h" bodystart="420" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="420" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="420" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" compoundref="engine_8cpp" startline="227" endline="240">~Engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a84cb7d3e3b37231b4391774f53c1afc7" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1gui_1_1_g_u_i" kindref="compound">gui::GUI</ref> &gt;</type>
@@ -416,7 +471,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="425" column="1" bodyfile="libopenage/engine.h" bodystart="425" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="425" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="425" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" compoundref="engine_8cpp" startline="227" endline="240">~Engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" prot="private" static="no" mutable="no">
         <type><ref refid="classopenage_1_1util_1_1_profiler" kindref="compound">util::Profiler</ref></type>
@@ -430,7 +487,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="430" column="1" bodyfile="libopenage/engine.h" bodystart="430" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="430" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="430" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" compoundref="engine_8cpp" startline="227" endline="240">~Engine</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1acc6d5809d1a5248bb9998afa117ed9e2" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_font_manager" kindref="compound">renderer::FontManager</ref> &gt;</type>
@@ -444,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="435" column="1" bodyfile="libopenage/engine.h" bodystart="435" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="435" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="435" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_text_renderer" kindref="compound">renderer::TextRenderer</ref> &gt;</type>
@@ -458,7 +518,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="440" column="1" bodyfile="libopenage/engine.h" bodystart="440" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="440" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="440" bodyend="-1"/>
+        <referencedby refid="classopenage_1_1_engine_1a5684ab06d65ff2afe5e3b8551809d668" compoundref="engine_8cpp" startline="525" endline="527">get_text_renderer</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">render_text</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classopenage_1_1_engine_1a5c189b01b1f03e17977f8cd17f6e2d13" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classopenage_1_1log_1_1_file_sink" kindref="compound">log::FileSink</ref> &gt;</type>
@@ -472,7 +535,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="445" column="1" bodyfile="libopenage/engine.h" bodystart="445" bodyend="-1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="445" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="445" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -504,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="96" column="1" bodyfile="libopenage/engine.cpp" bodystart="39" bodyend="224"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="96" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="39" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ae3da7b3e2452952347eb9aabf86004e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -522,7 +585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="104" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="104" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1abf4b69dd9d8d58f58b90e871bdf03dd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
@@ -540,7 +603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="109" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="109" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a283f4dd83a0dad35b0aa5a950e200d5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -558,7 +621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="114" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="114" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1aa3b14310179f30d0357bdd5bfaf8990d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
@@ -576,7 +639,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="119" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="119" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -590,7 +653,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="126" column="1" bodyfile="libopenage/engine.cpp" bodystart="227" bodyend="240"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="126" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="227" bodyend="240"/>
+        <references refid="classopenage_1_1_engine_1a881b3b503527175508666ec060cd5b75" compoundref="engine_8h" startline="420">glcontext</references>
+        <references refid="classopenage_1_1_engine_1a84cb7d3e3b37231b4391774f53c1afc7" compoundref="engine_8h" startline="425">gui</references>
+        <references refid="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" compoundref="engine_8h" startline="430">profiler</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1a68f01b02f0824fe2e41e508a75946793" compoundref="profiler_8cpp" startline="47" endline="53">openage::util::Profiler::unregister_all</references>
+        <references refid="classopenage_1_1_engine_1a9576c29b225fb2904d496e02dd500448" compoundref="engine_8h" startline="411">window</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -604,7 +672,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="131" column="1" bodyfile="libopenage/engine.cpp" bodystart="298" bodyend="308"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="131" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="298" bodyend="308"/>
+        <references refid="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" compoundref="engine_8h" startline="357">job_manager</references>
+        <references refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</references>
+        <references refid="classopenage_1_1_engine_1ae327c10821e16fcde04a0f8332fd013b" compoundref="engine_8h" startline="274">running</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" compoundref="job__manager_8cpp" startline="31" endline="40">openage::job::JobManager::start</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" compoundref="job__manager_8cpp" startline="43" endline="56">openage::job::JobManager::stop</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -618,7 +691,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="136" column="1" bodyfile="libopenage/engine.cpp" bodystart="310" bodyend="313"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="136" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="310" bodyend="313"/>
+        <references refid="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" compoundref="engine_8h" startline="357">job_manager</references>
+        <references refid="classopenage_1_1_engine_1ae327c10821e16fcde04a0f8332fd013b" compoundref="engine_8h" startline="274">running</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" compoundref="job__manager_8cpp" startline="43" endline="56">openage::job::JobManager::stop</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1gui_1_1_engine_link_1a6435202dddbc3dfba7147944333329da" compoundref="engine__link_8cpp" startline="75" endline="77">openage::gui::EngineLink::stop</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -637,7 +715,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="142" column="1" bodyfile="libopenage/engine.cpp" bodystart="242" bodyend="272"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="142" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="242" bodyend="272"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" compoundref="coordmanager_8h" startline="37">openage::coord::CoordManager::camgame_viewport</references>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" compoundref="coordmanager_8h" startline="43">openage::coord::CoordManager::camhud_viewport</references>
+        <references refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" compoundref="engine_8h" startline="294">coord</references>
+        <references refid="namespaceopenage_1_1log_1aad3d76b2466dbc4f81552935f2d84faa" compoundref="log_2____init_____8py" startline="109" endline="112">openage::log.dbg</references>
+        <references refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" compoundref="log_8cpp" startline="13" endline="15">openage::log::log</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" compoundref="coordmanager_8h" startline="26">openage::coord::CoordManager::viewport_size</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a06eb9cde29e294b956187c88042ae8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -655,7 +740,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="147" column="1" bodyfile="libopenage/engine.cpp" bodystart="570" bodyend="573"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="147" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="570" bodyend="573"/>
+        <references refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" compoundref="engine_8h" startline="352">game</references>
+        <referencedby refid="classopenage_1_1_game_main_handle_1afbd62856de4f1e4cf749eaef6b87c50d" compoundref="game__main_8cpp" startline="93" endline="105">openage::GameMainHandle::set_game</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a7fc2ea0de672369761ffe6ee251a1bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -673,7 +760,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="152" column="1" bodyfile="libopenage/engine.cpp" bodystart="562" bodyend="568"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="152" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="562" bodyend="568"/>
+        <references refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" compoundref="error_2error_8h" startline="155">ENSURE</references>
+        <references refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" compoundref="engine_8h" startline="352">game</references>
+        <references refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e">openage::move</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ad14908046077033490111f941fbc408f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -687,7 +777,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="157" column="1" bodyfile="libopenage/engine.cpp" bodystart="575" bodyend="578"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="157" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="575" bodyend="578"/>
+        <references refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" compoundref="engine_8h" startline="352">game</references>
+        <references refid="classopenage_1_1_engine_1ac2fea2a2baf08cdd24f725bd2931eaa2" compoundref="engine_8h" startline="400">unit_selection</references>
+        <referencedby refid="classopenage_1_1_game_main_handle_1aa8b508b3c91e58ba2f6b34ab22759c85" compoundref="game__main_8cpp" startline="85" endline="91">openage::GameMainHandle::clear</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a0920a489f61705be5c6dc40e894513ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -714,7 +807,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="164" column="1"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="164" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -728,7 +821,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="169" column="1" bodyfile="libopenage/engine.cpp" bodystart="274" bodyend="296"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="169" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="274" bodyend="296"/>
+        <references refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" compoundref="engine_8h" startline="294">coord</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" compoundref="fps_8h" startline="19">openage::util::FrameCounter::fps</references>
+        <references refid="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" compoundref="engine_8h" startline="370">fps_counter</references>
+        <references refid="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" compoundref="engine_8h" startline="430">profiler</references>
+        <references refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" compoundref="engine_8cpp" startline="533" endline="549">render_text</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1a4d1465e4955c40e6e09aac72f35a9591" compoundref="profiler_8cpp" startline="110" endline="114">openage::util::Profiler::show</references>
+        <references refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" compoundref="util_2color_8cpp" startline="17" endline="20">openage::util::col::use</references>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" compoundref="coordmanager_8h" startline="26">openage::coord::CoordManager::viewport_size</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a73fdf4e650bd81de3414ba5997a9129f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -746,7 +848,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="174" column="1" bodyfile="libopenage/engine.cpp" bodystart="463" bodyend="465"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="174" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="463" bodyend="465"/>
+        <references refid="classopenage_1_1_engine_1a4d7ffa1833327c7bb76b7d79b75ae13f" compoundref="engine_8h" startline="325">on_input_event</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a39f0d187a32285eaa2dca377aee8be45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -764,7 +868,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="179" column="1" bodyfile="libopenage/engine.cpp" bodystart="467" bodyend="469"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="179" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="467" bodyend="469"/>
+        <references refid="classopenage_1_1_engine_1abc559d76b47fb9cb37d99736bb5ac8e6" compoundref="engine_8h" startline="330">on_engine_tick</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a28cf66f139dbd94097277d64984154db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -782,7 +888,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="184" column="1" bodyfile="libopenage/engine.cpp" bodystart="471" bodyend="473"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="184" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="471" bodyend="473"/>
+        <references refid="classopenage_1_1_engine_1aa8d4eb6fa73d837178b7873a527b83e3" compoundref="engine_8h" startline="342">on_drawhud</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">openage::GameControl::set_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a32161204054965fa310a15287087e619" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -800,7 +909,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="189" column="1" bodyfile="libopenage/engine.cpp" bodystart="475" bodyend="477"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="189" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="475" bodyend="477"/>
+        <references refid="classopenage_1_1_engine_1ae125d1790d2b600e870907083ac2a5c6" compoundref="engine_8h" startline="336">on_drawgame</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a90a9eb968b51cb8166c058afff334eca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -818,7 +928,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="194" column="1" bodyfile="libopenage/engine.cpp" bodystart="479" bodyend="481"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="194" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="479" bodyend="481"/>
+        <references refid="classopenage_1_1_engine_1aa8d8b0acb6f9e7895d16a3e936dd9866" compoundref="engine_8h" startline="347">on_resize_handler</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a1a34f025683f6be30e37154be879c354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
@@ -832,7 +944,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="199" column="1" bodyfile="libopenage/engine.cpp" bodystart="483" bodyend="485"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="199" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="483" bodyend="485"/>
+        <references refid="classopenage_1_1_engine_1a8edfd53ab986b9aa55fcdac286fcedf3" compoundref="engine_8h" startline="313">root_dir</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> *</type>
@@ -846,7 +959,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="205" column="1" bodyfile="libopenage/engine.cpp" bodystart="487" bodyend="489"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="205" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="487" bodyend="489"/>
+        <references refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" compoundref="engine_8h" startline="352">game</references>
+        <referencedby refid="classopenage_1_1_action_mode_1afeb7fd105b03e822ff4ebe205cff3265" compoundref="game__control_8cpp" startline="355" endline="370">openage::ActionMode::available</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a51ca65c9475aa6b8b94e217d08a03bab" compoundref="game__control_8cpp" startline="579" endline="591">openage::EditorMode::available</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a1824b69c5f78ed1db93b6fa6417fdf83" compoundref="game__renderer_8cpp" startline="215" endline="217">openage::GameRenderer::game</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a7b0a0d95b032af2e9bf2ede80bca03c8" compoundref="game__control_8cpp" startline="390" endline="409">openage::ActionMode::get_action</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1aa7c61c3caafc810355005e83c8f234e2" compoundref="game__control_8cpp" startline="848" endline="854">openage::GameControl::get_current_player</referencedby>
+        <referencedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4" compoundref="game__renderer_8cpp" startline="199" endline="213">openage::GameRenderer::on_draw</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1430647b024d4c9e7021756a6fa9700d" compoundref="game__control_8cpp" startline="625" endline="649">openage::EditorMode::paint_entity_at</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a1f47d053e9c09aaf9bc6ec3a85f4a49e" compoundref="game__control_8cpp" startline="615" endline="623">openage::EditorMode::paint_terrain_at</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a3865e557756044d8183a3d24cd5b8ab4" compoundref="game__control_8cpp" startline="411" endline="443">openage::ActionMode::place_selection</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a65102655ef3f9fb0fc8617deb7e80c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref> *</type>
@@ -860,7 +985,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="210" column="1" bodyfile="libopenage/engine.cpp" bodystart="491" bodyend="493"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="210" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="491" bodyend="493"/>
+        <references refid="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" compoundref="engine_8h" startline="357">job_manager</references>
+        <referencedby refid="classopenage_1_1_game_spec_handle_1afcf8867f4e0077e6a8a2a6fe6c0c98ff" compoundref="game__spec_8cpp" startline="510" endline="546">openage::GameSpecHandle::start_load_job</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ad925a7a6258d1382edd274ee4ceafdbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">audio::AudioManager</ref> &amp;</type>
@@ -874,7 +1001,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="215" column="1" bodyfile="libopenage/engine.cpp" bodystart="495" bodyend="497"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="215" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="495" bodyend="497"/>
+        <references refid="classopenage_1_1_engine_1a8d07f7c047d94e7406e58de892842ebc" compoundref="engine_8h" startline="390">audio_manager</references>
+        <referencedby refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" compoundref="game__spec_8cpp" startline="192" endline="270">openage::GameSpec::on_gamedata_loaded</referencedby>
+        <referencedby refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" compoundref="game__spec_8cpp" startline="431" endline="453">openage::Sound::play</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1aa913f604da61a636e6e22561da30256d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_screenshot_manager" kindref="compound">ScreenshotManager</ref> &amp;</type>
@@ -888,7 +1018,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="220" column="1" bodyfile="libopenage/engine.cpp" bodystart="499" bodyend="501"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="220" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="499" bodyend="501"/>
+        <references refid="classopenage_1_1_engine_1a57745886589dafd40bb527f09f97b566" compoundref="engine_8h" startline="375">screenshot_manager</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ab6233b0bf461be4bb1633cd9f7e7f08b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">input::ActionManager</ref> &amp;</type>
@@ -902,7 +1033,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="225" column="1" bodyfile="libopenage/engine.cpp" bodystart="503" bodyend="505"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="225" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="503" bodyend="505"/>
+        <references refid="classopenage_1_1_engine_1ac42c03e7695e4b1204abd0dd5f49c5fc" compoundref="engine_8h" startline="385">action_manager</references>
+        <referencedby refid="classopenage_1_1_action_mode_signals_1a400a4674187d1ce007a206c5074390da" compoundref="game__control_8cpp" startline="69" endline="89">openage::ActionModeSignals::on_action</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1ab9a7642ba035448c4a3c22e11ad40646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">cvar::CVarManager</ref> &amp;</type>
@@ -916,7 +1052,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="230" column="1" bodyfile="libopenage/engine.cpp" bodystart="507" bodyend="509"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="230" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="507" bodyend="509"/>
+        <references refid="classopenage_1_1_engine_1adc434fd28c47f5f35b3fd5494263346a" compoundref="engine_8h" startline="380">cvar_manager</references>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" compoundref="console_8cpp" startline="126" endline="152">openage::console::Console::interpret</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">input::InputManager</ref> &amp;</type>
@@ -930,7 +1068,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="235" column="1" bodyfile="libopenage/engine.cpp" bodystart="511" bodyend="513"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="235" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="511" bodyend="513"/>
+        <references refid="classopenage_1_1_engine_1aaaf873634221216d4af0488731f64657" compoundref="engine_8h" startline="395">input_manager</references>
+        <referencedby refid="classopenage_1_1_action_mode_1a30654ed7b85fa4cf0a2728c447dfa652" compoundref="game__control_8cpp" startline="503" endline="527">openage::ActionMode::announce_buttons_type</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" compoundref="engine_8cpp" startline="519" endline="523">announce_global_binds</referencedby>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_signals_1a400a4674187d1ce007a206c5074390da" compoundref="game__control_8cpp" startline="69" endline="89">openage::ActionModeSignals::on_action</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a9c7d1f16c862692b1172079402ac0f18" compoundref="game__control_8cpp" startline="374" endline="388">openage::ActionMode::on_exit</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1_editor_mode_1a29b4d3a8c32153ccdc566f60fcdacf7f" compoundref="game__control_8cpp" startline="547" endline="577">openage::EditorMode::on_game_control_set</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" compoundref="console_8cpp" startline="60" endline="108">openage::console::Console::register_to_engine</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1ad7c9d48df33f8f56ab5686c36648bfa5" compoundref="game__control_8cpp" startline="730" endline="773">openage::GameControl::set_engine</referencedby>
+        <referencedby refid="classopenage_1_1_game_control_1a1d0f073f844955000861e4c0d08b20e0" compoundref="game__control_8cpp" startline="856" endline="917">openage::GameControl::set_mode</referencedby>
+        <referencedby refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" compoundref="console_8cpp" startline="110" endline="119">openage::console::Console::set_visible</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a993ef0abb641566f661a99d288ae8e11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1_unit_selection" kindref="compound">UnitSelection</ref> *</type>
@@ -944,7 +1094,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="240" column="1" bodyfile="libopenage/engine.cpp" bodystart="515" bodyend="517"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="240" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="515" bodyend="517"/>
+        <references refid="classopenage_1_1_engine_1ac2fea2a2baf08cdd24f725bd2931eaa2" compoundref="engine_8h" startline="400">unit_selection</references>
+        <referencedby refid="classopenage_1_1_action_mode_1a43f98279255b857ee8fa9943117271e8" compoundref="game__control_8cpp" startline="102" endline="353">openage::ActionMode::on_game_control_set</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -958,7 +1110,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="245" column="1" bodyfile="libopenage/engine.cpp" bodystart="519" bodyend="523"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="245" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="519" bodyend="523"/>
+        <references refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">get_input_manager</references>
+        <references refid="classopenage_1_1_engine_signals_1a29e0341281c27dfa4fce142ffbe388a6">openage::EngineSignals::global_binds_changed</references>
+        <references refid="classopenage_1_1_engine_1a92b6d5f088aa6e52525d3f0c62ce0b99" compoundref="engine_8h" startline="451">gui_signals</references>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a5684ab06d65ff2afe5e3b8551809d668" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classopenage_1_1renderer_1_1_text_renderer" kindref="compound">renderer::TextRenderer</ref> *</type>
@@ -972,7 +1127,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="250" column="1" bodyfile="libopenage/engine.cpp" bodystart="525" bodyend="527"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="250" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="525" bodyend="527"/>
+        <references refid="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" compoundref="engine_8h" startline="440">text_renderer</references>
+        <referencedby refid="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" compoundref="draw_8cpp" startline="22" endline="89">openage::console::draw::to_opengl</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
@@ -987,7 +1144,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="258" column="1" bodyfile="libopenage/engine.cpp" bodystart="529" bodyend="531"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="258" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="529" bodyend="531"/>
+        <references refid="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" compoundref="engine_8h" startline="370">fps_counter</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" compoundref="fps_8h" startline="25">openage::util::FrameCounter::nsec_lastframe</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1016,7 +1176,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="263" column="1" bodyfile="libopenage/engine.cpp" bodystart="533" bodyend="549"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="263" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="533" bodyend="549"/>
+        <references refid="namespaceopenage_1_1log_1a325b0901ddb3f2af36f93781b7dd9744" compoundref="log_2____init_____8py" startline="124" endline="127">openage::log.err</references>
+        <references refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" compoundref="renderer_2font_2tests_8cpp" startline="59" endline="61">openage::renderer::tests::font</references>
+        <references refid="classopenage_1_1_engine_1a5945fa6e3ca0ee33148a5b8c45dcb0c8" compoundref="engine_8h" startline="406">fonts</references>
+        <references refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" compoundref="message_8h" startline="171">MSG</references>
+        <references refid="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" compoundref="engine_8h" startline="440">text_renderer</references>
+        <references refid="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" compoundref="strings_8cpp" startline="32" endline="61">openage::util::vsformat</references>
+        <referencedby refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">draw_debug_overlay</referencedby>
+        <referencedby refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" compoundref="profiler_8cpp" startline="164" endline="178">openage::util::Profiler::draw_legend</referencedby>
+        <referencedby refid="classopenage_1_1_action_mode_1aab55848d4a5495b982df54fe1d41865b" compoundref="game__control_8cpp" startline="445" endline="472">openage::ActionMode::render</referencedby>
+        <referencedby refid="classopenage_1_1_unit_selection_1ac96d0e9e50c7efe2810017f60aa7a6ce" compoundref="selection_8cpp" startline="283" endline="317">openage::UnitSelection::show_attributes</referencedby>
       </memberdef>
       <memberdef kind="function" id="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void void</type>
@@ -1043,7 +1213,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="268" column="1" bodyfile="libopenage/engine.cpp" bodystart="551" bodyend="560"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="268" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="551" bodyend="560"/>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a7d3d2a6a960c82fa5dcec0e43e3e7c9a" compoundref="coordmanager_8h" startline="31">openage::coord::CoordManager::camgame_phys</references>
+        <references refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" compoundref="engine_8h" startline="294">coord</references>
+        <referencedby refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" compoundref="engine_8cpp" startline="315" endline="461">loop</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1060,7 +1233,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="libopenage/engine.h" line="304" column="1" bodyfile="libopenage/engine.cpp" bodystart="315" bodyend="461"/>
+        <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="304" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.cpp" bodystart="315" bodyend="461"/>
+        <references refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" compoundref="engine_8h" startline="294">coord</references>
+        <references refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" compoundref="engine_8cpp" startline="274" endline="296">draw_debug_overlay</references>
+        <references refid="classopenage_1_1_engine_1acaf343ec070a13eb8ba0a8a6ebd491e2" compoundref="engine_8h" startline="279">drawing_debug_overlay</references>
+        <references refid="classopenage_1_1_engine_1a013d979bb40340a91030282446285ce5" compoundref="engine_8h" startline="284">drawing_huds</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1aaf65afbb05a6aa408a7aff89e74e93dd" compoundref="profiler_8cpp" startline="140" endline="154">openage::util::Profiler::end_frame_measure</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1abb98ec218690fbc79d31967924118c45" compoundref="profiler_8cpp" startline="76" endline="85">openage::util::Profiler::end_measure</references>
+        <references refid="classopenage_1_1job_1_1_job_manager_1ae81b425a182f26b155c9f31de6b74d63" compoundref="job__manager_8cpp" startline="59" endline="80">openage::job::JobManager::execute_callbacks</references>
+        <references refid="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" compoundref="engine_8h" startline="370">fps_counter</references>
+        <references refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" compoundref="fps_8cpp" startline="23" endline="46">openage::util::FrameCounter::frame</references>
+        <references refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" compoundref="engine_8h" startline="352">game</references>
+        <references refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" compoundref="engine_8cpp" startline="511" endline="513">get_input_manager</references>
+        <references refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" compoundref="timer_8cpp" startline="37" endline="43">openage::util::Timer::getval</references>
+        <references refid="namespaceopenage_1_1util_1a72bef8f3b092e74cf890a38611b9bbc0" compoundref="opengl_8cpp" startline="12" endline="71">openage::util::gl_check_error</references>
+        <references refid="classopenage_1_1_engine_1a84cb7d3e3b37231b4391774f53c1afc7" compoundref="engine_8h" startline="425">gui</references>
+        <references refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" compoundref="input__manager_8cpp" startline="285" endline="291">openage::input::InputManager::is_down</references>
+        <references refid="classopenage_1_1input_1_1_input_manager_1aee8d9369313ee81d552ea4fe97f6165c" compoundref="input__manager_8cpp" startline="260" endline="283">openage::input::InputManager::is_mouse_at_edge</references>
+        <references refid="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" compoundref="engine_8h" startline="357">job_manager</references>
+        <references refid="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" compoundref="engine_8cpp" startline="529" endline="531">lastframe_duration_nsec</references>
+        <references refid="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" compoundref="engine_8cpp" startline="551" endline="560">move_phys_camera</references>
+        <references refid="classopenage_1_1_engine_1a29cd3713a4e3cf61b20dd640f17f6e6c" compoundref="engine_8h" startline="319">ns_per_frame</references>
+        <references refid="classopenage_1_1_engine_1ae125d1790d2b600e870907083ac2a5c6" compoundref="engine_8h" startline="336">on_drawgame</references>
+        <references refid="classopenage_1_1_engine_1aa8d4eb6fa73d837178b7873a527b83e3" compoundref="engine_8h" startline="342">on_drawhud</references>
+        <references refid="classopenage_1_1_engine_1abc559d76b47fb9cb37d99736bb5ac8e6" compoundref="engine_8h" startline="330">on_engine_tick</references>
+        <references refid="classopenage_1_1_engine_1a4d7ffa1833327c7bb76b7d79b75ae13f" compoundref="engine_8h" startline="325">on_input_event</references>
+        <references refid="classopenage_1_1_engine_1aa8d8b0acb6f9e7895d16a3e936dd9866" compoundref="engine_8h" startline="347">on_resize_handler</references>
+        <references refid="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" compoundref="engine_8h" startline="430">profiler</references>
+        <references refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" compoundref="timer_8cpp" startline="14" endline="21">openage::util::Timer::reset</references>
+        <references refid="classopenage_1_1_engine_1ae327c10821e16fcde04a0f8332fd013b" compoundref="engine_8h" startline="274">running</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1a0d8b52ef4078807189fd457e658270cb" compoundref="profiler_8cpp" startline="134" endline="138">openage::util::Profiler::start_frame_measure</references>
+        <references refid="classopenage_1_1util_1_1_profiler_1a25d95a667ba6b5d369e545ba517d8e46" compoundref="profiler_8cpp" startline="64" endline="74">openage::util::Profiler::start_measure</references>
+        <references refid="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" compoundref="engine_8cpp" startline="310" endline="313">stop</references>
+        <references refid="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" compoundref="engine_8h" startline="440">text_renderer</references>
+        <references refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" compoundref="variable_8h" startline="49">openage::util::Variable&lt; T &gt;::value</references>
+        <references refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" compoundref="coordmanager_8h" startline="26">openage::coord::CoordManager::viewport_size</references>
+        <references refid="classopenage_1_1_engine_1a9576c29b225fb2904d496e02dd500448" compoundref="engine_8h" startline="411">window</references>
+        <referencedby refid="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" compoundref="engine_8cpp" startline="298" endline="308">run</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1075,293 +1284,317 @@ CoordManager coord
 </verbatim> </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1260">
+      <node id="2098">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
       </node>
-      <node id="1258">
+      <node id="2096">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="1259" relation="public-inheritance">
+        <childnode refid="2097" relation="public-inheritance">
         </childnode>
-        <childnode refid="1260" relation="public-inheritance">
+        <childnode refid="2098" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1259">
+      <node id="2097">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1293">
+      <node id="2134">
         <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
       </node>
-      <node id="1268">
+      <node id="2109">
         <label>openage::util::Path</label>
         <link refid="classopenage_1_1util_1_1_path"/>
       </node>
-      <node id="1269">
+      <node id="2110">
         <label>openage::EngineSignals</label>
         <link refid="classopenage_1_1_engine_signals"/>
-        <childnode refid="1270" relation="public-inheritance">
+        <childnode refid="2111" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1294">
+      <node id="2135">
         <label>openage::coord::camgame_delta</label>
         <link refid="structopenage_1_1coord_1_1camgame__delta"/>
-        <childnode refid="1295" relation="public-inheritance">
+        <childnode refid="2136" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1266">
+      <node id="2104">
         <label>openage::util::VariableBase</label>
         <link refid="classopenage_1_1util_1_1_variable_base"/>
       </node>
-      <node id="1272">
+      <node id="2113">
         <label>openage::ScreenshotManager</label>
         <link refid="classopenage_1_1_screenshot_manager"/>
-        <childnode refid="1273" relation="usage">
+        <childnode refid="2114" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="1274" relation="usage">
+        <childnode refid="2115" relation="usage">
           <edgelabel>+window_size</edgelabel>
         </childnode>
       </node>
-      <node id="1275">
+      <node id="2106">
+        <label>T</label>
+      </node>
+      <node id="2116">
         <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="1265">
+      <node id="2103">
         <label>openage::util::Variable&lt; bool &gt;</label>
         <link refid="classopenage_1_1util_1_1_variable"/>
-        <childnode refid="1266" relation="public-inheritance">
+        <childnode refid="2104" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2105" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="1270">
+      <node id="2111">
         <label>QObject</label>
       </node>
-      <node id="1271">
+      <node id="2112">
         <label>openage::cvar::CVarManager</label>
         <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
-        <childnode refid="1268" relation="usage">
+        <childnode refid="2109" relation="usage">
           <edgelabel>-path</edgelabel>
         </childnode>
       </node>
-      <node id="1292">
+      <node id="2133">
         <label>openage::coord::phys3</label>
         <link refid="structopenage_1_1coord_1_1phys3"/>
-        <childnode refid="1293" relation="public-inheritance">
+        <childnode refid="2134" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1278">
+      <node id="2119">
         <label>openage::util::ExternalProfiler</label>
         <link refid="classopenage_1_1util_1_1_external_profiler"/>
       </node>
-      <node id="1263">
+      <node id="2101">
         <label>openage::options::OptionNode</label>
         <link refid="classopenage_1_1options_1_1_option_node"/>
-        <childnode refid="1263" relation="usage">
+        <childnode refid="2101" relation="usage">
           <edgelabel>-parent</edgelabel>
         </childnode>
       </node>
-      <node id="1290">
+      <node id="2131">
         <label>openage::coord::viewport</label>
         <link refid="structopenage_1_1coord_1_1viewport"/>
-        <childnode refid="1291" relation="public-inheritance">
+        <childnode refid="2132" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1286">
+      <node id="2127">
         <label>openage::input::ActionManager</label>
         <link refid="classopenage_1_1input_1_1_action_manager"/>
-        <childnode refid="1271" relation="usage">
+        <childnode refid="2112" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="1279" relation="usage">
+        <childnode refid="2120" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1288">
+      <node id="2129">
         <label>qtsdl::GuiSingletonItemsInfo</label>
         <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
       </node>
-      <node id="1274">
+      <node id="2115">
         <label>openage::coord::viewport_delta</label>
         <link refid="structopenage_1_1coord_1_1viewport__delta"/>
-        <childnode refid="1275" relation="public-inheritance">
+        <childnode refid="2116" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1285">
+      <node id="2126">
         <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="1281">
-        <label>openage::coord::input</label>
-        <link refid="structopenage_1_1coord_1_1input"/>
-        <childnode refid="1282" relation="public-inheritance">
+      <node id="2107">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="2105" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1295">
+      <node id="2122">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="2123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2136">
         <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
       </node>
-      <node id="1273">
+      <node id="2114">
         <label>openage::job::JobManager</label>
         <link refid="classopenage_1_1job_1_1_job_manager"/>
       </node>
-      <node id="1282">
+      <node id="2123">
         <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
       </node>
-      <node id="1276">
+      <node id="2117">
         <label>openage::util::FrameCounter</label>
         <link refid="classopenage_1_1util_1_1_frame_counter"/>
-        <childnode refid="1277" relation="usage">
+        <childnode refid="2118" relation="usage">
           <edgelabel>-frame_timer</edgelabel>
         </childnode>
       </node>
-      <node id="1283">
+      <node id="2124">
         <label>openage::input::InputContext</label>
         <link refid="classopenage_1_1input_1_1_input_context"/>
-        <childnode refid="1279" relation="usage">
+        <childnode refid="2120" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1287">
+      <node id="2128">
         <label>openage::gui::EngineQMLInfo</label>
         <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
-        <childnode refid="1288" relation="public-inheritance">
+        <childnode refid="2129" relation="public-inheritance">
         </childnode>
-        <childnode refid="1268" relation="usage">
+        <childnode refid="2109" relation="usage">
           <edgelabel>+asset_dir</edgelabel>
         </childnode>
-        <childnode refid="1261" relation="usage">
+        <childnode refid="2099" relation="usage">
           <edgelabel>+engine</edgelabel>
         </childnode>
       </node>
-      <node id="1296">
+      <node id="2137">
         <label>openage::audio::AudioManager</label>
         <link refid="classopenage_1_1audio_1_1_audio_manager"/>
-        <childnode refid="1273" relation="usage">
+        <childnode refid="2114" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1267">
+      <node id="2108">
         <label>openage::util::Profiler</label>
         <link refid="classopenage_1_1util_1_1_profiler"/>
-        <childnode refid="1261" relation="usage">
+        <childnode refid="2099" relation="usage">
           <edgelabel>-engine</edgelabel>
         </childnode>
       </node>
-      <node id="1261">
+      <node id="2099">
         <label>openage::Engine</label>
         <link refid="classopenage_1_1_engine"/>
-        <childnode refid="1262" relation="public-inheritance">
+        <childnode refid="2100" relation="public-inheritance">
         </childnode>
-        <childnode refid="1263" relation="public-inheritance">
+        <childnode refid="2101" relation="public-inheritance">
         </childnode>
-        <childnode refid="1264" relation="usage">
+        <childnode refid="2102" relation="usage">
           <edgelabel>+drawing_huds</edgelabel>
           <edgelabel>+drawing_debug_overlay</edgelabel>
         </childnode>
-        <childnode refid="1267" relation="usage">
+        <childnode refid="2108" relation="usage">
           <edgelabel>-profiler</edgelabel>
         </childnode>
-        <childnode refid="1268" relation="usage">
+        <childnode refid="2109" relation="usage">
           <edgelabel>-root_dir</edgelabel>
         </childnode>
-        <childnode refid="1269" relation="usage">
+        <childnode refid="2110" relation="usage">
           <edgelabel>+gui_signals</edgelabel>
         </childnode>
-        <childnode refid="1271" relation="usage">
+        <childnode refid="2112" relation="usage">
           <edgelabel>-cvar_manager</edgelabel>
         </childnode>
-        <childnode refid="1272" relation="usage">
+        <childnode refid="2113" relation="usage">
           <edgelabel>-screenshot_manager</edgelabel>
         </childnode>
-        <childnode refid="1276" relation="usage">
+        <childnode refid="2117" relation="usage">
           <edgelabel>-fps_counter</edgelabel>
         </childnode>
-        <childnode refid="1278" relation="usage">
+        <childnode refid="2119" relation="usage">
           <edgelabel>+external_profiler</edgelabel>
         </childnode>
-        <childnode refid="1279" relation="usage">
+        <childnode refid="2120" relation="usage">
           <edgelabel>-input_manager</edgelabel>
         </childnode>
-        <childnode refid="1287" relation="usage">
+        <childnode refid="2128" relation="usage">
           <edgelabel>-qml_info</edgelabel>
         </childnode>
-        <childnode refid="1289" relation="usage">
+        <childnode refid="2130" relation="usage">
           <edgelabel>+coord</edgelabel>
         </childnode>
-        <childnode refid="1273" relation="usage">
+        <childnode refid="2114" relation="usage">
           <edgelabel>-job_manager</edgelabel>
         </childnode>
-        <childnode refid="1286" relation="usage">
+        <childnode refid="2127" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
-        <childnode refid="1296" relation="usage">
+        <childnode refid="2137" relation="usage">
           <edgelabel>-audio_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1291">
+      <node id="2132">
         <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
       </node>
-      <node id="1262">
+      <node id="2100">
         <label>openage::ResizeHandler</label>
         <link refid="classopenage_1_1_resize_handler"/>
       </node>
-      <node id="1264">
+      <node id="2102">
         <label>openage::options::Var&lt; bool &gt;</label>
         <link refid="classopenage_1_1options_1_1_var"/>
-        <childnode refid="1265" relation="public-inheritance">
+        <childnode refid="2103" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2107" relation="template-instance">
+          <edgelabel>&lt; bool &gt;</edgelabel>
         </childnode>
       </node>
-      <node id="1284">
+      <node id="2125">
         <label>openage::coord::input_delta</label>
         <link refid="structopenage_1_1coord_1_1input__delta"/>
-        <childnode refid="1285" relation="public-inheritance">
+        <childnode refid="2126" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1277">
+      <node id="2118">
         <label>openage::util::Timer</label>
         <link refid="classopenage_1_1util_1_1_timer"/>
       </node>
-      <node id="1280">
+      <node id="2121">
         <label>openage::InputHandler</label>
         <link refid="classopenage_1_1_input_handler"/>
       </node>
-      <node id="1279">
+      <node id="2105">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="2104" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2106" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+      <node id="2120">
         <label>openage::input::InputManager</label>
         <link refid="classopenage_1_1input_1_1_input_manager"/>
-        <childnode refid="1280" relation="public-inheritance">
+        <childnode refid="2121" relation="public-inheritance">
         </childnode>
-        <childnode refid="1281" relation="usage">
+        <childnode refid="2122" relation="usage">
           <edgelabel>-mouse_position</edgelabel>
         </childnode>
-        <childnode refid="1283" relation="usage">
+        <childnode refid="2124" relation="usage">
           <edgelabel>-global_context</edgelabel>
         </childnode>
-        <childnode refid="1284" relation="usage">
+        <childnode refid="2125" relation="usage">
           <edgelabel>-mouse_motion</edgelabel>
         </childnode>
-        <childnode refid="1286" relation="usage">
+        <childnode refid="2127" relation="usage">
           <edgelabel>-action_manager</edgelabel>
         </childnode>
       </node>
-      <node id="1289">
+      <node id="2130">
         <label>openage::coord::CoordManager</label>
         <link refid="classopenage_1_1coord_1_1_coord_manager"/>
-        <childnode refid="1290" relation="usage">
+        <childnode refid="2131" relation="usage">
           <edgelabel>+camgame_viewport</edgelabel>
           <edgelabel>+camhud_viewport</edgelabel>
         </childnode>
-        <childnode refid="1292" relation="usage">
+        <childnode refid="2133" relation="usage">
           <edgelabel>+camgame_phys</edgelabel>
         </childnode>
-        <childnode refid="1294" relation="usage">
+        <childnode refid="2135" relation="usage">
           <edgelabel>+tile_size</edgelabel>
         </childnode>
-        <childnode refid="1274" relation="usage">
+        <childnode refid="2115" relation="usage">
           <edgelabel>+viewport_size</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="libopenage/engine.h" line="88" column="1" bodyfile="libopenage/engine.h" bodystart="88" bodyend="457"/>
+    <location file="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" line="88" column="1" bodyfile="C:/Users/Jameson/Documents/git-projects/openage/libopenage/engine.h" bodystart="88" bodyend="457"/>
     <listofallmembers>
       <member refid="classopenage_1_1_engine_1ac42c03e7695e4b1204abd0dd5f49c5fc" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>action_manager</name></member>
       <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::Engine</scope><name>add</name></member>
