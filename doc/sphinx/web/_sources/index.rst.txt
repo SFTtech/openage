@@ -21,6 +21,7 @@ Table of Contents
   reference/reverse_engineering.rst
   reference/doxygen.rst
   releasenotes/index.rst
+  reference/todolist.rst
 
 Indices and tables
 ==================

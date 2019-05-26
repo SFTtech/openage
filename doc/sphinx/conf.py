@@ -64,8 +64,8 @@ import recommonmark
 from recommonmark.parser import CommonMarkParser
 from recommonmark.transform import AutoStructify
 
-# source_parsers = {
-#    '.md': CommonMarkParser
+#source_parsers = {
+#    '.md': CommonMarkParser,
 #}
 
 # The file extensions of source files. Sphinx considers the files with this suffix as sources.

@@ -319,12 +319,13 @@ var Search = {
     for (var prefix in objects) {
       for (var name in objects[prefix]) {
         var fullname = (prefix ? prefix + '.' : '') + name;
-        if (fullname.toLowerCase().indexOf(object) > -1) {
+        var fullnameLower = fullname.toLowerCase()
+        if (fullnameLower.indexOf(object) > -1) {
           var score = 0;
-          var parts = fullname.split('.');
+          var parts = fullnameLower.split('.');
           // check for different match types: exact matches of full name or
           // "last name" (i.e. last dotted part)
-          if (fullname == object || parts[parts.length - 1] == object) {
+          if (fullnameLower == object || parts[parts.length - 1] == object) {
             score += Scorer.objNameMatch;
           // matches in last name
           } else if (parts[parts.length - 1].indexOf(object) > -1) {
