@@ -116,7 +116,7 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Breathe
 #sys.path.append( "C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/breathe" )
